@@ -1,0 +1,1 @@
+# everi-wallet-ios
