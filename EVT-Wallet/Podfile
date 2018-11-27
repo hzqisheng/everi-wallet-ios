@@ -1,0 +1,17 @@
+platform :ios, ‘8.0’
+inhibit_all_warnings!
+
+target “EVT-Wallet” do
+pod 'Masonry'
+pod 'MJExtension'
+pod 'MJRefresh'
+pod 'AFNetworking'
+pod 'SDWebImage'
+pod 'YYText’
+pod 'MBProgressHUD', '~> 0.9.2'
+pod 'IQKeyboardManager'
+pod 'SDCycleScrollView'
+pod 'ReactiveCocoa', :git => 'https://github.com/zhao0/ReactiveCocoa.git', :tag => '2.5.2'
+pod 'TZImagePickerController'
+pod 'RTRootNavigationController'
+end

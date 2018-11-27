@@ -1,0 +1,33 @@
+/* 
+  CustomLocalizable.strings
+  EVT-Wallet
+
+  Created by 孙俊 on 2018/11/27.
+  Copyright © 2018 HANGZHOU QISHENG TECHNOLOGY CO.LTD. All rights reserved.
+*/
+
+//Login
+"qs_btn_login_newidentity" = "New Identity";
+
+//Home
+"qs_btn_home_scan"    = "Scan";
+"qs_btn_home_pay"     = "everiPay";
+"qs_btn_home_collect" = "Collect";
+"qs_btn_home_issue"   = "Issue";
+"qs_btn_home_myfts"   = "My FTs";
+"qs_btn_home_mynfts"  = "My NFTs";
+
+//Me
+"qs_me_item_managewallet"    = "Manage Wallet";
+"qs_me_item_manageaddress"   = "Manage Adress";
+"qs_me_item_joincommunities" = "Join Communities";
+"qs_me_item_helpcenter"      = "Help Center";
+"qs_me_item_setting"         = "Settings";
+"qs_me_item_share"           = "Share";
+"qs_me_item_aboutus"         = "Abount Us";
+
+//TabBar
+"qs_tabbar_property" = "Property";
+"qs_tabbar_markets"  = "Markets";
+"qs_tabbar_discover" = "Discover";
+"qs_tabbar_me"       = "Me";
