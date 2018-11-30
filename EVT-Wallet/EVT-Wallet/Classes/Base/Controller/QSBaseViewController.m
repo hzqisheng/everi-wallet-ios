@@ -7,7 +7,6 @@
 //
 
 #import "QSBaseViewController.h"
-#import <RTRootNavigationController/RTRootNavigationController.h>
 
 @interface QSBaseViewController ()
 
@@ -46,8 +45,9 @@
 
 - (UIBarButtonItem *)rt_customBackItemWithTarget:(id)target action:(SEL)action {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setImage:[UIImage imageNamed:@"left"] forState:UIControlStateNormal];
-    [btn sizeToFit];
+    [btn setImage:[UIImage imageNamed:@"icon_qianbao_nav_back"] forState:UIControlStateNormal];
+    btn.frame = CGRectMake(0, 0, 44, 44);
+    btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [btn addTarget:target
             action:action
   forControlEvents:UIControlEventTouchUpInside];
@@ -60,6 +60,17 @@
                                             complete:^(BOOL finished) {
                                                 [self.rt_navigationController removeViewController:self];
                                             }];
+}
+
+- (UIButton *)createBottomButtonWithTitle:(NSString *)title target:(id)target action:(SEL)action {
+    UIButton *bottomButton = [[UIButton alloc] initWithFrame:CGRectMake(0, kRealValue(30), kBottomButtonWidth, kBottomButtonHeight)];
+    [bottomButton setTitleColor:[UIColor qs_colorYellowE4B84F] forState:UIControlStateNormal];
+    [bottomButton setTitle:title forState:UIControlStateNormal];
+    bottomButton.backgroundColor = [UIColor qs_colorBlack313745];
+    bottomButton.titleLabel.font = [UIFont qs_fontOfSize15];
+    [bottomButton addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    bottomButton.layer.cornerRadius = 3;
+    return bottomButton;
 }
 
 - (void)dealloc {

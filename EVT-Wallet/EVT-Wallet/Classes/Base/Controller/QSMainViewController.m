@@ -7,7 +7,6 @@
 //
 
 #import "QSMainViewController.h"
-#import <RTRootNavigationController.h>
 #import "QSTabBar.h"
 
 @interface QSMainViewController ()<UITabBarControllerDelegate,QSTabBarDelegate>
@@ -59,7 +58,7 @@
         [vc.tabBarItem setImage:[[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
         [vc.tabBarItem setSelectedImage:[[UIImage imageNamed:selImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     }
-    [self addChildViewController:[[RTContainerNavigationController alloc] initWithRootViewController:vc]];
+    [self addChildViewController:[[RTRootNavigationController alloc] initWithRootViewController:vc]];
 }
 
 #pragma mark - **************** QSTabBarDelegate

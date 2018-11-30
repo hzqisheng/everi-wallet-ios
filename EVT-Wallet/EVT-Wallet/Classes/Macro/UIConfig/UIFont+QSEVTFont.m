@@ -18,6 +18,14 @@
     return [UIFont systemFontOfSize:14];
 }
 
++ (UIFont *)qs_fontOfSize15 {
+    return [UIFont systemFontOfSize:15];
+}
+
++ (UIFont *)qs_fontOfSize16 {
+    return [UIFont systemFontOfSize:16];
+}
+
 + (UIFont *)qs_fontOfSize18 {
     return [UIFont systemFontOfSize:18];
 }

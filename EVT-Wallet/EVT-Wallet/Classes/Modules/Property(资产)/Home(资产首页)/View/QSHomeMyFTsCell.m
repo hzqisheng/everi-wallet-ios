@@ -19,14 +19,7 @@
 
 @implementation QSHomeMyFTsCell
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self p_setupSubViews];
-    }
-    return self;
-}
-
-- (void)p_setupSubViews {
+- (void)configureSubViews {
     [self.contentView addSubview:self.ftImageView];
     [self.contentView addSubview:self.nameLabel];
     [self.contentView addSubview:self.amountLabel];

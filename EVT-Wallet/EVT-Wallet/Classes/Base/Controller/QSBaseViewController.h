@@ -17,4 +17,7 @@
 - (void)pushRemoveSelfToViewController:(UIViewController *)viewController
                               animated:(BOOL)animated;
 
+/** bottomButton */
+- (UIButton *)createBottomButtonWithTitle:(NSString *)title target:(id)target action:(SEL)action;
+
 @end

@@ -33,7 +33,7 @@ char * const UIBarButtonItemActionBlock = "UIBarButtonItemActionBlock";
 
 - (instancetype)initWithTitle:(NSString *)title titleColor:(UIColor *)color actionBlock:(SJBarButtonActionBlock)actionBlock {
     UIButton *view = [[UIButton alloc] init];
-    view.titleLabel.font = [UIFont systemFontOfSize:15.0];
+    view.titleLabel.font = [UIFont systemFontOfSize:14.0];
     [view setTitle:title forState:UIControlStateNormal];
     [view setTitleColor:color forState:UIControlStateNormal];
     if (self = [self initWithCustomView:view]) {
@@ -60,7 +60,7 @@ char * const UIBarButtonItemActionBlock = "UIBarButtonItemActionBlock";
     [view setTitle:title forState:UIControlStateNormal];
     [view setTitleColor:titleColor forState:UIControlStateNormal];
     view.titleLabel.font = font;
-    view.frame =  CGRectMake(0, 0, 40, 44);
+    view.frame =  CGRectMake(0, 0, 44, 44);
     return [self initWithCustomView:view];
 }
 

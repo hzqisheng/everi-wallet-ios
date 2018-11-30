@@ -19,6 +19,44 @@
 		7B6CDC6E21AB7E65008A6FAF /* QSHomeMyNFTsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6CDC6D21AB7E65008A6FAF /* QSHomeMyNFTsViewController.m */; };
 		7B6CDC7221AB9CF8008A6FAF /* QSHomeMyFTsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6CDC7121AB9CF8008A6FAF /* QSHomeMyFTsCell.m */; };
 		7B7A4C8621ACCEF400598E6F /* CustomLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B7A4C8821ACCEF400598E6F /* CustomLocalizable.strings */; };
+		7B7A4C8D21ACF14000598E6F /* QSSettingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A4C8C21ACF14000598E6F /* QSSettingItem.m */; };
+		7B7A4C9021ACF7E800598E6F /* QSSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A4C8F21ACF7E800598E6F /* QSSettingCell.m */; };
+		7B7A4C9321AD18B400598E6F /* UITableViewCell+QSSectionCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A4C9221AD18B400598E6F /* UITableViewCell+QSSectionCorner.m */; };
+		7B7A4C9921AD2C0200598E6F /* QSMyWalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A4C9821AD2C0200598E6F /* QSMyWalletViewController.m */; };
+		7BF2F82D21AE37D6000AAD93 /* QSBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F82C21AE37D6000AAD93 /* QSBaseTableViewCell.m */; };
+		7BF2F83621AE4091000AAD93 /* QSMyWalletCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F83521AE4091000AAD93 /* QSMyWalletCell.m */; };
+		7BF2F83921AE5EF2000AAD93 /* QSMyWalletSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F83821AE5EF2000AAD93 /* QSMyWalletSectionHeaderView.m */; };
+		7BF2F84021AE6F17000AAD93 /* QSManageAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F83F21AE6F17000AAD93 /* QSManageAddressViewController.m */; };
+		7BF2F84321AE7233000AAD93 /* QSManageAdressSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F84221AE7233000AAD93 /* QSManageAdressSearchView.m */; };
+		7BF2F85021AE7490000AAD93 /* QSSelectMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F84E21AE7490000AAD93 /* QSSelectMenuItem.m */; };
+		7BF2F85121AE7490000AAD93 /* QSSelectMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F84F21AE7490000AAD93 /* QSSelectMenuView.m */; };
+		7BF2F85421AE74C3000AAD93 /* QSSelectMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F85321AE74C3000AAD93 /* QSSelectMenuCell.m */; };
+		7BF2F85721AE80A3000AAD93 /* QSManageAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F85621AE80A3000AAD93 /* QSManageAddressCell.m */; };
+		7BF2F85D21AE96BA000AAD93 /* QSAddAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F85C21AE96BA000AAD93 /* QSAddAddressViewController.m */; };
+		7BF2F86021AE9983000AAD93 /* QSAddAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F85F21AE9983000AAD93 /* QSAddAddressCell.m */; };
+		7BF2F86321AE9A1D000AAD93 /* QSAddAddressCell+QSAddAddressType.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F86221AE9A1D000AAD93 /* QSAddAddressCell+QSAddAddressType.m */; };
+		7BF2F86621AE9A34000AAD93 /* QSAddAddressCell+QSAddAddressScan.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F86521AE9A34000AAD93 /* QSAddAddressCell+QSAddAddressScan.m */; };
+		7BF2F86A21AE9A7B000AAD93 /* QSAddAddressItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F86921AE9A7B000AAD93 /* QSAddAddressItem.m */; };
+		7BF2F86D21AF8091000AAD93 /* QSAddAddressCell+QSAddAddressInput.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F86C21AF8091000AAD93 /* QSAddAddressCell+QSAddAddressInput.m */; };
+		7BF2F87321AFC54E000AAD93 /* QSImportAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F87221AFC54E000AAD93 /* QSImportAddressViewController.m */; };
+		7BF2F87821AFCF06000AAD93 /* QSExportAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F87721AFCF06000AAD93 /* QSExportAddressViewController.m */; };
+		7BF2F87E21AFD53F000AAD93 /* QSJoinCommunitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F87D21AFD53F000AAD93 /* QSJoinCommunitiesViewController.m */; };
+		7BF2F88421AFE18C000AAD93 /* QSHelpCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F88321AFE18C000AAD93 /* QSHelpCenterViewController.m */; };
+		7BF2F88821AFE1BD000AAD93 /* QSHelpCenterOverViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F88721AFE1BD000AAD93 /* QSHelpCenterOverViewItem.m */; };
+		7BF2F88B21AFE3FA000AAD93 /* QSHelpCenterFunctionOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F88A21AFE3FA000AAD93 /* QSHelpCenterFunctionOverviewCell.m */; };
+		7BF2F89821B0D7D4000AAD93 /* QSSystemSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F89721B0D7D4000AAD93 /* QSSystemSettingsViewController.m */; };
+		7BF2F89B21B0D7EE000AAD93 /* QSLanguageSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F89A21B0D7EE000AAD93 /* QSLanguageSettingViewController.m */; };
+		7BF2F89E21B0DA32000AAD93 /* QSLanguageSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F89D21B0DA32000AAD93 /* QSLanguageSettingCell.m */; };
+		7BF2F8A221B0DC68000AAD93 /* QSSettingLanguageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F8A121B0DC68000AAD93 /* QSSettingLanguageItem.m */; };
+		7BF2F8A621B1025D000AAD93 /* QSLanguageConfigHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F8A521B1025D000AAD93 /* QSLanguageConfigHelper.m */; };
+		7BF2F8A921B102F4000AAD93 /* NSBundle+QSLanguageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F8A821B102F4000AAD93 /* NSBundle+QSLanguageUtils.m */; };
+		7BF2F8AF21B10AF7000AAD93 /* QSCurrencySettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F8AE21B10AF7000AAD93 /* QSCurrencySettingsViewController.m */; };
+		7BF2F8B421B10D52000AAD93 /* QSNodeSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F8B321B10D52000AAD93 /* QSNodeSettingViewController.m */; };
+		7BF2F8B921B11494000AAD93 /* QSMaxPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F8B821B11494000AAD93 /* QSMaxPaymentViewController.m */; };
+		7BF2F8BD21B114FA000AAD93 /* QSBaseSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F8BC21B114FA000AAD93 /* QSBaseSettingViewController.m */; };
+		7BF2F8C521B1228F000AAD93 /* QSShareHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F8C421B1228F000AAD93 /* QSShareHelper.m */; };
+		7BF2F8CB21B12732000AAD93 /* QSAboutusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F8CA21B12732000AAD93 /* QSAboutusViewController.m */; };
+		7BF2F8CF21B129BF000AAD93 /* QSAboutusIconCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF2F8CE21B129BF000AAD93 /* QSAboutusIconCell.m */; };
 		7BF36D0C21A791A300B27146 /* EVT_WalletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF36D0B21A791A300B27146 /* EVT_WalletTests.m */; };
 		7BF36D1721A791A300B27146 /* EVT_WalletUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF36D1621A791A300B27146 /* EVT_WalletUITests.m */; };
 		7BF36D5921A7972500B27146 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BF36D2621A7972500B27146 /* Assets.xcassets */; };
@@ -126,6 +164,82 @@
 		7B6CDC7121AB9CF8008A6FAF /* QSHomeMyFTsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSHomeMyFTsCell.m; sourceTree = "<group>"; };
 		7B7A4C8721ACCEF400598E6F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CustomLocalizable.strings; sourceTree = "<group>"; };
 		7B7A4C8921ACD06900598E6F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/CustomLocalizable.strings"; sourceTree = "<group>"; };
+		7B7A4C8B21ACF14000598E6F /* QSSettingItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSSettingItem.h; sourceTree = "<group>"; };
+		7B7A4C8C21ACF14000598E6F /* QSSettingItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSSettingItem.m; sourceTree = "<group>"; };
+		7B7A4C8E21ACF7E800598E6F /* QSSettingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSSettingCell.h; sourceTree = "<group>"; };
+		7B7A4C8F21ACF7E800598E6F /* QSSettingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSSettingCell.m; sourceTree = "<group>"; };
+		7B7A4C9121AD18B400598E6F /* UITableViewCell+QSSectionCorner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+QSSectionCorner.h"; sourceTree = "<group>"; };
+		7B7A4C9221AD18B400598E6F /* UITableViewCell+QSSectionCorner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+QSSectionCorner.m"; sourceTree = "<group>"; };
+		7B7A4C9721AD2C0200598E6F /* QSMyWalletViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSMyWalletViewController.h; sourceTree = "<group>"; };
+		7B7A4C9821AD2C0200598E6F /* QSMyWalletViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSMyWalletViewController.m; sourceTree = "<group>"; };
+		7BF2F82B21AE37D6000AAD93 /* QSBaseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSBaseTableViewCell.h; sourceTree = "<group>"; };
+		7BF2F82C21AE37D6000AAD93 /* QSBaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSBaseTableViewCell.m; sourceTree = "<group>"; };
+		7BF2F83421AE4091000AAD93 /* QSMyWalletCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSMyWalletCell.h; sourceTree = "<group>"; };
+		7BF2F83521AE4091000AAD93 /* QSMyWalletCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSMyWalletCell.m; sourceTree = "<group>"; };
+		7BF2F83721AE5EF2000AAD93 /* QSMyWalletSectionHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSMyWalletSectionHeaderView.h; sourceTree = "<group>"; };
+		7BF2F83821AE5EF2000AAD93 /* QSMyWalletSectionHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSMyWalletSectionHeaderView.m; sourceTree = "<group>"; };
+		7BF2F83E21AE6F17000AAD93 /* QSManageAddressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSManageAddressViewController.h; sourceTree = "<group>"; };
+		7BF2F83F21AE6F17000AAD93 /* QSManageAddressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSManageAddressViewController.m; sourceTree = "<group>"; };
+		7BF2F84121AE7233000AAD93 /* QSManageAdressSearchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSManageAdressSearchView.h; sourceTree = "<group>"; };
+		7BF2F84221AE7233000AAD93 /* QSManageAdressSearchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSManageAdressSearchView.m; sourceTree = "<group>"; };
+		7BF2F84C21AE7490000AAD93 /* QSSelectMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSSelectMenuItem.h; sourceTree = "<group>"; };
+		7BF2F84D21AE7490000AAD93 /* QSSelectMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSSelectMenuView.h; sourceTree = "<group>"; };
+		7BF2F84E21AE7490000AAD93 /* QSSelectMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSSelectMenuItem.m; sourceTree = "<group>"; };
+		7BF2F84F21AE7490000AAD93 /* QSSelectMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSSelectMenuView.m; sourceTree = "<group>"; };
+		7BF2F85221AE74C3000AAD93 /* QSSelectMenuCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSSelectMenuCell.h; sourceTree = "<group>"; };
+		7BF2F85321AE74C3000AAD93 /* QSSelectMenuCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSSelectMenuCell.m; sourceTree = "<group>"; };
+		7BF2F85521AE80A3000AAD93 /* QSManageAddressCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSManageAddressCell.h; sourceTree = "<group>"; };
+		7BF2F85621AE80A3000AAD93 /* QSManageAddressCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSManageAddressCell.m; sourceTree = "<group>"; };
+		7BF2F85B21AE96BA000AAD93 /* QSAddAddressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSAddAddressViewController.h; sourceTree = "<group>"; };
+		7BF2F85C21AE96BA000AAD93 /* QSAddAddressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSAddAddressViewController.m; sourceTree = "<group>"; };
+		7BF2F85E21AE9983000AAD93 /* QSAddAddressCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSAddAddressCell.h; sourceTree = "<group>"; };
+		7BF2F85F21AE9983000AAD93 /* QSAddAddressCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSAddAddressCell.m; sourceTree = "<group>"; };
+		7BF2F86121AE9A1D000AAD93 /* QSAddAddressCell+QSAddAddressType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QSAddAddressCell+QSAddAddressType.h"; sourceTree = "<group>"; };
+		7BF2F86221AE9A1D000AAD93 /* QSAddAddressCell+QSAddAddressType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "QSAddAddressCell+QSAddAddressType.m"; sourceTree = "<group>"; };
+		7BF2F86421AE9A34000AAD93 /* QSAddAddressCell+QSAddAddressScan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QSAddAddressCell+QSAddAddressScan.h"; sourceTree = "<group>"; };
+		7BF2F86521AE9A34000AAD93 /* QSAddAddressCell+QSAddAddressScan.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "QSAddAddressCell+QSAddAddressScan.m"; sourceTree = "<group>"; };
+		7BF2F86821AE9A7B000AAD93 /* QSAddAddressItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSAddAddressItem.h; sourceTree = "<group>"; };
+		7BF2F86921AE9A7B000AAD93 /* QSAddAddressItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSAddAddressItem.m; sourceTree = "<group>"; };
+		7BF2F86B21AF8091000AAD93 /* QSAddAddressCell+QSAddAddressInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QSAddAddressCell+QSAddAddressInput.h"; sourceTree = "<group>"; };
+		7BF2F86C21AF8091000AAD93 /* QSAddAddressCell+QSAddAddressInput.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "QSAddAddressCell+QSAddAddressInput.m"; sourceTree = "<group>"; };
+		7BF2F87121AFC54D000AAD93 /* QSImportAddressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSImportAddressViewController.h; sourceTree = "<group>"; };
+		7BF2F87221AFC54E000AAD93 /* QSImportAddressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSImportAddressViewController.m; sourceTree = "<group>"; };
+		7BF2F87621AFCF06000AAD93 /* QSExportAddressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSExportAddressViewController.h; sourceTree = "<group>"; };
+		7BF2F87721AFCF06000AAD93 /* QSExportAddressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSExportAddressViewController.m; sourceTree = "<group>"; };
+		7BF2F87C21AFD53F000AAD93 /* QSJoinCommunitiesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSJoinCommunitiesViewController.h; sourceTree = "<group>"; };
+		7BF2F87D21AFD53F000AAD93 /* QSJoinCommunitiesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSJoinCommunitiesViewController.m; sourceTree = "<group>"; };
+		7BF2F88221AFE18C000AAD93 /* QSHelpCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSHelpCenterViewController.h; sourceTree = "<group>"; };
+		7BF2F88321AFE18C000AAD93 /* QSHelpCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSHelpCenterViewController.m; sourceTree = "<group>"; };
+		7BF2F88621AFE1BD000AAD93 /* QSHelpCenterOverViewItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSHelpCenterOverViewItem.h; sourceTree = "<group>"; };
+		7BF2F88721AFE1BD000AAD93 /* QSHelpCenterOverViewItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSHelpCenterOverViewItem.m; sourceTree = "<group>"; };
+		7BF2F88921AFE3FA000AAD93 /* QSHelpCenterFunctionOverviewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSHelpCenterFunctionOverviewCell.h; sourceTree = "<group>"; };
+		7BF2F88A21AFE3FA000AAD93 /* QSHelpCenterFunctionOverviewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSHelpCenterFunctionOverviewCell.m; sourceTree = "<group>"; };
+		7BF2F89621B0D7D4000AAD93 /* QSSystemSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSSystemSettingsViewController.h; sourceTree = "<group>"; };
+		7BF2F89721B0D7D4000AAD93 /* QSSystemSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSSystemSettingsViewController.m; sourceTree = "<group>"; };
+		7BF2F89921B0D7EE000AAD93 /* QSLanguageSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSLanguageSettingViewController.h; sourceTree = "<group>"; };
+		7BF2F89A21B0D7EE000AAD93 /* QSLanguageSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSLanguageSettingViewController.m; sourceTree = "<group>"; };
+		7BF2F89C21B0DA32000AAD93 /* QSLanguageSettingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSLanguageSettingCell.h; sourceTree = "<group>"; };
+		7BF2F89D21B0DA32000AAD93 /* QSLanguageSettingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSLanguageSettingCell.m; sourceTree = "<group>"; };
+		7BF2F8A021B0DC68000AAD93 /* QSSettingLanguageItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSSettingLanguageItem.h; sourceTree = "<group>"; };
+		7BF2F8A121B0DC68000AAD93 /* QSSettingLanguageItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSSettingLanguageItem.m; sourceTree = "<group>"; };
+		7BF2F8A421B1025D000AAD93 /* QSLanguageConfigHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSLanguageConfigHelper.h; sourceTree = "<group>"; };
+		7BF2F8A521B1025D000AAD93 /* QSLanguageConfigHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSLanguageConfigHelper.m; sourceTree = "<group>"; };
+		7BF2F8A721B102F4000AAD93 /* NSBundle+QSLanguageUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSBundle+QSLanguageUtils.h"; sourceTree = "<group>"; };
+		7BF2F8A821B102F4000AAD93 /* NSBundle+QSLanguageUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+QSLanguageUtils.m"; sourceTree = "<group>"; };
+		7BF2F8AD21B10AF7000AAD93 /* QSCurrencySettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCurrencySettingsViewController.h; sourceTree = "<group>"; };
+		7BF2F8AE21B10AF7000AAD93 /* QSCurrencySettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCurrencySettingsViewController.m; sourceTree = "<group>"; };
+		7BF2F8B221B10D52000AAD93 /* QSNodeSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSNodeSettingViewController.h; sourceTree = "<group>"; };
+		7BF2F8B321B10D52000AAD93 /* QSNodeSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSNodeSettingViewController.m; sourceTree = "<group>"; };
+		7BF2F8B721B11494000AAD93 /* QSMaxPaymentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSMaxPaymentViewController.h; sourceTree = "<group>"; };
+		7BF2F8B821B11494000AAD93 /* QSMaxPaymentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSMaxPaymentViewController.m; sourceTree = "<group>"; };
+		7BF2F8BB21B114FA000AAD93 /* QSBaseSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSBaseSettingViewController.h; sourceTree = "<group>"; };
+		7BF2F8BC21B114FA000AAD93 /* QSBaseSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSBaseSettingViewController.m; sourceTree = "<group>"; };
+		7BF2F8C321B1228F000AAD93 /* QSShareHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSShareHelper.h; sourceTree = "<group>"; };
+		7BF2F8C421B1228F000AAD93 /* QSShareHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSShareHelper.m; sourceTree = "<group>"; };
+		7BF2F8C921B12732000AAD93 /* QSAboutusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSAboutusViewController.h; sourceTree = "<group>"; };
+		7BF2F8CA21B12732000AAD93 /* QSAboutusViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSAboutusViewController.m; sourceTree = "<group>"; };
+		7BF2F8CD21B129BF000AAD93 /* QSAboutusIconCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSAboutusIconCell.h; sourceTree = "<group>"; };
+		7BF2F8CE21B129BF000AAD93 /* QSAboutusIconCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSAboutusIconCell.m; sourceTree = "<group>"; };
 		7BF36CEF21A791A200B27146 /* EVT-Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EVT-Wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF36D0721A791A300B27146 /* EVT-WalletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EVT-WalletTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF36D0B21A791A300B27146 /* EVT_WalletTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EVT_WalletTests.m; sourceTree = "<group>"; };
@@ -331,6 +445,447 @@
 			path = QSTopImageBottomLabelButton;
 			sourceTree = "<group>";
 		};
+		7B7A4C8A21ACF0F900598E6F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7B7A4C8B21ACF14000598E6F /* QSSettingItem.h */,
+				7B7A4C8C21ACF14000598E6F /* QSSettingItem.m */,
+				7B7A4C9121AD18B400598E6F /* UITableViewCell+QSSectionCorner.h */,
+				7B7A4C9221AD18B400598E6F /* UITableViewCell+QSSectionCorner.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7B7A4C9421AD2BE300598E6F /* Wallet(钱包) */ = {
+			isa = PBXGroup;
+			children = (
+				7B7A4C9521AD2BE300598E6F /* Controller */,
+				7B7A4C9621AD2BE300598E6F /* View */,
+			);
+			path = "Wallet(钱包)";
+			sourceTree = "<group>";
+		};
+		7B7A4C9521AD2BE300598E6F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7B7A4C9721AD2C0200598E6F /* QSMyWalletViewController.h */,
+				7B7A4C9821AD2C0200598E6F /* QSMyWalletViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7B7A4C9621AD2BE300598E6F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F83421AE4091000AAD93 /* QSMyWalletCell.h */,
+				7BF2F83521AE4091000AAD93 /* QSMyWalletCell.m */,
+				7BF2F83721AE5EF2000AAD93 /* QSMyWalletSectionHeaderView.h */,
+				7BF2F83821AE5EF2000AAD93 /* QSMyWalletSectionHeaderView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7BF2F82A21AE37C8000AAD93 /* QSTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F82B21AE37D6000AAD93 /* QSBaseTableViewCell.h */,
+				7BF2F82C21AE37D6000AAD93 /* QSBaseTableViewCell.m */,
+			);
+			path = QSTableViewCell;
+			sourceTree = "<group>";
+		};
+		7BF2F83A21AE6EDF000AAD93 /* Address(地址) */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F87421AFCEF8000AAD93 /* ExportAddress(导出地址) */,
+				7BF2F86E21AFC4F2000AAD93 /* ImportAddress(导入地址) */,
+				7BF2F85821AE96A4000AAD93 /* AddAddress(新增地址) */,
+				7BF2F83B21AE6EDF000AAD93 /* ManageAddress(地址管理) */,
+			);
+			path = "Address(地址)";
+			sourceTree = "<group>";
+		};
+		7BF2F83B21AE6EDF000AAD93 /* ManageAddress(地址管理) */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F83C21AE6EDF000AAD93 /* Controller */,
+				7BF2F83D21AE6EDF000AAD93 /* View */,
+				7BF2F84721AE740A000AAD93 /* Model */,
+			);
+			path = "ManageAddress(地址管理)";
+			sourceTree = "<group>";
+		};
+		7BF2F83C21AE6EDF000AAD93 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F83E21AE6F17000AAD93 /* QSManageAddressViewController.h */,
+				7BF2F83F21AE6F17000AAD93 /* QSManageAddressViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BF2F83D21AE6EDF000AAD93 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F84B21AE7490000AAD93 /* QSSelectMenu */,
+				7BF2F84121AE7233000AAD93 /* QSManageAdressSearchView.h */,
+				7BF2F84221AE7233000AAD93 /* QSManageAdressSearchView.m */,
+				7BF2F85521AE80A3000AAD93 /* QSManageAddressCell.h */,
+				7BF2F85621AE80A3000AAD93 /* QSManageAddressCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7BF2F84721AE740A000AAD93 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7BF2F84B21AE7490000AAD93 /* QSSelectMenu */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F85221AE74C3000AAD93 /* QSSelectMenuCell.h */,
+				7BF2F85321AE74C3000AAD93 /* QSSelectMenuCell.m */,
+				7BF2F84C21AE7490000AAD93 /* QSSelectMenuItem.h */,
+				7BF2F84E21AE7490000AAD93 /* QSSelectMenuItem.m */,
+				7BF2F84D21AE7490000AAD93 /* QSSelectMenuView.h */,
+				7BF2F84F21AE7490000AAD93 /* QSSelectMenuView.m */,
+			);
+			path = QSSelectMenu;
+			sourceTree = "<group>";
+		};
+		7BF2F85821AE96A4000AAD93 /* AddAddress(新增地址) */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F85921AE96A4000AAD93 /* Controller */,
+				7BF2F85A21AE96A4000AAD93 /* View */,
+				7BF2F86721AE9A55000AAD93 /* Model */,
+			);
+			path = "AddAddress(新增地址)";
+			sourceTree = "<group>";
+		};
+		7BF2F85921AE96A4000AAD93 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F85B21AE96BA000AAD93 /* QSAddAddressViewController.h */,
+				7BF2F85C21AE96BA000AAD93 /* QSAddAddressViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BF2F85A21AE96A4000AAD93 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F85E21AE9983000AAD93 /* QSAddAddressCell.h */,
+				7BF2F85F21AE9983000AAD93 /* QSAddAddressCell.m */,
+				7BF2F86121AE9A1D000AAD93 /* QSAddAddressCell+QSAddAddressType.h */,
+				7BF2F86221AE9A1D000AAD93 /* QSAddAddressCell+QSAddAddressType.m */,
+				7BF2F86421AE9A34000AAD93 /* QSAddAddressCell+QSAddAddressScan.h */,
+				7BF2F86521AE9A34000AAD93 /* QSAddAddressCell+QSAddAddressScan.m */,
+				7BF2F86B21AF8091000AAD93 /* QSAddAddressCell+QSAddAddressInput.h */,
+				7BF2F86C21AF8091000AAD93 /* QSAddAddressCell+QSAddAddressInput.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7BF2F86721AE9A55000AAD93 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F86821AE9A7B000AAD93 /* QSAddAddressItem.h */,
+				7BF2F86921AE9A7B000AAD93 /* QSAddAddressItem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7BF2F86E21AFC4F2000AAD93 /* ImportAddress(导入地址) */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F86F21AFC4F2000AAD93 /* Controller */,
+				7BF2F87021AFC4F2000AAD93 /* View */,
+			);
+			path = "ImportAddress(导入地址)";
+			sourceTree = "<group>";
+		};
+		7BF2F86F21AFC4F2000AAD93 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F87121AFC54D000AAD93 /* QSImportAddressViewController.h */,
+				7BF2F87221AFC54E000AAD93 /* QSImportAddressViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BF2F87021AFC4F2000AAD93 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7BF2F87421AFCEF8000AAD93 /* ExportAddress(导出地址) */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F87521AFCEF8000AAD93 /* Controller */,
+			);
+			path = "ExportAddress(导出地址)";
+			sourceTree = "<group>";
+		};
+		7BF2F87521AFCEF8000AAD93 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F87621AFCF06000AAD93 /* QSExportAddressViewController.h */,
+				7BF2F87721AFCF06000AAD93 /* QSExportAddressViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BF2F87921AFD4E8000AAD93 /* JoinCommunities(加入社区) */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F87A21AFD4E8000AAD93 /* Controller */,
+				7BF2F87B21AFD4E8000AAD93 /* View */,
+			);
+			path = "JoinCommunities(加入社区)";
+			sourceTree = "<group>";
+		};
+		7BF2F87A21AFD4E8000AAD93 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F87C21AFD53F000AAD93 /* QSJoinCommunitiesViewController.h */,
+				7BF2F87D21AFD53F000AAD93 /* QSJoinCommunitiesViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BF2F87B21AFD4E8000AAD93 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7BF2F87F21AFE030000AAD93 /* HelpCenter(帮助中心) */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F88021AFE030000AAD93 /* Controller */,
+				7BF2F88121AFE030000AAD93 /* View */,
+				7BF2F88521AFE19E000AAD93 /* Model */,
+			);
+			path = "HelpCenter(帮助中心)";
+			sourceTree = "<group>";
+		};
+		7BF2F88021AFE030000AAD93 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F88221AFE18C000AAD93 /* QSHelpCenterViewController.h */,
+				7BF2F88321AFE18C000AAD93 /* QSHelpCenterViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BF2F88121AFE030000AAD93 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F88921AFE3FA000AAD93 /* QSHelpCenterFunctionOverviewCell.h */,
+				7BF2F88A21AFE3FA000AAD93 /* QSHelpCenterFunctionOverviewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7BF2F88521AFE19E000AAD93 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F88621AFE1BD000AAD93 /* QSHelpCenterOverViewItem.h */,
+				7BF2F88721AFE1BD000AAD93 /* QSHelpCenterOverViewItem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7BF2F88C21B0CE8E000AAD93 /* Settings(系统设置) */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F8BA21B114EF000AAD93 /* BaseSettingController */,
+				7BF2F8B521B11449000AAD93 /* MaxPayment(最大支付金额) */,
+				7BF2F8B021B10D42000AAD93 /* NodeSetting(节点设置) */,
+				7BF2F8AA21B10A8C000AAD93 /* CurrencySettings(资产折合单位) */,
+				7BF2F89121B0D7D4000AAD93 /* LanguageSetting(选择语言) */,
+				7BF2F89421B0D7D4000AAD93 /* SystemSetting(系统设置) */,
+			);
+			path = "Settings(系统设置)";
+			sourceTree = "<group>";
+		};
+		7BF2F89121B0D7D4000AAD93 /* LanguageSetting(选择语言) */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F89221B0D7D4000AAD93 /* Controller */,
+				7BF2F89321B0D7D4000AAD93 /* View */,
+				7BF2F89F21B0DBF0000AAD93 /* Model */,
+				7BF2F8A321B10242000AAD93 /* Helper */,
+			);
+			path = "LanguageSetting(选择语言)";
+			sourceTree = "<group>";
+		};
+		7BF2F89221B0D7D4000AAD93 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F89921B0D7EE000AAD93 /* QSLanguageSettingViewController.h */,
+				7BF2F89A21B0D7EE000AAD93 /* QSLanguageSettingViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BF2F89321B0D7D4000AAD93 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F89C21B0DA32000AAD93 /* QSLanguageSettingCell.h */,
+				7BF2F89D21B0DA32000AAD93 /* QSLanguageSettingCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7BF2F89421B0D7D4000AAD93 /* SystemSetting(系统设置) */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F89521B0D7D4000AAD93 /* Controller */,
+			);
+			path = "SystemSetting(系统设置)";
+			sourceTree = "<group>";
+		};
+		7BF2F89521B0D7D4000AAD93 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F89621B0D7D4000AAD93 /* QSSystemSettingsViewController.h */,
+				7BF2F89721B0D7D4000AAD93 /* QSSystemSettingsViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BF2F89F21B0DBF0000AAD93 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F8A021B0DC68000AAD93 /* QSSettingLanguageItem.h */,
+				7BF2F8A121B0DC68000AAD93 /* QSSettingLanguageItem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7BF2F8A321B10242000AAD93 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F8A421B1025D000AAD93 /* QSLanguageConfigHelper.h */,
+				7BF2F8A521B1025D000AAD93 /* QSLanguageConfigHelper.m */,
+				7BF2F8A721B102F4000AAD93 /* NSBundle+QSLanguageUtils.h */,
+				7BF2F8A821B102F4000AAD93 /* NSBundle+QSLanguageUtils.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		7BF2F8AA21B10A8C000AAD93 /* CurrencySettings(资产折合单位) */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F8AB21B10A8C000AAD93 /* Controller */,
+				7BF2F8AC21B10A8C000AAD93 /* View */,
+			);
+			path = "CurrencySettings(资产折合单位)";
+			sourceTree = "<group>";
+		};
+		7BF2F8AB21B10A8C000AAD93 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F8AD21B10AF7000AAD93 /* QSCurrencySettingsViewController.h */,
+				7BF2F8AE21B10AF7000AAD93 /* QSCurrencySettingsViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BF2F8AC21B10A8C000AAD93 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7BF2F8B021B10D42000AAD93 /* NodeSetting(节点设置) */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F8B121B10D42000AAD93 /* Controller */,
+			);
+			path = "NodeSetting(节点设置)";
+			sourceTree = "<group>";
+		};
+		7BF2F8B121B10D42000AAD93 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F8B221B10D52000AAD93 /* QSNodeSettingViewController.h */,
+				7BF2F8B321B10D52000AAD93 /* QSNodeSettingViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BF2F8B521B11449000AAD93 /* MaxPayment(最大支付金额) */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F8B621B11449000AAD93 /* Controller */,
+			);
+			path = "MaxPayment(最大支付金额)";
+			sourceTree = "<group>";
+		};
+		7BF2F8B621B11449000AAD93 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F8B721B11494000AAD93 /* QSMaxPaymentViewController.h */,
+				7BF2F8B821B11494000AAD93 /* QSMaxPaymentViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BF2F8BA21B114EF000AAD93 /* BaseSettingController */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F8BB21B114FA000AAD93 /* QSBaseSettingViewController.h */,
+				7BF2F8BC21B114FA000AAD93 /* QSBaseSettingViewController.m */,
+			);
+			path = BaseSettingController;
+			sourceTree = "<group>";
+		};
+		7BF2F8C221B1227B000AAD93 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F8C321B1228F000AAD93 /* QSShareHelper.h */,
+				7BF2F8C421B1228F000AAD93 /* QSShareHelper.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		7BF2F8C621B126FE000AAD93 /* Aboutus(关于我们) */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F8C721B126FE000AAD93 /* Controller */,
+				7BF2F8CC21B129A6000AAD93 /* View */,
+			);
+			path = "Aboutus(关于我们)";
+			sourceTree = "<group>";
+		};
+		7BF2F8C721B126FE000AAD93 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F8C921B12732000AAD93 /* QSAboutusViewController.h */,
+				7BF2F8CA21B12732000AAD93 /* QSAboutusViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BF2F8CC21B129A6000AAD93 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7BF2F8CD21B129BF000AAD93 /* QSAboutusIconCell.h */,
+				7BF2F8CE21B129BF000AAD93 /* QSAboutusIconCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		7BF36CE621A791A200B27146 = {
 			isa = PBXGroup;
 			children = (
@@ -444,6 +999,12 @@
 		7BF36D2E21A7972500B27146 /* Me(我的) */ = {
 			isa = PBXGroup;
 			children = (
+				7BF2F8C621B126FE000AAD93 /* Aboutus(关于我们) */,
+				7BF2F88C21B0CE8E000AAD93 /* Settings(系统设置) */,
+				7BF2F87F21AFE030000AAD93 /* HelpCenter(帮助中心) */,
+				7BF2F87921AFD4E8000AAD93 /* JoinCommunities(加入社区) */,
+				7BF2F83A21AE6EDF000AAD93 /* Address(地址) */,
+				7B7A4C9421AD2BE300598E6F /* Wallet(钱包) */,
 				7BF36D2F21A7972500B27146 /* Me(我的) */,
 			);
 			path = "Me(我的)";
@@ -453,7 +1014,9 @@
 			isa = PBXGroup;
 			children = (
 				7BF36D3021A7972500B27146 /* Controller */,
+				7B7A4C8A21ACF0F900598E6F /* Model */,
 				7BF36D3121A7972500B27146 /* View */,
+				7BF2F8C221B1227B000AAD93 /* Helper */,
 			);
 			path = "Me(我的)";
 			sourceTree = "<group>";
@@ -470,6 +1033,8 @@
 		7BF36D3121A7972500B27146 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7B7A4C8E21ACF7E800598E6F /* QSSettingCell.h */,
+				7B7A4C8F21ACF7E800598E6F /* QSSettingCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -655,6 +1220,7 @@
 		7BF36D4F21A7972500B27146 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7BF2F82A21AE37C8000AAD93 /* QSTableViewCell */,
 				7B4CA15521A7D25C00F14449 /* QSTabbar */,
 				7BF36D5021A7972500B27146 /* QSRefreshHeader */,
 			);
@@ -1174,21 +1740,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BF2F88421AFE18C000AAD93 /* QSHelpCenterViewController.m in Sources */,
 				7B4CA15B21A7DD3A00F14449 /* QSPropetyHomeSwipeView.m in Sources */,
 				7BF36DF721A79E7B00B27146 /* UIImage+Corner.m in Sources */,
 				7BF36E2421A79E7B00B27146 /* NSTimer+Block.m in Sources */,
 				7BF36D7021A79A2300B27146 /* QSManageViewController.m in Sources */,
+				7B7A4C9021ACF7E800598E6F /* QSSettingCell.m in Sources */,
 				7BF36E0021A79E7B00B27146 /* UIView+RadiusMask.m in Sources */,
+				7BF2F85021AE7490000AAD93 /* QSSelectMenuItem.m in Sources */,
 				7BF36D5C21A7972500B27146 /* QSBaseTableViewController.m in Sources */,
 				7BF36E0521A79E7B00B27146 /* UIView+Screenshot.m in Sources */,
 				7BF36E0721A79E7B00B27146 /* UIFont+FitFont.m in Sources */,
 				7B4CA15121A7CBA300F14449 /* UIFont+QSEVTFont.m in Sources */,
+				7BF2F8CF21B129BF000AAD93 /* QSAboutusIconCell.m in Sources */,
 				7BF36E2121A79E7B00B27146 /* NSString+Utils.m in Sources */,
 				7BF36DF821A79E7B00B27146 /* UIImage+Color.m in Sources */,
 				7BF36E0221A79E7B00B27146 /* UIView+BlankPage.m in Sources */,
+				7BF2F84321AE7233000AAD93 /* QSManageAdressSearchView.m in Sources */,
 				7BF36E1221A79E7B00B27146 /* NSBundle+AppIcon.m in Sources */,
 				7B4CA16121A7E3DE00F14449 /* QSPropetyHomeShortcutView.m in Sources */,
 				7BF36E1621A79E7B00B27146 /* NSData+Gzip.m in Sources */,
+				7B7A4C8D21ACF14000598E6F /* QSSettingItem.m in Sources */,
+				7BF2F83621AE4091000AAD93 /* QSMyWalletCell.m in Sources */,
 				7BF36DF621A79E7B00B27146 /* UIImage+Size.m in Sources */,
 				7B6CDC6B21AB7E4A008A6FAF /* QSHomeMyFTsViewController.m in Sources */,
 				7BF36D5D21A7972500B27146 /* QSMainViewController.m in Sources */,
@@ -1196,53 +1769,84 @@
 				7B4CA15421A7CBB400F14449 /* UIColor+QSEVTColor.m in Sources */,
 				7BF36D6021A7972500B27146 /* QSRefreshHeader.m in Sources */,
 				7BF36E2221A79E7B00B27146 /* CAGradientLayer+NIPExtension.m in Sources */,
+				7BF2F84021AE6F17000AAD93 /* QSManageAddressViewController.m in Sources */,
 				7BF36E1E21A79E7B00B27146 /* NSString+NormalRegex.m in Sources */,
 				7BF36D5F21A7972500B27146 /* QSBaseModel.m in Sources */,
+				7BF2F89821B0D7D4000AAD93 /* QSSystemSettingsViewController.m in Sources */,
 				7BF36DFE21A79E7B00B27146 /* UIColor+Hex.m in Sources */,
 				7BF36E1821A79E7B00B27146 /* NSData+Base64.m in Sources */,
+				7BF2F86021AE9983000AAD93 /* QSAddAddressCell.m in Sources */,
 				7BF36E1D21A79E7B00B27146 /* NSString+PinYin.m in Sources */,
 				7BF36E1121A79E7B00B27146 /* NSDictionary+Merge.m in Sources */,
+				7BF2F87821AFCF06000AAD93 /* QSExportAddressViewController.m in Sources */,
 				7BF36DFF21A79E7B00B27146 /* UIView+Extensions.m in Sources */,
 				7BF36E0321A79E7B00B27146 /* UIView+Loading.m in Sources */,
+				7BF2F85D21AE96BA000AAD93 /* QSAddAddressViewController.m in Sources */,
 				7BF36E1321A79E7B00B27146 /* NSFileManager+Paths.m in Sources */,
 				7BF36E1021A79E7B00B27146 /* UITextField+RACSignalSupport.m in Sources */,
 				7BF36E1721A79E7B00B27146 /* NSData+Encrypt.m in Sources */,
 				7B4CA15E21A7E31C00F14449 /* QSPropetyHomeSegmentView.m in Sources */,
 				7BF36E2521A79E7B00B27146 /* NSDate+Utilities.m in Sources */,
 				7BF36D6A21A79A0A00B27146 /* QSMarketViewController.m in Sources */,
+				7BF2F87E21AFD53F000AAD93 /* QSJoinCommunitiesViewController.m in Sources */,
 				7B6CDC7221AB9CF8008A6FAF /* QSHomeMyFTsCell.m in Sources */,
+				7BF2F87321AFC54E000AAD93 /* QSImportAddressViewController.m in Sources */,
 				7BF36E0621A79E7B00B27146 /* UICollectionViewCell+Extensions.m in Sources */,
 				7BF36E1C21A79E7B00B27146 /* NSString+Base64.m in Sources */,
 				7BF36E2621A79E7B00B27146 /* NSDate+Extension.m in Sources */,
+				7BF2F8B421B10D52000AAD93 /* QSNodeSettingViewController.m in Sources */,
+				7BF2F88B21AFE3FA000AAD93 /* QSHelpCenterFunctionOverviewCell.m in Sources */,
 				7BF36DF921A79E7B00B27146 /* UIImage+QRCode.m in Sources */,
+				7BF2F83921AE5EF2000AAD93 /* QSMyWalletSectionHeaderView.m in Sources */,
 				7BF36E1A21A79E7B00B27146 /* NSString+URL.m in Sources */,
+				7BF2F85121AE7490000AAD93 /* QSSelectMenuView.m in Sources */,
 				7BF36E0921A79E7B00B27146 /* UIViewController+Alert.m in Sources */,
 				7B4CA15821A7D27E00F14449 /* QSTabBar.m in Sources */,
 				7BF36E0E21A79E7B00B27146 /* UITabBar+Badge.m in Sources */,
+				7BF2F85721AE80A3000AAD93 /* QSManageAddressCell.m in Sources */,
 				7BF36E0421A79E7B00B27146 /* UIView+HUD.m in Sources */,
+				7BF2F8C521B1228F000AAD93 /* QSShareHelper.m in Sources */,
 				7BF36D6721A799ED00B27146 /* QSHomePropertyViewController.m in Sources */,
 				7BF36E1B21A79E7B00B27146 /* NSString+Hash.m in Sources */,
 				7BF36E1421A79E7B00B27146 /* NSData+ImageCompress.m in Sources */,
+				7BF2F8AF21B10AF7000AAD93 /* QSCurrencySettingsViewController.m in Sources */,
 				7BF36E1921A79E7B00B27146 /* NSURL+Params.m in Sources */,
+				7BF2F89B21B0D7EE000AAD93 /* QSLanguageSettingViewController.m in Sources */,
 				7BF36DFB21A79E7B00B27146 /* UILabel+Utils.m in Sources */,
 				7BF36E1521A79E7B00B27146 /* NSData+Hash.m in Sources */,
+				7B7A4C9321AD18B400598E6F /* UITableViewCell+QSSectionCorner.m in Sources */,
 				7BF36E0F21A79E7B00B27146 /* UINavigationController+Extensions.m in Sources */,
+				7BF2F8A621B1025D000AAD93 /* QSLanguageConfigHelper.m in Sources */,
 				7BF36D5E21A7972500B27146 /* QSBaseViewController.m in Sources */,
 				7BF36E2721A79E7B00B27146 /* NSDate+Transform.m in Sources */,
+				7BF2F85421AE74C3000AAD93 /* QSSelectMenuCell.m in Sources */,
 				7BF36E0121A79E7B00B27146 /* UIView+Frame.m in Sources */,
 				7B4CA16821A7EDC500F14449 /* QSPropertyHomeSwipeCell.m in Sources */,
 				7BF36D6121A7972500B27146 /* QSRefreshFooter.m in Sources */,
 				7BF36D6221A7972500B27146 /* main.m in Sources */,
+				7BF2F8A221B0DC68000AAD93 /* QSSettingLanguageItem.m in Sources */,
 				7BF36E2321A79E7B00B27146 /* NSArray+SafeAccess.m in Sources */,
 				7BF36E2B21A7A3D800B27146 /* AppDelegate.m in Sources */,
+				7BF2F8CB21B12732000AAD93 /* QSAboutusViewController.m in Sources */,
+				7BF2F89E21B0DA32000AAD93 /* QSLanguageSettingCell.m in Sources */,
+				7BF2F86321AE9A1D000AAD93 /* QSAddAddressCell+QSAddAddressType.m in Sources */,
 				7BF36E1F21A79E7B00B27146 /* NSString+Contains.m in Sources */,
 				7BF36E0C21A79E7B00B27146 /* UIViewController+Root.m in Sources */,
+				7BF2F82D21AE37D6000AAD93 /* QSBaseTableViewCell.m in Sources */,
+				7BF2F86A21AE9A7B000AAD93 /* QSAddAddressItem.m in Sources */,
 				7B4CA16521A7E7BE00F14449 /* QSTopImageBottomLabelButton.m in Sources */,
+				7BF2F86D21AF8091000AAD93 /* QSAddAddressCell+QSAddAddressInput.m in Sources */,
 				7BF36DFD21A79E7B00B27146 /* UIColor+Gradient.m in Sources */,
+				7BF2F8A921B102F4000AAD93 /* NSBundle+QSLanguageUtils.m in Sources */,
+				7BF2F8B921B11494000AAD93 /* QSMaxPaymentViewController.m in Sources */,
+				7B7A4C9921AD2C0200598E6F /* QSMyWalletViewController.m in Sources */,
 				7B6CDC6E21AB7E65008A6FAF /* QSHomeMyNFTsViewController.m in Sources */,
 				7BF36D7321A79A3300B27146 /* QSMineViewController.m in Sources */,
 				7BF36D6D21A79A1700B27146 /* QSSwitchWalletViewController.m in Sources */,
+				7BF2F8BD21B114FA000AAD93 /* QSBaseSettingViewController.m in Sources */,
+				7BF2F86621AE9A34000AAD93 /* QSAddAddressCell+QSAddAddressScan.m in Sources */,
 				7BF36E0821A79E7B00B27146 /* UIBarButtonItem+Actions.m in Sources */,
+				7BF2F88821AFE1BD000AAD93 /* QSHelpCenterOverViewItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,11 +6,11 @@
 //  Copyright © 2018 HANGZHOU QISHENG TECHNOLOGY CO.LTD. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "QSBaseTableViewCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface QSHomeMyFTsCell : UITableViewCell
+@interface QSHomeMyFTsCell : QSBaseTableViewCell
 
 @end
 

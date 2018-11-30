@@ -10,10 +10,6 @@
 
 @implementation UIColor (QSEVTColor)
 
-+ (UIColor *)qs_colorGray686868 {
-    return [UIColor colorWithHexString:@"#686868"];
-}
-
 + (UIColor *)qs_colorBlack333333 {
     return [UIColor colorWithHexString:@"#333333"];
 }
@@ -34,5 +30,28 @@
     return [UIColor colorWithHexString:@"#BBBBBB"];
 }
 
++ (UIColor *)qs_colorGrayCCCCCC {
+    return [UIColor colorWithHexString:@"#CCCCCC"];
+}
+
++ (UIColor *)qs_colorGrayDDDDDD {
+    return [UIColor colorWithHexString:@"#DDDDDD"];
+}
+
++ (UIColor *)qs_colorGray686868 {
+    return [UIColor colorWithHexString:@"#686868"];
+}
+
++ (UIColor *)qs_colorGray00267B {
+    return [UIColor colorWithHexString:@"#00267B"];
+}
+
++ (UIColor *)qs_colorYellowE4B84F {
+    return [UIColor colorWithHexString:@"#E4B84F"];
+}
+
++ (UIColor *)qs_colorBlue4D7BF3 {
+    return [UIColor colorWithHexString:@"#4D7BF3"];
+}
 
 @end

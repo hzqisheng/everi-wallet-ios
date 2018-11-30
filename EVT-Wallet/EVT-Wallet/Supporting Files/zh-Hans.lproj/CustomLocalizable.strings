@@ -6,7 +6,7 @@
   Copyright © 2018 HANGZHOU QISHENG TECHNOLOGY CO.LTD. All rights reserved.
 */
 
-//login
+//Login
 "qs_btn_login_newidentity" = "创建身份";
 
 //Home
@@ -25,6 +25,93 @@
 "qs_me_item_setting"         = "系统设置";
 "qs_me_item_share"           = "分享好友";
 "qs_me_item_aboutus"         = "关于我们";
+"qs_me_btn_logout"           = "退出身份";
+
+//Wallet
+"qs_wallet_nav_title"      = "钱包";
+"qs_wallet_current_title"  = "当前身份下的钱包";
+"qs_wallet_imported_title" = "导入的钱包";
+
+//Manage Address
+"qs_manage_address_nav_title"           = "地址管理";
+"qs_manage_address_right_navitem_title" = "导出";
+"qs_manage_address_btn_search"          = "搜索";
+"qs_manage_address_btn_add_address"     = "新增地址";
+"qs_manage_address_btn_import_address"  = "导入地址";
+
+//Add Address
+"qs_add_address_nav_title"                = "新增地址";
+"qs_add_address_item_type_title"          = "类型";
+"qs_add_address_item_address_title"       = "地址";
+"qs_add_address_item_group_title"         = "组名";
+"qs_add_address_item_name_title"          = "名称";
+"qs_add_address_item_phone_title"         = "电话";
+"qs_add_address_item_memo_title"          = "备注";
+"qs_add_address_item_address_placeholder" = "请输入地址";
+"qs_add_address_item_group_placeholder"   = "请输入组名";
+"qs_add_address_item_name_placeholder"    = "请输入名称";
+"qs_add_address_item_phone_placeholder"   = "请输入联系电话";
+"qs_add_address_item_memo_placeholder"    = "请输入备注";
+"qs_add_address_save_btn_title"           = "保存";
+
+//Import Address
+"qs_import_address_nav_title"             = "导入地址";
+"qs_import_address_tips_title"            = "数据格式：类型、地址、组名、名称、电话、备注\n类型展示只支持EVT、ETH、EOS三种\n地址一行";
+"qs_import_address_paste_address_title"   = "在这里粘贴地址";
+"qs_import_address_save_btn_title"        = "保存";
+
+//Export Address
+"qs_export_address_nav_title"             = "导出";
+"qs_export_address_paste_btn_title"       = "复制内容";
+
+//Join Communities
+"qs_join_communities_nav_title"   = "加入社群";
+"qs_join_communities_paste_success_toast"   = "复制成功，请在微信搜索中粘贴";
+
+//Help Center
+"qs_help_center_nav_title"           = "帮助中心";
+"qs_help_center_function_content"    = "钱包助记词用于恢复钱包资产，拥有助记词即可完全控制钱包资产，请务必妥善保管，丢失助记词即丢失钱包资产。本软件无法提供找回功能。";
+"qs_help_center_item_overview_title" = "功能概述";
+"qs_help_center_item_download_title" = "下载安装";
+"qs_help_center_item_backup_title"   = "如何备份";
+
+//System Settting
+"qs_sytem_setting_nav_title"            = "系统设置";
+"qs_sytem_setting_item_languages_title" = "选择语言";
+"qs_sytem_setting_item_currency_title"  = "资产折合单位";
+"qs_sytem_setting_item_node_title"      = "节点设置";
+"qs_sytem_setting_item_fee_title"       = "设置手续费最大值";
+"qs_sytem_setting_item_payment_title"   = "设置最大支付金额";
+
+//Language Setting
+"qs_language_setting_nav_title"          = "Languages";
+"qs_language_setting_item_english_title" = "English";
+"qs_language_setting_item_chinses_title" = "简体中文";
+"qs_language_setting_change_toast"       = "请稍后...";
+
+//Currency Setting
+"qs_currency_setting_nav_title"          = "资产折合单位";
+"qs_currency_setting_item_cny_title"     = "CNY";
+"qs_currency_setting_item_usd_title"     = "USD";
+
+//Node Setting
+"qs_node_setting_nav_title"             = "节点设置";
+"qs_node_setting_item_everitoken_title" = "everiToken";
+"qs_node_setting_item_eth_title"        = "ETH";
+"qs_node_setting_item_eos_title"        = "EOS";
+
+//Aboutus
+"qs_aboutus_nav_title"                  = "关于我们";
+"qs_aboutus_item_current_version_title" = "当前版本";
+"qs_aboutus_item_check_version_title"   = "检测版本";
+
+//Share
+"qs_share_btn_alipay_title"            = "发送给朋友";
+"qs_share_btn_weibo_title"             = "新浪微博";
+"qs_share_btn_wechat_timeline_title"   = "生活圈";
+"qs_share_btn_wechat_friends_title"    = "微信好友";
+"qs_share_btn_refresh_title"           = "刷新";
+"qs_share_btn_paste_title"             = "复制链接";
 
 //TabBar
 "qs_tabbar_property" = "资产";

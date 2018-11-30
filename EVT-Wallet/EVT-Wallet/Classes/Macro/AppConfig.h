@@ -9,6 +9,13 @@
 #ifndef AppConfig_h
 #define AppConfig_h
 
+//================ socail address============//
+#define kShareUrlString  @"http://myevt.io/"
+#define kFacebookAddress @"https://www.facebook.com/everiToken"
+#define kTwitterAddress  @"https://twitter.com/everiToken"
+#define kTelegramAddress @"https://t.me/everiToken"
+#define kWechatAddress   @"@everiToken"
+
 //================ localizedString ===========//
 #define QSLocalizedString(key)   (NSLocalizedStringFromTable(key, @"CustomLocalizable", nil).length ? NSLocalizedStringFromTable(key, @"CustomLocalizable", nil) : @"")
 
@@ -25,5 +32,8 @@
 
 #define kHomeHeaderViewHeight     (kHomeSwipeViewH + kHomeShortcutViewH/2 + kHomeSegmentViewTopMargin + kHomeSegmentViewH)
 
+//================= bottom button ==============//
+#define kBottomButtonWidth   kRealValue(345)
+#define kBottomButtonHeight  kRealValue(40)
 
 #endif /* AppConfig_h */

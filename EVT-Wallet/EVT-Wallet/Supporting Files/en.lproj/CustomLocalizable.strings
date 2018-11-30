@@ -25,6 +25,93 @@
 "qs_me_item_setting"         = "Settings";
 "qs_me_item_share"           = "Share";
 "qs_me_item_aboutus"         = "Abount Us";
+"qs_me_btn_logout"           = "Log out";
+
+//Wallet
+"qs_wallet_nav_title"      = "Wallet";
+"qs_wallet_current_title"  = "Current Wallet";
+"qs_wallet_imported_title" = "Imported Wallets";
+
+//Manage Address
+"qs_manage_address_nav_title"           = "Manage Adress";
+"qs_manage_address_right_navitem_title" = "Export";
+"qs_manage_address_btn_search"          = "Search";
+"qs_manage_address_btn_add_address"     = "New Adress";
+"qs_manage_address_btn_import_address"  = "Import Adress";
+
+//Add Address
+"qs_add_address_nav_title"                = "New Address";
+"qs_add_address_item_type_title"          = "Type";
+"qs_add_address_item_address_title"       = "Address";
+"qs_add_address_item_group_title"         = "Group";
+"qs_add_address_item_name_title"          = "Name";
+"qs_add_address_item_phone_title"         = "Phone";
+"qs_add_address_item_memo_title"          = "Memo";
+"qs_add_address_item_address_placeholder" = "Please input the address";
+"qs_add_address_item_group_placeholder"   = "Please input the group name";
+"qs_add_address_item_name_placeholder"    = "Please input the name";
+"qs_add_address_item_phone_placeholder"   = "Please input the phone number";
+"qs_add_address_item_memo_placeholder"    = "Please input the memo";
+"qs_add_address_save_btn_title"           = "Save";
+
+//Import Address
+"qs_import_address_nav_title"             = "Import Address";
+"qs_import_address_tips_title"            = "Dataformat:type,address,group,name,phonenumber,memo.(Currently,only support EVT,ETH,EOS with one address in one line)";
+"qs_import_address_paste_address_title"   = "Paste the address";
+"qs_import_address_save_btn_title"        = "Save";
+
+//Export Address
+"qs_export_address_nav_title"             = "Export Address";
+"qs_export_address_paste_btn_title"       = "Paste";
+
+//Join Communities
+"qs_join_communities_nav_title"             = "Join Communities";
+"qs_join_communities_paste_success_toast"   = "copied,please search and paste on WeChat";
+
+//Help Center
+"qs_help_center_nav_title"           = "Help Center";
+"qs_help_center_function_content"    = "Wallet mnemonics are used to restore wallet assets. With mnemonics, you can fully control your wallet assets. Be sure to keep them safe. If you lose your mnemonics, you will lose your wallet assets. This software does not provide a retrieval function.";
+"qs_help_center_item_overview_title" = "Functional Overview";
+"qs_help_center_item_download_title" = "Download and install";
+"qs_help_center_item_backup_title"   = "How to back up";
+
+//System Settting
+"qs_sytem_setting_nav_title"            = "Settings";
+"qs_sytem_setting_item_languages_title" = "Languages";
+"qs_sytem_setting_item_currency_title"  = "Currency Settings";
+"qs_sytem_setting_item_node_title"      = "Node Settings";
+"qs_sytem_setting_item_fee_title"       = "Maximum Service Fee";
+"qs_sytem_setting_item_payment_title"   = "Set Maximum Payment";
+
+//Language Setting
+"qs_language_setting_nav_title"          = "Languages";
+"qs_language_setting_item_english_title" = "English";
+"qs_language_setting_item_chinses_title" = "简体中文";
+"qs_language_setting_change_toast"       = "please wait...";
+
+//Currency Setting
+"qs_currency_setting_nav_title"          = "Currency Settings";
+"qs_currency_setting_item_cny_title"     = "CNY";
+"qs_currency_setting_item_usd_title"     = "USD";
+
+//Node Setting
+"qs_node_setting_nav_title"             = "Node Settings";
+"qs_node_setting_item_everitoken_title" = "everiToken";
+"qs_node_setting_item_eth_title"        = "ETH";
+"qs_node_setting_item_eos_title"        = "EOS";
+
+//Aboutus
+"qs_aboutus_nav_title"                  = "About Us";
+"qs_aboutus_item_current_version_title" = "Current Version";
+"qs_aboutus_item_check_version_title"   = "Check Version";
+
+//Share
+"qs_share_btn_alipay_title"            = "Send to a friend";
+"qs_share_btn_weibo_title"             = "Sina Weibo";
+"qs_share_btn_wechat_timeline_title"   = "TimeLine";
+"qs_share_btn_wechat_friends_title"    = "Wechat friend";
+"qs_share_btn_refresh_title"           = "Refresh";
+"qs_share_btn_paste_title"             = "Paste";
 
 //TabBar
 "qs_tabbar_property" = "Property";

@@ -30,6 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor qs_colorWhiteF5F7FB];
     [self.view addSubview:self.tableView];
 }
 
@@ -119,6 +120,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.separatorColor = [UIColor qs_colorGrayCCCCCC];
         _tableView.tableFooterView = [UIView new];
         _tableView.backgroundColor = [UIColor qs_colorWhiteF5F7FB];
         [self.view addSubview:_tableView];

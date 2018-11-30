@@ -21,10 +21,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIColor *)qs_colorWhiteF5F7FB;
 
-+ (UIColor *)qs_colorGray686868;
-
 + (UIColor *)qs_colorGrayBBBBBB;
 
++ (UIColor *)qs_colorGrayCCCCCC;
+
++ (UIColor *)qs_colorGrayDDDDDD;
+
++ (UIColor *)qs_colorGray686868;
+
++ (UIColor *)qs_colorGray00267B;
+
++ (UIColor *)qs_colorYellowE4B84F;
+
++ (UIColor *)qs_colorBlue4D7BF3;
 
 @end
 
