@@ -32,6 +32,82 @@
 "qs_wallet_current_title"  = "当前身份下的钱包";
 "qs_wallet_imported_title" = "导入的钱包";
 
+//Edit Wallets
+"qs_edit_wallet_nav_title"                       = "编辑身份钱包";
+"qs_edit_wallet_item_modify_pwd_title"           = "修改密码";
+"qs_edit_wallet_item_retrieve_pwd_title"         = "找回密码";
+"qs_edit_wallet_item_export_mnemonic_code_title" = "导出助记词";
+"qs_edit_wallet_item_add_wallet_title"           = "增加身份钱包";
+"qs_edit_wallet_btn_logout_title"                = "退出身份";
+
+//Modify Pwd
+"qs_modify_pwd_nav_title"                       = "修改密码";
+"qs_modify_pwd_item_current_pwd_placeholder"    = "当前密码";
+"qs_modify_pwd_item_new_pwd_placeholder"        = "新密码";
+"qs_modify_pwd_item_confirm_pwd_placeholder"    = "确认新密码";
+"qs_modify_pwd_item_tips_total_title"           = "忘记密码？导入助记词或私钥进行回复。立即导入";
+"qs_modify_pwd_item_tips_highlight_title"       = "立即导入";
+"qs_modify_pwd_btn_confirm_title"               = "确认修改";
+
+//Import Wallet
+"qs_import_wallet_nav_title"                    = "导入钱包";
+"qs_import_wallet_item_mnemonic_title"          = "请输入备份的钱包助记词(12个英文单词)，按空分割格";
+"qs_import_wallet_item_password_title"          = "新密码";
+"qs_import_wallet_item_confirm_password_title"  = "确认新密码";
+"qs_import_wallet_item_metion_totaltitle"       = "注意！此软件不存储用户密码，无法提供找回或重置功能。如果忘记密码，用户只能通过自己备份的钱包私钥或助记词，重新导入后设置新密码";
+"qs_import_wallet_item_metion_highlight_title"  = "注意！";
+"qs_import_wallet_btn_confirm_title"            = "立即导入";
+
+"qs_import_wallet_password_placeholder"         = "密码";
+"qs_import_wallet_confirm_password_placeholder" = "确认密码"
+"qs_import_wallet_mnemonic_code_title"          = "助记词";
+"qs_import_wallet_private_key_title"            = "私钥";
+"qs_import_wallet_private_key_placeholder"      = "请输入私钥文本内容";
+"qs_import_wallet_key_store_title"              = "Keystore";
+"qs_import_wallet_key_store_tips_title"         = "直接复制粘贴钱包Keystore文件内容至输入框";
+"qs_import_wallet_key_store_content_placeholder"= "请输入私钥文本内容";
+"qs_import_wallet_key_store_pwd_placeholder"    = "Keystore密码";
+
+//Export Mnemonic Code
+"qs_export_mnemonic_code_nav_title"                = "导出助记词";
+"qs_export_mnemonic_code_item_metion_total_title"  = "重要提示！拥有钱包私钥就能完全控制钱包资产，因此强烈建议你在使用钱包前做好备份，将钱包私钥保存到安全的地方。";
+"qs_export_mnemonic_code_metion_highlight_title"   = "重要提示！";
+"qs_export_mnemonic_code_btn_backup_title"         = "立即备份";
+
+"qs_export_mnemonic_code_item_tips_title"          = "请记下你的钱包助记词并保存到安全的地方。";
+"qs_export_mnemonic_code_item_tips_detail_title"   = "钱包助记词用于恢复钱包资产，拥有助记词即可完全控制钱包资产，请务必妥善保管，丢失助记词即丢失钱包资产。本软件无法提供找回功能。";
+"qs_export_mnemonic_code_btn_next_title"          = "下一步";
+
+"qs_export_mnemonic_code_item_check_tips_title"        = "验证你的钱包助记词";
+"qs_export_mnemonic_code_item_check_tips_detail_title" = "请根据你记下的助记词，按顺序点击，验证你备份的助记词正确无误。";
+"qs_export_mnemonic_code_btn_confirm_title"            = "确定";
+
+//Add Wallet
+"qs_add_wallet_nav_title"                    = "增加身份钱包";
+"qs_add_wallet_check_label_title"            = "请选择钱包类型";
+"qs_add_wallet_item_metion_total_title"      = "注意！此软件不存储用户密码，无法提供找回或重置功能。如果忘记密码，用户只能通过自己备份的钱包私钥或助记词，重新导入后设置新密码";
+"qs_add_wallet_item_metion_highlight_title"  = "注意！";
+"qs_add_wallet_btn_confirm_title"            = "立即创建";
+
+//Wallet Detail
+"qs_wallet_detail_item_export_title"  = "导出私钥";
+"qs_wallet_detail_item_sign_title"    = "设置多签";
+
+//Export Private Key
+"qs_export_private_key_nav_title"              = "导出私钥";
+"qs_export_private_key_metion_total_title"     = "注意！拥有私钥就能完全控制该地址的资产，不要分享给任何人。";
+"qs_export_private_key_metion_highlight_title" = "注意！";
+"qs_export_private_key_paste_tips_title"       = "以下是您的地址和私钥，点击可复制";
+"qs_export_private_key_address_title"          = "地址";
+"qs_export_private_key_private_key_title"      = "私钥";
+
+//Choose Wallet Type
+"qs_Choose_wallet_nav_title"              = "导入钱包";
+"qs_Choose_wallet_tips_title"             = "请选择钱包类型";
+"qs_Choose_wallet_evt_title"              = "EVT钱包";
+"qs_Choose_wallet_eth_title"              = "ETH钱包";
+"qs_Choose_wallet_eos_title"              = "EOS钱包";
+
 //Manage Address
 "qs_manage_address_nav_title"           = "地址管理";
 "qs_manage_address_right_navitem_title" = "导出";

@@ -10,6 +10,10 @@
 
 @implementation UIFont (QSEVTFont)
 
++ (UIFont *)qs_fontOfSize12 {
+    return [UIFont systemFontOfSize:12];
+}
+
 + (UIFont *)qs_fontOfSize13 {
     return [UIFont systemFontOfSize:13];
 }

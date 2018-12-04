@@ -27,6 +27,7 @@ typedef NS_ENUM(NSUInteger, QSCurrencySettingsType) {
     [self setupNavgationBarTitle:QSLocalizedString(@"qs_currency_setting_nav_title")];
 }
 
+#pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
 - (Class)getRigisterCellClass {
     return [QSLanguageSettingCell class];
 }
@@ -56,7 +57,7 @@ typedef NS_ENUM(NSUInteger, QSCurrencySettingsType) {
 
 #pragma mark - **************** UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    QSSettingItem *item = self.dataArray[indexPath.row];
+    QSBaseCellItem *item = self.dataArray[indexPath.row];
     if (item.cellTag == QSCurrencySettingsCNY) {
        
     } else if (item.cellTag == QSCurrencySettingsUSD) {

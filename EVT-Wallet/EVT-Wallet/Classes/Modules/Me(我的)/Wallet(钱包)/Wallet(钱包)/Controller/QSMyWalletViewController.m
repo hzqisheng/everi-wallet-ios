@@ -7,6 +7,9 @@
 //
 
 #import "QSMyWalletViewController.h"
+#import "QSEditWalletsViewController.h"
+#import "QSWalletDetailViewController.h"
+#import "QSSelectWalletTypeViewController.h"
 #import "QSMyWalletCell.h"
 #import "QSMyWalletSectionHeaderView.h"
 
@@ -35,6 +38,13 @@ static NSString *sectionReuseIdentifier = @"QSMyWalletSection";
 #pragma mark - **************** Event Response
 - (void)walletSectionHeaderDidClickedInSection:(NSInteger)section {
     DLog(@"%ld",(long)section);
+    if (section == 0) {
+        QSEditWalletsViewController *editWallet = [[QSEditWalletsViewController alloc] init];
+        [self.navigationController pushViewController:editWallet animated:YES];
+    } else if (section == 1) {
+        QSSelectWalletTypeViewController *selectType = [[QSSelectWalletTypeViewController alloc] init];
+        [self.navigationController pushViewController:selectType animated:YES];
+    }
 }
 
 - (void)walletCellDidClickedPasteButton:(QSMyWalletCell *)cell {
@@ -100,8 +110,9 @@ static NSString *sectionReuseIdentifier = @"QSMyWalletSection";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    QSWalletDetailViewController *detail = [[QSWalletDetailViewController alloc] init];
+    [detail setupNavgationBarTitle:@"EVT-Wallet"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
-
 
 @end

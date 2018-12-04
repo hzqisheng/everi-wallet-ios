@@ -12,10 +12,8 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        _cellIdentifier = @"QSSettingCell";
+        self.cellIdentifier = @"QSSettingCell";
         _cellType = QSSettingItemTypeDefault;
-        _cellHeight = kRealValue(52);
-        _cellWidth = kScreenWidth - kRealValue(30);
         
         _leftSubviewMargin = kRealValue(20);
         _leftImageSize = CGSizeMake(kRealValue(22), kRealValue(22));
@@ -28,6 +26,9 @@
         _rightTitleColor = [UIColor qs_colorGrayBBBBBB];
         _rightTitleFont = [UIFont qs_fontOfSize14];
         _rightArrowAndTitleSpace = kRealValue(8);
+        _rightNumberOfLines = 1;
+        
+        self.cellSeapratorInset = UIEdgeInsetsMake(0, _leftSubviewMargin, 0, 0);
     }
     return self;
 }

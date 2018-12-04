@@ -7,6 +7,8 @@
 //
 
 #import "QSMaxPaymentViewController.h"
+#import "QSSettingItem.h"
+#import "QSSettingCell.h"
 
 typedef NS_ENUM(NSUInteger, QSMaxPaymentType) {
     QSMaxPaymentTypeEVT,
@@ -25,7 +27,12 @@ typedef NS_ENUM(NSUInteger, QSMaxPaymentType) {
     [self setupNavgationBarTitle:QSLocalizedString(@"qs_sytem_setting_nav_title")];
 }
 
-- (NSArray<QSSettingItem *> *)createSingleSectionDataSource {
+#pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
+- (Class)getRigisterCellClass {
+    return [QSSettingCell class];
+}
+
+- (NSArray<QSBaseCellItem *> *)createSingleSectionDataSource {
     QSSettingItem *EVTItem = [[QSSettingItem alloc] init];
     EVTItem.leftTitle = @"EVT";
     EVTItem.leftTitleFont = [UIFont qs_fontOfSize16];
@@ -57,7 +64,7 @@ typedef NS_ENUM(NSUInteger, QSMaxPaymentType) {
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    QSSettingItem *item = [self itemInIndexPath:indexPath];
+    QSBaseCellItem *item = [self itemInIndexPath:indexPath];
     DLog(@"%ld",(long)item.cellTag);
     if (item.cellTag == QSMaxPaymentTypeEVT) {
         

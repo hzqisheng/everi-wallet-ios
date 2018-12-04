@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIFont (QSEVTFont)
 
++ (UIFont *)qs_fontOfSize12;
 + (UIFont *)qs_fontOfSize13;
 + (UIFont *)qs_fontOfSize14;
 + (UIFont *)qs_fontOfSize15;

@@ -24,4 +24,8 @@
     //override
 }
 
+- (void)configureCellWithItem:(QSBaseCellItem *)item {
+    //override
+}
+
 @end

@@ -11,14 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol QSSettingCellProtocol <NSObject>
-
-@optional
-- (void)configureCellWithItem:(QSSettingItem *)item;
-
-@end
-
-@interface QSSettingCell : QSBaseTableViewCell<QSSettingCellProtocol>
+@interface QSSettingCell : QSBaseTableViewCell
 
 /** left imageView */
 @property (nonatomic,strong) UIImageView *leftImageView;

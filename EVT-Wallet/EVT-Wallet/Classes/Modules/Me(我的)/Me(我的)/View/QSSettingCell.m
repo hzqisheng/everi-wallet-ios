@@ -85,6 +85,7 @@
         //right text
         [self.contentView addSubview:self.rightTitleLabel];
         self.rightTitleLabel.frame = CGRectMake(self.arrowImageView.x - item.rightArrowAndTitleSpace - item.rightTitleLabelSize.width, item.cellHeight/2 - item.rightTitleLabelSize.height/2, item.rightTitleLabelSize.width, item.rightTitleLabelSize.height);
+        self.rightTitleLabel.numberOfLines = item.rightNumberOfLines;
         self.rightTitleLabel.textColor = item.rightTitleColor;
         self.rightTitleLabel.font = item.rightTitleFont;
         self.rightTitleLabel.text = item.rightTitle;
@@ -105,6 +106,7 @@
         //right text
         [self.contentView addSubview:self.rightTitleLabel];
         self.rightTitleLabel.frame = CGRectMake(self.arrowImageView.x - item.rightArrowAndTitleSpace - item.rightTitleLabelSize.width, item.cellHeight/2 - item.rightTitleLabelSize.height/2, item.rightTitleLabelSize.width, item.rightTitleLabelSize.height);
+        self.rightTitleLabel.numberOfLines = item.rightNumberOfLines;
         self.rightTitleLabel.textColor = item.rightTitleColor;
         self.rightTitleLabel.font = item.rightTitleFont;
         self.rightTitleLabel.text = item.rightTitle;
@@ -121,6 +123,7 @@
         self.rightTitleLabel.frame = CGRectMake(item.cellWidth - item.rightSubviewMargin -item.rightTitleLabelSize.width, item.cellHeight/2 - item.rightTitleLabelSize.height/2, item.rightTitleLabelSize.width, item.rightTitleLabelSize.height);
         self.rightTitleLabel.textColor = item.rightTitleColor;
         self.rightTitleLabel.font = item.rightTitleFont;
+        self.rightTitleLabel.numberOfLines = item.rightNumberOfLines;
         self.rightTitleLabel.text = item.rightTitle;
     }
 }

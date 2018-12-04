@@ -26,6 +26,7 @@ typedef NS_ENUM(NSUInteger, QSAboutusItemType) {
     [self setupNavgationBarTitle:QSLocalizedString(@"qs_aboutus_nav_title")];
 }
 
+#pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
 - (NSArray<Class> *)getRigisterMultiCellClasses {
     return @[[QSSettingCell class],
              [QSAboutusIconCell class]];
@@ -36,6 +37,7 @@ typedef NS_ENUM(NSUInteger, QSAboutusItemType) {
     aboutusItem.cellTag = QSAboutusItemTypeAppIcon;
     aboutusItem.cellIdentifier = NSStringFromClass([QSAboutusIconCell class]);
     aboutusItem.cellHeight = kRealValue(158);
+    aboutusItem.cellSeapratorInset = UIEdgeInsetsMake(0, aboutusItem.cellWidth, 0, 0);
     
     QSSettingItem *currentVersionItem = [[QSSettingItem alloc] init];
     currentVersionItem.leftTitle = QSLocalizedString(@"qs_aboutus_item_current_version_title");
@@ -60,21 +62,9 @@ typedef NS_ENUM(NSUInteger, QSAboutusItemType) {
              checkVersionItem];
 }
 
-#pragma mark - **************** tableViewDataSource
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
-    QSSettingItem *item = [self itemInIndexPath:indexPath];
-    if (item.cellTag == QSAboutusItemTypeAppIcon) {
-        cell.separatorInset = UIEdgeInsetsMake(0, item.cellWidth, 0, 0);
-    } else {
-        cell.separatorInset = UIEdgeInsetsMake(0, item.leftSubviewMargin, 0, 0);
-    }
-    return cell;
-}
-
 #pragma mark - **************** tableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    QSSettingItem *item = [self itemInIndexPath:indexPath];
+    QSBaseCellItem *item = [self itemInIndexPath:indexPath];
     if (item.cellTag == QSAboutusItemTypeCheckVersion) {
         DLog(@"checkVersion");
     }

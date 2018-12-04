@@ -32,6 +32,86 @@
 "qs_wallet_current_title"  = "Current Wallet";
 "qs_wallet_imported_title" = "Imported Wallets";
 
+//Edit Wallets
+"qs_edit_wallet_nav_title"                       = "Edit Wallet";
+"qs_edit_wallet_item_modify_pwd_title"           = "Modify Your Password";
+"qs_edit_wallet_item_retrieve_pwd_title"         = "Retrieve Password";
+"qs_edit_wallet_item_export_mnemonic_code_title" = "Export Mnemonic Code";
+"qs_edit_wallet_item_add_wallet_title"           = "Add Wallet";
+"qs_edit_wallet_btn_logout_title"                = "Log out";
+
+//Modify Pwd
+"qs_modify_pwd_nav_title"                       = "Modify Your Password";
+"qs_modify_pwd_item_current_pwd_placeholder"    = "Current Password";
+"qs_modify_pwd_item_new_pwd_placeholder"        = "New Password";
+"qs_modify_pwd_item_confirm_pwd_placeholder"    = "Confirm New Password";
+"qs_modify_pwd_item_tips_total_title"           = "Forget your password? import Mnemonic to reset.Import Now";
+"qs_modify_pwd_item_tips_highlight_title"       = "Import Now";
+"qs_modify_pwd_btn_confirm_title"               = "Confirm Changes";
+
+//Import Wallet
+"qs_import_wallet_nav_title"                    = "Import Wallet";
+"qs_import_wallet_item_mnemonic_title"          = "Enter The Mnemonic Code(12 words),separated by space";
+"qs_import_wallet_item_password_title"          = "Password";
+"qs_import_wallet_item_confirm_password_title"  = "Confirm Password";
+"qs_import_wallet_item_metion_total_title"      = "Mention! This software does not store user passwords and does not provide a retrieval or reset function. If you forget your password, you can only re-import and set a new password by using your own wallet private key or mnemonic.";
+"qs_import_wallet_item_metion_highlight_title"  = "Mention!";
+"qs_import_wallet_btn_confirm_title"            = "Import Now";
+
+
+"qs_import_wallet_password_placeholder"         = "Password";
+"qs_import_wallet_confirm_password_placeholder" = "Confirm Password"
+"qs_import_wallet_mnemonic_code_title"          = "Mnemonic Code";
+"qs_import_wallet_private_key_title"            = "PrivateKey";
+"qs_import_wallet_private_key_placeholder"      = "Enter PrivateKey Content";
+"qs_import_wallet_key_store_title"              = "Keystore";
+"qs_import_wallet_key_store_tips_title"         = "Copy the Keystore to Input Box";
+"qs_import_wallet_key_store_content_placeholder"= "Keystore Content";
+"qs_import_wallet_key_store_pwd_placeholder"    = "KeystorePassword";
+
+
+//Export Mnemonic Code
+"qs_export_mnemonic_code_nav_title"                = "Export Mnemonic Code";
+"qs_export_mnemonic_code_item_metion_total_title"  = "Mention! Havindg your private key can completely control your wallet. Please make a backup and keep it in a safe place.";
+"qs_export_mnemonic_code_metion_highlight_title"   = "Mention!";
+"qs_export_mnemonic_code_btn_backup_title"         = "Backup Now";
+
+"qs_export_mnemonic_code_item_tips_title"          = "Please backup your mnemonice Code and keep it in a safe place.";
+"qs_export_mnemonic_code_item_tips_detail_title"   = "The Mnemonic Code can restore your wallet. Be sure to keep it safe. You may lost your assets if you forget your mnemonic Code. This software will not store your Mnemonic Code and cannot retrieve your mnemonic Code.";
+"qs_export_mnemonic_code_btn_next_title"          = "Next";
+
+"qs_export_mnemonic_code_item_check_tips_title"        = "Check your Mnemonic Code";
+"qs_export_mnemonic_code_item_check_tips_detail_title" = "Please lick the words in order for checking your Mnenmonic Code";
+"qs_export_mnemonic_code_btn_confirm_title"            = "Confirm";
+
+//Add Wallet
+"qs_add_wallet_nav_title"                    = "Add Wallet";
+"qs_add_wallet_check_label_title"            = "Choose Wallet Type";
+"qs_add_wallet_item_metion_total_title"      = "Mention! This software does not store user passwords, there will be no retrieval or reset functions. If you forget the password, you can only reset the password through the private key or mnemonic Code of your wallet,then set up the new password";
+"qs_add_wallet_item_metion_highlight_title"  = "Mention!";
+"qs_add_wallet_btn_confirm_title"            = "Create Now";
+
+//Wallet Detail
+"qs_wallet_detail_item_export_title"  = "Export PrivateKey";
+"qs_wallet_detail_item_sign_title"    = "Setting up Sign";
+
+//Export Private Key
+"qs_export_private_key_nav_title"              = "Export PrivateKey";
+"qs_export_private_key_metion_total_title"     = "Metion！Having your private key can completely control your assets,Please don't share to anyone.";
+"qs_export_private_key_metion_highlight_title" = "Metion！";
+"qs_export_private_key_paste_tips_title"       = "Here is your address and private key,click to copy";
+"qs_export_private_key_address_title"           = "Address";
+"qs_export_private_key_private_key_title"       = "PrivateKey";
+"qs_export_private_key_address_paste_title"     = "Address Copy Succress";
+"qs_export_private_key_private_key_paste_title" = "PrivateKey Copy Succress";
+
+//Choose Wallet Type
+"qs_Choose_wallet_nav_title"              = "Import Wallet";
+"qs_Choose_wallet_tips_title"             = "Choose Wallet Type";
+"qs_Choose_wallet_evt_title"              = "EVT Wallet";
+"qs_Choose_wallet_eth_title"              = "ETH Wallet";
+"qs_Choose_wallet_eos_title"              = "EOS Wallet";
+
 //Manage Address
 "qs_manage_address_nav_title"           = "Manage Adress";
 "qs_manage_address_right_navitem_title" = "Export";

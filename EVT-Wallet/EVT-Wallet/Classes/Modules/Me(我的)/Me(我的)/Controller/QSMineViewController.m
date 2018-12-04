@@ -52,7 +52,6 @@ static NSString *reuseIdentifier = @"QSSettingCell";
     self.view.backgroundColor = [UIColor qs_colorWhiteF5F7FB];
     [self setupHeaderView];
     [self setupTableView];
-    [self createDataSource];
 }
 
 #pragma mark - **************** Initials
@@ -63,14 +62,16 @@ static NSString *reuseIdentifier = @"QSSettingCell";
 
 - (void)setupTableView {
     self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.frame = CGRectMake(kRealValue(15), 0, kScreenWidth - kRealValue(30), kScreenHeight - kNavgationBarHeight);
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.contentInset = UIEdgeInsetsMake(kTableViewTopEdgeInset, 0, 0, 0);
-    [self.tableView registerClass:[QSSettingCell class] forCellReuseIdentifier:reuseIdentifier];
     self.tableView.tableFooterView = self.footerLogoutView;
 }
 
-- (void)createDataSource {
+#pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
+- (Class)getRigisterCellClass {
+    return [QSSettingCell class];
+}
+
+- (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
     QSSettingItem *itemWallet = [[QSSettingItem alloc] init];
     itemWallet.leftImage = [UIImage imageNamed:@"icon_wode_guanliqianbao"];
     itemWallet.leftTitle = QSLocalizedString(@"qs_me_item_managewallet");
@@ -105,40 +106,19 @@ static NSString *reuseIdentifier = @"QSSettingCell";
     itemAboutus.leftImage = [UIImage imageNamed:@"icon_wode_guanyuwomen"];
     itemAboutus.leftTitle = QSLocalizedString(@"qs_me_item_aboutus");
     itemAboutus.cellTag = QSMineCellTagAboutus;
-
-    self.dataArray = [@[@[itemWallet,
-                          itemAddress,],
-                        @[itemCommunities,
-                          itemHelpCenter,
-                          itemSetting],
-                        @[itemShare,
-                          itemAboutus]] mutableCopy];
-    [self.tableView reloadData];
+    
+    return @[@[itemWallet,
+               itemAddress,],
+             @[itemCommunities,
+               itemHelpCenter,
+               itemSetting],
+             @[itemShare,
+               itemAboutus]];
 }
 
 #pragma mark - **************** Event Response
 - (void)logoutButtonClicked {
     
-}
-
-#pragma mark - **************** UITableViewDataSource
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    QSSettingCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-    QSSettingItem *item = self.dataArray[indexPath.section][indexPath.row];
-    [cell configureCellWithItem:item];
-    [cell addSectionCornerWithTableView:tableView
-                              indexPath:indexPath
-                        cornerViewframe:CGRectMake(0, 0, item.cellWidth, item.cellHeight)
-                           cornerRadius:8];    
-    return cell;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.dataArray[section] count];
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.dataArray.count;
 }
 
 #pragma mark - **************** UITableViewDelegate
@@ -150,13 +130,8 @@ static NSString *reuseIdentifier = @"QSSettingCell";
     return [UIView new];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    QSSettingItem *item = self.dataArray[indexPath.section][indexPath.row];
-    return item.cellHeight;
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    QSSettingItem *item = self.dataArray[indexPath.section][indexPath.row];
+    QSBaseCellItem *item = [self itemInIndexPath:indexPath];
     if (item.cellTag == QSMineCellTagWallet) {
         QSMyWalletViewController *wallet = [[QSMyWalletViewController alloc] init];
         wallet.style = UITableViewStyleGrouped;

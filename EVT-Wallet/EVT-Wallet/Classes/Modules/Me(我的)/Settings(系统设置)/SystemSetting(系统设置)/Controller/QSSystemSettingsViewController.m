@@ -34,7 +34,11 @@ typedef NS_ENUM(NSUInteger, QSSystemSettingsType) {
     [self setupNavgationBarTitle:QSLocalizedString(@"qs_sytem_setting_nav_title")];
 }
 
-#pragma mark - **************** Initials
+#pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
+- (Class)getRigisterCellClass {
+    return [QSSettingCell class];
+}
+
 - (NSArray<QSSettingItem *> *)createSingleSectionDataSource {
     QSSettingItem *languageItem = [[QSSettingItem alloc] init];
     languageItem.leftTitle = QSLocalizedString(@"qs_sytem_setting_item_languages_title");
@@ -77,7 +81,7 @@ typedef NS_ENUM(NSUInteger, QSSystemSettingsType) {
 
 #pragma mark - **************** UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    QSSettingItem *item = self.dataArray[indexPath.row];
+    QSBaseCellItem *item = [self itemInIndexPath:indexPath];
     if (item.cellTag == QSSystemSettingsTypeLanguage) {
         QSLanguageSettingViewController *language = [[QSLanguageSettingViewController alloc] init];
         [self.navigationController pushViewController:language animated:YES];

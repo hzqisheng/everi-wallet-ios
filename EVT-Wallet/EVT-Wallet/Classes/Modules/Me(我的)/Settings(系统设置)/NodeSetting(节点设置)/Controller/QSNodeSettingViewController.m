@@ -7,7 +7,8 @@
 //
 
 #import "QSNodeSettingViewController.h"
-
+#import "QSSettingItem.h"
+#import "QSSettingCell.h"
 
 typedef NS_ENUM(NSUInteger, QSNodeSettingType) {
     QSNodeSettingTypeEveriToken,
@@ -24,6 +25,11 @@ typedef NS_ENUM(NSUInteger, QSNodeSettingType) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupNavgationBarTitle:QSLocalizedString(@"qs_node_setting_nav_title")];
+}
+
+#pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
+- (Class)getRigisterCellClass {
+    return [QSSettingCell class];
 }
 
 - (NSArray<QSSettingItem *> *)createSingleSectionDataSource {
@@ -64,7 +70,7 @@ typedef NS_ENUM(NSUInteger, QSNodeSettingType) {
 
 #pragma mark - **************** UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    QSSettingItem *item = self.dataArray[indexPath.row];
+    QSBaseCellItem *item = self.dataArray[indexPath.row];
     if (item.cellTag == QSNodeSettingTypeEveriToken) {
         
     } else if (item.cellTag == QSNodeSettingTypeETH) {

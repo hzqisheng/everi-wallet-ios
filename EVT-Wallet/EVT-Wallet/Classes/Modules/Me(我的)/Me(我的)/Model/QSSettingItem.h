@@ -6,7 +6,7 @@
 //  Copyright © 2018 HANGZHOU QISHENG TECHNOLOGY CO.LTD. All rights reserved.
 //
 
-#import "QSBaseModel.h"
+#import "QSBaseCellItem.h"
 
 typedef NS_ENUM(NSUInteger, QSSettingItemType) {
     //↓↓↓↓↓ style ↓↓↓↓↓
@@ -30,19 +30,10 @@ typedef NS_ENUM(NSUInteger, QSSettingItemType) {
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface QSSettingItem : QSBaseModel
+@interface QSSettingItem : QSBaseCellItem
 
-/** cellIdentifierId -> cellClassName */
-@property (nonatomic, copy) NSString *cellIdentifier;
 /** itemType */
 @property (nonatomic, assign) QSSettingItemType cellType;
-/** cellTag*/
-@property (nonatomic, assign) NSInteger cellTag;
-
-/** itemHeight default:52 */
-@property (nonatomic, assign) CGFloat cellHeight;
-/** itemWidth default:screenW-30 */
-@property (nonatomic, assign) CGFloat cellWidth;
 
 //=================== left views config =================//
 /** most left subview margin default is 20 */
@@ -69,6 +60,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGFloat rightSubviewMargin;
 /** rightTitle */
 @property (nonatomic, copy) NSString *rightTitle;
+/** right number of lines default is 1*/
+@property (nonatomic, assign) NSInteger rightNumberOfLines;
 /** rightTitleColor default:#BBBBBB */
 @property (nonatomic, strong) UIColor *rightTitleColor;
 /** rightTitleFont default:14 */

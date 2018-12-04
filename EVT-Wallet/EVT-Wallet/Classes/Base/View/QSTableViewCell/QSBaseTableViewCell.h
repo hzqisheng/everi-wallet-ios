@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class QSBaseCellItem;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @optional
 - (void)configureSubViews;
+- (void)configureCellWithItem:(QSBaseCellItem *)item;
+
 
 @end
 

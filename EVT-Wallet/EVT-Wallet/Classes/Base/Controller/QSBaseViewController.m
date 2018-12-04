@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor qs_colorWhiteF5F7FB];
     if (@available(iOS 11.0, *)) {
         [UITableView appearance].estimatedRowHeight = 0;
         [UITableView appearance].estimatedSectionHeaderHeight = 0;

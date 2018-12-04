@@ -25,7 +25,7 @@ typedef NS_ENUM(NSUInteger, QSLanguageSettingType) {
     [self setupNavgationBarTitle:QSLocalizedString(@"qs_sytem_setting_nav_title")];
 }
 
-#pragma mark - **************** Initials
+#pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
 - (Class)getRigisterCellClass {
     return [QSLanguageSettingCell class];
 }
@@ -55,7 +55,7 @@ typedef NS_ENUM(NSUInteger, QSLanguageSettingType) {
 
 #pragma mark - **************** UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    QSSettingItem *item = self.dataArray[indexPath.row];
+    QSBaseCellItem *item = [self itemInIndexPath:indexPath];
     QSMainViewController *mainTab = [[QSMainViewController alloc] init];
     [QSAppKeyWindow showIndeterminateHudWithText:QSLocalizedString(@"qs_language_setting_change_toast")];
     if (item.cellTag == QSLanguageSettingTypeEnglish) {
