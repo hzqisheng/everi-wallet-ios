@@ -27,10 +27,26 @@
 		7B8B315021B4C2B200028D17 /* QSMyWalletCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B314921B4C2B200028D17 /* QSMyWalletCell.m */; };
 		7B8B315321B4C2CB00028D17 /* QSEditWalletsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B315221B4C2CB00028D17 /* QSEditWalletsViewController.m */; };
 		7B8B315A21B5028200028D17 /* QSModifyPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B315921B5028200028D17 /* QSModifyPasswordViewController.m */; };
-		7B8B316521B50D0900028D17 /* QSImportWalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B316421B50D0900028D17 /* QSImportWalletViewController.m */; };
+		7B8B316521B50D0900028D17 /* QSImportWalletByMnemonicCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B316421B50D0900028D17 /* QSImportWalletByMnemonicCodeViewController.m */; };
 		7B8B316A21B5164800028D17 /* QSExportMnemonicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B316921B5164800028D17 /* QSExportMnemonicViewController.m */; };
 		7B8B316D21B51AAC00028D17 /* QSExportMnemonicStep2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B316C21B51AAC00028D17 /* QSExportMnemonicStep2ViewController.m */; };
 		7B8B317021B51DEA00028D17 /* QSExportMnemonicStep3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B316F21B51DEA00028D17 /* QSExportMnemonicStep3ViewController.m */; };
+		7BB8DC2E21B757DF00954E86 /* QSImportWalletByPrivateKeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8DC2D21B757DF00954E86 /* QSImportWalletByPrivateKeyViewController.m */; };
+		7BB8DC3121B757EF00954E86 /* QSImportWalletByKeyStoreCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8DC3021B757EF00954E86 /* QSImportWalletByKeyStoreCodeViewController.m */; };
+		7BB8DC3C21B75C6A00954E86 /* YZDisplayTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8DC3321B75C6A00954E86 /* YZDisplayTitleLabel.m */; };
+		7BB8DC3D21B75C6A00954E86 /* YZFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8DC3521B75C6A00954E86 /* YZFlowLayout.m */; };
+		7BB8DC3E21B75C6A00954E86 /* UIView+YZFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8DC3621B75C6A00954E86 /* UIView+YZFrame.m */; };
+		7BB8DC3F21B75C6A00954E86 /* YZDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8DC3A21B75C6A00954E86 /* YZDisplayViewController.m */; };
+		7BB8DC4221B75DEA00954E86 /* QSImportWalletIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8DC4121B75DEA00954E86 /* QSImportWalletIndexViewController.m */; };
+		7BB8DC6D21B76E6B00954E86 /* QSCollectCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8DC6C21B76E6B00954E86 /* QSCollectCodeViewController.m */; };
+		7BB8DC7121B76F4E00954E86 /* QSQRCodeScanItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8DC7021B76F4E00954E86 /* QSQRCodeScanItem.m */; };
+		7BB8DC7421B7702600954E86 /* QSQRCodeScanTipsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8DC7321B7702600954E86 /* QSQRCodeScanTipsCell.m */; };
+		7BB8DC7721B7721000954E86 /* QSQRCodeAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8DC7621B7721000954E86 /* QSQRCodeAddressCell.m */; };
+		7BB8DC7A21B774DA00954E86 /* QSQRImageCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8DC7921B774DA00954E86 /* QSQRImageCodeCell.m */; };
+		7BB8DC7D21B7770B00954E86 /* QSQRCodeSelectAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8DC7C21B7770B00954E86 /* QSQRCodeSelectAddressCell.m */; };
+		7BB8DC8021B7794D00954E86 /* QSQRCodeMaxPayAmountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8DC7F21B7794D00954E86 /* QSQRCodeMaxPayAmountCell.m */; };
+		7BB8DC8321B7826900954E86 /* QSQRCodeBottomToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8DC8221B7826900954E86 /* QSQRCodeBottomToolBar.m */; };
+		7BB8DC8A21B79D9C00954E86 /* QSEveriPayCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8DC8921B79D9C00954E86 /* QSEveriPayCodeViewController.m */; };
 		7BD9C47621B69DA100A16A99 /* QSAddWalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD9C47521B69DA100A16A99 /* QSAddWalletViewController.m */; };
 		7BD9C47D21B6A3BB00A16A99 /* QSWalletDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD9C47C21B6A3BB00A16A99 /* QSWalletDetailViewController.m */; };
 		7BD9C48021B6A42600A16A99 /* QSWalletDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD9C47F21B6A42600A16A99 /* QSWalletDetailCell.m */; };
@@ -193,14 +209,47 @@
 		7B8B315221B4C2CB00028D17 /* QSEditWalletsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSEditWalletsViewController.m; sourceTree = "<group>"; };
 		7B8B315821B5028200028D17 /* QSModifyPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSModifyPasswordViewController.h; sourceTree = "<group>"; };
 		7B8B315921B5028200028D17 /* QSModifyPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSModifyPasswordViewController.m; sourceTree = "<group>"; };
-		7B8B316321B50D0900028D17 /* QSImportWalletViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSImportWalletViewController.h; sourceTree = "<group>"; };
-		7B8B316421B50D0900028D17 /* QSImportWalletViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSImportWalletViewController.m; sourceTree = "<group>"; };
+		7B8B316321B50D0900028D17 /* QSImportWalletByMnemonicCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSImportWalletByMnemonicCodeViewController.h; sourceTree = "<group>"; };
+		7B8B316421B50D0900028D17 /* QSImportWalletByMnemonicCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSImportWalletByMnemonicCodeViewController.m; sourceTree = "<group>"; };
 		7B8B316821B5164800028D17 /* QSExportMnemonicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSExportMnemonicViewController.h; sourceTree = "<group>"; };
 		7B8B316921B5164800028D17 /* QSExportMnemonicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSExportMnemonicViewController.m; sourceTree = "<group>"; };
 		7B8B316B21B51AAC00028D17 /* QSExportMnemonicStep2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSExportMnemonicStep2ViewController.h; sourceTree = "<group>"; };
 		7B8B316C21B51AAC00028D17 /* QSExportMnemonicStep2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSExportMnemonicStep2ViewController.m; sourceTree = "<group>"; };
 		7B8B316E21B51DEA00028D17 /* QSExportMnemonicStep3ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSExportMnemonicStep3ViewController.h; sourceTree = "<group>"; };
 		7B8B316F21B51DEA00028D17 /* QSExportMnemonicStep3ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSExportMnemonicStep3ViewController.m; sourceTree = "<group>"; };
+		7BB8DC2C21B757DF00954E86 /* QSImportWalletByPrivateKeyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSImportWalletByPrivateKeyViewController.h; sourceTree = "<group>"; };
+		7BB8DC2D21B757DF00954E86 /* QSImportWalletByPrivateKeyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSImportWalletByPrivateKeyViewController.m; sourceTree = "<group>"; };
+		7BB8DC2F21B757EF00954E86 /* QSImportWalletByKeyStoreCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSImportWalletByKeyStoreCodeViewController.h; sourceTree = "<group>"; };
+		7BB8DC3021B757EF00954E86 /* QSImportWalletByKeyStoreCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSImportWalletByKeyStoreCodeViewController.m; sourceTree = "<group>"; };
+		7BB8DC3321B75C6A00954E86 /* YZDisplayTitleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZDisplayTitleLabel.m; sourceTree = "<group>"; };
+		7BB8DC3421B75C6A00954E86 /* YZDisplayViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZDisplayViewHeader.h; sourceTree = "<group>"; };
+		7BB8DC3521B75C6A00954E86 /* YZFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZFlowLayout.m; sourceTree = "<group>"; };
+		7BB8DC3621B75C6A00954E86 /* UIView+YZFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YZFrame.m"; sourceTree = "<group>"; };
+		7BB8DC3721B75C6A00954E86 /* YZDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZDisplayViewController.h; sourceTree = "<group>"; };
+		7BB8DC3821B75C6A00954E86 /* YZDisplayTitleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZDisplayTitleLabel.h; sourceTree = "<group>"; };
+		7BB8DC3921B75C6A00954E86 /* YZFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZFlowLayout.h; sourceTree = "<group>"; };
+		7BB8DC3A21B75C6A00954E86 /* YZDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZDisplayViewController.m; sourceTree = "<group>"; };
+		7BB8DC3B21B75C6A00954E86 /* UIView+YZFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YZFrame.h"; sourceTree = "<group>"; };
+		7BB8DC4021B75DEA00954E86 /* QSImportWalletIndexViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSImportWalletIndexViewController.h; sourceTree = "<group>"; };
+		7BB8DC4121B75DEA00954E86 /* QSImportWalletIndexViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSImportWalletIndexViewController.m; sourceTree = "<group>"; };
+		7BB8DC6B21B76E6B00954E86 /* QSCollectCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCollectCodeViewController.h; sourceTree = "<group>"; };
+		7BB8DC6C21B76E6B00954E86 /* QSCollectCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCollectCodeViewController.m; sourceTree = "<group>"; };
+		7BB8DC6F21B76F4E00954E86 /* QSQRCodeScanItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSQRCodeScanItem.h; sourceTree = "<group>"; };
+		7BB8DC7021B76F4E00954E86 /* QSQRCodeScanItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSQRCodeScanItem.m; sourceTree = "<group>"; };
+		7BB8DC7221B7702600954E86 /* QSQRCodeScanTipsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSQRCodeScanTipsCell.h; sourceTree = "<group>"; };
+		7BB8DC7321B7702600954E86 /* QSQRCodeScanTipsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSQRCodeScanTipsCell.m; sourceTree = "<group>"; };
+		7BB8DC7521B7721000954E86 /* QSQRCodeAddressCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSQRCodeAddressCell.h; sourceTree = "<group>"; };
+		7BB8DC7621B7721000954E86 /* QSQRCodeAddressCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSQRCodeAddressCell.m; sourceTree = "<group>"; };
+		7BB8DC7821B774DA00954E86 /* QSQRImageCodeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSQRImageCodeCell.h; sourceTree = "<group>"; };
+		7BB8DC7921B774DA00954E86 /* QSQRImageCodeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSQRImageCodeCell.m; sourceTree = "<group>"; };
+		7BB8DC7B21B7770B00954E86 /* QSQRCodeSelectAddressCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSQRCodeSelectAddressCell.h; sourceTree = "<group>"; };
+		7BB8DC7C21B7770B00954E86 /* QSQRCodeSelectAddressCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSQRCodeSelectAddressCell.m; sourceTree = "<group>"; };
+		7BB8DC7E21B7794D00954E86 /* QSQRCodeMaxPayAmountCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSQRCodeMaxPayAmountCell.h; sourceTree = "<group>"; };
+		7BB8DC7F21B7794D00954E86 /* QSQRCodeMaxPayAmountCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSQRCodeMaxPayAmountCell.m; sourceTree = "<group>"; };
+		7BB8DC8121B7826900954E86 /* QSQRCodeBottomToolBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSQRCodeBottomToolBar.h; sourceTree = "<group>"; };
+		7BB8DC8221B7826900954E86 /* QSQRCodeBottomToolBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSQRCodeBottomToolBar.m; sourceTree = "<group>"; };
+		7BB8DC8821B79D9C00954E86 /* QSEveriPayCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSEveriPayCodeViewController.h; sourceTree = "<group>"; };
+		7BB8DC8921B79D9C00954E86 /* QSEveriPayCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSEveriPayCodeViewController.m; sourceTree = "<group>"; };
 		7BD9C47421B69DA100A16A99 /* QSAddWalletViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSAddWalletViewController.h; sourceTree = "<group>"; };
 		7BD9C47521B69DA100A16A99 /* QSAddWalletViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSAddWalletViewController.m; sourceTree = "<group>"; };
 		7BD9C47B21B6A3BB00A16A99 /* QSWalletDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSWalletDetailViewController.h; sourceTree = "<group>"; };
@@ -593,8 +642,14 @@
 		7B8B316221B50CA400028D17 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7B8B316321B50D0900028D17 /* QSImportWalletViewController.h */,
-				7B8B316421B50D0900028D17 /* QSImportWalletViewController.m */,
+				7BB8DC4021B75DEA00954E86 /* QSImportWalletIndexViewController.h */,
+				7BB8DC4121B75DEA00954E86 /* QSImportWalletIndexViewController.m */,
+				7B8B316321B50D0900028D17 /* QSImportWalletByMnemonicCodeViewController.h */,
+				7B8B316421B50D0900028D17 /* QSImportWalletByMnemonicCodeViewController.m */,
+				7BB8DC2C21B757DF00954E86 /* QSImportWalletByPrivateKeyViewController.h */,
+				7BB8DC2D21B757DF00954E86 /* QSImportWalletByPrivateKeyViewController.m */,
+				7BB8DC2F21B757EF00954E86 /* QSImportWalletByKeyStoreCodeViewController.h */,
+				7BB8DC3021B757EF00954E86 /* QSImportWalletByKeyStoreCodeViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -618,6 +673,110 @@
 				7B8B316F21B51DEA00028D17 /* QSExportMnemonicStep3ViewController.m */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BB8DC3221B75C6A00954E86 /* YZDisplayViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7BB8DC3B21B75C6A00954E86 /* UIView+YZFrame.h */,
+				7BB8DC3621B75C6A00954E86 /* UIView+YZFrame.m */,
+				7BB8DC3821B75C6A00954E86 /* YZDisplayTitleLabel.h */,
+				7BB8DC3321B75C6A00954E86 /* YZDisplayTitleLabel.m */,
+				7BB8DC3721B75C6A00954E86 /* YZDisplayViewController.h */,
+				7BB8DC3A21B75C6A00954E86 /* YZDisplayViewController.m */,
+				7BB8DC3421B75C6A00954E86 /* YZDisplayViewHeader.h */,
+				7BB8DC3921B75C6A00954E86 /* YZFlowLayout.h */,
+				7BB8DC3521B75C6A00954E86 /* YZFlowLayout.m */,
+			);
+			path = YZDisplayViewController;
+			sourceTree = "<group>";
+		};
+		7BB8DC6721B76E1E00954E86 /* Collect(收款) */ = {
+			isa = PBXGroup;
+			children = (
+				7BB8DC6821B76E1E00954E86 /* CollectCode(收款码) */,
+			);
+			path = "Collect(收款)";
+			sourceTree = "<group>";
+		};
+		7BB8DC6821B76E1E00954E86 /* CollectCode(收款码) */ = {
+			isa = PBXGroup;
+			children = (
+				7BB8DC6921B76E3400954E86 /* Controller */,
+				7BB8DC6E21B76F0300954E86 /* Model */,
+				7BB8DC6A21B76E3400954E86 /* View */,
+			);
+			path = "CollectCode(收款码)";
+			sourceTree = "<group>";
+		};
+		7BB8DC6921B76E3400954E86 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BB8DC6B21B76E6B00954E86 /* QSCollectCodeViewController.h */,
+				7BB8DC6C21B76E6B00954E86 /* QSCollectCodeViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BB8DC6A21B76E3400954E86 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7BB8DC7221B7702600954E86 /* QSQRCodeScanTipsCell.h */,
+				7BB8DC7321B7702600954E86 /* QSQRCodeScanTipsCell.m */,
+				7BB8DC7521B7721000954E86 /* QSQRCodeAddressCell.h */,
+				7BB8DC7621B7721000954E86 /* QSQRCodeAddressCell.m */,
+				7BB8DC7821B774DA00954E86 /* QSQRImageCodeCell.h */,
+				7BB8DC7921B774DA00954E86 /* QSQRImageCodeCell.m */,
+				7BB8DC7B21B7770B00954E86 /* QSQRCodeSelectAddressCell.h */,
+				7BB8DC7C21B7770B00954E86 /* QSQRCodeSelectAddressCell.m */,
+				7BB8DC7E21B7794D00954E86 /* QSQRCodeMaxPayAmountCell.h */,
+				7BB8DC7F21B7794D00954E86 /* QSQRCodeMaxPayAmountCell.m */,
+				7BB8DC8121B7826900954E86 /* QSQRCodeBottomToolBar.h */,
+				7BB8DC8221B7826900954E86 /* QSQRCodeBottomToolBar.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7BB8DC6E21B76F0300954E86 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7BB8DC6F21B76F4E00954E86 /* QSQRCodeScanItem.h */,
+				7BB8DC7021B76F4E00954E86 /* QSQRCodeScanItem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7BB8DC8421B79D8500954E86 /* EveriPay(付款) */ = {
+			isa = PBXGroup;
+			children = (
+				7BB8DC8521B79D8500954E86 /* EveriPay(付款码) */,
+			);
+			path = "EveriPay(付款)";
+			sourceTree = "<group>";
+		};
+		7BB8DC8521B79D8500954E86 /* EveriPay(付款码) */ = {
+			isa = PBXGroup;
+			children = (
+				7BB8DC8621B79D8500954E86 /* Controller */,
+				7BB8DC8721B79D8500954E86 /* View */,
+			);
+			path = "EveriPay(付款码)";
+			sourceTree = "<group>";
+		};
+		7BB8DC8621B79D8500954E86 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BB8DC8821B79D9C00954E86 /* QSEveriPayCodeViewController.h */,
+				7BB8DC8921B79D9C00954E86 /* QSEveriPayCodeViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BB8DC8721B79D8500954E86 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		7BD9C47221B69D8900A16A99 /* AddWallet(添加钱包) */ = {
@@ -1362,6 +1521,8 @@
 		7BF36D3E21A7972500B27146 /* Property(资产) */ = {
 			isa = PBXGroup;
 			children = (
+				7BB8DC8421B79D8500954E86 /* EveriPay(付款) */,
+				7BB8DC6721B76E1E00954E86 /* Collect(收款) */,
 				7BF36D3F21A7972500B27146 /* Home(资产首页) */,
 			);
 			path = "Property(资产)";
@@ -1466,6 +1627,7 @@
 		7BF36D5521A7972500B27146 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				7BB8DC3221B75C6A00954E86 /* YZDisplayViewController */,
 				7B4CA16221A7E7AA00F14449 /* QSTopImageBottomLabelButton */,
 			);
 			path = Vendor;
@@ -1978,6 +2140,7 @@
 				7BF36D5C21A7972500B27146 /* QSBaseTableViewController.m in Sources */,
 				7BF36E0521A79E7B00B27146 /* UIView+Screenshot.m in Sources */,
 				7BF36E0721A79E7B00B27146 /* UIFont+FitFont.m in Sources */,
+				7BB8DC3C21B75C6A00954E86 /* YZDisplayTitleLabel.m in Sources */,
 				7B4CA15121A7CBA300F14449 /* UIFont+QSEVTFont.m in Sources */,
 				7BD9C48021B6A42600A16A99 /* QSWalletDetailCell.m in Sources */,
 				7BF2F8CF21B129BF000AAD93 /* QSAboutusIconCell.m in Sources */,
@@ -1988,11 +2151,13 @@
 				7BF36E1221A79E7B00B27146 /* NSBundle+AppIcon.m in Sources */,
 				7B4CA16121A7E3DE00F14449 /* QSPropetyHomeShortcutView.m in Sources */,
 				7BD9C48921B6AA1B00A16A99 /* QSExportPrivateKeyViewController.m in Sources */,
-				7B8B316521B50D0900028D17 /* QSImportWalletViewController.m in Sources */,
+				7B8B316521B50D0900028D17 /* QSImportWalletByMnemonicCodeViewController.m in Sources */,
 				7BF36E1621A79E7B00B27146 /* NSData+Gzip.m in Sources */,
 				7B7A4C8D21ACF14000598E6F /* QSSettingItem.m in Sources */,
+				7BB8DC3121B757EF00954E86 /* QSImportWalletByKeyStoreCodeViewController.m in Sources */,
 				7BF36DF621A79E7B00B27146 /* UIImage+Size.m in Sources */,
 				7B6CDC6B21AB7E4A008A6FAF /* QSHomeMyFTsViewController.m in Sources */,
+				7BB8DC7D21B7770B00954E86 /* QSQRCodeSelectAddressCell.m in Sources */,
 				7BF36D5D21A7972500B27146 /* QSMainViewController.m in Sources */,
 				7BF36DFC21A79E7B00B27146 /* UIButton+Utils.m in Sources */,
 				7B4CA15421A7CBB400F14449 /* UIColor+QSEVTColor.m in Sources */,
@@ -2005,6 +2170,8 @@
 				7BF2F89821B0D7D4000AAD93 /* QSSystemSettingsViewController.m in Sources */,
 				7BF36DFE21A79E7B00B27146 /* UIColor+Hex.m in Sources */,
 				7BF36E1821A79E7B00B27146 /* NSData+Base64.m in Sources */,
+				7BB8DC3D21B75C6A00954E86 /* YZFlowLayout.m in Sources */,
+				7BB8DC4221B75DEA00954E86 /* QSImportWalletIndexViewController.m in Sources */,
 				7BF2F86021AE9983000AAD93 /* QSAddAddressCell.m in Sources */,
 				7BF36E1D21A79E7B00B27146 /* NSString+PinYin.m in Sources */,
 				7BF36E1121A79E7B00B27146 /* NSDictionary+Merge.m in Sources */,
@@ -2012,6 +2179,7 @@
 				7BF36DFF21A79E7B00B27146 /* UIView+Extensions.m in Sources */,
 				7BF36E0321A79E7B00B27146 /* UIView+Loading.m in Sources */,
 				7BF2F85D21AE96BA000AAD93 /* QSAddAddressViewController.m in Sources */,
+				7BB8DC7A21B774DA00954E86 /* QSQRImageCodeCell.m in Sources */,
 				7BF36E1321A79E7B00B27146 /* NSFileManager+Paths.m in Sources */,
 				7BF36E1021A79E7B00B27146 /* UITextField+RACSignalSupport.m in Sources */,
 				7BF36E1721A79E7B00B27146 /* NSData+Encrypt.m in Sources */,
@@ -2020,6 +2188,7 @@
 				7BF36D6A21A79A0A00B27146 /* QSMarketViewController.m in Sources */,
 				7BF2F87E21AFD53F000AAD93 /* QSJoinCommunitiesViewController.m in Sources */,
 				7B6CDC7221AB9CF8008A6FAF /* QSHomeMyFTsCell.m in Sources */,
+				7BB8DC3E21B75C6A00954E86 /* UIView+YZFrame.m in Sources */,
 				7BF2F87321AFC54E000AAD93 /* QSImportAddressViewController.m in Sources */,
 				7BF36E0621A79E7B00B27146 /* UICollectionViewCell+Extensions.m in Sources */,
 				7BF36E1C21A79E7B00B27146 /* NSString+Base64.m in Sources */,
@@ -2037,6 +2206,7 @@
 				7BF36E0E21A79E7B00B27146 /* UITabBar+Badge.m in Sources */,
 				7BF2F85721AE80A3000AAD93 /* QSManageAddressCell.m in Sources */,
 				7BF36E0421A79E7B00B27146 /* UIView+HUD.m in Sources */,
+				7BB8DC7121B76F4E00954E86 /* QSQRCodeScanItem.m in Sources */,
 				7BF2F8C521B1228F000AAD93 /* QSShareHelper.m in Sources */,
 				7BF36D6721A799ED00B27146 /* QSHomePropertyViewController.m in Sources */,
 				7BF36E1B21A79E7B00B27146 /* NSString+Hash.m in Sources */,
@@ -2047,21 +2217,25 @@
 				7BF36E1921A79E7B00B27146 /* NSURL+Params.m in Sources */,
 				7BF2F89B21B0D7EE000AAD93 /* QSLanguageSettingViewController.m in Sources */,
 				7B8B316A21B5164800028D17 /* QSExportMnemonicViewController.m in Sources */,
+				7BB8DC8321B7826900954E86 /* QSQRCodeBottomToolBar.m in Sources */,
 				7BF36DFB21A79E7B00B27146 /* UILabel+Utils.m in Sources */,
 				7BF36E1521A79E7B00B27146 /* NSData+Hash.m in Sources */,
 				7B7A4C9321AD18B400598E6F /* UITableViewCell+QSSectionCorner.m in Sources */,
 				7BF36E0F21A79E7B00B27146 /* UINavigationController+Extensions.m in Sources */,
 				7BF2F8A621B1025D000AAD93 /* QSLanguageConfigHelper.m in Sources */,
+				7BB8DC6D21B76E6B00954E86 /* QSCollectCodeViewController.m in Sources */,
 				7BF36D5E21A7972500B27146 /* QSBaseViewController.m in Sources */,
 				7BF36E2721A79E7B00B27146 /* NSDate+Transform.m in Sources */,
 				7BF2F85421AE74C3000AAD93 /* QSSelectMenuCell.m in Sources */,
 				7BF36E0121A79E7B00B27146 /* UIView+Frame.m in Sources */,
 				7B4CA16821A7EDC500F14449 /* QSPropertyHomeSwipeCell.m in Sources */,
+				7BB8DC2E21B757DF00954E86 /* QSImportWalletByPrivateKeyViewController.m in Sources */,
 				7BF36D6121A7972500B27146 /* QSRefreshFooter.m in Sources */,
 				7BF36D6221A7972500B27146 /* main.m in Sources */,
 				7BF2F8A221B0DC68000AAD93 /* QSSettingLanguageItem.m in Sources */,
 				7BD9C47D21B6A3BB00A16A99 /* QSWalletDetailViewController.m in Sources */,
 				7B8B315A21B5028200028D17 /* QSModifyPasswordViewController.m in Sources */,
+				7BB8DC8A21B79D9C00954E86 /* QSEveriPayCodeViewController.m in Sources */,
 				7BF36E2321A79E7B00B27146 /* NSArray+SafeAccess.m in Sources */,
 				7BF36E2B21A7A3D800B27146 /* AppDelegate.m in Sources */,
 				7BF2F8CB21B12732000AAD93 /* QSAboutusViewController.m in Sources */,
@@ -2069,6 +2243,7 @@
 				7BD9C47621B69DA100A16A99 /* QSAddWalletViewController.m in Sources */,
 				7BF2F86321AE9A1D000AAD93 /* QSAddAddressCell+QSAddAddressType.m in Sources */,
 				7BF36E1F21A79E7B00B27146 /* NSString+Contains.m in Sources */,
+				7BB8DC7421B7702600954E86 /* QSQRCodeScanTipsCell.m in Sources */,
 				7BF36E0C21A79E7B00B27146 /* UIViewController+Root.m in Sources */,
 				7BF2F82D21AE37D6000AAD93 /* QSBaseTableViewCell.m in Sources */,
 				7BF2F8D221B133D0000AAD93 /* QSBaseCellItem.m in Sources */,
@@ -2077,11 +2252,14 @@
 				7BF2F86D21AF8091000AAD93 /* QSAddAddressCell+QSAddAddressInput.m in Sources */,
 				7BF36DFD21A79E7B00B27146 /* UIColor+Gradient.m in Sources */,
 				7BF2F8A921B102F4000AAD93 /* NSBundle+QSLanguageUtils.m in Sources */,
+				7BB8DC8021B7794D00954E86 /* QSQRCodeMaxPayAmountCell.m in Sources */,
 				7BF2F8B921B11494000AAD93 /* QSMaxPaymentViewController.m in Sources */,
+				7BB8DC7721B7721000954E86 /* QSQRCodeAddressCell.m in Sources */,
 				7B6CDC6E21AB7E65008A6FAF /* QSHomeMyNFTsViewController.m in Sources */,
 				7BF36D7321A79A3300B27146 /* QSMineViewController.m in Sources */,
 				7BF36D6D21A79A1700B27146 /* QSSwitchWalletViewController.m in Sources */,
 				7BF2F86621AE9A34000AAD93 /* QSAddAddressCell+QSAddAddressScan.m in Sources */,
+				7BB8DC3F21B75C6A00954E86 /* YZDisplayViewController.m in Sources */,
 				7BF36E0821A79E7B00B27146 /* UIBarButtonItem+Actions.m in Sources */,
 				7BF2F88821AFE1BD000AAD93 /* QSHelpCenterOverViewItem.m in Sources */,
 				7BD9C48E21B6B49400A16A99 /* QSSelectWalletTypeViewController.m in Sources */,

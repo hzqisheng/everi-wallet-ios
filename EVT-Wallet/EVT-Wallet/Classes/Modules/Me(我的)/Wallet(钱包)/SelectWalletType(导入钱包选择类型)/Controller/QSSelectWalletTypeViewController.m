@@ -7,6 +7,7 @@
 //
 
 #import "QSSelectWalletTypeViewController.h"
+#import "QSImportWalletIndexViewController.h"
 
 @interface QSSelectWalletTypeViewController ()
 
@@ -46,10 +47,16 @@
 - (void)typeButtonClicked:(UIButton *)button {
     if (button.tag == 0) {
         //EVT
+        QSImportWalletIndexViewController *importEVT = [[QSImportWalletIndexViewController alloc] initWithType:QSImportWalletTypeEVT];
+        [self.navigationController pushViewController:importEVT animated:YES];
     } else if (button.tag == 1) {
         //ETH
+        QSImportWalletIndexViewController *importETH = [[QSImportWalletIndexViewController alloc] initWithType:QSImportWalletTypeETH];
+        [self.navigationController pushViewController:importETH animated:YES];
     } else if (button.tag == 2) {
         //EOS
+        QSImportWalletIndexViewController *importEOS = [[QSImportWalletIndexViewController alloc] initWithType:QSImportWalletTypeEOS];
+        [self.navigationController pushViewController:importEOS animated:YES];
     }
 }
 

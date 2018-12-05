@@ -7,7 +7,7 @@
 //
 
 #import "QSModifyPasswordViewController.h"
-#import "QSImportWalletViewController.h"
+#import "QSImportWalletByMnemonicCodeViewController.h"
 
 @interface QSModifyPasswordViewController ()
 
@@ -81,7 +81,7 @@
 
 #pragma mark - **************** Event Response
 - (void)importNow {
-    QSImportWalletViewController *importWallet = [[QSImportWalletViewController alloc] init];
+    QSImportWalletByMnemonicCodeViewController *importWallet = [[QSImportWalletByMnemonicCodeViewController alloc] init];
     [self.navigationController pushViewController:importWallet animated:YES];
 }
 

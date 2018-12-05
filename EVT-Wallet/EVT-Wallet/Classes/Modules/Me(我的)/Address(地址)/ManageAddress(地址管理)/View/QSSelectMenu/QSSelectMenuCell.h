@@ -6,12 +6,12 @@
 //  Copyright © 2018 HANGZHOU QISHENG TECHNOLOGY CO.LTD. All rights reserved.
 //
 
-#import "QSBaseTableViewCell.h"
+#import <UIKit/UIKit.h>
 #import "QSSelectMenuItem.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface QSSelectMenuCell : QSBaseTableViewCell
+@interface QSSelectMenuCell : UITableViewCell
 
 @property (nonatomic, strong) QSSelectMenuItem *item;
 

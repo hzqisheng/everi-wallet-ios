@@ -29,7 +29,11 @@ typedef NS_ENUM(NSUInteger, QSSettingItemType) {
 };
 
 NS_ASSUME_NONNULL_BEGIN
-
+/**
+ Attention!
+ most Item inherit from this file, please try not to delete or change default value(you can add values).
+ try to change the subclass
+ */
 @interface QSSettingItem : QSBaseCellItem
 
 /** itemType */

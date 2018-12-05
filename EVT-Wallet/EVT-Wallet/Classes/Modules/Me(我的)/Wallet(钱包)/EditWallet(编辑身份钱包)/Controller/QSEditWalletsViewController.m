@@ -8,7 +8,7 @@
 
 #import "QSEditWalletsViewController.h"
 #import "QSModifyPasswordViewController.h"
-#import "QSImportWalletViewController.h"
+#import "QSImportWalletByMnemonicCodeViewController.h"
 #import "QSExportMnemonicViewController.h"
 #import "QSAddWalletViewController.h"
 
@@ -101,7 +101,7 @@ typedef NS_ENUM(NSUInteger, QSEditWalletsType) {
         QSModifyPasswordViewController *modify = [[QSModifyPasswordViewController alloc] init];
         [self.navigationController pushViewController:modify animated:YES];
     } else if (item.cellTag == QSEditWalletsTypeRetrievePwd) {
-        QSImportWalletViewController *importWallet = [[QSImportWalletViewController alloc] init];
+        QSImportWalletByMnemonicCodeViewController *importWallet = [[QSImportWalletByMnemonicCodeViewController alloc] init];
         [self.navigationController pushViewController:importWallet animated:YES];
     } else if (item.cellTag == QSEditWalletsTypeExport) {
         QSExportMnemonicViewController *exportMnemonic = [[QSExportMnemonicViewController alloc] init];

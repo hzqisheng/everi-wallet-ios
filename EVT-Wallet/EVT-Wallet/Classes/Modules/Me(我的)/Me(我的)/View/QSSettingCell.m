@@ -47,7 +47,7 @@
 }
 
 - (void)configureCellWithItem:(QSSettingItem *)item {
-    _item = item;
+    self.item = item;
     if (item.cellType == QSSettingItemTypeDefault) {
         //image
         [self.contentView addSubview:self.leftImageView];

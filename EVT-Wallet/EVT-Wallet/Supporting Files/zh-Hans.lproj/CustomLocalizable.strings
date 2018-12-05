@@ -17,6 +17,20 @@
 "qs_btn_home_myfts"   = "我的代币";
 "qs_btn_home_mynfts"  = "我的通证";
 
+//scan
+"qs_collect_item_tips_title"               = "请使用相同钱包扫一扫";
+"qs_collect_item_address_title"            = "地址";
+"qs_collect_btn_copy_address_title"        = "点击二维码复制地址";
+"qs_collect_btn_copy_success_title"        = "复制成功";
+"qs_collect_bottom_tool_bar_receive_title" = "收款码";
+"qs_collect_bottom_tool_bar_pay_title"     = "扫码收款";
+
+//everypay
+"qs_everipay_bottom_tool_bar_code_title" = "everiPay";
+"qs_everipay_bottom_tool_bar_scan_title" = "扫码付款";
+"qs_everipay_item_selected_wallet_title" = "选择此方式进行付款";
+"qs_everipay_item_max_pay_title"         = "最大支付金额";
+
 //Me
 "qs_me_item_managewallet"    = "管理钱包";
 "qs_me_item_manageaddress"   = "管理地址";
@@ -59,7 +73,7 @@
 "qs_import_wallet_btn_confirm_title"            = "立即导入";
 
 "qs_import_wallet_password_placeholder"         = "密码";
-"qs_import_wallet_confirm_password_placeholder" = "确认密码"
+"qs_import_wallet_confirm_password_placeholder" = "确认密码";
 "qs_import_wallet_mnemonic_code_title"          = "助记词";
 "qs_import_wallet_private_key_title"            = "私钥";
 "qs_import_wallet_private_key_placeholder"      = "请输入私钥文本内容";

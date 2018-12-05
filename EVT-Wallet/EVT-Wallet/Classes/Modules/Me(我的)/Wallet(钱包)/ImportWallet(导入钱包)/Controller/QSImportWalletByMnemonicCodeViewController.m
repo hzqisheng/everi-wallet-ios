@@ -6,9 +6,9 @@
 //  Copyright © 2018 HANGZHOU QISHENG TECHNOLOGY CO.LTD. All rights reserved.
 //
 
-#import "QSImportWalletViewController.h"
+#import "QSImportWalletByMnemonicCodeViewController.h"
 
-@interface QSImportWalletViewController ()
+@interface QSImportWalletByMnemonicCodeViewController ()
 
 @property (nonatomic, strong) UIView *inputCornerView;
 @property (nonatomic, strong) YYTextView *mnemonicCodeTextView;
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation QSImportWalletViewController
+@implementation QSImportWalletByMnemonicCodeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

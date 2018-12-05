@@ -11,6 +11,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ Attention!
+ most UI inherit from this file, please try not to change this file.
+ try to change the subclass
+ */
 @interface QSSettingCell : QSBaseTableViewCell
 
 /** left imageView */
@@ -22,8 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) UILabel *rightTitleLabel;
 /** right arrow imageView */
 @property (nonatomic,strong) UIImageView *arrowImageView;
-
-@property (nonatomic, strong) QSSettingItem *item;
 
 @end
 
