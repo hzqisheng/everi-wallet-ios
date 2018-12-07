@@ -56,7 +56,6 @@ typedef NS_ENUM(NSUInteger, QSLanguageSettingType) {
 #pragma mark - **************** UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     QSBaseCellItem *item = [self itemInIndexPath:indexPath];
-    QSMainViewController *mainTab = [[QSMainViewController alloc] init];
     [QSAppKeyWindow showIndeterminateHudWithText:QSLocalizedString(@"qs_language_setting_change_toast")];
     if (item.cellTag == QSLanguageSettingTypeEnglish) {
         if (![NSBundle isChineseLanguage]) {
@@ -65,6 +64,7 @@ typedef NS_ENUM(NSUInteger, QSLanguageSettingType) {
         [QSLanguageConfigHelper setSystemLanguageEnglish];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [QSAppKeyWindow hideHud];
+            QSMainViewController *mainTab = [[QSMainViewController alloc] init];
             QSAppKeyWindow.rootViewController = mainTab;
             CATransition * transition = [[CATransition alloc] init];
             transition.type = @"reveal";
@@ -78,6 +78,7 @@ typedef NS_ENUM(NSUInteger, QSLanguageSettingType) {
         [QSLanguageConfigHelper setSystemLanguageChinese];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [QSAppKeyWindow hideHud];
+            QSMainViewController *mainTab = [[QSMainViewController alloc] init];
             QSAppKeyWindow.rootViewController = mainTab;
             CATransition * transition = [[CATransition alloc] init];
             transition.type = @"reveal";

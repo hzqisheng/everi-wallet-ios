@@ -30,6 +30,7 @@ typedef NS_ENUM(NSUInteger, QSWalletDetailType) {
     [super viewDidLoad];
 }
 
+#pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
 - (NSArray<Class> *)getRigisterMultiCellClasses {
     return @[[QSSettingCell class],
              [QSWalletDetailCell class]];

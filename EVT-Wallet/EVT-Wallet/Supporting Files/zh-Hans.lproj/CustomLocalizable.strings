@@ -17,7 +17,23 @@
 "qs_btn_home_myfts"   = "我的代币";
 "qs_btn_home_mynfts"  = "我的通证";
 
-//scan
+//Scan
+"qs_scan_nav_title"                  = "二维码";
+"qs_scan_help_btn_title"             = "未扫描到二维码？获取帮助";
+"qs_scan_scaning_title"              = "请稍后...";
+"qs_scan_scan_failed_title"          = "扫描失败";
+"qs_scan_scan_failed_tips_title"     = "请换一张图片重试~";
+"qs_scan_scan_failed_confirm_title"  = "确定";
+"qs_scan_scan_init_failed_title"     = "相机初始化失败，请检查权限~";
+
+//Transaction Record
+"qs_transaction_record_item_record_title"        = "交易记录";
+"qs_transaction_record_number_title"             = "数量";
+"qs_transaction_record_tansfer_btn_title"        = "转账";
+"qs_transaction_record_batch_tansfer_btn_title"  = "批量转账";
+"qs_transaction_record_collect_btn_title"        = "收款";
+
+//Collect
 "qs_collect_item_tips_title"               = "请使用相同钱包扫一扫";
 "qs_collect_item_address_title"            = "地址";
 "qs_collect_btn_copy_address_title"        = "点击二维码复制地址";
@@ -25,11 +41,48 @@
 "qs_collect_bottom_tool_bar_receive_title" = "收款码";
 "qs_collect_bottom_tool_bar_pay_title"     = "扫码收款";
 
+//TransactionSuccess
+"qs_transaction_success_title"         = "交易成功";
+
+
+//Collect Amount
+"qs_collect_amount_nav_title"                = "收款";
+"qs_collect_amount_select_payway_tips"       = "请选择需要收款的金额";
+"qs_collect_amount_item_currency_title"      = "您需要付款的币种为：";
+"qs_collect_amount_item_amount_title"        = "金额";
+"qs_collect_amount_item_amount_placeholder"  = "请输入收款金额";
+"qs_collect_amount_bottom_btn_title"         = "确认收款";
+
+//Collect Success
+"qs_collect_success_bottom_btn_title"         = "确定";
+
 //everypay
-"qs_everipay_bottom_tool_bar_code_title" = "everiPay";
-"qs_everipay_bottom_tool_bar_scan_title" = "扫码付款";
-"qs_everipay_item_selected_wallet_title" = "选择此方式进行付款";
-"qs_everipay_item_max_pay_title"         = "最大支付金额";
+"qs_everipay_bottom_tool_bar_code_title"     = "everiPay";
+"qs_everipay_bottom_tool_bar_scan_title"     = "扫码付款";
+"qs_everipay_item_selected_wallet_title"     = "选择此方式进行付款";
+"qs_everipay_item_max_pay_title"             = "最大支付金额";
+"qs_everipay_select_address_popupview_title" = "请选择进行付款的代币";
+
+//Pay Amount
+"qs_pay_amount_nav_title"                = "everiPay";
+"qs_pay_amount_select_payway_tips"       = "请选择币种进行付款";
+"qs_pay_amount_item_balance_title"       = "余额";
+"qs_pay_amount_item_address_title"       = "地址";
+"qs_pay_amount_item_address_placeholder" = "请选择币种进行付款";
+"qs_pay_amount_item_amount_title"        = "金额";
+"qs_pay_amount_item_amount_placeholder"  = "请输入付款金额";
+"qs_pay_amount_item_remarks_title"       = "备注";
+"qs_pay_amount_item_remarks_placeholder" = "请输入备注";
+"qs_pay_amount_bottom_btn_title"         = "下一步";
+
+//Pay Info
+"qs_pay_info_nav_title"                = "付款";
+"qs_pay_info_item_payer_title"         = "付款方";
+"qs_pay_info_item_beneficiary_title"   = "收款方";
+"qs_pay_info_item_remark_title"        = "备注";
+"qs_pay_info_item_no_remark_title"     = "暂无备注";
+"qs_pay_info_item_fee_title"           = "转账手续费";
+"qs_pay_info_btn_confirm_title"        = "确定";
 
 //Me
 "qs_me_item_managewallet"    = "管理钱包";
@@ -68,7 +121,7 @@
 "qs_import_wallet_item_mnemonic_title"          = "请输入备份的钱包助记词(12个英文单词)，按空分割格";
 "qs_import_wallet_item_password_title"          = "新密码";
 "qs_import_wallet_item_confirm_password_title"  = "确认新密码";
-"qs_import_wallet_item_metion_totaltitle"       = "注意！此软件不存储用户密码，无法提供找回或重置功能。如果忘记密码，用户只能通过自己备份的钱包私钥或助记词，重新导入后设置新密码";
+"qs_import_wallet_item_metion_total_title"      = "注意！此软件不存储用户密码，无法提供找回或重置功能。如果忘记密码，用户只能通过自己备份的钱包私钥或助记词，重新导入后设置新密码";
 "qs_import_wallet_item_metion_highlight_title"  = "注意！";
 "qs_import_wallet_btn_confirm_title"            = "立即导入";
 
@@ -83,14 +136,14 @@
 "qs_import_wallet_key_store_pwd_placeholder"    = "Keystore密码";
 
 //Export Mnemonic Code
-"qs_export_mnemonic_code_nav_title"                = "导出助记词";
-"qs_export_mnemonic_code_item_metion_total_title"  = "重要提示！拥有钱包私钥就能完全控制钱包资产，因此强烈建议你在使用钱包前做好备份，将钱包私钥保存到安全的地方。";
-"qs_export_mnemonic_code_metion_highlight_title"   = "重要提示！";
-"qs_export_mnemonic_code_btn_backup_title"         = "立即备份";
+"qs_export_mnemonic_code_nav_title"                    = "导出助记词";
+"qs_export_mnemonic_code_item_metion_total_title"      = "重要提示！拥有钱包私钥就能完全控制钱包资产，因此强烈建议你在使用钱包前做好备份，将钱包私钥保存到安全的地方。";
+"qs_export_mnemonic_code_metion_highlight_title"       = "重要提示！";
+"qs_export_mnemonic_code_btn_backup_title"             = "立即备份";
 
-"qs_export_mnemonic_code_item_tips_title"          = "请记下你的钱包助记词并保存到安全的地方。";
-"qs_export_mnemonic_code_item_tips_detail_title"   = "钱包助记词用于恢复钱包资产，拥有助记词即可完全控制钱包资产，请务必妥善保管，丢失助记词即丢失钱包资产。本软件无法提供找回功能。";
-"qs_export_mnemonic_code_btn_next_title"          = "下一步";
+"qs_export_mnemonic_code_item_tips_title"              = "请记下你的钱包助记词并保存到安全的地方。";
+"qs_export_mnemonic_code_item_tips_detail_title"       = "钱包助记词用于恢复钱包资产，拥有助记词即可完全控制钱包资产，请务必妥善保管，丢失助记词即丢失钱包资产。本软件无法提供找回功能。";
+"qs_export_mnemonic_code_btn_next_title"               = "下一步";
 
 "qs_export_mnemonic_code_item_check_tips_title"        = "验证你的钱包助记词";
 "qs_export_mnemonic_code_item_check_tips_detail_title" = "请根据你记下的助记词，按顺序点击，验证你备份的助记词正确无误。";

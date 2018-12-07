@@ -11,6 +11,7 @@
 #import "QSHomeMyNFTsViewController.h"
 #import "QSCollectCodeViewController.h"
 #import "QSEveriPayCodeViewController.h"
+#import "QSScanningViewController.h"
 
 #import "QSPropetyHomeSwipeView.h"
 #import "QSPropertyHomeSwipeCell.h"
@@ -140,7 +141,6 @@ UIScrollViewDelegate>
 
 #pragma mark - **************** QSPropetyHomeShortcutViewDelegate
 - (void)shortcutView:(QSPropetyHomeShortcutView *)shortcutView didClickedItemByType:(QSShortcutType)type {
-    DLog(@"点击类型%ld",(long)type);
     if (type == QSShortcutTypeCollect) {
         QSCollectCodeViewController *collect = [[QSCollectCodeViewController alloc] init];
         collect.hidesBottomBarWhenPushed = YES;
@@ -149,6 +149,10 @@ UIScrollViewDelegate>
         QSEveriPayCodeViewController *everiPay = [[QSEveriPayCodeViewController alloc] init];
         everiPay.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:everiPay animated:YES];
+    } else if (type == QSShortcutTypeScan) {
+        QSScanningViewController *scan = [[QSScanningViewController alloc] init];
+        scan.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:scan animated:YES];
     }
 }
 

@@ -19,16 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self p_setupTableView];
-    NSArray *singleDataSource = [self createSingleSectionDataSource];
-    NSArray *multiDataSource = [self createMultiSectionDataSource];
-    if (singleDataSource.count) {
-        _isMultiSection = NO;
-        [self.dataArray addObjectsFromArray:singleDataSource];
-    } else {
-        _isMultiSection = YES;
-        self.dataArray = [multiDataSource mutableCopy];
-    }
-    [self.tableView reloadData];
+    [self getDataSource];
 }
 
 #pragma mark - **************** Initials
@@ -44,6 +35,33 @@
     } else {
         [self.tableView registerClass:[self getRigisterCellClass] forCellReuseIdentifier:NSStringFromClass([self getRigisterCellClass])];
     }
+}
+
+#pragma mark - **************** Public Methods
+- (QSBaseCellItem *)itemInIndexPath:(NSIndexPath *)indexPath {
+    if (self.isMultiSection) {
+        QSBaseCellItem *item = self.dataArray[indexPath.section][indexPath.row];
+        return item;
+    }
+    QSBaseCellItem *item = self.dataArray[indexPath.row];
+    return item;
+}
+
+- (void)reloadTableViewData {
+    [self getDataSource];
+}
+
+- (void)getDataSource {
+    NSArray *singleDataSource = [self createSingleSectionDataSource];
+    NSArray *multiDataSource = [self createMultiSectionDataSource];
+    if (singleDataSource.count) {
+        _isMultiSection = NO;
+        [self.dataArray addObjectsFromArray:singleDataSource];
+    } else {
+        _isMultiSection = YES;
+        self.dataArray = [multiDataSource mutableCopy];
+    }
+    [self.tableView reloadData];
 }
 
 #pragma mark - **************** QSBaseSettingViewControllerProtocol
@@ -66,15 +84,6 @@
 
 - (BOOL)isShowCornerSection {
     return YES;
-}
-
-- (QSBaseCellItem *)itemInIndexPath:(NSIndexPath *)indexPath {
-    if (self.isMultiSection) {
-        QSBaseCellItem *item = self.dataArray[indexPath.section][indexPath.row];
-        return item;
-    }
-    QSBaseCellItem *item = self.dataArray[indexPath.row];
-    return item;
 }
 
 #pragma mark - **************** UITableViewDataSource

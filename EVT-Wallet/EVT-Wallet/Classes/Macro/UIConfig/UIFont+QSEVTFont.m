@@ -34,8 +34,20 @@
     return [UIFont systemFontOfSize:18];
 }
 
++ (UIFont *)qs_fontOfSize19 {
+    return [UIFont systemFontOfSize:19];
+}
+
++ (UIFont *)qs_boldFontOfSize15 {
+    return [UIFont boldSystemFontOfSize:15];
+}
+
 + (UIFont *)qs_boldFontOfSize16 {
     return [UIFont boldSystemFontOfSize:16];
+}
+
++ (UIFont *)qs_boldFontOfSize17 {
+    return [UIFont boldSystemFontOfSize:17];
 }
 
 @end

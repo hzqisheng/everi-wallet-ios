@@ -61,6 +61,7 @@ static NSString *reuseIdentifier = @"QSSettingCell";
 }
 
 - (void)setupTableView {
+    self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.contentInset = UIEdgeInsetsMake(kTableViewTopEdgeInset, 0, 0, 0);
     self.tableView.tableFooterView = self.footerLogoutView;

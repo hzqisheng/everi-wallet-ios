@@ -22,7 +22,18 @@
         self.cornerV = backV;
         self.backgroundColor = [UIColor clearColor];
     }
-    if (indexPath.row == 0) {
+    
+    if (indexPath.row == [tableView numberOfRowsInSection:indexPath.section] - 1
+        && indexPath.row == 0) {
+        if (self.topLay == nil) {
+            UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.cornerV.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight | UIRectCornerBottomLeft | UIRectCornerBottomRight  cornerRadii:CGSizeMake(cornerRadius, cornerRadius)];
+            CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+            maskLayer.frame = self.cornerV.bounds;
+            maskLayer.path = maskPath.CGPath;
+            self.topLay = maskLayer;
+        }
+        self.cornerV.layer.mask = self.topLay;
+    } else if (indexPath.row == 0) {
         if (self.topLay == nil) {
             UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.cornerV.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight  cornerRadii:CGSizeMake(cornerRadius, cornerRadius)];
             CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];

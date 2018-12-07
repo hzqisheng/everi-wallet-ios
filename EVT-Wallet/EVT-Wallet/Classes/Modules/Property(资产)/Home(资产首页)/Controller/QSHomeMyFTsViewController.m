@@ -7,6 +7,7 @@
 //
 
 #import "QSHomeMyFTsViewController.h"
+#import "QSTransactionRecordViewController.h"
 #import "QSHomeMyFTsCell.h"
 
 @interface QSHomeMyFTsViewController ()
@@ -53,7 +54,9 @@ static NSString *reuseIdentifier = @"QSHomeMyFTsCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    QSTransactionRecordViewController *record = [[QSTransactionRecordViewController alloc] init];
+    record.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:record animated:YES];
 }
 
 

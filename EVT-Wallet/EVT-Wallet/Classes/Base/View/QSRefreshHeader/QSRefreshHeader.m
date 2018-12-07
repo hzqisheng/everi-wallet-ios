@@ -18,9 +18,9 @@
         //        [self setImages:@[[UIImage imageNamed:@"load1"], [UIImage imageNamed:@"load2"], [UIImage imageNamed:@"load3"]]  forState:MJRefreshStatePulling];
         //        [self setImages:@[[UIImage imageNamed:@"load1"], [UIImage imageNamed:@"load2"], [UIImage imageNamed:@"load3"]]  forState:MJRefreshStateIdle];
         
-        [self setTitle:@"下拉刷新" forState:MJRefreshStateIdle];
-        [self setTitle:@"释放更新" forState:MJRefreshStatePulling];
-        [self setTitle:@"加载中..." forState:MJRefreshStateRefreshing];
+//        [self setTitle:@"下拉刷新" forState:MJRefreshStateIdle];
+//        [self setTitle:@"释放更新" forState:MJRefreshStatePulling];
+//        [self setTitle:@"加载中..." forState:MJRefreshStateRefreshing];
         
         self.stateLabel.textColor = [UIColor blackColor];
         self.lastUpdatedTimeLabel.hidden = YES;

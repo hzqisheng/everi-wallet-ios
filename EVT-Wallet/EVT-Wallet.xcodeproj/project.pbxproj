@@ -147,6 +147,33 @@
 		7BF36E2621A79E7B00B27146 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF36DF321A79E7A00B27146 /* NSDate+Extension.m */; };
 		7BF36E2721A79E7B00B27146 /* NSDate+Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF36DF421A79E7A00B27146 /* NSDate+Transform.m */; };
 		7BF36E2B21A7A3D800B27146 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF36E2A21A7A3D800B27146 /* AppDelegate.m */; };
+		7BF40E5B21B9447700047C3C /* QSPayAmountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40E5521B9447700047C3C /* QSPayAmountViewController.m */; };
+		7BF40E5C21B9447700047C3C /* QSPayAmountSeletPayWayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40E5A21B9447700047C3C /* QSPayAmountSeletPayWayCell.m */; };
+		7BF40E5F21B9465D00047C3C /* QSPayAmountBalanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40E5E21B9465D00047C3C /* QSPayAmountBalanceCell.m */; };
+		7BF40E6221B948C300047C3C /* QSPayAmountAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40E6121B948C300047C3C /* QSPayAmountAddressCell.m */; };
+		7BF40E6521B94C6000047C3C /* QSPayAmountInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40E6421B94C6000047C3C /* QSPayAmountInputCell.m */; };
+		7BF40E6821B94F8400047C3C /* QSPayAmountItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40E6721B94F8400047C3C /* QSPayAmountItem.m */; };
+		7BF40E6B21B951A100047C3C /* QSBottomButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40E6A21B951A100047C3C /* QSBottomButtonView.m */; };
+		7BF40E6E21B95A7600047C3C /* QSSelectCurrencyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40E6D21B95A7600047C3C /* QSSelectCurrencyView.m */; };
+		7BF40E7421B95D3B00047C3C /* QSSelectCurrencyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40E7321B95D3B00047C3C /* QSSelectCurrencyCell.m */; };
+		7BF40E7B21B965E200047C3C /* QSPayInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40E7A21B965E200047C3C /* QSPayInfoViewController.m */; };
+		7BF40E7E21B9665200047C3C /* QSPayInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40E7D21B9665200047C3C /* QSPayInfoCell.m */; };
+		7BF40E8121B966B900047C3C /* QSPayInfoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40E8021B966B900047C3C /* QSPayInfoItem.m */; };
+		7BF40E8421B969A300047C3C /* QSPayInfoHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40E8321B969A300047C3C /* QSPayInfoHeaderView.m */; };
+		7BF40E8A21B9FCB600047C3C /* QSScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40E8921B9FCB600047C3C /* QSScannerViewController.m */; };
+		7BF40E8D21B9FD3100047C3C /* QSScannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40E8C21B9FD3100047C3C /* QSScannerView.m */; };
+		7BF40E9021B9FD3B00047C3C /* QSScannerBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40E8F21B9FD3B00047C3C /* QSScannerBackgroundView.m */; };
+		7BF40E9321B9FF0500047C3C /* QSScanningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40E9221B9FF0500047C3C /* QSScanningViewController.m */; };
+		7BF40EAB21BA120400047C3C /* QSEveriPayCollectAmountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40EA421BA120400047C3C /* QSEveriPayCollectAmountViewController.m */; };
+		7BF40EAC21BA120400047C3C /* QSEveriPayCollectCurrencyItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40EA721BA120400047C3C /* QSEveriPayCollectCurrencyItem.m */; };
+		7BF40EAD21BA120400047C3C /* QSEveriPayCollectCurrencyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40EAA21BA120400047C3C /* QSEveriPayCollectCurrencyCell.m */; };
+		7BF40EB421BA129C00047C3C /* QSEveriPayCollectSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40EB321BA129C00047C3C /* QSEveriPayCollectSuccessViewController.m */; };
+		7BF40EB921BA17E300047C3C /* QSTransactionSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40EB821BA17E300047C3C /* QSTransactionSuccessViewController.m */; };
+		7BF40EC721BA1C3400047C3C /* QSTransactionRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40EC621BA1C3400047C3C /* QSTransactionRecordViewController.m */; };
+		7BF40ECA21BA1C4400047C3C /* QSTransactionRecordHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40EC921BA1C4400047C3C /* QSTransactionRecordHeaderView.m */; };
+		7BF40ECE21BA1D2C00047C3C /* QSTransactionRecordItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40ECD21BA1D2C00047C3C /* QSTransactionRecordItem.m */; };
+		7BF40ED121BA1D4000047C3C /* QSTransactionRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40ED021BA1D4000047C3C /* QSTransactionRecordCell.m */; };
+		7BF40ED421BA23D900047C3C /* QSTransactionRecordTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40ED321BA23D900047C3C /* QSTransactionRecordTitleCell.m */; };
 		EE10C624E8B4BF70D84A7BD9 /* libPods-EVT-Wallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D82C8EE4962E7FCFFC68E721 /* libPods-EVT-Wallet.a */; };
 /* End PBXBuildFile section */
 
@@ -456,6 +483,60 @@
 		7BF36DF521A79E7A00B27146 /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
 		7BF36E2921A7A3D800B27146 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7BF36E2A21A7A3D800B27146 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7BF40E5521B9447700047C3C /* QSPayAmountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSPayAmountViewController.m; sourceTree = "<group>"; };
+		7BF40E5621B9447700047C3C /* QSPayAmountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSPayAmountViewController.h; sourceTree = "<group>"; };
+		7BF40E5921B9447700047C3C /* QSPayAmountSeletPayWayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSPayAmountSeletPayWayCell.h; sourceTree = "<group>"; };
+		7BF40E5A21B9447700047C3C /* QSPayAmountSeletPayWayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSPayAmountSeletPayWayCell.m; sourceTree = "<group>"; };
+		7BF40E5D21B9465D00047C3C /* QSPayAmountBalanceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSPayAmountBalanceCell.h; sourceTree = "<group>"; };
+		7BF40E5E21B9465D00047C3C /* QSPayAmountBalanceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSPayAmountBalanceCell.m; sourceTree = "<group>"; };
+		7BF40E6021B948C300047C3C /* QSPayAmountAddressCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSPayAmountAddressCell.h; sourceTree = "<group>"; };
+		7BF40E6121B948C300047C3C /* QSPayAmountAddressCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSPayAmountAddressCell.m; sourceTree = "<group>"; };
+		7BF40E6321B94C6000047C3C /* QSPayAmountInputCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSPayAmountInputCell.h; sourceTree = "<group>"; };
+		7BF40E6421B94C6000047C3C /* QSPayAmountInputCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSPayAmountInputCell.m; sourceTree = "<group>"; };
+		7BF40E6621B94F8400047C3C /* QSPayAmountItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSPayAmountItem.h; sourceTree = "<group>"; };
+		7BF40E6721B94F8400047C3C /* QSPayAmountItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSPayAmountItem.m; sourceTree = "<group>"; };
+		7BF40E6921B951A100047C3C /* QSBottomButtonView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSBottomButtonView.h; sourceTree = "<group>"; };
+		7BF40E6A21B951A100047C3C /* QSBottomButtonView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSBottomButtonView.m; sourceTree = "<group>"; };
+		7BF40E6C21B95A7600047C3C /* QSSelectCurrencyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSSelectCurrencyView.h; sourceTree = "<group>"; };
+		7BF40E6D21B95A7600047C3C /* QSSelectCurrencyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSSelectCurrencyView.m; sourceTree = "<group>"; };
+		7BF40E7221B95D3B00047C3C /* QSSelectCurrencyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSSelectCurrencyCell.h; sourceTree = "<group>"; };
+		7BF40E7321B95D3B00047C3C /* QSSelectCurrencyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSSelectCurrencyCell.m; sourceTree = "<group>"; };
+		7BF40E7921B965E200047C3C /* QSPayInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSPayInfoViewController.h; sourceTree = "<group>"; };
+		7BF40E7A21B965E200047C3C /* QSPayInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSPayInfoViewController.m; sourceTree = "<group>"; };
+		7BF40E7C21B9665200047C3C /* QSPayInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSPayInfoCell.h; sourceTree = "<group>"; };
+		7BF40E7D21B9665200047C3C /* QSPayInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSPayInfoCell.m; sourceTree = "<group>"; };
+		7BF40E7F21B966B900047C3C /* QSPayInfoItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSPayInfoItem.h; sourceTree = "<group>"; };
+		7BF40E8021B966B900047C3C /* QSPayInfoItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSPayInfoItem.m; sourceTree = "<group>"; };
+		7BF40E8221B969A300047C3C /* QSPayInfoHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSPayInfoHeaderView.h; sourceTree = "<group>"; };
+		7BF40E8321B969A300047C3C /* QSPayInfoHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSPayInfoHeaderView.m; sourceTree = "<group>"; };
+		7BF40E8821B9FCB600047C3C /* QSScannerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSScannerViewController.h; sourceTree = "<group>"; };
+		7BF40E8921B9FCB600047C3C /* QSScannerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSScannerViewController.m; sourceTree = "<group>"; };
+		7BF40E8B21B9FD3100047C3C /* QSScannerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSScannerView.h; sourceTree = "<group>"; };
+		7BF40E8C21B9FD3100047C3C /* QSScannerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSScannerView.m; sourceTree = "<group>"; };
+		7BF40E8E21B9FD3B00047C3C /* QSScannerBackgroundView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSScannerBackgroundView.h; sourceTree = "<group>"; };
+		7BF40E8F21B9FD3B00047C3C /* QSScannerBackgroundView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSScannerBackgroundView.m; sourceTree = "<group>"; };
+		7BF40E9121B9FF0500047C3C /* QSScanningViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSScanningViewController.h; sourceTree = "<group>"; };
+		7BF40E9221B9FF0500047C3C /* QSScanningViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSScanningViewController.m; sourceTree = "<group>"; };
+		7BF40EA321BA120400047C3C /* QSEveriPayCollectAmountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSEveriPayCollectAmountViewController.h; sourceTree = "<group>"; };
+		7BF40EA421BA120400047C3C /* QSEveriPayCollectAmountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSEveriPayCollectAmountViewController.m; sourceTree = "<group>"; };
+		7BF40EA621BA120400047C3C /* QSEveriPayCollectCurrencyItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSEveriPayCollectCurrencyItem.h; sourceTree = "<group>"; };
+		7BF40EA721BA120400047C3C /* QSEveriPayCollectCurrencyItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSEveriPayCollectCurrencyItem.m; sourceTree = "<group>"; };
+		7BF40EA921BA120400047C3C /* QSEveriPayCollectCurrencyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSEveriPayCollectCurrencyCell.h; sourceTree = "<group>"; };
+		7BF40EAA21BA120400047C3C /* QSEveriPayCollectCurrencyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSEveriPayCollectCurrencyCell.m; sourceTree = "<group>"; };
+		7BF40EB221BA129C00047C3C /* QSEveriPayCollectSuccessViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSEveriPayCollectSuccessViewController.h; sourceTree = "<group>"; };
+		7BF40EB321BA129C00047C3C /* QSEveriPayCollectSuccessViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSEveriPayCollectSuccessViewController.m; sourceTree = "<group>"; };
+		7BF40EB721BA17E300047C3C /* QSTransactionSuccessViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSTransactionSuccessViewController.h; sourceTree = "<group>"; };
+		7BF40EB821BA17E300047C3C /* QSTransactionSuccessViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSTransactionSuccessViewController.m; sourceTree = "<group>"; };
+		7BF40EC521BA1C3400047C3C /* QSTransactionRecordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSTransactionRecordViewController.h; sourceTree = "<group>"; };
+		7BF40EC621BA1C3400047C3C /* QSTransactionRecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSTransactionRecordViewController.m; sourceTree = "<group>"; };
+		7BF40EC821BA1C4400047C3C /* QSTransactionRecordHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSTransactionRecordHeaderView.h; sourceTree = "<group>"; };
+		7BF40EC921BA1C4400047C3C /* QSTransactionRecordHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSTransactionRecordHeaderView.m; sourceTree = "<group>"; };
+		7BF40ECC21BA1D2C00047C3C /* QSTransactionRecordItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSTransactionRecordItem.h; sourceTree = "<group>"; };
+		7BF40ECD21BA1D2C00047C3C /* QSTransactionRecordItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSTransactionRecordItem.m; sourceTree = "<group>"; };
+		7BF40ECF21BA1D4000047C3C /* QSTransactionRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSTransactionRecordCell.h; sourceTree = "<group>"; };
+		7BF40ED021BA1D4000047C3C /* QSTransactionRecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSTransactionRecordCell.m; sourceTree = "<group>"; };
+		7BF40ED221BA23D900047C3C /* QSTransactionRecordTitleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSTransactionRecordTitleCell.h; sourceTree = "<group>"; };
+		7BF40ED321BA23D900047C3C /* QSTransactionRecordTitleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSTransactionRecordTitleCell.m; sourceTree = "<group>"; };
 		AD946B9B6BA34BF4BAB1782C /* Pods-EVT-Wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EVT-Wallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-EVT-Wallet/Pods-EVT-Wallet.release.xcconfig"; sourceTree = "<group>"; };
 		D82C8EE4962E7FCFFC68E721 /* libPods-EVT-Wallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EVT-Wallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E75340DF8D0EB86B75C34F45 /* Pods-EVT-Wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EVT-Wallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EVT-Wallet/Pods-EVT-Wallet.debug.xcconfig"; sourceTree = "<group>"; };
@@ -694,6 +775,8 @@
 		7BB8DC6721B76E1E00954E86 /* Collect(收款) */ = {
 			isa = PBXGroup;
 			children = (
+				7BF40E7521B965CD00047C3C /* PayInfo(付款信息) */,
+				7BF40E5321B9447700047C3C /* PayAmount(付款金额) */,
 				7BB8DC6821B76E1E00954E86 /* CollectCode(收款码) */,
 			);
 			path = "Collect(收款)";
@@ -749,6 +832,9 @@
 		7BB8DC8421B79D8500954E86 /* EveriPay(付款) */ = {
 			isa = PBXGroup;
 			children = (
+				7BF40EB521BA17B800047C3C /* TransactionSuccess(交易成功) */,
+				7BF40EB021BA125600047C3C /* CollectSuccess(收款成功) */,
+				7BF40EA121BA120400047C3C /* EveriPayCollectAmount(收款金额) */,
 				7BB8DC8521B79D8500954E86 /* EveriPay(付款码) */,
 			);
 			path = "EveriPay(付款)";
@@ -1521,6 +1607,8 @@
 		7BF36D3E21A7972500B27146 /* Property(资产) */ = {
 			isa = PBXGroup;
 			children = (
+				7BF40EBA21BA1BFA00047C3C /* TransactionRecord(交易记录) */,
+				7BF40E8521B9FBA400047C3C /* Scan(扫码) */,
 				7BB8DC8421B79D8500954E86 /* EveriPay(付款) */,
 				7BB8DC6721B76E1E00954E86 /* Collect(收款) */,
 				7BF36D3F21A7972500B27146 /* Home(资产首页) */,
@@ -1618,8 +1706,8 @@
 			children = (
 				7BF36D5121A7972500B27146 /* QSRefreshFooter.h */,
 				7BF36D5221A7972500B27146 /* QSRefreshHeader.h */,
-				7BF36D5321A7972500B27146 /* QSRefreshHeader.m */,
 				7BF36D5421A7972500B27146 /* QSRefreshFooter.m */,
+				7BF36D5321A7972500B27146 /* QSRefreshHeader.m */,
 			);
 			path = QSRefreshHeader;
 			sourceTree = "<group>";
@@ -1951,6 +2039,293 @@
 			path = AppDelegate;
 			sourceTree = "<group>";
 		};
+		7BF40E5321B9447700047C3C /* PayAmount(付款金额) */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40E5421B9447700047C3C /* Controller */,
+				7BF40E5721B9447700047C3C /* Model */,
+				7BF40E5821B9447700047C3C /* View */,
+			);
+			path = "PayAmount(付款金额)";
+			sourceTree = "<group>";
+		};
+		7BF40E5421B9447700047C3C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40E5621B9447700047C3C /* QSPayAmountViewController.h */,
+				7BF40E5521B9447700047C3C /* QSPayAmountViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BF40E5721B9447700047C3C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40E6621B94F8400047C3C /* QSPayAmountItem.h */,
+				7BF40E6721B94F8400047C3C /* QSPayAmountItem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7BF40E5821B9447700047C3C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40E5921B9447700047C3C /* QSPayAmountSeletPayWayCell.h */,
+				7BF40E5A21B9447700047C3C /* QSPayAmountSeletPayWayCell.m */,
+				7BF40E5D21B9465D00047C3C /* QSPayAmountBalanceCell.h */,
+				7BF40E5E21B9465D00047C3C /* QSPayAmountBalanceCell.m */,
+				7BF40E6021B948C300047C3C /* QSPayAmountAddressCell.h */,
+				7BF40E6121B948C300047C3C /* QSPayAmountAddressCell.m */,
+				7BF40E6321B94C6000047C3C /* QSPayAmountInputCell.h */,
+				7BF40E6421B94C6000047C3C /* QSPayAmountInputCell.m */,
+				7BF40E6921B951A100047C3C /* QSBottomButtonView.h */,
+				7BF40E6A21B951A100047C3C /* QSBottomButtonView.m */,
+				7BF40E6C21B95A7600047C3C /* QSSelectCurrencyView.h */,
+				7BF40E6D21B95A7600047C3C /* QSSelectCurrencyView.m */,
+				7BF40E7221B95D3B00047C3C /* QSSelectCurrencyCell.h */,
+				7BF40E7321B95D3B00047C3C /* QSSelectCurrencyCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7BF40E7521B965CD00047C3C /* PayInfo(付款信息) */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40E7621B965CD00047C3C /* Controller */,
+				7BF40E7721B965CD00047C3C /* Model */,
+				7BF40E7821B965CD00047C3C /* View */,
+			);
+			path = "PayInfo(付款信息)";
+			sourceTree = "<group>";
+		};
+		7BF40E7621B965CD00047C3C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40E7921B965E200047C3C /* QSPayInfoViewController.h */,
+				7BF40E7A21B965E200047C3C /* QSPayInfoViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BF40E7721B965CD00047C3C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40E7F21B966B900047C3C /* QSPayInfoItem.h */,
+				7BF40E8021B966B900047C3C /* QSPayInfoItem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7BF40E7821B965CD00047C3C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40E7C21B9665200047C3C /* QSPayInfoCell.h */,
+				7BF40E7D21B9665200047C3C /* QSPayInfoCell.m */,
+				7BF40E8221B969A300047C3C /* QSPayInfoHeaderView.h */,
+				7BF40E8321B969A300047C3C /* QSPayInfoHeaderView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7BF40E8521B9FBA400047C3C /* Scan(扫码) */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40E8621B9FBA400047C3C /* Controller */,
+				7BF40E8721B9FBA400047C3C /* View */,
+			);
+			path = "Scan(扫码)";
+			sourceTree = "<group>";
+		};
+		7BF40E8621B9FBA400047C3C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40E9121B9FF0500047C3C /* QSScanningViewController.h */,
+				7BF40E9221B9FF0500047C3C /* QSScanningViewController.m */,
+				7BF40E8821B9FCB600047C3C /* QSScannerViewController.h */,
+				7BF40E8921B9FCB600047C3C /* QSScannerViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BF40E8721B9FBA400047C3C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40E8B21B9FD3100047C3C /* QSScannerView.h */,
+				7BF40E8C21B9FD3100047C3C /* QSScannerView.m */,
+				7BF40E8E21B9FD3B00047C3C /* QSScannerBackgroundView.h */,
+				7BF40E8F21B9FD3B00047C3C /* QSScannerBackgroundView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7BF40EA121BA120400047C3C /* EveriPayCollectAmount(收款金额) */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40EA221BA120400047C3C /* Controller */,
+				7BF40EA521BA120400047C3C /* Model */,
+				7BF40EA821BA120400047C3C /* View */,
+			);
+			path = "EveriPayCollectAmount(收款金额)";
+			sourceTree = "<group>";
+		};
+		7BF40EA221BA120400047C3C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40EA321BA120400047C3C /* QSEveriPayCollectAmountViewController.h */,
+				7BF40EA421BA120400047C3C /* QSEveriPayCollectAmountViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BF40EA521BA120400047C3C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40EA621BA120400047C3C /* QSEveriPayCollectCurrencyItem.h */,
+				7BF40EA721BA120400047C3C /* QSEveriPayCollectCurrencyItem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7BF40EA821BA120400047C3C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40EA921BA120400047C3C /* QSEveriPayCollectCurrencyCell.h */,
+				7BF40EAA21BA120400047C3C /* QSEveriPayCollectCurrencyCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7BF40EB021BA125600047C3C /* CollectSuccess(收款成功) */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40EB121BA125600047C3C /* Controller */,
+			);
+			path = "CollectSuccess(收款成功)";
+			sourceTree = "<group>";
+		};
+		7BF40EB121BA125600047C3C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40EB221BA129C00047C3C /* QSEveriPayCollectSuccessViewController.h */,
+				7BF40EB321BA129C00047C3C /* QSEveriPayCollectSuccessViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BF40EB521BA17B800047C3C /* TransactionSuccess(交易成功) */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40EB621BA17B800047C3C /* Controller */,
+			);
+			path = "TransactionSuccess(交易成功)";
+			sourceTree = "<group>";
+		};
+		7BF40EB621BA17B800047C3C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40EB721BA17E300047C3C /* QSTransactionSuccessViewController.h */,
+				7BF40EB821BA17E300047C3C /* QSTransactionSuccessViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BF40EBA21BA1BFA00047C3C /* TransactionRecord(交易记录) */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40EBB21BA1BFA00047C3C /* TransactionRecord(交易记录) */,
+				7BF40EBE21BA1BFA00047C3C /* SelectAddress(选择地址) */,
+				7BF40EC121BA1BFA00047C3C /* BatchTransfer(批量转账) */,
+			);
+			path = "TransactionRecord(交易记录)";
+			sourceTree = "<group>";
+		};
+		7BF40EBB21BA1BFA00047C3C /* TransactionRecord(交易记录) */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40EC421BA1C2400047C3C /* Controller */,
+				7BF40EBD21BA1BFA00047C3C /* View */,
+				7BF40ECB21BA1D1A00047C3C /* Model */,
+			);
+			path = "TransactionRecord(交易记录)";
+			sourceTree = "<group>";
+		};
+		7BF40EBD21BA1BFA00047C3C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40EC821BA1C4400047C3C /* QSTransactionRecordHeaderView.h */,
+				7BF40EC921BA1C4400047C3C /* QSTransactionRecordHeaderView.m */,
+				7BF40ECF21BA1D4000047C3C /* QSTransactionRecordCell.h */,
+				7BF40ED021BA1D4000047C3C /* QSTransactionRecordCell.m */,
+				7BF40ED221BA23D900047C3C /* QSTransactionRecordTitleCell.h */,
+				7BF40ED321BA23D900047C3C /* QSTransactionRecordTitleCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7BF40EBE21BA1BFA00047C3C /* SelectAddress(选择地址) */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40EBF21BA1BFA00047C3C /* Controller */,
+				7BF40EC021BA1BFA00047C3C /* View */,
+			);
+			path = "SelectAddress(选择地址)";
+			sourceTree = "<group>";
+		};
+		7BF40EBF21BA1BFA00047C3C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BF40EC021BA1BFA00047C3C /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7BF40EC121BA1BFA00047C3C /* BatchTransfer(批量转账) */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40EC221BA1BFA00047C3C /* Controller */,
+				7BF40EC321BA1BFA00047C3C /* View */,
+			);
+			path = "BatchTransfer(批量转账)";
+			sourceTree = "<group>";
+		};
+		7BF40EC221BA1BFA00047C3C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BF40EC321BA1BFA00047C3C /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7BF40EC421BA1C2400047C3C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40EC521BA1C3400047C3C /* QSTransactionRecordViewController.h */,
+				7BF40EC621BA1C3400047C3C /* QSTransactionRecordViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BF40ECB21BA1D1A00047C3C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7BF40ECC21BA1D2C00047C3C /* QSTransactionRecordItem.h */,
+				7BF40ECD21BA1D2C00047C3C /* QSTransactionRecordItem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2134,11 +2509,16 @@
 				7BF36DF721A79E7B00B27146 /* UIImage+Corner.m in Sources */,
 				7BF36E2421A79E7B00B27146 /* NSTimer+Block.m in Sources */,
 				7BF36D7021A79A2300B27146 /* QSManageViewController.m in Sources */,
+				7BF40E6221B948C300047C3C /* QSPayAmountAddressCell.m in Sources */,
 				7B7A4C9021ACF7E800598E6F /* QSSettingCell.m in Sources */,
 				7BF36E0021A79E7B00B27146 /* UIView+RadiusMask.m in Sources */,
 				7BF2F85021AE7490000AAD93 /* QSSelectMenuItem.m in Sources */,
+				7BF40E6E21B95A7600047C3C /* QSSelectCurrencyView.m in Sources */,
 				7BF36D5C21A7972500B27146 /* QSBaseTableViewController.m in Sources */,
+				7BF40E6B21B951A100047C3C /* QSBottomButtonView.m in Sources */,
+				7BF40EC721BA1C3400047C3C /* QSTransactionRecordViewController.m in Sources */,
 				7BF36E0521A79E7B00B27146 /* UIView+Screenshot.m in Sources */,
+				7BF40EB921BA17E300047C3C /* QSTransactionSuccessViewController.m in Sources */,
 				7BF36E0721A79E7B00B27146 /* UIFont+FitFont.m in Sources */,
 				7BB8DC3C21B75C6A00954E86 /* YZDisplayTitleLabel.m in Sources */,
 				7B4CA15121A7CBA300F14449 /* UIFont+QSEVTFont.m in Sources */,
@@ -2161,6 +2541,7 @@
 				7BF36D5D21A7972500B27146 /* QSMainViewController.m in Sources */,
 				7BF36DFC21A79E7B00B27146 /* UIButton+Utils.m in Sources */,
 				7B4CA15421A7CBB400F14449 /* UIColor+QSEVTColor.m in Sources */,
+				7BF40ECA21BA1C4400047C3C /* QSTransactionRecordHeaderView.m in Sources */,
 				7BF36D6021A7972500B27146 /* QSRefreshHeader.m in Sources */,
 				7BF36E2221A79E7B00B27146 /* CAGradientLayer+NIPExtension.m in Sources */,
 				7BF2F84021AE6F17000AAD93 /* QSManageAddressViewController.m in Sources */,
@@ -2169,6 +2550,7 @@
 				7BF36D5F21A7972500B27146 /* QSBaseModel.m in Sources */,
 				7BF2F89821B0D7D4000AAD93 /* QSSystemSettingsViewController.m in Sources */,
 				7BF36DFE21A79E7B00B27146 /* UIColor+Hex.m in Sources */,
+				7BF40E9021B9FD3B00047C3C /* QSScannerBackgroundView.m in Sources */,
 				7BF36E1821A79E7B00B27146 /* NSData+Base64.m in Sources */,
 				7BB8DC3D21B75C6A00954E86 /* YZFlowLayout.m in Sources */,
 				7BB8DC4221B75DEA00954E86 /* QSImportWalletIndexViewController.m in Sources */,
@@ -2187,12 +2569,15 @@
 				7BF36E2521A79E7B00B27146 /* NSDate+Utilities.m in Sources */,
 				7BF36D6A21A79A0A00B27146 /* QSMarketViewController.m in Sources */,
 				7BF2F87E21AFD53F000AAD93 /* QSJoinCommunitiesViewController.m in Sources */,
+				7BF40E8121B966B900047C3C /* QSPayInfoItem.m in Sources */,
+				7BF40E7E21B9665200047C3C /* QSPayInfoCell.m in Sources */,
 				7B6CDC7221AB9CF8008A6FAF /* QSHomeMyFTsCell.m in Sources */,
 				7BB8DC3E21B75C6A00954E86 /* UIView+YZFrame.m in Sources */,
 				7BF2F87321AFC54E000AAD93 /* QSImportAddressViewController.m in Sources */,
 				7BF36E0621A79E7B00B27146 /* UICollectionViewCell+Extensions.m in Sources */,
 				7BF36E1C21A79E7B00B27146 /* NSString+Base64.m in Sources */,
 				7BF36E2621A79E7B00B27146 /* NSDate+Extension.m in Sources */,
+				7BF40E7B21B965E200047C3C /* QSPayInfoViewController.m in Sources */,
 				7BF2F8B421B10D52000AAD93 /* QSNodeSettingViewController.m in Sources */,
 				7BF2F88B21AFE3FA000AAD93 /* QSHelpCenterFunctionOverviewCell.m in Sources */,
 				7BF36DF921A79E7B00B27146 /* UIImage+QRCode.m in Sources */,
@@ -2203,25 +2588,30 @@
 				7BF36E0921A79E7B00B27146 /* UIViewController+Alert.m in Sources */,
 				7B4CA15821A7D27E00F14449 /* QSTabBar.m in Sources */,
 				7B8B314E21B4C2B200028D17 /* QSMyWalletViewController.m in Sources */,
+				7BF40E6521B94C6000047C3C /* QSPayAmountInputCell.m in Sources */,
 				7BF36E0E21A79E7B00B27146 /* UITabBar+Badge.m in Sources */,
 				7BF2F85721AE80A3000AAD93 /* QSManageAddressCell.m in Sources */,
 				7BF36E0421A79E7B00B27146 /* UIView+HUD.m in Sources */,
 				7BB8DC7121B76F4E00954E86 /* QSQRCodeScanItem.m in Sources */,
 				7BF2F8C521B1228F000AAD93 /* QSShareHelper.m in Sources */,
 				7BF36D6721A799ED00B27146 /* QSHomePropertyViewController.m in Sources */,
+				7BF40E5F21B9465D00047C3C /* QSPayAmountBalanceCell.m in Sources */,
 				7BF36E1B21A79E7B00B27146 /* NSString+Hash.m in Sources */,
 				7B8B314F21B4C2B200028D17 /* QSMyWalletSectionHeaderView.m in Sources */,
 				7BF36E1421A79E7B00B27146 /* NSData+ImageCompress.m in Sources */,
 				7BF2F8AF21B10AF7000AAD93 /* QSCurrencySettingsViewController.m in Sources */,
 				7BD9C48321B6A50000A16A99 /* QSWalletContentItem.m in Sources */,
+				7BF40E7421B95D3B00047C3C /* QSSelectCurrencyCell.m in Sources */,
 				7BF36E1921A79E7B00B27146 /* NSURL+Params.m in Sources */,
 				7BF2F89B21B0D7EE000AAD93 /* QSLanguageSettingViewController.m in Sources */,
 				7B8B316A21B5164800028D17 /* QSExportMnemonicViewController.m in Sources */,
+				7BF40EB421BA129C00047C3C /* QSEveriPayCollectSuccessViewController.m in Sources */,
 				7BB8DC8321B7826900954E86 /* QSQRCodeBottomToolBar.m in Sources */,
 				7BF36DFB21A79E7B00B27146 /* UILabel+Utils.m in Sources */,
 				7BF36E1521A79E7B00B27146 /* NSData+Hash.m in Sources */,
 				7B7A4C9321AD18B400598E6F /* UITableViewCell+QSSectionCorner.m in Sources */,
 				7BF36E0F21A79E7B00B27146 /* UINavigationController+Extensions.m in Sources */,
+				7BF40E8A21B9FCB600047C3C /* QSScannerViewController.m in Sources */,
 				7BF2F8A621B1025D000AAD93 /* QSLanguageConfigHelper.m in Sources */,
 				7BB8DC6D21B76E6B00954E86 /* QSCollectCodeViewController.m in Sources */,
 				7BF36D5E21A7972500B27146 /* QSBaseViewController.m in Sources */,
@@ -2231,24 +2621,34 @@
 				7B4CA16821A7EDC500F14449 /* QSPropertyHomeSwipeCell.m in Sources */,
 				7BB8DC2E21B757DF00954E86 /* QSImportWalletByPrivateKeyViewController.m in Sources */,
 				7BF36D6121A7972500B27146 /* QSRefreshFooter.m in Sources */,
+				7BF40E8D21B9FD3100047C3C /* QSScannerView.m in Sources */,
 				7BF36D6221A7972500B27146 /* main.m in Sources */,
 				7BF2F8A221B0DC68000AAD93 /* QSSettingLanguageItem.m in Sources */,
 				7BD9C47D21B6A3BB00A16A99 /* QSWalletDetailViewController.m in Sources */,
+				7BF40ECE21BA1D2C00047C3C /* QSTransactionRecordItem.m in Sources */,
 				7B8B315A21B5028200028D17 /* QSModifyPasswordViewController.m in Sources */,
 				7BB8DC8A21B79D9C00954E86 /* QSEveriPayCodeViewController.m in Sources */,
+				7BF40E5C21B9447700047C3C /* QSPayAmountSeletPayWayCell.m in Sources */,
 				7BF36E2321A79E7B00B27146 /* NSArray+SafeAccess.m in Sources */,
 				7BF36E2B21A7A3D800B27146 /* AppDelegate.m in Sources */,
 				7BF2F8CB21B12732000AAD93 /* QSAboutusViewController.m in Sources */,
+				7BF40E9321B9FF0500047C3C /* QSScanningViewController.m in Sources */,
 				7BF2F89E21B0DA32000AAD93 /* QSLanguageSettingCell.m in Sources */,
 				7BD9C47621B69DA100A16A99 /* QSAddWalletViewController.m in Sources */,
+				7BF40EAB21BA120400047C3C /* QSEveriPayCollectAmountViewController.m in Sources */,
 				7BF2F86321AE9A1D000AAD93 /* QSAddAddressCell+QSAddAddressType.m in Sources */,
 				7BF36E1F21A79E7B00B27146 /* NSString+Contains.m in Sources */,
 				7BB8DC7421B7702600954E86 /* QSQRCodeScanTipsCell.m in Sources */,
+				7BF40EAC21BA120400047C3C /* QSEveriPayCollectCurrencyItem.m in Sources */,
+				7BF40ED421BA23D900047C3C /* QSTransactionRecordTitleCell.m in Sources */,
+				7BF40E6821B94F8400047C3C /* QSPayAmountItem.m in Sources */,
 				7BF36E0C21A79E7B00B27146 /* UIViewController+Root.m in Sources */,
 				7BF2F82D21AE37D6000AAD93 /* QSBaseTableViewCell.m in Sources */,
+				7BF40E5B21B9447700047C3C /* QSPayAmountViewController.m in Sources */,
 				7BF2F8D221B133D0000AAD93 /* QSBaseCellItem.m in Sources */,
 				7BF2F86A21AE9A7B000AAD93 /* QSAddAddressItem.m in Sources */,
 				7B4CA16521A7E7BE00F14449 /* QSTopImageBottomLabelButton.m in Sources */,
+				7BF40EAD21BA120400047C3C /* QSEveriPayCollectCurrencyCell.m in Sources */,
 				7BF2F86D21AF8091000AAD93 /* QSAddAddressCell+QSAddAddressInput.m in Sources */,
 				7BF36DFD21A79E7B00B27146 /* UIColor+Gradient.m in Sources */,
 				7BF2F8A921B102F4000AAD93 /* NSBundle+QSLanguageUtils.m in Sources */,
@@ -2258,11 +2658,13 @@
 				7B6CDC6E21AB7E65008A6FAF /* QSHomeMyNFTsViewController.m in Sources */,
 				7BF36D7321A79A3300B27146 /* QSMineViewController.m in Sources */,
 				7BF36D6D21A79A1700B27146 /* QSSwitchWalletViewController.m in Sources */,
+				7BF40ED121BA1D4000047C3C /* QSTransactionRecordCell.m in Sources */,
 				7BF2F86621AE9A34000AAD93 /* QSAddAddressCell+QSAddAddressScan.m in Sources */,
 				7BB8DC3F21B75C6A00954E86 /* YZDisplayViewController.m in Sources */,
 				7BF36E0821A79E7B00B27146 /* UIBarButtonItem+Actions.m in Sources */,
 				7BF2F88821AFE1BD000AAD93 /* QSHelpCenterOverViewItem.m in Sources */,
 				7BD9C48E21B6B49400A16A99 /* QSSelectWalletTypeViewController.m in Sources */,
+				7BF40E8421B969A300047C3C /* QSPayInfoHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

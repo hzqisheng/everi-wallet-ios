@@ -38,6 +38,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (QSBaseCellItem *)itemInIndexPath:(NSIndexPath *)indexPath;
 
+- (void)reloadTableViewData;
+
 @end
 
 NS_ASSUME_NONNULL_END

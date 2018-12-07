@@ -7,6 +7,9 @@
 //
 
 #import "QSEveriPayCodeViewController.h"
+#import "QSScanningViewController.h"
+#import "QSEveriPayCollectAmountViewController.h"
+
 #import "QSQRCodeScanTipsCell.h"
 #import "QSQRCodeAddressCell.h"
 #import "QSQRImageCodeCell.h"
@@ -14,6 +17,11 @@
 #import "QSQRCodeSelectAddressCell.h"
 #import "QSQRCodeMaxPayAmountCell.h"
 #import "QSQRCodeBottomToolBar.h"
+#import "QSSelectCurrencyView.h"
+
+typedef NS_ENUM(NSUInteger, QSEveriPayCodeCellType) {
+    QSEveriPayCodeCellTypeSelectAddress = 1,
+};
 
 @interface QSEveriPayCodeViewController ()
 
@@ -34,6 +42,10 @@
 #pragma mark - **************** Event Response
 - (void)bottomToolBarClickedItemAtIndex:(NSInteger)index {
     DLog(@"%ld",(long)index);
+    if (index == 1) {
+        QSScanningViewController *scan = [[QSScanningViewController alloc] init];
+        [self.navigationController pushViewController:scan animated:YES];
+    }
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
@@ -64,6 +76,7 @@
     QSQRCodeScanItem *selectAddressItem = [[QSQRCodeScanItem alloc] init];
     selectAddressItem.cellIdentifier = NSStringFromClass([QSQRCodeSelectAddressCell class]);
     selectAddressItem.cellHeight = kRealValue(60);
+    selectAddressItem.cellTag = QSEveriPayCodeCellTypeSelectAddress;
     
     QSQRCodeScanItem *maxPayItem = [[QSQRCodeScanItem alloc] init];
     maxPayItem.cellIdentifier = NSStringFromClass([QSQRCodeMaxPayAmountCell class]);
@@ -90,7 +103,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    QSBaseCellItem *item = [self itemInIndexPath:indexPath];
+    if (item.cellTag == QSEveriPayCodeCellTypeSelectAddress) {
+        [QSSelectCurrencyView showSelectCurrencyView];
+    } else {
+        QSEveriPayCollectAmountViewController *collect = [[QSEveriPayCollectAmountViewController alloc] init];
+        [self.navigationController pushViewController:collect animated:YES];
+    }
 }
 
 #pragma mark - **************** Setter Getter

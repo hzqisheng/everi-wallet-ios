@@ -64,6 +64,7 @@ typedef NS_ENUM(NSUInteger, QSExportPrivateKeyType) {
     self.tableView.scrollEnabled = NO;
 }
 
+#pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
 - (Class)getRigisterCellClass {
     return [QSSettingCell class];
 }

@@ -13,10 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol QSBaseTableViewCellProtocol <NSObject>
 
-@optional
+@required
 - (void)configureSubViews;
 - (void)configureCellWithItem:(QSBaseCellItem *)item;
-
 
 @end
 

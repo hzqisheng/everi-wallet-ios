@@ -7,6 +7,9 @@
 //
 
 #import "QSCollectCodeViewController.h"
+#import "QSPayAmountViewController.h"
+#import "QSScanningViewController.h"
+
 #import "QSQRCodeScanTipsCell.h"
 #import "QSQRCodeAddressCell.h"
 #import "QSQRImageCodeCell.h"
@@ -32,6 +35,10 @@
 #pragma mark - **************** Event Response
 - (void)bottomToolBarClickedItemAtIndex:(NSInteger)index {
     DLog(@"%ld",(long)index);
+    if (index == 1) {
+        QSScanningViewController *scan = [[QSScanningViewController alloc] init];
+        [self.navigationController pushViewController:scan animated:YES];
+    }
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
@@ -74,7 +81,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    QSPayAmountViewController *payAmount = [[QSPayAmountViewController alloc] init];
+    [self.navigationController pushViewController:payAmount animated:YES];
 }
 
 #pragma mark - **************** Setter Getter

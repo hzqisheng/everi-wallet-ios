@@ -17,7 +17,23 @@
 "qs_btn_home_myfts"   = "My FTs";
 "qs_btn_home_mynfts"  = "My NFTs";
 
-//scan
+//Scan
+"qs_scan_nav_title"                  = "QR code";
+"qs_scan_help_btn_title"             = "Didn't scan the QR code? Get help";
+"qs_scan_scaning_title"              = "Please wait...";
+"qs_scan_scan_failed_title"          = "Scan failed";
+"qs_scan_scan_failed_tips_title"     = "Please try another picture~";
+"qs_scan_scan_failed_confirm_title"  = "Confirm";
+"qs_scan_scan_init_failed_title"     = "Camera initialization failed~";
+
+//Transaction Record
+"qs_transaction_record_item_record_title"        = "Transaction Record";
+"qs_transaction_record_number_title"             = "Quantity";
+]"qs_transaction_record_tansfer_btn_title"        = "Transfer";
+"qs_transaction_record_batch_tansfer_btn_title"  = "Batch transfer";
+"qs_transaction_record_collect_btn_title"        = "Collect";
+
+//Collect
 "qs_collect_item_tips_title"                = "Please scan with the same wallet";
 "qs_collect_item_address_title"             = "Address";
 "qs_collect_btn_copy_address_title"         = "Click QR code to copy the address";
@@ -25,11 +41,48 @@
 "qs_collect_bottom_tool_bar_receive_title"  = "Collection code";
 "qs_collect_bottom_tool_bar_pay_title"      = "Scan collection code";
 
+//TransactionSuccess
+"qs_transaction_success_title"         = "Transaction Success";
+
+//Collect Amount
+"qs_collect_amount_nav_title"                = "Collect";
+"qs_collect_amount_select_payway_tips"       = "Please select the amount you need to receive";
+"qs_collect_amount_item_currency_title"      = "The currency you need to pay is:";
+"qs_collect_amount_item_amount_title"        = "Amount";
+"qs_collect_amount_item_amount_placeholder"  = "Please enter the amount of the payment";
+"qs_collect_amount_bottom_btn_title"         = "Confirm";
+
+//Collect Success
+"qs_collect_success_bottom_btn_title"         = "OK";
+
+
 //everiPay
-"qs_everipay_bottom_tool_bar_code_title"    = "everiPay";
-"qs_everipay_bottom_tool_bar_scan_title"    = "Scan pay code";
-"qs_everipay_item_selected_wallet_title"    = "Choose this method to make a payment";
-"qs_everipay_item_max_pay_title"            = "MaxPayAmount";
+"qs_everipay_bottom_tool_bar_code_title"     = "everiPay";
+"qs_everipay_bottom_tool_bar_scan_title"     = "Scan pay code";
+"qs_everipay_item_selected_wallet_title"     = "Choose this method to make a payment";
+"qs_everipay_item_max_pay_title"             = "MaxPayAmount";
+"qs_everipay_select_address_popupview_title" = "Please select the token";
+
+//Pay Amount
+"qs_pay_amount_nav_title"                = "everiPay";
+"qs_pay_amount_select_payway_tips"       = "Please select currency to make payment";
+"qs_pay_amount_item_balance_title"       = "Balance";
+"qs_pay_amount_item_address_title"       = "Address";
+"qs_pay_amount_item_address_placeholder" = "Please select currency to make payment";
+"qs_pay_amount_item_amount_title"        = "Amount";
+"qs_pay_amount_item_amount_placeholder"  = "Please enter the payment amount";
+"qs_pay_amount_item_remarks_title"       = "Remarks";
+"qs_pay_amount_item_remarks_placeholder" = "Please enter a note";
+"qs_pay_amount_bottom_btn_title"         = "Next";
+
+//Pay Info
+"qs_pay_info_nav_title"                = "Payment";
+"qs_pay_info_item_payer_title"         = "Payer";
+"qs_pay_info_item_beneficiary_title"   = "Beneficiary";
+"qs_pay_info_item_remark_title"        = "Remarks";
+"qs_pay_info_item_no_remark_title"     = "No Remarks";
+"qs_pay_info_item_fee_title"           = "Transfer fee";
+"qs_pay_info_btn_confirm_title"        = "Confirm";
 
 //Me
 "qs_me_item_managewallet"    = "Manage Wallet";

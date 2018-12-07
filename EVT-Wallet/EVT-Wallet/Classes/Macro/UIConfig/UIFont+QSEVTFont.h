@@ -18,9 +18,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIFont *)qs_fontOfSize15;
 + (UIFont *)qs_fontOfSize16;
 + (UIFont *)qs_fontOfSize18;
++ (UIFont *)qs_fontOfSize19;
 
++ (UIFont *)qs_boldFontOfSize15;
 + (UIFont *)qs_boldFontOfSize16;
-
++ (UIFont *)qs_boldFontOfSize17;
 
 @end
 

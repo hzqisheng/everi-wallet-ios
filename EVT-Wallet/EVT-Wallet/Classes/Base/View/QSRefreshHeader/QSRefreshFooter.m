@@ -17,8 +17,8 @@
         //        [self setImages:@[[UIImage imageNamed:@"load1"], [UIImage imageNamed:@"load2"], [UIImage imageNamed:@"load3"]]  forState:MJRefreshStatePulling];
         //        [self setImages:@[[UIImage imageNamed:@"load1"], [UIImage imageNamed:@"load2"], [UIImage imageNamed:@"load3"]]  forState:MJRefreshStateIdle];
         
-        [self setTitle:@"正在加载..." forState:MJRefreshStateRefreshing];
-        [self setTitle:@"已经拉到底啦~" forState:MJRefreshStateNoMoreData];
+//        [self setTitle:@"正在加载..." forState:MJRefreshStateRefreshing];
+//        [self setTitle:@"已经拉到底啦~" forState:MJRefreshStateNoMoreData];
 
         self.stateLabel.textColor = [UIColor blackColor];
         self.stateLabel.font = [UIFont systemFontOfSize:14.0f];
