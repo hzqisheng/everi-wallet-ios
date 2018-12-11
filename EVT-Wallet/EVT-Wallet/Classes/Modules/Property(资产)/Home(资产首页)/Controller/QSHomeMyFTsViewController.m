@@ -30,22 +30,30 @@ static NSString *reuseIdentifier = @"QSHomeMyFTsCell";
     self.tableView.tableHeaderView = headerView;
     [self.tableView registerClass:[QSHomeMyFTsCell class] forCellReuseIdentifier:reuseIdentifier];
     [self addRefreshHeader];
+    [self startRefreshing];
 }
 
 - (void)tableViewShouldUpdateDataByPageIndex:(NSInteger)pageIndex {
-    [self endRefreshing];
+    [[QSEveriApiWebViewController sharedWebView] getFungibleBalanceWithAddress:@"EVT5qn48E8eZKJb5yM24bgC1m8MdRFg5eBU76cQfDXBGXr3UYjLvY" andCompeleteBlock:^(NSInteger statusCode, NSArray<NSString *> * _Nonnull fungibleBalances) {
+        if (statusCode == kResponseSuccessCode) {
+            [self.dataArray removeAllObjects];
+            [self.dataArray addObjectsFromArray:fungibleBalances];
+            [self.tableView reloadData];
+        }
+        [self endRefreshing];
+    }];
 }
 
 #pragma mark - **************** UITableViewDataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     QSHomeMyFTsCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-    
+    cell.amountNameString = self.dataArray[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.dataArray.count;
 }
 
 #pragma mark - **************** UITableViewDelegate
@@ -58,7 +66,5 @@ static NSString *reuseIdentifier = @"QSHomeMyFTsCell";
     record.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:record animated:YES];
 }
-
-
 
 @end

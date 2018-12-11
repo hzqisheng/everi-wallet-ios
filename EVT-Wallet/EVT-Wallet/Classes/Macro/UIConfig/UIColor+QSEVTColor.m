@@ -18,6 +18,10 @@
     return [UIColor colorWithHexString:@"#313745"];
 }
 
++ (UIColor *)qs_colorBlack14161A {
+    return [UIColor colorWithHexString:@"#14161A"];
+}
+
 + (UIColor *)qs_colorWhiteFFFFFF {
     return [UIColor colorWithHexString:@"#FFFFFF"];
 }

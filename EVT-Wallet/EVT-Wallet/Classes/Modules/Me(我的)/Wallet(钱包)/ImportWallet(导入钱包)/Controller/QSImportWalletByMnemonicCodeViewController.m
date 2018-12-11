@@ -82,7 +82,31 @@
 
 #pragma mark - **************** Event Response
 - (void)comfirmButtonClicked {
+    if (!self.mnemonicCodeTextView.text.length) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_import_wallet_error_tips")];
+        return;
+    }
+    if (!self.freshPwdTextfield.text.length) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_import_wallet_error_pwd_tips")];
+        return;
+    }
+    if (!self.comfirmPwdTextfield.text.length) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_import_wallet_error_pwd_tips")];
+        return;
+    }
+    if (![self.comfirmPwdTextfield.text isEqualToString:self.freshPwdTextfield.text]) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_import_wallet_error_pwd_tips")];
+        return;
+    }
     
+    [[QSEveriApiWebViewController sharedWebView] importEVTWalletWithMnemoinc:self.mnemonicCodeTextView.text
+                                                                    password:self.freshPwdTextfield.text
+                                                           andCompeleteBlock:^(NSInteger statusCode, QSCreateEvt * _Nonnull EvtModel)
+     {
+         if (statusCode == kResponseSuccessCode) {
+             [[QSWalletHelper sharedHelper] loginWithEvt:EvtModel];
+         }
+     }];
 }
 
 #pragma mark - **************** Private Methods

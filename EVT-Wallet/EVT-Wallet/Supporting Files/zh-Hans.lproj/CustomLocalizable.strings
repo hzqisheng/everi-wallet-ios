@@ -17,6 +17,16 @@
 "qs_btn_home_myfts"   = "我的代币";
 "qs_btn_home_mynfts"  = "我的通证";
 
+//Isssue
+"qs_issue_ft_pop_up_title"       = "发行代币";
+"qs_issue_ft_pop_up_content"     = "适合积分、点数、标准化资产等";
+"qs_issue_nft_pop_up_title"      = "发行通证";
+"qs_issue_nft_pop_up_content"    = "适合票据、房产等具有唯一性的资产/权益";
+
+//SelectFT
+"qs_select_ft_nav_titlte"   = "选择代币";
+"qs_select_ft_btn_titlte"   = "创建代币";
+
 //Scan
 "qs_scan_nav_title"                  = "二维码";
 "qs_scan_help_btn_title"             = "未扫描到二维码？获取帮助";
@@ -134,6 +144,9 @@
 "qs_import_wallet_key_store_tips_title"         = "直接复制粘贴钱包Keystore文件内容至输入框";
 "qs_import_wallet_key_store_content_placeholder"= "请输入私钥文本内容";
 "qs_import_wallet_key_store_pwd_placeholder"    = "Keystore密码";
+
+"qs_import_wallet_error_tips"     = "请输入有效的助记词";
+"qs_import_wallet_error_pwd_tips" = "请输入正确的密码";
 
 //Export Mnemonic Code
 "qs_export_mnemonic_code_nav_title"                    = "导出助记词";

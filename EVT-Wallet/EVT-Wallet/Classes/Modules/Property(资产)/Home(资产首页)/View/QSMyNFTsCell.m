@@ -1,39 +1,31 @@
 //
-//  QSHomeMyFTsCell.m
+//  QSMyNFTsCell.m
 //  EVT-Wallet
 //
-//  Created by 孙俊 on 2018/11/26.
+//  Created by 孙俊 on 2018/12/9.
 //  Copyright © 2018 HANGZHOU QISHENG TECHNOLOGY CO.LTD. All rights reserved.
 //
 
-#import "QSHomeMyFTsCell.h"
+#import "QSMyNFTsCell.h"
 
-@interface QSHomeMyFTsCell ()
+@interface QSMyNFTsCell ()
 
-@property (nonatomic, strong) UIImageView *ftImageView;
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *amountLabel;
 @property (nonatomic, strong) UIButton *payButton;
 
 @end
 
-@implementation QSHomeMyFTsCell
+@implementation QSMyNFTsCell
 
 - (void)configureSubViews {
-    [self.contentView addSubview:self.ftImageView];
     [self.contentView addSubview:self.nameLabel];
     [self.contentView addSubview:self.amountLabel];
     [self.contentView addSubview:self.payButton];
-
-    [self.ftImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView).offset(kRealValue(21));
-        make.centerY.equalTo(self.contentView);
-        make.width.and.height.equalTo(@kRealValue(33));
-    }];
     
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.ftImageView);
-        make.left.equalTo(self.ftImageView.mas_right).offset(kRealValue(9));
+        make.top.equalTo(@kRealValue(17));
+        make.left.equalTo(self.contentView).offset(kRealValue(21));
         make.right.equalTo(self.payButton.mas_left).offset(-kRealValue(9));
         make.height.equalTo(@([UIFont qs_fontOfSize14].lineHeight));
     }];
@@ -59,14 +51,6 @@
 }
 
 #pragma mark - **************** Setter Getter
-- (UIImageView *)ftImageView {
-    if (!_ftImageView) {
-        _ftImageView = [[UIImageView alloc] init];
-        _ftImageView.image = [UIImage imageNamed:@"icon_home_pevt"];
-    }
-    return _ftImageView;
-}
-
 - (UILabel *)nameLabel {
     if (!_nameLabel) {
         _nameLabel = [UILabel labelWithName:@"PEVT(#2)" font:[UIFont qs_fontOfSize14] textColor:[UIColor qs_colorBlack333333] textAlignment:NSTextAlignmentLeft];
@@ -88,14 +72,12 @@
     return _payButton;
 }
 
-- (void)setAmountNameString:(NSString *)amountNameString {
-    _amountNameString = amountNameString;
-    NSArray *amoutNameList = [amountNameString componentsSeparatedByString:@" "];
-    if (amoutNameList.count < 2) {
-        return;
-    }
-    _amountLabel.text = amoutNameList[0];
-    _nameLabel.text = amoutNameList[1];
+- (void)setOwnedToken:(QSOwnedToken *)ownedToken {
+    _ownedToken = ownedToken;
+    
+    self.nameLabel.text = ownedToken.name;
+    
+    self.amountLabel.text = ownedToken.domain;
 }
 
 @end

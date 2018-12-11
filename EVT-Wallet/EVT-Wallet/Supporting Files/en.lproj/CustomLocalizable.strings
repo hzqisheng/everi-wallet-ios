@@ -17,6 +17,19 @@
 "qs_btn_home_myfts"   = "My FTs";
 "qs_btn_home_mynfts"  = "My NFTs";
 
+//Isssue
+"qs_issue_ft_pop_up_title"       = "Issue FTs";
+"qs_issue_ft_pop_up_content"     = "Like Points,Scores and other standardized assets";
+"qs_issue_nft_pop_up_title"      = "Issue NFTs";
+"qs_issue_nft_pop_up_content"    = "Like Tickets,property and other unique assets/rights";
+
+//SelectFT
+"qs_select_ft_nav_titlte"   = "Unissued";
+"qs_select_ft_btn_titlte"   = "Create Coin";
+
+//Create Coin
+
+
 //Scan
 "qs_scan_nav_title"                  = "QR code";
 "qs_scan_help_btn_title"             = "Didn't scan the QR code? Get help";
@@ -29,7 +42,7 @@
 //Transaction Record
 "qs_transaction_record_item_record_title"        = "Transaction Record";
 "qs_transaction_record_number_title"             = "Quantity";
-]"qs_transaction_record_tansfer_btn_title"        = "Transfer";
+"qs_transaction_record_tansfer_btn_title"        = "Transfer";
 "qs_transaction_record_batch_tansfer_btn_title"  = "Batch transfer";
 "qs_transaction_record_collect_btn_title"        = "Collect";
 
@@ -135,6 +148,9 @@
 "qs_import_wallet_key_store_tips_title"         = "Copy the Keystore to Input Box";
 "qs_import_wallet_key_store_content_placeholder"= "Keystore Content";
 "qs_import_wallet_key_store_pwd_placeholder"    = "KeystorePassword";
+
+"qs_import_wallet_error_tips"     = "Please enter a valid mnemonic";
+"qs_import_wallet_error_pwd_tips" = "Please enter the correct password";
 
 
 //Export Mnemonic Code

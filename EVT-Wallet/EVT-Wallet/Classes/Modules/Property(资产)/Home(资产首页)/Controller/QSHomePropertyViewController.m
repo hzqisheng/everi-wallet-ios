@@ -12,11 +12,13 @@
 #import "QSCollectCodeViewController.h"
 #import "QSEveriPayCodeViewController.h"
 #import "QSScanningViewController.h"
+#import "QSSelectFTViewController.h"
 
 #import "QSPropetyHomeSwipeView.h"
 #import "QSPropertyHomeSwipeCell.h"
 #import "QSPropetyHomeSegmentView.h"
 #import "QSPropetyHomeShortcutView.h"
+#import "QSIssuePopupView.h"
 
 @interface QSHomePropertyViewController ()
 <QSSwipeDelegate,
@@ -153,6 +155,16 @@ UIScrollViewDelegate>
         QSScanningViewController *scan = [[QSScanningViewController alloc] init];
         scan.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:scan animated:YES];
+    } else if (type == QSShortcutTypeIssue) {
+        [QSIssuePopupView showIssuePopupViewAndIssueClickedBlock:^(QSIssueType type) {
+            if (type == QSIssueTypeFTS) {
+                QSSelectFTViewController *selectFT = [[QSSelectFTViewController alloc] init];
+                selectFT.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:selectFT animated:YES];
+            } else if (type == QSIssueTypeNFTS) {
+                
+            }
+        }];
     }
 }
 

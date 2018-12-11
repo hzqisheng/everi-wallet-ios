@@ -15,13 +15,16 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    self.window = [[UIWindow alloc] initWithFrame:kScreenBounds];
-    self.window.rootViewController = [[QSMainViewController alloc] init];
-    [self.window makeKeyAndVisible];
-    
+    QSEveriApiWebViewController *web = [QSEveriApiWebViewController sharedWebView];
+    __weak __typeof(&*web) weakSelf = web;
+    web.initSuccessBlock = ^{
+        self.window = [[UIWindow alloc] initWithFrame:kScreenBounds];
+        self.window.rootViewController = [[QSMainViewController alloc] init];
+        [self.window makeKeyAndVisible];
+        [QSAppWindow insertSubview:weakSelf.view atIndex:0];
+    };
+    [QSAppWindow insertSubview:web.view atIndex:0];
     return YES;
 }
 

@@ -22,6 +22,9 @@
 #import "UtilsMacro.h"
 #import "AppConfig.h"
 
+#import "QSWalletHelper.h"
+#import "QSEveriApiWebViewController.h"
+
 /** podfiles */
 #import <MJRefresh.h>
 #import <MJExtension.h>

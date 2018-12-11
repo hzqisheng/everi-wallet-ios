@@ -120,4 +120,6 @@
     QSBaseCellItem *item = [self itemInIndexPath:indexPath];
     return item.cellHeight;
 }
+
+
 @end

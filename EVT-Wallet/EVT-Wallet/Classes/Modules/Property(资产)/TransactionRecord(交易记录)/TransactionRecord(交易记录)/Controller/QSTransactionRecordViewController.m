@@ -7,7 +7,10 @@
 //
 
 #import "QSTransactionRecordViewController.h"
+#import "QSBatchTransferViewController.h"
+
 #import "QSTransactionRecordHeaderView.h"
+#import "QSTransactionRecordBottomToolBar.h"
 #import "QSTransactionRecordCell.h"
 #import "QSTransactionRecordTitleCell.h"
 #import "QSTransactionRecordItem.h"
@@ -19,6 +22,7 @@
 
 @property (nonatomic, strong) UIView *navigationBar;
 @property (nonatomic, strong) QSTransactionRecordHeaderView *headerView;
+@property (nonatomic, strong) QSTransactionRecordBottomToolBar *bottomToolBar;
 
 @end
 
@@ -37,14 +41,29 @@
     [self.view insertSubview:self.headerView atIndex:0];
     
     //tableView
-    self.tableView.height = kScreenHeight;
+    self.tableView.height = kScreenHeight - [QSTransactionRecordBottomToolBar toolBarHeight];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.contentInset = UIEdgeInsetsMake(kTableViewTopEdgeInset, 0, 0, 0);
+    
+    //toolBar
+    self.bottomToolBar.frame = CGRectMake(0, kScreenHeight - [QSTransactionRecordBottomToolBar toolBarHeight], kScreenWidth, [QSTransactionRecordBottomToolBar toolBarHeight]);
+    [self.view addSubview:self.bottomToolBar];
 }
 
 #pragma mark - **************** Event Response
 - (void)back {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)bottomToolBarClickedAtIndex:(NSInteger)index {
+    if (index == 0) {
+        
+    } else if (index == 1) {
+        QSBatchTransferViewController *batchTransfer = [[QSBatchTransferViewController alloc] init];
+        [self.navigationController pushViewController:batchTransfer animated:YES];
+    } else if (index == 2) {
+        
+    }
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
@@ -99,5 +118,16 @@
     return _navigationBar;
 }
 
+- (QSTransactionRecordBottomToolBar *)bottomToolBar {
+    if (!_bottomToolBar) {
+        _bottomToolBar = [[QSTransactionRecordBottomToolBar alloc] init];
+        @weakify(self);
+        _bottomToolBar.toolBarClickedBlock = ^(NSInteger index) {
+            @strongify(self);
+            [self bottomToolBarClickedAtIndex:index];
+        };
+    }
+    return _bottomToolBar;
+}
 
 @end

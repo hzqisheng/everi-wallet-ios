@@ -1,23 +1,24 @@
 //
-//  QSHomeMyFTsCell.h
+//  QSMyNFTsCell.h
 //  EVT-Wallet
 //
-//  Created by 孙俊 on 2018/11/26.
+//  Created by 孙俊 on 2018/12/9.
 //  Copyright © 2018 HANGZHOU QISHENG TECHNOLOGY CO.LTD. All rights reserved.
 //
 
 #import "QSBaseTableViewCell.h"
-@class QSHomeMyFTsCell;
+#import "QSOwnedToken.h"
+@class QSMyNFTsCell;
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void(^EveriPayClickedBlock)(QSHomeMyFTsCell *cell);
+typedef void(^EveriPayClickedBlock)(QSMyNFTsCell *cell);
 
-@interface QSHomeMyFTsCell : QSBaseTableViewCell
+@interface QSMyNFTsCell : QSBaseTableViewCell
 
 @property (nonatomic, copy) EveriPayClickedBlock everiPayClickedBlock;
 
-@property (nonatomic, copy) NSString *amountNameString;
+@property (nonatomic, strong) QSOwnedToken *ownedToken;
 
 @end
 
