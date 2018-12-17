@@ -49,29 +49,6 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
             self.initSuccessBlock();
         }
     }];
-    //    [self getOwnedTokensWithPublicKeys:[QSWalletHelper sharedHelper].currentEvt.publicKey andCompeleteBlock:^(NSInteger statusCode, NSArray<QSOwnedToken *> * _Nonnull ownedTokens) {
-//        
-//    }];
-     
-     //    [self createEvtWalletWithPassword:@"12345678" andCompeleteBlock:^(NSInteger statusCode, QSCreateEvt * _Nonnull EvtModel) {
-     //        if (statusCode == kResponseSuccessCode) {
-//            DLog(@"收到模型11:%@",EvtModel);
-//        }
-//    }];
-//
-//    [self importEVTWalletWithMnemoinc:@"unfold peanut private luggage wrap arena combine actual awkward other color imitate" password:@"12345678" andCompeleteBlock:^(NSInteger statusCode, QSCreateEvt *EvtModel) {
-//        if (statusCode == kResponseSuccessCode) {
-//            DLog(@"收到模型22:%@",EvtModel);
-//        }
-//    }];
-//
-    
-//    [self pushTransactionAndCompeleteBlock:^(NSInteger statusCode, QSFungibleSymbol * _Nonnull fungibleSymbol) {
-//
-//    }];
-//    [self getFungibleBalanceWithAddress:[QSWalletHelper sharedHelper].currentEvt.publicKey andCompeleteBlock:^(NSInteger statusCode, NSArray<NSString *> * _Nonnull fungibleBalances) {
-//
-//    }];
 }
 
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
