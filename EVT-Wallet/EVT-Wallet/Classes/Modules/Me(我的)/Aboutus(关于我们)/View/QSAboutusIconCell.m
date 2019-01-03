@@ -19,14 +19,15 @@
 - (void)configureCellWithItem:(QSSettingItem *)item {
     self.item = item;
     [self.contentView addSubview:self.appIconImageView];
-    CGFloat appIconWH = kRealValue(90);
-    self.appIconImageView.frame = CGRectMake(item.cellWidth/2 - appIconWH/2, item.cellHeight/2 - appIconWH/2, appIconWH, appIconWH);
+    CGFloat appIconWH = kRealValue(198);
+    CGFloat appIconHE = kRealValue(53);
+    self.appIconImageView.frame = CGRectMake(item.cellWidth/2 - appIconWH/2, item.cellHeight/2 - appIconHE/2, appIconWH, appIconHE);
 }
 
 - (UIImageView *)appIconImageView {
     if (!_appIconImageView) {
         _appIconImageView = [[UIImageView alloc] init];
-        _appIconImageView.image = [UIImage imageNamed:@"icon_guanyuwomen_logo"];
+        _appIconImageView.image = [UIImage imageNamed:@"icon_guanyuwomen_logo-1"];
     }
     return _appIconImageView;
 }

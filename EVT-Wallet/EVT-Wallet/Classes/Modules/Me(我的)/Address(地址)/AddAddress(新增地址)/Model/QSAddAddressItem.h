@@ -11,8 +11,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^TypeClickedBlock)(QSAddAddressCell *cell);
 typedef void(^ScanClickedBlock)(QSAddAddressCell *cell);
 typedef void(^TextFieldTextChangedBlock)(QSAddAddressCell *cell);
+
 
 @interface QSAddAddressItem : QSSettingItem
 
@@ -41,6 +43,9 @@ typedef void(^TextFieldTextChangedBlock)(QSAddAddressCell *cell);
 /** default is 22*22 */
 @property (nonatomic, assign) CGSize scanButtonSize;
 @property (nonatomic, copy) ScanClickedBlock scanClickedBlock;
+
+@property (nonatomic, copy) TypeClickedBlock typeClickedBlock;
+
 /** default is NO */
 @property (nonatomic, assign) BOOL showScanButton;
 

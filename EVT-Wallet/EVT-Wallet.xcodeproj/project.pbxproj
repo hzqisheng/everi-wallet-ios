@@ -16,7 +16,6 @@
 		7B0D184C21BCFB1D00550756 /* QSAuthorizers.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D184B21BCFB1D00550756 /* QSAuthorizers.m */; };
 		7B0D184F21BCFBA100550756 /* QSFungibleManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D184E21BCFBA100550756 /* QSFungibleManage.m */; };
 		7B0D185521BD04A000550756 /* QSWalletHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D185421BD04A000550756 /* QSWalletHelper.m */; };
-		7B0D185921BD239500550756 /* dist in Resources */ = {isa = PBXBuildFile; fileRef = 7B0D185821BD239500550756 /* dist */; };
 		7B0D185C21BD284D00550756 /* QSMyNFTsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D185B21BD284D00550756 /* QSMyNFTsCell.m */; };
 		7B0D186221BDF85700550756 /* QSIssuePopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D186121BDF85700550756 /* QSIssuePopupView.m */; };
 		7B0D187021BE038C00550756 /* QSSelectFTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D186F21BE038C00550756 /* QSSelectFTViewController.m */; };
@@ -190,6 +189,68 @@
 		7BF40ED721BA3FC700047C3C /* QSTransactionRecordBottomToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40ED621BA3FC700047C3C /* QSTransactionRecordBottomToolBar.m */; };
 		7BF40EDA21BA44DA00047C3C /* QSBatchTransferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40ED921BA44DA00047C3C /* QSBatchTransferViewController.m */; };
 		7BF40EDD21BA451700047C3C /* QSSelectAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40EDC21BA451700047C3C /* QSSelectAddressViewController.m */; };
+		D20F61A821CB9E0300E32D1E /* QSTransferftModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D20F61A721CB9E0300E32D1E /* QSTransferftModel.m */; };
+		D20F61AB21CB9E7A00E32D1E /* QSTransferftData.m in Sources */ = {isa = PBXBuildFile; fileRef = D20F61AA21CB9E7A00E32D1E /* QSTransferftData.m */; };
+		D24259D121C1F0BA00896BC7 /* QSIssueSettingEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D24259D021C1F0BA00896BC7 /* QSIssueSettingEditViewController.m */; };
+		D24259D721C1F8BC00896BC7 /* QSBatchCreateNFTSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D24259D621C1F8BC00896BC7 /* QSBatchCreateNFTSViewController.m */; };
+		D24259DA21C1FF3400896BC7 /* QSBatchCreateNFTSTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = D24259D921C1FF3400896BC7 /* QSBatchCreateNFTSTopView.m */; };
+		D24259DD21C230AF00896BC7 /* QSBatchCreateNFTSCenterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D24259DC21C230AF00896BC7 /* QSBatchCreateNFTSCenterView.m */; };
+		D24259E021C23FBB00896BC7 /* QSBatchCreateNFTsBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = D24259DF21C23FBB00896BC7 /* QSBatchCreateNFTsBottomView.m */; };
+		D24259E621C24ED500896BC7 /* QSMyGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D24259E521C24ED500896BC7 /* QSMyGroupViewController.m */; };
+		D24259E921C2533000896BC7 /* QSManageMyGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D24259E821C2533000896BC7 /* QSManageMyGroupCell.m */; };
+		D24259ED21C2545000896BC7 /* QSManageMyGroupItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D24259EC21C2545000896BC7 /* QSManageMyGroupItem.m */; };
+		D24FBFC021D4B16300900C16 /* dist in Resources */ = {isa = PBXBuildFile; fileRef = D24FBFBF21D4B16300900C16 /* dist */; };
+		D296C1AC21CCD3F4005D1EF8 /* QSLogoutAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D296C1AB21CCD3F4005D1EF8 /* QSLogoutAlertView.m */; };
+		D29A8CFF21C699A700D6B8DA /* QSNFT.m in Sources */ = {isa = PBXBuildFile; fileRef = D29A8CFE21C699A700D6B8DA /* QSNFT.m */; };
+		D29A8D0221C69A5200D6B8DA /* QSNFTTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = D29A8D0121C69A5200D6B8DA /* QSNFTTransfer.m */; };
+		D2B2EF4721C62AA900ABBB90 /* QSFT.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B2EF4621C62AA900ABBB90 /* QSFT.m */; };
+		D2B2EF4A21C62B3300ABBB90 /* QSFTIssue.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B2EF4921C62B3300ABBB90 /* QSFTIssue.m */; };
+		D2B2EF5021C62CA000ABBB90 /* QSFTManage.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B2EF4F21C62CA000ABBB90 /* QSFTManage.m */; };
+		D2B2EF5321C62D4D00ABBB90 /* QSMetas.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B2EF5221C62D4D00ABBB90 /* QSMetas.m */; };
+		D2B2EF5C21C6555000ABBB90 /* QSPrivatekeyAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B2EF5B21C6555000ABBB90 /* QSPrivatekeyAlertView.m */; };
+		D2D80BF021BFA70D00C1FCBF /* QSSelectFTCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D80BEF21BFA70D00C1FCBF /* QSSelectFTCell.m */; };
+		D2D80BF621BFB97600C1FCBF /* QSCreateFTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D80BF521BFB97600C1FCBF /* QSCreateFTViewController.m */; };
+		D2D80BF921BFBF9900C1FCBF /* QSCreateFTTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D80BF821BFBF9900C1FCBF /* QSCreateFTTextCell.m */; };
+		D2D8D3AD21C7914D000D6644 /* QSScanGetAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D8D3AC21C7914D000D6644 /* QSScanGetAddress.m */; };
+		D2D8D3B021C791BC000D6644 /* QSScanAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D8D3AF21C791BC000D6644 /* QSScanAddress.m */; };
+		D2E1288F21BFDC5000EF8E7E /* QSCreateFTItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E1288E21BFDC5000EF8E7E /* QSCreateFTItem.m */; };
+		D2E1289221BFE59200EF8E7E /* QSCreateFTIconCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E1289121BFE59200EF8E7E /* QSCreateFTIconCell.m */; };
+		D2E1289521BFEA6500EF8E7E /* QSCreateFTIconItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E1289421BFEA6500EF8E7E /* QSCreateFTIconItem.m */; };
+		D2E1289821BFF2B000EF8E7E /* UIViewController+QSSelectPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E1289721BFF2B000EF8E7E /* UIViewController+QSSelectPicture.m */; };
+		D2E8763E21C12CFC0038825B /* QSCreateNFTSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E8763D21C12CFC0038825B /* QSCreateNFTSViewController.m */; };
+		D2E8764121C13EE60038825B /* QSCreateNFTSIssueView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E8764021C13EE60038825B /* QSCreateNFTSIssueView.m */; };
+		D2E8764421C141140038825B /* QSCreateNFTSTransferView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E8764321C141140038825B /* QSCreateNFTSTransferView.m */; };
+		D2E8764721C144280038825B /* QSCreateNFTSManagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E8764621C144280038825B /* QSCreateNFTSManagerView.m */; };
+		D2E8764D21C14D350038825B /* QSCreateNFTSEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E8764C21C14D350038825B /* QSCreateNFTSEditViewController.m */; };
+		D2EE881E21C09A1D000B15E3 /* QSCreateFTAlertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EE881D21C09A1D000B15E3 /* QSCreateFTAlertCell.m */; };
+		D2EE882121C09D45000B15E3 /* QSCreateFTAlertItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EE882021C09D45000B15E3 /* QSCreateFTAlertItem.m */; };
+		D2EE882721C0B8E9000B15E3 /* QSIssueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EE882621C0B8E9000B15E3 /* QSIssueViewController.m */; };
+		D2EE882D21C0BD47000B15E3 /* QSIssueWhiteView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EE882C21C0BD47000B15E3 /* QSIssueWhiteView.m */; };
+		D2EE883321C0E121000B15E3 /* QSIssueMoreSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EE883221C0E121000B15E3 /* QSIssueMoreSettingViewController.m */; };
+		D2EE883621C0E145000B15E3 /* QSIssueMoreSettingTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EE883521C0E145000B15E3 /* QSIssueMoreSettingTopView.m */; };
+		D2EE883921C0EDBA000B15E3 /* QSIssueMoreSettingBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EE883821C0EDBA000B15E3 /* QSIssueMoreSettingBottomView.m */; };
+		D2EE883F21C0F2B5000B15E3 /* QSIssuePermissionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EE883E21C0F2B5000B15E3 /* QSIssuePermissionsViewController.m */; };
+		D2EE884221C0F3DA000B15E3 /* QSIssuePermissionsIssueView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EE884121C0F3DA000B15E3 /* QSIssuePermissionsIssueView.m */; };
+		D2EE884521C0F40E000B15E3 /* QSIssuePermissionsTransferView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EE884421C0F40E000B15E3 /* QSIssuePermissionsTransferView.m */; };
+		D2EE884B21C10231000B15E3 /* QSIssueSelectAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EE884A21C10231000B15E3 /* QSIssueSelectAddressViewController.m */; };
+		D2EE885521C10A7C000B15E3 /* QSMyPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EE885421C10A7C000B15E3 /* QSMyPassViewController.m */; };
+		D2EE885821C10BE9000B15E3 /* QSMyPassCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EE885721C10BE9000B15E3 /* QSMyPassCell.m */; };
+		D2EE885B21C10DAA000B15E3 /* QSBlankPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EE885A21C10DAA000B15E3 /* QSBlankPageView.m */; };
+		D2F392CB21CC83050039959B /* QSLunchImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F392CA21CC83050039959B /* QSLunchImageViewController.m */; };
+		D2F5F67A21C258900079EFD4 /* QSCreateGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5F67921C258900079EFD4 /* QSCreateGroupViewController.m */; };
+		D2F5F67D21C2872D0079EFD4 /* QSManagerSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5F67C21C2872D0079EFD4 /* QSManagerSettingView.m */; };
+		D2F5F68221C34B390079EFD4 /* QSManageNewNodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5F68121C34B390079EFD4 /* QSManageNewNodeViewController.m */; };
+		D2F5F68921C352850079EFD4 /* QSManagerSelectAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5F68821C352850079EFD4 /* QSManagerSelectAddressViewController.m */; };
+		D2F5F68C21C35BCC0079EFD4 /* QSManageSelectAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5F68B21C35BCC0079EFD4 /* QSManageSelectAddressCell.m */; };
+		D2F5F68F21C35FB80079EFD4 /* QSManageSelectAddressItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5F68E21C35FB80079EFD4 /* QSManageSelectAddressItem.m */; };
+		D2F5F69421C38CF70079EFD4 /* QSEnterPublicKeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5F69321C38CF70079EFD4 /* QSEnterPublicKeyViewController.m */; };
+		D2F5F69921C3969D0079EFD4 /* QSEnterJsonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5F69821C3969D0079EFD4 /* QSEnterJsonViewController.m */; };
+		D2F5F69E21C3AFB70079EFD4 /* QSCreateIdentityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5F69D21C3AFB70079EFD4 /* QSCreateIdentityViewController.m */; };
+		D2F5F6A121C4ADA10079EFD4 /* QSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5F6A021C4ADA10079EFD4 /* QSNavigationController.m */; };
+		D2F5F6A621C4BC000079EFD4 /* QSCreateIdentityHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5F6A521C4BC000079EFD4 /* QSCreateIdentityHomeViewController.m */; };
+		D2F5F6AB21C4C70C0079EFD4 /* QSRestoreIdentityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5F6AA21C4C70C0079EFD4 /* QSRestoreIdentityViewController.m */; };
+		D2F5F6B521C531750079EFD4 /* QSAddressHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5F6B421C531750079EFD4 /* QSAddressHelper.m */; };
+		D2F5F6B821C531C60079EFD4 /* QSAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F5F6B721C531C60079EFD4 /* QSAddress.m */; };
 		EE10C624E8B4BF70D84A7BD9 /* libPods-EVT-Wallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D82C8EE4962E7FCFFC68E721 /* libPods-EVT-Wallet.a */; };
 /* End PBXBuildFile section */
 
@@ -229,7 +290,6 @@
 		7B0D184E21BCFBA100550756 /* QSFungibleManage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSFungibleManage.m; sourceTree = "<group>"; };
 		7B0D185321BD04A000550756 /* QSWalletHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSWalletHelper.h; sourceTree = "<group>"; };
 		7B0D185421BD04A000550756 /* QSWalletHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSWalletHelper.m; sourceTree = "<group>"; };
-		7B0D185821BD239500550756 /* dist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dist; sourceTree = "<group>"; };
 		7B0D185A21BD284D00550756 /* QSMyNFTsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSMyNFTsCell.h; sourceTree = "<group>"; };
 		7B0D185B21BD284D00550756 /* QSMyNFTsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSMyNFTsCell.m; sourceTree = "<group>"; };
 		7B0D186021BDF85700550756 /* QSIssuePopupView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSIssuePopupView.h; sourceTree = "<group>"; };
@@ -585,6 +645,129 @@
 		7BF40EDB21BA451700047C3C /* QSSelectAddressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSSelectAddressViewController.h; sourceTree = "<group>"; };
 		7BF40EDC21BA451700047C3C /* QSSelectAddressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSSelectAddressViewController.m; sourceTree = "<group>"; };
 		AD946B9B6BA34BF4BAB1782C /* Pods-EVT-Wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EVT-Wallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-EVT-Wallet/Pods-EVT-Wallet.release.xcconfig"; sourceTree = "<group>"; };
+		D20F61A621CB9E0300E32D1E /* QSTransferftModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSTransferftModel.h; sourceTree = "<group>"; };
+		D20F61A721CB9E0300E32D1E /* QSTransferftModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSTransferftModel.m; sourceTree = "<group>"; };
+		D20F61A921CB9E7A00E32D1E /* QSTransferftData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSTransferftData.h; sourceTree = "<group>"; };
+		D20F61AA21CB9E7A00E32D1E /* QSTransferftData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSTransferftData.m; sourceTree = "<group>"; };
+		D24259CF21C1F0BA00896BC7 /* QSIssueSettingEditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSIssueSettingEditViewController.h; sourceTree = "<group>"; };
+		D24259D021C1F0BA00896BC7 /* QSIssueSettingEditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSIssueSettingEditViewController.m; sourceTree = "<group>"; };
+		D24259D521C1F8BC00896BC7 /* QSBatchCreateNFTSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSBatchCreateNFTSViewController.h; sourceTree = "<group>"; };
+		D24259D621C1F8BC00896BC7 /* QSBatchCreateNFTSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSBatchCreateNFTSViewController.m; sourceTree = "<group>"; };
+		D24259D821C1FF3400896BC7 /* QSBatchCreateNFTSTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSBatchCreateNFTSTopView.h; sourceTree = "<group>"; };
+		D24259D921C1FF3400896BC7 /* QSBatchCreateNFTSTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSBatchCreateNFTSTopView.m; sourceTree = "<group>"; };
+		D24259DB21C230AF00896BC7 /* QSBatchCreateNFTSCenterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSBatchCreateNFTSCenterView.h; sourceTree = "<group>"; };
+		D24259DC21C230AF00896BC7 /* QSBatchCreateNFTSCenterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSBatchCreateNFTSCenterView.m; sourceTree = "<group>"; };
+		D24259DE21C23FBB00896BC7 /* QSBatchCreateNFTsBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSBatchCreateNFTsBottomView.h; sourceTree = "<group>"; };
+		D24259DF21C23FBB00896BC7 /* QSBatchCreateNFTsBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSBatchCreateNFTsBottomView.m; sourceTree = "<group>"; };
+		D24259E421C24ED500896BC7 /* QSMyGroupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSMyGroupViewController.h; sourceTree = "<group>"; };
+		D24259E521C24ED500896BC7 /* QSMyGroupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSMyGroupViewController.m; sourceTree = "<group>"; };
+		D24259E721C2533000896BC7 /* QSManageMyGroupCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSManageMyGroupCell.h; sourceTree = "<group>"; };
+		D24259E821C2533000896BC7 /* QSManageMyGroupCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSManageMyGroupCell.m; sourceTree = "<group>"; };
+		D24259EB21C2545000896BC7 /* QSManageMyGroupItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSManageMyGroupItem.h; sourceTree = "<group>"; };
+		D24259EC21C2545000896BC7 /* QSManageMyGroupItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSManageMyGroupItem.m; sourceTree = "<group>"; };
+		D24FBFBF21D4B16300900C16 /* dist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dist; sourceTree = "<group>"; };
+		D296C1AA21CCD3F4005D1EF8 /* QSLogoutAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSLogoutAlertView.h; sourceTree = "<group>"; };
+		D296C1AB21CCD3F4005D1EF8 /* QSLogoutAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSLogoutAlertView.m; sourceTree = "<group>"; };
+		D29A8CFD21C699A700D6B8DA /* QSNFT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSNFT.h; sourceTree = "<group>"; };
+		D29A8CFE21C699A700D6B8DA /* QSNFT.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSNFT.m; sourceTree = "<group>"; };
+		D29A8D0021C69A5200D6B8DA /* QSNFTTransfer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSNFTTransfer.h; sourceTree = "<group>"; };
+		D29A8D0121C69A5200D6B8DA /* QSNFTTransfer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSNFTTransfer.m; sourceTree = "<group>"; };
+		D2B2EF4521C62AA900ABBB90 /* QSFT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSFT.h; sourceTree = "<group>"; };
+		D2B2EF4621C62AA900ABBB90 /* QSFT.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSFT.m; sourceTree = "<group>"; };
+		D2B2EF4821C62B3300ABBB90 /* QSFTIssue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSFTIssue.h; sourceTree = "<group>"; };
+		D2B2EF4921C62B3300ABBB90 /* QSFTIssue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSFTIssue.m; sourceTree = "<group>"; };
+		D2B2EF4E21C62CA000ABBB90 /* QSFTManage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSFTManage.h; sourceTree = "<group>"; };
+		D2B2EF4F21C62CA000ABBB90 /* QSFTManage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSFTManage.m; sourceTree = "<group>"; };
+		D2B2EF5121C62D4D00ABBB90 /* QSMetas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSMetas.h; sourceTree = "<group>"; };
+		D2B2EF5221C62D4D00ABBB90 /* QSMetas.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSMetas.m; sourceTree = "<group>"; };
+		D2B2EF5A21C6555000ABBB90 /* QSPrivatekeyAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSPrivatekeyAlertView.h; sourceTree = "<group>"; };
+		D2B2EF5B21C6555000ABBB90 /* QSPrivatekeyAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSPrivatekeyAlertView.m; sourceTree = "<group>"; };
+		D2D80BEE21BFA70D00C1FCBF /* QSSelectFTCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSSelectFTCell.h; sourceTree = "<group>"; };
+		D2D80BEF21BFA70D00C1FCBF /* QSSelectFTCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSSelectFTCell.m; sourceTree = "<group>"; };
+		D2D80BF421BFB97600C1FCBF /* QSCreateFTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateFTViewController.h; sourceTree = "<group>"; };
+		D2D80BF521BFB97600C1FCBF /* QSCreateFTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateFTViewController.m; sourceTree = "<group>"; };
+		D2D80BF721BFBF9900C1FCBF /* QSCreateFTTextCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateFTTextCell.h; sourceTree = "<group>"; };
+		D2D80BF821BFBF9900C1FCBF /* QSCreateFTTextCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateFTTextCell.m; sourceTree = "<group>"; };
+		D2D8D3AB21C7914D000D6644 /* QSScanGetAddress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSScanGetAddress.h; sourceTree = "<group>"; };
+		D2D8D3AC21C7914D000D6644 /* QSScanGetAddress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSScanGetAddress.m; sourceTree = "<group>"; };
+		D2D8D3AE21C791BC000D6644 /* QSScanAddress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSScanAddress.h; sourceTree = "<group>"; };
+		D2D8D3AF21C791BC000D6644 /* QSScanAddress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSScanAddress.m; sourceTree = "<group>"; };
+		D2E1288D21BFDC5000EF8E7E /* QSCreateFTItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateFTItem.h; sourceTree = "<group>"; };
+		D2E1288E21BFDC5000EF8E7E /* QSCreateFTItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateFTItem.m; sourceTree = "<group>"; };
+		D2E1289021BFE59200EF8E7E /* QSCreateFTIconCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateFTIconCell.h; sourceTree = "<group>"; };
+		D2E1289121BFE59200EF8E7E /* QSCreateFTIconCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateFTIconCell.m; sourceTree = "<group>"; };
+		D2E1289321BFEA6500EF8E7E /* QSCreateFTIconItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateFTIconItem.h; sourceTree = "<group>"; };
+		D2E1289421BFEA6500EF8E7E /* QSCreateFTIconItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateFTIconItem.m; sourceTree = "<group>"; };
+		D2E1289621BFF2B000EF8E7E /* UIViewController+QSSelectPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+QSSelectPicture.h"; sourceTree = "<group>"; };
+		D2E1289721BFF2B000EF8E7E /* UIViewController+QSSelectPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+QSSelectPicture.m"; sourceTree = "<group>"; };
+		D2E8763C21C12CFC0038825B /* QSCreateNFTSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateNFTSViewController.h; sourceTree = "<group>"; };
+		D2E8763D21C12CFC0038825B /* QSCreateNFTSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateNFTSViewController.m; sourceTree = "<group>"; };
+		D2E8763F21C13EE60038825B /* QSCreateNFTSIssueView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateNFTSIssueView.h; sourceTree = "<group>"; };
+		D2E8764021C13EE60038825B /* QSCreateNFTSIssueView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateNFTSIssueView.m; sourceTree = "<group>"; };
+		D2E8764221C141140038825B /* QSCreateNFTSTransferView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateNFTSTransferView.h; sourceTree = "<group>"; };
+		D2E8764321C141140038825B /* QSCreateNFTSTransferView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateNFTSTransferView.m; sourceTree = "<group>"; };
+		D2E8764521C144280038825B /* QSCreateNFTSManagerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateNFTSManagerView.h; sourceTree = "<group>"; };
+		D2E8764621C144280038825B /* QSCreateNFTSManagerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateNFTSManagerView.m; sourceTree = "<group>"; };
+		D2E8764B21C14D350038825B /* QSCreateNFTSEditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateNFTSEditViewController.h; sourceTree = "<group>"; };
+		D2E8764C21C14D350038825B /* QSCreateNFTSEditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateNFTSEditViewController.m; sourceTree = "<group>"; };
+		D2EE881C21C09A1D000B15E3 /* QSCreateFTAlertCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateFTAlertCell.h; sourceTree = "<group>"; };
+		D2EE881D21C09A1D000B15E3 /* QSCreateFTAlertCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateFTAlertCell.m; sourceTree = "<group>"; };
+		D2EE881F21C09D45000B15E3 /* QSCreateFTAlertItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateFTAlertItem.h; sourceTree = "<group>"; };
+		D2EE882021C09D45000B15E3 /* QSCreateFTAlertItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateFTAlertItem.m; sourceTree = "<group>"; };
+		D2EE882521C0B8E9000B15E3 /* QSIssueViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSIssueViewController.h; sourceTree = "<group>"; };
+		D2EE882621C0B8E9000B15E3 /* QSIssueViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSIssueViewController.m; sourceTree = "<group>"; };
+		D2EE882B21C0BD47000B15E3 /* QSIssueWhiteView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSIssueWhiteView.h; sourceTree = "<group>"; };
+		D2EE882C21C0BD47000B15E3 /* QSIssueWhiteView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSIssueWhiteView.m; sourceTree = "<group>"; };
+		D2EE883121C0E121000B15E3 /* QSIssueMoreSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSIssueMoreSettingViewController.h; sourceTree = "<group>"; };
+		D2EE883221C0E121000B15E3 /* QSIssueMoreSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSIssueMoreSettingViewController.m; sourceTree = "<group>"; };
+		D2EE883421C0E145000B15E3 /* QSIssueMoreSettingTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSIssueMoreSettingTopView.h; sourceTree = "<group>"; };
+		D2EE883521C0E145000B15E3 /* QSIssueMoreSettingTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSIssueMoreSettingTopView.m; sourceTree = "<group>"; };
+		D2EE883721C0EDBA000B15E3 /* QSIssueMoreSettingBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSIssueMoreSettingBottomView.h; sourceTree = "<group>"; };
+		D2EE883821C0EDBA000B15E3 /* QSIssueMoreSettingBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSIssueMoreSettingBottomView.m; sourceTree = "<group>"; };
+		D2EE883D21C0F2B5000B15E3 /* QSIssuePermissionsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSIssuePermissionsViewController.h; sourceTree = "<group>"; };
+		D2EE883E21C0F2B5000B15E3 /* QSIssuePermissionsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSIssuePermissionsViewController.m; sourceTree = "<group>"; };
+		D2EE884021C0F3DA000B15E3 /* QSIssuePermissionsIssueView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSIssuePermissionsIssueView.h; sourceTree = "<group>"; };
+		D2EE884121C0F3DA000B15E3 /* QSIssuePermissionsIssueView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSIssuePermissionsIssueView.m; sourceTree = "<group>"; };
+		D2EE884321C0F40E000B15E3 /* QSIssuePermissionsTransferView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSIssuePermissionsTransferView.h; sourceTree = "<group>"; };
+		D2EE884421C0F40E000B15E3 /* QSIssuePermissionsTransferView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSIssuePermissionsTransferView.m; sourceTree = "<group>"; };
+		D2EE884921C10231000B15E3 /* QSIssueSelectAddressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSIssueSelectAddressViewController.h; sourceTree = "<group>"; };
+		D2EE884A21C10231000B15E3 /* QSIssueSelectAddressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSIssueSelectAddressViewController.m; sourceTree = "<group>"; };
+		D2EE885321C10A7C000B15E3 /* QSMyPassViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSMyPassViewController.h; sourceTree = "<group>"; };
+		D2EE885421C10A7C000B15E3 /* QSMyPassViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSMyPassViewController.m; sourceTree = "<group>"; };
+		D2EE885621C10BE9000B15E3 /* QSMyPassCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSMyPassCell.h; sourceTree = "<group>"; };
+		D2EE885721C10BE9000B15E3 /* QSMyPassCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSMyPassCell.m; sourceTree = "<group>"; };
+		D2EE885921C10DAA000B15E3 /* QSBlankPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSBlankPageView.h; sourceTree = "<group>"; };
+		D2EE885A21C10DAA000B15E3 /* QSBlankPageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSBlankPageView.m; sourceTree = "<group>"; };
+		D2F392C921CC83050039959B /* QSLunchImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSLunchImageViewController.h; sourceTree = "<group>"; };
+		D2F392CA21CC83050039959B /* QSLunchImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSLunchImageViewController.m; sourceTree = "<group>"; };
+		D2F5F67821C258900079EFD4 /* QSCreateGroupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateGroupViewController.h; sourceTree = "<group>"; };
+		D2F5F67921C258900079EFD4 /* QSCreateGroupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateGroupViewController.m; sourceTree = "<group>"; };
+		D2F5F67B21C2872D0079EFD4 /* QSManagerSettingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSManagerSettingView.h; sourceTree = "<group>"; };
+		D2F5F67C21C2872D0079EFD4 /* QSManagerSettingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSManagerSettingView.m; sourceTree = "<group>"; };
+		D2F5F68021C34B390079EFD4 /* QSManageNewNodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSManageNewNodeViewController.h; sourceTree = "<group>"; };
+		D2F5F68121C34B390079EFD4 /* QSManageNewNodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSManageNewNodeViewController.m; sourceTree = "<group>"; };
+		D2F5F68721C352850079EFD4 /* QSManagerSelectAddressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSManagerSelectAddressViewController.h; sourceTree = "<group>"; };
+		D2F5F68821C352850079EFD4 /* QSManagerSelectAddressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSManagerSelectAddressViewController.m; sourceTree = "<group>"; };
+		D2F5F68A21C35BCC0079EFD4 /* QSManageSelectAddressCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSManageSelectAddressCell.h; sourceTree = "<group>"; };
+		D2F5F68B21C35BCC0079EFD4 /* QSManageSelectAddressCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSManageSelectAddressCell.m; sourceTree = "<group>"; };
+		D2F5F68D21C35FB80079EFD4 /* QSManageSelectAddressItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSManageSelectAddressItem.h; sourceTree = "<group>"; };
+		D2F5F68E21C35FB80079EFD4 /* QSManageSelectAddressItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSManageSelectAddressItem.m; sourceTree = "<group>"; };
+		D2F5F69221C38CF70079EFD4 /* QSEnterPublicKeyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSEnterPublicKeyViewController.h; sourceTree = "<group>"; };
+		D2F5F69321C38CF70079EFD4 /* QSEnterPublicKeyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSEnterPublicKeyViewController.m; sourceTree = "<group>"; };
+		D2F5F69721C3969D0079EFD4 /* QSEnterJsonViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSEnterJsonViewController.h; sourceTree = "<group>"; };
+		D2F5F69821C3969D0079EFD4 /* QSEnterJsonViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSEnterJsonViewController.m; sourceTree = "<group>"; };
+		D2F5F69C21C3AFB70079EFD4 /* QSCreateIdentityViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateIdentityViewController.h; sourceTree = "<group>"; };
+		D2F5F69D21C3AFB70079EFD4 /* QSCreateIdentityViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateIdentityViewController.m; sourceTree = "<group>"; };
+		D2F5F69F21C4ADA10079EFD4 /* QSNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSNavigationController.h; sourceTree = "<group>"; };
+		D2F5F6A021C4ADA10079EFD4 /* QSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSNavigationController.m; sourceTree = "<group>"; };
+		D2F5F6A421C4BC000079EFD4 /* QSCreateIdentityHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateIdentityHomeViewController.h; sourceTree = "<group>"; };
+		D2F5F6A521C4BC000079EFD4 /* QSCreateIdentityHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateIdentityHomeViewController.m; sourceTree = "<group>"; };
+		D2F5F6A921C4C70C0079EFD4 /* QSRestoreIdentityViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSRestoreIdentityViewController.h; sourceTree = "<group>"; };
+		D2F5F6AA21C4C70C0079EFD4 /* QSRestoreIdentityViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSRestoreIdentityViewController.m; sourceTree = "<group>"; };
+		D2F5F6B321C531750079EFD4 /* QSAddressHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSAddressHelper.h; sourceTree = "<group>"; };
+		D2F5F6B421C531750079EFD4 /* QSAddressHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSAddressHelper.m; sourceTree = "<group>"; };
+		D2F5F6B621C531C60079EFD4 /* QSAddress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSAddress.h; sourceTree = "<group>"; };
+		D2F5F6B721C531C60079EFD4 /* QSAddress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSAddress.m; sourceTree = "<group>"; };
 		D82C8EE4962E7FCFFC68E721 /* libPods-EVT-Wallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EVT-Wallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E75340DF8D0EB86B75C34F45 /* Pods-EVT-Wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EVT-Wallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EVT-Wallet/Pods-EVT-Wallet.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -656,6 +839,8 @@
 		7B0D183921BCCAF900550756 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D2F5F6B621C531C60079EFD4 /* QSAddress.h */,
+				D2F5F6B721C531C60079EFD4 /* QSAddress.m */,
 				7B0D183A21BCCB0D00550756 /* QSCreateEvt.h */,
 				7B0D183B21BCCB0D00550756 /* QSCreateEvt.m */,
 				7B0D184121BCF77E00550756 /* QSOwnedToken.h */,
@@ -668,6 +853,26 @@
 				7B0D184B21BCFB1D00550756 /* QSAuthorizers.m */,
 				7B0D184D21BCFBA100550756 /* QSFungibleManage.h */,
 				7B0D184E21BCFBA100550756 /* QSFungibleManage.m */,
+				D2B2EF4521C62AA900ABBB90 /* QSFT.h */,
+				D2B2EF4621C62AA900ABBB90 /* QSFT.m */,
+				D2B2EF4821C62B3300ABBB90 /* QSFTIssue.h */,
+				D2B2EF4921C62B3300ABBB90 /* QSFTIssue.m */,
+				D2B2EF4E21C62CA000ABBB90 /* QSFTManage.h */,
+				D2B2EF4F21C62CA000ABBB90 /* QSFTManage.m */,
+				D2B2EF5121C62D4D00ABBB90 /* QSMetas.h */,
+				D2B2EF5221C62D4D00ABBB90 /* QSMetas.m */,
+				D29A8CFD21C699A700D6B8DA /* QSNFT.h */,
+				D29A8CFE21C699A700D6B8DA /* QSNFT.m */,
+				D29A8D0021C69A5200D6B8DA /* QSNFTTransfer.h */,
+				D29A8D0121C69A5200D6B8DA /* QSNFTTransfer.m */,
+				D2D8D3AB21C7914D000D6644 /* QSScanGetAddress.h */,
+				D2D8D3AC21C7914D000D6644 /* QSScanGetAddress.m */,
+				D2D8D3AE21C791BC000D6644 /* QSScanAddress.h */,
+				D2D8D3AF21C791BC000D6644 /* QSScanAddress.m */,
+				D20F61A621CB9E0300E32D1E /* QSTransferftModel.h */,
+				D20F61A721CB9E0300E32D1E /* QSTransferftModel.m */,
+				D20F61A921CB9E7A00E32D1E /* QSTransferftData.h */,
+				D20F61AA21CB9E7A00E32D1E /* QSTransferftData.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -675,7 +880,7 @@
 		7B0D183E21BCCB8200550756 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7B0D185821BD239500550756 /* dist */,
+				D24FBFBF21D4B16300900C16 /* dist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -692,6 +897,12 @@
 		7B0D186B21BE038C00550756 /* Issue(发行) */ = {
 			isa = PBXGroup;
 			children = (
+				D24259CC21C1F0A100896BC7 /* IssueSettingEdit(权限设置-编辑) */,
+				D2EE884621C101F6000B15E3 /* SelectAddress(选择地址) */,
+				D2EE883A21C0F295000B15E3 /* Permissions(权限设置) */,
+				D2EE882E21C0E094000B15E3 /* IssueMoreSetting(更多设置) */,
+				D2EE882221C0B89D000B15E3 /* Issue(发行) */,
+				D2D80BF121BFB93B00C1FCBF /* CreateFT(创建代币) */,
 				7B0D186C21BE038C00550756 /* SelectFT(选择代币) */,
 			);
 			path = "Issue(发行)";
@@ -701,6 +912,7 @@
 			isa = PBXGroup;
 			children = (
 				7B0D186D21BE038C00550756 /* Controller */,
+				D2D80BED21BFA6E300C1FCBF /* View */,
 			);
 			path = "SelectFT(选择代币)";
 			sourceTree = "<group>";
@@ -1555,6 +1767,7 @@
 		7BF36D2721A7972500B27146 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				D2F5F6B221C531580079EFD4 /* AddressHelper */,
 				7B0D185221BD045F00550756 /* WalletHelper */,
 				7BF36D7621A79E7A00B27146 /* Category */,
 			);
@@ -1672,6 +1885,12 @@
 		7BF36D3621A7972500B27146 /* Manage(管理) */ = {
 			isa = PBXGroup;
 			children = (
+				D2F5F69521C3968E0079EFD4 /* EnterJson(输入Json) */,
+				D2F5F69021C38CBE0079EFD4 /* EnterPublicKey(输入公钥) */,
+				D2F5F68321C34E8C0079EFD4 /* SelectAddressManage(地址管理) */,
+				D2F5F67E21C34B1E0079EFD4 /* NewNode(新建节点) */,
+				D2F5F67521C2580A0079EFD4 /* CreateGroup(创建组) */,
+				D24259E121C24E9C00896BC7 /* MyGroup(我的组) */,
 				7BF36D3721A7972500B27146 /* Manage(管理) */,
 			);
 			path = "Manage(管理)";
@@ -1705,6 +1924,9 @@
 		7BF36D3A21A7972500B27146 /* Switch(切换钱包) */ = {
 			isa = PBXGroup;
 			children = (
+				D2F5F6A721C4C6FB0079EFD4 /* RestoreIdentity(恢复身份) */,
+				D2F5F6A221C4BBEB0079EFD4 /* CreateIdentityHome(创建身份首页) */,
+				D2F5F69A21C3AB020079EFD4 /* CreateIdentity(创建身份) */,
 				7BF36D3B21A7972500B27146 /* Switch(切换钱包) */,
 			);
 			path = "Switch(切换钱包)";
@@ -1738,6 +1960,7 @@
 		7BF36D3E21A7972500B27146 /* Property(资产) */ = {
 			isa = PBXGroup;
 			children = (
+				D2EE884F21C10A4B000B15E3 /* Pass(通行证) */,
 				7B0D186B21BE038C00550756 /* Issue(发行) */,
 				7BF40EBA21BA1BFA00047C3C /* TransactionRecord(交易记录) */,
 				7BF40E8521B9FBA400047C3C /* Scan(扫码) */,
@@ -1804,6 +2027,8 @@
 		7BF36D4321A7972500B27146 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D2F5F69F21C4ADA10079EFD4 /* QSNavigationController.h */,
+				D2F5F6A021C4ADA10079EFD4 /* QSNavigationController.m */,
 				7BF2F8D621B138D6000AAD93 /* QSBaseCornerSectionTableViewController.h */,
 				7BF2F8D721B138D6000AAD93 /* QSBaseCornerSectionTableViewController.m */,
 				7BF36D4721A7972500B27146 /* QSBaseViewController.h */,
@@ -1999,6 +2224,8 @@
 		7BF36DA821A79E7A00B27146 /* UIViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D2E1289621BFF2B000EF8E7E /* UIViewController+QSSelectPicture.h */,
+				D2E1289721BFF2B000EF8E7E /* UIViewController+QSSelectPicture.m */,
 				7BF36DB021A79E7A00B27146 /* UIViewController+Alert.h */,
 				7BF36DAB21A79E7A00B27146 /* UIViewController+Alert.m */,
 				7BF36DAA21A79E7A00B27146 /* UIViewController+Root.h */,
@@ -2171,6 +2398,8 @@
 			children = (
 				7BF36E2921A7A3D800B27146 /* AppDelegate.h */,
 				7BF36E2A21A7A3D800B27146 /* AppDelegate.m */,
+				D2F392C921CC83050039959B /* QSLunchImageViewController.h */,
+				D2F392CA21CC83050039959B /* QSLunchImageViewController.m */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -2468,6 +2697,538 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		D24259CC21C1F0A100896BC7 /* IssueSettingEdit(权限设置-编辑) */ = {
+			isa = PBXGroup;
+			children = (
+				D24259CD21C1F0A100896BC7 /* Controller */,
+				D24259CE21C1F0A100896BC7 /* View */,
+			);
+			path = "IssueSettingEdit(权限设置-编辑)";
+			sourceTree = "<group>";
+		};
+		D24259CD21C1F0A100896BC7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D24259CF21C1F0BA00896BC7 /* QSIssueSettingEditViewController.h */,
+				D24259D021C1F0BA00896BC7 /* QSIssueSettingEditViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D24259CE21C1F0A100896BC7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D24259D221C1F74500896BC7 /* BatchCreateNFTS(批量创建通证) */ = {
+			isa = PBXGroup;
+			children = (
+				D24259D321C1F74500896BC7 /* Controller */,
+				D24259D421C1F74500896BC7 /* View */,
+			);
+			path = "BatchCreateNFTS(批量创建通证)";
+			sourceTree = "<group>";
+		};
+		D24259D321C1F74500896BC7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D24259D521C1F8BC00896BC7 /* QSBatchCreateNFTSViewController.h */,
+				D24259D621C1F8BC00896BC7 /* QSBatchCreateNFTSViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D24259D421C1F74500896BC7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D24259D821C1FF3400896BC7 /* QSBatchCreateNFTSTopView.h */,
+				D24259D921C1FF3400896BC7 /* QSBatchCreateNFTSTopView.m */,
+				D24259DB21C230AF00896BC7 /* QSBatchCreateNFTSCenterView.h */,
+				D24259DC21C230AF00896BC7 /* QSBatchCreateNFTSCenterView.m */,
+				D24259DE21C23FBB00896BC7 /* QSBatchCreateNFTsBottomView.h */,
+				D24259DF21C23FBB00896BC7 /* QSBatchCreateNFTsBottomView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D24259E121C24E9C00896BC7 /* MyGroup(我的组) */ = {
+			isa = PBXGroup;
+			children = (
+				D24259EA21C2543B00896BC7 /* Model */,
+				D24259E221C24E9C00896BC7 /* Controller */,
+				D24259E321C24E9C00896BC7 /* View */,
+			);
+			path = "MyGroup(我的组)";
+			sourceTree = "<group>";
+		};
+		D24259E221C24E9C00896BC7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D24259E421C24ED500896BC7 /* QSMyGroupViewController.h */,
+				D24259E521C24ED500896BC7 /* QSMyGroupViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D24259E321C24E9C00896BC7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D24259E721C2533000896BC7 /* QSManageMyGroupCell.h */,
+				D24259E821C2533000896BC7 /* QSManageMyGroupCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D24259EA21C2543B00896BC7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D24259EB21C2545000896BC7 /* QSManageMyGroupItem.h */,
+				D24259EC21C2545000896BC7 /* QSManageMyGroupItem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D2D80BED21BFA6E300C1FCBF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D2D80BEE21BFA70D00C1FCBF /* QSSelectFTCell.h */,
+				D2D80BEF21BFA70D00C1FCBF /* QSSelectFTCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D2D80BF121BFB93B00C1FCBF /* CreateFT(创建代币) */ = {
+			isa = PBXGroup;
+			children = (
+				D2E1288C21BFDBEC00EF8E7E /* Model */,
+				D2D80BF221BFB93B00C1FCBF /* Controller */,
+				D2D80BF321BFB93B00C1FCBF /* View */,
+			);
+			path = "CreateFT(创建代币)";
+			sourceTree = "<group>";
+		};
+		D2D80BF221BFB93B00C1FCBF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D2D80BF421BFB97600C1FCBF /* QSCreateFTViewController.h */,
+				D2D80BF521BFB97600C1FCBF /* QSCreateFTViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D2D80BF321BFB93B00C1FCBF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D2D80BF721BFBF9900C1FCBF /* QSCreateFTTextCell.h */,
+				D2D80BF821BFBF9900C1FCBF /* QSCreateFTTextCell.m */,
+				D2E1289021BFE59200EF8E7E /* QSCreateFTIconCell.h */,
+				D2E1289121BFE59200EF8E7E /* QSCreateFTIconCell.m */,
+				D2EE881C21C09A1D000B15E3 /* QSCreateFTAlertCell.h */,
+				D2EE881D21C09A1D000B15E3 /* QSCreateFTAlertCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D2E1288C21BFDBEC00EF8E7E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D2E1288D21BFDC5000EF8E7E /* QSCreateFTItem.h */,
+				D2E1288E21BFDC5000EF8E7E /* QSCreateFTItem.m */,
+				D2E1289321BFEA6500EF8E7E /* QSCreateFTIconItem.h */,
+				D2E1289421BFEA6500EF8E7E /* QSCreateFTIconItem.m */,
+				D2EE881F21C09D45000B15E3 /* QSCreateFTAlertItem.h */,
+				D2EE882021C09D45000B15E3 /* QSCreateFTAlertItem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D2E8763921C12BA30038825B /* CreateNFTS(创建通行证) */ = {
+			isa = PBXGroup;
+			children = (
+				D2E8763A21C12BA30038825B /* Controller */,
+				D2E8763B21C12BA30038825B /* View */,
+			);
+			path = "CreateNFTS(创建通行证)";
+			sourceTree = "<group>";
+		};
+		D2E8763A21C12BA30038825B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D2E8763C21C12CFC0038825B /* QSCreateNFTSViewController.h */,
+				D2E8763D21C12CFC0038825B /* QSCreateNFTSViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D2E8763B21C12BA30038825B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D2E8763F21C13EE60038825B /* QSCreateNFTSIssueView.h */,
+				D2E8764021C13EE60038825B /* QSCreateNFTSIssueView.m */,
+				D2E8764221C141140038825B /* QSCreateNFTSTransferView.h */,
+				D2E8764321C141140038825B /* QSCreateNFTSTransferView.m */,
+				D2E8764521C144280038825B /* QSCreateNFTSManagerView.h */,
+				D2E8764621C144280038825B /* QSCreateNFTSManagerView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D2E8764821C14D130038825B /* CreateNfTS-Edit(创建-编辑) */ = {
+			isa = PBXGroup;
+			children = (
+				D2E8764921C14D130038825B /* Controller */,
+				D2E8764A21C14D130038825B /* View */,
+			);
+			path = "CreateNfTS-Edit(创建-编辑)";
+			sourceTree = "<group>";
+		};
+		D2E8764921C14D130038825B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D2E8764B21C14D350038825B /* QSCreateNFTSEditViewController.h */,
+				D2E8764C21C14D350038825B /* QSCreateNFTSEditViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D2E8764A21C14D130038825B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D2EE882221C0B89D000B15E3 /* Issue(发行) */ = {
+			isa = PBXGroup;
+			children = (
+				D2EE882321C0B89D000B15E3 /* Controller */,
+				D2EE882421C0B89D000B15E3 /* View */,
+			);
+			path = "Issue(发行)";
+			sourceTree = "<group>";
+		};
+		D2EE882321C0B89D000B15E3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D2EE882521C0B8E9000B15E3 /* QSIssueViewController.h */,
+				D2EE882621C0B8E9000B15E3 /* QSIssueViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D2EE882421C0B89D000B15E3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D2EE882B21C0BD47000B15E3 /* QSIssueWhiteView.h */,
+				D2EE882C21C0BD47000B15E3 /* QSIssueWhiteView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D2EE882E21C0E094000B15E3 /* IssueMoreSetting(更多设置) */ = {
+			isa = PBXGroup;
+			children = (
+				D2EE882F21C0E094000B15E3 /* Controller */,
+				D2EE883021C0E094000B15E3 /* View */,
+			);
+			path = "IssueMoreSetting(更多设置)";
+			sourceTree = "<group>";
+		};
+		D2EE882F21C0E094000B15E3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D2EE883121C0E121000B15E3 /* QSIssueMoreSettingViewController.h */,
+				D2EE883221C0E121000B15E3 /* QSIssueMoreSettingViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D2EE883021C0E094000B15E3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D2EE883421C0E145000B15E3 /* QSIssueMoreSettingTopView.h */,
+				D2EE883521C0E145000B15E3 /* QSIssueMoreSettingTopView.m */,
+				D2EE883721C0EDBA000B15E3 /* QSIssueMoreSettingBottomView.h */,
+				D2EE883821C0EDBA000B15E3 /* QSIssueMoreSettingBottomView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D2EE883A21C0F295000B15E3 /* Permissions(权限设置) */ = {
+			isa = PBXGroup;
+			children = (
+				D2EE883B21C0F295000B15E3 /* Controller */,
+				D2EE883C21C0F295000B15E3 /* View */,
+			);
+			path = "Permissions(权限设置)";
+			sourceTree = "<group>";
+		};
+		D2EE883B21C0F295000B15E3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D2EE883D21C0F2B5000B15E3 /* QSIssuePermissionsViewController.h */,
+				D2EE883E21C0F2B5000B15E3 /* QSIssuePermissionsViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D2EE883C21C0F295000B15E3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D2EE884021C0F3DA000B15E3 /* QSIssuePermissionsIssueView.h */,
+				D2EE884121C0F3DA000B15E3 /* QSIssuePermissionsIssueView.m */,
+				D2EE884321C0F40E000B15E3 /* QSIssuePermissionsTransferView.h */,
+				D2EE884421C0F40E000B15E3 /* QSIssuePermissionsTransferView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D2EE884621C101F6000B15E3 /* SelectAddress(选择地址) */ = {
+			isa = PBXGroup;
+			children = (
+				D2EE884721C101F6000B15E3 /* Controller */,
+				D2EE884821C101F6000B15E3 /* View */,
+			);
+			path = "SelectAddress(选择地址)";
+			sourceTree = "<group>";
+		};
+		D2EE884721C101F6000B15E3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D2EE884921C10231000B15E3 /* QSIssueSelectAddressViewController.h */,
+				D2EE884A21C10231000B15E3 /* QSIssueSelectAddressViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D2EE884821C101F6000B15E3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D2EE884F21C10A4B000B15E3 /* Pass(通行证) */ = {
+			isa = PBXGroup;
+			children = (
+				D24259D221C1F74500896BC7 /* BatchCreateNFTS(批量创建通证) */,
+				D2E8764821C14D130038825B /* CreateNfTS-Edit(创建-编辑) */,
+				D2E8763921C12BA30038825B /* CreateNFTS(创建通行证) */,
+				D2EE885021C10A4B000B15E3 /* MyPass(我的通行证) */,
+			);
+			path = "Pass(通行证)";
+			sourceTree = "<group>";
+		};
+		D2EE885021C10A4B000B15E3 /* MyPass(我的通行证) */ = {
+			isa = PBXGroup;
+			children = (
+				D2EE885121C10A4B000B15E3 /* Controller */,
+				D2EE885221C10A4B000B15E3 /* View */,
+			);
+			path = "MyPass(我的通行证)";
+			sourceTree = "<group>";
+		};
+		D2EE885121C10A4B000B15E3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D2EE885321C10A7C000B15E3 /* QSMyPassViewController.h */,
+				D2EE885421C10A7C000B15E3 /* QSMyPassViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D2EE885221C10A4B000B15E3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D2EE885621C10BE9000B15E3 /* QSMyPassCell.h */,
+				D2EE885721C10BE9000B15E3 /* QSMyPassCell.m */,
+				D2EE885921C10DAA000B15E3 /* QSBlankPageView.h */,
+				D2EE885A21C10DAA000B15E3 /* QSBlankPageView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D2F5F67521C2580A0079EFD4 /* CreateGroup(创建组) */ = {
+			isa = PBXGroup;
+			children = (
+				D2F5F67621C2580A0079EFD4 /* Controller */,
+				D2F5F67721C2580A0079EFD4 /* View */,
+			);
+			path = "CreateGroup(创建组)";
+			sourceTree = "<group>";
+		};
+		D2F5F67621C2580A0079EFD4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D2F5F67821C258900079EFD4 /* QSCreateGroupViewController.h */,
+				D2F5F67921C258900079EFD4 /* QSCreateGroupViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D2F5F67721C2580A0079EFD4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D2F5F67B21C2872D0079EFD4 /* QSManagerSettingView.h */,
+				D2F5F67C21C2872D0079EFD4 /* QSManagerSettingView.m */,
+				D2B2EF5A21C6555000ABBB90 /* QSPrivatekeyAlertView.h */,
+				D2B2EF5B21C6555000ABBB90 /* QSPrivatekeyAlertView.m */,
+				D296C1AA21CCD3F4005D1EF8 /* QSLogoutAlertView.h */,
+				D296C1AB21CCD3F4005D1EF8 /* QSLogoutAlertView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D2F5F67E21C34B1E0079EFD4 /* NewNode(新建节点) */ = {
+			isa = PBXGroup;
+			children = (
+				D2F5F67F21C34B1E0079EFD4 /* Controller */,
+			);
+			path = "NewNode(新建节点)";
+			sourceTree = "<group>";
+		};
+		D2F5F67F21C34B1E0079EFD4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D2F5F68021C34B390079EFD4 /* QSManageNewNodeViewController.h */,
+				D2F5F68121C34B390079EFD4 /* QSManageNewNodeViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D2F5F68321C34E8C0079EFD4 /* SelectAddressManage(地址管理) */ = {
+			isa = PBXGroup;
+			children = (
+				D2F5F68421C34E8C0079EFD4 /* Controller */,
+				D2F5F68521C34E8C0079EFD4 /* Model */,
+				D2F5F68621C34E8C0079EFD4 /* View */,
+			);
+			path = "SelectAddressManage(地址管理)";
+			sourceTree = "<group>";
+		};
+		D2F5F68421C34E8C0079EFD4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D2F5F68721C352850079EFD4 /* QSManagerSelectAddressViewController.h */,
+				D2F5F68821C352850079EFD4 /* QSManagerSelectAddressViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D2F5F68521C34E8C0079EFD4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D2F5F68D21C35FB80079EFD4 /* QSManageSelectAddressItem.h */,
+				D2F5F68E21C35FB80079EFD4 /* QSManageSelectAddressItem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D2F5F68621C34E8C0079EFD4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D2F5F68A21C35BCC0079EFD4 /* QSManageSelectAddressCell.h */,
+				D2F5F68B21C35BCC0079EFD4 /* QSManageSelectAddressCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D2F5F69021C38CBE0079EFD4 /* EnterPublicKey(输入公钥) */ = {
+			isa = PBXGroup;
+			children = (
+				D2F5F69121C38CBE0079EFD4 /* Controller */,
+			);
+			path = "EnterPublicKey(输入公钥)";
+			sourceTree = "<group>";
+		};
+		D2F5F69121C38CBE0079EFD4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D2F5F69221C38CF70079EFD4 /* QSEnterPublicKeyViewController.h */,
+				D2F5F69321C38CF70079EFD4 /* QSEnterPublicKeyViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D2F5F69521C3968E0079EFD4 /* EnterJson(输入Json) */ = {
+			isa = PBXGroup;
+			children = (
+				D2F5F69621C3968E0079EFD4 /* Controller */,
+			);
+			path = "EnterJson(输入Json)";
+			sourceTree = "<group>";
+		};
+		D2F5F69621C3968E0079EFD4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D2F5F69721C3969D0079EFD4 /* QSEnterJsonViewController.h */,
+				D2F5F69821C3969D0079EFD4 /* QSEnterJsonViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D2F5F69A21C3AB020079EFD4 /* CreateIdentity(创建身份) */ = {
+			isa = PBXGroup;
+			children = (
+				D2F5F69B21C3AB020079EFD4 /* Controller */,
+			);
+			path = "CreateIdentity(创建身份)";
+			sourceTree = "<group>";
+		};
+		D2F5F69B21C3AB020079EFD4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D2F5F69C21C3AFB70079EFD4 /* QSCreateIdentityViewController.h */,
+				D2F5F69D21C3AFB70079EFD4 /* QSCreateIdentityViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D2F5F6A221C4BBEB0079EFD4 /* CreateIdentityHome(创建身份首页) */ = {
+			isa = PBXGroup;
+			children = (
+				D2F5F6A321C4BBEB0079EFD4 /* Controller */,
+			);
+			path = "CreateIdentityHome(创建身份首页)";
+			sourceTree = "<group>";
+		};
+		D2F5F6A321C4BBEB0079EFD4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D2F5F6A421C4BC000079EFD4 /* QSCreateIdentityHomeViewController.h */,
+				D2F5F6A521C4BC000079EFD4 /* QSCreateIdentityHomeViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D2F5F6A721C4C6FB0079EFD4 /* RestoreIdentity(恢复身份) */ = {
+			isa = PBXGroup;
+			children = (
+				D2F5F6A821C4C6FB0079EFD4 /* Controller */,
+			);
+			path = "RestoreIdentity(恢复身份)";
+			sourceTree = "<group>";
+		};
+		D2F5F6A821C4C6FB0079EFD4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D2F5F6A921C4C70C0079EFD4 /* QSRestoreIdentityViewController.h */,
+				D2F5F6AA21C4C70C0079EFD4 /* QSRestoreIdentityViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D2F5F6B221C531580079EFD4 /* AddressHelper */ = {
+			isa = PBXGroup;
+			children = (
+				D2F5F6B321C531750079EFD4 /* QSAddressHelper.h */,
+				D2F5F6B421C531750079EFD4 /* QSAddressHelper.m */,
+			);
+			path = AddressHelper;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2575,7 +3336,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B0D185921BD239500550756 /* dist in Resources */,
+				D24FBFC021D4B16300900C16 /* dist in Resources */,
 				7B7A4C8621ACCEF400598E6F /* CustomLocalizable.strings in Resources */,
 				7BF36D5921A7972500B27146 /* Assets.xcassets in Resources */,
 			);
@@ -2651,8 +3412,11 @@
 				7B8B315021B4C2B200028D17 /* QSMyWalletCell.m in Sources */,
 				7BF36DF721A79E7B00B27146 /* UIImage+Corner.m in Sources */,
 				7B0D184921BCFAFD00550756 /* QSFungibleIssue.m in Sources */,
+				D2F5F6B821C531C60079EFD4 /* QSAddress.m in Sources */,
+				D2D8D3B021C791BC000D6644 /* QSScanAddress.m in Sources */,
 				7BF36E2421A79E7B00B27146 /* NSTimer+Block.m in Sources */,
 				7BF36D7021A79A2300B27146 /* QSManageViewController.m in Sources */,
+				D24259DA21C1FF3400896BC7 /* QSBatchCreateNFTSTopView.m in Sources */,
 				7BF40E6221B948C300047C3C /* QSPayAmountAddressCell.m in Sources */,
 				7B7A4C9021ACF7E800598E6F /* QSSettingCell.m in Sources */,
 				7BF36E0021A79E7B00B27146 /* UIView+RadiusMask.m in Sources */,
@@ -2662,12 +3426,17 @@
 				7BF40E6B21B951A100047C3C /* QSBottomButtonView.m in Sources */,
 				7B0D183321BCC36300550756 /* QSEveriApiWebViewController.m in Sources */,
 				7BF40EC721BA1C3400047C3C /* QSTransactionRecordViewController.m in Sources */,
+				D2F5F68F21C35FB80079EFD4 /* QSManageSelectAddressItem.m in Sources */,
+				D2EE884B21C10231000B15E3 /* QSIssueSelectAddressViewController.m in Sources */,
+				D2B2EF4A21C62B3300ABBB90 /* QSFTIssue.m in Sources */,
 				7BF36E0521A79E7B00B27146 /* UIView+Screenshot.m in Sources */,
 				7BF40EB921BA17E300047C3C /* QSTransactionSuccessViewController.m in Sources */,
 				7BF36E0721A79E7B00B27146 /* UIFont+FitFont.m in Sources */,
+				D2B2EF5321C62D4D00ABBB90 /* QSMetas.m in Sources */,
 				7BB8DC3C21B75C6A00954E86 /* YZDisplayTitleLabel.m in Sources */,
 				7B4CA15121A7CBA300F14449 /* UIFont+QSEVTFont.m in Sources */,
 				7BD9C48021B6A42600A16A99 /* QSWalletDetailCell.m in Sources */,
+				D296C1AC21CCD3F4005D1EF8 /* QSLogoutAlertView.m in Sources */,
 				7BF2F8CF21B129BF000AAD93 /* QSAboutusIconCell.m in Sources */,
 				7BF36E2121A79E7B00B27146 /* NSString+Utils.m in Sources */,
 				7BF36DF821A79E7B00B27146 /* UIImage+Color.m in Sources */,
@@ -2677,48 +3446,73 @@
 				7BF36E1221A79E7B00B27146 /* NSBundle+AppIcon.m in Sources */,
 				7B0D185C21BD284D00550756 /* QSMyNFTsCell.m in Sources */,
 				7B4CA16121A7E3DE00F14449 /* QSPropetyHomeShortcutView.m in Sources */,
+				D2E8763E21C12CFC0038825B /* QSCreateNFTSViewController.m in Sources */,
 				7BD9C48921B6AA1B00A16A99 /* QSExportPrivateKeyViewController.m in Sources */,
 				7B8B316521B50D0900028D17 /* QSImportWalletByMnemonicCodeViewController.m in Sources */,
 				7BF36E1621A79E7B00B27146 /* NSData+Gzip.m in Sources */,
 				7B7A4C8D21ACF14000598E6F /* QSSettingItem.m in Sources */,
+				D24259ED21C2545000896BC7 /* QSManageMyGroupItem.m in Sources */,
 				7BB8DC3121B757EF00954E86 /* QSImportWalletByKeyStoreCodeViewController.m in Sources */,
 				7BF36DF621A79E7B00B27146 /* UIImage+Size.m in Sources */,
+				D24259E021C23FBB00896BC7 /* QSBatchCreateNFTsBottomView.m in Sources */,
 				7B6CDC6B21AB7E4A008A6FAF /* QSHomeMyFTsViewController.m in Sources */,
+				D2D80BF021BFA70D00C1FCBF /* QSSelectFTCell.m in Sources */,
+				D24259D121C1F0BA00896BC7 /* QSIssueSettingEditViewController.m in Sources */,
 				7BB8DC7D21B7770B00954E86 /* QSQRCodeSelectAddressCell.m in Sources */,
 				7BF36D5D21A7972500B27146 /* QSMainViewController.m in Sources */,
+				D2E1289221BFE59200EF8E7E /* QSCreateFTIconCell.m in Sources */,
 				7BF36DFC21A79E7B00B27146 /* UIButton+Utils.m in Sources */,
+				D2F5F6A121C4ADA10079EFD4 /* QSNavigationController.m in Sources */,
 				7B4CA15421A7CBB400F14449 /* UIColor+QSEVTColor.m in Sources */,
 				7BF40ECA21BA1C4400047C3C /* QSTransactionRecordHeaderView.m in Sources */,
 				7BF36D6021A7972500B27146 /* QSRefreshHeader.m in Sources */,
+				D2E1288F21BFDC5000EF8E7E /* QSCreateFTItem.m in Sources */,
 				7BF36E2221A79E7B00B27146 /* CAGradientLayer+NIPExtension.m in Sources */,
 				7BF2F84021AE6F17000AAD93 /* QSManageAddressViewController.m in Sources */,
 				7BF36E1E21A79E7B00B27146 /* NSString+NormalRegex.m in Sources */,
 				7BF2F8D821B138D6000AAD93 /* QSBaseCornerSectionTableViewController.m in Sources */,
 				7BF36D5F21A7972500B27146 /* QSBaseModel.m in Sources */,
+				D24259DD21C230AF00896BC7 /* QSBatchCreateNFTSCenterView.m in Sources */,
 				7B0D184621BCFAC600550756 /* QSFungibleSymbol.m in Sources */,
 				7BF2F89821B0D7D4000AAD93 /* QSSystemSettingsViewController.m in Sources */,
 				7BF36DFE21A79E7B00B27146 /* UIColor+Hex.m in Sources */,
+				D2D80BF621BFB97600C1FCBF /* QSCreateFTViewController.m in Sources */,
 				7BF40E9021B9FD3B00047C3C /* QSScannerBackgroundView.m in Sources */,
+				D2F5F68221C34B390079EFD4 /* QSManageNewNodeViewController.m in Sources */,
+				D24259E621C24ED500896BC7 /* QSMyGroupViewController.m in Sources */,
 				7BF36E1821A79E7B00B27146 /* NSData+Base64.m in Sources */,
 				7BB8DC3D21B75C6A00954E86 /* YZFlowLayout.m in Sources */,
+				D2EE883321C0E121000B15E3 /* QSIssueMoreSettingViewController.m in Sources */,
 				7BB8DC4221B75DEA00954E86 /* QSImportWalletIndexViewController.m in Sources */,
 				7BF2F86021AE9983000AAD93 /* QSAddAddressCell.m in Sources */,
 				7BF36E1D21A79E7B00B27146 /* NSString+PinYin.m in Sources */,
 				7BF36E1121A79E7B00B27146 /* NSDictionary+Merge.m in Sources */,
 				7BF2F87821AFCF06000AAD93 /* QSExportAddressViewController.m in Sources */,
+				D2F5F6A621C4BC000079EFD4 /* QSCreateIdentityHomeViewController.m in Sources */,
 				7BF36DFF21A79E7B00B27146 /* UIView+Extensions.m in Sources */,
 				7BF36E0321A79E7B00B27146 /* UIView+Loading.m in Sources */,
 				7BF2F85D21AE96BA000AAD93 /* QSAddAddressViewController.m in Sources */,
+				D24259D721C1F8BC00896BC7 /* QSBatchCreateNFTSViewController.m in Sources */,
 				7BB8DC7A21B774DA00954E86 /* QSQRImageCodeCell.m in Sources */,
 				7BF36E1321A79E7B00B27146 /* NSFileManager+Paths.m in Sources */,
 				7BF36E1021A79E7B00B27146 /* UITextField+RACSignalSupport.m in Sources */,
 				7BF36E1721A79E7B00B27146 /* NSData+Encrypt.m in Sources */,
+				D20F61A821CB9E0300E32D1E /* QSTransferftModel.m in Sources */,
 				7B4CA15E21A7E31C00F14449 /* QSPropetyHomeSegmentView.m in Sources */,
 				7B0D185521BD04A000550756 /* QSWalletHelper.m in Sources */,
+				D2F5F6B521C531750079EFD4 /* QSAddressHelper.m in Sources */,
+				D2F5F68921C352850079EFD4 /* QSManagerSelectAddressViewController.m in Sources */,
+				D2EE885B21C10DAA000B15E3 /* QSBlankPageView.m in Sources */,
+				D2EE885821C10BE9000B15E3 /* QSMyPassCell.m in Sources */,
+				D2F5F68C21C35BCC0079EFD4 /* QSManageSelectAddressCell.m in Sources */,
+				D2EE884221C0F3DA000B15E3 /* QSIssuePermissionsIssueView.m in Sources */,
 				7BF36E2521A79E7B00B27146 /* NSDate+Utilities.m in Sources */,
 				7BF36D6A21A79A0A00B27146 /* QSMarketViewController.m in Sources */,
+				D2F5F69921C3969D0079EFD4 /* QSEnterJsonViewController.m in Sources */,
 				7BF2F87E21AFD53F000AAD93 /* QSJoinCommunitiesViewController.m in Sources */,
+				D2F5F67A21C258900079EFD4 /* QSCreateGroupViewController.m in Sources */,
 				7BF40E8121B966B900047C3C /* QSPayInfoItem.m in Sources */,
+				D2F392CB21CC83050039959B /* QSLunchImageViewController.m in Sources */,
 				7BF40E7E21B9665200047C3C /* QSPayInfoCell.m in Sources */,
 				7B6CDC7221AB9CF8008A6FAF /* QSHomeMyFTsCell.m in Sources */,
 				7BB8DC3E21B75C6A00954E86 /* UIView+YZFrame.m in Sources */,
@@ -2730,9 +3524,12 @@
 				7BF2F8B421B10D52000AAD93 /* QSNodeSettingViewController.m in Sources */,
 				7BF2F88B21AFE3FA000AAD93 /* QSHelpCenterFunctionOverviewCell.m in Sources */,
 				7BF36DF921A79E7B00B27146 /* UIImage+QRCode.m in Sources */,
+				D2E8764721C144280038825B /* QSCreateNFTSManagerView.m in Sources */,
+				D2B2EF5C21C6555000ABBB90 /* QSPrivatekeyAlertView.m in Sources */,
 				7B8B315321B4C2CB00028D17 /* QSEditWalletsViewController.m in Sources */,
 				7BF36E1A21A79E7B00B27146 /* NSString+URL.m in Sources */,
 				7B8B316D21B51AAC00028D17 /* QSExportMnemonicStep2ViewController.m in Sources */,
+				D2E8764421C141140038825B /* QSCreateNFTSTransferView.m in Sources */,
 				7BF2F85121AE7490000AAD93 /* QSSelectMenuView.m in Sources */,
 				7BF36E0921A79E7B00B27146 /* UIViewController+Alert.m in Sources */,
 				7B4CA15821A7D27E00F14449 /* QSTabBar.m in Sources */,
@@ -2743,15 +3540,22 @@
 				7BF2F85721AE80A3000AAD93 /* QSManageAddressCell.m in Sources */,
 				7B0D184C21BCFB1D00550756 /* QSAuthorizers.m in Sources */,
 				7BF36E0421A79E7B00B27146 /* UIView+HUD.m in Sources */,
+				D2F5F69421C38CF70079EFD4 /* QSEnterPublicKeyViewController.m in Sources */,
+				D2EE883921C0EDBA000B15E3 /* QSIssueMoreSettingBottomView.m in Sources */,
+				D2F5F67D21C2872D0079EFD4 /* QSManagerSettingView.m in Sources */,
 				7BB8DC7121B76F4E00954E86 /* QSQRCodeScanItem.m in Sources */,
 				7BF2F8C521B1228F000AAD93 /* QSShareHelper.m in Sources */,
 				7B0D183C21BCCB0D00550756 /* QSCreateEvt.m in Sources */,
 				7BF36D6721A799ED00B27146 /* QSHomePropertyViewController.m in Sources */,
 				7BF40E5F21B9465D00047C3C /* QSPayAmountBalanceCell.m in Sources */,
+				D2D8D3AD21C7914D000D6644 /* QSScanGetAddress.m in Sources */,
+				D2E1289821BFF2B000EF8E7E /* UIViewController+QSSelectPicture.m in Sources */,
+				D2EE882121C09D45000B15E3 /* QSCreateFTAlertItem.m in Sources */,
 				7BF36E1B21A79E7B00B27146 /* NSString+Hash.m in Sources */,
 				7B8B314F21B4C2B200028D17 /* QSMyWalletSectionHeaderView.m in Sources */,
 				7BF36E1421A79E7B00B27146 /* NSData+ImageCompress.m in Sources */,
 				7BF2F8AF21B10AF7000AAD93 /* QSCurrencySettingsViewController.m in Sources */,
+				D2B2EF5021C62CA000ABBB90 /* QSFTManage.m in Sources */,
 				7BD9C48321B6A50000A16A99 /* QSWalletContentItem.m in Sources */,
 				7B0D184321BCF77E00550756 /* QSOwnedToken.m in Sources */,
 				7BF40E7421B95D3B00047C3C /* QSSelectCurrencyCell.m in Sources */,
@@ -2765,11 +3569,14 @@
 				7B7A4C9321AD18B400598E6F /* UITableViewCell+QSSectionCorner.m in Sources */,
 				7BF36E0F21A79E7B00B27146 /* UINavigationController+Extensions.m in Sources */,
 				7BF40E8A21B9FCB600047C3C /* QSScannerViewController.m in Sources */,
+				D29A8CFF21C699A700D6B8DA /* QSNFT.m in Sources */,
+				D2EE882D21C0BD47000B15E3 /* QSIssueWhiteView.m in Sources */,
 				7B0D184F21BCFBA100550756 /* QSFungibleManage.m in Sources */,
 				7BF2F8A621B1025D000AAD93 /* QSLanguageConfigHelper.m in Sources */,
 				7BB8DC6D21B76E6B00954E86 /* QSCollectCodeViewController.m in Sources */,
 				7BF36D5E21A7972500B27146 /* QSBaseViewController.m in Sources */,
 				7BF36E2721A79E7B00B27146 /* NSDate+Transform.m in Sources */,
+				D2EE885521C10A7C000B15E3 /* QSMyPassViewController.m in Sources */,
 				7BF2F85421AE74C3000AAD93 /* QSSelectMenuCell.m in Sources */,
 				7BF36E0121A79E7B00B27146 /* UIView+Frame.m in Sources */,
 				7B4CA16821A7EDC500F14449 /* QSPropertyHomeSwipeCell.m in Sources */,
@@ -2778,9 +3585,11 @@
 				7BF40E8D21B9FD3100047C3C /* QSScannerView.m in Sources */,
 				7BF36D6221A7972500B27146 /* main.m in Sources */,
 				7BF2F8A221B0DC68000AAD93 /* QSSettingLanguageItem.m in Sources */,
+				D2E8764121C13EE60038825B /* QSCreateNFTSIssueView.m in Sources */,
 				7BD9C47D21B6A3BB00A16A99 /* QSWalletDetailViewController.m in Sources */,
 				7BF40ECE21BA1D2C00047C3C /* QSTransactionRecordItem.m in Sources */,
 				7B8B315A21B5028200028D17 /* QSModifyPasswordViewController.m in Sources */,
+				D2E8764D21C14D350038825B /* QSCreateNFTSEditViewController.m in Sources */,
 				7BB8DC8A21B79D9C00954E86 /* QSEveriPayCodeViewController.m in Sources */,
 				7BF40E5C21B9447700047C3C /* QSPayAmountSeletPayWayCell.m in Sources */,
 				7BF36E2321A79E7B00B27146 /* NSArray+SafeAccess.m in Sources */,
@@ -2791,6 +3600,8 @@
 				7BD9C47621B69DA100A16A99 /* QSAddWalletViewController.m in Sources */,
 				7BF40EAB21BA120400047C3C /* QSEveriPayCollectAmountViewController.m in Sources */,
 				7BF40EDA21BA44DA00047C3C /* QSBatchTransferViewController.m in Sources */,
+				D2EE883621C0E145000B15E3 /* QSIssueMoreSettingTopView.m in Sources */,
+				D29A8D0221C69A5200D6B8DA /* QSNFTTransfer.m in Sources */,
 				7BF2F86321AE9A1D000AAD93 /* QSAddAddressCell+QSAddAddressType.m in Sources */,
 				7BF36E1F21A79E7B00B27146 /* NSString+Contains.m in Sources */,
 				7BB8DC7421B7702600954E86 /* QSQRCodeScanTipsCell.m in Sources */,
@@ -2801,15 +3612,22 @@
 				7BF2F82D21AE37D6000AAD93 /* QSBaseTableViewCell.m in Sources */,
 				7BF40E5B21B9447700047C3C /* QSPayAmountViewController.m in Sources */,
 				7BF2F8D221B133D0000AAD93 /* QSBaseCellItem.m in Sources */,
+				D2F5F69E21C3AFB70079EFD4 /* QSCreateIdentityViewController.m in Sources */,
+				D2EE884521C0F40E000B15E3 /* QSIssuePermissionsTransferView.m in Sources */,
 				7BF2F86A21AE9A7B000AAD93 /* QSAddAddressItem.m in Sources */,
 				7B4CA16521A7E7BE00F14449 /* QSTopImageBottomLabelButton.m in Sources */,
 				7BF40EAD21BA120400047C3C /* QSEveriPayCollectCurrencyCell.m in Sources */,
 				7B0D186221BDF85700550756 /* QSIssuePopupView.m in Sources */,
+				D2F5F6AB21C4C70C0079EFD4 /* QSRestoreIdentityViewController.m in Sources */,
 				7BF2F86D21AF8091000AAD93 /* QSAddAddressCell+QSAddAddressInput.m in Sources */,
+				D2EE883F21C0F2B5000B15E3 /* QSIssuePermissionsViewController.m in Sources */,
+				D24259E921C2533000896BC7 /* QSManageMyGroupCell.m in Sources */,
 				7BF36DFD21A79E7B00B27146 /* UIColor+Gradient.m in Sources */,
 				7BF2F8A921B102F4000AAD93 /* NSBundle+QSLanguageUtils.m in Sources */,
 				7BF40ED721BA3FC700047C3C /* QSTransactionRecordBottomToolBar.m in Sources */,
+				D2EE882721C0B8E9000B15E3 /* QSIssueViewController.m in Sources */,
 				7BB8DC8021B7794D00954E86 /* QSQRCodeMaxPayAmountCell.m in Sources */,
+				D2E1289521BFEA6500EF8E7E /* QSCreateFTIconItem.m in Sources */,
 				7BF2F8B921B11494000AAD93 /* QSMaxPaymentViewController.m in Sources */,
 				7BB8DC7721B7721000954E86 /* QSQRCodeAddressCell.m in Sources */,
 				7B6CDC6E21AB7E65008A6FAF /* QSHomeMyNFTsViewController.m in Sources */,
@@ -2817,10 +3635,14 @@
 				7BF36D6D21A79A1700B27146 /* QSSwitchWalletViewController.m in Sources */,
 				7BF40ED121BA1D4000047C3C /* QSTransactionRecordCell.m in Sources */,
 				7BF2F86621AE9A34000AAD93 /* QSAddAddressCell+QSAddAddressScan.m in Sources */,
+				D2EE881E21C09A1D000B15E3 /* QSCreateFTAlertCell.m in Sources */,
 				7BB8DC3F21B75C6A00954E86 /* YZDisplayViewController.m in Sources */,
+				D2B2EF4721C62AA900ABBB90 /* QSFT.m in Sources */,
 				7BF36E0821A79E7B00B27146 /* UIBarButtonItem+Actions.m in Sources */,
 				7BF2F88821AFE1BD000AAD93 /* QSHelpCenterOverViewItem.m in Sources */,
+				D20F61AB21CB9E7A00E32D1E /* QSTransferftData.m in Sources */,
 				7BD9C48E21B6B49400A16A99 /* QSSelectWalletTypeViewController.m in Sources */,
+				D2D80BF921BFBF9900C1FCBF /* QSCreateFTTextCell.m in Sources */,
 				7B0D187021BE038C00550756 /* QSSelectFTViewController.m in Sources */,
 				7BF40E8421B969A300047C3C /* QSPayInfoHeaderView.m in Sources */,
 			);
@@ -2990,6 +3812,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 36JC4B9JZA;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/Supporting Files/PrefixHeader.pch";
@@ -2999,8 +3822,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.qisheng.EVT-Wallet";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qisheng.evtwallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -3011,6 +3835,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 36JC4B9JZA;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/Supporting Files/PrefixHeader.pch";
@@ -3020,8 +3845,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.qisheng.EVT-Wallet";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qisheng.evtwallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

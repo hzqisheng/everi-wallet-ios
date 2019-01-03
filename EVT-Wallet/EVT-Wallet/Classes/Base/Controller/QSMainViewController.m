@@ -7,7 +7,11 @@
 //
 
 #import "QSMainViewController.h"
+#import "QSCreateIdentityHomeViewController.h"
+#import "QSNavigationController.h"
 #import "QSTabBar.h"
+#import "QSMyWalletViewController.h"
+#import "QSManageAddressViewController.h"
 
 @interface QSMainViewController ()<UITabBarControllerDelegate,QSTabBarDelegate>
 
@@ -45,9 +49,9 @@
 - (void)setupChildViewControllers {
     [self addChileVcWithTitle:QSLocalizedString(@"qs_tabbar_property") vc:[NSClassFromString(@"QSHomePropertyViewController") new] imageName:@"icon_home_tabbar_zichan_unselected" selImageName:@"icon_home_tabbar_zichan_selected"];
     
-    [self addChileVcWithTitle:QSLocalizedString(@"qs_tabbar_markets") vc:[NSClassFromString(@"QSMarketViewController") new] imageName:@"icon_home_tabbar_shichang_unselected" selImageName:@"icon_home_tabbar_shichang_selected"];
+    [self addChileVcWithTitle:QSLocalizedString(@"qs_btn_home_address") vc:[NSClassFromString(@"QSManageAddressViewController") new] imageName:@"icon_home_tabbar_shichang_unselected" selImageName:@"icon_home_tabbar_shichang_selected"];
     
-    [self addChileVcWithTitle:QSLocalizedString(@"qs_tabbar_discover") vc:[NSClassFromString(@"QSManageViewController") new] imageName:@"icon_home_tabbar_guanli_unselected" selImageName:@"icon_home_tabbar_guanli_selected"];
+    [self addChileVcWithTitle:QSLocalizedString(@"qs_tabbar_manage") vc:[NSClassFromString(@"QSManageViewController") new] imageName:@"icon_home_tabbar_guanli_unselected" selImageName:@"icon_home_tabbar_guanli_selected"];
 
     [self addChileVcWithTitle:QSLocalizedString(@"qs_tabbar_me") vc:[NSClassFromString(@"QSMineViewController") new] imageName:@"icon_home_tabbar_wode_unselected" selImageName:@"icon_home_tabbar_wode_selected"];
 }
@@ -63,7 +67,9 @@
 
 #pragma mark - **************** QSTabBarDelegate
 - (void)qsTabbarDidClickedCenterButton:(QSTabBar *)tabBar {
-    DLog(@"点击切换钱包");
+    QSMyWalletViewController *vc = [[QSMyWalletViewController alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [[UIViewController currentViewController].navigationController pushViewController:vc animated:YES];
 }
 
 @end

@@ -10,7 +10,6 @@
 
 @interface QSMyWalletCell ()
 
-@property (nonatomic, strong) UIImageView *walletBackgroundView;
 @property (nonatomic, strong) UIImageView *walletImageView;
 @property (nonatomic, strong) UILabel *walletNameLabel;
 @property (nonatomic, strong) UIButton *moreButton;
@@ -42,8 +41,8 @@
     
     [self.walletImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.walletBackgroundView);
-        make.left.equalTo(self.walletBackgroundView);
-        make.width.and.height.equalTo(@kRealValue(68));
+        make.left.equalTo(self.walletBackgroundView).offset(kRealValue(25));
+        make.size.mas_equalTo(CGSizeMake(kRealValue(23), kRealValue(14)));
     }];
     
     [self.walletNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -97,7 +96,6 @@
 - (UIImageView *)walletBackgroundView {
     if (!_walletBackgroundView) {
         _walletBackgroundView = [[UIImageView alloc] init];
-        _walletBackgroundView.image = [UIImage imageNamed:@"img_qianbao_card"];
         _walletBackgroundView.userInteractionEnabled = YES;
     }
     return _walletBackgroundView;
@@ -107,6 +105,7 @@
     if (!_walletImageView) {
         _walletImageView = [[UIImageView alloc] init];
         _walletImageView.contentMode = UIViewContentModeScaleAspectFill;
+        [_walletImageView setImage:[UIImage imageNamed:@"icon_erweima_evt"]];
     }
     return _walletImageView;
 }
@@ -146,6 +145,19 @@
         _pasteSecretKeyButton = [UIButton buttonWithImage:@"icon_qianbao_card" taget:self action:@selector(pasteSecretKeyButtonClicked)];
     }
     return _pasteSecretKeyButton;
+}
+
+- (void)setWallet:(QSCreateEvt *)wallet {
+    _wallet = wallet;
+    self.walletNameLabel.text = [NSString stringWithFormat:@"%@-wallet",wallet.type];
+    if ([wallet.type isEqualToString:@"EVT"]) {
+        self.walletTypeLabel.text = @"evt";
+    } else if ([wallet.type isEqualToString:@"ETH"]) {
+        self.walletTypeLabel.text = @"eth";
+    } else if ([wallet.type isEqualToString:@"EOS"]) {
+        self.walletTypeLabel.text = @"eos";
+    }
+    self.secretKeyLabel.text = self.wallet.publicKey;
 }
 
 @end

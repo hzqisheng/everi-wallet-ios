@@ -17,6 +17,11 @@
 
 @interface QSEveriPayCollectAmountViewController ()
 
+@property (nonatomic, copy) NSString *money;
+@property (nonatomic, copy) NSString *payeeString;
+@property (nonatomic, copy) NSString *payStr;
+@property (nonatomic, strong) QSFungibleSymbol *Model;
+
 @end
 
 @implementation QSEveriPayCollectAmountViewController
@@ -33,13 +38,58 @@
     
     @weakify(self);
     self.tableView.tableFooterView = [[QSBottomButtonView alloc] initWithFrame:CGRectMake(0, 0, kBottomButtonWidth, kRealValue(100))
-                                                                         title:QSLocalizedString(@"qs_collect_amount_bottom_btn_title")
+                                                                title:QSLocalizedString(@"qs_collect_amount_bottom_btn_title")
                                                                   clickedBlock:^
                                       {
                                           @strongify(self);
-                                          QSEveriPayCollectSuccessViewController *success = [[QSEveriPayCollectSuccessViewController alloc] init];
-                                          [self.navigationController pushViewController:success animated:YES];
+                                          [self shoukuanStepTwoWithPayeeStr];
                                       }];
+    
+    [self ConfirmReceipt];
+}
+
+#pragma mark - **************** Private Methods
+- (void)ConfirmReceipt {
+    WeakSelf(weakSelf);
+    [[QSEveriApiWebViewController sharedWebView] getFungibleSymbolDetailWithSymId:self.sybId andCompeleteBlock:^(NSInteger statusCode, QSFungibleSymbol * _Nonnull fungibleSymbol) {
+        if (statusCode == kResponseSuccessCode) {
+            weakSelf.Model = fungibleSymbol;
+            NSArray *NewArray = [fungibleSymbol.sym componentsSeparatedByString:@","];
+            if (NewArray.count < 2) {
+                return ;
+            }
+            NSString *jinduStr = NewArray[0];
+            NSString *symId = NewArray[1];
+            NSString *payeeStr = @".";
+            for (int i = 0; i < [jinduStr integerValue]; i++) {
+                payeeStr = [payeeStr stringByAppendingString:@"0"];
+            }
+            payeeStr = [payeeStr stringByAppendingString:@" "];
+            payeeStr = [payeeStr stringByAppendingString:symId];
+            weakSelf.payeeString = payeeStr;
+            
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+            QSEveriPayCollectCurrencyItem *payItem = (QSEveriPayCollectCurrencyItem *)[weakSelf itemInIndexPath:indexPath];
+            payItem.FTModel = fungibleSymbol;
+            [weakSelf.tableView reloadData];
+        }
+    }];
+}
+
+- (void)shoukuanStepTwoWithPayeeStr {
+    if (!self.payeeString.length) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_shoukuan_failure2")];
+        return;
+    }
+    WeakSelf(weakSelf);
+    [[QSEveriApiWebViewController sharedWebView] pushTransactionWithActionEveriLink:self.link andAsset:self.payStr andaddress:QSPublicKey andCompeleteBlock:^(NSInteger statusCode) {
+        if (statusCode == kResponseSuccessCode) {
+            QSEveriPayCollectSuccessViewController *success = [[QSEveriPayCollectSuccessViewController alloc] init];
+            success.money = weakSelf.money;
+            success.Model = weakSelf.Model;
+            [weakSelf.navigationController pushViewController:success animated:YES];
+        }
+    }];
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
@@ -52,12 +102,19 @@
     QSEveriPayCollectCurrencyItem *currencyItem = [[QSEveriPayCollectCurrencyItem alloc] init];
     currencyItem.cellIdentifier = NSStringFromClass([QSEveriPayCollectCurrencyCell class]);
     currencyItem.cellHeight = kRealValue(70);
+    currencyItem.currceny = self.sybId;
     
+    WeakSelf(weakSelf);
     QSPayAmountItem *collectAmountItem = [[QSPayAmountItem alloc] init];
     collectAmountItem.cellIdentifier = NSStringFromClass([QSPayAmountInputCell class]);
     collectAmountItem.cellHeight = kRealValue(70);
     collectAmountItem.inputTitle = QSLocalizedString(@"qs_collect_amount_item_amount_title");
     collectAmountItem.inputPlaceholder = QSLocalizedString(@"qs_collect_amount_item_amount_placeholder");
+    collectAmountItem.keyType = UIKeyboardTypeAlphabet;
+    collectAmountItem.payAmountItemTextBlock = ^(NSString * _Nonnull text) {
+        weakSelf.money = text;
+        weakSelf.payStr = [text stringByAppendingString:weakSelf.payeeString];
+    };
     
     return @[@[currencyItem],
              @[collectAmountItem]];

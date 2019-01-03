@@ -34,7 +34,7 @@
         make.top.equalTo(self.contentView.mas_centerY).offset(kRealValue(5));
         make.left.equalTo(self.contentView).offset(kRealValue(20));
         make.right.equalTo(self.contentView).offset(-kRealValue(20));
-        make.height.equalTo(@([UIFont qs_fontOfSize14].lineHeight));
+        make.height.equalTo(@kRealValue(35));
     }];
 }
 
@@ -57,6 +57,8 @@
 - (UILabel *)contentLabel {
     if (!_contentLabel) {
         _contentLabel = [UILabel labelWithName:nil font:[UIFont qs_fontOfSize14] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentLeft];
+        _contentLabel.numberOfLines = 2;
+        
     }
     return _contentLabel;
 }

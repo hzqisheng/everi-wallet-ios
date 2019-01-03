@@ -7,6 +7,7 @@
 //
 
 #import "QSQRCodeSelectAddressCell.h"
+#import "QSQRCodeScanItem.h"
 
 @interface QSQRCodeSelectAddressCell ()
 
@@ -52,11 +53,36 @@
     }];
 }
 
+- (void)configureCellWithItem:(QSBaseCellItem *)item {
+    self.item = item;
+    
+    QSQRCodeScanItem *FTItem = (QSQRCodeScanItem *)item;
+    QSFT *FTModel = FTItem.FTModel;
+    if (FTModel.metas.count > 0) {
+        QSMetas *metas = FTModel.metas[0];
+        [self.leftImageView sd_setImageWithURL:[NSURL URLWithString:metas.value]];
+    } else {
+        [self.leftImageView setImage:[UIImage imageNamed:@"AppIcon"]];
+    }
+    NSArray *totlyList = [FTModel.total_supply componentsSeparatedByString:@" "];
+    if (totlyList.count == 2) {
+        NSMutableString *test = [NSMutableString stringWithString:totlyList[1]];
+        if([test hasPrefix:@"S"]){
+            [test deleteCharactersInRange: [test rangeOfString:@"S"]];
+        }
+        self.walletNameLabel.text = [NSString stringWithFormat:@"%@(%@)",FTModel.sym_name,test];
+    } else {
+        self.walletNameLabel.text = FTModel.name;
+    }
+}
+
 #pragma mark - **************** Setter Getter
 - (UIImageView *)leftImageView {
     if (!_leftImageView) {
         _leftImageView = [[UIImageView alloc] init];
         _leftImageView.image = [UIImage imageNamed:@"icon_erweima_evt"];
+        _leftImageView.layer.cornerRadius = kRealValue(16.5);
+        _leftImageView.layer.masksToBounds = YES;
     }
     return _leftImageView;
 }
@@ -82,5 +108,7 @@
     }
     return _arrowImageView;
 }
+
+
 
 @end

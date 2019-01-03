@@ -7,6 +7,7 @@
 //
 
 #import "QSTransactionRecordCell.h"
+#import "QSTransactionRecordItem.h"
 
 @interface QSTransactionRecordCell ()
 
@@ -45,26 +46,72 @@
 
 - (void)configureCellWithItem:(QSBaseCellItem *)item {
     self.item = item;
+    QSTransactionRecordItem *recordItem = (QSTransactionRecordItem *)item;
+    NSArray *timeArr = [recordItem.transferModel.timestamp componentsSeparatedByString:@"+"];
+    if (timeArr.count == 2) {
+        self.timeLabel.text = timeArr[0];
+    }
+    NSArray *amountArr = [recordItem.transferModel.data.number componentsSeparatedByString:@" "];
+    
+    if ([recordItem.transferModel.name isEqualToString:@"issuefungible"]) {
+        self.addressLabel.text = QSLocalizedString(@"qs_btn_home_issue");
+        if (amountArr.count == 2) {
+            self.amountLabel.text = [NSString stringWithFormat:@"+%@",amountArr[0]];
+        }
+    } else if ([recordItem.transferModel.name isEqualToString:@"transferft"]) {
+        if ([recordItem.transferModel.data.from isEqualToString:QSPublicKey]) {
+            self.addressLabel.text = recordItem.transferModel.data.to;
+            if (amountArr.count == 2) {
+                self.amountLabel.text = [NSString stringWithFormat:@"-%@",amountArr[0]];
+                self.amountLabel.textColor = [UIColor qs_colorBlack313745];
+            }
+        } else if ([recordItem.transferModel.data.to isEqualToString:QSPublicKey]) {
+            self.addressLabel.text = recordItem.transferModel.data.from;
+            if (amountArr.count == 2) {
+                self.amountLabel.text = [NSString stringWithFormat:@"+%@",amountArr[0]];
+            }
+        }
+    } else if ([recordItem.transferModel.name isEqualToString:@"everipay"]) {
+        NSArray *addressArr = recordItem.transferModel.data.link[@"keys"];
+        if (!addressArr.count) {
+            return;
+        }
+        NSString *shoukuanAddress = addressArr[0];
+        if ([recordItem.transferModel.data.payee isEqualToString:QSPublicKey]) {
+            self.addressLabel.text = shoukuanAddress;
+            if (amountArr.count == 2) {
+                self.amountLabel.text = [NSString stringWithFormat:@"+%@",amountArr[0]];
+            }
+        } else if ([shoukuanAddress isEqualToString:QSPublicKey]) {
+            self.addressLabel.text = recordItem.transferModel.data.payee;
+            if (amountArr.count == 2) {
+                self.amountLabel.text = [NSString stringWithFormat:@"-%@",amountArr[0]];
+                self.amountLabel.textColor = [UIColor qs_colorBlack313745];
+            }
+        }
+    }
+    
+    
 }
 
 #pragma mark - **************** Setter Getter
 - (UILabel *)addressLabel {
     if (!_addressLabel) {
-        _addressLabel = [UILabel labelWithName:@"EVT2397430jjsee37HJ" font:[UIFont qs_fontOfSize15] textColor:[UIColor qs_colorBlack313745] textAlignment:NSTextAlignmentLeft];
+        _addressLabel = [UILabel labelWithName:@"" font:[UIFont qs_fontOfSize15] textColor:[UIColor qs_colorBlack313745] textAlignment:NSTextAlignmentLeft];
     }
     return _addressLabel;
 }
 
 - (UILabel *)timeLabel {
     if (!_timeLabel) {
-        _timeLabel = [UILabel labelWithName:@"2018-11-19  14:18:08" font:[UIFont qs_fontOfSize14] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentLeft];
+        _timeLabel = [UILabel labelWithName:@"" font:[UIFont qs_fontOfSize14] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentLeft];
     }
     return _timeLabel;
 }
 
 - (UILabel *)amountLabel {
     if (!_amountLabel) {
-        _amountLabel = [UILabel labelWithName:@"+200.00" font:[UIFont qs_boldFontOfSize17] textColor:[UIColor qs_colorRedFF1E48] textAlignment:NSTextAlignmentRight];
+        _amountLabel = [UILabel labelWithName:@"" font:[UIFont qs_boldFontOfSize17] textColor:[UIColor qs_colorRedFF1E48] textAlignment:NSTextAlignmentRight];
     }
     return _amountLabel;
 }

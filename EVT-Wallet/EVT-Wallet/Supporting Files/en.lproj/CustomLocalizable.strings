@@ -18,14 +18,94 @@
 "qs_btn_home_mynfts"  = "My NFTs";
 
 //Isssue
-"qs_issue_ft_pop_up_title"       = "Issue FTs";
-"qs_issue_ft_pop_up_content"     = "Like Points,Scores and other standardized assets";
-"qs_issue_nft_pop_up_title"      = "Issue NFTs";
-"qs_issue_nft_pop_up_content"    = "Like Tickets,property and other unique assets/rights";
+"qs_issue_ft_pop_up_title"             = "Issue FTs";
+"qs_issue_ft_pop_up_content"           = "Like Points,Scores and other standardized assets";
+"qs_issue_nft_pop_up_title"            = "Issue NFTs";
+"qs_issue_nft_pop_up_content"          = "Like Tickets,property and other unique assets/rights";
+"qs_issue_issue_circulation_title"     = "The Number Of Issue";
+"qs_issue_issue_address_title"         = "Address";
+"qs_issue_issue_remarks_title"         = "Note";
+"qs_issue_issue_remarks_placeholder"   = "Please enter a note";
+"qs_issue_issue_moreSetting_rightNavi" = "Permissions";
+"qs_issue_issue_moreSetting_manage"    = "Manage";
+"qs_issue_issue_moreSetting_metadata"  = "Metadata";
+"qs_issue_issue_permissions_content0"  = "Only I can publish it";
+"qs_issue_issue_permissions_content1"  = "Manually edit content";
+"qs_issue_issue_permissions_edit"      = "Edit";
+"qs_issue_issue_permissions_transfer"  = "Transfer";
+"qs_issue_issue_confirm_title"         = "Confirm";
+"qs_issue_issue_select_address_title"  = "Select the address";
+"qs_issue_issue_circulation_placeholder"  = "Please enter circulation";
+"qs_issue_ft_name_title"             = "FT name";
+"qs_issue_password_placeholder"             = "Please enter your password";
+
+//Pass
+"qs_pass_mypass_navi_title"            = "My NFTs";
+"qs_pass_mypass_btn_title"             = "Create NFTs";
+"qs_pass_createNFTS_yu_title"          = "NFT";
+"qs_pass_createNFTS_yu_placeholder"    = "Please enter the NFT name";
+"qs_pass_createNFTS_batch_topView_placeholder"   = "You can manually enter the name of the license here, with the key enter segmentation; If you need to issue multiple passes in batches quickly, you can use the batch generation function";
+"qs_pass_createNFTS_batch_topView_address"   = "Amount Of Address：";
+"qs_pass_createNFTS_batch_topView_label"     = "Batch generation of NFTS names";
+"qs_pass_createNFTS_batch_centerView_placeholde"   = "Please enter the batch generation of NFTS names";
+"qs_pass_createNFTS_batch_centerView_btn"    = "Mass production";
+"qs_pass_createNFTS_batch_count"    = "Count";
+
+//Manage
+"qs_manage_massTransfer_title"    = "Mass transfer";
+"qs_manage_mineNFTs_title"        = "My NFts";
+"qs_manage_mineGroup_title"       = "My group";
+"qs_manage_createGroup_title"     = "Create group";
+"qs_manage_createGroup_managers"  = "Manager";
+"qs_manage_createGroup_manager_State1"  = "I'm in charge";
+"qs_manage_createGroup_manager_State2"  = "Select from local";
+"qs_manage_createGroup_manager_State3"  = "Enter the public key manually";
+"qs_manage_createGroup_structure"       = "Group structure";
+"qs_manage_createGroup_structure_placeholder"  = "Please enter the group structure";
+"qs_manage_createGroup_threshold"       = "Threshold";
+"qs_manage_createGroup_node"            = "Node";
+"qs_manage_createGroup_NewNode"         = "New node";
+"qs_manage_createGroup_allSelect"       = "All select";
+"qs_manage_createGroup_confirm"         = "Confirm";
+"qs_manage_createGroup_publicKey"       = "Enter the public key";
+"qs_manage_createGroup_publicKey_placeholder"  = "Please enter the public key";
+"qs_manage_createGroup_json_title"      = "Please Enter the json address";
+"qs_manage_createGroup_leaf_node"       = "Leaf Node";
+"qs_manage_createGroup_Nonleaf_node"    = "Non-Leaf Node";
+"qs_manage_createGroup_key_placeholder" = "Please Enter the key";
+"qs_manage_createGroup_weight"          = "Weight";
+
+//Switch
+"qs_switch_createIdentity_password_placeholder" = "Password";
+"qs_switch_createIdentity_recover" = "Restore the identity";
+"qs_switch_createIdentity_alert"   = "The password cannot be empty";
+"qs_switch_createIdentity_alert2"  = "Password validation error";
+"qs_switch_createIdentity_restore_btn" = "Resume immediately";
+"qs_switch_createIdentity_restore_key" = "Please enter the backup wallet mnemonic (12 English words), split by space";
+"qs_switch_createIdentity_login_fail" = "Login failed";
+"qs_switch_Switch_purse" = "icon_home_tabbar_qihuanqianbao_english";
 
 //SelectFT
-"qs_select_ft_nav_titlte"   = "Unissued";
-"qs_select_ft_btn_titlte"   = "Create Coin";
+"qs_select_ft_nav_titlte"              = "Unissued";
+"qs_select_ft_btn_titlte"              = "Create Coin";
+"qs_select_ft_btn_title"               = "Submit";
+"qs_select_ft_token_title"             = "Coin Name For Short";
+"qs_select_ft_token_placeholde"        = "Please enter symbol";
+"qs_select_ft_assetNumbers_title"      = "Asset Numbers";
+"qs_select_ft_assetNumbers_placeholde" = "Please enter the asset number";
+"qs_select_ft_circulation_title"       = "Total circulation";
+"qs_select_ft_circulation_placeholde"  = "Please enter the total number of releases";
+"qs_select_ft_precision_title"         = "Accuracy (maximum number of precision bits is 18)";
+"qs_select_ft_precision_placeholde"    = "Please input precision";
+"qs_select_ft_money_title"             = "Money";
+"qs_select_ft_money_placeholde"        = "Please enter the payment amount";
+"qs_select_ft_icon_title"              = "Icon (recommended 180*180)";
+"qs_select_ft_permissions_title"       = "Permissions";
+"qs_select_ft_permissions_content0"    = "Only I can issue,the Authority cannot be changed";
+"qs_select_ft_permissions_content1"    = "Only I can issue,the Authority can be changed later";
+"qs_select_ft_permissions_content2"    = "Advanced Settings";
+"qs_cancel"                            = "Cancel";
+
 
 //Create Coin
 
@@ -38,6 +118,7 @@
 "qs_scan_scan_failed_tips_title"     = "Please try another picture~";
 "qs_scan_scan_failed_confirm_title"  = "Confirm";
 "qs_scan_scan_init_failed_title"     = "Camera initialization failed~";
+"qs_scan_scan_link"          = "EVTLink expired";
 
 //Transaction Record
 "qs_transaction_record_item_record_title"        = "Transaction Record";
@@ -45,6 +126,7 @@
 "qs_transaction_record_tansfer_btn_title"        = "Transfer";
 "qs_transaction_record_batch_tansfer_btn_title"  = "Batch transfer";
 "qs_transaction_record_collect_btn_title"        = "Collect";
+"qs_btn_pay_everipay"     = "everipay";
 
 //Collect
 "qs_collect_item_tips_title"                = "Please scan with the same wallet";
@@ -76,8 +158,8 @@
 "qs_everipay_item_max_pay_title"             = "MaxPayAmount";
 "qs_everipay_select_address_popupview_title" = "Please select the token";
 
-//Pay Amount
-"qs_pay_amount_nav_title"                = "everiPay";
+//Pay AmountT
+"qs_pay_amount_nav_title"                = "Transfer";
 "qs_pay_amount_select_payway_tips"       = "Please select currency to make payment";
 "qs_pay_amount_item_balance_title"       = "Balance";
 "qs_pay_amount_item_address_title"       = "Address";
@@ -111,6 +193,7 @@
 "qs_wallet_nav_title"      = "Wallet";
 "qs_wallet_current_title"  = "Current Wallet";
 "qs_wallet_imported_title" = "Imported Wallets";
+"qs_wallet_imported_already" = "The wallet is already on the list";
 
 //Edit Wallets
 "qs_edit_wallet_nav_title"                       = "Edit Wallet";
@@ -131,6 +214,7 @@
 
 //Import Wallet
 "qs_import_wallet_nav_title"                    = "Import Wallet";
+"qs_import_wallet_nav_title_failure"            = "Failed to import wallet";
 "qs_import_wallet_item_mnemonic_title"          = "Enter The Mnemonic Code(12 words),separated by space";
 "qs_import_wallet_item_password_title"          = "Password";
 "qs_import_wallet_item_confirm_password_title"  = "Confirm Password";
@@ -201,6 +285,8 @@
 "qs_manage_address_btn_search"          = "Search";
 "qs_manage_address_btn_add_address"     = "New Adress";
 "qs_manage_address_btn_import_address"  = "Import Adress";
+"qs_manage_address_all"  = "All";
+"qs_manage_address_selectGroup"  = "Select Group";
 
 //Add Address
 "qs_add_address_nav_title"                = "New Address";
@@ -216,6 +302,7 @@
 "qs_add_address_item_phone_placeholder"   = "Please input the phone number";
 "qs_add_address_item_memo_placeholder"    = "Please input the memo";
 "qs_add_address_save_btn_title"           = "Save";
+"qs_add_address_save_address_failure"     = "Address wrong";
 
 //Import Address
 "qs_import_address_nav_title"             = "Import Address";
@@ -280,4 +367,22 @@
 "qs_tabbar_property" = "Property";
 "qs_tabbar_markets"  = "Markets";
 "qs_tabbar_discover" = "Discover";
+"qs_tabbar_manage"   = "Manage";
 "qs_tabbar_me"       = "Me";
+
+//Alert
+"qs_alert_content_empty" = "The content cannot be empty";
+"qs_alert_content_isCreate" = "Is creating";
+"qs_alert_content_isRecover" = "Being imported";
+"qs_alert_content_isCreate_success" = "Create success";
+"qs_alert_content_isRecover_success" = "Import success";
+"qs_alert_content_password" = "Password mistake";
+"qs_alert_content_password_change" = "Password changed successfully";
+"qs_alert_content_NO" = "This function is not currently open";
+"qs_alert_issue_success" = "Issuance of success";
+"qs_alert_scan_failure" = "Sweep code failure";
+"qs_alert_shoukuan_failure" = "The amount received exceeds the maximum amount paid";
+"qs_alert_shoukuan_failure2" = "Please scan the code again if the collection information is wrong";
+"qs_alert_scanAddress_failure" = "Address information error";
+"qs_btn_home_address" = "Address";
+"qs_alert_createNFT_nil" = "The name cannot be empty";

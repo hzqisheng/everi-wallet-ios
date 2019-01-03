@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QSPayAmountViewController : QSBaseCornerSectionTableViewController
 
+@property (nonatomic, copy) NSString *address;
+
+@property (nonatomic, strong) QSFT *FTModel;
+
 @end
 
 NS_ASSUME_NONNULL_END

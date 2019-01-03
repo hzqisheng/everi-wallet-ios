@@ -7,10 +7,13 @@
 //
 
 #import "QSBaseTableViewCell.h"
+#import "QSAddress.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface QSManageAddressCell : QSBaseTableViewCell
+
+@property (nonatomic, strong) QSAddress *addressModel;
 
 @end
 

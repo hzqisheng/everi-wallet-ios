@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QSTransactionRecordViewController : QSBaseCornerSectionTableViewController
 
+@property (nonatomic, strong) QSFT *FTModel;
+
 @end
 
 NS_ASSUME_NONNULL_END

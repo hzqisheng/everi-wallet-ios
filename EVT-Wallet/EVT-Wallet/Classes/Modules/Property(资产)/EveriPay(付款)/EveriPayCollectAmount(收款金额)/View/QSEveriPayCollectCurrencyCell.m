@@ -7,6 +7,8 @@
 //
 
 #import "QSEveriPayCollectCurrencyCell.h"
+#import "QSEveriPayCollectCurrencyItem.h"
+#import "QSFungibleSymbol.h"
 
 @interface QSEveriPayCollectCurrencyCell ()
 
@@ -55,6 +57,15 @@
 
 - (void)configureCellWithItem:(QSBaseCellItem *)item {
     self.item = item;
+    QSEveriPayCollectCurrencyItem *currentItem = (QSEveriPayCollectCurrencyItem *)item;
+    QSFungibleSymbol *FTModel = currentItem.FTModel;
+    self.walletNameLabel.text = [NSString stringWithFormat:@"%@(#%@)",FTModel.sym_name,currentItem.currceny];
+    if (FTModel.metas.count > 0) {
+        QSMetas *metas = FTModel.metas[0];
+        [self.leftImageView sd_setImageWithURL:[NSURL URLWithString:metas.value]];
+    } else {
+        [self.leftImageView setImage:[UIImage imageNamed:@"AppIcon"]];
+    }
 }
 
 #pragma mark - **************** Setter Getter
@@ -62,6 +73,8 @@
     if (!_leftImageView) {
         _leftImageView = [[UIImageView alloc] init];
         _leftImageView.image = [UIImage imageNamed:@"icon_erweima_evt"];
+        _leftImageView.layer.cornerRadius = kRealValue(13.5);
+        _leftImageView.layer.masksToBounds = YES;
     }
     return _leftImageView;
 }

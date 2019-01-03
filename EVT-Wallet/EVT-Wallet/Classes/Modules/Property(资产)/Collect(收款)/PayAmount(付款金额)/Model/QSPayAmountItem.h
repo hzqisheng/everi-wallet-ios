@@ -7,9 +7,13 @@
 //
 
 #import "QSBaseCellItem.h"
+#import "QSFT.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^PayAmountItemSelectAddressBlock)(void);
+typedef void(^PayAmountItemSweepBlock)(void);
+typedef void(^PayAmountItemTextBlock)(NSString *text);
 
 @interface QSPayAmountItem : QSBaseCellItem
 
@@ -21,6 +25,15 @@ NS_ASSUME_NONNULL_BEGIN
 /** inputPlaceholder */
 @property (nonatomic, copy) NSString *inputPlaceholder;
 
+@property (nonatomic, strong) QSFT *FTModel;
+
+@property (nonatomic, copy) NSString *address;
+
+@property (nonatomic, assign) UIKeyboardType keyType;
+
+@property (nonatomic, copy) PayAmountItemSelectAddressBlock payAmountItemSelectAddressBlock;
+@property (nonatomic, copy) PayAmountItemSweepBlock payAmountItemSweepBlock;
+@property (nonatomic, copy) PayAmountItemTextBlock payAmountItemTextBlock;
 
 @end
 

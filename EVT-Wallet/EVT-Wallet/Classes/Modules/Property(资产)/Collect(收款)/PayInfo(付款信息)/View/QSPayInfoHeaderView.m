@@ -75,16 +75,34 @@
 
 - (UILabel *)currencyLabel {
     if (!_currencyLabel) {
-        _currencyLabel = [UILabel labelWithName:@"EVT(#1)" font:[UIFont qs_fontOfSize15] textColor:[UIColor whiteColor] textAlignment:NSTextAlignmentLeft];
+        _currencyLabel = [UILabel labelWithName:@"" font:[UIFont qs_fontOfSize15] textColor:[UIColor whiteColor] textAlignment:NSTextAlignmentLeft];
     }
     return _currencyLabel;
 }
 
 - (UILabel *)amountLabel {
     if (!_amountLabel) {
-        _amountLabel = [UILabel labelWithName:@"200.50 EVT" font:[UIFont qs_fontOfSize19] textColor:[UIColor whiteColor] textAlignment:NSTextAlignmentCenter];
+        _amountLabel = [UILabel labelWithName:@"" font:[UIFont qs_fontOfSize19] textColor:[UIColor whiteColor] textAlignment:NSTextAlignmentCenter];
     }
     return _amountLabel;
+}
+
+- (void)setFTModel:(QSFT *)FTModel {
+    _FTModel = FTModel;
+    NSArray *totlyList = [FTModel.total_supply componentsSeparatedByString:@" "];
+    if (totlyList.count == 2) {
+        NSMutableString *test = [NSMutableString stringWithString:totlyList[1]];
+        if([test hasPrefix:@"S"]){
+            [test deleteCharactersInRange: [test rangeOfString:@"S"]];
+        }
+        self.currencyLabel.text = [NSString stringWithFormat:@"%@(%@)",FTModel.sym_name,test];
+    } else {
+        self.currencyLabel.text = FTModel.name;
+    }
+    NSArray *assetList = [FTModel.asset componentsSeparatedByString:@" "];
+    if (assetList.count == 2) {
+        self.amountLabel.text = [NSString stringWithFormat:@"%@ %@",assetList[0],FTModel.sym_name];
+    }
 }
 
 @end

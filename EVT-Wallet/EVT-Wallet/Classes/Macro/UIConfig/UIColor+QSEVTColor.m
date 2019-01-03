@@ -30,6 +30,10 @@
     return [UIColor colorWithHexString:@"#F5F7FB"];
 }
 
++ (UIColor *)qs_colorGray777777 {
+    return [UIColor colorWithHexString:@"#777777"];
+}
+
 + (UIColor *)qs_colorGrayBBBBBB {
     return [UIColor colorWithHexString:@"#BBBBBB"];
 }
@@ -56,6 +60,10 @@
 
 + (UIColor *)qs_colorYellowE4B84F {
     return [UIColor colorWithHexString:@"#E4B84F"];
+}
+
++ (UIColor *)qs_colorBlue3F7DEF {
+    return [UIColor colorWithHexString:@"#3F7DEF"];
 }
 
 + (UIColor *)qs_colorBlue4D7BF3 {

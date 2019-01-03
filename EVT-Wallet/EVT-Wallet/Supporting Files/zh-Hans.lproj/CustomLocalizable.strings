@@ -16,16 +16,99 @@
 "qs_btn_home_issue"   = "发行";
 "qs_btn_home_myfts"   = "我的代币";
 "qs_btn_home_mynfts"  = "我的通证";
+"qs_btn_home_address" = "地址";
 
 //Isssue
-"qs_issue_ft_pop_up_title"       = "发行代币";
-"qs_issue_ft_pop_up_content"     = "适合积分、点数、标准化资产等";
-"qs_issue_nft_pop_up_title"      = "发行通证";
-"qs_issue_nft_pop_up_content"    = "适合票据、房产等具有唯一性的资产/权益";
+"qs_issue_ft_pop_up_title"             = "发行代币";
+"qs_issue_ft_pop_up_content"           = "适合积分、点数、标准化资产等";
+"qs_issue_nft_pop_up_title"            = "发行通证";
+"qs_issue_nft_pop_up_content"          = "适合票据、房产等具有唯一性的资产/权益";
+"qs_issue_issue_circulation_title"     = "发行量";
+"qs_issue_issue_address_title"         = "地址";
+"qs_issue_issue_remarks_title"         = "备注";
+"qs_issue_issue_remarks_placeholder"   = "请输入备注";
+"qs_issue_issue_moreSetting_rightNavi" = "权限设置";
+"qs_issue_issue_moreSetting_manage"    = "管理";
+"qs_issue_issue_moreSetting_metadata"  = "元数据";
+"qs_issue_issue_permissions_content0"  = "只有我能发行";
+"qs_issue_issue_permissions_content1"  = "手动编辑内容";
+"qs_issue_issue_permissions_edit"      = "编辑";
+"qs_issue_issue_permissions_transfer"  = "转移";
+"qs_issue_issue_confirm_title"         = "确定";
+"qs_issue_issue_select_address_title"  = "选择地址";
+"qs_issue_issue_circulation_placeholder"  = "请输入发行量";
+"qs_issue_ft_name_title"             = "代币名称";
+"qs_issue_password_placeholder"             = "请输入密码";
+
+//Pass
+"qs_pass_mypass_navi_title"            = "我的通证";
+"qs_pass_mypass_btn_title"             = "创建通证";
+"qs_pass_createNFTS_yu_title"          = "通证";
+"qs_pass_createNFTS_yu_placeholder"    = "请输入通证名";
+"qs_pass_createNFTS_transfer_content"  = "只有我和持有者能转移";
+"qs_pass_createNFTS_manager_content"   = "只有我能管理";
+"qs_pass_createNFTS_batch_topView_placeholder"   = "您可以在此动手输入通证名称，用回车键分割；如果需要快捷地批量发行多个通证，可使用批量生成功能";
+"qs_pass_createNFTS_batch_topView_address"   = "地址个数：";
+"qs_pass_createNFTS_batch_topView_label"     = "批量生成通证名称";
+"qs_pass_createNFTS_batch_centerView_placeholde"   = "请输入批量通证名称";
+"qs_pass_createNFTS_batch_centerView_btn"    = "批量生成";
+"qs_pass_createNFTS_batch_count"    = "计数";
+
+
+//Manage
+"qs_manage_massTransfer_title" = "批量转账";
+"qs_manage_mineNFTs_title"     = "我的域";
+"qs_manage_mineGroup_title"    = "我的组";
+"qs_manage_createGroup_title"  = "创建组";
+"qs_manage_createGroup_managers"  = "管理者";
+"qs_manage_createGroup_manager_State1"  = "我负责管理";
+"qs_manage_createGroup_manager_State2"  = "从本地选择";
+"qs_manage_createGroup_manager_State3"  = "手动输入公钥";
+"qs_manage_createGroup_structure"       = "组结构";
+"qs_manage_createGroup_structure_placeholder"  = "请输入组结构";
+"qs_manage_createGroup_threshold"       = "阈值";
+"qs_manage_createGroup_node"            = "节点";
+"qs_manage_createGroup_NewNode"         = "新建节点";
+"qs_manage_createGroup_allSelect"       = "全选";
+"qs_manage_createGroup_confirm"         = "确认";
+"qs_manage_createGroup_publicKey"       = "输入公钥";
+"qs_manage_createGroup_publicKey_placeholder"  = "请输入公钥";
+"qs_manage_createGroup_json_title"      = "请在下方输入json地址";
+"qs_manage_createGroup_leaf_node"       = "叶节点";
+"qs_manage_createGroup_Nonleaf_node"    = "非叶节点";
+"qs_manage_createGroup_key_placeholder" = "请输入Key";
+"qs_manage_createGroup_weight"          = "权重";
+
+//Switch
+"qs_switch_createIdentity_password_placeholder" = "密码";
+"qs_switch_createIdentity_recover" = "恢复身份";
+"qs_switch_createIdentity_alert" = "密码不能为空";
+"qs_switch_createIdentity_alert2" = "密码验证错误";
+"qs_switch_createIdentity_restore_btn" = "立即恢复";
+"qs_switch_createIdentity_restore_key" = "请输入备份的钱包助记词(12个英文单词)，按空分割格";
+"qs_switch_createIdentity_login_fail" = "登录失败";
+"qs_switch_Switch_purse" = "icon_home_tabbar_qihuanqianbao";
 
 //SelectFT
-"qs_select_ft_nav_titlte"   = "选择代币";
-"qs_select_ft_btn_titlte"   = "创建代币";
+"qs_select_ft_nav_titlte"              = "选择代币";
+"qs_select_ft_btn_titlte"              = "创建代币";
+"qs_select_ft_btn_title"               = "提交";
+"qs_select_ft_token_title"             = "代币简称";
+"qs_select_ft_token_placeholde"        = "请输入符号";
+"qs_select_ft_assetNumbers_title"      = "资产编号";
+"qs_select_ft_assetNumbers_placeholde" = "请输入资产编号";
+"qs_select_ft_circulation_title"       = "发行总量";
+"qs_select_ft_circulation_placeholde"  = "请输入发行总量";
+"qs_select_ft_precision_title"         = "精度(精度位数最多为18位)";
+"qs_select_ft_precision_placeholde"    = "请输入精度";
+"qs_select_ft_money_title"             = "金额";
+"qs_select_ft_money_placeholde"        = "请输入付款金额";
+"qs_select_ft_icon_title"              = "图标(建议180*180)";
+"qs_select_ft_permissions_title"       = "权限";
+"qs_select_ft_permissions_content0"    = "只有我能发行，权限不可更改";
+"qs_select_ft_permissions_content1"    = "只有我能发行，后期我可修改权限";
+"qs_select_ft_permissions_content2"    = "高级设置";
+"qs_cancel"                            = "取消";
 
 //Scan
 "qs_scan_nav_title"                  = "二维码";
@@ -35,6 +118,7 @@
 "qs_scan_scan_failed_tips_title"     = "请换一张图片重试~";
 "qs_scan_scan_failed_confirm_title"  = "确定";
 "qs_scan_scan_init_failed_title"     = "相机初始化失败，请检查权限~";
+"qs_scan_scan_link"          = "EVTLink已过期";
 
 //Transaction Record
 "qs_transaction_record_item_record_title"        = "交易记录";
@@ -42,6 +126,7 @@
 "qs_transaction_record_tansfer_btn_title"        = "转账";
 "qs_transaction_record_batch_tansfer_btn_title"  = "批量转账";
 "qs_transaction_record_collect_btn_title"        = "收款";
+"qs_btn_pay_everipay"     = "everipay";
 
 //Collect
 "qs_collect_item_tips_title"               = "请使用相同钱包扫一扫";
@@ -58,7 +143,7 @@
 //Collect Amount
 "qs_collect_amount_nav_title"                = "收款";
 "qs_collect_amount_select_payway_tips"       = "请选择需要收款的金额";
-"qs_collect_amount_item_currency_title"      = "您需要付款的币种为：";
+"qs_collect_amount_item_currency_title"      = "您需要收款的币种为：";
 "qs_collect_amount_item_amount_title"        = "金额";
 "qs_collect_amount_item_amount_placeholder"  = "请输入收款金额";
 "qs_collect_amount_bottom_btn_title"         = "确认收款";
@@ -74,7 +159,7 @@
 "qs_everipay_select_address_popupview_title" = "请选择进行付款的代币";
 
 //Pay Amount
-"qs_pay_amount_nav_title"                = "everiPay";
+"qs_pay_amount_nav_title"                = "转账";
 "qs_pay_amount_select_payway_tips"       = "请选择币种进行付款";
 "qs_pay_amount_item_balance_title"       = "余额";
 "qs_pay_amount_item_address_title"       = "地址";
@@ -108,6 +193,7 @@
 "qs_wallet_nav_title"      = "钱包";
 "qs_wallet_current_title"  = "当前身份下的钱包";
 "qs_wallet_imported_title" = "导入的钱包";
+"qs_wallet_imported_already" = "该钱包已经在列表中";
 
 //Edit Wallets
 "qs_edit_wallet_nav_title"                       = "编辑身份钱包";
@@ -128,6 +214,7 @@
 
 //Import Wallet
 "qs_import_wallet_nav_title"                    = "导入钱包";
+"qs_import_wallet_nav_title_failure"            = "导入钱包失败";
 "qs_import_wallet_item_mnemonic_title"          = "请输入备份的钱包助记词(12个英文单词)，按空分割格";
 "qs_import_wallet_item_password_title"          = "新密码";
 "qs_import_wallet_item_confirm_password_title"  = "确认新密码";
@@ -194,6 +281,8 @@
 "qs_manage_address_btn_search"          = "搜索";
 "qs_manage_address_btn_add_address"     = "新增地址";
 "qs_manage_address_btn_import_address"  = "导入地址";
+"qs_manage_address_all"  = "全部";
+"qs_manage_address_selectGroup"  = "选择组";
 
 //Add Address
 "qs_add_address_nav_title"                = "新增地址";
@@ -209,6 +298,7 @@
 "qs_add_address_item_phone_placeholder"   = "请输入联系电话";
 "qs_add_address_item_memo_placeholder"    = "请输入备注";
 "qs_add_address_save_btn_title"           = "保存";
+"qs_add_address_save_address_failure"     = "地址错误";
 
 //Import Address
 "qs_import_address_nav_title"             = "导入地址";
@@ -273,4 +363,21 @@
 "qs_tabbar_property" = "资产";
 "qs_tabbar_markets"  = "市场";
 "qs_tabbar_discover" = "发现";
+"qs_tabbar_manage"   = "管理";
 "qs_tabbar_me"       = "我的";
+
+//Alert
+"qs_alert_content_empty" = "内容不能为空";
+"qs_alert_content_isCreate" = "正在创建";
+"qs_alert_content_isCreate_success" = "创建成功";
+"qs_alert_content_isRecover" = "正在导入";
+"qs_alert_content_isRecover_success" = "导入成功";
+"qs_alert_content_password" = "密码错误";
+"qs_alert_content_password_change" = "密码修改成功";
+"qs_alert_content_NO" = "此功能暂未开放";
+"qs_alert_issue_success" = "发行成功";
+"qs_alert_scan_failure" = "扫码失败";
+"qs_alert_shoukuan_failure" = "收款金额超过最大付款金额";
+"qs_alert_shoukuan_failure2" = "收款信息错误请重新扫码";
+"qs_alert_scanAddress_failure" = "地址信息错误";
+"qs_alert_createNFT_nil" = "名称不能为空";

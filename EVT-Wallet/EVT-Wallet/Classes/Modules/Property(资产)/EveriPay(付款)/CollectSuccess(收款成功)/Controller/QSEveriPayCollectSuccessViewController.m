@@ -32,7 +32,19 @@
     [amountView addSubview:successImageView];
     
     //amountLabel
-    _amountLabel = [UILabel labelWithName:@"-0.50000 EVT(#1)" font:[UIFont qs_fontOfSize14] textColor:[UIColor qs_colorBlack333333] textAlignment:NSTextAlignmentCenter];
+    
+    NSString *nameStr = @"";
+    NSArray *totlyList = [self.Model.total_supply componentsSeparatedByString:@" "];
+    if (totlyList.count == 2) {
+        NSMutableString *test = [NSMutableString stringWithString:totlyList[1]];
+        if([test hasPrefix:@"S"]){
+            [test deleteCharactersInRange: [test rangeOfString:@"S"]];
+        }
+        nameStr = [NSString stringWithFormat:@"%@(%@)",self.Model.sym_name,test];
+    } else {
+        nameStr = self.Model.name;
+    }
+    _amountLabel = [UILabel labelWithName:[NSString stringWithFormat:@"+%@ %@",self.money,nameStr] font:[UIFont qs_fontOfSize14] textColor:[UIColor qs_colorBlack333333] textAlignment:NSTextAlignmentCenter];
     _amountLabel.frame = CGRectMake(kRealValue(10), successImageView.maxY + kRealValue(22), amountView.width - kRealValue(20), kRealValue(16));
     [amountView addSubview:_amountLabel];
     

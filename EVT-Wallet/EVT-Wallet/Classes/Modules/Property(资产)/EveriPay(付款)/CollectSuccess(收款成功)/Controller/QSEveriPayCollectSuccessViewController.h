@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QSEveriPayCollectSuccessViewController : QSBaseViewController
 
+@property (nonatomic, copy) NSString *money;
+@property (nonatomic, strong) QSFungibleSymbol *Model;
+
 @end
 
 NS_ASSUME_NONNULL_END

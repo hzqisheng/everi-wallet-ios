@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface QSAuthorizers : QSBaseModel
 
 @property (nonatomic, copy) NSString *ref;
-@property (nonatomic, copy) NSString *weight;
+@property (nonatomic, assign) NSInteger weight;
 
 @end
 

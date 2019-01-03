@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QSEveriPayCollectAmountViewController : QSBaseCornerSectionTableViewController
 
+@property (nonatomic, copy) NSString *sybId;
+@property (nonatomic, copy) NSString *maxMoney;
+@property (nonatomic, copy) NSString *link;
+
 @end
 
 NS_ASSUME_NONNULL_END

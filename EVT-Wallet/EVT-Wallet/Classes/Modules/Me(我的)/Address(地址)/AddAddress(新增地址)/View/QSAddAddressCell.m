@@ -27,6 +27,7 @@
                 ((UIButton *)view).selected = YES;
                 ((UIButton *)view).layer.borderColor = [UIColor qs_colorBlue4D7BF3].CGColor;
                 ((UIButton *)view).backgroundColor = [UIColor qs_colorBlue4D7BF3];
+                self.addressItem.typeClickedBlock(self);
             }
         }
     }
@@ -54,7 +55,7 @@
 #pragma mark - **************** Setter Getter
 - (UIButton *)evtButton {
     if (!_evtButton) {
-        _evtButton = [UIButton buttonWithTitle:@"EVT" titleColor:[UIColor qs_colorGray686868] font:[UIFont qs_fontOfSize15] taget:self action:@selector(evtButtonClicked:)];
+        _evtButton = [UIButton buttonWithTitle:@"EVT" titleColor:[UIColor qs_colorBlack313745] font:[UIFont qs_fontOfSize15] taget:self action:@selector(evtButtonClicked:)];
         [_evtButton setTitleColor:[UIColor qs_colorWhiteFFFFFF] forState:UIControlStateSelected];
         _evtButton.layer.cornerRadius = 3;
         _evtButton.layer.borderWidth = 1;
@@ -70,6 +71,7 @@
         _ethButton.layer.cornerRadius = 3;
         _ethButton.layer.borderWidth = 1;
         _ethButton.layer.borderColor = [UIColor qs_colorGray686868].CGColor;
+        _ethButton.hidden = YES;
     }
     return _ethButton;
 }
@@ -81,6 +83,7 @@
         _eosButton.layer.cornerRadius = 3;
         _eosButton.layer.borderWidth = 1;
         _eosButton.layer.borderColor = [UIColor qs_colorGray686868].CGColor;
+        _eosButton.hidden = YES;
     }
     return _eosButton;
 }

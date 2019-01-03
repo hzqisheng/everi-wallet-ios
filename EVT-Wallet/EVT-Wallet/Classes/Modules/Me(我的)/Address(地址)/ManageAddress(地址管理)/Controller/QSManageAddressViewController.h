@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QSManageAddressViewController : QSBaseTableViewController
 
+@property (nonatomic, assign) BOOL haveNotBottomBar;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -8,6 +8,8 @@
 
 #import "QSTransactionRecordViewController.h"
 #import "QSBatchTransferViewController.h"
+#import "QSCollectCodeViewController.h"
+#import "QSPayAmountViewController.h"
 
 #import "QSTransactionRecordHeaderView.h"
 #import "QSTransactionRecordBottomToolBar.h"
@@ -38,16 +40,63 @@
     //headerview
     self.headerView = [[QSTransactionRecordHeaderView alloc] init];
     self.headerView.frame = CGRectMake(0, 0, kScreenWidth, kHeaderViewHeight);
+    self.headerView.FTModel = self.FTModel;
     [self.view insertSubview:self.headerView atIndex:0];
     
     //tableView
     self.tableView.height = kScreenHeight - [QSTransactionRecordBottomToolBar toolBarHeight];
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.contentInset = UIEdgeInsetsMake(kTableViewTopEdgeInset, 0, 0, 0);
+    self.tableView.showsVerticalScrollIndicator = NO;
     
     //toolBar
     self.bottomToolBar.frame = CGRectMake(0, kScreenHeight - [QSTransactionRecordBottomToolBar toolBarHeight], kScreenWidth, [QSTransactionRecordBottomToolBar toolBarHeight]);
     [self.view addSubview:self.bottomToolBar];
+    
+    
+    [self getAction];
+}
+
+- (void)getAction {
+    WeakSelf(weakSelf);
+    [[QSEveriApiWebViewController sharedWebView] getActionsWithFTModel:self.FTModel AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull transferList) {
+        if (statusCode == kResponseSuccessCode) {
+            NSMutableArray *allArr = [NSMutableArray array];
+            if (transferList.count == 0) {
+                QSBaseCellItem *titleItem = [[QSBaseCellItem alloc] init];
+                titleItem.cellIdentifier = NSStringFromClass([QSTransactionRecordTitleCell class]);
+                titleItem.cellHeight = kRealValue(45);
+                [allArr addObject:titleItem];
+                [weakSelf.dataArray removeAllObjects];
+                weakSelf.dataArray = [NSMutableArray arrayWithArray:allArr];
+                [weakSelf.tableView reloadData];
+                return ;
+            }
+            for (int i = 0; i < transferList.count; i++) {
+                if (i == 0) {
+                    QSBaseCellItem *titleItem = [[QSBaseCellItem alloc] init];
+                    titleItem.cellIdentifier = NSStringFromClass([QSTransactionRecordTitleCell class]);
+                    titleItem.cellHeight = kRealValue(45);
+                    
+                    QSTransactionRecordItem *recordItem = [[QSTransactionRecordItem alloc] init];
+                    recordItem.cellIdentifier = NSStringFromClass([QSTransactionRecordCell class]);
+                    recordItem.cellHeight = kRealValue(66);
+                    recordItem.transferModel = transferList[i];
+                    [allArr addObject:titleItem];
+                    [allArr addObject:recordItem];
+                } else {
+                    QSTransactionRecordItem *recordItem = [[QSTransactionRecordItem alloc] init];
+                    recordItem.cellIdentifier = NSStringFromClass([QSTransactionRecordCell class]);
+                    recordItem.cellHeight = kRealValue(66);
+                    recordItem.transferModel = transferList[i];
+                    [allArr addObject:recordItem];
+                }
+            }
+            [weakSelf.dataArray removeAllObjects];
+            weakSelf.dataArray = [NSMutableArray arrayWithArray:allArr];
+            [weakSelf.tableView reloadData];
+        }
+    }];
 }
 
 #pragma mark - **************** Event Response
@@ -57,12 +106,16 @@
 
 - (void)bottomToolBarClickedAtIndex:(NSInteger)index {
     if (index == 0) {
-        
+        QSPayAmountViewController *vc = [[QSPayAmountViewController alloc] init];
+        vc.FTModel = self.FTModel;
+        [self.navigationController pushViewController:vc animated:YES];
     } else if (index == 1) {
-        QSBatchTransferViewController *batchTransfer = [[QSBatchTransferViewController alloc] init];
-        [self.navigationController pushViewController:batchTransfer animated:YES];
+//        QSBatchTransferViewController *batchTransfer = [[QSBatchTransferViewController alloc] init];
+//        [self.navigationController pushViewController:batchTransfer animated:YES];
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_content_NO")];
     } else if (index == 2) {
-        
+        QSCollectCodeViewController *codeVC = [[QSCollectCodeViewController alloc] init];
+        [self.navigationController pushViewController:codeVC animated:YES];
     }
 }
 
@@ -76,13 +129,7 @@
     QSBaseCellItem *titleItem = [[QSBaseCellItem alloc] init];
     titleItem.cellIdentifier = NSStringFromClass([QSTransactionRecordTitleCell class]);
     titleItem.cellHeight = kRealValue(45);
-    
-    QSTransactionRecordItem *recordItem = [[QSTransactionRecordItem alloc] init];
-    recordItem.cellIdentifier = NSStringFromClass([QSTransactionRecordCell class]);
-    recordItem.cellHeight = kRealValue(66);
-    
-    return @[titleItem,
-             recordItem];
+    return @[titleItem];
 }
 
 #pragma mark - **************** UITableViewDelegate

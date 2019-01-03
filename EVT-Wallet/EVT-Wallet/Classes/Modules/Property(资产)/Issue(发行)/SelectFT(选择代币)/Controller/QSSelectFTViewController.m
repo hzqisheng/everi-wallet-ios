@@ -8,12 +8,23 @@
 
 #import "QSSelectFTViewController.h"
 #import "QSBottomButtonView.h"
+#import "QSSelectFTCell.h"
+#import "QSCreateFTViewController.h"
+#import "QSIssueViewController.h"
+#import "QSIssueMoreSettingViewController.h"
 
-@interface QSSelectFTViewController ()
+@interface QSSelectFTViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @end
 
+static NSString * const kSelectFTCell = @"selectFTCell";
+
 @implementation QSSelectFTViewController
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self startRefreshing];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,11 +44,68 @@
         make.centerX.equalTo(self.view);
         make.size.mas_equalTo(CGSizeMake(kBottomButtonWidth, kBottomButtonHeight));
     }];
+    [self setupTableView];
+}
+
+- (void)setupTableView {
+    self.tableView.frame = CGRectMake(kRealValue(15), kRealValue(15), kRealValue(345), kScreenHeight - kNavgationBarHeight - kBottomButtonHeight - kiPhoneXSafeAreaBottomMagin - kRealValue(35));
+     self.tableView.backgroundColor = [UIColor clearColor];
+     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+     self.tableView.showsVerticalScrollIndicator = NO;
+    [self.tableView registerClass:[QSSelectFTCell class] forCellReuseIdentifier:kSelectFTCell];
+    [self addRefreshHeader];
+}
+
+- (void)tableViewShouldUpdateDataByPageIndex:(NSInteger)pageIndex {
+    WeakSelf(weakSelf);
+    [[QSEveriApiWebViewController sharedWebView] getEVTFungiblesListWithPublicKey:[QSWalletHelper sharedHelper].currentEvt.publicKey andCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull ftList) {
+        if (statusCode == kResponseSuccessCode) {
+            if (weakSelf.dataArray.count) {
+                [weakSelf.dataArray removeAllObjects];
+            }
+            weakSelf.dataArray = [NSMutableArray arrayWithArray:ftList];
+            [weakSelf.tableView reloadData];
+        }
+    }];
+    [self endRefreshing];
 }
 
 #pragma mark - **************** Event Response
 - (void)bottomButtonClicked {
-    
+    QSCreateFTViewController *vc = [[QSCreateFTViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
+
+#pragma mark - **************** TableView Delegate & DataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.dataArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    QSSelectFTCell *cell = [tableView dequeueReusableCellWithIdentifier:kSelectFTCell forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    WeakSelf(weakSelf);
+    cell.selectFTCellDidClickMoreButtonBlock = ^(QSSelectFTCell * _Nonnull cell) {
+        QSIssueMoreSettingViewController *vc = [[QSIssueMoreSettingViewController alloc] init];
+        vc.ftModel = cell.ftModel;
+        [weakSelf.navigationController pushViewController:vc animated:YES];
+    };
+    cell.ftModel = self.dataArray[indexPath.row];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return kRealValue(100);
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    QSIssueViewController *vc = [[QSIssueViewController alloc] init];
+    vc.ftmodel = self.dataArray[indexPath.row];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - **************** Setter Getter
+
+
 
 @end

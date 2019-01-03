@@ -13,12 +13,14 @@
 #import "QSEveriPayCodeViewController.h"
 #import "QSScanningViewController.h"
 #import "QSSelectFTViewController.h"
+#import "QSMyPassViewController.h"
 
 #import "QSPropetyHomeSwipeView.h"
 #import "QSPropertyHomeSwipeCell.h"
 #import "QSPropetyHomeSegmentView.h"
 #import "QSPropetyHomeShortcutView.h"
 #import "QSIssuePopupView.h"
+#import "QSPrivatekeyAlertView.h"
 
 @interface QSHomePropertyViewController ()
 <QSSwipeDelegate,
@@ -44,8 +46,7 @@ UIScrollViewDelegate>
 #pragma mark - **************** Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBarHidden = YES;
-    
+    self.navigationController.navigationBarHidden = YES;    
     [self setupScrollView];
     [self setupHeaderView];
     [self setupChildViewControllers];
@@ -130,6 +131,7 @@ UIScrollViewDelegate>
     if (cell == nil) {
         cell = [[QSPropertyHomeSwipeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     }
+//    cell.cardImageView.image = [UIImage imageNamed:@"banner1"];
     return cell;
 }
 
@@ -148,12 +150,17 @@ UIScrollViewDelegate>
         collect.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:collect animated:YES];
     } else if (type == QSShortcutTypeEveriPay) {
-        QSEveriPayCodeViewController *everiPay = [[QSEveriPayCodeViewController alloc] init];
-        everiPay.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:everiPay animated:YES];
+        WeakSelf(weakSelf);
+        [QSPrivatekeyAlertView showPrivatekeyAlertViewAndSubmitBlock:^{
+            QSEveriPayCodeViewController *everiPay = [[QSEveriPayCodeViewController alloc] init];
+            everiPay.hidesBottomBarWhenPushed = YES;
+            [weakSelf.navigationController pushViewController:everiPay animated:YES];
+        }];
     } else if (type == QSShortcutTypeScan) {
         QSScanningViewController *scan = [[QSScanningViewController alloc] init];
         scan.hidesBottomBarWhenPushed = YES;
+        scan.scanningViewControllerHomeScan = ^{
+        };
         [self.navigationController pushViewController:scan animated:YES];
     } else if (type == QSShortcutTypeIssue) {
         [QSIssuePopupView showIssuePopupViewAndIssueClickedBlock:^(QSIssueType type) {
@@ -162,7 +169,9 @@ UIScrollViewDelegate>
                 selectFT.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:selectFT animated:YES];
             } else if (type == QSIssueTypeNFTS) {
-                
+                QSMyPassViewController *myPassVC = [[QSMyPassViewController alloc] init];
+                myPassVC.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:myPassVC animated:YES];
             }
         }];
     }
@@ -250,5 +259,6 @@ UIScrollViewDelegate>
         [tableVC.tableView removeObserver:self forKeyPath:@"contentOffset"];
     }
 }
+
 
 @end

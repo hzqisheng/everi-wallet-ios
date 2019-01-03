@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface QSEveriPayCollectCurrencyItem : QSBaseCellItem
 
 @property (nonatomic, copy) NSString *currceny;
+@property (nonatomic, strong) QSFungibleSymbol *FTModel;
 
 @end
 

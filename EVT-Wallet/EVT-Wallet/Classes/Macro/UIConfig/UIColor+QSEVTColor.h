@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIColor *)qs_colorWhiteF5F7FB;
 
++ (UIColor *)qs_colorGray777777;
+
 + (UIColor *)qs_colorGrayBBBBBB;
 
 + (UIColor *)qs_colorGrayCCCCCC;
@@ -36,6 +38,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIColor *)qs_colorGrayDADDE3;
 
 + (UIColor *)qs_colorYellowE4B84F;
+
++ (UIColor *)qs_colorBlue3F7DEF;
 
 + (UIColor *)qs_colorBlue4D7BF3;
 

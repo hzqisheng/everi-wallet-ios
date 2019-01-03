@@ -7,8 +7,12 @@
 //
 
 #import "QSBaseCellItem.h"
+#import "QSFT.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+typedef void(^QSQRCodeScanItemTextChangedBlock)(NSString *text);
+typedef void(^QSQRCodeScanItemEndEditingBlock)(void);
 
 @interface QSQRCodeScanItem : QSBaseCellItem
 //address
@@ -23,6 +27,12 @@ NS_ASSUME_NONNULL_BEGIN
 //maxpay
 @property (nonatomic, copy) NSString *maxPayAmount;
 
+@property (nonatomic, strong) QSFT *FTModel;
+
+@property (nonatomic, strong) UIImage *codeImage;
+
+@property (nonatomic, copy) QSQRCodeScanItemTextChangedBlock codeScanItemTextChangedBlock;
+@property (nonatomic, copy) QSQRCodeScanItemEndEditingBlock codeScanItemEndEditingBlock;
 
 @end
 

@@ -7,12 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QSFT.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+typedef void(^SelectCurrencyViewSelectFTBlock)(QSFT *FTModel);
 
 @interface QSSelectCurrencyView : UIView
 
 + (void)showSelectCurrencyView;
+
+@property (nonatomic, copy) SelectCurrencyViewSelectFTBlock selectCurrencyViewSelectFTBlock;
+
+@property (nonatomic, strong) NSArray *dataList;
+
++ (void)showSelectCurrencyViewWithFTList:(NSArray *)FTList andSelectFTBlock:(void(^)(QSFT *FTModel))block;
 
 @end
 

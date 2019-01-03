@@ -7,6 +7,7 @@
 //
 
 #import "QSImportWalletByMnemonicCodeViewController.h"
+#import "QSMyWalletViewController.h"
 
 @interface QSImportWalletByMnemonicCodeViewController ()
 
@@ -104,9 +105,18 @@
                                                            andCompeleteBlock:^(NSInteger statusCode, QSCreateEvt * _Nonnull EvtModel)
      {
          if (statusCode == kResponseSuccessCode) {
-             [[QSWalletHelper sharedHelper] loginWithEvt:EvtModel];
+             [[QSWalletHelper sharedHelper] addWallet:EvtModel];
+             [self.navigationController popToViewControllerWithLevel:2 animated:YES];
+         } else {
+             [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_import_wallet_nav_title_failure")];
          }
      }];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.mnemonicCodeTextView resignFirstResponder];
+    [self.freshPwdTextfield resignFirstResponder];
+    [self.comfirmPwdTextfield resignFirstResponder];
 }
 
 #pragma mark - **************** Private Methods

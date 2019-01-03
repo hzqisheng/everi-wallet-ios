@@ -8,7 +8,9 @@
 
 #import "QSHomeMyFTsViewController.h"
 #import "QSTransactionRecordViewController.h"
+#import "QSEveriPayCodeViewController.h"
 #import "QSHomeMyFTsCell.h"
+#import "QSPrivatekeyAlertView.h"
 
 @interface QSHomeMyFTsViewController ()
 
@@ -34,20 +36,34 @@ static NSString *reuseIdentifier = @"QSHomeMyFTsCell";
 }
 
 - (void)tableViewShouldUpdateDataByPageIndex:(NSInteger)pageIndex {
-    [[QSEveriApiWebViewController sharedWebView] getFungibleBalanceWithAddress:@"EVT5qn48E8eZKJb5yM24bgC1m8MdRFg5eBU76cQfDXBGXr3UYjLvY" andCompeleteBlock:^(NSInteger statusCode, NSArray<NSString *> * _Nonnull fungibleBalances) {
+    [[QSEveriApiWebViewController sharedWebView] getEVTFungibleBalanceListWithPublicKey:QSPublicKey andCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull ftList) {
         if (statusCode == kResponseSuccessCode) {
             [self.dataArray removeAllObjects];
-            [self.dataArray addObjectsFromArray:fungibleBalances];
+            [self.dataArray addObjectsFromArray:ftList];
             [self.tableView reloadData];
         }
         [self endRefreshing];
     }];
 }
 
+#pragma mark - **************** Event Response
+- (void)everipayButtonActionWithCell:(QSHomeMyFTsCell *)cell {
+    WeakSelf(weakSelf);
+    [QSPrivatekeyAlertView showPrivatekeyAlertViewAndSubmitBlock:^{
+        QSEveriPayCodeViewController *payVC = [[QSEveriPayCodeViewController alloc] init];
+        payVC.selectFTModel = cell.FTModel;
+        [weakSelf.navigationController pushViewController:payVC animated:YES];
+    }];
+}
+
 #pragma mark - **************** UITableViewDataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     QSHomeMyFTsCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-    cell.amountNameString = self.dataArray[indexPath.row];
+    cell.FTModel = self.dataArray[indexPath.row];
+    WeakSelf(weakSelf);
+    cell.everiPayClickedBlock = ^(QSHomeMyFTsCell * _Nonnull cell) {
+        [weakSelf everipayButtonActionWithCell:cell];
+    };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -63,6 +79,7 @@ static NSString *reuseIdentifier = @"QSHomeMyFTsCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     QSTransactionRecordViewController *record = [[QSTransactionRecordViewController alloc] init];
+    record.FTModel = self.dataArray[indexPath.row];
     record.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:record animated:YES];
 }

@@ -42,8 +42,16 @@
     
     QSPayAmountItem *amountItem = (QSPayAmountItem *)item;
     self.titleLabel.text = amountItem.inputTitle;
-    
     self.textField.placeholder = amountItem.inputPlaceholder;
+    self.textField.keyboardType = amountItem.keyType;
+}
+
+#pragma mark - **************** Block
+-(void)textFieldDidChange :(UITextField *)theTextField{
+    QSPayAmountItem *FTItem = (QSPayAmountItem *)self.item;
+    if (FTItem.payAmountItemTextBlock) {
+        FTItem.payAmountItemTextBlock(self.textField.text);
+    }
 }
 
 #pragma mark - **************** Setter Getter
@@ -62,6 +70,7 @@
         [_textField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
         _textField.textColor = [UIColor qs_colorBlack313745];
         _textField.font = [UIFont qs_fontOfSize14];
+        [_textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
         @weakify(self);
         [_textField.rac_textSignal subscribeNext:^(id x) {
             @strongify(self);

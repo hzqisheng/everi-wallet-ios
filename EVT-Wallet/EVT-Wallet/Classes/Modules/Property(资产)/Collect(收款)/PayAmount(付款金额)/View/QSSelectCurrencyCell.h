@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QSFT.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface QSSelectCurrencyCell : UITableViewCell
+
+@property (nonatomic, strong) QSFT *FTModel;
 
 @end
 

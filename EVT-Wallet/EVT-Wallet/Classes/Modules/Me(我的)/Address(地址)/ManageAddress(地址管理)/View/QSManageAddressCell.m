@@ -32,10 +32,10 @@
     }];
     
     [self.secretKeyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.addressBackgroundView).offset(kRealValue(35));
+        make.top.equalTo(self.addressBackgroundView).offset(kRealValue(25));
         make.left.equalTo(self.addressBackgroundView).offset(kRealValue(31));
-        make.width.lessThanOrEqualTo(@kRealValue(200));
-        make.height.equalTo(@([UIFont qs_fontOfSize14].lineHeight));
+        make.right.equalTo(self.addressTypeLabel.mas_left).offset(-kRealValue(10));
+        make.height.equalTo(@kRealValue(35));
     }];
     
     [self.addressContentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -63,14 +63,15 @@
 
 - (UILabel *)secretKeyLabel {
     if (!_secretKeyLabel) {
-        _secretKeyLabel = [UILabel labelWithName:@"EVT8LJq6...caQkAySesdfsdfsf" font:[UIFont qs_fontOfSize14] textColor:[UIColor qs_colorBlack313745] textAlignment:NSTextAlignmentLeft];
+        _secretKeyLabel = [UILabel labelWithName:@"" font:[UIFont qs_fontOfSize14] textColor:[UIColor qs_colorBlack313745] textAlignment:NSTextAlignmentLeft];
+        _secretKeyLabel.numberOfLines = 2;
     }
     return _secretKeyLabel;
 }
 
 - (UILabel *)addressContentLabel {
     if (!_addressContentLabel) {
-        _addressContentLabel = [UILabel labelWithName:@"钱钱钱" font:[UIFont qs_fontOfSize13] textColor:[UIColor qs_colorBlack313745] textAlignment:NSTextAlignmentLeft];
+        _addressContentLabel = [UILabel labelWithName:@"" font:[UIFont qs_fontOfSize13] textColor:[UIColor qs_colorBlack313745] textAlignment:NSTextAlignmentLeft];
     }
     return _addressContentLabel;
 }
@@ -82,6 +83,13 @@
         _addressTypeLabel.layer.borderWidth = 1;
     }
     return _addressTypeLabel;
+}
+
+- (void)setAddressModel:(QSAddress *)addressModel {
+    _addressModel = addressModel;
+    _secretKeyLabel.text = addressModel.publicKey;
+    _addressContentLabel.text = addressModel.name;
+    _addressTypeLabel.text = addressModel.type;
 }
 
 @end

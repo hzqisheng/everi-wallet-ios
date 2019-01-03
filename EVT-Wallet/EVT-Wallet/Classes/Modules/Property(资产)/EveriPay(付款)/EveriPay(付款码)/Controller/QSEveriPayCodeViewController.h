@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QSEveriPayCodeViewController : QSBaseCornerSectionTableViewController
 
+@property (nonatomic, strong) QSFT *selectFTModel;
+
 @end
 
 NS_ASSUME_NONNULL_END

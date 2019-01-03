@@ -38,7 +38,7 @@
     
     [self.avartarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self).offset(-kRealValue(103));
-        make.left.equalTo(self).offset(kRealValue(126));
+        make.left.equalTo(self).offset(kRealValue(80));
         make.width.and.height.equalTo(@kRealValue(57));
     }];
     
@@ -61,6 +61,8 @@
         _avartarImageView = [[UIImageView alloc] init];
         _avartarImageView.image = [UIImage imageNamed:@"icon_fukuan_evt"];
         _avartarImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _avartarImageView.layer.cornerRadius = kRealValue(28.5);
+        _avartarImageView.layer.masksToBounds = YES;
     }
     return _avartarImageView;
 }
@@ -75,16 +77,42 @@
 
 - (UILabel *)currencyLabel {
     if (!_currencyLabel) {
-        _currencyLabel = [UILabel labelWithName:@"EVT(#1)" font:[UIFont qs_fontOfSize15] textColor:[UIColor whiteColor] textAlignment:NSTextAlignmentLeft];
+        _currencyLabel = [UILabel labelWithName:@"" font:[UIFont qs_fontOfSize15] textColor:[UIColor whiteColor] textAlignment:NSTextAlignmentLeft];
     }
     return _currencyLabel;
 }
 
 - (UILabel *)amountLabel {
     if (!_amountLabel) {
-        _amountLabel = [UILabel labelWithName:@"200.50 EVT" font:[UIFont qs_fontOfSize19] textColor:[UIColor whiteColor] textAlignment:NSTextAlignmentCenter];
+        _amountLabel = [UILabel labelWithName:@"" font:[UIFont qs_fontOfSize19] textColor:[UIColor whiteColor] textAlignment:NSTextAlignmentCenter];
     }
     return _amountLabel;
+}
+
+- (void)setFTModel:(QSFT *)FTModel {
+    _FTModel = FTModel;
+    if (FTModel.metas.count > 0) {
+        QSMetas *metas = FTModel.metas[0];
+//        NSString *urlStr = metas[@"value"];
+        [self.avartarImageView sd_setImageWithURL:[NSURL URLWithString:metas.value]];
+    } else {
+        [self.avartarImageView setImage:[UIImage imageNamed:@"icon_fukuan_evt"]];
+    }
+    NSArray *assetList = [FTModel.asset componentsSeparatedByString:@" "];
+    if (assetList.count == 2) {
+        self.amountLabel.text = [NSString stringWithFormat:@"%@ %@",assetList[0],FTModel.sym_name];
+    }
+
+    NSArray *totlyList = [FTModel.total_supply componentsSeparatedByString:@" "];
+    if (totlyList.count == 2) {
+        NSMutableString *test = [NSMutableString stringWithString:totlyList[1]];
+        if([test hasPrefix:@"S"]){
+            [test deleteCharactersInRange: [test rangeOfString:@"S"]];
+        }
+        self.currencyLabel.text = [NSString stringWithFormat:@"%@(%@)",FTModel.sym_name,test];
+    } else {
+        self.currencyLabel.text = FTModel.name;
+    }
 }
 
 @end

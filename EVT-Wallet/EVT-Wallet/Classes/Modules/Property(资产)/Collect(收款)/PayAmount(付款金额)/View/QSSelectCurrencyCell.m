@@ -56,6 +56,8 @@
 - (UIImageView *)leftImageView {
     if (!_leftImageView) {
         _leftImageView = [[UIImageView alloc] init];
+        _leftImageView.layer.cornerRadius = kRealValue(13.5);
+        _leftImageView.layer.masksToBounds = YES;
     }
     return _leftImageView;
 }
@@ -69,9 +71,29 @@
 
 - (UILabel *)rightTitleLabel {
     if (!_rightTitleLabel) {
-        _rightTitleLabel = [UILabel labelWithName:@"最大付款金额：10" font:[UIFont qs_fontOfSize13] textColor:[UIColor qs_colorGrayBBBBBB] textAlignment:NSTextAlignmentLeft];
+        _rightTitleLabel = [UILabel labelWithName:@"" font:[UIFont qs_fontOfSize13] textColor:[UIColor qs_colorGrayBBBBBB] textAlignment:NSTextAlignmentLeft];
     }
     return _rightTitleLabel;
+}
+
+- (void)setFTModel:(QSFT *)FTModel {
+    _FTModel = FTModel;
+    if (FTModel.metas.count > 0) {
+        QSMetas *metas = FTModel.metas[0];
+        [self.leftImageView sd_setImageWithURL:[NSURL URLWithString:metas.value]];
+    } else {
+        [self.leftImageView setImage:[UIImage imageNamed:@"AppIcon"]];
+    }
+    NSArray *totlyList = [FTModel.total_supply componentsSeparatedByString:@" "];
+    if (totlyList.count == 2) {
+        NSMutableString *test = [NSMutableString stringWithString:totlyList[1]];
+        if([test hasPrefix:@"S"]){
+            [test deleteCharactersInRange: [test rangeOfString:@"S"]];
+        }
+        self.leftTitleLabel.text = [NSString stringWithFormat:@"%@(%@)",FTModel.sym_name,test];
+    } else {
+        self.leftTitleLabel.text = FTModel.name;
+    }
 }
 
 

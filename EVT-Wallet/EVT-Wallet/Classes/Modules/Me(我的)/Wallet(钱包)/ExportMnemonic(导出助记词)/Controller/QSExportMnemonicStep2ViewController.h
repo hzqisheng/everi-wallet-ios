@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QSExportMnemonicStep2ViewController : QSBaseViewController
 
+@property (nonatomic, assign) BOOL isFirstCreate;
+
 @end
 
 NS_ASSUME_NONNULL_END

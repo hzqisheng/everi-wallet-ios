@@ -67,7 +67,7 @@
 
 - (UIButton *)payButton {
     if (!_payButton) {
-        _payButton = [UIButton buttonWithImage:@"icon_home_paypeal" taget:self action:@selector(payButtonClicked)];
+        _payButton = [UIButton buttonWithImage:@"icon_home_everipass" taget:self action:@selector(payButtonClicked)];
     }
     return _payButton;
 }

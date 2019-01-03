@@ -7,11 +7,12 @@
 //
 
 #import "QSPayAmountAddressCell.h"
+#import "QSPayAmountItem.h"
 
 @interface QSPayAmountAddressCell ()
 
 @property (nonatomic, strong) UILabel *addressTitleLabel;
-@property (nonatomic, strong) UIImageView *addressImageView;
+@property (nonatomic, strong) UIButton *addressSelectButton;
 @property (nonatomic, strong) UILabel *addressSelectLabel;
 @property (nonatomic, strong) UIButton *addressScanButton;
 
@@ -21,7 +22,7 @@
 
 - (void)configureSubViews {
     [self.contentView addSubview:self.addressTitleLabel];
-    [self.contentView addSubview:self.addressImageView];
+    [self.contentView addSubview:self.addressSelectButton];
     [self.contentView addSubview:self.addressSelectLabel];
     [self.contentView addSubview:self.addressScanButton];
     
@@ -37,7 +38,7 @@
         make.right.equalTo(self.addressScanButton.mas_left).offset(-kRealValue(20));
     }];
 
-    [self.addressImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.addressSelectButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.addressTitleLabel.mas_right).offset(kRealValue(10));
         make.centerY.equalTo(self.addressTitleLabel);
         make.width.and.height.equalTo(@kRealValue(22));
@@ -52,11 +53,23 @@
 
 - (void)configureCellWithItem:(QSBaseCellItem *)item {
     self.item = item;
+    QSPayAmountItem *payItem = (QSPayAmountItem *)item;
+    self.addressSelectLabel.text = payItem.address;
 }
 
 #pragma mark - **************** Event Response
 - (void)addressScanButtonClicked {
-    
+    QSPayAmountItem *payItem = (QSPayAmountItem *)self.item;
+    if (payItem.payAmountItemSweepBlock) {
+        payItem.payAmountItemSweepBlock();
+    }
+}
+
+- (void)addressSelectButtonClicked {
+    QSPayAmountItem *payItem = (QSPayAmountItem *)self.item;
+    if (payItem.payAmountItemSelectAddressBlock) {
+        payItem.payAmountItemSelectAddressBlock();
+    }
 }
 
 #pragma mark - **************** Setter Getter
@@ -67,12 +80,13 @@
     return _addressTitleLabel;
 }
 
-- (UIImageView *)addressImageView {
-    if (!_addressImageView) {
-        _addressImageView = [[UIImageView alloc] init];
-        _addressImageView.image = [UIImage imageNamed:@"icon_fukuan_dress"];
+- (UIButton *)addressSelectButton {
+    if (!_addressSelectButton) {
+        _addressSelectButton = [[UIButton alloc] init];
+        [_addressSelectButton setImage:[UIImage imageNamed:@"icon_fukuan_dress"] forState:UIControlStateNormal];
+        [_addressSelectButton addTarget:self action:@selector(addressSelectButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     }
-    return _addressImageView;
+    return _addressSelectButton;
 }
 
 - (UILabel *)addressSelectLabel {
@@ -88,5 +102,7 @@
     }
     return _addressScanButton;
 }
+
+
 
 @end

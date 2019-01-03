@@ -102,6 +102,7 @@
                                            options:NSStringDrawingUsesLineFragmentOrigin
                                         attributes:@{NSFontAttributeName : font}
                                            context:nil];
+    
     return CGSizeMake(titleRect.size.width,
                       titleRect.size.height);
 }

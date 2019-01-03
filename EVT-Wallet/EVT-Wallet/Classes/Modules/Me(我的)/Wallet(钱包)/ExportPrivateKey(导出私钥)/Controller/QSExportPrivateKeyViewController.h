@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QSExportPrivateKeyViewController : QSBaseCornerSectionTableViewController
 
+@property (nonatomic, strong) QSCreateEvt *EVTModel;
+
 @end
 
 NS_ASSUME_NONNULL_END

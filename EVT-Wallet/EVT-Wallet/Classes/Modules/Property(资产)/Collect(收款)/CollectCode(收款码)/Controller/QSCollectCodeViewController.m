@@ -23,6 +23,10 @@
 @end
 
 @implementation QSCollectCodeViewController
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self getAddress];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,11 +36,26 @@
     self.bottomToolBar.frame = CGRectMake(0, self.tableView.maxY, kScreenWidth, [QSQRCodeBottomToolBar toolBarHeight]);
 }
 
+- (void)getAddress {
+    WeakSelf(weakSelf);
+    [[QSEveriApiWebViewController sharedWebView] getEvtLinkForPayeeCodeAndCompeleteBlock:^(NSInteger statusCode, NSString * _Nonnull addressCodeString) {
+        if (statusCode == kResponseSuccessCode) {
+            NSIndexPath *index = [NSIndexPath indexPathForRow:1 inSection:1];
+            QSQRCodeScanItem *codeItem = (QSQRCodeScanItem *)[self itemInIndexPath:index];
+            codeItem.qrcodeImageString = addressCodeString;
+            [weakSelf.tableView reloadData];
+        }
+    }];
+}
+
 #pragma mark - **************** Event Response
 - (void)bottomToolBarClickedItemAtIndex:(NSInteger)index {
     DLog(@"%ld",(long)index);
     if (index == 1) {
         QSScanningViewController *scan = [[QSScanningViewController alloc] init];
+        scan.scanningViewControllerScanFukuanBlock = ^{
+            
+        };
         [self.navigationController pushViewController:scan animated:YES];
     }
 }
@@ -56,12 +75,12 @@
     QSQRCodeScanItem *addressItem = [[QSQRCodeScanItem alloc] init];
     addressItem.cellIdentifier = NSStringFromClass([QSQRCodeAddressCell class]);
     addressItem.cellHeight = kRealValue(57);
-    addressItem.address = @"EKHD888HJKDS887DSD888779979sdf";
+    addressItem.address = QSPublicKey;
     
     QSQRCodeScanItem *codeImageItem = [[QSQRCodeScanItem alloc] init];
     codeImageItem.cellIdentifier = NSStringFromClass([QSQRImageCodeCell class]);
     codeImageItem.cellHeight = kRealValue(313);
-    codeImageItem.address = @"EKHD888HJKDS887DSD888779979sdf";
+    codeImageItem.address = QSPublicKey;
 
     return @[@[tipsItem],
              @[addressItem,
@@ -81,8 +100,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    QSPayAmountViewController *payAmount = [[QSPayAmountViewController alloc] init];
-    [self.navigationController pushViewController:payAmount animated:YES];
+//    QSPayAmountViewController *payAmount = [[QSPayAmountViewController alloc] init];
+//    [self.navigationController pushViewController:payAmount animated:YES];
 }
 
 #pragma mark - **************** Setter Getter

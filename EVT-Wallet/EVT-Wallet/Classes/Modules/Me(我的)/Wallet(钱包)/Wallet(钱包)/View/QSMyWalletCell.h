@@ -19,6 +19,10 @@ typedef void(^PasteButtonClickedBlock)(QSMyWalletCell *cell);
 @property (nonatomic, copy) MoreButtonClickedBlock moreButtonClickedBlock;
 @property (nonatomic, copy) PasteButtonClickedBlock pasteButtonClickedBlock;
 
+@property (nonatomic, strong) UIImageView *walletBackgroundView;
+
+@property (nonatomic, strong) QSCreateEvt *wallet;
+ 
 @end
 
 NS_ASSUME_NONNULL_END

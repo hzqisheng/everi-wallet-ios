@@ -15,6 +15,8 @@
 
 @interface QSMyWalletViewController ()
 
+@property (nonatomic, strong) NSIndexPath *currentIndexPath;
+
 @end
 
 static NSString *reuseIdentifier = @"QSMyWalletCell";
@@ -23,6 +25,11 @@ static NSString *sectionReuseIdentifier = @"QSMyWalletSection";
 @implementation QSMyWalletViewController
 
 #pragma mark - **************** Life Cycle
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self startRefreshing];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupNavgationBarTitle:QSLocalizedString(@"qs_wallet_nav_title")];
@@ -31,8 +38,19 @@ static NSString *sectionReuseIdentifier = @"QSMyWalletSection";
 
 #pragma mark - **************** Initials
 - (void)setupTableView {
+    [self addRefreshHeader];
+    self.tableView.showsVerticalScrollIndicator = NO;
     [self.tableView registerClass:[QSMyWalletCell class] forCellReuseIdentifier:reuseIdentifier];
     [self.tableView registerClass:[QSMyWalletSectionHeaderView class] forHeaderFooterViewReuseIdentifier:sectionReuseIdentifier];
+}
+
+- (void)tableViewShouldUpdateDataByPageIndex:(NSInteger)pageIndex {
+    if (self.dataArray.count) {
+        [self.dataArray removeAllObjects];
+    }
+    self.dataArray = [NSMutableArray arrayWithArray:[[QSWalletHelper sharedHelper] getWalletArray]];
+    [self.tableView reloadData];
+    [self endRefreshing];
 }
 
 #pragma mark - **************** Event Response
@@ -51,22 +69,36 @@ static NSString *sectionReuseIdentifier = @"QSMyWalletSection";
     DLog(@"paste");
 }
 
-- (void)walletCellDidClickedMoreButton:(QSMyWalletCell *)cell {
-    DLog(@"more");
+- (void)walletCellDidClickedMoreButton:(QSMyWalletCell *)cell andSection:(NSInteger)section {
+    QSWalletDetailViewController *detail = [[QSWalletDetailViewController alloc] init];
+    detail.evtModel = cell.wallet;
+    [detail setupNavgationBarTitle:@"EVT-Wallet"];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 #pragma mark - **************** UITableViewDataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     QSMyWalletCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+    if (indexPath.row == self.currentIndexPath.row && indexPath.section == self.currentIndexPath.section) {
+        [cell.walletBackgroundView setImage:[UIImage imageNamed:@"img_qianbao_card"]];
+    } else {
+        [cell.walletBackgroundView setImage:[UIImage imageNamed:@"img_qianbao_card1"]];
+    }
     WeakSelf(weakSelf);
     cell.pasteButtonClickedBlock = ^(QSMyWalletCell * _Nonnull cell) {
         [weakSelf walletCellDidClickedPasteButton:cell];
     };
     
     cell.moreButtonClickedBlock = ^(QSMyWalletCell * _Nonnull cell) {
-        [weakSelf walletCellDidClickedMoreButton:cell];
+        [weakSelf walletCellDidClickedMoreButton:cell andSection:indexPath.section];
     };
-    
+    if (indexPath.section == 0) {
+        cell.wallet = self.dataArray[0];
+    } else {
+        NSMutableArray *section1Array = [NSMutableArray arrayWithArray:self.dataArray];
+        [section1Array removeObjectAtIndex:0];
+        cell.wallet = section1Array[indexPath.row];
+    }
     return cell;
 }
 
@@ -75,7 +107,10 @@ static NSString *sectionReuseIdentifier = @"QSMyWalletSection";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    if (section == 0) {
+        return 1;
+    }
+    return self.dataArray.count - 1;
 }
 
 #pragma mark - **************** UITableViewDelegate
@@ -110,9 +145,27 @@ static NSString *sectionReuseIdentifier = @"QSMyWalletSection";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    QSWalletDetailViewController *detail = [[QSWalletDetailViewController alloc] init];
-    [detail setupNavgationBarTitle:@"EVT-Wallet"];
-    [self.navigationController pushViewController:detail animated:YES];
+    if (self.currentIndexPath.row == indexPath.row && self.currentIndexPath.section == indexPath.section) {
+        return;
+    }
+    self.currentIndexPath = indexPath;
+    if (indexPath.section == 0) {
+        QSCreateEvt *FirstEVt = self.dataArray[0];
+        [[QSWalletHelper sharedHelper] switchWallet:FirstEVt andIndexPath:indexPath];
+    } else if (indexPath.section == 1) {
+        NSMutableArray *section1Array = [NSMutableArray arrayWithArray:self.dataArray];
+        [section1Array removeObjectAtIndex:0];
+        [[QSWalletHelper sharedHelper] switchWallet:section1Array[indexPath.row] andIndexPath:indexPath];
+    }
+    [self.tableView reloadData];
+    [[QSWalletHelper sharedHelper] turnToHomeViewController];
+}
+
+- (NSIndexPath *)currentIndexPath {
+    if (!_currentIndexPath) {
+        _currentIndexPath = [[QSWalletHelper sharedHelper] getCurrentIndexPath];
+    }
+    return _currentIndexPath;
 }
 
 @end

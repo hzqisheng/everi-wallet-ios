@@ -46,5 +46,6 @@
 
 #import "UIViewController+Root.h"
 #import "UIViewController+Alert.h"
+#import "UIViewController+QSSelectPicture.h"
 
 #endif /* UIKitCategoryConst_h */

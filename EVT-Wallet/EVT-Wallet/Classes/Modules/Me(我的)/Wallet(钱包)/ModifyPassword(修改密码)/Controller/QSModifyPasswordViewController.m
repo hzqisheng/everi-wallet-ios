@@ -86,7 +86,21 @@
 }
 
 - (void)comfirmButtonClicked {
-    
+    if (!self.currentPwdTextfield.text.length || !self.freshPwdTextfield.text.length || !self.comfirmPwdTextfield.text.length) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_switch_createIdentity_alert")];
+        return;
+    }
+    if (![self.freshPwdTextfield.text isEqualToString:self.comfirmPwdTextfield.text]) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_switch_createIdentity_alert2")];
+        return;
+    }
+    if (![self.currentPwdTextfield.text isEqualToString:[QSWalletHelper sharedHelper].currentEvt.password]) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_content_password")];
+        return;
+    }
+    [[QSWalletHelper sharedHelper] changePassword:self.freshPwdTextfield.text];
+    [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_content_password_change")];
+    [self.navigationController popToViewControllerWithLevel:2 animated:YES];
 }
 
 #pragma mark - **************** Private Methods

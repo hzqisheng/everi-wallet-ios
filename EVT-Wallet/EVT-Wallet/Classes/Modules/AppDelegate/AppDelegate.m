@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import "QSMainViewController.h"
+#import "QSNavigationController.h"
+#import "QSCreateIdentityHomeViewController.h"
+#import "QSLunchImageViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,18 +19,30 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    self.window = [[UIWindow alloc] initWithFrame:kScreenBounds];
     QSEveriApiWebViewController *web = [QSEveriApiWebViewController sharedWebView];
     __weak __typeof(&*web) weakSelf = web;
     web.initSuccessBlock = ^{
-        self.window = [[UIWindow alloc] initWithFrame:kScreenBounds];
-        self.window.rootViewController = [[QSMainViewController alloc] init];
-        [self.window makeKeyAndVisible];
-        [QSAppWindow insertSubview:weakSelf.view atIndex:0];
+        if ([QSWalletHelper sharedHelper].isLogin) {
+            [[QSWalletHelper sharedHelper] turnToHomeViewController];
+        } else {
+            [[QSWalletHelper sharedHelper] turnToLoginViewController];
+        }
     };
-    [QSAppWindow insertSubview:web.view atIndex:0];
+    QSLunchImageViewController *imageVC = [[QSLunchImageViewController alloc] init];
+    self.window.rootViewController = [[QSNavigationController alloc] initWithRootViewController:imageVC];
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
+- (void)checkLoginSteps {
+    if ([QSWalletHelper sharedHelper].isLogin) {
+        self.window.rootViewController = [[QSMainViewController alloc] init];
+    } else {
+        self.window.rootViewController = [[QSNavigationController alloc] initWithRootViewController:[[QSCreateIdentityHomeViewController alloc] init]];
+    }
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

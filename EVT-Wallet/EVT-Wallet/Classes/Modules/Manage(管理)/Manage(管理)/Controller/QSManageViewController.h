@@ -6,11 +6,11 @@
 //  Copyright © 2018 HANGZHOU QISHENG TECHNOLOGY CO.LTD. All rights reserved.
 //
 
-#import "QSBaseViewController.h"
+#import "QSBaseCornerSectionTableViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface QSManageViewController : QSBaseViewController
+@interface QSManageViewController : QSBaseCornerSectionTableViewController
 
 @end
 

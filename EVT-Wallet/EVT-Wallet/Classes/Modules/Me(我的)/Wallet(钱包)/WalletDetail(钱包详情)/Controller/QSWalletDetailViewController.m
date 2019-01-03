@@ -13,6 +13,7 @@
 #import "QSSettingItem.h"
 #import "QSWalletDetailCell.h"
 #import "QSWalletContentItem.h"
+#import "QSLogoutAlertView.h"
 
 typedef NS_ENUM(NSUInteger, QSWalletDetailType) {
     QSWalletDetailTypeContent,
@@ -28,6 +29,9 @@ typedef NS_ENUM(NSUInteger, QSWalletDetailType) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (!self.evtModel.publicKey.length) {
+        self.evtModel = [QSWalletHelper sharedHelper].currentEvt;
+    }
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
@@ -40,7 +44,7 @@ typedef NS_ENUM(NSUInteger, QSWalletDetailType) {
     QSWalletContentItem *contentItem = [[QSWalletContentItem alloc] init];
     contentItem.leftTitle = @"EVT-wallet";
     contentItem.leftTitleFont = [UIFont qs_fontOfSize15];
-    contentItem.content = @"EOS5fKvaUBt7gBagCUBt7gBagCUBt7gBagCUBt7gBagCUBt7gBagC";
+    contentItem.content = self.evtModel.publicKey;
     contentItem.cellTag = QSWalletDetailTypeContent;
     contentItem.cellType = QSSettingItemTypeAccessnory;
     contentItem.cellSeapratorInset = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -85,10 +89,14 @@ typedef NS_ENUM(NSUInteger, QSWalletDetailType) {
     if (item.cellTag == QSWalletDetailTypeContent) {
         
     } else if (item.cellTag == QSWalletDetailTypeExport) {
-        QSExportPrivateKeyViewController *privateKey = [[QSExportPrivateKeyViewController alloc] init];
-        [self.navigationController pushViewController:privateKey animated:YES];
+        WeakSelf(weakSelf);
+        [QSLogoutAlertView showLogoutAlertViewAndSubmitBlock:^{
+            QSExportPrivateKeyViewController *privateKeyVC = [[QSExportPrivateKeyViewController alloc] init];
+            privateKeyVC.EVTModel = self.evtModel;
+            [weakSelf.navigationController pushViewController:privateKeyVC animated:YES];
+        }];
     }else if (item.cellTag == QSWalletDetailTypeSigh) {
-        
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_content_NO")];
     }
 }
 

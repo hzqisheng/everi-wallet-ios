@@ -50,10 +50,14 @@
         QSImportWalletIndexViewController *importEVT = [[QSImportWalletIndexViewController alloc] initWithType:QSImportWalletTypeEVT];
         [self.navigationController pushViewController:importEVT animated:YES];
     } else if (button.tag == 1) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_content_NO")];
+        return;
         //ETH
         QSImportWalletIndexViewController *importETH = [[QSImportWalletIndexViewController alloc] initWithType:QSImportWalletTypeETH];
         [self.navigationController pushViewController:importETH animated:YES];
     } else if (button.tag == 2) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_content_NO")];
+        return;
         //EOS
         QSImportWalletIndexViewController *importEOS = [[QSImportWalletIndexViewController alloc] initWithType:QSImportWalletTypeEOS];
         [self.navigationController pushViewController:importEOS animated:YES];

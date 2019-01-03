@@ -20,7 +20,7 @@
 - (void)initView{
     _centerButton = [UIButton buttonWithType:UIButtonTypeCustom];
     //设定button大小为适应图片
-    UIImage *normalImage = [UIImage imageNamed:@"icon_home_tabbar_qihuanqianbao"];
+    UIImage *normalImage = [UIImage imageNamed:QSLocalizedString(@"qs_switch_Switch_purse")];
     _centerButton.frame = CGRectMake(0, 0, normalImage.size.width, normalImage.size.height);
     [_centerButton setImage:normalImage forState:UIControlStateNormal];
     //去除选择时高亮

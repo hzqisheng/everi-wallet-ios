@@ -62,7 +62,8 @@
 - (UIImageView *)ftImageView {
     if (!_ftImageView) {
         _ftImageView = [[UIImageView alloc] init];
-        _ftImageView.image = [UIImage imageNamed:@"icon_home_pevt"];
+        _ftImageView.layer.cornerRadius = kRealValue(16.5);
+        _ftImageView.layer.masksToBounds = YES;
     }
     return _ftImageView;
 }
@@ -96,6 +97,27 @@
     }
     _amountLabel.text = amoutNameList[0];
     _nameLabel.text = amoutNameList[1];
+}
+
+- (void)setFTModel:(QSFT *)FTModel {
+    _FTModel = FTModel;
+    if (FTModel.metas.count > 0) {
+        QSMetas *metas = FTModel.metas[0];
+        [self.ftImageView sd_setImageWithURL:[NSURL URLWithString:metas.value]];
+    } else {
+        [self.ftImageView setImage:[UIImage imageNamed:@"icon_fukuan_evt"]];
+    }
+    NSArray *assetList = [FTModel.asset componentsSeparatedByString:@" "];
+    if (assetList.count == 2) {
+        self.amountLabel.text = assetList[0];
+        NSMutableString *test = [NSMutableString stringWithString:assetList[1]];
+        if([test hasPrefix:@"S"]){
+            [test deleteCharactersInRange: [test rangeOfString:@"S"]];
+        }
+        self.nameLabel.text = [NSString stringWithFormat:@"%@(%@)",FTModel.sym_name,test];
+    } else {
+        self.nameLabel.text = FTModel.name;
+    }
 }
 
 @end

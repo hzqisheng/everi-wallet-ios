@@ -13,9 +13,41 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QSWalletHelper : NSObject
 
-@property (nonatomic, strong) QSCreateEvt *currentEvt;
+@property (nonatomic, readonly, strong) QSCreateEvt *currentEvt;
 
+/** 用户登录保存信息 */
 - (void)loginWithEvt:(QSCreateEvt *)evt;
+
+/** 是否登录 */
+@property (nonatomic, readonly, assign) BOOL isLogin;
+
+/** 退出登录 */
+- (void)logout;
+
+/** 导入钱包 */
+- (void)addWallet:(QSCreateEvt *)evt;
+
+/** 获取钱包列表 */
+- (NSMutableArray *)getWalletArray;
+
+/** 切换钱包 */
+- (void)switchWallet:(QSCreateEvt *)evt andIndexPath:(NSIndexPath *)indexPath;
+
+/** 获取当前选择IndexPath */
+- (NSIndexPath *)getCurrentIndexPath;
+
+/** 修改钱包密码 */
+- (void)changePassword:(NSString *)password;
+
+/**
+ * @brief返回首页操作
+ */
+- (void)turnToHomeViewController;
+
+/**
+ * @brief弹出登录页面操作
+ */
+- (void)turnToLoginViewController;
 
 + (instancetype)sharedHelper;
 

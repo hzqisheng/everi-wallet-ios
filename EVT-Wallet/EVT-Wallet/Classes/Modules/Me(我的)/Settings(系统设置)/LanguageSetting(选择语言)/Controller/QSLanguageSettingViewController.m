@@ -70,6 +70,7 @@ typedef NS_ENUM(NSUInteger, QSLanguageSettingType) {
             transition.type = @"reveal";
             transition.duration = 0.3;
             [QSAppKeyWindow.layer addAnimation:transition forKey:nil];
+            [QSAppWindow insertSubview:[QSEveriApiWebViewController sharedWebView].view atIndex:0];
         });
     } else if (item.cellTag == QSLanguageSettingTypeChinese) {
         if ([NSBundle isChineseLanguage]) {
@@ -84,6 +85,7 @@ typedef NS_ENUM(NSUInteger, QSLanguageSettingType) {
             transition.type = @"reveal";
             transition.duration = 0.3;
             [QSAppKeyWindow.layer addAnimation:transition forKey:nil];
+            [QSAppWindow insertSubview:[QSEveriApiWebViewController sharedWebView].view atIndex:0];
         });
     }
 }

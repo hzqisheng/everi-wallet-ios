@@ -83,8 +83,7 @@ typedef NS_ENUM(NSUInteger, QSEditWalletsType) {
 
     return @[@[modifyPwdItem,
                retrieveItem,
-               exportItem],
-             @[addItem]];
+               exportItem]];
 }
 
 #pragma mark - **************** UITableViewDelegate

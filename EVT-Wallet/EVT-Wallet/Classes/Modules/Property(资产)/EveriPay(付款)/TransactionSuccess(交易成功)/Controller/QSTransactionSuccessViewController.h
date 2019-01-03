@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QSTransactionSuccessViewController : QSBaseViewController
 
+@property (nonatomic, strong) QSFT *FTModel;
+@property (nonatomic, copy) NSString *count;
+
 @end
 
 NS_ASSUME_NONNULL_END

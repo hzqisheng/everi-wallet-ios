@@ -8,11 +8,15 @@
 
 #import "QSScanningViewController.h"
 #import "QSScannerViewController.h"
+#import "QSPayAmountViewController.h"
+#import "QSEveriPayCollectAmountViewController.h"
+#import "QSScanAddress.h"
 
 @interface QSScanningViewController ()<QSScannerDelegate,UINavigationControllerDelegate>
 
 @property (nonatomic, strong) QSScannerViewController *scanVC;
 //@property (nonatomic, strong) UIButton *helpButton;
+
 
 @end
 
@@ -33,7 +37,115 @@
 
 #pragma mark - Private Methods -
 - (void)p_analysisQRAnswer:(NSString *)ansStr {
-    DLog(@"扫描结果:%@",ansStr);
+    [self.scanVC startCodeReading];
+    //首页扫码
+    if (self.scanningViewControllerHomeScan) {
+        [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
+            if (flag == 5) {
+                QSEveriPayCollectAmountViewController *shoukuanVC = [[QSEveriPayCollectAmountViewController alloc] init];
+                shoukuanVC.link = ansStr;
+                //Parse it
+                WeakSelf(weakSelf);
+                [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
+                    if (modelList.count > 0) {
+                        for (QSScanAddress *scanModel in modelList) {
+                            if (scanModel.typeKey == 43) {
+                                shoukuanVC.maxMoney = scanModel.value;
+                            }
+                            if (scanModel.typeKey == 44) {
+                                shoukuanVC.sybId = scanModel.value;
+                            }
+                        }
+                        //Parse it and pass it on
+                        [weakSelf.navigationController pushViewController:shoukuanVC animated:YES];
+                        
+                    } else {
+                        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_scan_failure")];
+                    }
+                }];
+                return;
+            } else if (flag == 17) {
+                QSPayAmountViewController *payAmount = [[QSPayAmountViewController alloc] init];
+                //Parse it
+                WeakSelf(weakSelf);
+                [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
+                    //Parse it and pass it on
+                    if (modelList.count > 0) {
+                        QSScanAddress *addressModel = modelList[0];
+                        payAmount.address = addressModel.value;
+                        [weakSelf.navigationController pushViewController:payAmount animated:YES];
+                    }
+                }];
+                return;
+            }
+        }];
+    }
+    
+    if (self.scanningViewControllerSweepBlock) {
+        WeakSelf(weakSelf);
+        [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
+            if (statusCode == kResponseSuccessCode) {
+                //Parse it and pass it on
+                if (modelList.count > 0) {
+                    QSScanAddress *addressModel = modelList[0];
+                    weakSelf.scanningViewControllerSweepBlock(addressModel.value);
+                    [weakSelf.navigationController popViewControllerAnimated:YES];
+                } else {
+                    [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_scanAddress_failure")];
+                }
+            }
+        }];
+    }
+    if (self.scanningViewControllerPayBySweepBlock) {
+        QSPayAmountViewController *payAmount = [[QSPayAmountViewController alloc] init];
+        //Parse it
+        WeakSelf(weakSelf);
+        [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
+            //Parse it and pass it on
+            if (modelList.count > 0) {
+                QSScanAddress *addressModel = modelList[0];
+                payAmount.address = addressModel.value;
+                [weakSelf.navigationController pushViewController:payAmount animated:YES];
+            }
+        }];
+    }
+    if (self.scanningViewControllerScanAddressBlock) {
+        WeakSelf(weakSelf);
+        [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
+            if (modelList.count > 0) {
+                QSScanAddress *addressModel = modelList[0];
+                [weakSelf popToEveriPayVCWithAddress:addressModel.value];
+            }
+        }];
+    }
+    if (self.scanningViewControllerScanFukuanBlock) {
+        QSEveriPayCollectAmountViewController *shoukuanVC = [[QSEveriPayCollectAmountViewController alloc] init];
+        shoukuanVC.link = ansStr;
+        //Parse it
+        WeakSelf(weakSelf);
+        [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
+            if (modelList.count > 0) {
+                for (QSScanAddress *scanModel in modelList) {
+                    if (scanModel.typeKey == 43) {
+                        shoukuanVC.maxMoney = scanModel.value;
+                    }
+                    if (scanModel.typeKey == 44) {
+                        shoukuanVC.sybId = scanModel.value;
+                    }
+                }
+                //Parse it and pass it on
+                [weakSelf.navigationController pushViewController:shoukuanVC animated:YES];
+                
+            } else {
+                [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_scan_failure")];
+            }
+        }];
+    }
+}
+
+- (void)popToEveriPayVCWithAddress:(NSString *)address {
+    self.scanningViewControllerScanAddressBlock(address);
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)p_analysisImage:(UIImage *)image {

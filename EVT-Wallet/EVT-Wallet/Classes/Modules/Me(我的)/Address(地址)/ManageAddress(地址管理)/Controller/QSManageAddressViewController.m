@@ -14,6 +14,8 @@
 #import "QSManageAdressSearchView.h"
 #import "QSManageAddressCell.h"
 
+#import "QSAddressHelper.h"
+
 @interface QSManageAddressViewController ()
 
 @property (nonatomic, strong) QSManageAdressSearchView *searchView;
@@ -26,9 +28,15 @@ static NSString *reuseIdentifier = @"QSAdressCell";
 
 @implementation QSManageAddressViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self startRefreshing];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupSubViews];
+    [self startRefreshing];
 }
 
 - (void)setupSubViews {
@@ -42,6 +50,7 @@ static NSString *reuseIdentifier = @"QSAdressCell";
     [self.view addSubview:self.searchView];
     
     //tableView
+    [self addRefreshHeader];
     self.tableView.contentInset = UIEdgeInsetsMake(kManageAdressSearchViewHeight, 0, 0, 0);
     [self.tableView registerClass:[QSManageAddressCell class] forCellReuseIdentifier:reuseIdentifier];
     
@@ -49,10 +58,27 @@ static NSString *reuseIdentifier = @"QSAdressCell";
     CGFloat footerButtonW = kRealValue(168);
     CGFloat footerButtonH = kRealValue(40);
     CGFloat footerButtonBottomMargin = kDevice_Is_iPhoneX ? kiPhoneXSafeAreaBottomMagin : kRealValue(15);
-    self.addAddressButton.frame = CGRectMake(kScreenWidth/2 - footerButtonW - 5 , kScreenHeight - kNavgationBarHeight - footerButtonBottomMargin - footerButtonH, footerButtonW, footerButtonH);
-    [self.view addSubview:self.addAddressButton];
-    self.importAddressButton.frame = CGRectMake(kScreenWidth/2 + 5 , kScreenHeight - kNavgationBarHeight - footerButtonBottomMargin - footerButtonH, footerButtonW, footerButtonH);
-    [self.view addSubview:self.importAddressButton];
+    if (self.haveNotBottomBar) {
+        self.addAddressButton.frame = CGRectMake(kScreenWidth/2 - footerButtonW - 5 , kScreenHeight - kNavgationBarHeight - footerButtonBottomMargin - footerButtonH, footerButtonW, footerButtonH);
+        [self.view addSubview:self.addAddressButton];
+        self.importAddressButton.frame = CGRectMake(kScreenWidth/2 + 5 , kScreenHeight - kNavgationBarHeight - footerButtonBottomMargin - footerButtonH, footerButtonW, footerButtonH);
+        [self.view addSubview:self.importAddressButton];
+    } else {
+        self.addAddressButton.frame = CGRectMake(kScreenWidth/2 - footerButtonW - 5 , kScreenHeight - kNavgationBarHeight - footerButtonBottomMargin - footerButtonH - kRealValue(64), footerButtonW, footerButtonH);
+        [self.view addSubview:self.addAddressButton];
+        self.importAddressButton.frame = CGRectMake(kScreenWidth/2 + 5 , kScreenHeight - kNavgationBarHeight - footerButtonBottomMargin - footerButtonH - kRealValue(64), footerButtonW, footerButtonH);
+        [self.view addSubview:self.importAddressButton];
+    }
+}
+
+#pragma mark - **************** UpdateData
+- (void)tableViewShouldUpdateDataByPageIndex:(NSInteger)pageIndex {
+    if (self.dataArray.count) {
+        [self.dataArray removeAllObjects];
+    }
+    self.dataArray = [NSMutableArray arrayWithArray:[[QSAddressHelper sharedHelper] getAddress]];
+    [self.tableView reloadData];
+    [self endRefreshing];
 }
 
 #pragma mark - **************** Event Response
@@ -67,6 +93,8 @@ static NSString *reuseIdentifier = @"QSAdressCell";
 }
 
 - (void)importAddressButtonClicked {
+    [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_content_NO")];
+    return;
     QSImportAddressViewController *importAddress = [[QSImportAddressViewController alloc] init];
     [self.navigationController pushViewController:importAddress animated:YES];
 }
@@ -74,12 +102,13 @@ static NSString *reuseIdentifier = @"QSAdressCell";
 #pragma mark - **************** UITableViewDataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     QSManageAddressCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+    cell.addressModel = self.dataArray[indexPath.row];
     
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return self.dataArray.count;
 }
 
 #pragma mark - **************** UITableViewDelegate
@@ -116,5 +145,7 @@ static NSString *reuseIdentifier = @"QSAdressCell";
     }
     return _importAddressButton;
 }
+
+
 
 @end

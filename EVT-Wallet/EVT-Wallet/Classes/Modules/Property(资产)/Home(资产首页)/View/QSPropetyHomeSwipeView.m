@@ -93,6 +93,7 @@ const int TOP_BOTTM_MARGIN = 9;
     [self addGestureRecognizer:pan];
     //毛玻璃背景
     self.backgroundBlurImageView = [[UIImageView alloc] init];
+    self.backgroundBlurImageView.image = [UIImage imageNamed:@"homeBack"];
     [self addSubview:self.backgroundBlurImageView];
 }
 

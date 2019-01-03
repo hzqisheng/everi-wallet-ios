@@ -36,4 +36,8 @@
 #define kBottomButtonWidth   kRealValue(345)
 #define kBottomButtonHeight  kRealValue(40)
 
+
+#define QSPrivateKey [QSWalletHelper sharedHelper].currentEvt.privateKey
+#define QSPublicKey [QSWalletHelper sharedHelper].currentEvt.publicKey
+
 #endif /* AppConfig_h */

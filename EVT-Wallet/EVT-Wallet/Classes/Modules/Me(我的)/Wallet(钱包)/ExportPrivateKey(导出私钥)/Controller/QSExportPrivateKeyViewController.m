@@ -79,7 +79,7 @@ typedef NS_ENUM(NSUInteger, QSExportPrivateKeyType) {
     addressItem.cellIdentifier = NSStringFromClass([QSSettingCell class]);
     addressItem.cellHeight = kRealValue(60);
     addressItem.rightNumberOfLines = 2;
-    addressItem.rightTitle = @"EOS5fKvaUBt7gBagCUBt7gBagCUBt7gBagCUBt7gBagCUBt7gBagC";
+    addressItem.rightTitle = self.EVTModel.publicKey;
     addressItem.rightSubviewMargin = kRealValue(20);
     addressItem.rightTitleFont = [UIFont qs_fontOfSize12];
     addressItem.rightTitleColor = [UIColor qs_colorGray686868];
@@ -94,7 +94,7 @@ typedef NS_ENUM(NSUInteger, QSExportPrivateKeyType) {
     keyItem.cellIdentifier = NSStringFromClass([QSSettingCell class]);
     keyItem.cellHeight = kRealValue(60);
     keyItem.rightNumberOfLines = 2;
-    keyItem.rightTitle = @"EOS5fKvaUBt7gBagCUBt7gBagCUBt7gBagCUBt7gBagCUBt7gBagC";
+    keyItem.rightTitle = self.EVTModel.privateKey;
     keyItem.rightSubviewMargin = kRealValue(20);
     keyItem.rightTitleFont = [UIFont qs_fontOfSize12];
     keyItem.rightTitleColor = [UIColor qs_colorGray686868];
@@ -110,9 +110,12 @@ typedef NS_ENUM(NSUInteger, QSExportPrivateKeyType) {
     UIPasteboard* pasteboard = [UIPasteboard generalPasteboard];
     [pasteboard setString:item.rightTitle];
     if (item.cellTag == QSExportPrivateKeyTypeAddress) {
-        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_export_private_key_address_paste_title")];
+        UIPasteboard* pasteboard = [UIPasteboard generalPasteboard];
+        [pasteboard setString:self.EVTModel.publicKey];
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_collect_btn_copy_success_title")];
     } else if (item.cellTag == QSExportPrivateKeyTypePrivateKey) {
-        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_export_private_key_private_key_paste_title")];
+        [pasteboard setString:self.EVTModel.privateKey];
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_collect_btn_copy_success_title")];
     }
 }
 

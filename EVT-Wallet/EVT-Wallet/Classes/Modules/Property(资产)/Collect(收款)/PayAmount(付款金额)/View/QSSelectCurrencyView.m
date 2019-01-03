@@ -32,6 +32,13 @@ static NSString *kSelectCurrencyCellID = @"RRProductParametersCellID";
     [view show];
 }
 
++ (void)showSelectCurrencyViewWithFTList:(NSArray *)FTList andSelectFTBlock:(void (^)(QSFT * _Nonnull))block {
+    QSSelectCurrencyView *view = [[QSSelectCurrencyView alloc] initWithFrame:kScreenBounds];
+    view.selectCurrencyViewSelectFTBlock = block;
+    view.dataList = FTList;
+    [view show];
+}
+
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
@@ -77,18 +84,18 @@ static NSString *kSelectCurrencyCellID = @"RRProductParametersCellID";
 
 #pragma mark - **************** Event Response
 - (void)confirmButtonClicked {
-    
+    [self dissmiss];
 }
 
 #pragma mark - **************** UITableViewDataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     QSSelectCurrencyCell *cell = [tableView dequeueReusableCellWithIdentifier:kSelectCurrencyCellID forIndexPath:indexPath];
-    
+    cell.FTModel = self.dataList[indexPath.row];
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.dataList.count;
 }
 
 #pragma mark - **************** UITableViewDelegate
@@ -97,7 +104,10 @@ static NSString *kSelectCurrencyCellID = @"RRProductParametersCellID";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (self.selectCurrencyViewSelectFTBlock) {
+        self.selectCurrencyViewSelectFTBlock(self.dataList[indexPath.row]);
+    }
+    [self dissmiss];
 }
 
 #pragma mark - **************** Setter Getter

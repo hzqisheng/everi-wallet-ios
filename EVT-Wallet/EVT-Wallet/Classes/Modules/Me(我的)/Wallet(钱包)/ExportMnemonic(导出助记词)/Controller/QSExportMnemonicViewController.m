@@ -57,6 +57,7 @@
 #pragma mark - **************** Event Response
 - (void)backupButtonClicked {
     QSExportMnemonicStep2ViewController *step2 = [[QSExportMnemonicStep2ViewController alloc] init];
+    step2.isFirstCreate = self.isFirstCreate;
     [self.navigationController pushViewController:step2 animated:YES];
 }
 

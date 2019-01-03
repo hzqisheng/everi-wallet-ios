@@ -19,6 +19,8 @@ typedef void(^EveriPayClickedBlock)(QSHomeMyFTsCell *cell);
 
 @property (nonatomic, copy) NSString *amountNameString;
 
+@property (nonatomic, strong) QSFT *FTModel;
+
 @end
 
 NS_ASSUME_NONNULL_END

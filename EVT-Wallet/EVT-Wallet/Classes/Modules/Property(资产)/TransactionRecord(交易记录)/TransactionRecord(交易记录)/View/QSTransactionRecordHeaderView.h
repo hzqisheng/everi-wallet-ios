@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QSFungibleSymbol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface QSTransactionRecordHeaderView : UIView
+
+@property (nonatomic, strong) QSFT *FTModel;
 
 @end
 

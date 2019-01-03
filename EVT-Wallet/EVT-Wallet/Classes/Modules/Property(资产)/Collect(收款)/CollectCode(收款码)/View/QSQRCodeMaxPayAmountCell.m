@@ -12,7 +12,7 @@
 @interface QSQRCodeMaxPayAmountCell ()
 
 @property (nonatomic, strong) UILabel *maxPayAmountTipsLabel;
-@property (nonatomic, strong) UILabel *maxPayAmountLabel;
+@property (nonatomic, strong) UITextField *maxPayAmountTextField;
 
 @end
 
@@ -21,7 +21,7 @@
 - (void)configureSubViews {
     self.contentView.backgroundColor = [UIColor clearColor];
     [self.contentView addSubview:self.maxPayAmountTipsLabel];
-    [self.contentView addSubview:self.maxPayAmountLabel];
+    [self.contentView addSubview:self.maxPayAmountTextField];
     
     [self.maxPayAmountTipsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.contentView);
@@ -29,7 +29,7 @@
         make.width.lessThanOrEqualTo(@kRealValue(100));
     }];
     
-    [self.maxPayAmountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.maxPayAmountTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.contentView);
         make.right.equalTo(self.contentView).offset(-kRealValue(24));
         make.left.equalTo(self.maxPayAmountTipsLabel.mas_right).offset(kRealValue(15));
@@ -38,9 +38,21 @@
 
 - (void)configureCellWithItem:(QSBaseCellItem *)item {
     self.item = item;
-    
-    QSQRCodeScanItem *scanItem = (QSQRCodeScanItem *)item;
-    self.maxPayAmountLabel.text = scanItem.maxPayAmount;
+}
+
+#pragma mark - **************** Private Methods
+- (void)textFieldChanged {
+    QSQRCodeScanItem *codeItem = (QSQRCodeScanItem *)self.item;
+    if (codeItem.codeScanItemTextChangedBlock) {
+        codeItem.codeScanItemTextChangedBlock(self.maxPayAmountTextField.text);
+    }
+}
+
+- (void)textFieldEndEditing {
+    QSQRCodeScanItem *codeItem = (QSQRCodeScanItem *)self.item;
+    if (codeItem.codeScanItemEndEditingBlock) {
+        codeItem.codeScanItemEndEditingBlock();
+    }
 }
 
 #pragma mark - **************** Setter Getter
@@ -51,12 +63,20 @@
     return _maxPayAmountTipsLabel;
 }
 
-- (UILabel *)maxPayAmountLabel {
-    if (!_maxPayAmountLabel) {
-        _maxPayAmountLabel = [UILabel labelWithName:QSLocalizedString(@"qs_collect_item_max_pay_title") font:[UIFont qs_fontOfSize14] textColor:[UIColor qs_colorBlue4D7BF3] textAlignment:NSTextAlignmentRight];
+- (UITextField *)maxPayAmountTextField {
+    if (!_maxPayAmountTextField) {
+        _maxPayAmountTextField = [[UITextField alloc] init];
+        _maxPayAmountTextField.text = @"100";
+        _maxPayAmountTextField.placeholder = QSLocalizedString(@"qs_sytem_setting_item_payment_title");
+        _maxPayAmountTextField.textColor = [UIColor qs_colorBlue4D7BF3];
+        _maxPayAmountTextField.font = [UIFont qs_fontOfSize14];
+        [_maxPayAmountTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
+        [_maxPayAmountTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+        _maxPayAmountTextField.textAlignment = NSTextAlignmentRight;
+        [_maxPayAmountTextField addTarget:self action:@selector(textFieldChanged) forControlEvents:UIControlEventEditingChanged];
+        [_maxPayAmountTextField addTarget:self action:@selector(textFieldEndEditing) forControlEvents:UIControlEventEditingDidEnd];
+        _maxPayAmountTextField.keyboardType = UIKeyboardTypeAlphabet;
     }
-    return _maxPayAmountLabel;
+    return _maxPayAmountTextField;
 }
-
-
 @end

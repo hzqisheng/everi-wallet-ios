@@ -33,7 +33,7 @@ static NSString *reuseIdentifier = @"QSHomeMyFTsCell";
 }
 
 - (void)tableViewShouldUpdateDataByPageIndex:(NSInteger)pageIndex {
-    [[QSEveriApiWebViewController sharedWebView] getOwnedTokensWithPublicKeys:@"EVT5qn48E8eZKJb5yM24bgC1m8MdRFg5eBU76cQfDXBGXr3UYjLvY" andCompeleteBlock:^(NSInteger statusCode, NSArray<QSOwnedToken *> * _Nonnull ownedTokens) {
+    [[QSEveriApiWebViewController sharedWebView] getOwnedTokensWithPublicKeys:QSPublicKey andCompeleteBlock:^(NSInteger statusCode, NSArray<QSOwnedToken *> * _Nonnull ownedTokens) {
         if (statusCode == kResponseSuccessCode) {
             [self.dataArray removeAllObjects];
             [self.dataArray addObjectsFromArray:ownedTokens];

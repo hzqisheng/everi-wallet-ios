@@ -10,4 +10,10 @@
 
 @implementation QSFungibleSymbol
 
++ (NSDictionary *)mj_objectClassInArray {
+    return @{
+             @"metas": @"QSMetas"
+             };
+}
+
 @end

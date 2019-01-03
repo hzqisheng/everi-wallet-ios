@@ -116,7 +116,7 @@
 
 - (UILabel *)searchTypeLabel {
     if (!_searchTypeLabel) {
-        _searchTypeLabel = [UILabel labelWithName:@"全部" font:[UIFont qs_fontOfSize14] textColor:[UIColor qs_colorBlack313745] textAlignment:NSTextAlignmentLeft];
+        _searchTypeLabel = [UILabel labelWithName:QSLocalizedString(@"qs_manage_address_all") font:[UIFont qs_fontOfSize14] textColor:[UIColor qs_colorBlack313745] textAlignment:NSTextAlignmentLeft];
     }
     return _searchTypeLabel;
 }
@@ -142,7 +142,7 @@
 
 - (UILabel *)searchGroupLabel {
     if (!_searchGroupLabel) {
-        _searchGroupLabel = [UILabel labelWithName:@"选择组" font:[UIFont qs_fontOfSize14] textColor:[UIColor qs_colorBlack313745] textAlignment:NSTextAlignmentLeft];
+        _searchGroupLabel = [UILabel labelWithName:QSLocalizedString(@"qs_manage_address_selectGroup") font:[UIFont qs_fontOfSize14] textColor:[UIColor qs_colorBlack313745] textAlignment:NSTextAlignmentLeft];
     }
     return _searchGroupLabel;
 }

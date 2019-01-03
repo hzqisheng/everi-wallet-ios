@@ -10,6 +10,8 @@
 
 @interface QSMarketViewController ()
 
+@property (nonatomic, strong) UIImageView *imageView;
+
 @end
 
 @implementation QSMarketViewController
@@ -18,6 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupNavgationBarTitle:@"市场"];
+    [self.view addSubview:self.imageView];
 }
 
 /*
@@ -30,4 +33,16 @@
 }
 */
 
+- (UIImageView *)imageView {
+    if (!_imageView) {
+        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavgationBarHeight - kTabBarHeight)];
+        if (kDevice_Is_iPhoneX) {
+            [_imageView setImage:[UIImage imageNamed:@"5991545224647_.pic"]];
+        } else {
+            [_imageView setImage:[UIImage imageNamed:@"1831545137939.pic"]];
+        }
+            
+    }
+    return _imageView;
+}
 @end

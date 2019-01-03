@@ -13,6 +13,7 @@
 #import "QSHelpCenterViewController.h"
 #import "QSSystemSettingsViewController.h"
 #import "QSAboutusViewController.h"
+#import "QSLogoutAlertView.h"
 
 #import "QSSettingCell.h"
 #import "QSSettingItem.h"
@@ -119,7 +120,10 @@ static NSString *reuseIdentifier = @"QSSettingCell";
 
 #pragma mark - **************** Event Response
 - (void)logoutButtonClicked {
-    
+    [QSLogoutAlertView showLogoutAlertViewAndSubmitBlock:^{
+        [[QSWalletHelper sharedHelper] logout];
+        [[QSWalletHelper sharedHelper] turnToLoginViewController];
+    }];
 }
 
 #pragma mark - **************** UITableViewDelegate
@@ -140,6 +144,7 @@ static NSString *reuseIdentifier = @"QSSettingCell";
         [self.navigationController pushViewController:wallet animated:YES];
     } else if (item.cellTag == QSMineCellTagAddress) {
         QSManageAddressViewController *manageAdress = [[QSManageAddressViewController alloc] init];
+        manageAdress.haveNotBottomBar = YES;
         manageAdress.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:manageAdress animated:YES];
     } else if (item.cellTag == QSMineCellTagCommunities) {
@@ -185,11 +190,8 @@ static NSString *reuseIdentifier = @"QSSettingCell";
         _headerView.image = [UIImage imageNamed:@"img_wode"];
         _headerView.contentMode = UIViewContentModeScaleAspectFill;
         UIImageView *headerImageView = [[UIImageView alloc] init];
-        CGFloat headerImageViewWH = kRealValue(85);
-        headerImageView.frame = CGRectMake(kScreenWidth/2 - headerImageViewWH/2, kHeaderAvatarViewY, headerImageViewWH, headerImageViewWH);
-        headerImageView.layer.cornerRadius = headerImageViewWH/2;
-        headerImageView.image = [UIImage imageNamed:@"icon_wode_logo"];
-        _headerAvatarView = headerImageView;
+        headerImageView.frame = CGRectMake(kRealValue(88), kRealValue(70), kRealValue(198), kRealValue(53));
+        headerImageView.image = [UIImage imageNamed:@"icon_guanli_logo"];
         [_headerView addSubview:headerImageView];
     }
     return _headerView;

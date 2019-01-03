@@ -12,10 +12,19 @@
 #import "QSAddAddressCell+QSAddAddressInput.h"
 #import "QSAddAddressCell+QSAddAddressScan.h"
 #import "QSAddAddressCell+QSAddAddressType.h"
+#import "QSScanningViewController.h"
+#import "QSAddressHelper.h"
 
 @interface QSAddAddressViewController ()
 
 @property (nonatomic, strong) UIView *footerView;
+
+@property (nonatomic, copy) NSString *type;
+@property (nonatomic, copy) NSString *address;
+@property (nonatomic, copy) NSString *groupName;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *phone;
+@property (nonatomic, copy) NSString *note;
 
 @end
 
@@ -28,6 +37,7 @@ static NSString *reuseIdentifier = @"QSAddAddressCell";
     [self setupNavgationBarTitle:QSLocalizedString(@"qs_add_address_nav_title")];
     [self setupTableView];
     [self createDataSource];
+    self.type = @"EVT";
 }
 
 - (void)setupTableView {
@@ -44,14 +54,38 @@ static NSString *reuseIdentifier = @"QSAddAddressCell";
     typeItem.leftTitleFont = [UIFont qs_fontOfSize16];
     typeItem.showTypeButton = YES;
     typeItem.cellHeight = kRealValue(55);
+    WeakSelf(weakSelf);
+    typeItem.typeClickedBlock = ^(QSAddAddressCell * _Nonnull cell) {
+        switch (cell.selectedType) {
+            case 0:
+            {
+                weakSelf.type = @"EVT";
+            }
+                break;
+            case 1:
+            {
+                weakSelf.type = @"ETH";
+            }
+                break;
+            case 2:
+            {
+                weakSelf.type = @"EOS";
+            }
+                break;
+        }
+    };
+    
     
     QSAddAddressItem *addressItem = [[QSAddAddressItem alloc] init];
     addressItem.leftTitle = QSLocalizedString(@"qs_add_address_item_address_title");
     addressItem.placeholder = QSLocalizedString(@"qs_add_address_item_address_placeholder");
     addressItem.leftTitleFont = [UIFont qs_fontOfSize16];
     addressItem.showScanButton = YES;
+    addressItem.textFieldTextChangedBlock = ^(QSAddAddressCell * _Nonnull cell) {
+        weakSelf.address = cell.addressItem.textFieldText;
+    };
     addressItem.scanClickedBlock = ^(QSAddAddressCell * _Nonnull cell) {
-        DLog(@"点击扫码");
+        [weakSelf goToScanningVC];
     };
     addressItem.cellHeight = kRealValue(55);
     
@@ -60,6 +94,9 @@ static NSString *reuseIdentifier = @"QSAddAddressCell";
     groupItem.placeholder = QSLocalizedString(@"qs_add_address_item_group_placeholder");
     groupItem.leftTitleFont = [UIFont qs_fontOfSize16];
     groupItem.showTextField = YES;
+    groupItem.textFieldTextChangedBlock = ^(QSAddAddressCell * _Nonnull cell) {
+        weakSelf.groupName = cell.addressItem.textFieldText;
+    };
     groupItem.cellHeight = kRealValue(55);
 
     QSAddAddressItem *nameItem = [[QSAddAddressItem alloc] init];
@@ -68,6 +105,9 @@ static NSString *reuseIdentifier = @"QSAddAddressCell";
     nameItem.leftTitleFont = [UIFont qs_fontOfSize16];
     nameItem.showTextField = YES;
     nameItem.cellHeight = kRealValue(55);
+    nameItem.textFieldTextChangedBlock = ^(QSAddAddressCell * _Nonnull cell) {
+        weakSelf.name = cell.addressItem.textFieldText;
+    };
 
     QSAddAddressItem *phoneItem = [[QSAddAddressItem alloc] init];
     phoneItem.leftTitle = QSLocalizedString(@"qs_add_address_item_phone_title");
@@ -75,7 +115,7 @@ static NSString *reuseIdentifier = @"QSAddAddressCell";
     phoneItem.leftTitleFont = [UIFont qs_fontOfSize16];
     phoneItem.showTextField = YES;
     phoneItem.textFieldTextChangedBlock = ^(QSAddAddressCell * _Nonnull cell) {
-        DLog(@"电话文字改变%@",cell.addressItem.textFieldText);
+        weakSelf.phone = cell.addressItem.textFieldText;
     };
     phoneItem.cellHeight = kRealValue(55);
 
@@ -85,6 +125,9 @@ static NSString *reuseIdentifier = @"QSAddAddressCell";
     memoItem.leftTitleFont = [UIFont qs_fontOfSize16];
     memoItem.showTextField = YES;
     memoItem.cellHeight = kRealValue(55);
+    memoItem.textFieldTextChangedBlock = ^(QSAddAddressCell * _Nonnull cell) {
+        weakSelf.note = cell.addressItem.textFieldText;
+    };
 
     self.dataArray = [@[typeItem,
                         addressItem,
@@ -95,9 +138,46 @@ static NSString *reuseIdentifier = @"QSAddAddressCell";
     [self.tableView reloadData];
 }
 
+#pragma mark - **************** Private Methods
+- (void)goToScanningVC {
+    QSScanningViewController *vc = [[QSScanningViewController alloc] init];
+    WeakSelf(weakSelf);
+    vc.scanningViewControllerSweepBlock = ^(NSString *publicKey) {
+        QSAddAddressItem *addressItem = self.dataArray[1];
+        addressItem.textFieldText = publicKey;
+        weakSelf.dataArray[1] = addressItem;
+        weakSelf.address = publicKey;
+        [weakSelf.tableView reloadData];
+    };
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 #pragma mark - **************** Event Response
 - (void)saveButtonClicked {
-    DLog(@"保存");
+    if (!self.type.length || !self.address.length) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_content_empty")];
+        return;
+    }
+    WeakSelf(weakSelf);
+    [[QSEveriApiWebViewController sharedWebView] isValidAddressWithAddress:self.address andCompeleteBlock:^(NSInteger statusCode, NSString * _Nonnull isCorrect) {
+        if (statusCode == kResponseSuccessCode) {
+            if ([isCorrect isEqualToString:@"0"]) {
+                [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_add_address_save_address_failure")];
+                return ;
+            } else {
+                QSAddress *address = [[QSAddress alloc] init];
+                address.type = weakSelf.type;
+                address.publicKey = weakSelf.address;
+                address.groupName = weakSelf.groupName;
+                address.name = weakSelf.name;
+                address.phone = weakSelf.phone;
+                address.note = weakSelf.note;
+                [[QSAddressHelper sharedHelper] addAddress:address];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        }
+    }];
+    
 }
 
 #pragma mark - **************** UITableViewDataSource

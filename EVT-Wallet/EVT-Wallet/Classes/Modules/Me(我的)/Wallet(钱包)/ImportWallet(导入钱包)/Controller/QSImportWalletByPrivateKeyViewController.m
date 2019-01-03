@@ -81,7 +81,25 @@
 
 #pragma mark - **************** Event Response
 - (void)comfirmButtonClicked {
-    
+    [[QSEveriApiWebViewController sharedWebView] privateToPublicWithPrivateKey:self.privateKeyTextView.text andCompeleteBlock:^(NSInteger statusCode, NSString * _Nonnull publicKey) {
+        if (statusCode == kResponseSuccessCode) {
+            QSCreateEvt *newEvt = [[QSCreateEvt alloc] init];
+            newEvt.privateKey = self.privateKeyTextView.text;
+            newEvt.publicKey = publicKey;
+            newEvt.password = self.freshPwdTextfield.text;
+            newEvt.type = @"EVT";
+            [[QSWalletHelper sharedHelper] addWallet:newEvt];
+            [self.navigationController popToViewControllerWithLevel:2 animated:YES];
+        } else {
+            [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_import_wallet_nav_title_failure")];
+        }
+    }];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.privateKeyTextView resignFirstResponder];
+    [self.freshPwdTextfield resignFirstResponder];
+    [self.comfirmPwdTextfield resignFirstResponder];
 }
 
 #pragma mark - **************** Private Methods
