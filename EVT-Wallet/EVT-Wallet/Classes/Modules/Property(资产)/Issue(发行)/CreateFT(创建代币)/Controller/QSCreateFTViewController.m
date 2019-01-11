@@ -166,19 +166,24 @@
     }
     ftmodel.total_supply = [NSString stringWithFormat:@"%@ S#%@",jinduStr,self.assetNumber];
     
-    UIGraphicsBeginImageContext(CGSizeMake(100, 100));
-    [self.IconImage drawInRect:CGRectMake(0, 0, 100, 100)];
-    UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    NSData *data = UIImageJPEGRepresentation(resultImage, 0.1);
-    NSString *encodedImageStr = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+//    UIGraphicsBeginImageContext(CGSizeMake(100, 100));
+//    [self.IconImage drawInRect:CGRectMake(0, 0, 100, 100)];
+//    UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//
+    [QSAppKeyWindow showIndeterminateHudWithText:QSLocalizedString(@"qs_language_setting_change_toast")];
+    NSData *data = UIImageJPEGRepresentation(self.IconImage, 0.1);
+//    NSString *encodedImageStr = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    NSString *encodedImageStr = [data base64EncodedString];
+//    NSData *imgData = [[NSData alloc] initWithBase64EncodedString:encodedImageStr options:NSDataBase64DecodingIgnoreUnknownCharacters];
+//    NSString *jsonString = [NSJSONSerialization JSONObjectWithData:imgData options:NSJSONReadingMutableContainers error:NULL];
     
     WeakSelf(weakSelf);
     [[QSEveriApiWebViewController sharedWebView] pushTransactionWithActionName:@"newfungible" andFt:ftmodel andConfig:encodedImageStr andCompeleteBlock:^(NSInteger statusCode, QSFT * _Nonnull ftmodel) {
         if (statusCode == kResponseSuccessCode) {
             [weakSelf.navigationController popViewControllerAnimated:YES];
         }
+        [QSAppKeyWindow hideHud];
     }];
 }
 

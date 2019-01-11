@@ -13,6 +13,7 @@
 #import "QSFT.h"
 #import "QSNFT.h"
 #import "QSTransferftModel.h"
+#import "QSEvtLinkStatus.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -173,15 +174,23 @@ typedef void(^QSEveriApiWebViewPrivateKeyBlock)(NSInteger statusCode, NSDictiona
  * @brief getStatusOfEvtLink
  */
 - (void)getStatusOfEvtLinkWithLink:(NSString *)link
-                   AndCompeleteBlock:(void(^)(NSInteger statusCode))block;
+                   AndCompeleteBlock:(void(^)(NSInteger statusCode, QSEvtLinkStatus *status))block;
 
 /**
- * @brief getEVTLinkQrImage
+ * @brief getEVTLinkQrImage everiPay
  */
 - (void)getEVTLinkQrImageWithSym:(NSString *)sym
                         andMaxAmount:(NSString *)maxAmount
                            andLinkId:(NSString *)linkId
                    AndCompeleteBlock:(void(^)(NSInteger statusCode, NSString *addressCodeString))block;
+
+/**
+ * @brief getEVTLinkQrImage everiPass
+ */
+- (void)getEveriPassQrImageWithDomain:(NSString *)domain
+                                 name:(NSString *)name
+               andCompeleteBlock:(void(^)(NSInteger statusCode, NSString *addressCodeString))block;
+
 /**
  * @brief stopEVTLinkQrImageReload
  */

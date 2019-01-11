@@ -49,7 +49,7 @@
     }];
     
     [self.amountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.avartarImageView.mas_bottom).offset(kRealValue(6));
+        make.top.equalTo(self.avartarImageView.mas_bottom).offset(kRealValue(3));
         make.left.equalTo(@kRealValue(10));
         make.right.equalTo(@(-kRealValue(10)));
     }];
@@ -99,10 +99,8 @@
     } else {
         self.currencyLabel.text = FTModel.name;
     }
-    NSArray *assetList = [FTModel.asset componentsSeparatedByString:@" "];
-    if (assetList.count == 2) {
-        self.amountLabel.text = [NSString stringWithFormat:@"%@ %@",assetList[0],FTModel.sym_name];
-    }
+    
+    self.amountLabel.text = [NSString stringWithFormat:@"%@ %@",FTModel.amount,FTModel.sym_name];
 }
 
 @end

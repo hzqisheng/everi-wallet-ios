@@ -63,7 +63,6 @@
                         [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_scan_failure")];
                     }
                 }];
-                return;
             } else if (flag == 17) {
                 QSPayAmountViewController *payAmount = [[QSPayAmountViewController alloc] init];
                 //Parse it
@@ -76,7 +75,10 @@
                         [weakSelf.navigationController pushViewController:payAmount animated:YES];
                     }
                 }];
-                return;
+            } else if (flag == 3) {
+                //everiPay
+                [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_everipass_scan_success")];
+                [self.navigationController popViewControllerAnimated:YES];
             }
         }];
     }

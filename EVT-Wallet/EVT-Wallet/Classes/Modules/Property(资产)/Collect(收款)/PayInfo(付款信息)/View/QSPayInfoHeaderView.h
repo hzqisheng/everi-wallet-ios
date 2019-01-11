@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface QSPayInfoHeaderView : UIView
 
 @property (nonatomic, strong) QSFT *FTModel;
+@property (nonatomic, copy) NSString *transferAmount;
 
 @end
 

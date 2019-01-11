@@ -8,7 +8,6 @@
 
 #import "QSMainViewController.h"
 #import "QSCreateIdentityHomeViewController.h"
-#import "QSNavigationController.h"
 #import "QSTabBar.h"
 #import "QSMyWalletViewController.h"
 #import "QSManageAddressViewController.h"

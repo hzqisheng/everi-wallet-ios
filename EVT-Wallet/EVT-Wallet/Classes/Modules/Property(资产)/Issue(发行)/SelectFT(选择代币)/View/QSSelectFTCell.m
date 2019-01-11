@@ -75,7 +75,6 @@
     if (!_leftImageView) {
         _leftImageView = [[UIImageView alloc] init];
         _leftImageView.contentMode = UIViewContentModeScaleAspectFill;
-        [_leftImageView setImage:[UIImage imageWithColor:[UIColor qs_colorGrayDDDDDD]]];
         _leftImageView.layer.cornerRadius = kRealValue(14.5);
         _leftImageView.layer.masksToBounds = YES;
         [self.cornerView addSubview:_leftImageView];
@@ -119,7 +118,15 @@
     _ftModel = ftModel;
     if (ftModel.metas.count > 0) {
         QSMetas *metas = ftModel.metas[0];
-        [self.leftImageView sd_setImageWithURL:[NSURL URLWithString:metas.value] placeholderImage:[UIImage imageWithColor:[UIColor qs_colorGrayDDDDDD]]];
+        NSArray *base64List = [metas.value componentsSeparatedByString:@"data:image/jpeg;base64,"];
+        if (base64List.count == 2) {
+            NSData *decodeData = [[NSData alloc]initWithBase64EncodedString:base64List[1] options:(NSDataBase64DecodingIgnoreUnknownCharacters)];
+            // 将NSData转为UIImage
+            UIImage *decodedImage = [UIImage imageWithData: decodeData];
+            self.leftImageView.image = decodedImage;
+        } else {
+            [self.leftImageView setImage:[UIImage imageNamed:@"AppIcon"]];
+        }
     } else {
         [self.leftImageView setImage:[UIImage imageNamed:@"AppIcon"]];
     }

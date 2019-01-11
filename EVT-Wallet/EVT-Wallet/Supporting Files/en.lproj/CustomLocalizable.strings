@@ -118,7 +118,8 @@
 "qs_scan_scan_failed_tips_title"     = "Please try another picture~";
 "qs_scan_scan_failed_confirm_title"  = "Confirm";
 "qs_scan_scan_init_failed_title"     = "Camera initialization failed~";
-"qs_scan_scan_link"          = "EVTLink expired";
+"qs_scan_scan_link"                  = "EVTLink expired";
+"qs_everipass_scan_success"          = "Operation Success";
 
 //Transaction Record
 "qs_transaction_record_item_record_title"        = "Transaction Record";
@@ -157,6 +158,13 @@
 "qs_everipay_item_selected_wallet_title"     = "Choose this method to make a payment";
 "qs_everipay_item_max_pay_title"             = "MaxPayAmount";
 "qs_everipay_select_address_popupview_title" = "Please select the token";
+
+//everiPass
+"qs_everipass_nav_title"         = "everiPass";
+"qs_everipass_ownner_title"      = "owner";
+"qs_everipass_name_title"        = "name";
+"qs_everipass_domain_title"      = "domain";
+"qs_everipass_refesh_tips_title" = "Automatically refresh every 5 seconds";
 
 //Pay AmountT
 "qs_pay_amount_nav_title"                = "Transfer";
@@ -259,8 +267,18 @@
 "qs_add_wallet_btn_confirm_title"            = "Create Now";
 
 //Wallet Detail
-"qs_wallet_detail_item_export_title"  = "Export PrivateKey";
-"qs_wallet_detail_item_sign_title"    = "Setting up Sign";
+"qs_wallet_detail_item_export_title"         = "Export PrivateKey";
+"qs_wallet_detail_item_sign_title"           = "Setting up Sign";
+"qs_wallet_detail_item_fingerprint_title"    = "Start Touch ID unlock";
+"qs_wallet_detail_stop_fingerprint_title"    = "Stop Touch ID unlock";
+"qs_wallet_detail_stop_fingerprint_confirm"  = "Stop using";
+"qs_wallet_detail_stop_fingerprint_cancel"   = "Cancel";
+
+//TouchID
+"qs_wallet_touchid_nav_title"      = "Start Touch ID unlock";
+"qs_wallet_touchid_tips"           = "Touch ID unlock, with one touch";
+"qs_wallet_touchid_btn_title"      = "Click to start";
+"qs_wallet_touchid_verify_title"   = "Verify existing phone fingerprints with the Home button";
 
 //Export Private Key
 "qs_export_private_key_nav_title"              = "Export PrivateKey";
@@ -320,10 +338,46 @@
 
 //Help Center
 "qs_help_center_nav_title"           = "Help Center";
-"qs_help_center_function_content"    = "Wallet mnemonics are used to restore wallet assets. With mnemonics, you can fully control your wallet assets. Be sure to keep them safe. If you lose your mnemonics, you will lose your wallet assets. This software does not provide a retrieval function.";
-"qs_help_center_item_overview_title" = "Functional Overview";
-"qs_help_center_item_download_title" = "Download and install";
-"qs_help_center_item_backup_title"   = "How to back up";
+
+"qs_help_center_item_overview_title"   = "EveriWallet feature overview";
+"qs_help_center_item_overview_content" = "EveriWallet is a wallet specially developed for the everiToken public chain. In addition to the traditional wallet transfer and other functions, it has other features: the wallet supports two digital assets, and the same pass (points, points, standardized traditional digital assets) ) and non-homogeneous certificates (notes, real estate and other assets with unique attributes); support users to complete the issuance of the pass, to achieve the management of the entire life cycle of digital assets.";
+
+"qs_help_center_item_create_title"   = "Create an EveriWallet wallet";
+"qs_help_center_item_create_content" = "Start the wallet program. According to the guide wizard, there will be two options: [Create Wallet] and [Restore Identity]. Click [Create Wallet] and output the user password as prompted. EveriWallet does not store user passwords. If the user loses the password, the user password can only be reset by re-importing the backup wallet private key or mnemonic.";
+
+"qs_help_center_item_backup_title"    = "How to backup your wallet";
+"qs_help_center_item_backup_content"  = "EveriWallet currently supports two ways to back up your wallet, export mnemonics or export private keys. Users only need to use a set of mnemonics to manage multiple wallets and their personal data. Specific operation: Select the wallet to be backed up in [My]-[Manage Wallet] at the bottom of the main interface of the wallet, and after entering the relevant interface of the wallet setting, you can export the mnemonic and export the private key, etc. , you can also reset the user password here.";
+
+"qs_help_center_item_import_title"     = "How to import a wallet";
+"qs_help_center_item_import_content"   = "EveriWallet has two ways to import your wallet. The first is to select [Resume Identity] when creating the wallet, enter the backup wallet's mnemonic (12 English words, separated by spaces) or the private key according to the prompt, and then enter the user password set at that time. Or choose to import the wallet in the [My]-[Manage Wallet] at the bottom of the main interface of the wallet. The method is as above.";
+
+"qs_help_center_item_transfer_title"   = "How to transfer and collect money";
+"qs_help_center_item_transfer_content" = "The EveriWallet user's account will have both a homogenous certificate and a non-homogeneous certificate. For the homogeneous digital assets, EveriWallet wallet currently provides transfer and collection services. Enter the main interface of the wallet, list the homogeneous certificate under the heading [My Token], click one of them to display the transaction record of the digital asset. And you can perform [transfer] or [receipt] operations on this asset.";
+
+"qs_help_center_item_domain_title"   = "What is a domain?";
+"qs_help_center_item_domain_content" = "The domain uses flexible rights management to reflect a type of certificate for different application scenarios. Each pass belongs to a specific domain, and the domain has a unique domain name. The domain name can be queried through the domain name of the certificate, and the rights management can be viewed in the domain information.";
+
+"qs_help_center_item_ft_title"     = "What is homogenous certificate (FT)";
+"qs_help_center_item_ft_content"   = "Homogeneity pass, used to represent points, points, standardized assets and other assets that do not have a unique nature, in the main interface with [my token] to represent my homogenous pass.";
+
+"qs_help_center_item_nft_title"   = "What is non-homogeneous pass (NFT)";
+"qs_help_center_item_nft_content" = "Non-homogeneous pass certificate, used to represent bills, real estate, tickets, academic certificates and other assets of a unique nature, in the main interface with [my pass] to represent my non-homogeneous pass.";
+
+"qs_help_center_item_issue_ft_title"   = "How to issue a homogenous certificate";
+"qs_help_center_item_issue_ft_content" = "Go to the main wallet interface, click [Issue], select Create Homogeneous Token - enter asset number, symbol, total amount, icon or edit permission, and finally click the [Submit] button.";
+
+"qs_help_center_item_issue_nft_title"   = "How to issue non-homogeneous certificates";
+"qs_help_center_item_issue_nft_content" = "Go to the main wallet interface, click [Issue], click [Create Domain], enter the domain name, click the release column [Add], add an address or add a group, and enter the public key, weight and threshold respectively. Click the transfer bar and the management bar to add, and set the corresponding permissions, and finally click the [Submit] button.";
+
+"qs_help_center_item_how_to_use_everipay_title"   = "How to use everiPay";
+"qs_help_center_item_how_to_use_everipay_content" = "everiPay is used for payment below the line. The user displays the payment QR code to the merchant by setting the maximum payment amount. The merchant verified the certificate by scanning the code. Other homogenous certificates can also be used to pay with everiPay. For example, if a product needs 4000 points for a supermarket, the merchant will write off the certificate by sweeping the code 4000. If the condition is met, the user address will be deducted 4000 points.";
+
+"qs_help_center_item_how_to_use_everipass_title"   = "How to use everiPass";
+"qs_help_center_item_how_to_use_everipass_content" = "everiPass is for face-to-face application scenarios. The third party can verify the authenticity of the pass contained in a QR code by scanning the scanner. For example, a diploma can be made into a non-homogeneous pass and a QR code is generated. The third party scans through everiPass and the system returns the authenticity of the pass.";
+
+"qs_help_center_item_change_language_title"   = "How to switch languages";
+"qs_help_center_item_change_language_content" = "In the main interface of the wallet, select [My] - [System Settings] - [Select Language] and switch the language to Simplified Chinese or English.";
+
 
 //System Settting
 "qs_sytem_setting_nav_title"            = "Settings";

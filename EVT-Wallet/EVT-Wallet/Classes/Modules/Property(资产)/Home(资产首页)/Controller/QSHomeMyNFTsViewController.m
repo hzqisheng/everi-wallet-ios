@@ -7,6 +7,9 @@
 //
 
 #import "QSHomeMyNFTsViewController.h"
+#import "QSEveriPassDetailViewController.h"
+#import "QSEveriPassCodeViewController.h"
+
 #import "QSMyNFTsCell.h"
 
 @interface QSHomeMyNFTsViewController ()
@@ -43,10 +46,24 @@ static NSString *reuseIdentifier = @"QSHomeMyFTsCell";
     }];
 }
 
+- (void)everiPayClicked:(QSMyNFTsCell *)cell {
+    [QSPasswordHelper verificationPasswordByPrivateKey:QSPrivateKey andSuccessBlock:^{
+        QSEveriPassCodeViewController *everiPass = [[QSEveriPassCodeViewController alloc] init];
+        everiPass.everiPassModel = cell.ownedToken;
+        everiPass.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:everiPass animated:YES];
+    }];
+}
+
 #pragma mark - **************** UITableViewDataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     QSMyNFTsCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     cell.ownedToken = self.dataArray[indexPath.row];
+    @weakify(self);
+    cell.everiPayClickedBlock = ^(QSMyNFTsCell * _Nonnull cell) {
+        @strongify(self);
+        [self everiPayClicked:cell];
+    };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -61,8 +78,13 @@ static NSString *reuseIdentifier = @"QSHomeMyFTsCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    QSOwnedToken *ownedToken = self.dataArray[indexPath.row];
+    
+    QSEveriPassDetailViewController *detail = [[QSEveriPassDetailViewController alloc] init];
+    detail.domain = ownedToken.domain;
+    detail.name = ownedToken.name;
+    detail.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detail animated:YES];
 }
-
 
 @end

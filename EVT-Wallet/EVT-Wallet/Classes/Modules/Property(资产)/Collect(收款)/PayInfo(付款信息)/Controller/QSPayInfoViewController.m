@@ -32,11 +32,10 @@
     
     NSArray *totlyList = [self.FTModel.sym componentsSeparatedByString:@","];
     if (totlyList.count >= 2) {
+        //精度
         NSString *jinduStr = totlyList[0];
-        NSString *countStr = [NSString stringWithFormat:@"%@.",self.money];
-        for (int i = 0 ; i < [jinduStr integerValue]; i++) {
-            countStr = [countStr stringByAppendingString:@"0"];
-        }
+        NSString *countStr = [self handleMoney:self.money byPrecision:jinduStr];
+
         WeakSelf(weakSelf);
         [[QSEveriApiWebViewController sharedWebView] getEstimatedChargeForTransactionWithAddress:[QSWalletHelper sharedHelper].currentEvt.publicKey andBeneficiary:self.shoukuanAddress andCount:[NSString stringWithFormat:@"%@ %@",countStr,totlyList[1]] andMemo:self.note AndCompeleteBlock:^(NSInteger statusCode, NSString * _Nonnull address) {
             if (statusCode == kResponseSuccessCode) {
@@ -52,6 +51,7 @@
     
     //headerview
     self.headerView = [[QSPayInfoHeaderView alloc] init];
+    self.FTModel.amount = self.money;
     self.headerView.FTModel = self.FTModel;
     self.headerView.frame = CGRectMake(0, 0, kScreenWidth, kHeaderViewHeight);
     [self.view insertSubview:self.headerView atIndex:0];
@@ -73,18 +73,12 @@
 }
 
 - (void)turnToTransactionSuccessVC {
-//    QSTransactionSuccessViewController *success = [[QSTransactionSuccessViewController alloc] init];
-//    [self.navigationController pushViewController:success animated:YES];
-//    return;
-    
     NSArray *totlyList = [self.FTModel.sym componentsSeparatedByString:@","];
     if (totlyList.count >= 2) {
         NSString *jinduStr = totlyList[0];
-        NSString *countStr = [NSString stringWithFormat:@"%@.",self.money];
-        for (int i = 0 ; i < [jinduStr integerValue]; i++) {
-            countStr = [countStr stringByAppendingString:@"0"];
-        }
+        NSString *countStr = [self handleMoney:self.money byPrecision:jinduStr];
         WeakSelf(weakSelf);
+        [QSAppKeyWindow showIndeterminateHudWithText:QSLocalizedString(@"qs_language_setting_change_toast")];
         [[QSEveriApiWebViewController sharedWebView] pushTransactionFukuanWithAddress:[QSWalletHelper sharedHelper].currentEvt.publicKey andBeneficiary:self.shoukuanAddress andCount:[NSString stringWithFormat:@"%@ %@",countStr,totlyList[1]] andMemo:self.note AndCompeleteBlock:^(NSInteger statusCode, NSString * _Nonnull address) {
             if (statusCode == kResponseSuccessCode) {
                 QSTransactionSuccessViewController *success = [[QSTransactionSuccessViewController alloc] init];
@@ -92,8 +86,17 @@
                 success.count = countStr;
                 [weakSelf.navigationController pushViewController:success animated:YES];
             }
+            [QSAppKeyWindow hideHud];
         }];
     }
+}
+
+- (NSString *)handleMoney:(NSString *)money byPrecision:(NSString *)precision {
+    NSString *floatString = [NSString stringWithFormat:@"%f",money.floatValue];
+    NSRange range = [floatString rangeOfString:@"."];
+    NSInteger subStringIndex = range.length + range.location + precision.integerValue;
+    NSString *result = [floatString substringToIndex:subStringIndex];
+    return result;
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
@@ -118,12 +121,12 @@
     remarkItem.cellIdentifier = NSStringFromClass([QSPayInfoCell class]);
     remarkItem.title = QSLocalizedString(@"qs_pay_info_item_remark_title");
     remarkItem.content = self.note;
-    remarkItem.cellHeight = kRealValue(70);
+    remarkItem.cellHeight = kRealValue(80);
     
     QSPayInfoItem *feeItem = [[QSPayInfoItem alloc] init];
     feeItem.cellIdentifier = NSStringFromClass([QSPayInfoCell class]);
     feeItem.title = QSLocalizedString(@"qs_pay_info_item_fee_title");
-    feeItem.cellHeight = kRealValue(70);
+    feeItem.cellHeight = kRealValue(80);
     
     return @[@[payItem],
              @[receiveItem],

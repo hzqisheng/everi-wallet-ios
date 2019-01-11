@@ -27,6 +27,13 @@ NS_ASSUME_NONNULL_BEGIN
 /** 导入钱包 */
 - (void)addWallet:(QSCreateEvt *)evt;
 
+/** 更新某一个钱包的开启指纹的数据 */
+- (void)updateWalletOpenTouchID:(BOOL)isOpen
+                   byPrivateKey:(NSString *)privateKey;
+
+/** 获取某一个钱包 */
+- (QSCreateEvt *)getWalletByPrivateKey:(NSString *)privateKey;
+
 /** 获取钱包列表 */
 - (NSMutableArray *)getWalletArray;
 

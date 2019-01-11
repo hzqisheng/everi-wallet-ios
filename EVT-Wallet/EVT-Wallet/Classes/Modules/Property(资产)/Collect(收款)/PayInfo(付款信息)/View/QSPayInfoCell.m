@@ -34,7 +34,6 @@
         make.top.equalTo(self.contentView.mas_centerY).offset(kRealValue(5));
         make.left.equalTo(self.contentView).offset(kRealValue(20));
         make.right.equalTo(self.contentView).offset(-kRealValue(20));
-        make.height.equalTo(@kRealValue(35));
     }];
 }
 

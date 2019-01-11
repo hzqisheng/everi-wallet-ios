@@ -84,11 +84,13 @@ static NSString *reuseIdentifier = @"QSAdressCell";
 #pragma mark - **************** Event Response
 - (void)rightBarItemClicked {
     QSExportAddressViewController *export = [[QSExportAddressViewController alloc] init];
+    export.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:export animated:YES];
 }
 
 - (void)addAddressButtonClicked {
     QSAddAddressViewController *addAddress = [[QSAddAddressViewController alloc] init];
+    addAddress.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:addAddress animated:YES];
 }
 

@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "QSMainViewController.h"
-#import "QSNavigationController.h"
 #import "QSCreateIdentityHomeViewController.h"
 #import "QSLunchImageViewController.h"
 
@@ -31,7 +30,7 @@
         }
     };
     QSLunchImageViewController *imageVC = [[QSLunchImageViewController alloc] init];
-    self.window.rootViewController = [[QSNavigationController alloc] initWithRootViewController:imageVC];
+    self.window.rootViewController = [[RTRootNavigationController alloc] initWithRootViewController:imageVC];
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -40,7 +39,7 @@
     if ([QSWalletHelper sharedHelper].isLogin) {
         self.window.rootViewController = [[QSMainViewController alloc] init];
     } else {
-        self.window.rootViewController = [[QSNavigationController alloc] initWithRootViewController:[[QSCreateIdentityHomeViewController alloc] init]];
+        self.window.rootViewController = [[RTRootNavigationController alloc] initWithRootViewController:[[QSCreateIdentityHomeViewController alloc] init]];
     }
 }
 

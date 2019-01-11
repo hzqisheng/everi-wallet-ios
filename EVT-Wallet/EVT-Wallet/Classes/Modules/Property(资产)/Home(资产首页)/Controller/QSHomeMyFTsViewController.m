@@ -49,9 +49,10 @@ static NSString *reuseIdentifier = @"QSHomeMyFTsCell";
 #pragma mark - **************** Event Response
 - (void)everipayButtonActionWithCell:(QSHomeMyFTsCell *)cell {
     WeakSelf(weakSelf);
-    [QSPrivatekeyAlertView showPrivatekeyAlertViewAndSubmitBlock:^{
+    [QSPasswordHelper verificationPasswordByPrivateKey:QSPrivateKey andSuccessBlock:^{
         QSEveriPayCodeViewController *payVC = [[QSEveriPayCodeViewController alloc] init];
         payVC.selectFTModel = cell.FTModel;
+        payVC.hidesBottomBarWhenPushed = YES;
         [weakSelf.navigationController pushViewController:payVC animated:YES];
     }];
 }

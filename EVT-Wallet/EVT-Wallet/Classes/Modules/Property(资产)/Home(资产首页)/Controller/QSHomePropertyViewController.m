@@ -151,7 +151,7 @@ UIScrollViewDelegate>
         [self.navigationController pushViewController:collect animated:YES];
     } else if (type == QSShortcutTypeEveriPay) {
         WeakSelf(weakSelf);
-        [QSPrivatekeyAlertView showPrivatekeyAlertViewAndSubmitBlock:^{
+        [QSPasswordHelper verificationPasswordByPrivateKey:QSPrivateKey andSuccessBlock:^{
             QSEveriPayCodeViewController *everiPay = [[QSEveriPayCodeViewController alloc] init];
             everiPay.hidesBottomBarWhenPushed = YES;
             [weakSelf.navigationController pushViewController:everiPay animated:YES];

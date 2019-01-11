@@ -26,6 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *publicKey;
 @property (nonatomic, copy) NSString *type;
 
+@property (nonatomic, assign) BOOL isOpenFingerprint;
+
 @end
 
 NS_ASSUME_NONNULL_END

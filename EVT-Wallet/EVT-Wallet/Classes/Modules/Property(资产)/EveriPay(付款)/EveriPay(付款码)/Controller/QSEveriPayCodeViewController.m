@@ -10,6 +10,7 @@
 #import "QSScanningViewController.h"
 #import "QSEveriPayCollectAmountViewController.h"
 #import "QSPayAmountViewController.h"
+#import "QSPaySuccessViewController.h"
 
 #import "QSQRCodeScanTipsCell.h"
 #import "QSQRCodeAddressCell.h"
@@ -30,7 +31,7 @@ typedef NS_ENUM(NSUInteger, QSEveriPayCodeCellType) {
 
 @property (nonatomic, copy) NSString *maxAmount;
 @property (nonatomic, copy) NSString *linkId;
-@property (nonatomic, assign) BOOL isGettingCode;
+@property (nonatomic, assign) BOOL isPushPaySuccessVC;
 
 @end
 
@@ -48,58 +49,50 @@ typedef NS_ENUM(NSUInteger, QSEveriPayCodeCellType) {
     self.tableView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:self.bottomToolBar];
     self.bottomToolBar.frame = CGRectMake(0, self.tableView.maxY, kScreenWidth, [QSQRCodeBottomToolBar toolBarHeight]);
-    self.isGettingCode = NO;
-    [self getlinkId];
+    
+    if (self.selectFTModel) {
+        [self getlinkId];
+    } else {
+        [self getFirstFT];
+    }
 }
 
-#pragma mark - **************** Private Methods
-- (void)showSelectCurrencyViewWithArray:(NSArray *)array {
-    NSInteger isCreate = 0;
-    for (UIView *v in QSAppKeyWindow.subviews){
-        if ([v isKindOfClass:[QSSelectCurrencyView class]]) {
-            isCreate = 1;
-        }
-    }
-    if (isCreate == 1) {
-        return;
-    }
+#pragma mark - **************** Requests
+- (void)getFirstFT {
     WeakSelf(weakSelf);
-    [QSSelectCurrencyView showSelectCurrencyViewWithFTList:array andSelectFTBlock:^(QSFT * _Nonnull FTModel) {
-        [[QSEveriApiWebViewController sharedWebView] stopEVTLinkQrImageReload];
-        NSIndexPath *index = [NSIndexPath indexPathForRow:2 inSection:1];
-        QSQRCodeScanItem *selectedItem = (QSQRCodeScanItem *)[self itemInIndexPath:index];
-        selectedItem.FTModel = FTModel;
-        weakSelf.selectFTModel = FTModel;
-        [weakSelf.tableView reloadData];
-        [weakSelf getlinkId];
+    [[QSEveriApiWebViewController sharedWebView] getEVTFungibleBalanceListWithPublicKey:QSPublicKey andCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull ftList) {
+        if (statusCode == kResponseSuccessCode) {
+            if (ftList.count > 0) {
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:2 inSection:1];
+                QSQRCodeScanItem *addressItem = (QSQRCodeScanItem *)[weakSelf itemInIndexPath:indexPath];
+                addressItem.FTModel = ftList[0];
+                weakSelf.selectFTModel = ftList[0];
+                [weakSelf getlinkId];
+            }
+        }
     }];
 }
 
 - (void)getlinkId {
+    [[QSEveriApiWebViewController sharedWebView] stopEVTLinkQrImageReload];
+    
     if (!self.selectFTModel.creator.length || !self.maxAmount.length) {
         UIImage *photo = [UIImage imageWithColor:[UIColor qs_colorGrayDDDDDD]];
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:1];
         QSQRCodeScanItem *codeItem = (QSQRCodeScanItem *)[self itemInIndexPath:indexPath];
         codeItem.codeImage = photo;
         [self.tableView reloadData];
-        if (self.isGettingCode) {
-            self.isGettingCode = NO;
-            [[QSEveriApiWebViewController sharedWebView] stopEVTLinkQrImageReload];
-        }
         return;
     }
-    if (self.linkId.length) {
-        [self getCode];
-    } else {
-        WeakSelf(weakSelf);
-        [[QSEveriApiWebViewController sharedWebView] getUniqueLinkIdAndCompeleteBlock:^(NSInteger statusCode, NSString * _Nonnull linkId) {
-            if (statusCode == kResponseSuccessCode) {
-                weakSelf.linkId = linkId;
-                [weakSelf getLinkState];
-                [weakSelf getCode];
-            }
-        }];
-    }
+    
+    WeakSelf(weakSelf);
+    [[QSEveriApiWebViewController sharedWebView] getUniqueLinkIdAndCompeleteBlock:^(NSInteger statusCode, NSString * _Nonnull linkId) {
+        if (statusCode == kResponseSuccessCode) {
+            weakSelf.linkId = linkId;
+            [weakSelf getCode];
+            [weakSelf getLinkState];
+        }
+    }];
 }
 
 - (void)getCode {
@@ -109,8 +102,6 @@ typedef NS_ENUM(NSUInteger, QSEveriPayCodeCellType) {
         return;
     }
     NSString *sybId = symArr[1];
-    self.isGettingCode = YES;
-    
     NSArray *symArr2 = [self.selectFTModel.sym componentsSeparatedByString:@","];
     if (symArr2.count < 2) {
         return;
@@ -124,39 +115,53 @@ typedef NS_ENUM(NSUInteger, QSEveriPayCodeCellType) {
     
     [[QSEveriApiWebViewController sharedWebView] getEVTLinkQrImageWithSym:sybId andMaxAmount:maxAmountStr andLinkId:self.linkId AndCompeleteBlock:^(NSInteger statusCode, NSString * _Nonnull addressCodeString) {
         if (statusCode == kResponseSuccessCode) {
-            if (self.isGettingCode) {
-                NSData * imageData =[[NSData alloc] initWithBase64EncodedString:addressCodeString options:NSDataBase64DecodingIgnoreUnknownCharacters];
-                UIImage *photo = [UIImage imageWithData:imageData];
-                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:1];
-                QSQRCodeScanItem *codeItem = (QSQRCodeScanItem *)[weakSelf itemInIndexPath:indexPath];
-                codeItem.codeImage = photo;
-                [weakSelf.tableView reloadData];
-            }
+            NSData * imageData =[[NSData alloc] initWithBase64EncodedString:addressCodeString options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *photo = [UIImage imageWithData:imageData];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:1];
+            QSQRCodeScanItem *codeItem = (QSQRCodeScanItem *)[weakSelf itemInIndexPath:indexPath];
+            codeItem.codeImage = photo;
+            [weakSelf.tableView reloadData];
         }
     }];
 }
 
 - (void)getLinkState {
     WeakSelf(weakSelf);
-    [[QSEveriApiWebViewController sharedWebView] getStatusOfEvtLinkWithLink:self.linkId AndCompeleteBlock:^(NSInteger statusCode) {
-        if (statusCode == kResponseSuccessCode) {
-            
+    [[QSEveriApiWebViewController sharedWebView] getStatusOfEvtLinkWithLink:self.linkId AndCompeleteBlock:^(NSInteger statusCode, QSEvtLinkStatus * _Nonnull status) {
+        if (status.pending == 0
+            && status.transactionId.length) {
+            if (!self.isPushPaySuccessVC) {
+                QSPaySuccessViewController *success = [[QSPaySuccessViewController alloc] init];
+                [weakSelf pushRemoveSelfToViewController:success animated:YES];
+                self.isPushPaySuccessVC = YES;
+            }
+        } else {
+            [weakSelf getLinkState];
         }
     }];
 }
 
-- (void)getFirstFT {
-    WeakSelf(weakSelf);
-    [[QSEveriApiWebViewController sharedWebView] getEVTFungibleBalanceListWithPublicKey:QSPublicKey andCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull ftList) {
-        if (statusCode == kResponseSuccessCode) {
-            if (ftList.count > 0) {
-                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:2 inSection:1];
-                QSQRCodeScanItem *addressItem = (QSQRCodeScanItem *)[weakSelf itemInIndexPath:indexPath];
-                addressItem.FTModel = ftList[0];
-                weakSelf.selectFTModel = ftList[0];
-                [weakSelf getlinkId];
-            }
+#pragma mark - **************** Private Methods
+- (void)showSelectCurrencyViewWithArray:(NSArray *)array {
+    NSInteger isCreate = 0;
+    for (UIView *v in QSAppKeyWindow.subviews){
+        if ([v isKindOfClass:[QSSelectCurrencyView class]]) {
+            isCreate = 1;
         }
+    }
+    if (isCreate == 1) {
+        return;
+    }
+
+    WeakSelf(weakSelf);
+    [QSSelectCurrencyView showSelectCurrencyViewWithFTList:array andSelectFTBlock:^(QSFT * _Nonnull FTModel) {
+        [[QSEveriApiWebViewController sharedWebView] stopEVTLinkQrImageReload];
+        NSIndexPath *index = [NSIndexPath indexPathForRow:2 inSection:1];
+        QSQRCodeScanItem *selectedItem = (QSQRCodeScanItem *)[self itemInIndexPath:index];
+        selectedItem.FTModel = FTModel;
+        weakSelf.selectFTModel = FTModel;
+        [weakSelf.tableView reloadData];
+        [weakSelf getlinkId];
     }];
 }
 
@@ -204,8 +209,6 @@ typedef NS_ENUM(NSUInteger, QSEveriPayCodeCellType) {
     selectAddressItem.cellTag = QSEveriPayCodeCellTypeSelectAddress;
     if (self.selectFTModel.sym_name.length) {
         selectAddressItem.FTModel = self.selectFTModel;
-    } else {
-        [self getFirstFT];
     }
     
     QSQRCodeScanItem *maxPayItem = [[QSQRCodeScanItem alloc] init];

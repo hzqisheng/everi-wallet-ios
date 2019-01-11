@@ -12,7 +12,6 @@
 #import "QSScanGetAddress.h"
 #import "QSScanAddress.h"
 
-
 #define kResponseArrayKey @"data"
 #define kResponseStringKey @"data"
 #define kResponseNumberKey @"data"
@@ -39,9 +38,28 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[self.webView configuration].userContentController addScriptMessageHandler:self name:@"needPrivateKey"];
+    WKUserContentController *userCC = [self.webView configuration].userContentController;
+    [userCC addScriptMessageHandler:self name:@"log"];
+    [self showConsole];
     NSString *path = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html" inDirectory:@"dist"];
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:path]]];
-    [[self.webView configuration].userContentController addScriptMessageHandler:self name:@"needPrivateKey"];
+//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.0.120:8080/h5/"]]];
+}
+
+
+- (void)showConsole {
+    //rewrite the method of console.log
+    NSString *jsCode = @"console.log = (function(oriLogFunc){\
+    return function(str)\
+    {\
+    window.webkit.messageHandlers.log.postMessage(str);\
+    oriLogFunc.call(console,str);\
+    }\
+    })(console.log);";
+    
+    //injected the method when H5 starts to create the DOM tree
+    [self.webView.configuration.userContentController addUserScript:[[WKUserScript alloc] initWithSource:jsCode injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:YES]];
 }
 
 - (void)reloadWebView {
@@ -59,38 +77,22 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
             self.initSuccessBlock();
         }
     }];
-    //    [self getOwnedTokensWithPublicKeys:[QSWalletHelper sharedHelper].currentEvt.publicKey andCompeleteBlock:^(NSInteger statusCode, NSArray<QSOwnedToken *> * _Nonnull ownedTokens) {
-//        
-//    }];
-     
-     //    [self createEvtWalletWithPassword:@"12345678" andCompeleteBlock:^(NSInteger statusCode, QSCreateEvt * _Nonnull EvtModel) {
-     //        if (statusCode == kResponseSuccessCode) {
-//            DLog(@"收到模型11:%@",EvtModel);
-//        }
-//    }];
-//
-//    [self importEVTWalletWithMnemoinc:@"unfold peanut private luggage wrap arena combine actual awkward other color imitate" password:@"12345678" andCompeleteBlock:^(NSInteger statusCode, QSCreateEvt *EvtModel) {
-//        if (statusCode == kResponseSuccessCode) {
-//            DLog(@"收到模型22:%@",EvtModel);
-//        }
-//    }];
-//
-    
-//    [self pushTransactionAndCompeleteBlock:^(NSInteger statusCode, QSFungibleSymbol * _Nonnull fungibleSymbol) {
-//
-//    }];
-//    [self getFungibleBalanceWithAddress:[QSWalletHelper sharedHelper].currentEvt.publicKey andCompeleteBlock:^(NSInteger statusCode, NSArray<NSString *> * _Nonnull fungibleBalances) {
-//
-//    }];
 }
 
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
-    NSDictionary *responseDataDic = message.body;
+    
+    if ([message.name isEqualToString:@"log"]) {
+        NSLog(@"consule.log:%@",message.body);
+        return;
+    }
+    
+    NSString *responseJsonString = message.body;
+    NSDictionary *responseDataDic = [self dictionaryWithJsonString:responseJsonString];
     NSNumber *code = responseDataDic[@"code"];
     NSString *text = responseDataDic[@"message"];
     NSDictionary *dic = responseDataDic[@"data"];
     NSLog(@"messageName:%@",message.name);
-    DLog(@"\n\n\n%@\n\n\n",message.body);
+    DLog(@"\n\n\n%@\n\n\n",message.body);    
     if (![code.stringValue isEqualToString:@"1"]) {
         [QSAppKeyWindow showAutoHideHudWithText:text];
         for (NSString *key in self.methodAndCallbackDic.allKeys) {
@@ -114,7 +116,7 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
     if ([message.name isEqualToString:@"needPrivateKey"]) {
         //需要私钥 弹出输入框
         WeakSelf(weakSelf);
-        [QSPrivatekeyAlertView showPrivatekeyAlertViewAndSubmitBlock:^{
+        [QSPasswordHelper verificationPasswordByPrivateKey:QSPrivateKey andSuccessBlock:^{
             [weakSelf needPrivateKeyResponseWithMessage:message andDic:dic];
         }];
     } else {
@@ -328,8 +330,8 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
     } else {
         manageString = [NSString stringWithFormat:@"[]"];
     }
-    
-    NSString *content = [NSString stringWithFormat:@"{\"creator\":\"%@\",\"issue\":{\"authorizers\":%@,\"name\":\"issue\",\"threshold\":%ld},\"manage\":{\"authorizers\":%@,\"name\":\"manage\",\"threshold\":%ld},\"metas\":[{\"key\":\"symbol-icon\",\"value\":\"data:image/png;base64,%@\"}],\"name\":\"%@\",\"sym\":\"%@\",\"sym_name\":\"%@\",\"total_supply\":\"%@\"}",QSPublicKey,issueString,issue.threshold,manageString,manage.threshold,@"/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABGAAD/4QMraHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjMtYzAxMSA2Ni4xNDU2NjEsIDIwMTIvMDIvMDYtMTQ6NTY6MjcgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzYgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjgzRjkwMzhFMDQyRDExRTlBMDQ2RTVBMDlDNTc0QjgzIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjgzRjkwMzhGMDQyRDExRTlBMDQ2RTVBMDlDNTc0QjgzIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6ODNGOTAzOEMwNDJEMTFFOUEwNDZFNUEwOUM1NzRCODMiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6ODNGOTAzOEQwNDJEMTFFOUEwNDZFNUEwOUM1NzRCODMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7/7gAOQWRvYmUAZMAAAAAB/9sAhAAEAwMDAwMEAwMEBgQDBAYHBQQEBQcIBgYHBgYICggJCQkJCAoKDAwMDAwKDAwNDQwMEREREREUFBQUFBQUFBQUAQQFBQgHCA8KCg8UDg4OFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCAA4ADYDAREAAhEBAxEB/8QAbgAAAgIDAAAAAAAAAAAAAAAAAAgGBwMEBQEBAAAAAAAAAAAAAAAAAAAAABAAAQMDAwEFBwMFAAAAAAAAAQIDBAAFBhESByExshM3CEFRYTIUdHVxgbMiQlIVNhEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8Af6gwOzYbC/DfkNNudu1a0pOh+BNBnoCgKAoCgKBGOaL2Ml5UvMq3N/WxoCkx20oSXEqRAbHjE7e1AUlwk/49daCYwPUzyndH/prZYbZNkhJWWY0Sa8vaO07USSdBrQTDKeZ+QbHxzj+TyLdFt9/uc2TGmRH4z7aEtslWwpbdc3gkAHUqoIfB585subAlW2yMzIpJSH49ukutkp7RuQsjpQdXj/n7P8kzmz41d2YLcWZJ+nlJbjrbdToFagbnDoQR7RQNDQczI4lxn49doNne+mu8qFJYgSCothuS40pLS9yQSnaog6gaigpi2cLWzjfjvMbpMkC5ZPIsdybclhO1plsxXCUMpPXr/cs9T7h11Cr/AEv+ZTn4yT/I1QWN6sf+bx7753+Ggk3pq8rov3krvigXrj7z1gfmpHfcoHjoNC+R5suy3KJbXCzcX4r7UR4KLZQ8ttSUKCk9U6KIOo7KBU8q4751smOXO6X/AC",ft.name,ft.sym,ft.sym_name,ft.total_supply];
+
+    NSString *content = [NSString stringWithFormat:@"{\"creator\":\"%@\",\"issue\":{\"authorizers\":%@,\"name\":\"issue\",\"threshold\":%ld},\"manage\":{\"authorizers\":%@,\"name\":\"manage\",\"threshold\":%ld},\"metas\":[{\"key\":\"symbol-icon\",\"value\":\"data:image/png;base64,%@\",\"creator\":\"%@\"}],\"name\":\"%@\",\"sym\":\"%@\",\"sym_name\":\"%@\",\"total_supply\":\"%@\"}",QSPublicKey,issueString,issue.threshold,manageString,manage.threshold,config,[QSWalletHelper sharedHelper].currentEvt.publicKey,ft.name,ft.sym,ft.sym_name,ft.total_supply];
     NSString *jsString = [NSString stringWithFormat:@"pushTransaction('%@','%@')",actionName,content];
     [self excuteRequestWithMethodName:@"pushTransaction"
                              jsString:jsString
@@ -453,13 +455,17 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
                     }];
 }
 
-- (void)getStatusOfEvtLinkWithLink:(NSString *)link AndCompeleteBlock:(void (^)(NSInteger))block {
-    NSString *content = [NSString stringWithFormat:@"{\"linkId\":\"%@\"}",link];
-    NSString *jsString = [NSString stringWithFormat:@"getStatusOfEvtLink('%@')",content];
+- (void)getStatusOfEvtLinkWithLink:(NSString *)link AndCompeleteBlock:(nonnull void (^)(NSInteger, QSEvtLinkStatus * _Nonnull))block {
+    NSString *content = [NSString stringWithFormat:@"'{\"linkId\":\"%@\"}'",link];
+    NSString *jsString = [NSString stringWithFormat:@"getStatusOfEvtLink(%@)",content];
     [self excuteRequestWithMethodName:@"getStatusOfEvtLink"
                              jsString:jsString
                     completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
-                        block(statusCode);
+                        QSEvtLinkStatus *status;
+                        if (statusCode == kResponseSuccessCode) {
+                             status = [QSEvtLinkStatus mj_objectWithKeyValues:responseDic];
+                        }
+                        block(statusCode, status);
                     }];
 }
 
@@ -467,6 +473,37 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
     NSString *content = [NSString stringWithFormat:@"{\"keyProvider\":[\"%@\"],\"symbol\":%@,\"maxAmount\":%@,\"linkId\":\"%@\"}",QSPrivateKey,sym,maxAmount,linkId];
     NSString *autoReload = @"{\"autoReload\":\"ture\"}";
     NSString *jsString = [NSString stringWithFormat:@"getEVTLinkQrImage('%@','%@','%@')",@"everiPay",content,autoReload];
+    [self excuteRequestWithMethodName:@"getEVTLinkQrImage"
+                             jsString:jsString
+                    completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
+                        NSString *addressCodeString = @"";
+                        if (statusCode == kResponseSuccessCode) {
+                            NSMutableString * dataString = [[NSMutableString alloc] initWithString:responseDic[@"dataUrl"]];
+                            NSRange range = [dataString rangeOfString:@"data:image/png;base64,"];
+                            [dataString deleteCharactersInRange:range];
+                            addressCodeString = dataString;
+                        }
+                        block(statusCode , addressCodeString);
+                    }];
+}
+
+- (void)getEveriPassQrImageWithDomain:(NSString *)domain
+                                 name:(NSString *)name
+                    andCompeleteBlock:(void(^)(NSInteger statusCode, NSString *addressCodeString))block {
+    NSMutableDictionary *bodyDic = [[NSMutableDictionary alloc] initWithCapacity:0];
+    [bodyDic setObject:QSNoNilString(domain) forKey:@"domainName"];
+    [bodyDic setObject:QSNoNilString(name) forKey:@"tokenName"];
+    bool bool_false = false;
+    [bodyDic setObject:@(bool_false) forKey:@"autoDestroying"];
+    NSString *bodyJsonString = [bodyDic mj_JSONString];
+    
+    NSMutableDictionary *bodyDicReload = [[NSMutableDictionary alloc] initWithCapacity:0];
+    bool bool_true = true;
+    [bodyDicReload setObject:@(bool_true) forKey:@"autoReload"];
+    NSString *bodyDicReloadJsonString = [bodyDicReload mj_JSONString];
+
+    
+    NSString *jsString = [NSString stringWithFormat:@"getEVTLinkQrImage('%@','%@','%@')",@"everiPass",bodyJsonString,bodyDicReloadJsonString];
     [self excuteRequestWithMethodName:@"getEVTLinkQrImage"
                              jsString:jsString
                     completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
@@ -623,7 +660,6 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
                                 }
                             }
                         }
-                        
                     }];
 }
 

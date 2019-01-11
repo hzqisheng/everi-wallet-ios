@@ -27,6 +27,7 @@
     
     //change leftLabel arrow Y
     self.leftTitleLabel.y = overViewItem.leftTitleTopMargin;
+    self.leftTitleLabel.width = kRealValue(285);
     self.arrowImageView.centerY = self.leftTitleLabel.centerY;
     
     //functionOverViewLabelBackgroundView

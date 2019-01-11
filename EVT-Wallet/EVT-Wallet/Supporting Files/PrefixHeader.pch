@@ -24,6 +24,8 @@
 
 #import "QSWalletHelper.h"
 #import "QSEveriApiWebViewController.h"
+#import "QSTouchIDHelper.h"
+#import "QSPasswordHelper.h"
 
 /** podfiles */
 #import <MJRefresh.h>

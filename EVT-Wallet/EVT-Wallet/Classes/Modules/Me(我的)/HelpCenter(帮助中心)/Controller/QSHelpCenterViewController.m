@@ -27,36 +27,49 @@
 
 - (void)setupTableView {
     self.tableView.frame = CGRectMake(kRealValue(15), 0, kScreenWidth - kRealValue(30), kScreenHeight - kNavgationBarHeight);
+    self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.contentInset = UIEdgeInsetsMake(kRealValue(15), 0, 0, 0);
     [self.tableView registerClass:[QSHelpCenterFunctionOverviewCell class] forCellReuseIdentifier:NSStringFromClass([QSHelpCenterFunctionOverviewCell class])];
 }
 
 - (void)createDataSource {
-    QSHelpCenterOverViewItem *overViewItem = [[QSHelpCenterOverViewItem alloc] init];
-    overViewItem.leftTitle = QSLocalizedString(@"qs_help_center_item_overview_title");
-    overViewItem.rightTitleFont = [UIFont qs_fontOfSize16];
-    overViewItem.functionOverView = QSLocalizedString(@"qs_help_center_function_content");
-    overViewItem.cellType = QSSettingItemTypeAccessnory;
-    overViewItem.cellIdentifier = NSStringFromClass([QSHelpCenterFunctionOverviewCell class]);
+    NSArray *titleArray = @[@"qs_help_center_item_overview_title",
+                            @"qs_help_center_item_create_title",
+                            @"qs_help_center_item_backup_title",
+                            @"qs_help_center_item_import_title",
+                            @"qs_help_center_item_transfer_title",
+                            @"qs_help_center_item_domain_title",
+                            @"qs_help_center_item_ft_title",
+                            @"qs_help_center_item_nft_title",
+                            @"qs_help_center_item_issue_ft_title",
+                            @"qs_help_center_item_issue_nft_title",
+                            @"qs_help_center_item_how_to_use_everipay_title",
+                            @"qs_help_center_item_how_to_use_everipass_title",
+                            @"qs_help_center_item_change_language_title"];
+    NSArray *contentArray = @[@"qs_help_center_item_overview_content",
+                              @"qs_help_center_item_create_content",
+                              @"qs_help_center_item_backup_content",
+                              @"qs_help_center_item_import_content",
+                              @"qs_help_center_item_transfer_content",
+                              @"qs_help_center_item_domain_content",
+                              @"qs_help_center_item_ft_content",
+                              @"qs_help_center_item_nft_content",
+                              @"qs_help_center_item_issue_ft_content",
+                              @"qs_help_center_item_issue_nft_content",
+                              @"qs_help_center_item_how_to_use_everipay_content",
+                              @"qs_help_center_item_how_to_use_everipass_content",
+                              @"qs_help_center_item_change_language_content"];
     
-    QSHelpCenterOverViewItem *downloadItem = [[QSHelpCenterOverViewItem alloc] init];
-    downloadItem.leftTitle = QSLocalizedString(@"qs_help_center_item_download_title");
-    downloadItem.rightTitleFont = [UIFont qs_fontOfSize16];
-    downloadItem.cellType = QSSettingItemTypeAccessnory;
-    downloadItem.functionOverView = QSLocalizedString(@"qs_help_center_function_content");
-    downloadItem.cellIdentifier = NSStringFromClass([QSHelpCenterFunctionOverviewCell class]);
-
-    QSHelpCenterOverViewItem *backupItem = [[QSHelpCenterOverViewItem alloc] init];
-    backupItem.leftTitle = QSLocalizedString(@"qs_help_center_item_backup_title");
-    backupItem.rightTitleFont = [UIFont qs_fontOfSize16];
-    backupItem.cellType = QSSettingItemTypeAccessnory;
-    backupItem.functionOverView = QSLocalizedString(@"qs_help_center_function_content");
-    backupItem.cellIdentifier = NSStringFromClass([QSHelpCenterFunctionOverviewCell class]);
-
-    self.dataArray = [@[overViewItem,
-                        downloadItem,
-                        backupItem] mutableCopy];
+    for (int i = 0; i < titleArray.count; i++) {
+        QSHelpCenterOverViewItem *helpItem = [[QSHelpCenterOverViewItem alloc] init];
+        helpItem.leftTitle = QSLocalizedString(titleArray[i]);
+        helpItem.rightTitleFont = [UIFont qs_fontOfSize16];
+        helpItem.functionOverView = QSLocalizedString(contentArray[i]);
+        helpItem.cellType = QSSettingItemTypeAccessnory;
+        helpItem.cellIdentifier = NSStringFromClass([QSHelpCenterFunctionOverviewCell class]);
+        [self.dataArray addObject:helpItem];
+    }
     [self.tableView reloadData];
 }
 
@@ -85,11 +98,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     QSHelpCenterOverViewItem *item = self.dataArray[indexPath.row];
-    item.expand = !item.isExpand;
-    if (item.isExpand) {
-        item.cellHeight = item.cellExpandHeight;
-    } else {
-        item.cellHeight = item.cellNoExpandHeight;
+    
+    for (QSHelpCenterOverViewItem *helpItem in self.dataArray) {
+        if (helpItem == item) {
+            helpItem.expand = !helpItem.isExpand;
+            if (helpItem.isExpand) {
+                helpItem.cellHeight = helpItem.cellExpandHeight;
+            } else {
+                helpItem.cellHeight = helpItem.cellNoExpandHeight;
+            }
+        } else {
+            helpItem.expand = NO;
+            helpItem.cellHeight = helpItem.cellNoExpandHeight;
+        }
     }
     [tableView reloadData];
 }

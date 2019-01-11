@@ -89,7 +89,7 @@
 
 - (UILabel *)walletNameLabel {
     if (!_walletNameLabel) {
-        _walletNameLabel = [UILabel labelWithName:@"EVT(#1)" font:[UIFont qs_fontOfSize15] textColor:[UIColor qs_colorBlack333333] textAlignment:NSTextAlignmentLeft];
+        _walletNameLabel = [UILabel labelWithName:@"" font:[UIFont qs_fontOfSize15] textColor:[UIColor qs_colorBlack333333] textAlignment:NSTextAlignmentLeft];
     }
     return _walletNameLabel;
 }

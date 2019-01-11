@@ -29,6 +29,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *sym_name;
 @property (nonatomic, copy) NSString *total_supply;
 
+@property (nonatomic, copy) NSString *amount;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

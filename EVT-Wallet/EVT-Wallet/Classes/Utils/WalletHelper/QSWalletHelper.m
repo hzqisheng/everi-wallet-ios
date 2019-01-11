@@ -9,7 +9,6 @@
 #import "QSWalletHelper.h"
 #import "QSMainViewController.h"
 #import "QSCreateIdentityHomeViewController.h"
-#import "QSNavigationController.h"
 #import "QSCreateEvt.h"
 
 @interface QSWalletHelper ()
@@ -71,7 +70,7 @@ static NSString * const kAddressKey = @"kAddressKey";
     if ([[UIViewController currentViewController] isKindOfClass:NSClassFromString(@"QSLoginViewController")]) {
         return;
     }
-    [UIApplication sharedApplication].keyWindow.rootViewController = [[QSNavigationController alloc] initWithRootViewController:[[QSCreateIdentityHomeViewController alloc] init]];
+    [UIApplication sharedApplication].keyWindow.rootViewController = [[RTRootNavigationController alloc] initWithRootViewController:[[QSCreateIdentityHomeViewController alloc] init]];
     [QSAppWindow insertSubview:[QSEveriApiWebViewController sharedWebView].view atIndex:0];
     CATransition * transition = [[CATransition alloc] init];
     transition.type = @"fade";
@@ -146,11 +145,42 @@ static NSString * const kAddressKey = @"kAddressKey";
     [QSUserDefaults synchronize];
 }
 
+- (void)updateWalletOpenTouchID:(BOOL)isOpen
+                   byPrivateKey:(NSString *)privateKey {
+    NSData *currentData = [QSUserDefaults objectForKey:kCurrentWalletKey];
+    QSCreateEvt *currentWallet = [NSKeyedUnarchiver unarchiveObjectWithData:currentData];
+    if ([currentWallet.privateKey isEqualToString:privateKey]) {
+        currentWallet.isOpenFingerprint = isOpen;
+    }
+    
+    NSData *arrayData = [QSUserDefaults objectForKey:kWalletKey];
+    NSMutableArray *walletArray = [NSKeyedUnarchiver unarchiveObjectWithData:arrayData];
+    for (QSCreateEvt *newWallet in walletArray) {
+        if ([newWallet.privateKey isEqualToString:currentWallet.privateKey]) {
+            newWallet.isOpenFingerprint = isOpen;
+        }
+    }
+
+    currentData = [NSKeyedArchiver archivedDataWithRootObject:currentWallet];
+    arrayData = [NSKeyedArchiver archivedDataWithRootObject:walletArray];
+    [QSUserDefaults setObject:currentData forKey:kCurrentWalletKey];
+    [QSUserDefaults setObject:arrayData forKey:kWalletKey];
+    [QSUserDefaults synchronize];
+}
+
+- (QSCreateEvt *)getWalletByPrivateKey:(NSString *)privateKey {
+    NSMutableArray *walletArray = [self getWalletArray];
+    for (QSCreateEvt *evt in walletArray) {
+        if ([evt.privateKey isEqualToString:privateKey]) {
+            return evt;
+        }
+    }
+    return nil;
+}
+
 #pragma mark - **************** Setter Getter
 - (BOOL)isLogin {
     return self.currentEvt != nil && self.currentEvt.password.length && self.currentEvt.privateKey.length && self.currentEvt.publicKey.length && self.currentEvt.type.length;
 }
-
-
 
 @end
