@@ -53,12 +53,15 @@ typedef NS_ENUM(NSUInteger, QSEditWalletsType) {
 }
 
 - (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
+    NSMutableArray *section0Array = [NSMutableArray array];
+    
     QSSettingItem *modifyPwdItem = [[QSSettingItem alloc] init];
     modifyPwdItem.leftTitle = QSLocalizedString(@"qs_edit_wallet_item_modify_pwd_title");
     modifyPwdItem.leftTitleFont = [UIFont qs_fontOfSize16];
     modifyPwdItem.cellTag = QSEditWalletsTypeModifyPwd;
     modifyPwdItem.cellType = QSSettingItemTypeAccessnory;
     modifyPwdItem.cellSeapratorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    [section0Array addObject:modifyPwdItem];
     
     QSSettingItem *retrieveItem = [[QSSettingItem alloc] init];
     retrieveItem.leftTitle = QSLocalizedString(@"qs_edit_wallet_item_retrieve_pwd_title");
@@ -66,6 +69,7 @@ typedef NS_ENUM(NSUInteger, QSEditWalletsType) {
     retrieveItem.cellTag = QSEditWalletsTypeRetrievePwd;
     retrieveItem.cellType = QSSettingItemTypeAccessnory;
     retrieveItem.cellSeapratorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    [section0Array addObject:retrieveItem];
 
     QSSettingItem *exportItem = [[QSSettingItem alloc] init];
     exportItem.leftTitle = QSLocalizedString(@"qs_edit_wallet_item_export_mnemonic_code_title");
@@ -73,17 +77,16 @@ typedef NS_ENUM(NSUInteger, QSEditWalletsType) {
     exportItem.cellTag = QSEditWalletsTypeExport;
     exportItem.cellType = QSSettingItemTypeAccessnory;
     exportItem.cellSeapratorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-
+    [section0Array addObject:exportItem];
+    
     QSSettingItem *addItem = [[QSSettingItem alloc] init];
     addItem.leftTitle = QSLocalizedString(@"qs_edit_wallet_item_add_wallet_title");
     addItem.leftTitleFont = [UIFont qs_fontOfSize16];
     addItem.cellTag = QSEditWalletsTypeAdd;
     addItem.cellType = QSSettingItemTypeAccessnory;
     addItem.cellSeapratorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-
-    return @[@[modifyPwdItem,
-               retrieveItem,
-               exportItem]];
+    
+    return @[section0Array];
 }
 
 #pragma mark - **************** UITableViewDelegate
@@ -103,8 +106,10 @@ typedef NS_ENUM(NSUInteger, QSEditWalletsType) {
         QSImportWalletByMnemonicCodeViewController *importWallet = [[QSImportWalletByMnemonicCodeViewController alloc] init];
         [self.navigationController pushViewController:importWallet animated:YES];
     } else if (item.cellTag == QSEditWalletsTypeExport) {
-        QSExportMnemonicViewController *exportMnemonic = [[QSExportMnemonicViewController alloc] init];
-        [self.navigationController pushViewController:exportMnemonic animated:YES];
+        [QSPasswordHelper verificationPasswordByPrivateKey:QSPrivateKey andSuccessBlock:^{
+            QSExportMnemonicViewController *exportMnemonic = [[QSExportMnemonicViewController alloc] init];
+            [self.navigationController pushViewController:exportMnemonic animated:YES];
+        }];
     } else if (item.cellTag == QSEditWalletsTypeAdd) {
         QSAddWalletViewController *addWallet = [[QSAddWalletViewController alloc] init];
         [self.navigationController pushViewController:addWallet animated:YES];

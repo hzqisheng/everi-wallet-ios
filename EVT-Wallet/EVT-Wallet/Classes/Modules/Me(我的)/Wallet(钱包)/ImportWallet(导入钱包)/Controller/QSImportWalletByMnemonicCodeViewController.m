@@ -87,12 +87,8 @@
         [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_import_wallet_error_tips")];
         return;
     }
-    if (!self.freshPwdTextfield.text.length) {
-        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_import_wallet_error_pwd_tips")];
-        return;
-    }
-    if (!self.comfirmPwdTextfield.text.length) {
-        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_import_wallet_error_pwd_tips")];
+    if (self.freshPwdTextfield.text.length < 8) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_import_wallet_error_pwd_count_tips")];
         return;
     }
     if (![self.comfirmPwdTextfield.text isEqualToString:self.freshPwdTextfield.text]) {
@@ -100,17 +96,25 @@
         return;
     }
     
-    [[QSEveriApiWebViewController sharedWebView] importEVTWalletWithMnemoinc:self.mnemonicCodeTextView.text
-                                                                    password:self.freshPwdTextfield.text
-                                                           andCompeleteBlock:^(NSInteger statusCode, QSCreateEvt * _Nonnull EvtModel)
-     {
-         if (statusCode == kResponseSuccessCode) {
-             [[QSWalletHelper sharedHelper] addWallet:EvtModel];
-             [self.navigationController popToViewControllerWithLevel:2 animated:YES];
-         } else {
-             [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_import_wallet_nav_title_failure")];
-         }
-     }];
+    [[QSEveriApiWebViewController sharedWebView] checkValidateMnemonic:self.mnemonicCodeTextView.text andCompeleteBlock:^(NSInteger statusCode, BOOL isValidate) {
+        if (statusCode == kResponseSuccessCode) {
+            if (isValidate) {
+                [[QSEveriApiWebViewController sharedWebView] importEVTWalletWithMnemoinc:self.mnemonicCodeTextView.text
+                                                                                password:self.freshPwdTextfield.text
+                                                                       andCompeleteBlock:^(NSInteger statusCode, QSCreateEvt * _Nonnull EvtModel)
+                 {
+                     if (statusCode == kResponseSuccessCode) {
+                         [[QSWalletHelper sharedHelper] addWallet:EvtModel];
+                         [self.navigationController popToViewControllerWithLevel:2 animated:YES];
+                     } else {
+                         [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_import_wallet_nav_title_failure")];
+                     }
+                 }];
+            } else {
+                [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_import_wallet_invalid_mnemonic_alert")];
+            }
+        }
+    }];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

@@ -14,6 +14,8 @@
 
 @interface QSHomeMyFTsViewController ()
 
+@property (nonatomic, strong) UIView *noDataView;
+
 @end
 
 static NSString *reuseIdentifier = @"QSHomeMyFTsCell";
@@ -38,6 +40,7 @@ static NSString *reuseIdentifier = @"QSHomeMyFTsCell";
 - (void)tableViewShouldUpdateDataByPageIndex:(NSInteger)pageIndex {
     [[QSEveriApiWebViewController sharedWebView] getEVTFungibleBalanceListWithPublicKey:QSPublicKey andCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull ftList) {
         if (statusCode == kResponseSuccessCode) {
+            self.tableView.tableFooterView = ftList.count ? nil : self.noDataView;
             [self.dataArray removeAllObjects];
             [self.dataArray addObjectsFromArray:ftList];
             [self.tableView reloadData];
@@ -83,6 +86,17 @@ static NSString *reuseIdentifier = @"QSHomeMyFTsCell";
     record.FTModel = self.dataArray[indexPath.row];
     record.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:record animated:YES];
+}
+
+#pragma mark - **************** Setter Getter
+- (UIView *)noDataView {
+    if (!_noDataView) {
+        _noDataView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kRealValue(50))];
+        UILabel *noDataLabel = [UILabel labelWithName:QSLocalizedString(@"qs_home_no_ft_titlte") font:[UIFont qs_fontOfSize15] textColor:[UIColor qs_colorBlack333333] textAlignment:NSTextAlignmentCenter];
+        noDataLabel.frame = _noDataView.bounds;
+        [_noDataView addSubview:noDataLabel];
+    }
+    return _noDataView;
 }
 
 @end

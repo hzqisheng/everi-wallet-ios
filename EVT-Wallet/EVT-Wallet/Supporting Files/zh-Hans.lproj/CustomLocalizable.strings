@@ -6,17 +6,25 @@
   Copyright © 2018 HANGZHOU QISHENG TECHNOLOGY CO.LTD. All rights reserved.
 */
 
+
+//Refresh
+"qs_refreshHeaderIdleText"       = "下拉可以刷新";
+"qs_refreshHeaderPullingText"    = "松开立即刷新";
+"qs_refreshHeaderRefreshingText" = "正在刷新数据中...";
+
 //Login
 "qs_btn_login_newidentity" = "创建身份";
 
 //Home
-"qs_btn_home_scan"    = "扫一扫";
-"qs_btn_home_pay"     = "付款";
-"qs_btn_home_collect" = "收款";
-"qs_btn_home_issue"   = "发行";
-"qs_btn_home_myfts"   = "我的代币";
-"qs_btn_home_mynfts"  = "我的通证";
-"qs_btn_home_address" = "地址";
+"qs_btn_home_scan"      = "扫一扫";
+"qs_btn_home_pay"       = "付款";
+"qs_btn_home_collect"   = "收款";
+"qs_btn_home_issue"     = "发行";
+"qs_btn_home_myfts"     = "我的代币";
+"qs_btn_home_mynfts"    = "我的通证";
+"qs_btn_home_address"   = "地址";
+"qs_home_no_ft_titlte"  = "暂无代币";
+"qs_home_no_nft_titlte" = "暂无通证";
 
 //Isssue
 "qs_issue_ft_pop_up_title"             = "发行代币";
@@ -37,14 +45,15 @@
 "qs_issue_issue_confirm_title"         = "确定";
 "qs_issue_issue_select_address_title"  = "选择地址";
 "qs_issue_issue_circulation_placeholder"  = "请输入发行量";
-"qs_issue_ft_name_title"             = "代币名称";
-"qs_issue_password_placeholder"             = "请输入密码";
+"qs_issue_ft_name_title"                  = "代币名称";
+"qs_issue_password_placeholder"           = "请输入密码";
 
 //Pass
+"qs_pass_mypass_no_pass_title"         = "暂无通证";
 "qs_pass_mypass_navi_title"            = "我的通证";
 "qs_pass_mypass_btn_title"             = "创建通证";
-"qs_pass_createNFTS_yu_title"          = "通证";
-"qs_pass_createNFTS_yu_placeholder"    = "请输入通证名";
+"qs_pass_createNFTS_yu_title"          = "域";
+"qs_pass_createNFTS_yu_placeholder"    = "请输入域名";
 "qs_pass_createNFTS_transfer_content"  = "只有我和持有者能转移";
 "qs_pass_createNFTS_manager_content"   = "只有我能管理";
 "qs_pass_createNFTS_batch_topView_placeholder"   = "您可以在此动手输入通证名称，用回车键分割；如果需要快捷地批量发行多个通证，可使用批量生成功能";
@@ -80,26 +89,31 @@
 "qs_manage_createGroup_weight"          = "权重";
 
 //Switch
-"qs_switch_createIdentity_password_placeholder" = "密码";
-"qs_switch_createIdentity_recover" = "恢复身份";
-"qs_switch_createIdentity_alert" = "密码不能为空";
-"qs_switch_createIdentity_alert2" = "密码验证错误";
-"qs_switch_createIdentity_restore_btn" = "立即恢复";
-"qs_switch_createIdentity_restore_key" = "请输入备份的钱包助记词(12个英文单词)，按空分割格";
-"qs_switch_createIdentity_login_fail" = "登录失败";
-"qs_switch_Switch_purse" = "icon_home_tabbar_qihuanqianbao";
+"qs_switch_createIdentity_password_placeholder"   = "密码";
+"qs_switch_createIdentity_recover"                = "恢复身份";
+"qs_switch_createIdentity_alert"                  = "密码不能为空";
+"qs_switch_createIdentity_alert2"                 = "2次输入的密码不一致";
+"qs_switch_createIdentity_pwd_count_error_alert"  = "密码至少为8位";
+"qs_switch_createIdentity_invalid_mnemonic_alert" = "无效的助记词";
+"qs_switch_createIdentity_restore_btn"            = "立即恢复";
+"qs_switch_createIdentity_restore_key"            = "请输入备份的钱包助记词(12个英文单词)，按空分割格";
+"qs_switch_createIdentity_login_fail"             = "登录失败";
+"qs_switch_Switch_purse"                          = "icon_home_tabbar_qihuanqianbao";
 
 //SelectFT
+"qs_select_ft_no_ft_titlte"            = "暂无代币";
 "qs_select_ft_nav_titlte"              = "选择代币";
 "qs_select_ft_btn_titlte"              = "创建代币";
 "qs_select_ft_btn_title"               = "提交";
+"qs_select_ft_full_name_title"         = "代币全称";
+"qs_select_ft_full_name_placeholder"   = "请输入代币全称";
 "qs_select_ft_token_title"             = "代币简称";
 "qs_select_ft_token_placeholde"        = "请输入符号";
 "qs_select_ft_assetNumbers_title"      = "资产编号";
 "qs_select_ft_assetNumbers_placeholde" = "请输入资产编号";
 "qs_select_ft_circulation_title"       = "发行总量";
 "qs_select_ft_circulation_placeholde"  = "请输入发行总量";
-"qs_select_ft_precision_title"         = "精度(精度位数最多为18位)";
+"qs_select_ft_precision_title"         = "精度";
 "qs_select_ft_precision_placeholde"    = "请输入精度";
 "qs_select_ft_money_title"             = "金额";
 "qs_select_ft_money_placeholde"        = "请输入付款金额";
@@ -109,6 +123,7 @@
 "qs_select_ft_permissions_content1"    = "只有我能发行，后期我可修改权限";
 "qs_select_ft_permissions_content2"    = "高级设置";
 "qs_cancel"                            = "取消";
+"qs_select_ft_no_icon_toast"           = "请选择图标";
 
 //Scan
 "qs_scan_nav_title"                  = "二维码";
@@ -229,6 +244,10 @@
 "qs_import_wallet_item_metion_total_title"      = "注意！此软件不存储用户密码，无法提供找回或重置功能。如果忘记密码，用户只能通过自己备份的钱包私钥或助记词，重新导入后设置新密码";
 "qs_import_wallet_item_metion_highlight_title"  = "注意！";
 "qs_import_wallet_btn_confirm_title"            = "立即导入";
+"qs_import_wallet_nil_pwd_toast"                = "密码至少为8位";
+"qs_import_wallet_no_same_pwd_toast"            = "2次输入的密码不一致";
+"qs_import_wallet_no_private_key"               = "请输入私钥";
+
 
 "qs_import_wallet_password_placeholder"         = "密码";
 "qs_import_wallet_confirm_password_placeholder" = "确认密码";
@@ -240,8 +259,11 @@
 "qs_import_wallet_key_store_content_placeholder"= "请输入私钥文本内容";
 "qs_import_wallet_key_store_pwd_placeholder"    = "Keystore密码";
 
-"qs_import_wallet_error_tips"     = "请输入有效的助记词";
-"qs_import_wallet_error_pwd_tips" = "请输入正确的密码";
+"qs_import_wallet_invalid_private_key_alert" = "无效的私钥";
+"qs_import_wallet_invalid_mnemonic_alert"    = "无效的助记词";
+"qs_import_wallet_error_tips"                = "请输入有效的助记词";
+"qs_import_wallet_error_pwd_tips"            = "两次输入的密码不一致";
+"qs_import_wallet_error_pwd_count_tips"      = "密码至少为8位";
 
 //Export Mnemonic Code
 "qs_export_mnemonic_code_nav_title"                    = "导出助记词";
@@ -289,7 +311,7 @@
 //Choose Wallet Type
 "qs_Choose_wallet_nav_title"              = "导入钱包";
 "qs_Choose_wallet_tips_title"             = "请选择钱包类型";
-"qs_Choose_wallet_evt_title"              = "EVT钱包";
+"qs_Choose_wallet_evt_title"              = "everiToken钱包";
 "qs_Choose_wallet_eth_title"              = "ETH钱包";
 "qs_Choose_wallet_eos_title"              = "EOS钱包";
 

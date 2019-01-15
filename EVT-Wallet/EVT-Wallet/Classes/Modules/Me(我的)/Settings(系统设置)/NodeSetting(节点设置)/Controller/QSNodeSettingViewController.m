@@ -63,9 +63,7 @@ typedef NS_ENUM(NSUInteger, QSNodeSettingType) {
     USDItem.rightTitle = @"https://www.aaa.aaa.aaaa.aaaaa..aaa.a.a";
     USDItem.rightSubviewMargin = kRealValue(18);
     
-    return @[everiTokenItem,
-             ETHItem,
-             USDItem];
+    return @[everiTokenItem];
 }
 
 #pragma mark - **************** UITableViewDelegate

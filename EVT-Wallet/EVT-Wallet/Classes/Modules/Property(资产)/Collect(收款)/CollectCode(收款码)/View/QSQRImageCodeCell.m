@@ -97,7 +97,6 @@
 - (UIImageView *)qrCodeImageView {
     if (!_qrCodeImageView) {
         _qrCodeImageView = [[UIImageView alloc] init];
-        _qrCodeImageView.backgroundColor = [UIColor grayColor];
         _qrCodeImageView.userInteractionEnabled = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pastButtonClicked)];
         [_qrCodeImageView addGestureRecognizer:tap];

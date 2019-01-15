@@ -7,6 +7,7 @@
 //
 
 #import "QSCurrencySettingsViewController.h"
+#import "NSBundle+QSLanguageUtils.h"
 
 #import "QSLanguageSettingCell.h"
 #import "QSSettingLanguageItem.h"
@@ -40,7 +41,7 @@ typedef NS_ENUM(NSUInteger, QSCurrencySettingsType) {
     CNYItem.cellType = QSSettingItemTypeAccessnory;
     CNYItem.cellIdentifier = NSStringFromClass([QSLanguageSettingCell class]);
     CNYItem.rightSubviewMargin = kRealValue(25);
-    CNYItem.checked = YES;
+    CNYItem.checked = [NSBundle isChineseLanguage];
     
     QSSettingLanguageItem *USDItem = [[QSSettingLanguageItem alloc] init];
     USDItem.leftTitle = QSLocalizedString(@"qs_currency_setting_item_usd_title");
@@ -49,10 +50,14 @@ typedef NS_ENUM(NSUInteger, QSCurrencySettingsType) {
     USDItem.cellType = QSSettingItemTypeAccessnory;
     USDItem.cellIdentifier = NSStringFromClass([QSLanguageSettingCell class]);
     USDItem.rightSubviewMargin = kRealValue(25);
-    USDItem.checked = NO;
-    
-    return @[CNYItem,
-             USDItem];
+    USDItem.checked = ![NSBundle isChineseLanguage];
+
+    if ([NSBundle isChineseLanguage]) {
+        return @[CNYItem,
+                 USDItem];
+    }
+    return @[USDItem,
+             CNYItem];
 }
 
 #pragma mark - **************** UITableViewDelegate

@@ -88,7 +88,7 @@
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
-        _titleLabel.text = @"EVT-wallet";
+        _titleLabel.text = @"everiToken-wallet";
         _titleLabel.textColor = [UIColor qs_colorBlack333333];
         _titleLabel.font = [UIFont qs_fontOfSize15];
         [self.cardImageView addSubview:_titleLabel];

@@ -47,17 +47,19 @@
 }
 
 - (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
+    //代币全称
     QSCreateFTItem *nameItem = [[QSCreateFTItem alloc] init];
     nameItem.cellIdentifier = NSStringFromClass([QSCreateFTTextCell class]);
     nameItem.cellHeight = kRealValue(70);
-    nameItem.title = QSLocalizedString(@"qs_issue_ft_name_title");
-    nameItem.placeholde = QSLocalizedString(@"qs_select_ft_token_placeholde");
+    nameItem.title = QSLocalizedString(@"qs_select_ft_full_name_title");
+    nameItem.placeholde = QSLocalizedString(@"qs_select_ft_full_name_placeholder");
     WeakSelf(weakSelf);
     nameItem.createFTItemTextBlock = ^(NSString * _Nonnull text) {
         weakSelf.name = text;
     };
     nameItem.KeyboardType = UIKeyboardTypeAlphabet;
     
+    //代币简称
     QSCreateFTItem *tokenItem = [[QSCreateFTItem alloc] init];
     tokenItem.cellIdentifier = NSStringFromClass([QSCreateFTTextCell class]);
     tokenItem.cellHeight = kRealValue(70);
@@ -68,6 +70,7 @@
     };
     tokenItem.KeyboardType = UIKeyboardTypeAlphabet;
     
+    //资产编号
     QSCreateFTItem *assetItem = [[QSCreateFTItem alloc] init];
     assetItem.cellIdentifier = NSStringFromClass([QSCreateFTTextCell class]);
     assetItem.cellHeight = kRealValue(70);
@@ -78,6 +81,7 @@
     };
     assetItem.KeyboardType = UIKeyboardTypePhonePad;
     
+    //发行总量
     QSCreateFTItem *circulationItem = [[QSCreateFTItem alloc] init];
     circulationItem.cellIdentifier = NSStringFromClass([QSCreateFTTextCell class]);
     circulationItem.cellHeight = kRealValue(70);
@@ -88,6 +92,7 @@
     };
     circulationItem.KeyboardType = UIKeyboardTypePhonePad;
     
+    //精度
     QSCreateFTItem *precisionItem = [[QSCreateFTItem alloc] init];
     precisionItem.cellIdentifier = NSStringFromClass([QSCreateFTTextCell class]);
     precisionItem.cellHeight = kRealValue(70);
@@ -98,16 +103,7 @@
     };
     precisionItem.KeyboardType = UIKeyboardTypePhonePad;
     
-//    QSCreateFTItem *moneyItem = [[QSCreateFTItem alloc] init];
-//    moneyItem.cellIdentifier = NSStringFromClass([QSCreateFTTextCell class]);
-//    moneyItem.cellHeight = kRealValue(70);
-//    moneyItem.title = QSLocalizedString(@"qs_select_ft_money_title");
-//    moneyItem.placeholde = QSLocalizedString(@"qs_select_ft_money_placeholde");
-//    moneyItem.createFTItemTextBlock = ^(NSString * _Nonnull text) {
-//        weakSelf.money = text;
-//    };
-//    moneyItem.KeyboardType = UIKeyboardTypePhonePad;
-    
+    //图标
     QSCreateFTIconItem *iconItem = [[QSCreateFTIconItem alloc] init];
     iconItem.cellIdentifier = NSStringFromClass([QSCreateFTIconCell class]);
     iconItem.cellHeight = kRealValue(96);
@@ -116,6 +112,7 @@
         weakSelf.IconImage = image;
     };
     
+    //权限
     QSCreateFTAlertItem *alertItem = [[QSCreateFTAlertItem alloc] init];
     alertItem.cellIdentifier = NSStringFromClass([QSCreateFTAlertCell class]);
     alertItem.cellHeight = kRealValue(87);
@@ -124,18 +121,35 @@
     alertItem.createFTAlertItemJurisdictionBlock = ^(NSInteger jurisdiction) {
         weakSelf.permissions = jurisdiction;
     };
-    return @[@[nameItem,tokenItem,assetItem,circulationItem,precisionItem,iconItem,alertItem]];
+    return @[@[tokenItem,assetItem,circulationItem,precisionItem,nameItem,iconItem,alertItem]];
 }
 
 #pragma mark - **************** Private Methods
 - (void)bottomButtonClicked {
-    if (!self.shortName.length || !self.assetNumber.length || !self.circulation.length || !self.precision.length) {
-        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_content_empty")];
+    if (!self.shortName.length) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_select_ft_token_placeholde")];
+        return;
+    } if (!self.assetNumber.length) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_select_ft_assetNumbers_placeholde")];
         return;
     }
+    if (!self.circulation.length) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_select_ft_circulation_placeholde")];
+        return;
+    }
+    if (!self.precision.length) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_select_ft_precision_placeholde")];
+        return;
+    }
+    if (!self.IconImage) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_select_ft_no_icon_toast")];
+        return;
+    }
+    
     QSFT *ftmodel = [[QSFT alloc] init];
     ftmodel.name = self.name;
     ftmodel.sym_name = self.shortName;
+    ftmodel.assetNumber = self.assetNumber;
     ftmodel.sym = [NSString stringWithFormat:@"%@,S#%@",self.precision,self.assetNumber];
     ftmodel.creator = [QSWalletHelper sharedHelper].currentEvt.publicKey;
     QSFTIssue *issue = [[QSFTIssue alloc] init];
@@ -143,7 +157,6 @@
     QSFTManage *manage = [[QSFTManage alloc] init];
     manage.name = @"manage";
     QSAuthorizers *authorizers = [[QSAuthorizers alloc] init];
-//    authorizers.ref = [NSString stringWithFormat:@"[A] %@",[QSWalletHelper sharedHelper].currentEvt.publicKey];
     authorizers.ref = [NSString stringWithFormat:@"[A] %@",QSPublicKey];
     authorizers.weight = 1;
     if (self.permissions == 0) {
@@ -165,25 +178,17 @@
         jinduStr = [jinduStr stringByAppendingString:@"0"];
     }
     ftmodel.total_supply = [NSString stringWithFormat:@"%@ S#%@",jinduStr,self.assetNumber];
-    
-//    UIGraphicsBeginImageContext(CGSizeMake(100, 100));
-//    [self.IconImage drawInRect:CGRectMake(0, 0, 100, 100)];
-//    UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//
+
     [QSAppKeyWindow showIndeterminateHudWithText:QSLocalizedString(@"qs_language_setting_change_toast")];
     NSData *data = UIImageJPEGRepresentation(self.IconImage, 0.1);
-//    NSString *encodedImageStr = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     NSString *encodedImageStr = [data base64EncodedString];
-//    NSData *imgData = [[NSData alloc] initWithBase64EncodedString:encodedImageStr options:NSDataBase64DecodingIgnoreUnknownCharacters];
-//    NSString *jsonString = [NSJSONSerialization JSONObjectWithData:imgData options:NSJSONReadingMutableContainers error:NULL];
     
     WeakSelf(weakSelf);
     [[QSEveriApiWebViewController sharedWebView] pushTransactionWithActionName:@"newfungible" andFt:ftmodel andConfig:encodedImageStr andCompeleteBlock:^(NSInteger statusCode, QSFT * _Nonnull ftmodel) {
         if (statusCode == kResponseSuccessCode) {
             [weakSelf.navigationController popViewControllerAnimated:YES];
+            [QSAppKeyWindow hideHud];
         }
-        [QSAppKeyWindow hideHud];
     }];
 }
 

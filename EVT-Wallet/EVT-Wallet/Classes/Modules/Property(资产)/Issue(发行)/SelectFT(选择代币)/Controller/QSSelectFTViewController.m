@@ -15,6 +15,8 @@
 
 @interface QSSelectFTViewController ()<UITableViewDelegate,UITableViewDataSource>
 
+@property (nonatomic, strong) UIView *noDataView;
+
 @end
 
 static NSString * const kSelectFTCell = @"selectFTCell";
@@ -62,6 +64,9 @@ static NSString * const kSelectFTCell = @"selectFTCell";
         if (statusCode == kResponseSuccessCode) {
             if (weakSelf.dataArray.count) {
                 [weakSelf.dataArray removeAllObjects];
+                weakSelf.tableView.tableHeaderView = nil;
+            } else {
+                weakSelf.tableView.tableHeaderView = weakSelf.noDataView;
             }
             weakSelf.dataArray = [NSMutableArray arrayWithArray:ftList];
             [weakSelf.tableView reloadData];
@@ -105,7 +110,15 @@ static NSString * const kSelectFTCell = @"selectFTCell";
 }
 
 #pragma mark - **************** Setter Getter
-
+- (UIView *)noDataView {
+    if (!_noDataView) {
+        _noDataView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kRealValue(345), kScreenHeight - kNavgationBarHeight - kBottomButtonHeight - kiPhoneXSafeAreaBottomMagin - kRealValue(35))];
+        UILabel *noDataLabel = [UILabel labelWithName:QSLocalizedString(@"qs_select_ft_no_ft_titlte") font:[UIFont qs_fontOfSize15] textColor:[UIColor qs_colorBlack333333] textAlignment:NSTextAlignmentCenter];
+        noDataLabel.frame = _noDataView.bounds;
+        [_noDataView addSubview:noDataLabel];
+    }
+    return _noDataView;
+}
 
 
 @end

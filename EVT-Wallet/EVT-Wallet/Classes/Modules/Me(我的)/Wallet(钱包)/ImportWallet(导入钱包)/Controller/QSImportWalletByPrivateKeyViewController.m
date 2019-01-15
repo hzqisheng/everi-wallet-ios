@@ -81,17 +81,37 @@
 
 #pragma mark - **************** Event Response
 - (void)comfirmButtonClicked {
-    [[QSEveriApiWebViewController sharedWebView] privateToPublicWithPrivateKey:self.privateKeyTextView.text andCompeleteBlock:^(NSInteger statusCode, NSString * _Nonnull publicKey) {
+    if (!self.privateKeyTextView.text.length) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_import_wallet_no_private_key")];
+        return;
+    }
+    if (self.freshPwdTextfield.text.length < 8) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_import_wallet_nil_pwd_toast")];
+        return;
+    }
+    if (![self.freshPwdTextfield.text
+         isEqualToString:self.comfirmPwdTextfield.text]) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_import_wallet_no_same_pwd_toast")];
+        return;
+    }
+    
+    [[QSEveriApiWebViewController sharedWebView] checkValidPrivateKey:self.privateKeyTextView.text andCompeleteBlock:^(NSInteger statusCode, BOOL isValid) {
         if (statusCode == kResponseSuccessCode) {
-            QSCreateEvt *newEvt = [[QSCreateEvt alloc] init];
-            newEvt.privateKey = self.privateKeyTextView.text;
-            newEvt.publicKey = publicKey;
-            newEvt.password = self.freshPwdTextfield.text;
-            newEvt.type = @"EVT";
-            [[QSWalletHelper sharedHelper] addWallet:newEvt];
-            [self.navigationController popToViewControllerWithLevel:2 animated:YES];
-        } else {
-            [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_import_wallet_nav_title_failure")];
+            if (isValid) {
+                [[QSEveriApiWebViewController sharedWebView] privateToPublicWithPrivateKey:self.privateKeyTextView.text andCompeleteBlock:^(NSInteger statusCode, NSString * _Nonnull publicKey) {
+                    if (statusCode == kResponseSuccessCode) {
+                        QSCreateEvt *newEvt = [[QSCreateEvt alloc] init];
+                        newEvt.privateKey = self.privateKeyTextView.text;
+                        newEvt.publicKey = publicKey;
+                        newEvt.password = self.freshPwdTextfield.text;
+                        newEvt.type = @"EVT";
+                        [[QSWalletHelper sharedHelper] addWallet:newEvt];
+                        [self.navigationController popToViewControllerWithLevel:2 animated:YES];
+                    }
+                }];
+            } else {
+                [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_import_wallet_invalid_private_key_alert")];
+            }
         }
     }];
 }

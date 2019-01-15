@@ -6,16 +6,23 @@
   Copyright © 2018 HANGZHOU QISHENG TECHNOLOGY CO.LTD. All rights reserved.
 */
 
+//Refresh
+"qs_refreshHeaderIdleText"       = "Pull down to refresh";
+"qs_refreshHeaderPullingText"    = "Release to refresh";
+"qs_refreshHeaderRefreshingText" = "Loading...";
+
 //Login
 "qs_btn_login_newidentity" = "New Identity";
 
 //Home
-"qs_btn_home_scan"    = "Scan";
-"qs_btn_home_pay"     = "everiPay";
-"qs_btn_home_collect" = "Collect";
-"qs_btn_home_issue"   = "Issue";
-"qs_btn_home_myfts"   = "My FTs";
-"qs_btn_home_mynfts"  = "My NFTs";
+"qs_btn_home_scan"      = "Scan";
+"qs_btn_home_pay"       = "everiPay";
+"qs_btn_home_collect"   = "Collect";
+"qs_btn_home_issue"     = "Issue";
+"qs_btn_home_myfts"     = "My FTs";
+"qs_btn_home_mynfts"    = "My NFTs";
+"qs_home_no_ft_titlte"  = "no FT";
+"qs_home_no_nft_titlte" = "no NFT";
 
 //Isssue
 "qs_issue_ft_pop_up_title"             = "Issue FTs";
@@ -36,10 +43,11 @@
 "qs_issue_issue_confirm_title"         = "Confirm";
 "qs_issue_issue_select_address_title"  = "Select the address";
 "qs_issue_issue_circulation_placeholder"  = "Please enter circulation";
-"qs_issue_ft_name_title"             = "FT name";
-"qs_issue_password_placeholder"             = "Please enter your password";
+"qs_issue_ft_name_title"                  = "Coin Full Name";
+"qs_issue_password_placeholder"           = "Please enter your password";
 
 //Pass
+"qs_pass_mypass_no_pass_title"         = "no NFT";
 "qs_pass_mypass_navi_title"            = "My NFTs";
 "qs_pass_mypass_btn_title"             = "Create NFTs";
 "qs_pass_createNFTS_yu_title"          = "NFT";
@@ -76,39 +84,41 @@
 "qs_manage_createGroup_weight"          = "Weight";
 
 //Switch
-"qs_switch_createIdentity_password_placeholder" = "Password";
-"qs_switch_createIdentity_recover" = "Restore the identity";
-"qs_switch_createIdentity_alert"   = "The password cannot be empty";
-"qs_switch_createIdentity_alert2"  = "Password validation error";
-"qs_switch_createIdentity_restore_btn" = "Resume immediately";
-"qs_switch_createIdentity_restore_key" = "Please enter the backup wallet mnemonic (12 English words), split by space";
-"qs_switch_createIdentity_login_fail" = "Login failed";
-"qs_switch_Switch_purse" = "icon_home_tabbar_qihuanqianbao_english";
+"qs_switch_createIdentity_password_placeholder"   = "Password";
+"qs_switch_createIdentity_recover"                = "Restore the identity";
+"qs_switch_createIdentity_alert"                  = "The password cannot be empty";
+"qs_switch_createIdentity_alert2"                 = "2 entered passwords are inconsistent";
+"qs_switch_createIdentity_pwd_count_error_alert"  = "Password is at least 8 bit";
+"qs_switch_createIdentity_invalid_mnemonic_alert" = "Invalid mnemonic";
+"qs_switch_createIdentity_restore_btn"            = "Resume immediately";
+"qs_switch_createIdentity_restore_key"            = "Please enter the backup wallet mnemonic (12 English words), split by space";
+"qs_switch_createIdentity_login_fail"             = "Login failed";
+"qs_switch_Switch_purse"                          = "icon_home_tabbar_qihuanqianbao_english";
 
 //SelectFT
+"qs_select_ft_no_ft_titlte"            = "no FT";
 "qs_select_ft_nav_titlte"              = "Unissued";
 "qs_select_ft_btn_titlte"              = "Create Coin";
 "qs_select_ft_btn_title"               = "Submit";
-"qs_select_ft_token_title"             = "Coin Name For Short";
+"qs_select_ft_full_name_title"         = "Coin Full Name";
+"qs_select_ft_full_name_placeholder"   = "Please Enter Coin Full Name";
+"qs_select_ft_token_title"             = "Symbol";
 "qs_select_ft_token_placeholde"        = "Please enter symbol";
 "qs_select_ft_assetNumbers_title"      = "Asset Numbers";
 "qs_select_ft_assetNumbers_placeholde" = "Please enter the asset number";
-"qs_select_ft_circulation_title"       = "Total circulation";
-"qs_select_ft_circulation_placeholde"  = "Please enter the total number of releases";
-"qs_select_ft_precision_title"         = "Accuracy (maximum number of precision bits is 18)";
-"qs_select_ft_precision_placeholde"    = "Please input precision";
+"qs_select_ft_circulation_title"       = "Total Supply";
+"qs_select_ft_circulation_placeholde"  = "Please enter the total Supply";
+"qs_select_ft_precision_title"         = "Decimals";
+"qs_select_ft_precision_placeholde"    = "Enter the Decimals";
 "qs_select_ft_money_title"             = "Money";
 "qs_select_ft_money_placeholde"        = "Please enter the payment amount";
 "qs_select_ft_icon_title"              = "Icon (recommended 180*180)";
-"qs_select_ft_permissions_title"       = "Permissions";
+"qs_select_ft_permissions_title"       = "Authority";
 "qs_select_ft_permissions_content0"    = "Only I can issue,the Authority cannot be changed";
 "qs_select_ft_permissions_content1"    = "Only I can issue,the Authority can be changed later";
 "qs_select_ft_permissions_content2"    = "Advanced Settings";
 "qs_cancel"                            = "Cancel";
-
-
-//Create Coin
-
+"qs_select_ft_no_icon_toast"           = "Please select icon";
 
 //Scan
 "qs_scan_nav_title"                  = "QR code";
@@ -133,7 +143,7 @@
 "qs_collect_item_tips_title"                = "Please scan with the same wallet";
 "qs_collect_item_address_title"             = "Address";
 "qs_collect_btn_copy_address_title"         = "Click QR code to copy the address";
-"qs_collect_btn_copy_success_title"         = "Copy Succress";
+"qs_collect_btn_copy_success_title"         = "Copy Success";
 "qs_collect_bottom_tool_bar_receive_title"  = "Collection code";
 "qs_collect_bottom_tool_bar_pay_title"      = "Scan collection code";
 
@@ -229,7 +239,9 @@
 "qs_import_wallet_item_metion_total_title"      = "Mention! This software does not store user passwords and does not provide a retrieval or reset function. If you forget your password, you can only re-import and set a new password by using your own wallet private key or mnemonic.";
 "qs_import_wallet_item_metion_highlight_title"  = "Mention!";
 "qs_import_wallet_btn_confirm_title"            = "Import Now";
-
+"qs_import_wallet_nil_pwd_toast"                = "Password is at least 8 bit";
+"qs_import_wallet_no_same_pwd_toast"            = "2 entered passwords are inconsistent";
+"qs_import_wallet_no_private_key"               = "Please enter the private key";
 
 "qs_import_wallet_password_placeholder"         = "Password";
 "qs_import_wallet_confirm_password_placeholder" = "Confirm Password";
@@ -241,9 +253,11 @@
 "qs_import_wallet_key_store_content_placeholder"= "Keystore Content";
 "qs_import_wallet_key_store_pwd_placeholder"    = "KeystorePassword";
 
-"qs_import_wallet_error_tips"     = "Please enter a valid mnemonic";
-"qs_import_wallet_error_pwd_tips" = "Please enter the correct password";
-
+"qs_import_wallet_invalid_private_key_alert"     = "Invalid mnemonic PrivateKey";
+"qs_import_wallet_invalid_mnemonic_alert"        = "Invalid mnemonic";
+"qs_import_wallet_error_tips"                    = "Please enter a valid mnemonic";
+"qs_import_wallet_error_pwd_tips"                = "Inconsistent password entered twice";
+"qs_import_wallet_error_pwd_count_tips"          = "Password is at least 8 bit";
 
 //Export Mnemonic Code
 "qs_export_mnemonic_code_nav_title"                = "Export Mnemonic Code";
@@ -293,7 +307,7 @@
 //Choose Wallet Type
 "qs_Choose_wallet_nav_title"              = "Import Wallet";
 "qs_Choose_wallet_tips_title"             = "Choose Wallet Type";
-"qs_Choose_wallet_evt_title"              = "EVT Wallet";
+"qs_Choose_wallet_evt_title"              = "everiToken Wallet";
 "qs_Choose_wallet_eth_title"              = "ETH Wallet";
 "qs_Choose_wallet_eos_title"              = "EOS Wallet";
 
@@ -301,8 +315,8 @@
 "qs_manage_address_nav_title"           = "Manage Adress";
 "qs_manage_address_right_navitem_title" = "Export";
 "qs_manage_address_btn_search"          = "Search";
-"qs_manage_address_btn_add_address"     = "New Adress";
-"qs_manage_address_btn_import_address"  = "Import Adress";
+"qs_manage_address_btn_add_address"     = "New Address";
+"qs_manage_address_btn_import_address"  = "Import Address";
 "qs_manage_address_all"  = "All";
 "qs_manage_address_selectGroup"  = "Select Group";
 

@@ -45,6 +45,18 @@ typedef void(^QSEveriApiWebViewPrivateKeyBlock)(NSInteger statusCode, NSDictiona
                   andCompeleteBlock:(void(^)(NSInteger statusCode, QSCreateEvt *EvtModel))block;
 
 /**
+ * @brief validateMnemonic
+ */
+- (void)checkValidateMnemonic:(NSString *)mnemonic
+            andCompeleteBlock:(void(^)(NSInteger statusCode, BOOL isValidate))block;
+
+/**
+ * @brief isValidPrivateKey
+ */
+- (void)checkValidPrivateKey:(NSString *)privateKey
+            andCompeleteBlock:(void(^)(NSInteger statusCode, BOOL isValid))block;
+
+/**
  * @brief privateToPublic
  * @param privateKey privateKey
  */

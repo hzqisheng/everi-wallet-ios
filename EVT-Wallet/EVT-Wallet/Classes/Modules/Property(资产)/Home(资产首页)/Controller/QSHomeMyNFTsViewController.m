@@ -14,6 +14,8 @@
 
 @interface QSHomeMyNFTsViewController ()
 
+@property (nonatomic, strong) UIView *noDataView;
+
 @end
 
 static NSString *reuseIdentifier = @"QSHomeMyFTsCell";
@@ -27,8 +29,8 @@ static NSString *reuseIdentifier = @"QSHomeMyFTsCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kHomeHeaderViewHeight)];
-    headerView.backgroundColor = [UIColor qs_colorWhiteFFFFFF];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kHomeHeaderViewHeight + kRealValue(6))];
+    headerView.backgroundColor = [UIColor qs_colorWhiteF5F7FB];
     self.tableView.tableHeaderView = headerView;
     [self.tableView registerClass:[QSMyNFTsCell class] forCellReuseIdentifier:reuseIdentifier];
     [self addRefreshHeader];
@@ -38,6 +40,7 @@ static NSString *reuseIdentifier = @"QSHomeMyFTsCell";
 - (void)tableViewShouldUpdateDataByPageIndex:(NSInteger)pageIndex {
     [[QSEveriApiWebViewController sharedWebView] getOwnedTokensWithPublicKeys:QSPublicKey andCompeleteBlock:^(NSInteger statusCode, NSArray<QSOwnedToken *> * _Nonnull ownedTokens) {
         if (statusCode == kResponseSuccessCode) {
+            self.tableView.tableFooterView = ownedTokens.count ? nil : self.noDataView;
             [self.dataArray removeAllObjects];
             [self.dataArray addObjectsFromArray:ownedTokens];
             [self.tableView reloadData];
@@ -85,6 +88,17 @@ static NSString *reuseIdentifier = @"QSHomeMyFTsCell";
     detail.name = ownedToken.name;
     detail.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detail animated:YES];
+}
+
+#pragma mark - **************** Setter Getter
+- (UIView *)noDataView {
+    if (!_noDataView) {
+        _noDataView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kRealValue(50))];
+        UILabel *noDataLabel = [UILabel labelWithName:QSLocalizedString(@"qs_home_no_nft_titlte") font:[UIFont qs_fontOfSize15] textColor:[UIColor qs_colorBlack333333] textAlignment:NSTextAlignmentCenter];
+        noDataLabel.frame = _noDataView.bounds;
+        [_noDataView addSubview:noDataLabel];
+    }
+    return _noDataView;
 }
 
 @end

@@ -53,6 +53,11 @@ typedef NS_ENUM(NSUInteger, QSPayAmountCellType) {
                                                                   clickedBlock:^
                                       {
                                           @strongify(self);
+                                          if (!self.money.length) {
+                                              [QSAppWindow showAutoHideHudWithText:QSLocalizedString(@"qs_pay_amount_item_amount_placeholder")];
+                                              return;
+                                          }
+                                          
                                           QSPayInfoViewController *payInfo = [[QSPayInfoViewController alloc] init];
                                           payInfo.FTModel = self.FTModel;
                                           payInfo.money = self.money;
@@ -185,10 +190,10 @@ typedef NS_ENUM(NSUInteger, QSPayAmountCellType) {
     amountItem.inputTitle = QSLocalizedString(@"qs_pay_amount_item_amount_title");
     amountItem.inputPlaceholder = QSLocalizedString(@"qs_pay_amount_item_amount_placeholder");
     amountItem.cellTag = QSPayAmountCellTypeAmount;
+    amountItem.keyType = UIKeyboardTypeDecimalPad;
     amountItem.payAmountItemTextBlock = ^(NSString * _Nonnull text) {
         weakSelf.money = text;
     };
-    amountItem.keyType = UIKeyboardTypeAlphabet;
 
     QSPayAmountItem *reamrkItem = [[QSPayAmountItem alloc] init];
     reamrkItem.cellIdentifier = NSStringFromClass([QSPayAmountInputCell class]);

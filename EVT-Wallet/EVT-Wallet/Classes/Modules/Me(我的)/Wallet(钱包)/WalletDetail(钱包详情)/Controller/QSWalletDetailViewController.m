@@ -135,11 +135,12 @@ typedef NS_ENUM(NSUInteger, QSWalletDetailType) {
         
     } else if (item.cellTag == QSWalletDetailTypeExport) {
         WeakSelf(weakSelf);
-        [QSLogoutAlertView showLogoutAlertViewAndSubmitBlock:^{
-            QSExportPrivateKeyViewController *privateKeyVC = [[QSExportPrivateKeyViewController alloc] init];
-            privateKeyVC.EVTModel = self.evtModel;
-            [weakSelf.navigationController pushViewController:privateKeyVC animated:YES];
-        }];
+        [QSPasswordHelper verificationPasswordByPrivateKey:QSPrivateKey
+                                           andSuccessBlock:^{
+                                               QSExportPrivateKeyViewController *privateKeyVC = [[QSExportPrivateKeyViewController alloc] init];
+                                               privateKeyVC.EVTModel = self.evtModel;
+                                               [weakSelf.navigationController pushViewController:privateKeyVC animated:YES];
+                                           }];
     } else if (item.cellTag == QSWalletDetailTypeSigh) {
         [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_content_NO")];
     }

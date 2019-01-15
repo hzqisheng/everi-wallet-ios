@@ -10,6 +10,8 @@
 #import "QSMainViewController.h"
 #import "QSCreateIdentityHomeViewController.h"
 #import "QSLunchImageViewController.h"
+#import "QSLanguageConfigHelper.h"
+#import "NSBundle+QSLanguageUtils.h"
 
 @interface AppDelegate ()
 
@@ -18,7 +20,6 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
     self.window = [[UIWindow alloc] initWithFrame:kScreenBounds];
     QSEveriApiWebViewController *web = [QSEveriApiWebViewController sharedWebView];
     __weak __typeof(&*web) weakSelf = web;

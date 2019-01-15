@@ -116,9 +116,16 @@
 
 - (void)setFtModel:(QSFT *)ftModel {
     _ftModel = ftModel;
+    if ([ftModel.sym containsString:@"994433"]) {
+
+    }
+    
     if (ftModel.metas.count > 0) {
         QSMetas *metas = ftModel.metas[0];
         NSArray *base64List = [metas.value componentsSeparatedByString:@"data:image/jpeg;base64,"];
+        if (base64List.count < 2) {
+            base64List = [metas.value componentsSeparatedByString:@"data:image/png;base64,"];
+        }
         if (base64List.count == 2) {
             NSData *decodeData = [[NSData alloc]initWithBase64EncodedString:base64List[1] options:(NSDataBase64DecodingIgnoreUnknownCharacters)];
             // 将NSData转为UIImage
@@ -144,7 +151,7 @@
     NSArray *currentList = [ftModel.current_supply componentsSeparatedByString:@" "];
     NSString *currentStr = currentList[0];
     NSInteger last = [totlyStr integerValue] - [currentStr integerValue];
-    NSString *lastStr = [NSString stringWithFormat:@"%ld.",last];
+    NSString *lastStr = [NSString stringWithFormat:@"%ld.",(long)last];
     
     NSArray *jinduList = [ftModel.sym componentsSeparatedByString:@","];
     NSString *jinduStr = jinduList[0];

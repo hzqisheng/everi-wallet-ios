@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *total_supply;
 
 @property (nonatomic, copy) NSString *amount;
-
+@property (nonatomic, copy) NSString *assetNumber;
 
 @end
 

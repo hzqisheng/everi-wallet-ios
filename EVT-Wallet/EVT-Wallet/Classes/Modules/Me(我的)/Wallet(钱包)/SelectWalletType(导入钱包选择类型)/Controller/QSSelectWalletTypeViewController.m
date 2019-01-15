@@ -33,7 +33,7 @@
     CGFloat firstWalletTypeButtonTopLeftSpace = kRealValue(15);
     CGFloat walletTypeButtonSpace = kRealValue(10);
     NSArray *titleList = @[QSLocalizedString(@"qs_Choose_wallet_evt_title"), QSLocalizedString(@"qs_Choose_wallet_eth_title"), QSLocalizedString(@"qs_Choose_wallet_eos_title")];
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 1; i++) {
         UIButton *button = [UIButton buttonWithTitle:titleList[i] titleColor:[UIColor qs_colorWhiteFFFFFF] font:[UIFont qs_fontOfSize15] taget:self action:@selector(typeButtonClicked:)];
         button.frame = CGRectMake(firstWalletTypeButtonTopLeftSpace, chooseLabel.maxY + firstWalletTypeButtonTopLeftSpace + i * (walletTypeButtonH + walletTypeButtonSpace), walletTypeButtonW, walletTypeButtonH);
         button.tag = i;

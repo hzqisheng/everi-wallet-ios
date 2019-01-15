@@ -13,6 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QSWalletHelper : NSObject
 
+/** 当前身份下的钱包 */
+@property (nonatomic, readonly, strong) QSCreateEvt *currentIdentityEvt;
+
+/** 当前选中的钱包 */
 @property (nonatomic, readonly, strong) QSCreateEvt *currentEvt;
 
 /** 用户登录保存信息 */

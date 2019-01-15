@@ -38,15 +38,26 @@ static NSString * const kAddressKey = @"kAddressKey";
 - (instancetype)init {
     if (self = [super init]) {
         NSData *walletData = [QSUserDefaults objectForKey:kCurrentWalletKey];
-        QSCreateEvt *wallet = [NSKeyedUnarchiver unarchiveObjectWithData:walletData];
-        _currentEvt = wallet;
-        DLog(@"_evt:%@",_currentEvt);
+        if (walletData) {
+            QSCreateEvt *wallet = [NSKeyedUnarchiver unarchiveObjectWithData:walletData];
+            _currentEvt = wallet;
+            DLog(@"_evt:%@",_currentEvt);
+        }
+        
+        NSData *walletListData = [QSUserDefaults objectForKey:kWalletKey];
+        if (walletListData) {
+            NSMutableArray *walletArray = [NSKeyedUnarchiver unarchiveObjectWithData:walletListData];
+            _currentIdentityEvt = walletArray.firstObject;
+            DLog(@"_idevt:%@",_currentIdentityEvt);
+        }
     }
     return self;
 }
 
 - (void)loginWithEvt:(QSCreateEvt *)evt {
     _currentEvt = evt;
+    _currentIdentityEvt = evt;
+    
     NSData *currentData = [NSKeyedArchiver archivedDataWithRootObject:evt];
     [QSUserDefaults setObject:currentData forKey:kCurrentWalletKey];
     

@@ -26,7 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupNavgationBarTitle:QSLocalizedString(@"qs_pass_mypass_btn_title")];
+    [self setupNavgationBarTitle:QSLocalizedString(@"qs_issue_nft_pop_up_title")];
     UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_chuangjianyu_help"] target:self action:@selector(rightBarItemClicked)];
     self.navigationItem.rightBarButtonItem = rightBarItem;
     [self loadUI];
@@ -156,6 +156,7 @@
         _bottomView = [[QSBatchCreateNFTsBottomView alloc] init];
         _bottomView.layer.cornerRadius = kRealValue(8);
         _bottomView.backgroundColor = [UIColor qs_colorWhiteFFFFFF];
+        _bottomView.addressLabel.text = QSPublicKey;
         WeakSelf(weakSelf);
         _bottomView.batchCreateNFTsBottomViewScanBtnClickedBlock = ^{
             [weakSelf scanBtnClick];

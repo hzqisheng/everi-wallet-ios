@@ -9,8 +9,8 @@
 #ifndef AppConfig_h
 #define AppConfig_h
 
-//================ socail address============//
-#define kShareUrlString  @"http://myevt.io/"
+//================ social address============//
+#define kShareUrlString  @"https://dibaqu.com/B3ma"
 #define kFacebookAddress @"https://www.facebook.com/everiToken"
 #define kTwitterAddress  @"https://twitter.com/everiToken"
 #define kTelegramAddress @"https://t.me/everiToken"

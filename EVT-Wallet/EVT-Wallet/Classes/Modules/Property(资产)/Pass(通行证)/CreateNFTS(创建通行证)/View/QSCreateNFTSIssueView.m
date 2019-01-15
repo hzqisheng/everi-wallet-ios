@@ -71,6 +71,8 @@
         make.centerY.equalTo(self.manualButton);
         make.size.mas_equalTo(CGSizeMake(kRealValue(30), kRealValue(14)));
     }];
+    
+    [self didClickOnlyButton];
 }
 
 #pragma mark - **************** Event Response

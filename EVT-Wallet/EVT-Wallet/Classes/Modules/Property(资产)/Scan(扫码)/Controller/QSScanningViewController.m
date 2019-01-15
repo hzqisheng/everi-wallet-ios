@@ -42,37 +42,34 @@
     if (self.scanningViewControllerHomeScan) {
         [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
             if (flag == 5) {
-                QSEveriPayCollectAmountViewController *shoukuanVC = [[QSEveriPayCollectAmountViewController alloc] init];
-                shoukuanVC.link = ansStr;
-                //Parse it
-                WeakSelf(weakSelf);
                 [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
-                    if (modelList.count > 0) {
-                        for (QSScanAddress *scanModel in modelList) {
-                            if (scanModel.typeKey == 43) {
-                                shoukuanVC.maxMoney = scanModel.value;
+                    if (statusCode == kResponseSuccessCode) {
+                        if (modelList.count > 0) {
+                            QSEveriPayCollectAmountViewController *shoukuanVC = [[QSEveriPayCollectAmountViewController alloc] init];
+                            shoukuanVC.link = ansStr;
+                            for (QSScanAddress *scanModel in modelList) {
+                                if (scanModel.typeKey == 43) {
+                                    shoukuanVC.maxMoney = scanModel.value;
+                                }
+                                if (scanModel.typeKey == 44) {
+                                    shoukuanVC.sybId = scanModel.value;
+                                }
                             }
-                            if (scanModel.typeKey == 44) {
-                                shoukuanVC.sybId = scanModel.value;
-                            }
+                            [self pushRemoveSelfToViewController:shoukuanVC animated:YES];
                         }
-                        //Parse it and pass it on
-                        [weakSelf.navigationController pushViewController:shoukuanVC animated:YES];
-                        
-                    } else {
-                        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_scan_failure")];
                     }
                 }];
             } else if (flag == 17) {
-                QSPayAmountViewController *payAmount = [[QSPayAmountViewController alloc] init];
-                //Parse it
                 WeakSelf(weakSelf);
                 [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
-                    //Parse it and pass it on
-                    if (modelList.count > 0) {
-                        QSScanAddress *addressModel = modelList[0];
-                        payAmount.address = addressModel.value;
-                        [weakSelf.navigationController pushViewController:payAmount animated:YES];
+                    if (statusCode == kResponseSuccessCode) {
+                        //Parse it and pass it on
+                        if (modelList.count > 0) {
+                            QSScanAddress *addressModel = modelList[0];
+                            QSPayAmountViewController *payAmount = [[QSPayAmountViewController alloc] init];
+                            payAmount.address = addressModel.value;
+                            [weakSelf pushRemoveSelfToViewController:payAmount animated:YES];
+                        }
                     }
                 }];
             } else if (flag == 3) {
@@ -99,15 +96,14 @@
         }];
     }
     if (self.scanningViewControllerPayBySweepBlock) {
-        QSPayAmountViewController *payAmount = [[QSPayAmountViewController alloc] init];
-        //Parse it
         WeakSelf(weakSelf);
         [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
             //Parse it and pass it on
             if (modelList.count > 0) {
+                QSPayAmountViewController *payAmount = [[QSPayAmountViewController alloc] init];
                 QSScanAddress *addressModel = modelList[0];
                 payAmount.address = addressModel.value;
-                [weakSelf.navigationController pushViewController:payAmount animated:YES];
+                [weakSelf pushRemoveSelfToViewController:payAmount animated:YES];
             }
         }];
     }
@@ -121,12 +117,12 @@
         }];
     }
     if (self.scanningViewControllerScanFukuanBlock) {
-        QSEveriPayCollectAmountViewController *shoukuanVC = [[QSEveriPayCollectAmountViewController alloc] init];
-        shoukuanVC.link = ansStr;
         //Parse it
         WeakSelf(weakSelf);
         [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
             if (modelList.count > 0) {
+                QSEveriPayCollectAmountViewController *shoukuanVC = [[QSEveriPayCollectAmountViewController alloc] init];
+                shoukuanVC.link = ansStr;
                 for (QSScanAddress *scanModel in modelList) {
                     if (scanModel.typeKey == 43) {
                         shoukuanVC.maxMoney = scanModel.value;
@@ -135,11 +131,7 @@
                         shoukuanVC.sybId = scanModel.value;
                     }
                 }
-                //Parse it and pass it on
-                [weakSelf.navigationController pushViewController:shoukuanVC animated:YES];
-                
-            } else {
-                [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_scan_failure")];
+                [weakSelf pushRemoveSelfToViewController:shoukuanVC animated:YES];
             }
         }];
     }

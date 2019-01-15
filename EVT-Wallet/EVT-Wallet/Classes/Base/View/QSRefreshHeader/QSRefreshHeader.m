@@ -13,14 +13,10 @@
 -(instancetype)init
 {
     if (self = [super init]) {
-        
-        //        [self setImages:@[[UIImage imageNamed:@"load1"], [UIImage imageNamed:@"load2"], [UIImage imageNamed:@"load3"]]  forState:MJRefreshStateRefreshing];
-        //        [self setImages:@[[UIImage imageNamed:@"load1"], [UIImage imageNamed:@"load2"], [UIImage imageNamed:@"load3"]]  forState:MJRefreshStatePulling];
-        //        [self setImages:@[[UIImage imageNamed:@"load1"], [UIImage imageNamed:@"load2"], [UIImage imageNamed:@"load3"]]  forState:MJRefreshStateIdle];
-        
-//        [self setTitle:@"下拉刷新" forState:MJRefreshStateIdle];
-//        [self setTitle:@"释放更新" forState:MJRefreshStatePulling];
-//        [self setTitle:@"加载中..." forState:MJRefreshStateRefreshing];
+
+        [self setTitle:QSLocalizedString(@"qs_refreshHeaderIdleText") forState:MJRefreshStateIdle];
+        [self setTitle:QSLocalizedString(@"qs_refreshHeaderPullingText") forState:MJRefreshStatePulling];
+        [self setTitle:QSLocalizedString(@"qs_refreshHeaderRefreshingText") forState:MJRefreshStateRefreshing];
         
         self.stateLabel.textColor = [UIColor blackColor];
         self.lastUpdatedTimeLabel.hidden = YES;

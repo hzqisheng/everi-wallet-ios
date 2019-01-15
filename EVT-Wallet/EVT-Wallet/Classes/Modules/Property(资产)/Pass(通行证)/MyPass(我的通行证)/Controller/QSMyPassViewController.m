@@ -14,7 +14,7 @@
 
 @interface QSMyPassViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic, strong) QSBlankPageView *blankPage;
+@property (nonatomic, strong) UIView *noDataView;
 
 @end
 
@@ -52,6 +52,7 @@ static NSString * const kMyPassCell = @"myPassCell";
     WeakSelf(weakSelf);
     [[QSEveriApiWebViewController sharedWebView] getEVTDomainsListWithPublicKey:[QSWalletHelper sharedHelper].currentEvt.publicKey andCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull ftList) {
         if (statusCode == kResponseSuccessCode) {
+            weakSelf.tableView.tableHeaderView = ftList.count ? nil : weakSelf.noDataView;
             if (weakSelf.dataArray.count) {
                 [weakSelf.dataArray removeAllObjects];
             }
@@ -86,7 +87,6 @@ static NSString * const kMyPassCell = @"myPassCell";
     QSMyPassCell *cell = [tableView dequeueReusableCellWithIdentifier:kMyPassCell forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.NFTModel = self.dataArray[indexPath.row];
-    WeakSelf(weakSelf);
     cell.myPassCellClickMoreButtonBlock = ^(QSMyPassCell * _Nonnull passCell) {
         
     };
@@ -104,13 +104,14 @@ static NSString * const kMyPassCell = @"myPassCell";
 }
 
 #pragma mark - **************** Setter Getter
-- (QSBlankPageView *)blankPage {
-    if (!_blankPage) {
-        _blankPage = [[QSBlankPageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - kRealValue(30), kScreenHeight - kNavgationBarHeight - kBottomButtonHeight - kiPhoneXSafeAreaBottomMagin - kRealValue(35))];
-        _blankPage.hidden = YES;
-        [self.tableView addSubview:_blankPage];
+- (UIView *)noDataView {
+    if (!_noDataView) {
+        _noDataView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kRealValue(345), kScreenHeight - kNavgationBarHeight - kBottomButtonHeight - kiPhoneXSafeAreaBottomMagin - kRealValue(35))];
+        UILabel *noDataLabel = [UILabel labelWithName:QSLocalizedString(@"qs_pass_mypass_no_pass_title") font:[UIFont qs_fontOfSize15] textColor:[UIColor qs_colorBlack333333] textAlignment:NSTextAlignmentCenter];
+        noDataLabel.frame = _noDataView.bounds;
+        [_noDataView addSubview:noDataLabel];
     }
-    return _blankPage;
+    return _noDataView;
 }
 
 @end

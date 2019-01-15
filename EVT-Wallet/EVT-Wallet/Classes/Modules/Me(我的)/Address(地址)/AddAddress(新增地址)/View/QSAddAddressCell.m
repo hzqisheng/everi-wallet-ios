@@ -59,7 +59,9 @@
         [_evtButton setTitleColor:[UIColor qs_colorWhiteFFFFFF] forState:UIControlStateSelected];
         _evtButton.layer.cornerRadius = 3;
         _evtButton.layer.borderWidth = 1;
-        _evtButton.layer.borderColor = [UIColor qs_colorGray686868].CGColor;
+        _evtButton.selected = YES;
+        _evtButton.layer.borderColor = [UIColor qs_colorBlue4D7BF3].CGColor;
+        _evtButton.backgroundColor = [UIColor qs_colorBlue4D7BF3];
     }
     return _evtButton;
 }
@@ -136,6 +138,7 @@
     self.leftTitleLabel.textColor = item.leftTitleColor;
     self.leftTitleLabel.frame = CGRectMake(item.leftImageAndTitleSpace, item.cellHeight/2 - item.leftTitleLabelSize.height/2, item.leftTitleLabelSize.width, item.leftTitleLabelSize.height);
     self.leftTitleLabel.text = item.leftTitle;
+    
 }
 
 @end

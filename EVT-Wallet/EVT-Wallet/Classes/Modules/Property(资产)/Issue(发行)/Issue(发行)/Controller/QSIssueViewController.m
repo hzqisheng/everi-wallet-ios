@@ -58,6 +58,11 @@
 }
 
 - (void)issueAction {
+    if (!self.whiteView.circulationGrayTextField.text) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_issue_issue_circulation_placeholder")];
+        return;
+    }
+    
     WeakSelf(weakSelf);
     NSString *sym = self.ftmodel.sym;
     NSArray *symArray = [sym componentsSeparatedByString:@","];

@@ -77,6 +77,10 @@
 }
 
 - (void)shoukuanStepTwoWithPayeeStr {
+    if (!self.money.length) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_collect_amount_item_amount_placeholder")];
+        return;
+    }
     if (!self.payeeString.length) {
         [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_shoukuan_failure2")];
         return;
@@ -110,7 +114,7 @@
     collectAmountItem.cellHeight = kRealValue(70);
     collectAmountItem.inputTitle = QSLocalizedString(@"qs_collect_amount_item_amount_title");
     collectAmountItem.inputPlaceholder = QSLocalizedString(@"qs_collect_amount_item_amount_placeholder");
-    collectAmountItem.keyType = UIKeyboardTypeAlphabet;
+    collectAmountItem.keyType = UIKeyboardTypeDecimalPad;
     collectAmountItem.payAmountItemTextBlock = ^(NSString * _Nonnull text) {
         weakSelf.money = text;
         weakSelf.payStr = [text stringByAppendingString:weakSelf.payeeString];

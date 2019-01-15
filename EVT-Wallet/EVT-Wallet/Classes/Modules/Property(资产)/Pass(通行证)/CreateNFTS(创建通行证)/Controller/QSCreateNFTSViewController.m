@@ -96,6 +96,9 @@
 - (void)bottomButtonClicked {
     QSNFT *NFTModel = [[QSNFT alloc] init];
     NFTModel.name = self.topTextField.text;
+    if (!self.topTextField.text.length) {
+        return;
+    }
     NFTModel.creator = QSPublicKey;
     QSNFTTransfer *issue = [[QSNFTTransfer alloc] init];
     issue.name = @"issue";
@@ -173,7 +176,6 @@
 }
 
 - (void)issueViewEdit {
-    WeakSelf(weakSelf);
     QSCreateNFTSEditViewController *vc = [[QSCreateNFTSEditViewController alloc] init];
     vc.createNFTSEditViewControllerSaveBlock = ^(NSString *text) {
         
@@ -182,7 +184,6 @@
 }
 
 - (void)transferViewEdit {
-    WeakSelf(weakSelf);
     QSCreateNFTSEditViewController *vc = [[QSCreateNFTSEditViewController alloc] init];
     vc.createNFTSEditViewControllerSaveBlock = ^(NSString *text) {
         

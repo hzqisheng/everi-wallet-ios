@@ -48,20 +48,18 @@
     mnemonicCodeBackgroundView.layer.shadowColor = [UIColor qs_colorGray00267B].CGColor;
     mnemonicCodeBackgroundView.layer.shadowOpacity = 0.1f;
     
-    UILabel *mnemonicCodeLabel = [UILabel labelWithName:[QSWalletHelper sharedHelper].currentEvt.mnemoinc font:[UIFont qs_fontOfSize14] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentLeft];
+    UILabel *mnemonicCodeLabel = [UILabel labelWithName:[QSWalletHelper sharedHelper].currentIdentityEvt.mnemoinc font:[UIFont qs_fontOfSize14] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentLeft];
     mnemonicCodeLabel.numberOfLines = 0;
     mnemonicCodeLabel.frame = CGRectMake(kRealValue(15), kRealValue(15), mnemonicCodeBackgroundView.width - kRealValue(30), kRealValue(45));
     [mnemonicCodeBackgroundView addSubview:mnemonicCodeLabel];
     [mnemonicCodeLabel sizeToFit];
     mnemonicCodeBackgroundView.height = mnemonicCodeLabel.height + kRealValue(30);
     
-    //    self.shadowContainerView.layer.shadowRadius = 6;
     UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:mnemonicCodeBackgroundView.bounds cornerRadius:8];
     mnemonicCodeBackgroundView.layer.shadowPath = path.CGPath;
     
     //nextButton
     UIButton *nextButton = [UIButton buttonWithTitle:QSLocalizedString(@"qs_issue_issue_confirm_title") titleColor:[UIColor qs_colorYellowE4B84F] font:[UIFont qs_fontOfSize14] taget:self action:@selector(nextButtonClicked)];
-//    UIButton *nextButton = [UIButton buttonWithTitle:QSLocalizedString(@"qs_export_mnemonic_code_btn_next_title") titleColor:[UIColor qs_colorYellowE4B84F] font:[UIFont qs_fontOfSize14] taget:self action:@selector(nextButtonClicked)];
     nextButton.frame = CGRectMake(kScreenWidth/2 - kBottomButtonWidth/2, mnemonicCodeBackgroundView.maxY + kRealValue(30), kBottomButtonWidth, kBottomButtonHeight);
     nextButton.backgroundColor = [UIColor qs_colorBlack313745];
     nextButton.layer.cornerRadius = 2;

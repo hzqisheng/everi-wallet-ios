@@ -11,6 +11,7 @@
 #import "QSAuthorizers.h"
 #import "QSScanGetAddress.h"
 #import "QSScanAddress.h"
+#import "NSBundle+QSLanguageUtils.h"
 
 #define kResponseArrayKey @"data"
 #define kResponseStringKey @"data"
@@ -89,12 +90,18 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
     NSString *responseJsonString = message.body;
     NSDictionary *responseDataDic = [self dictionaryWithJsonString:responseJsonString];
     NSNumber *code = responseDataDic[@"code"];
-    NSString *text = responseDataDic[@"message"];
+    NSDictionary *messageDic = responseDataDic[@"message"];
     NSDictionary *dic = responseDataDic[@"data"];
     NSLog(@"messageName:%@",message.name);
     DLog(@"\n\n\n%@\n\n\n",message.body);    
     if (![code.stringValue isEqualToString:@"1"]) {
-        [QSAppKeyWindow showAutoHideHudWithText:text];
+        NSString *chineseMsg = messageDic[@"cn"];
+        NSString *englishMsg = messageDic[@"en"];
+        if ([NSBundle isChineseLanguage]) {
+            [QSAppKeyWindow showAutoHideHudWithText:chineseMsg];
+        } else {
+            [QSAppKeyWindow showAutoHideHudWithText:englishMsg];
+        }
         for (NSString *key in self.methodAndCallbackDic.allKeys) {
             if ([key isEqualToString:message.name]) {
                     DataResponseBlock responseBlock = [self.methodAndCallbackDic objectForKey:key];
@@ -154,9 +161,38 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
                     completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
                         QSCreateEvt *evt;
                         if (statusCode == kResponseSuccessCode) {
+                            [QSAppKeyWindow hideHud];
                             evt = [QSCreateEvt mj_objectWithKeyValues:responseDic];
                         }
                         block (statusCode, evt);
+                    }];
+}
+
+- (void)checkValidateMnemonic:(NSString *)mnemonic
+            andCompeleteBlock:(nonnull void (^)(NSInteger, BOOL))block {
+    NSString *jsString = [NSString stringWithFormat:@"validateMnemonic('%@')",mnemonic];
+    [self excuteRequestWithMethodName:@"validateMnemonic"
+                             jsString:jsString
+                    completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
+                        NSNumber *resultNumber;
+                        if (statusCode == kResponseSuccessCode) {
+                            resultNumber = responseDic[@"data"];
+                        }
+                        block (statusCode, resultNumber.boolValue);
+                    }];
+}
+
+- (void)checkValidPrivateKey:(NSString *)privateKey
+           andCompeleteBlock:(void(^)(NSInteger statusCode, BOOL isValid))block {
+    NSString *jsString = [NSString stringWithFormat:@"isValidPrivateKey('%@')",privateKey];
+    [self excuteRequestWithMethodName:@"isValidPrivateKey"
+                             jsString:jsString
+                    completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
+                        NSNumber *resultNumber;
+                        if (statusCode == kResponseSuccessCode) {
+                            resultNumber = responseDic[@"data"];
+                        }
+                        block (statusCode, resultNumber.boolValue);
                     }];
 }
 
@@ -312,27 +348,59 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
 }
 
 - (void)pushTransactionWithActionName:(NSString *)actionName andFt:(QSFT *)ft andConfig:(NSString *)config andCompeleteBlock:(void (^)(NSInteger, QSFT * _Nonnull))block {
-    QSFTIssue *issue = [[QSFTIssue alloc] init];
-    issue = ft.issue;
-    NSString *issueString = @"";
+    QSFTIssue *issue = ft.issue;
+    NSArray *issueAuthorizers = @[];
     if (issue.threshold == 1) {
         QSAuthorizers *issueAuth = issue.authorizers[0];
-        issueString = [NSString stringWithFormat:@"[{\"ref\":\"%@\",\"weight\":%ld}]",issueAuth.ref,issueAuth.weight];
-    } else {
-        issueString = [NSString stringWithFormat:@"[]"];
+        issueAuthorizers = @[@{
+                                 @"ref": QSNoNilString(issueAuth.ref),
+                                 @"weight": @(issueAuth.weight)
+                                 }];
     }
-    NSString *manageString = @"";
-    QSFTManage *manage = [[QSFTManage alloc] init];
-    manage = ft.manage;
+    
+    NSArray *manageAuthorizers = @[];
+    QSFTManage *manage = ft.manage;
     if (manage.threshold == 1) {
         QSAuthorizers *manageAuth = manage.authorizers[0];
-        manageString = [NSString stringWithFormat:@"[{\"ref\":\"%@\",\"weight\":%ld}]",manageAuth.ref,manageAuth.weight];
-    } else {
-        manageString = [NSString stringWithFormat:@"[]"];
+        manageAuthorizers = @[@{
+                                 @"ref": QSNoNilString(manageAuth.ref),
+                                 @"weight": @(manageAuth.weight)
+                                 }];
     }
 
-    NSString *content = [NSString stringWithFormat:@"{\"creator\":\"%@\",\"issue\":{\"authorizers\":%@,\"name\":\"issue\",\"threshold\":%ld},\"manage\":{\"authorizers\":%@,\"name\":\"manage\",\"threshold\":%ld},\"metas\":[{\"key\":\"symbol-icon\",\"value\":\"data:image/png;base64,%@\",\"creator\":\"%@\"}],\"name\":\"%@\",\"sym\":\"%@\",\"sym_name\":\"%@\",\"total_supply\":\"%@\"}",QSPublicKey,issueString,issue.threshold,manageString,manage.threshold,config,[QSWalletHelper sharedHelper].currentEvt.publicKey,ft.name,ft.sym,ft.sym_name,ft.total_supply];
-    NSString *jsString = [NSString stringWithFormat:@"pushTransaction('%@','%@')",actionName,content];
+    NSDictionary *newFungibleDic = @{
+                                     @"availablePublicKeys": @[
+                                             QSPublicKey
+                                             ],
+                                     @"creator": QSPublicKey,
+                                     @"issue": @{
+                                             @"authorizers": issueAuthorizers,
+                                             @"name": @"issue",
+                                             @"threshold": @(issue.threshold)
+                                             },
+                                     @"manage": @{
+                                             @"authorizers": manageAuthorizers,
+                                             @"name": @"manage",
+                                             @"threshold": @(manage.threshold)
+                                             },
+                                     @"name": ft.name,
+                                     @"sym": ft.sym,
+                                     @"sym_name": ft.sym_name,
+                                     @"total_supply": ft.total_supply
+                                     };
+    
+    NSString *creator = [NSString stringWithFormat:@"[A] %@",QSPublicKey];
+    NSString *valueString = config.length ? [NSString stringWithFormat:@"data:image/jpeg;base64,%@",config] : @"";
+    NSDictionary *addMetaDic = @{@"key":@"icon",
+                                 @"value":valueString,
+                                 @"creator":creator};
+    
+    NSArray *bodyArray = @[newFungibleDic,addMetaDic];
+    NSString *bodyArrayJsonString = [bodyArray mj_JSONString];
+    NSString *restJsonString = [NSString stringWithFormat:@",{},'.fungible',%@",ft.assetNumber];
+    NSString *totalString = [bodyArrayJsonString stringByAppendingString:restJsonString];
+
+    NSString *jsString = [NSString stringWithFormat:@"pushTransaction('newfungible,addmeta',%@)",totalString];
     [self excuteRequestWithMethodName:@"pushTransaction"
                              jsString:jsString
                     completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
@@ -372,7 +440,7 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
     NSString *issueString = @"";
     if (issue.threshold == 1) {
         QSAuthorizers *issueAuth = issue.authorizers[0];
-        issueString = [NSString stringWithFormat:@"[{\"ref\":\"%@\",\"weight\":%ld}]",issueAuth.ref,issueAuth.weight];
+        issueString = [NSString stringWithFormat:@"[{\"ref\":\"%@\",\"weight\":%ld}]",issueAuth.ref,(long)issueAuth.weight];
     } else {
         issueString = [NSString stringWithFormat:@"[]"];
     }
@@ -384,7 +452,7 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
     NSString *manageString = @"";
     if (manage.threshold == 1) {
         QSAuthorizers *manageAuth = manage.authorizers[0];
-        manageString = [NSString stringWithFormat:@"[{\"ref\":\"%@\",\"weight\":%ld}]",manageAuth.ref,manageAuth.weight];
+        manageString = [NSString stringWithFormat:@"[{\"ref\":\"%@\",\"weight\":%ld}]",manageAuth.ref,(long)manageAuth.weight];
     } else {
         manageString = [NSString stringWithFormat:@"[]"];
     }
@@ -396,12 +464,12 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
     NSString *transferString = @"";
     if (transfer.threshold == 1) {
         QSAuthorizers *transferAuth = transfer.authorizers[0];
-        transferString = [NSString stringWithFormat:@"[{\"ref\":\"%@\",\"weight\":%ld}]",transferAuth.ref,transferAuth.weight];
+        transferString = [NSString stringWithFormat:@"[{\"ref\":\"%@\",\"weight\":%ld}]",transferAuth.ref,(long)transferAuth.weight];
     } else {
         transferString = [NSString stringWithFormat:@"[]"];
     }
     
-    NSString *content = [NSString stringWithFormat:@"{\"creator\":\"%@\",\"issue\":{\"authorizers\":%@,\"name\":\"issue\",\"threshold\":%ld},\"manage\":{\"authorizers\":%@,\"name\":\"manage\",\"threshold\":%ld},\"transfer\":{\"authorizers\":%@,\"name\":\"transfer\",\"threshold\":%ld},\"metas\":[{\"key\":\"symbol-icon\",\"value\":\"data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHoSUNDX\"}],\"name\":\"%@\"}",nft.creator,issueString,issue.threshold,manageString,manage.threshold,transferString,transfer.threshold,nft.name];
+    NSString *content = [NSString stringWithFormat:@"{\"creator\":\"%@\",\"issue\":{\"authorizers\":%@,\"name\":\"issue\",\"threshold\":%ld},\"manage\":{\"authorizers\":%@,\"name\":\"manage\",\"threshold\":%ld},\"transfer\":{\"authorizers\":%@,\"name\":\"transfer\",\"threshold\":%ld},\"metas\":[{\"key\":\"symbol-icon\",\"value\":\"data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHoSUNDX\"}],\"name\":\"%@\"}",nft.creator,issueString,(long)issue.threshold,manageString,(long)manage.threshold,transferString,(long)transfer.threshold,nft.name];
     NSString *jsString = [NSString stringWithFormat:@"pushTransaction('%@','%@')",@"newdomain",content];
     [self excuteRequestWithMethodName:@"pushTransaction"
                              jsString:jsString
@@ -502,7 +570,6 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
     [bodyDicReload setObject:@(bool_true) forKey:@"autoReload"];
     NSString *bodyDicReloadJsonString = [bodyDicReload mj_JSONString];
 
-    
     NSString *jsString = [NSString stringWithFormat:@"getEVTLinkQrImage('%@','%@','%@')",@"everiPass",bodyJsonString,bodyDicReloadJsonString];
     [self excuteRequestWithMethodName:@"getEVTLinkQrImage"
                              jsString:jsString

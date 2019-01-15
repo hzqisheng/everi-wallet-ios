@@ -74,9 +74,7 @@ typedef NS_ENUM(NSUInteger, QSSystemSettingsType) {
     
     return @[languageItem,
              unitItem,
-             nodeItem,
-             feeItem,
-             payAmountItem];
+             nodeItem];
 }
 
 #pragma mark - **************** UITableViewDelegate

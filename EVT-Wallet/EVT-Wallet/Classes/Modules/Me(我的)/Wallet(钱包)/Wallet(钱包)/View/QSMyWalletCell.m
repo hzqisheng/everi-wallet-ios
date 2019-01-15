@@ -73,9 +73,9 @@
     }];
     
     [self.pasteSecretKeyButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.secretKeyLabel.mas_right).offset(kRealValue(5));
-        make.bottom.equalTo(self.walletTypeLabel.mas_bottom);
-        make.width.and.height.equalTo(@kRealValue(16));
+        make.left.equalTo(self.secretKeyLabel.mas_right);
+        make.centerY.equalTo(self.walletTypeLabel);
+        make.width.and.height.equalTo(@kRealValue(30));
     }];
 }
 
@@ -149,13 +149,15 @@
 
 - (void)setWallet:(QSCreateEvt *)wallet {
     _wallet = wallet;
-    self.walletNameLabel.text = [NSString stringWithFormat:@"%@-wallet",wallet.type];
     if ([wallet.type isEqualToString:@"EVT"]) {
+        self.walletNameLabel.text = @"everiToken-wallet";
         self.walletTypeLabel.text = @"evt";
     } else if ([wallet.type isEqualToString:@"ETH"]) {
         self.walletTypeLabel.text = @"eth";
+        self.walletNameLabel.text = @"eth-wallet";
     } else if ([wallet.type isEqualToString:@"EOS"]) {
         self.walletTypeLabel.text = @"eos";
+        self.walletNameLabel.text = @"eos-wallet";
     }
     self.secretKeyLabel.text = self.wallet.publicKey;
 }

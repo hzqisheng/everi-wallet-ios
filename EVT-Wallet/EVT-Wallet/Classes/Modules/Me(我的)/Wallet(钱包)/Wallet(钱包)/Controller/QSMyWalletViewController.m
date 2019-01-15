@@ -66,7 +66,12 @@ static NSString *sectionReuseIdentifier = @"QSMyWalletSection";
 }
 
 - (void)walletCellDidClickedPasteButton:(QSMyWalletCell *)cell {
-    DLog(@"paste");
+    QSCreateEvt *wallet = cell.wallet;
+    if (wallet.publicKey.length) {
+        UIPasteboard* pasteboard = [UIPasteboard generalPasteboard];
+        [pasteboard setString:wallet.publicKey];
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_collect_btn_copy_success_title")];
+    }
 }
 
 - (void)walletCellDidClickedMoreButton:(QSMyWalletCell *)cell andSection:(NSInteger)section {

@@ -58,8 +58,7 @@ typedef NS_ENUM(NSUInteger, QSAboutusItemType) {
     checkVersionItem.rightSubviewMargin = kRealValue(10);
 
     return @[aboutusItem,
-             currentVersionItem,
-             checkVersionItem];
+             currentVersionItem];
 }
 
 #pragma mark - **************** tableViewDelegate

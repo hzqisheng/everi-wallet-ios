@@ -30,10 +30,10 @@
     }];
     
     [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contentView.mas_centerY).offset(kRealValue(5));
+        make.top.equalTo(self.titleLabel.mas_bottom);
         make.left.equalTo(self.contentView).offset(kRealValue(20));
         make.right.equalTo(self.contentView).offset(-kRealValue(20));
-        make.height.equalTo(@([UIFont qs_fontOfSize14].lineHeight));
+        make.bottom.equalTo(self.contentView);
     }];
 }
 

@@ -132,8 +132,12 @@
 }
 
 - (void)bottomButtonClicked {
-    if (!self.passwordTextField.text.length || !self.checkTextField.text.length) {
+    if (!self.passwordTextField.text.length) {
         [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_switch_createIdentity_alert")];
+        return;
+    }
+    if (self.passwordTextField.text.length < 8) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_switch_createIdentity_pwd_count_error_alert")];
         return;
     }
     if (![self.passwordTextField.text isEqualToString:self.checkTextField.text]) {
@@ -245,6 +249,7 @@
         _EVTButton.titleLabel.font = [UIFont qs_fontOfSize15];
         [_EVTButton addTarget:self action:@selector(EVTButtonClicked) forControlEvents:UIControlEventTouchUpInside];
         [self.centerView addSubview:_EVTButton];
+        _EVTButton.selected = YES;
     }
     return _EVTButton;
 }

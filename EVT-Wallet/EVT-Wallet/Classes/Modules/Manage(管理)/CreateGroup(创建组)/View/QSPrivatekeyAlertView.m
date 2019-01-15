@@ -115,6 +115,11 @@
     
 }
 
+- (void)cancelButtonClicked {
+    [QSAppKeyWindow hideHud];
+    [self dismissWithAnimation];
+}
+
 #pragma mark - **************** UIGestureRecognizerDelegate
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     if ([touch.view isDescendantOfView:self.whiteView]) {
@@ -189,7 +194,7 @@
         _cancelButton.titleLabel.font = [UIFont qs_fontOfSize15];
         _cancelButton.layer.borderColor = [UIColor qs_colorGrayBBBBBB].CGColor;
         _cancelButton.layer.borderWidth = BORDER_WIDTH_1PX;
-        [_cancelButton addTarget:self action:@selector(dismissWithAnimation) forControlEvents:UIControlEventTouchUpInside];
+        [_cancelButton addTarget:self action:@selector(cancelButtonClicked) forControlEvents:UIControlEventTouchUpInside];
         [self.whiteView addSubview:_cancelButton];
     }
     return _cancelButton;

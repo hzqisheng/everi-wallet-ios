@@ -8,7 +8,8 @@
 
 #import "QSRestoreIdentityViewController.h"
 
-@interface QSRestoreIdentityViewController ()
+@interface QSRestoreIdentityViewController ()<YYTextViewDelegate>
+
 @property (nonatomic, strong) UIView *topView;
 @property (nonatomic, strong) YYTextView *keyTextField;
 @property (nonatomic, strong) UITextField *passwordTextField;
@@ -138,23 +139,45 @@
 }
 
 - (void)bottomButtonClicked {
-    if (!self.passwordTextField.text.length || !self.checkTextField.text.length) {
-        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_switch_createIdentity_alert")];
+    if (!self.keyTextField.text.length) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_switch_createIdentity_restore_key")];
+        return;
+    }
+    if (self.passwordTextField.text.length < 8) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_switch_createIdentity_pwd_count_error_alert")];
         return;
     }
     if (![self.passwordTextField.text isEqualToString:self.checkTextField.text]) {
         [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_switch_createIdentity_alert2")];
         return;
     }
-    [[QSEveriApiWebViewController sharedWebView] importEVTWalletWithMnemoinc:self.keyTextField.text password:self.passwordTextField.text andCompeleteBlock:^(NSInteger statusCode, QSCreateEvt * _Nonnull EvtModel) {
+    
+    [[QSEveriApiWebViewController sharedWebView] checkValidateMnemonic:self.keyTextField.text andCompeleteBlock:^(NSInteger statusCode, BOOL isValidate) {
         if (statusCode == kResponseSuccessCode) {
-            [[QSWalletHelper sharedHelper] loginWithEvt:EvtModel];
-            [[QSWalletHelper sharedHelper] turnToHomeViewController];
-            [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_content_isRecover_success")];
-        } else {
-            [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_switch_createIdentity_login_fail")];
+            if (isValidate) {
+                [[QSEveriApiWebViewController sharedWebView] importEVTWalletWithMnemoinc:self.keyTextField.text password:self.passwordTextField.text andCompeleteBlock:^(NSInteger statusCode, QSCreateEvt * _Nonnull EvtModel) {
+                    if (statusCode == kResponseSuccessCode) {
+                        [[QSWalletHelper sharedHelper] loginWithEvt:EvtModel];
+                        [[QSWalletHelper sharedHelper] turnToHomeViewController];
+                        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_content_isRecover_success")];
+                    } else {
+                        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_switch_createIdentity_login_fail")];
+                    }
+                }];
+            } else {
+                [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_switch_createIdentity_invalid_mnemonic_alert")];
+            }
         }
     }];
+}
+
+#pragma mark - **************** YYTextViewDelegate
+- (BOOL)textView:(YYTextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark - **************** Setter Getter
@@ -190,6 +213,7 @@
         _keyTextField.placeholderTextColor = [UIColor qs_colorGrayBBBBBB];
         _keyTextField.placeholderFont = [UIFont qs_fontOfSize14];
         _keyTextField.textContainerInset = UIEdgeInsetsMake(kRealValue(10), kRealValue(10), 0, 0);
+        _keyTextField.delegate = self;
         [self.topView addSubview:_keyTextField];
     }
     return _keyTextField;
@@ -261,6 +285,7 @@
         [_EVTButton setTitle:@"EVT" forState:UIControlStateNormal];
         [_EVTButton setTitleColor:[UIColor qs_colorGrayBBBBBB] forState:UIControlStateNormal];
         [_EVTButton setImage:[UIImage imageNamed:@"icon_quanxianbianji_selected"] forState:UIControlStateSelected];
+        _EVTButton.selected = YES;
         [_EVTButton setTitleColor:[UIColor qs_colorBlack333333] forState:UIControlStateSelected];
         _EVTButton.titleLabel.font = [UIFont qs_fontOfSize15];
         [_EVTButton addTarget:self action:@selector(EVTButtonClicked) forControlEvents:UIControlEventTouchUpInside];

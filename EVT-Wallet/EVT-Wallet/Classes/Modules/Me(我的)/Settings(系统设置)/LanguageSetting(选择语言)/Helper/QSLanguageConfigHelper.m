@@ -7,6 +7,7 @@
 //
 
 #import "QSLanguageConfigHelper.h"
+
 static NSString *const QSUserLanguageKey = @"QSUserLanguageKey";
 #define STANDARD_USER_DEFAULT  [NSUserDefaults standardUserDefaults]
 

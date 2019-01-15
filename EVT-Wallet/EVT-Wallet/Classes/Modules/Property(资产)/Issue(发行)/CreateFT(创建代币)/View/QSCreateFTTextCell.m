@@ -26,9 +26,9 @@
     
     [self.contentTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.titleLabel);
-        make.top.equalTo(self.titleLabel.mas_bottom).offset(kRealValue(11));
+        make.top.equalTo(self.titleLabel.mas_bottom);
         make.right.equalTo(self.contentView).offset(-kRealValue(20));
-        make.height.equalTo(@kRealValue(14));
+        make.bottom.equalTo(self.contentView);
     }];
 }
 
@@ -42,8 +42,30 @@
 }
 
 #pragma mark - **************** Block
--(void)textFieldDidChange :(UITextField *)theTextField{
+- (void)textFieldDidChange :(UITextField *)theTextField{
     QSCreateFTItem *FTItem = (QSCreateFTItem *)self.item;
+    if ([FTItem.title isEqualToString:QSLocalizedString(@"qs_select_ft_token_title")]) {
+        //代币简称
+        theTextField.text = [theTextField.text uppercaseString];
+        if (theTextField.text.length > 7) {
+            theTextField.text = [theTextField.text substringToIndex:7];
+        }
+    } else if ([FTItem.title isEqualToString:QSLocalizedString(@"qs_select_ft_assetNumbers_title")]) {
+        //资产编号
+        if (theTextField.text.length > 9) {
+            theTextField.text = [theTextField.text substringToIndex:9];
+        }
+    } else if ([FTItem.title isEqualToString:QSLocalizedString(@"qs_select_ft_precision_title")]) {
+        //精度
+        if (theTextField.text.length > 2) {
+            theTextField.text = [theTextField.text substringToIndex:2];
+        }
+    } else if ([FTItem.title isEqualToString:QSLocalizedString(@"qs_select_ft_circulation_title")]) {
+        //发行总量
+        if (theTextField.text.length > 19) {
+            theTextField.text = [theTextField.text substringToIndex:19];
+        }
+    }
     if (FTItem.createFTItemTextBlock) {
         FTItem.createFTItemTextBlock(theTextField.text);
     }

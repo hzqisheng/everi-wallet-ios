@@ -109,8 +109,7 @@ static NSString *reuseIdentifier = @"QSSettingCell";
     itemAboutus.leftTitle = QSLocalizedString(@"qs_me_item_aboutus");
     itemAboutus.cellTag = QSMineCellTagAboutus;
     
-    return @[@[itemWallet,
-               itemAddress,],
+    return @[@[itemWallet],
              @[itemCommunities,
                itemHelpCenter,
                itemSetting],
