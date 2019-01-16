@@ -97,6 +97,7 @@
     QSNFT *NFTModel = [[QSNFT alloc] init];
     NFTModel.name = self.topTextField.text;
     if (!self.topTextField.text.length) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_pass_createNFTS_yu_placeholder")];
         return;
     }
     NFTModel.creator = QSPublicKey;
@@ -192,7 +193,6 @@
 }
 
 - (void)managerViewEdit {
-    WeakSelf(weakSelf);
     QSCreateNFTSEditViewController *vc = [[QSCreateNFTSEditViewController alloc] init];
     vc.createNFTSEditViewControllerSaveBlock = ^(NSString *text) {
         

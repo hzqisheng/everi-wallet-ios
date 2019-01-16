@@ -166,7 +166,7 @@
 }
 
 - (void)scannerViewController:(QSScannerViewController *)scannerVC initFailed:(NSString *)errorString {
-    kTipAlert(QSLocalizedString(@"qs_scan_scan_init_failed_title"));
+    [UIViewController showAlertViewWithTitle:QSLocalizedString(@"qs_scan_scan_init_failed_title") message:nil confirmTitle:QSLocalizedString(@"qs_scan_scan_failed_confirm_title")];
 }
 
 - (void)scannerViewController:(QSScannerViewController *)scannerVC scanAnswer:(NSString *)ansStr {

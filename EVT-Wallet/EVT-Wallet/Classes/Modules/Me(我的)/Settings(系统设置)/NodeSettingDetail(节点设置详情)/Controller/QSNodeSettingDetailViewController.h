@@ -6,11 +6,19 @@
 //  Copyright © 2019 HANGZHOU QISHENG TECHNOLOGY CO.LTD. All rights reserved.
 //
 
-#import "QSBaseCornerSectionTableViewController.h"
+#import "QSBaseTableViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface QSNodeSettingDetailViewController : QSBaseCornerSectionTableViewController
+@interface QSNodeSettingDetailViewController : QSBaseTableViewController
+
+@end
+
+@interface QSNodeSettingItem : QSBaseModel
+
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *detail;
+@property (nonatomic, assign) NSInteger isSelected;
 
 @end
 

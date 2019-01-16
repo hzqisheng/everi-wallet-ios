@@ -12,6 +12,8 @@
 #import "QSLanguageSettingCell.h"
 #import "QSSettingLanguageItem.h"
 
+#define kSelectCurrency @"kSelectCurrency"
+
 typedef NS_ENUM(NSUInteger, QSCurrencySettingsType) {
     QSCurrencySettingsCNY,
     QSCurrencySettingsUSD,
@@ -34,6 +36,8 @@ typedef NS_ENUM(NSUInteger, QSCurrencySettingsType) {
 }
 
 - (NSArray<QSSettingItem *> *)createSingleSectionDataSource {
+    NSString *selectedCurrency = [QSUserDefaults objectForKey:kSelectCurrency];
+    
     QSSettingLanguageItem *CNYItem = [[QSSettingLanguageItem alloc] init];
     CNYItem.leftTitle = QSLocalizedString(@"qs_currency_setting_item_cny_title");
     CNYItem.leftTitleFont = [UIFont qs_fontOfSize16];
@@ -41,7 +45,13 @@ typedef NS_ENUM(NSUInteger, QSCurrencySettingsType) {
     CNYItem.cellType = QSSettingItemTypeAccessnory;
     CNYItem.cellIdentifier = NSStringFromClass([QSLanguageSettingCell class]);
     CNYItem.rightSubviewMargin = kRealValue(25);
-    CNYItem.checked = [NSBundle isChineseLanguage];
+    if (selectedCurrency) {
+        if ([CNYItem.leftTitle isEqualToString:selectedCurrency]) {
+            CNYItem.checked = YES;
+        }
+    } else {
+        CNYItem.checked = [NSBundle isChineseLanguage];
+    }
     
     QSSettingLanguageItem *USDItem = [[QSSettingLanguageItem alloc] init];
     USDItem.leftTitle = QSLocalizedString(@"qs_currency_setting_item_usd_title");
@@ -50,8 +60,14 @@ typedef NS_ENUM(NSUInteger, QSCurrencySettingsType) {
     USDItem.cellType = QSSettingItemTypeAccessnory;
     USDItem.cellIdentifier = NSStringFromClass([QSLanguageSettingCell class]);
     USDItem.rightSubviewMargin = kRealValue(25);
-    USDItem.checked = ![NSBundle isChineseLanguage];
-
+    if (selectedCurrency) {
+        if ([USDItem.leftTitle isEqualToString:selectedCurrency]) {
+            USDItem.checked = YES;
+        }
+    } else {
+        USDItem.checked = ![NSBundle isChineseLanguage];
+    }
+    
     if ([NSBundle isChineseLanguage]) {
         return @[CNYItem,
                  USDItem];
@@ -62,12 +78,13 @@ typedef NS_ENUM(NSUInteger, QSCurrencySettingsType) {
 
 #pragma mark - **************** UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    QSBaseCellItem *item = self.dataArray[indexPath.row];
-    if (item.cellTag == QSCurrencySettingsCNY) {
-       
-    } else if (item.cellTag == QSCurrencySettingsUSD) {
-        
+    for (QSSettingLanguageItem *item in self.dataArray) {
+        item.checked = NO;
     }
+    QSSettingLanguageItem *item = self.dataArray[indexPath.row];
+    item.checked = YES;
+    [self.tableView reloadData];
+    [QSUserDefaults setObject:item.leftTitle forKey:kSelectCurrency];
 }
 
 @end

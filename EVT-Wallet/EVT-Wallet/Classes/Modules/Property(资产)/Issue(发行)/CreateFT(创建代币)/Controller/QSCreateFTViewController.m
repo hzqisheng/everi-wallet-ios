@@ -121,7 +121,7 @@
     alertItem.createFTAlertItemJurisdictionBlock = ^(NSInteger jurisdiction) {
         weakSelf.permissions = jurisdiction;
     };
-    return @[@[tokenItem,assetItem,circulationItem,precisionItem,nameItem,iconItem,alertItem]];
+    return @[@[tokenItem,nameItem,assetItem,circulationItem,precisionItem,iconItem,alertItem]];
 }
 
 #pragma mark - **************** Private Methods
@@ -129,7 +129,12 @@
     if (!self.shortName.length) {
         [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_select_ft_token_placeholde")];
         return;
-    } if (!self.assetNumber.length) {
+    }
+    if (!self.name.length) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_select_ft_full_name_placeholder")];
+        return;
+    }
+    if (!self.assetNumber.length) {
         [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_select_ft_assetNumbers_placeholde")];
         return;
     }

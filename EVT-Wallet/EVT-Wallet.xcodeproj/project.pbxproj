@@ -52,9 +52,8 @@
 		7B8B316A21B5164800028D17 /* QSExportMnemonicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B316921B5164800028D17 /* QSExportMnemonicViewController.m */; };
 		7B8B316D21B51AAC00028D17 /* QSExportMnemonicStep2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B316C21B51AAC00028D17 /* QSExportMnemonicStep2ViewController.m */; };
 		7B8B317021B51DEA00028D17 /* QSExportMnemonicStep3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B316F21B51DEA00028D17 /* QSExportMnemonicStep3ViewController.m */; };
-		7B96E1F321EDC3B0002EE53D /* dist in Resources */ = {isa = PBXBuildFile; fileRef = 7B96E1F221EDC3B0002EE53D /* dist */; };
-		7B96E1F921EDC50B002EE53D /* QSNodeSettingDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96E1F821EDC50B002EE53D /* QSNodeSettingDetailCell.m */; };
 		7B96E1FC21EDC53B002EE53D /* QSNodeSettingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96E1FB21EDC53B002EE53D /* QSNodeSettingDetailViewController.m */; };
+		7B96E20221EF2EC3002EE53D /* dist in Resources */ = {isa = PBXBuildFile; fileRef = 7B96E20121EF2EC2002EE53D /* dist */; };
 		7BB8DC2E21B757DF00954E86 /* QSImportWalletByPrivateKeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8DC2D21B757DF00954E86 /* QSImportWalletByPrivateKeyViewController.m */; };
 		7BB8DC3121B757EF00954E86 /* QSImportWalletByKeyStoreCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8DC3021B757EF00954E86 /* QSImportWalletByKeyStoreCodeViewController.m */; };
 		7BB8DC3C21B75C6A00954E86 /* YZDisplayTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8DC3321B75C6A00954E86 /* YZDisplayTitleLabel.m */; };
@@ -373,11 +372,9 @@
 		7B8B316C21B51AAC00028D17 /* QSExportMnemonicStep2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSExportMnemonicStep2ViewController.m; sourceTree = "<group>"; };
 		7B8B316E21B51DEA00028D17 /* QSExportMnemonicStep3ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSExportMnemonicStep3ViewController.h; sourceTree = "<group>"; };
 		7B8B316F21B51DEA00028D17 /* QSExportMnemonicStep3ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSExportMnemonicStep3ViewController.m; sourceTree = "<group>"; };
-		7B96E1F221EDC3B0002EE53D /* dist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dist; sourceTree = "<group>"; };
-		7B96E1F721EDC50B002EE53D /* QSNodeSettingDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSNodeSettingDetailCell.h; sourceTree = "<group>"; };
-		7B96E1F821EDC50B002EE53D /* QSNodeSettingDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSNodeSettingDetailCell.m; sourceTree = "<group>"; };
 		7B96E1FA21EDC53B002EE53D /* QSNodeSettingDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSNodeSettingDetailViewController.h; sourceTree = "<group>"; };
 		7B96E1FB21EDC53B002EE53D /* QSNodeSettingDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSNodeSettingDetailViewController.m; sourceTree = "<group>"; };
+		7B96E20121EF2EC2002EE53D /* dist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dist; sourceTree = "<group>"; };
 		7BB8DC2C21B757DF00954E86 /* QSImportWalletByPrivateKeyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSImportWalletByPrivateKeyViewController.h; sourceTree = "<group>"; };
 		7BB8DC2D21B757DF00954E86 /* QSImportWalletByPrivateKeyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSImportWalletByPrivateKeyViewController.m; sourceTree = "<group>"; };
 		7BB8DC2F21B757EF00954E86 /* QSImportWalletByKeyStoreCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSImportWalletByKeyStoreCodeViewController.h; sourceTree = "<group>"; };
@@ -912,7 +909,7 @@
 		7B0D183E21BCCB8200550756 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7B96E1F221EDC3B0002EE53D /* dist */,
+				7B96E20121EF2EC2002EE53D /* dist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1229,7 +1226,6 @@
 			isa = PBXGroup;
 			children = (
 				7B96E1F521EDC4DC002EE53D /* Controller */,
-				7B96E1F621EDC4DC002EE53D /* View */,
 			);
 			path = "NodeSettingDetail(节点设置详情)";
 			sourceTree = "<group>";
@@ -1241,15 +1237,6 @@
 				7B96E1FB21EDC53B002EE53D /* QSNodeSettingDetailViewController.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		7B96E1F621EDC4DC002EE53D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				7B96E1F721EDC50B002EE53D /* QSNodeSettingDetailCell.h */,
-				7B96E1F821EDC50B002EE53D /* QSNodeSettingDetailCell.m */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		7BB8DC3221B75C6A00954E86 /* YZDisplayViewController */ = {
@@ -3490,7 +3477,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B96E1F321EDC3B0002EE53D /* dist in Resources */,
+				7B96E20221EF2EC3002EE53D /* dist in Resources */,
 				7B7A4C8621ACCEF400598E6F /* CustomLocalizable.strings in Resources */,
 				7BF36D5921A7972500B27146 /* Assets.xcassets in Resources */,
 			);
@@ -3656,7 +3643,6 @@
 				7BF36E1721A79E7B00B27146 /* NSData+Encrypt.m in Sources */,
 				D20F61A821CB9E0300E32D1E /* QSTransferftModel.m in Sources */,
 				7B4CA15E21A7E31C00F14449 /* QSPropetyHomeSegmentView.m in Sources */,
-				7B96E1F921EDC50B002EE53D /* QSNodeSettingDetailCell.m in Sources */,
 				7B0D185521BD04A000550756 /* QSWalletHelper.m in Sources */,
 				D2F5F6B521C531750079EFD4 /* QSAddressHelper.m in Sources */,
 				D2F5F68921C352850079EFD4 /* QSManagerSelectAddressViewController.m in Sources */,

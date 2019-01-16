@@ -14,9 +14,11 @@
 @interface QSWalletHelper ()
 
 @property (nonatomic,strong) QSCreateEvt *currentEvt;
+@property (nonatomic, copy) NSString *currentNode;
 
 @end
 
+static NSString * const kSelectedNodeKey = @"kSelectedNodeKey";
 static NSString * const kWalletKey = @"kWalletKey";
 static NSString * const kCurrentWalletKey = @"kCurrentWalletKey";
 static NSString * const kCurrentIndexPath = @"kCurrentIndexPath";
@@ -50,6 +52,9 @@ static NSString * const kAddressKey = @"kAddressKey";
             _currentIdentityEvt = walletArray.firstObject;
             DLog(@"_idevt:%@",_currentIdentityEvt);
         }
+        
+        _currentNode = [QSUserDefaults objectForKey:kSelectedNodeKey];
+        DLog(@"_currentNode:%@",_currentNode);
     }
     return self;
 }
@@ -187,6 +192,83 @@ static NSString * const kAddressKey = @"kAddressKey";
         }
     }
     return nil;
+}
+
+- (void)changeCurrentNode:(NSString *)host {
+    if (!host) {
+        return;
+    }
+    
+    [[QSEveriApiWebViewController sharedWebView] changeNetworkByHost:host andCompeleteBlock:^(NSInteger statusCode) {}];
+    self.currentNode = host;
+    [[NSUserDefaults standardUserDefaults] setObject:host forKey:kSelectedNodeKey];
+    [[QSEveriApiWebViewController sharedWebView] evtInitAndCompeleteyBlock:^{
+        [self turnToHomeViewController];
+    }];
+}
+
+- (NSArray<NSDictionary *> *)getAllNodes {
+    return @[
+             @{
+                 @"title" :@"mainnet1.everitoken.io",
+                 @"detail":@"MainNet(HONG KONG)(with history plugin)",
+                 },
+             @{
+                 @"title" :@"mainnet2.everitoken.io",
+                 @"detail":@"MainNet(SILICONVALLEY)",
+                 },
+             @{
+                 @"title" :@"mainnet3.everitoken.io",
+                 @"detail":@"MainNet(TOKYO)",
+                 },
+             @{
+                 @"title" :@"mainnet4.everitoken.io",
+                 @"detail":@"MainNet(FRANKFURT)",
+                 },
+             @{
+                 @"title" :@"mainnet5.everitoken.io",
+                 @"detail":@"MainNet(SEOUL)",
+                 },
+             @{
+                 @"title" :@"mainnet6.everitoken.io",
+                 @"detail":@"MainNet(DUBAI)",
+                 },
+             @{
+                 @"title" :@"mainnet7.everitoken.io",
+                 @"detail":@"MainNet(SINGAPORE)(with history plugin)",
+                 },
+             @{
+                 @"title" :@"mainnet8.everitoken.io",
+                 @"detail":@"MainNet(FRANKFURT)",
+                 },
+             @{
+                 @"title" :@"mainnet9.everitoken.io",
+                 @"detail":@"MainNet(KUALA LUMPUR)(with history plugin)",
+                 },
+             @{
+                 @"title" :@"mainnet10.everitoken.io",
+                 @"detail":@"MainNet(TOKYO)",
+                 },
+             @{
+                 @"title" :@"mainnet11.everitoken.io",
+                 @"detail":@"MainNet(SILICONVALLEY)",
+                 },
+             @{
+                 @"title" :@"mainnet12.everitoken.io",
+                 @"detail":@"MainNet(HONG KONG)",
+                 },
+             @{
+                 @"title" :@"mainnet13.everitoken.io",
+                 @"detail":@"MainNet(VIRGINIA)",
+                 },
+             @{
+                 @"title" :@"mainnet14.everitoken.io",
+                 @"detail":@"MainNet(SHANGHAI)(with history plugin)",
+                 },
+             @{
+                 @"title" :@"mainnet15.everitoken.io",
+                 @"detail":@"MainNet(SINGAPORE)(with history plugin)",
+                 }];
 }
 
 #pragma mark - **************** Setter Getter

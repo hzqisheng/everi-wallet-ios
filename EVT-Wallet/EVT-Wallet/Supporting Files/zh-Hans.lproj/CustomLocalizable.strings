@@ -60,8 +60,9 @@
 "qs_pass_createNFTS_batch_topView_address"   = "地址个数：";
 "qs_pass_createNFTS_batch_topView_label"     = "批量生成通证名称";
 "qs_pass_createNFTS_batch_centerView_placeholde"   = "请输入批量通证名称";
-"qs_pass_createNFTS_batch_centerView_btn"    = "批量生成";
-"qs_pass_createNFTS_batch_count"    = "计数";
+"qs_pass_createNFTS_batch_centerView_btn"     = "批量生成";
+"qs_pass_createNFTS_batch_count"              = "计数";
+"qs_pass_createNFTS_batch_no_nft_title_toast" = "请输入通证名称";
 
 
 //Manage
@@ -148,7 +149,7 @@
 "qs_collect_item_tips_title"               = "请使用相同钱包扫一扫";
 "qs_collect_item_address_title"            = "地址";
 "qs_collect_btn_copy_address_title"        = "点击二维码复制地址";
-"qs_collect_btn_copy_success_title"        = "复制成功";
+"qs_collect_btn_copy_success_title"        = "已复制";
 "qs_collect_bottom_tool_bar_receive_title" = "收款码";
 "qs_collect_bottom_tool_bar_pay_title"     = "扫码收款";
 
@@ -160,7 +161,7 @@
 "qs_collect_amount_nav_title"                = "收款";
 "qs_collect_amount_select_payway_tips"       = "请选择需要收款的金额";
 "qs_collect_amount_item_currency_title"      = "您需要收款的币种为：";
-"qs_collect_amount_item_amount_title"        = "金额";
+"qs_collect_amount_item_amount_title"        = "请选择收款数量";
 "qs_collect_amount_item_amount_placeholder"  = "请输入收款金额";
 "qs_collect_amount_bottom_btn_title"         = "确认收款";
 
@@ -321,8 +322,8 @@
 "qs_manage_address_btn_search"          = "搜索";
 "qs_manage_address_btn_add_address"     = "新增地址";
 "qs_manage_address_btn_import_address"  = "导入地址";
-"qs_manage_address_all"  = "全部";
-"qs_manage_address_selectGroup"  = "选择组";
+"qs_manage_address_all"                 = "全部";
+"qs_manage_address_selectGroup"         = "选择组";
 
 //Add Address
 "qs_add_address_nav_title"                = "新增地址";
@@ -352,7 +353,7 @@
 
 //Join Communities
 "qs_join_communities_nav_title"   = "加入社群";
-"qs_join_communities_paste_success_toast"   = "复制成功，请在微信搜索中粘贴";
+"qs_join_communities_paste_success_toast"   = "已复制，请在微信搜索中粘贴";
 
 //Help Center
 "qs_help_center_nav_title"             = "帮助中心";
@@ -420,6 +421,9 @@
 "qs_node_setting_item_everitoken_title" = "everiToken";
 "qs_node_setting_item_eth_title"        = "ETH";
 "qs_node_setting_item_eos_title"        = "EOS";
+
+"qs_everitoken_node_setting_title"      = "everiToken节点设置";
+"qs_everitoken_node_setting_save"       = "保存";
 
 //Aboutus
 "qs_aboutus_nav_title"                  = "关于我们";

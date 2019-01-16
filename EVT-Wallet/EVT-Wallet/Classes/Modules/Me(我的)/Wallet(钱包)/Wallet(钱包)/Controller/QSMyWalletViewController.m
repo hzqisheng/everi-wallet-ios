@@ -77,7 +77,7 @@ static NSString *sectionReuseIdentifier = @"QSMyWalletSection";
 - (void)walletCellDidClickedMoreButton:(QSMyWalletCell *)cell andSection:(NSInteger)section {
     QSWalletDetailViewController *detail = [[QSWalletDetailViewController alloc] init];
     detail.evtModel = cell.wallet;
-    [detail setupNavgationBarTitle:@"EVT-Wallet"];
+    [detail setupNavgationBarTitle:@"everiToken-Wallet"];
     [self.navigationController pushViewController:detail animated:YES];
 }
 

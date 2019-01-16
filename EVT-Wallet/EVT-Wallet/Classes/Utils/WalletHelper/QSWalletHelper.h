@@ -50,6 +50,15 @@ NS_ASSUME_NONNULL_BEGIN
 /** 修改钱包密码 */
 - (void)changePassword:(NSString *)password;
 
+/** 当前选择的节点 */
+@property (nonatomic, copy, readonly) NSString *currentNode;
+
+/** 修改选择的节点 */
+- (void)changeCurrentNode:(NSString *)host;
+
+/** 获取所有节点 */
+- (NSArray<NSDictionary *> *)getAllNodes;
+
 /**
  * @brief返回首页操作
  */

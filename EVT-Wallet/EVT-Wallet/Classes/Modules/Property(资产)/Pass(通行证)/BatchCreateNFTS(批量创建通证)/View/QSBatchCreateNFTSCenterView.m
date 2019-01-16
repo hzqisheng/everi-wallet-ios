@@ -20,9 +20,9 @@
 - (void)loadUI {
     [self.nameTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(kRealValue(20));
-        make.top.equalTo(self).offset(kRealValue(19));
+        make.top.equalTo(self);
         make.right.equalTo(self.subtractButton.mas_left).offset(-kRealValue(10));
-        make.height.equalTo(@kRealValue(14));
+        make.height.equalTo(@kRealValue(45));
     }];
     
     [self.subtractButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -45,7 +45,7 @@
     
     [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.equalTo(self);
-        make.top.equalTo(self.addButton.mas_bottom).offset(kRealValue(13));
+        make.top.equalTo(self.nameTextField.mas_bottom);
         make.height.equalTo(@BORDER_WIDTH_1PX);
     }];
     

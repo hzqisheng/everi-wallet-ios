@@ -11,6 +11,9 @@
 
 //================ social address============//
 #define kShareUrlString  @"https://dibaqu.com/B3ma"
+#define kShareLogo       @"share_logo"
+#define kShareTitle      @"EveriWallet"
+
 #define kFacebookAddress @"https://www.facebook.com/everiToken"
 #define kTwitterAddress  @"https://twitter.com/everiToken"
 #define kTelegramAddress @"https://t.me/everiToken"

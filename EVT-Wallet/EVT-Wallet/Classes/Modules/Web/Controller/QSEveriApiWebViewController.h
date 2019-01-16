@@ -64,6 +64,11 @@ typedef void(^QSEveriApiWebViewPrivateKeyBlock)(NSInteger statusCode, NSDictiona
                   andCompeleteBlock:(void(^)(NSInteger statusCode, NSString *publicKey))block;
 
 /**
+ evt init
+ */
+- (void)evtInitAndCompeleteyBlock:(void (^)(void))block;
+
+/**
  * @brief getOwnedTokens
  * @param publicKeys selected wallet publicKeys
  */
@@ -243,6 +248,12 @@ typedef void(^QSEveriApiWebViewPrivateKeyBlock)(NSInteger statusCode, NSDictiona
  * @brief getActions
  */
 - (void)getActionsWithFTModel:(QSFT *)FTModel AndCompeleteBlock:(void(^)(NSInteger statusCode , NSArray *transferList))block;
+
+/**
+ * @brief changeNetwork
+ */
+- (void)changeNetworkByHost:(NSString *)host
+          andCompeleteBlock:(void(^)(NSInteger statusCode))block;
 
 @end
 

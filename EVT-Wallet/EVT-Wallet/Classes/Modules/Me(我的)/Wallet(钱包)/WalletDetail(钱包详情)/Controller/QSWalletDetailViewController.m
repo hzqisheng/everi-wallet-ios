@@ -47,7 +47,7 @@ typedef NS_ENUM(NSUInteger, QSWalletDetailType) {
 
 - (void)createDataSource {
     QSWalletContentItem *contentItem = [[QSWalletContentItem alloc] init];
-    contentItem.leftTitle = @"EVT-wallet";
+    contentItem.leftTitle = @"everiToken-wallet";
     contentItem.leftTitleFont = [UIFont qs_fontOfSize15];
     contentItem.content = self.evtModel.publicKey;
     contentItem.cellTag = QSWalletDetailTypeContent;

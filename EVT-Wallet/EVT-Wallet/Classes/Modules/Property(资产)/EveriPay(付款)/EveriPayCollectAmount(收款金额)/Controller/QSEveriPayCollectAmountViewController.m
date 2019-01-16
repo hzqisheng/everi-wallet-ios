@@ -34,7 +34,7 @@
     UILabel *titleLabel = [UILabel labelWithName:QSLocalizedString(@"qs_collect_amount_select_payway_tips") font:[UIFont qs_boldFontOfSize15] textColor:[UIColor qs_colorBlack333333] textAlignment:NSTextAlignmentLeft];
     titleLabel.frame = CGRectMake(0, kRealValue(15), headerView.width, kRealValue(16));
     [headerView addSubview:titleLabel];
-    self.tableView.tableHeaderView = headerView;
+//    self.tableView.tableHeaderView = headerView;
     
     @weakify(self);
     self.tableView.tableFooterView = [[QSBottomButtonView alloc] initWithFrame:CGRectMake(0, 0, kBottomButtonWidth, kRealValue(100))

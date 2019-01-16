@@ -7,6 +7,8 @@
 //
 
 #import "QSNodeSettingViewController.h"
+#import "QSNodeSettingDetailViewController.h"
+
 #import "QSSettingItem.h"
 #import "QSSettingCell.h"
 
@@ -40,7 +42,7 @@ typedef NS_ENUM(NSUInteger, QSNodeSettingType) {
     everiTokenItem.cellTag = QSNodeSettingTypeEveriToken;
     everiTokenItem.cellType = QSSettingItemTypeLeftRightTitle;
     everiTokenItem.cellIdentifier = NSStringFromClass([QSSettingCell class]);
-    everiTokenItem.rightTitle = @"https://www.aaa.aaa.aaaa.aaaaa..aaa.a.a";
+    everiTokenItem.rightTitle = [QSWalletHelper sharedHelper].currentNode;
     everiTokenItem.rightSubviewMargin = kRealValue(18);
 
     QSSettingItem *ETHItem = [[QSSettingItem alloc] init];
@@ -70,7 +72,8 @@ typedef NS_ENUM(NSUInteger, QSNodeSettingType) {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     QSBaseCellItem *item = self.dataArray[indexPath.row];
     if (item.cellTag == QSNodeSettingTypeEveriToken) {
-        
+        QSNodeSettingDetailViewController *setting = [[QSNodeSettingDetailViewController alloc] init];
+        [self.navigationController pushViewController:setting animated:YES];
     } else if (item.cellTag == QSNodeSettingTypeETH) {
         
     } else if (item.cellTag == QSNodeSettingTypeEOS) {

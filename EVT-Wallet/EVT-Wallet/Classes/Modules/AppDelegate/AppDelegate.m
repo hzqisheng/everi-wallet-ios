@@ -22,7 +22,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:kScreenBounds];
     QSEveriApiWebViewController *web = [QSEveriApiWebViewController sharedWebView];
-    __weak __typeof(&*web) weakSelf = web;
+//    __weak __typeof(&*web) weakSelf = web;
+    if ([QSWalletHelper sharedHelper].currentNode) {
+        [[QSEveriApiWebViewController sharedWebView] changeNetworkByHost:[QSWalletHelper sharedHelper].currentNode andCompeleteBlock:^(NSInteger statusCode) {}];
+    } else {
+        //default
+    }
     web.initSuccessBlock = ^{
         if ([QSWalletHelper sharedHelper].isLogin) {
             [[QSWalletHelper sharedHelper] turnToHomeViewController];

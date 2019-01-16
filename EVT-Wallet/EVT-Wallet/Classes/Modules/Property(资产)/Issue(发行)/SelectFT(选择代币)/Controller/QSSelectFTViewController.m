@@ -62,11 +62,10 @@ static NSString * const kSelectFTCell = @"selectFTCell";
     WeakSelf(weakSelf);
     [[QSEveriApiWebViewController sharedWebView] getEVTFungiblesListWithPublicKey:[QSWalletHelper sharedHelper].currentEvt.publicKey andCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull ftList) {
         if (statusCode == kResponseSuccessCode) {
+            weakSelf.tableView.tableHeaderView = ftList ? nil : weakSelf.noDataView;
             if (weakSelf.dataArray.count) {
                 [weakSelf.dataArray removeAllObjects];
-                weakSelf.tableView.tableHeaderView = nil;
             } else {
-                weakSelf.tableView.tableHeaderView = weakSelf.noDataView;
             }
             weakSelf.dataArray = [NSMutableArray arrayWithArray:ftList];
             [weakSelf.tableView reloadData];

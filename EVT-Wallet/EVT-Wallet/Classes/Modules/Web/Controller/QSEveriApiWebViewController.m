@@ -90,18 +90,23 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
     NSString *responseJsonString = message.body;
     NSDictionary *responseDataDic = [self dictionaryWithJsonString:responseJsonString];
     NSNumber *code = responseDataDic[@"code"];
-    NSDictionary *messageDic = responseDataDic[@"message"];
+    id messageObject = responseDataDic[@"message"];
     NSDictionary *dic = responseDataDic[@"data"];
     NSLog(@"messageName:%@",message.name);
     DLog(@"\n\n\n%@\n\n\n",message.body);    
     if (![code.stringValue isEqualToString:@"1"]) {
-        NSString *chineseMsg = messageDic[@"cn"];
-        NSString *englishMsg = messageDic[@"en"];
-        if ([NSBundle isChineseLanguage]) {
-            [QSAppKeyWindow showAutoHideHudWithText:chineseMsg];
-        } else {
-            [QSAppKeyWindow showAutoHideHudWithText:englishMsg];
+        if ([messageObject isKindOfClass:[NSDictionary class]]) {
+            NSString *chineseMsg = messageObject[@"cn"];
+            NSString *englishMsg = messageObject[@"en"];
+            if ([NSBundle isChineseLanguage]) {
+                [QSAppKeyWindow showAutoHideHudWithText:chineseMsg];
+            } else {
+                [QSAppKeyWindow showAutoHideHudWithText:englishMsg];
+            }
+        } else if ([messageObject isKindOfClass:[NSString class]]) {
+            [QSAppKeyWindow showAutoHideHudWithText:messageObject];
         }
+        
         for (NSString *key in self.methodAndCallbackDic.allKeys) {
             if ([key isEqualToString:message.name]) {
                     DataResponseBlock responseBlock = [self.methodAndCallbackDic objectForKey:key];
@@ -682,6 +687,22 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
                             list = [QSTransferftModel mj_objectArrayWithKeyValuesArray:dataDic];
                         }
                         block(statusCode,list);
+                    }];
+}
+
+- (void)changeNetworkByHost:(NSString *)host
+          andCompeleteBlock:(void(^)(NSInteger statusCode))block {
+    NSDictionary *dataDic = @{
+                              @"host":QSNoNilString(host),
+                              @"port":@(443),
+                              @"protocol":@"https"
+                              };
+    
+    NSString *jsString = [NSString stringWithFormat:@"changeNetwork(%@)",[dataDic mj_JSONString]];
+    [self excuteRequestWithMethodName:@"changeNetwork"
+                             jsString:jsString
+                    completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
+                        block(statusCode);
                     }];
 }
 

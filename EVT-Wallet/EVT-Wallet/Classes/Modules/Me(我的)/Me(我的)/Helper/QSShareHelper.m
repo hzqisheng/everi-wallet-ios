@@ -25,9 +25,12 @@
     if (!urlString.length) {
         return;
     }
-    NSArray * items =  @[urlString];    //分享图片 数组
+    NSString *textToShare = kShareTitle;
+    UIImage *imageToShare = [UIImage imageNamed:kShareLogo];
+    NSURL *urlToShare = [NSURL URLWithString:kShareUrlString];
+    NSArray *activityItems = @[urlToShare,textToShare,imageToShare];
     
-    UIActivityViewController * activityVC = [[UIActivityViewController alloc]initWithActivityItems:items applicationActivities:nil];
+    UIActivityViewController * activityVC = [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];
     activityVC.modalInPopover = YES;
     
 //    if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0) {

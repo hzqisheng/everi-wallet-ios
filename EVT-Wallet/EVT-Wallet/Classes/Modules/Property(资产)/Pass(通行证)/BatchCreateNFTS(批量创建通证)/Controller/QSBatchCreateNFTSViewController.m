@@ -71,6 +71,10 @@
     }];
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
+
 #pragma mark - **************** Event Response
 - (void)bottomButtonClicked {
     NSArray *nameArr = [self.topView.textView.text componentsSeparatedByString:@"\n"];
@@ -80,6 +84,10 @@
         if (!name.length) {
             [nameArray removeObject:name];
         }
+    }
+    if (!nameArray.count) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_pass_createNFTS_batch_no_nft_title_toast")];
+        return;
     }
     WeakSelf(weakSelf);
     [[QSEveriApiWebViewController sharedWebView] pushTransactionNFTWithDomain:self.NFTModel.name andNameArr:nameArray andOwner:self.bottomView.addressLabel.text AndCompeleteBlock:^(NSInteger statusCode) {

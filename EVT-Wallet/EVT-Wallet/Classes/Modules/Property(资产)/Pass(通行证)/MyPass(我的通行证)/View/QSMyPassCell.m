@@ -33,7 +33,7 @@
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.cornerView).offset(kRealValue(16));
-        make.right.equalTo(self.moreButton.mas_left).offset(-kRealValue(20));
+        make.right.equalTo(self.moreButton.mas_left).offset(-kRealValue(10));
         make.top.equalTo(self.cornerView).offset(kRealValue(26));
         make.height.equalTo(@kRealValue(20));
     }];
@@ -46,10 +46,11 @@
     }];
     
     [self.moreButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.cornerView).offset(-kRealValue(17));
-        make.top.equalTo(self.cornerView).offset(kRealValue(19));
-        make.size.mas_equalTo(CGSizeMake(kRealValue(22), kRealValue(22)));
+        make.right.equalTo(self.cornerView).offset(-kRealValue(7));
+        make.centerY.equalTo(self.titleLabel);
+        make.size.mas_equalTo(CGSizeMake(kRealValue(44), kRealValue(44)));
     }];
+    _moreButton.hidden = YES;
 }
 
 #pragma mark - **************** Event Response
