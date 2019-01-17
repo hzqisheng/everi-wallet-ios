@@ -46,12 +46,12 @@ static NSString *reuseIdentifier = @"QSAdressCell";
     self.navigationItem.rightBarButtonItem = rightBarItem;
     
     //search
-    self.searchView.frame = CGRectMake(0, 0, kScreenWidth, kManageAdressSearchViewHeight);
-    [self.view addSubview:self.searchView];
+//    self.searchView.frame = CGRectMake(0, 0, kScreenWidth, kManageAdressSearchViewHeight);
+//    [self.view addSubview:self.searchView];
     
     //tableView
     [self addRefreshHeader];
-    self.tableView.contentInset = UIEdgeInsetsMake(kManageAdressSearchViewHeight, 0, 0, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     [self.tableView registerClass:[QSManageAddressCell class] forCellReuseIdentifier:reuseIdentifier];
     
     //footer button

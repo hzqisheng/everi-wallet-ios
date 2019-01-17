@@ -25,9 +25,9 @@
     [super viewDidLoad];
     [self setupNavgationBarTitle:QSLocalizedString(@"qs_btn_home_issue")];
     UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithTitle:QSLocalizedString(@"qs_issue_issue_moreSetting_rightNavi") font:[UIFont qs_fontOfSize14] titleColor:[UIColor qs_colorYellowE4B84F] target:self action:@selector(rightBarItemClicked)];
-    self.navigationItem.rightBarButtonItem = rightBarItem;
+//    self.navigationItem.rightBarButtonItem = rightBarItem;
     [self.view addSubview:self.topView];
-    [self.view addSubview:self.bottomView];
+//    [self.view addSubview:self.bottomView];
 }
 
 - (void)rightBarItemClicked {

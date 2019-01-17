@@ -21,8 +21,7 @@ typedef void(^QSQRCodeScanItemEndEditingBlock)(void);
 //qrcode
 @property (nonatomic, copy) NSString *qrcodeImageString;
 
-//selected wallet
-
+@property (nonatomic, assign) BOOL isShowCopyButton;
 
 //maxpay
 @property (nonatomic, copy) NSString *maxPayAmount;

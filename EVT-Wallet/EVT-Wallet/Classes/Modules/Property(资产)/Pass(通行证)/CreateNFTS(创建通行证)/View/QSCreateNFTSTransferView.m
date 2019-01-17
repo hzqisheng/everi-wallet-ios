@@ -54,24 +54,24 @@
         make.height.equalTo(@BORDER_WIDTH_1PX);
     }];
     
-    [self.manualButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.onlyButton);
-        make.top.equalTo(self.lineView2.mas_bottom).offset(kRealValue(16));
-        make.size.mas_equalTo(CGSizeMake(kRealValue(16), kRealValue(16)));
-    }];
-    
-    [self.manualLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.manualButton.mas_right).offset(kRealValue(12));
-        make.centerY.equalTo(self.manualButton);
-        make.height.equalTo(@kRealValue(14));
-    }];
-    
-    [self.editButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self).offset(-kRealValue(25));
-        make.centerY.equalTo(self.manualButton);
-        make.size.mas_equalTo(CGSizeMake(kRealValue(30), kRealValue(14)));
-    }];
-    
+//    [self.manualButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(self.onlyButton);
+//        make.top.equalTo(self.lineView2.mas_bottom).offset(kRealValue(16));
+//        make.size.mas_equalTo(CGSizeMake(kRealValue(16), kRealValue(16)));
+//    }];
+//    
+//    [self.manualLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(self.manualButton.mas_right).offset(kRealValue(12));
+//        make.centerY.equalTo(self.manualButton);
+//        make.height.equalTo(@kRealValue(14));
+//    }];
+//    
+//    [self.editButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.equalTo(self).offset(-kRealValue(25));
+//        make.centerY.equalTo(self.manualButton);
+//        make.size.mas_equalTo(CGSizeMake(kRealValue(30), kRealValue(14)));
+//    }];
+//    
     [self didClickOnlyButton];
 }
 

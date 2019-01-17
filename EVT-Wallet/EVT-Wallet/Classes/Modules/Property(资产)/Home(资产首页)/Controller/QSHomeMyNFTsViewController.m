@@ -25,6 +25,7 @@ static NSString *reuseIdentifier = @"QSHomeMyFTsCell";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.tableView.frame = self.view.bounds;
+    [self startRefreshing];
 }
 
 - (void)viewDidLoad {
@@ -34,7 +35,6 @@ static NSString *reuseIdentifier = @"QSHomeMyFTsCell";
     self.tableView.tableHeaderView = headerView;
     [self.tableView registerClass:[QSMyNFTsCell class] forCellReuseIdentifier:reuseIdentifier];
     [self addRefreshHeader];
-    [self startRefreshing];
 }
 
 - (void)tableViewShouldUpdateDataByPageIndex:(NSInteger)pageIndex {
@@ -94,7 +94,7 @@ static NSString *reuseIdentifier = @"QSHomeMyFTsCell";
 - (UIView *)noDataView {
     if (!_noDataView) {
         _noDataView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kRealValue(50))];
-        UILabel *noDataLabel = [UILabel labelWithName:QSLocalizedString(@"qs_home_no_nft_titlte") font:[UIFont qs_fontOfSize15] textColor:[UIColor qs_colorBlack333333] textAlignment:NSTextAlignmentCenter];
+        UILabel *noDataLabel = [UILabel labelWithName:QSLocalizedString(@"qs_home_no_nft_titlte") font:[UIFont qs_fontOfSize15] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentCenter];
         noDataLabel.frame = _noDataView.bounds;
         [_noDataView addSubview:noDataLabel];
     }

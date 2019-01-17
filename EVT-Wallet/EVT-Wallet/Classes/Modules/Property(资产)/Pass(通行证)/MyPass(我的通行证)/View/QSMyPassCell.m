@@ -117,12 +117,12 @@
 
 - (void)setNFTModel:(QSNFT *)NFTModel {
     _NFTModel = NFTModel;
-    if (NFTModel.metas.count > 0) {
-        QSMetas *metas = NFTModel.metas[0];
-        [self.leftImageView sd_setImageWithURL:[NSURL URLWithString:metas.value]];
-    }  else {
-        [self.leftImageView setImage:[UIImage imageNamed:@"icon_home_pevt"]];
-    }
+//    if (NFTModel.metas.count > 0) {
+//        QSMetas *metas = NFTModel.metas[0];
+//        [self.leftImageView sd_setImageWithURL:[NSURL URLWithString:metas.value]];
+//    }  else {
+//        [self.leftImageView setImage:[UIImage imageNamed:@"icon_home_pevt"]];
+//    }
     self.titleLabel.text = NFTModel.name;
     self.blockchainLabel.text = NFTModel.creator;
 }

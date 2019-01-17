@@ -10,7 +10,7 @@
 #import "QSPayAmountViewController.h"
 #import "QSScanningViewController.h"
 
-#import "QSQRCodeScanTipsCell.h"
+#import "QSCollectTipsCell.h"
 #import "QSQRCodeAddressCell.h"
 #import "QSQRImageCodeCell.h"
 #import "QSQRCodeScanItem.h"
@@ -62,14 +62,14 @@
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
 - (NSArray<Class> *)getRigisterMultiCellClasses {
-    return @[[QSQRCodeScanTipsCell class],
+    return @[[QSCollectTipsCell class],
              [QSQRCodeAddressCell class],
              [QSQRImageCodeCell class]];
 }
 
 - (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
     QSQRCodeScanItem *tipsItem = [[QSQRCodeScanItem alloc] init];
-    tipsItem.cellIdentifier = NSStringFromClass([QSQRCodeScanTipsCell class]);
+    tipsItem.cellIdentifier = NSStringFromClass([QSCollectTipsCell class]);
     tipsItem.cellHeight = kRealValue(55);
     
     QSQRCodeScanItem *addressItem = [[QSQRCodeScanItem alloc] init];
@@ -81,7 +81,8 @@
     codeImageItem.cellIdentifier = NSStringFromClass([QSQRImageCodeCell class]);
     codeImageItem.cellHeight = kRealValue(313);
     codeImageItem.address = QSPublicKey;
-
+    codeImageItem.isShowCopyButton = YES;
+    
     return @[@[tipsItem],
              @[addressItem,
                codeImageItem]];

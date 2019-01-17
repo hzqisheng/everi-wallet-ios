@@ -109,12 +109,13 @@
         make.left.equalTo(self.view).offset(kRealValue(30));
         make.top.equalTo(self.centerView.mas_bottom).offset(kRealValue(20));
         make.centerX.equalTo(self.view);
-        make.height.equalTo(@kRealValue(126));
+        make.bottom.equalTo(self.alertLabel).offset(kRealValue(15));
     }];
     
     [self.alertLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self.alertImageView);
-        make.size.mas_equalTo(CGSizeMake(kScreenWidth - kRealValue(90), kRealValue(95)));
+        make.top.equalTo(self.alertImageView).offset(kRealValue(15));
+        make.left.equalTo(self.alertImageView).offset(kRealValue(15));
+        make.right.equalTo(self.alertImageView).offset(-kRealValue(15));
     }];
     
     [self.submitButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -338,7 +339,7 @@
 - (UILabel *)alertLabel {
     if (!_alertLabel) {
         _alertLabel = [[UILabel alloc] init];
-        _alertLabel.text = QSLocalizedString(@"qs_import_wallet_item_metion_total_title");
+        _alertLabel.text = QSLocalizedString(@"qs_restore_wallet_item_metion_total_title");
         _alertLabel.textColor = [UIColor qs_colorBlack313745];
         _alertLabel.font = [UIFont qs_fontOfSize13];
         _alertLabel.numberOfLines = 0;

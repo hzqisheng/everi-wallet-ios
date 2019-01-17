@@ -28,7 +28,7 @@
     [super viewDidLoad];
     [self setupNavgationBarTitle:QSLocalizedString(@"qs_issue_nft_pop_up_title")];
     UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_chuangjianyu_help"] target:self action:@selector(rightBarItemClicked)];
-    self.navigationItem.rightBarButtonItem = rightBarItem;
+//    self.navigationItem.rightBarButtonItem = rightBarItem;
     [self loadUI];
 }
 

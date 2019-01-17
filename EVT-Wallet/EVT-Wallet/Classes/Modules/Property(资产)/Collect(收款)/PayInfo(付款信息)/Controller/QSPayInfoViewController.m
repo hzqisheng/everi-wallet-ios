@@ -85,8 +85,8 @@
                 success.FTModel = weakSelf.FTModel;
                 success.count = countStr;
                 [weakSelf.navigationController pushViewController:success animated:YES];
+                [QSAppKeyWindow hideHud];
             }
-            [QSAppKeyWindow hideHud];
         }];
     }
 }

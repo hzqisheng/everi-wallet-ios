@@ -130,10 +130,10 @@ typedef NS_ENUM(NSUInteger, QSEveriPayCodeCellType) {
     [[QSEveriApiWebViewController sharedWebView] getStatusOfEvtLinkWithLink:self.linkId AndCompeleteBlock:^(NSInteger statusCode, QSEvtLinkStatus * _Nonnull status) {
         if (status.pending == 0
             && status.transactionId.length) {
-            if (!self.isPushPaySuccessVC) {
+            if (!weakSelf.isPushPaySuccessVC) {
                 QSPaySuccessViewController *success = [[QSPaySuccessViewController alloc] init];
                 [weakSelf pushRemoveSelfToViewController:success animated:YES];
-                self.isPushPaySuccessVC = YES;
+                weakSelf.isPushPaySuccessVC = YES;
             }
         } else {
             [weakSelf getLinkState];

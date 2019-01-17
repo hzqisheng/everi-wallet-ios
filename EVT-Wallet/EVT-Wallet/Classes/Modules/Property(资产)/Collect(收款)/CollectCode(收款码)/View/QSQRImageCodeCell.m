@@ -41,6 +41,7 @@
 - (void)configureCellWithItem:(QSBaseCellItem *)item {
     self.item = item;
     QSQRCodeScanItem *scanItem = (QSQRCodeScanItem *)item;
+    self.pastButton.hidden = !scanItem.isShowCopyButton;
     if (scanItem.qrcodeImageString.length) {
         //1. 实例化二维码滤镜
         CIFilter *filter = [CIFilter filterWithName:@"CIQRCodeGenerator"];

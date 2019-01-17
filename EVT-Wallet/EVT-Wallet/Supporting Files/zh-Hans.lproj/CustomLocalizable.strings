@@ -109,7 +109,7 @@
 "qs_select_ft_full_name_title"         = "代币全称";
 "qs_select_ft_full_name_placeholder"   = "请输入代币全称";
 "qs_select_ft_token_title"             = "代币简称";
-"qs_select_ft_token_placeholde"        = "请输入符号";
+"qs_select_ft_token_placeholde"        = "请输入代币简称";
 "qs_select_ft_assetNumbers_title"      = "资产编号";
 "qs_select_ft_assetNumbers_placeholde" = "请输入资产编号";
 "qs_select_ft_circulation_title"       = "发行总量";
@@ -146,6 +146,7 @@
 "qs_btn_pay_everipay"     = "everipay";
 
 //Collect
+"qs_everipay_item_tips_title"              = "仅用于面对面交易";
 "qs_collect_item_tips_title"               = "请使用相同钱包扫一扫";
 "qs_collect_item_address_title"            = "地址";
 "qs_collect_btn_copy_address_title"        = "点击二维码复制地址";
@@ -162,7 +163,7 @@
 "qs_collect_amount_select_payway_tips"       = "请选择需要收款的金额";
 "qs_collect_amount_item_currency_title"      = "您需要收款的币种为：";
 "qs_collect_amount_item_amount_title"        = "请选择收款数量";
-"qs_collect_amount_item_amount_placeholder"  = "请输入收款金额";
+"qs_collect_amount_item_amount_placeholder"  = "请输入收款数量";
 "qs_collect_amount_bottom_btn_title"         = "确认收款";
 
 //Collect Success
@@ -172,7 +173,7 @@
 "qs_everipay_bottom_tool_bar_code_title"     = "everiPay";
 "qs_everipay_bottom_tool_bar_scan_title"     = "扫码付款";
 "qs_everipay_item_selected_wallet_title"     = "选择此方式进行付款";
-"qs_everipay_item_max_pay_title"             = "最大支付金额";
+"qs_everipay_item_max_pay_title"             = "最大支付数量";
 "qs_everipay_select_address_popupview_title" = "请选择进行付款的代币";
 
 //everiPass
@@ -235,6 +236,10 @@
 "qs_modify_pwd_item_tips_total_title"           = "忘记密码？导入助记词或私钥进行回复。立即导入";
 "qs_modify_pwd_item_tips_highlight_title"       = "立即导入";
 "qs_modify_pwd_btn_confirm_title"               = "确认修改";
+
+//restore
+"qs_restore_wallet_item_metion_total_title"      = "注意！此软件不存储用户密码，无法提供找回或重置功能。如果忘记密码，用户只能通过自己备份的钱包私钥或助记词，重新导入后设置新密码\n如果您的钱包是没有助记词的，您可以先创建一个新身份，然后通过私钥导入钱包";
+
 
 //Import Wallet
 "qs_import_wallet_nav_title"                    = "导入钱包";

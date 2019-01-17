@@ -30,9 +30,10 @@
     }];
     
     [self.maxPayAmountTextField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.contentView);
         make.right.equalTo(self.contentView).offset(-kRealValue(24));
         make.left.equalTo(self.maxPayAmountTipsLabel.mas_right).offset(kRealValue(15));
+        make.top.equalTo(self.contentView);
+        make.bottom.equalTo(self.contentView);
     }];
 }
 

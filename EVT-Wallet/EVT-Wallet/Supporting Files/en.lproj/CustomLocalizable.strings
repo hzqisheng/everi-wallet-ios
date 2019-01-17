@@ -21,14 +21,14 @@
 "qs_btn_home_issue"     = "Issue";
 "qs_btn_home_myfts"     = "My FTs";
 "qs_btn_home_mynfts"    = "My NFTs";
-"qs_home_no_ft_titlte"  = "no FT";
-"qs_home_no_nft_titlte" = "no NFT";
+"qs_home_no_ft_titlte"  = "no FTs now";
+"qs_home_no_nft_titlte" = "no NFTs now";
 
 //Isssue
 "qs_issue_ft_pop_up_title"             = "Issue FTs";
-"qs_issue_ft_pop_up_content"           = "Like Points,Scores and other standardized assets";
+"qs_issue_ft_pop_up_content"           = "Including Points,Scores and other standardized assets";
 "qs_issue_nft_pop_up_title"            = "Issue NFTs";
-"qs_issue_nft_pop_up_content"          = "Like Tickets,property and other unique assets/rights";
+"qs_issue_nft_pop_up_content"          = "Including Tickets,property and other unique assets/rights";
 "qs_issue_issue_circulation_title"     = "The Number Of Issue";
 "qs_issue_issue_address_title"         = "Address";
 "qs_issue_issue_remarks_title"         = "Note";
@@ -58,7 +58,7 @@
 "qs_pass_createNFTS_batch_topView_address"   = "Amount Of Address：";
 "qs_pass_createNFTS_batch_topView_label"     = "Batch generation of NFTS names";
 "qs_pass_createNFTS_batch_centerView_placeholde"  = "Please enter the batch generation of NFTS names";
-"qs_pass_createNFTS_batch_centerView_btn"     = "Mass production";
+"qs_pass_createNFTS_batch_centerView_btn"     = "Batch generation";
 "qs_pass_createNFTS_batch_count"              = "Count";
 "qs_pass_createNFTS_batch_no_nft_title_toast" = "Please enter the name of the NFT";
 
@@ -143,6 +143,7 @@
 "qs_btn_pay_everipay"     = "everipay";
 
 //Collect
+"qs_everipay_item_tips_title"               = "ONLY FOR USE FACE-TO-FACE";
 "qs_collect_item_tips_title"                = "Please scan with the same wallet";
 "qs_collect_item_address_title"             = "Address";
 "qs_collect_btn_copy_address_title"         = "Click QR code to copy the address";
@@ -232,6 +233,9 @@
 "qs_modify_pwd_item_tips_total_title"           = "Forget your password? import Mnemonic to reset.Import Now";
 "qs_modify_pwd_item_tips_highlight_title"       = "Import Now";
 "qs_modify_pwd_btn_confirm_title"               = "Confirm Changes";
+
+//restore wallet
+"qs_restore_wallet_item_metion_total_title"      = "Mention! This software does not store user passwords and does not provide a retrieval or reset function. If you forget your password, you can only re-import and set a new password by using your own wallet private key or mnemonic.\nIf your wallet has no mnemonic , you can create a new wallet first, and then import it through the private key.";
 
 //Import Wallet
 "qs_import_wallet_nav_title"                    = "Import Wallet";

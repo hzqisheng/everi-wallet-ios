@@ -34,7 +34,7 @@
     [super viewDidLoad];
     [self setupNavgationBarTitle:QSLocalizedString(@"qs_pass_mypass_btn_title")];
     UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_chuangjianyu_help"] target:self action:@selector(rightBarItemClicked)];
-    self.navigationItem.rightBarButtonItem = rightBarItem;
+//    self.navigationItem.rightBarButtonItem = rightBarItem;
     [self loadUI];
 }
 
@@ -67,21 +67,21 @@
         make.left.equalTo(self.view).offset(kRealValue(15));
         make.top.equalTo(self.whiteView.mas_bottom).offset(kRealValue(10));
         make.centerX.equalTo(self.view);
-        make.height.equalTo(@kRealValue(142));
+        make.height.equalTo(@kRealValue(110));
     }];
     
     [self.transferView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).offset(kRealValue(15));
         make.top.equalTo(self.issueView.mas_bottom).offset(kRealValue(10));
         make.centerX.equalTo(self.view);
-        make.height.equalTo(@kRealValue(142));
+        make.height.equalTo(@kRealValue(110));
     }];
     
     [self.managerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).offset(kRealValue(15));
         make.top.equalTo(self.transferView.mas_bottom).offset(kRealValue(10));
         make.centerX.equalTo(self.view);
-        make.height.equalTo(@kRealValue(142));
+        make.height.equalTo(@kRealValue(110));
     }];
     
     CGFloat bottomButtonBottomMargin = kDevice_Is_iPhoneX ? kiPhoneXSafeAreaBottomMagin : kRealValue(15);

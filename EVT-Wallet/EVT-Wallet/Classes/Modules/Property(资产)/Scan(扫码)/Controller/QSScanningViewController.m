@@ -55,6 +55,7 @@
                                     shoukuanVC.sybId = scanModel.value;
                                 }
                             }
+                            shoukuanVC.hidesBottomBarWhenPushed = YES;
                             [self pushRemoveSelfToViewController:shoukuanVC animated:YES];
                         }
                     }
@@ -68,6 +69,7 @@
                             QSScanAddress *addressModel = modelList[0];
                             QSPayAmountViewController *payAmount = [[QSPayAmountViewController alloc] init];
                             payAmount.address = addressModel.value;
+                            payAmount.hidesBottomBarWhenPushed = YES;
                             [weakSelf pushRemoveSelfToViewController:payAmount animated:YES];
                         }
                     }
@@ -103,6 +105,7 @@
                 QSPayAmountViewController *payAmount = [[QSPayAmountViewController alloc] init];
                 QSScanAddress *addressModel = modelList[0];
                 payAmount.address = addressModel.value;
+                payAmount.hidesBottomBarWhenPushed = YES;
                 [weakSelf pushRemoveSelfToViewController:payAmount animated:YES];
             }
         }];
@@ -131,6 +134,7 @@
                         shoukuanVC.sybId = scanModel.value;
                     }
                 }
+                shoukuanVC.hidesBottomBarWhenPushed = YES;
                 [weakSelf pushRemoveSelfToViewController:shoukuanVC animated:YES];
             }
         }];
