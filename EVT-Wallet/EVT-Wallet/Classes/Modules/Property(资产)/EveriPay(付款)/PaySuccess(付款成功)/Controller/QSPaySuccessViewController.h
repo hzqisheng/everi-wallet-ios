@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QSPaySuccessViewController : QSBaseViewController
 
+@property (nonatomic, copy) NSString *transactionId;
+
 @end
 
 NS_ASSUME_NONNULL_END

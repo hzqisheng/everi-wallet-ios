@@ -706,6 +706,29 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
                     }];
 }
 
+- (void)getTransactionDetailById:(NSString *)transactionId
+               andCompeleteBlock:(void(^)(NSInteger statusCode, NSString *transactionNumber))block {
+    NSString *jsString = [NSString stringWithFormat:@"getTransactionDetailById('%@')",transactionId];
+    [self excuteRequestWithMethodName:@"getTransactionDetailById"
+                             jsString:jsString
+                    completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
+                        NSString *transactionNumber;
+                        if (statusCode == kResponseSuccessCode) {
+                            if ([[responseDic allKeys] containsObject:@"transaction"]) {
+                                NSDictionary *transactionDic = responseDic[@"transaction"];
+                                if ([[transactionDic allKeys] containsObject:@"actions"]) {
+                                    NSArray *actions = transactionDic[@"actions"];
+                                    if (actions.count) {
+                                        NSDictionary *actionDic = actions.firstObject;
+                                        transactionNumber = actionDic[@"data"][@"number"];
+                                    }
+                                }
+                            }
+                        }
+                        block(statusCode,transactionNumber);
+                    }];
+}
+
 #pragma mark - **************** Private Methods
 - (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString
 {

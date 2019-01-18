@@ -33,8 +33,8 @@
     [amountView addSubview:successImageView];
     
     //amountLabel
-    
-    _amountLabel = [UILabel labelWithName:QSLocalizedString(@"qs_transaction_success_title") font:[UIFont qs_fontOfSize14] textColor:[UIColor qs_colorBlack333333] textAlignment:NSTextAlignmentCenter];
+    //QSLocalizedString(@"qs_transaction_success_title")
+    _amountLabel = [UILabel labelWithName:nil font:[UIFont qs_fontOfSize14] textColor:[UIColor qs_colorBlack333333] textAlignment:NSTextAlignmentCenter];
     _amountLabel.frame = CGRectMake(kRealValue(10), successImageView.maxY + kRealValue(22), amountView.width - kRealValue(20), kRealValue(16));
     [amountView addSubview:_amountLabel];
     
@@ -48,6 +48,23 @@
                                           [self.navigationController popToRootViewControllerAnimated:YES];
                                       }];
     [self.view addSubview:buttonView];
+    
+    [[QSEveriApiWebViewController sharedWebView] getTransactionDetailById:self.transactionId andCompeleteBlock:^(NSInteger statusCode, NSString * _Nonnull transactionNumber) {
+        @strongify(self);
+        if (statusCode == kResponseSuccessCode) {
+            NSArray *transactionNumberList = [transactionNumber componentsSeparatedByString:@" "];
+            if (transactionNumberList.count == 2) {
+                NSString *symId = transactionNumberList[1];
+                NSRange range = [symId rangeOfString:@"S#"];
+                symId = [symId substringWithRange:NSMakeRange(range.location + range.length, symId.length - range.length)];
+                [[QSEveriApiWebViewController sharedWebView] getFungibleSymbolDetailWithSymId:symId andCompeleteBlock:^(NSInteger statusCode, QSFungibleSymbol * _Nonnull fungibleSymbol) {
+                    if (statusCode == kResponseSuccessCode) {
+                        self.amountLabel.text = [NSString stringWithFormat:@"-%@ %@",transactionNumberList[0],fungibleSymbol.sym_name];
+                    }
+                }];
+            }
+        }
+    }];
 }
 
 @end

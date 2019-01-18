@@ -26,7 +26,7 @@
     [self.maxPayAmountTipsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.contentView);
         make.left.equalTo(self.contentView).offset(kRealValue(24));
-        make.width.lessThanOrEqualTo(@kRealValue(100));
+        make.width.lessThanOrEqualTo(@kRealValue(140));
     }];
     
     [self.maxPayAmountTextField mas_makeConstraints:^(MASConstraintMaker *make) {

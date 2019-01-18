@@ -255,6 +255,12 @@ typedef void(^QSEveriApiWebViewPrivateKeyBlock)(NSInteger statusCode, NSDictiona
 - (void)changeNetworkByHost:(NSString *)host
           andCompeleteBlock:(void(^)(NSInteger statusCode))block;
 
+/**
+ * @brief getTransactionDetail
+ */
+- (void)getTransactionDetailById:(NSString *)transactionId
+               andCompeleteBlock:(void(^)(NSInteger statusCode, NSString *transactionNumber))block;
+
 @end
 
 @interface QSEveriApiWebViewController : QSWebViewViewController<QSEveriApiProtocol>

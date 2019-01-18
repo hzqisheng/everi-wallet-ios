@@ -132,6 +132,7 @@ typedef NS_ENUM(NSUInteger, QSEveriPayCodeCellType) {
             && status.transactionId.length) {
             if (!weakSelf.isPushPaySuccessVC) {
                 QSPaySuccessViewController *success = [[QSPaySuccessViewController alloc] init];
+                success.transactionId = status.transactionId;
                 [weakSelf pushRemoveSelfToViewController:success animated:YES];
                 weakSelf.isPushPaySuccessVC = YES;
             }
