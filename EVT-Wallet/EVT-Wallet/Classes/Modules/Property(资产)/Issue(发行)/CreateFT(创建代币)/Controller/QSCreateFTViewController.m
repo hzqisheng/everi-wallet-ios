@@ -14,6 +14,7 @@
 #import "QSCreateFTIconItem.h"
 #import "QSCreateFTAlertItem.h"
 #import "QSAuthorizers.h"
+#import "QSIssueFTNFTHelpPopupView.h"
 
 @interface QSCreateFTViewController ()
 
@@ -28,6 +29,8 @@
 @property (nonatomic, strong) UIImage *IconImage;
 @property (nonatomic, assign) NSInteger permissions;
 
+@property (nonatomic, weak) QSIssueFTNFTHelpPopupView *popupView;
+
 @end
 
 @implementation QSCreateFTViewController
@@ -39,6 +42,9 @@
     [self.view addSubview:self.tableView];
     self.tableView.height = kScreenHeight - kNavgationBarHeight - kRealValue(60) - self.submitButton.height - kiPhoneXSafeAreaBottomMagin;
     self.tableView.showsVerticalScrollIndicator = NO;
+    
+    UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_chuangjianyu_help"] target:self action:@selector(rightBarItemClicked)];
+    self.navigationItem.rightBarButtonItem = rightBarItem;
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
@@ -124,7 +130,7 @@
     return @[@[tokenItem,nameItem,assetItem,circulationItem,precisionItem,iconItem,alertItem]];
 }
 
-#pragma mark - **************** Private Methods
+#pragma mark - **************** Event
 - (void)bottomButtonClicked {
     if (!self.shortName.length) {
         [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_select_ft_token_placeholde")];
@@ -195,6 +201,26 @@
             [QSAppKeyWindow hideHud];
         }
     }];
+}
+
+- (void)rightBarItemClicked {
+    NSArray *titleList = @[QSLocalizedString(@"qs_create_ft_issueFTs_help_title"),QSLocalizedString(@"qs_create_ft_symbol_help_title"),QSLocalizedString(@"qs_create_ft_asset_number_help_title"),QSLocalizedString(@"qs_create_ft_total_supply_help_title"),QSLocalizedString(@"qs_create_ft_decimals_help_title"),QSLocalizedString(@"qs_create_ft_icon_help_title")];
+    NSArray *contentList = @[QSLocalizedString(@"qs_create_ft_issueFTs_help_content"),QSLocalizedString(@"qs_create_ft_symbol_help_content"),QSLocalizedString(@"qs_create_ft_asset_number_help_content"),QSLocalizedString(@"qs_create_ft_total_supply_help_content"),QSLocalizedString(@"qs_create_ft_decimals_help_content"),QSLocalizedString(@"qs_create_ft_icon_help_content")];
+    
+    NSMutableArray *dataArray = [NSMutableArray array];
+    for (int i = 0; i < titleList.count; i++) {
+        NSString *title = titleList[i];
+        NSString *content = contentList[i];
+        QSIssueFTNFTHelpModel *model = [[QSIssueFTNFTHelpModel alloc] initWithTitle:title content:content];
+        [dataArray addObject:model];
+    }
+    
+    if (self.popupView) {
+        [self.popupView dissmiss];
+    } else {
+        self.popupView = [QSIssueFTNFTHelpPopupView showInView:self.view
+                                                     dataArray:[dataArray copy]];
+    }
 }
 
 #pragma mark - **************** UITableViewDelegate

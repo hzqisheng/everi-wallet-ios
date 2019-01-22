@@ -38,6 +38,10 @@
     return [UIColor colorWithHexString:@"#BBBBBB"];
 }
 
++ (UIColor *)qs_colorGrayB0B0B0 {
+    return [UIColor colorWithHexString:@"#B0B0B0"];
+}
+
 + (UIColor *)qs_colorGrayCCCCCC {
     return [UIColor colorWithHexString:@"#CCCCCC"];
 }

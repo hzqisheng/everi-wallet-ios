@@ -50,9 +50,47 @@ UIScrollViewDelegate>
     [self setupScrollView];
     [self setupHeaderView];
     [self setupChildViewControllers];
+    
+    [self checkVersion];
 }
 
 #pragma mark - **************** Initials
+- (void)checkVersion {
+    [[QSEveriApiWebViewController sharedWebView] getAPPVersionAndCompeleteBlock:^(NSInteger statusCode, NSString * _Nonnull version, BOOL isForceUpdate) {
+        if ([version isEqualToString:kCurrentVersion]) {
+            return;
+        }
+        
+        NSString *title;
+        NSString *confirmTitle;
+        NSString *cancelTitle;
+        if ([NSBundle isChineseLanguage]) {
+            title = [NSString stringWithFormat:@"系统检测到当前的最新版本为%@，是否下载更新",version];
+            confirmTitle = @"前往下载";
+            cancelTitle = @"取消";
+        } else {
+            title = [NSString stringWithFormat:@"The latest version is %@ and whether to download the update or not？",version];
+            confirmTitle = @"update";
+            cancelTitle = @"cancel";
+        }
+        if (isForceUpdate) {
+            [UIViewController showAlertViewWithTitle:title message:nil confirmTitle:confirmTitle confirmAction:^{
+                QSOpenURL(kShareUrlString);
+            }];
+            return;
+        }
+        if ([version isEqualToString:[QSUserDefaults objectForKey:@"kAppVersionKey"]]) {
+            return;
+        }
+        [UIViewController showAlertViewWithTitle:title message:nil confirmTitle:confirmTitle cancelTitle:cancelTitle confirmAction:^{
+            QSOpenURL(kShareUrlString);
+            [QSUserDefaults setObject:version forKey:@"kAppVersionKey"];
+        } cancelAction:^{
+            [QSUserDefaults setObject:version forKey:@"kAppVersionKey"];
+        }];
+    }];
+}
+
 - (void)setupHeaderView {
     [self.headerView addSubview:self.swipeView];
     [self.headerView addSubview:self.shortcutView];
@@ -131,7 +169,6 @@ UIScrollViewDelegate>
     if (cell == nil) {
         cell = [[QSPropertyHomeSwipeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     }
-//    cell.cardImageView.image = [UIImage imageNamed:@"banner1"];
     return cell;
 }
 

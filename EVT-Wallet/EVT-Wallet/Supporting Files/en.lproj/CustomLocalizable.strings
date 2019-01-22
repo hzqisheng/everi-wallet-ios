@@ -6,6 +6,9 @@
   Copyright © 2018 HANGZHOU QISHENG TECHNOLOGY CO.LTD. All rights reserved.
 */
 
+//version
+"qs_lastet_version_toast" = "Already The Latest Version";
+
 //Refresh
 "qs_refreshHeaderIdleText"       = "Pull down to refresh";
 "qs_refreshHeaderPullingText"    = "Release to refresh";
@@ -55,12 +58,15 @@
 "qs_pass_createNFTS_transfer_content"  = "Only me and the holder can transfer";
 "qs_pass_createNFTS_manager_content"   = "Only I can manage";
 "qs_pass_createNFTS_batch_topView_placeholder"   = "You can manually enter the name of the license here, with the key enter segmentation; If you need to issue multiple passes in batches quickly, you can use the batch generation function";
-"qs_pass_createNFTS_batch_topView_address"   = "Amount Of Address：";
-"qs_pass_createNFTS_batch_topView_label"     = "Batch generation of NFTS names";
-"qs_pass_createNFTS_batch_centerView_placeholde"  = "Please enter the batch generation of NFTS names";
+"qs_pass_createNFTS_batch_topView_address"       = "Amount Of Address：";
+"qs_pass_createNFTS_batch_topView_label"         = "Batch generation of NFTS names";
+"qs_pass_createNFTS_batch_centerView_placeholde" = "Please enter the batch generation of NFTS names";
 "qs_pass_createNFTS_batch_centerView_btn"     = "Batch generation";
 "qs_pass_createNFTS_batch_count"              = "Count";
 "qs_pass_createNFTS_batch_no_nft_title_toast" = "Please enter the name of the NFT";
+
+"qs_pass_domain_help_title"                      = "Domain";
+"qs_pass_domain_help_content"                    = "Domain names consist of up to 21 specified characters [0-9，A-Z，a-z.-]， and Non-Fungible Tokens are organized and managed by setting authoritiy management in domain.";
 
 //Manage
 "qs_manage_massTransfer_title"    = "Mass transfer";
@@ -122,6 +128,19 @@
 "qs_select_ft_permissions_content2"    = "Advanced Settings";
 "qs_cancel"                            = "Cancel";
 "qs_select_ft_no_icon_toast"           = "Please select icon";
+
+"qs_create_ft_issueFTs_help_title"       = "Issue FTs";
+"qs_create_ft_issueFTs_help_content"     = "Different with Ethereum's writing smart contract, EveriWallet can quickly create a Token by setting symbols, amounts, Icons, and so on through visual forms.";
+"qs_create_ft_symbol_help_title"         = "Symbol";
+"qs_create_ft_symbol_help_content"       = "Symbol refers to the name of Token, which is defined as up to 7 uppercase letters.For example, EVT, PEVT";
+"qs_create_ft_asset_number_help_title"   = "Asset Number";
+"qs_create_ft_asset_number_help_content" = "The unique number to Identity a Fungible Token.In EveriWallet, #1 means EVT and #2 means PEVT.";
+"qs_create_ft_total_supply_help_title"   = "Total Supply";
+"qs_create_ft_total_supply_help_content" = "Total Supply refers to the total number of a Token.";
+"qs_create_ft_decimals_help_title"       = "Decimals";
+"qs_create_ft_decimals_help_content"     = "You can enter a number from 0-18, for example, enter 2, which means the token can be accurate to 0.01.";
+"qs_create_ft_icon_help_title"           = "Icon";
+"qs_create_ft_icon_help_content"         = "For convinient, EveriWallet will store Token's Icon on everiToken.It will cost part of the service fee(EVT/PEVT) and we recommend you use 180x180 pixel pictures.";
 
 //Scan
 "qs_scan_nav_title"                  = "QR code";

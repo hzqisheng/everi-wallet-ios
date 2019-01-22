@@ -11,7 +11,6 @@
 #import "QSAuthorizers.h"
 #import "QSScanGetAddress.h"
 #import "QSScanAddress.h"
-#import "NSBundle+QSLanguageUtils.h"
 
 #define kResponseArrayKey @"data"
 #define kResponseStringKey @"data"
@@ -726,6 +725,21 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
                             }
                         }
                         block(statusCode,transactionNumber);
+                    }];
+}
+
+- (void)getAPPVersionAndCompeleteBlock:(void (^)(NSInteger, NSString * _Nonnull, BOOL))block {
+    NSString *jsString = [NSString stringWithFormat:@"getAPPVersion()"];
+    [self excuteRequestWithMethodName:@"getAPPVersion"
+                             jsString:jsString
+                    completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
+                        NSString *version;
+                        NSNumber *isForceUpdate;
+                        if (statusCode == kResponseSuccessCode) {
+                            version = responseDic[@"iOSVersion"];
+                            isForceUpdate = responseDic[@"isiOSForceUpdate"];
+                        }
+                        block(statusCode, version, isForceUpdate.boolValue);
                     }];
 }
 

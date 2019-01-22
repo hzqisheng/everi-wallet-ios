@@ -11,7 +11,6 @@
 
 #import "QSLanguageSettingCell.h"
 #import "QSSettingLanguageItem.h"
-#import "NSBundle+QSLanguageUtils.h"
 
 typedef NS_ENUM(NSUInteger, QSLanguageSettingType) {
     QSLanguageSettingTypeEnglish,

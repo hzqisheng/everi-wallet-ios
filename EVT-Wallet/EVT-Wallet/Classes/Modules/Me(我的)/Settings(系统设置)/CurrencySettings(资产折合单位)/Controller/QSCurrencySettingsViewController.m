@@ -7,7 +7,6 @@
 //
 
 #import "QSCurrencySettingsViewController.h"
-#import "NSBundle+QSLanguageUtils.h"
 
 #import "QSLanguageSettingCell.h"
 #import "QSSettingLanguageItem.h"

@@ -17,6 +17,8 @@
 /** color & font */
 #import "UIColor+QSEVTColor.h"
 #import "UIFont+QSEVTFont.h"
+#import "NSBundle+QSLanguageUtils.h"
+#import "QSLanguageConfigHelper.h"
 
 /** macro */
 #import "UtilsMacro.h"

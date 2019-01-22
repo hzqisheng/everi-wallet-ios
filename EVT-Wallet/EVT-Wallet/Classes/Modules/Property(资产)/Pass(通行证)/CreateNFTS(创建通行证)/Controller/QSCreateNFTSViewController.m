@@ -12,7 +12,7 @@
 #import "QSCreateNFTSIssueView.h"
 #import "QSCreateNFTSTransferView.h"
 #import "QSCreateNFTSManagerView.h"
-
+#import "QSIssueFTNFTHelpPopupView.h"
 
 @interface QSCreateNFTSViewController ()
 
@@ -23,6 +23,7 @@
 @property (nonatomic, strong) QSCreateNFTSIssueView *issueView;
 @property (nonatomic, strong) QSCreateNFTSTransferView *transferView;
 @property (nonatomic, strong) QSCreateNFTSManagerView *managerView;
+@property (nonatomic, weak) QSIssueFTNFTHelpPopupView *popupView;
 
 @property (nonatomic, strong) UIButton *submitButton;
 
@@ -34,12 +35,9 @@
     [super viewDidLoad];
     [self setupNavgationBarTitle:QSLocalizedString(@"qs_pass_mypass_btn_title")];
     UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_chuangjianyu_help"] target:self action:@selector(rightBarItemClicked)];
-//    self.navigationItem.rightBarButtonItem = rightBarItem;
-    [self loadUI];
-}
-
-- (void)rightBarItemClicked {
+    self.navigationItem.rightBarButtonItem = rightBarItem;
     
+    [self loadUI];
 }
 
 - (void)loadUI {
@@ -93,6 +91,16 @@
 }
 
 #pragma mark - **************** Event Response
+- (void)rightBarItemClicked {
+    if (self.popupView) {
+        [self.popupView dissmiss];
+    } else {
+        QSIssueFTNFTHelpModel *domain = [[QSIssueFTNFTHelpModel alloc] initWithTitle:QSLocalizedString(@"qs_pass_domain_help_title") content:QSLocalizedString(@"qs_pass_domain_help_content")];
+        self.popupView = [QSIssueFTNFTHelpPopupView showInView:self.view
+                                                     dataArray:@[domain]];
+    }
+}
+
 - (void)bottomButtonClicked {
     QSNFT *NFTModel = [[QSNFT alloc] init];
     NFTModel.name = self.topTextField.text;

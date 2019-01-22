@@ -261,6 +261,11 @@ typedef void(^QSEveriApiWebViewPrivateKeyBlock)(NSInteger statusCode, NSDictiona
 - (void)getTransactionDetailById:(NSString *)transactionId
                andCompeleteBlock:(void(^)(NSInteger statusCode, NSString *transactionNumber))block;
 
+/**
+ * @brief getAPPVersion
+ */
+- (void)getAPPVersionAndCompeleteBlock:(void(^)(NSInteger statusCode, NSString *version, BOOL isForceUpdate))block;
+
 @end
 
 @interface QSEveriApiWebViewController : QSWebViewViewController<QSEveriApiProtocol>

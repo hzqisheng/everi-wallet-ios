@@ -6,6 +6,8 @@
   Copyright © 2018 HANGZHOU QISHENG TECHNOLOGY CO.LTD. All rights reserved.
 */
 
+//version
+"qs_lastet_version_toast" = "当前版本已经是最新版本";
 
 //Refresh
 "qs_refreshHeaderIdleText"       = "下拉可以刷新";
@@ -49,20 +51,23 @@
 "qs_issue_password_placeholder"           = "请输入密码";
 
 //Pass
-"qs_pass_mypass_no_pass_title"         = "暂无通证";
-"qs_pass_mypass_navi_title"            = "我的通证";
-"qs_pass_mypass_btn_title"             = "创建通证";
-"qs_pass_createNFTS_yu_title"          = "域";
-"qs_pass_createNFTS_yu_placeholder"    = "请输入域名";
-"qs_pass_createNFTS_transfer_content"  = "只有我和持有者能转移";
-"qs_pass_createNFTS_manager_content"   = "只有我能管理";
+"qs_pass_mypass_no_pass_title"                   = "暂无通证";
+"qs_pass_mypass_navi_title"                      = "我的通证";
+"qs_pass_mypass_btn_title"                       = "创建通证";
+"qs_pass_createNFTS_yu_title"                    = "域";
+"qs_pass_createNFTS_yu_placeholder"              = "请输入域名";
+"qs_pass_createNFTS_transfer_content"            = "只有我和持有者能转移";
+"qs_pass_createNFTS_manager_content"             = "只有我能管理";
 "qs_pass_createNFTS_batch_topView_placeholder"   = "您可以在此动手输入通证名称，用回车键分割；如果需要快捷地批量发行多个通证，可使用批量生成功能";
-"qs_pass_createNFTS_batch_topView_address"   = "地址个数：";
-"qs_pass_createNFTS_batch_topView_label"     = "批量生成通证名称";
-"qs_pass_createNFTS_batch_centerView_placeholde"   = "请输入批量通证名称";
-"qs_pass_createNFTS_batch_centerView_btn"     = "批量生成";
-"qs_pass_createNFTS_batch_count"              = "计数";
-"qs_pass_createNFTS_batch_no_nft_title_toast" = "请输入通证名称";
+"qs_pass_createNFTS_batch_topView_address"       = "地址个数：";
+"qs_pass_createNFTS_batch_topView_label"         = "批量生成通证名称";
+"qs_pass_createNFTS_batch_centerView_placeholde" = "请输入批量通证名称";
+"qs_pass_createNFTS_batch_centerView_btn"        = "批量生成";
+"qs_pass_createNFTS_batch_count"                 = "计数";
+"qs_pass_createNFTS_batch_no_nft_title_toast"    = "请输入通证名称";
+
+"qs_pass_domain_help_title"                      = "域";
+"qs_pass_domain_help_content"                    = "域名称由最大21个指定字符[0-9，A-Z，a-z.-]组成，同时通过设置相应权限来组织和管理通证。";
 
 
 //Manage
@@ -125,6 +130,19 @@
 "qs_select_ft_permissions_content2"    = "高级设置";
 "qs_cancel"                            = "取消";
 "qs_select_ft_no_icon_toast"           = "请选择图标";
+
+"qs_create_ft_issueFTs_help_title"       = "发行代币";
+"qs_create_ft_issueFTs_help_content"     = "不同于以太坊通过编写合约创建代币，EveriWallet通过可视化的表单，设置好符号、总量、图标等既可以快速创建一种Token。";
+"qs_create_ft_symbol_help_title"         = "代币简称";
+"qs_create_ft_symbol_help_content"       = "代币简称指代币的缩写，这里我们定义为最多7个大写英文字母。例如：EVT、PEVT";
+"qs_create_ft_asset_number_help_title"   = "资产编号";
+"qs_create_ft_asset_number_help_content" = "该代币的唯一标识正整数，不可重复。系统目前默认1 为 EVT，2为 PEVT";
+"qs_create_ft_total_supply_help_title"   = "发行总量";
+"qs_create_ft_total_supply_help_content" = "发行总量即可发行的最大数量。";
+"qs_create_ft_decimals_help_title"       = "精度";
+"qs_create_ft_decimals_help_content"     = "您可输入0-18的数字，例如输入2,则代表该代币可以精确到0.01";
+"qs_create_ft_icon_help_title"           = "图标(建议180*180px)";
+"qs_create_ft_icon_help_content"         = "Token的图标将存储在everiToken上，这会消耗部分手续费（EVT/PEVT)，推荐使用180x180像素的图片。";
 
 //Scan
 "qs_scan_nav_title"                  = "二维码";

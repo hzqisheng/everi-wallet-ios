@@ -10,8 +10,6 @@
 #import "QSMainViewController.h"
 #import "QSCreateIdentityHomeViewController.h"
 #import "QSLunchImageViewController.h"
-#import "QSLanguageConfigHelper.h"
-#import "NSBundle+QSLanguageUtils.h"
 
 @interface AppDelegate ()
 
