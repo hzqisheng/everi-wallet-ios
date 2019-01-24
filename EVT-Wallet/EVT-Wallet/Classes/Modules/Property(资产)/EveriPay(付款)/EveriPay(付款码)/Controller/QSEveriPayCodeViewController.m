@@ -155,15 +155,16 @@ typedef NS_ENUM(NSUInteger, QSEveriPayCodeCellType) {
     }
 
     WeakSelf(weakSelf);
-    [QSSelectCurrencyView showSelectCurrencyViewWithFTList:array andSelectFTBlock:^(QSFT * _Nonnull FTModel) {
-        [[QSEveriApiWebViewController sharedWebView] stopEVTLinkQrImageReload];
-        NSIndexPath *index = [NSIndexPath indexPathForRow:2 inSection:1];
-        QSQRCodeScanItem *selectedItem = (QSQRCodeScanItem *)[self itemInIndexPath:index];
-        selectedItem.FTModel = FTModel;
-        weakSelf.selectFTModel = FTModel;
-        [weakSelf.tableView reloadData];
-        [weakSelf getlinkId];
-    }];
+    [QSSelectCurrencyView showSelectCurrencyViewWithFTList:array
+                                            seletedSymName:self.selectFTModel.sym_name
+                                          andSelectFTBlock:^(QSFT * _Nonnull FTModel) {
+                                              NSIndexPath *index = [NSIndexPath indexPathForRow:2 inSection:1];
+                                              QSQRCodeScanItem *selectedItem = (QSQRCodeScanItem *)[self itemInIndexPath:index];
+                                              selectedItem.FTModel = FTModel;
+                                              weakSelf.selectFTModel = FTModel;
+                                              [weakSelf.tableView reloadData];
+                                              [weakSelf getlinkId];
+                                          }];
 }
 
 #pragma mark - **************** Event Response

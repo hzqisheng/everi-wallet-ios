@@ -106,10 +106,8 @@ typedef NS_ENUM(NSUInteger, QSEditWalletsType) {
         QSImportWalletByMnemonicCodeViewController *importWallet = [[QSImportWalletByMnemonicCodeViewController alloc] init];
         [self.navigationController pushViewController:importWallet animated:YES];
     } else if (item.cellTag == QSEditWalletsTypeExport) {
-        [QSPasswordHelper verificationPasswordByPrivateKey:QSPrivateKey andSuccessBlock:^{
-            QSExportMnemonicViewController *exportMnemonic = [[QSExportMnemonicViewController alloc] init];
-            [self.navigationController pushViewController:exportMnemonic animated:YES];
-        }];
+        QSExportMnemonicViewController *exportMnemonic = [[QSExportMnemonicViewController alloc] init];
+        [self.navigationController pushViewController:exportMnemonic animated:YES];
     } else if (item.cellTag == QSEditWalletsTypeAdd) {
         QSAddWalletViewController *addWallet = [[QSAddWalletViewController alloc] init];
         [self.navigationController pushViewController:addWallet animated:YES];

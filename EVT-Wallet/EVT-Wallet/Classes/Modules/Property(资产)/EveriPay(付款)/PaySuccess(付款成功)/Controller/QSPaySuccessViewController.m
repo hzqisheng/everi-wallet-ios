@@ -69,12 +69,23 @@
                 symId = [symId substringWithRange:NSMakeRange(range.location + range.length, symId.length - range.length)];
                 [[QSEveriApiWebViewController sharedWebView] getFungibleSymbolDetailWithSymId:symId andCompeleteBlock:^(NSInteger statusCode, QSFungibleSymbol * _Nonnull fungibleSymbol) {
                     if (statusCode == kResponseSuccessCode) {
-                        self.amountLabel.text = [NSString stringWithFormat:@"-%@ %@",transactionNumberList[0],fungibleSymbol.sym_name];
+                        NSArray *symArray = [fungibleSymbol.sym componentsSeparatedByString:@","];
+                        NSString *jingDuStr = symArray[0];
+                        NSString *resultMoney = [self handleMoney:transactionNumberList[0] byPrecision:jingDuStr];
+                        self.amountLabel.text = [NSString stringWithFormat:@"-%@ %@",resultMoney,fungibleSymbol.sym_name];
                     }
                 }];
             }
         }
     }];
+}
+
+- (NSString *)handleMoney:(NSString *)money byPrecision:(NSString *)precision {
+    NSString *floatString = [NSString stringWithFormat:@"%f",money.floatValue];
+    NSRange range = [floatString rangeOfString:@"."];
+    NSInteger subStringIndex = range.length + range.location + precision.integerValue;
+    NSString *result = [floatString substringToIndex:subStringIndex];
+    return result;
 }
 
 - (void)back {

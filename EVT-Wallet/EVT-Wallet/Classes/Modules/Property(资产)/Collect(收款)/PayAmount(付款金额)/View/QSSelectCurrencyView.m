@@ -21,6 +21,8 @@ UITableViewDataSource>
 @property (nonatomic, strong) UIButton *confirmButton;
 @property (nonatomic, strong) UITableView *tableView;
 
+@property (nonatomic, copy) NSString *seletedSymName;
+
 @end
 
 static NSString *kSelectCurrencyCellID = @"RRProductParametersCellID";
@@ -32,10 +34,13 @@ static NSString *kSelectCurrencyCellID = @"RRProductParametersCellID";
     [view show];
 }
 
-+ (void)showSelectCurrencyViewWithFTList:(NSArray *)FTList andSelectFTBlock:(void (^)(QSFT * _Nonnull))block {
++ (void)showSelectCurrencyViewWithFTList:(NSArray *)FTList
+                          seletedSymName:(NSString *)seletedSymName
+                        andSelectFTBlock:(void (^)(QSFT * _Nonnull))block {
     QSSelectCurrencyView *view = [[QSSelectCurrencyView alloc] initWithFrame:kScreenBounds];
     view.selectCurrencyViewSelectFTBlock = block;
     view.dataList = FTList;
+    view.seletedSymName = seletedSymName;
     [view show];
 }
 
@@ -90,7 +95,14 @@ static NSString *kSelectCurrencyCellID = @"RRProductParametersCellID";
 #pragma mark - **************** UITableViewDataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     QSSelectCurrencyCell *cell = [tableView dequeueReusableCellWithIdentifier:kSelectCurrencyCellID forIndexPath:indexPath];
-    cell.FTModel = self.dataList[indexPath.row];
+    QSFT *FTModel = self.dataList[indexPath.row];
+    cell.FTModel = FTModel;
+    if ([FTModel.sym_name isEqualToString:self.seletedSymName]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
     return cell;
 }
 

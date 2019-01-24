@@ -21,7 +21,9 @@ typedef void(^SelectCurrencyViewSelectFTBlock)(QSFT *FTModel);
 
 @property (nonatomic, strong) NSArray *dataList;
 
-+ (void)showSelectCurrencyViewWithFTList:(NSArray *)FTList andSelectFTBlock:(void(^)(QSFT *FTModel))block;
++ (void)showSelectCurrencyViewWithFTList:(NSArray *)FTList
+                          seletedSymName:(NSString *)seletedSymName
+                        andSelectFTBlock:(void(^)(QSFT *FTModel))block;
 
 @end
 

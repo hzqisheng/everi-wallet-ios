@@ -92,6 +92,7 @@
     WeakSelf(weakSelf);
     [[QSEveriApiWebViewController sharedWebView] pushTransactionNFTWithDomain:self.NFTModel.name andNameArr:nameArray andOwner:self.bottomView.addressLabel.text AndCompeleteBlock:^(NSInteger statusCode) {
         if (statusCode == kResponseSuccessCode) {
+            [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_pass_createNFTS_batch_success_toast")];
             [weakSelf.navigationController popViewControllerAnimated:YES];
         }
     }];

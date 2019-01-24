@@ -53,6 +53,11 @@ typedef NS_ENUM(NSUInteger, QSPayAmountCellType) {
                                                                   clickedBlock:^
                                       {
                                           @strongify(self);
+                                          if (!self.address.length) {
+                                              [QSAppWindow showAutoHideHudWithText:QSLocalizedString(@"qs_pay_amount_item_address_placeholder")];
+                                              return;
+                                          }
+                                          
                                           if (!self.money.length) {
                                               [QSAppWindow showAutoHideHudWithText:QSLocalizedString(@"qs_pay_amount_item_amount_placeholder")];
                                               return;
@@ -102,19 +107,21 @@ typedef NS_ENUM(NSUInteger, QSPayAmountCellType) {
     if (isCreate == 1) {
         return;
     }
-    [QSSelectCurrencyView showSelectCurrencyViewWithFTList:array andSelectFTBlock:^(QSFT * _Nonnull FTModel) {
-        NSIndexPath *index = [NSIndexPath indexPathForRow:0 inSection:0];
-        QSPayAmountItem *selectedItem = (QSPayAmountItem *)[weakSelf itemInIndexPath:index];
-        selectedItem.FTModel = FTModel;
-        weakSelf.FTModel = FTModel;
-        NSIndexPath *balanceIndex = [NSIndexPath indexPathForRow:1 inSection:0];
-        QSPayAmountItem *BalanceItem = (QSPayAmountItem *)[weakSelf itemInIndexPath:balanceIndex];
-        NSArray *assetList = [FTModel.asset componentsSeparatedByString:@" "];
-        if (assetList.count == 2) {
-            BalanceItem.balance = assetList[0];
-        }
-        [weakSelf.tableView reloadData];
-    }];
+    [QSSelectCurrencyView showSelectCurrencyViewWithFTList:array
+                                            seletedSymName:self.FTModel.sym_name
+                                          andSelectFTBlock:^(QSFT * _Nonnull FTModel) {
+                                              NSIndexPath *index = [NSIndexPath indexPathForRow:0 inSection:0];
+                                              QSPayAmountItem *selectedItem = (QSPayAmountItem *)[weakSelf itemInIndexPath:index];
+                                              selectedItem.FTModel = FTModel;
+                                              weakSelf.FTModel = FTModel;
+                                              NSIndexPath *balanceIndex = [NSIndexPath indexPathForRow:1 inSection:0];
+                                              QSPayAmountItem *BalanceItem = (QSPayAmountItem *)[weakSelf itemInIndexPath:balanceIndex];
+                                              NSArray *assetList = [FTModel.asset componentsSeparatedByString:@" "];
+                                              if (assetList.count == 2) {
+                                                  BalanceItem.balance = assetList[0];
+                                              }
+                                              [weakSelf.tableView reloadData];
+                                          }];
 }
 
 - (void)turnToScanVC {
@@ -141,6 +148,14 @@ typedef NS_ENUM(NSUInteger, QSPayAmountCellType) {
         [weakSelf.tableView reloadData];
     };
     [self.navigationController pushViewController:selectVC animated:YES];
+}
+
+- (NSString *)handleMoney:(NSString *)money byPrecision:(NSString *)precision {
+    NSString *floatString = [NSString stringWithFormat:@"%f",money.floatValue];
+    NSRange range = [floatString rangeOfString:@"."];
+    NSInteger subStringIndex = range.length + range.location + precision.integerValue;
+    NSString *result = [floatString substringToIndex:subStringIndex];
+    return result;
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
@@ -192,7 +207,10 @@ typedef NS_ENUM(NSUInteger, QSPayAmountCellType) {
     amountItem.cellTag = QSPayAmountCellTypeAmount;
     amountItem.keyType = UIKeyboardTypeDecimalPad;
     amountItem.payAmountItemTextBlock = ^(NSString * _Nonnull text) {
-        weakSelf.money = text;
+        NSArray *symArray = [self.FTModel.sym componentsSeparatedByString:@","];
+        NSString *jingDuStr = symArray[0];
+        NSString *resultMoney = [self handleMoney:text byPrecision:jingDuStr];
+        weakSelf.money = resultMoney;
     };
 
     QSPayAmountItem *reamrkItem = [[QSPayAmountItem alloc] init];

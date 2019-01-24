@@ -55,11 +55,11 @@ typedef NS_ENUM(NSUInteger, QSLanguageSettingType) {
 #pragma mark - **************** UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     QSBaseCellItem *item = [self itemInIndexPath:indexPath];
-    [QSAppKeyWindow showIndeterminateHudWithText:QSLocalizedString(@"qs_language_setting_change_toast")];
     if (item.cellTag == QSLanguageSettingTypeEnglish) {
         if (![NSBundle isChineseLanguage]) {
             return;
         }
+        [QSAppKeyWindow showIndeterminateHudWithText:QSLocalizedString(@"qs_language_setting_change_toast")];
         [QSLanguageConfigHelper setSystemLanguageEnglish];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [QSAppKeyWindow hideHud];
@@ -75,6 +75,7 @@ typedef NS_ENUM(NSUInteger, QSLanguageSettingType) {
         if ([NSBundle isChineseLanguage]) {
             return;
         }
+        [QSAppKeyWindow showIndeterminateHudWithText:QSLocalizedString(@"qs_language_setting_change_toast")];
         [QSLanguageConfigHelper setSystemLanguageChinese];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [QSAppKeyWindow hideHud];

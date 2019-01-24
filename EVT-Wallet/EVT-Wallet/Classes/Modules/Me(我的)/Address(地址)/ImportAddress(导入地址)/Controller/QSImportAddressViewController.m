@@ -7,11 +7,14 @@
 //
 
 #import "QSImportAddressViewController.h"
+#import "QSAddress.h"
 
-@interface QSImportAddressViewController ()
+@interface QSImportAddressViewController ()<YYTextViewDelegate>
 
 @property (nonatomic, strong) UIView *importAddressView;
 @property (nonatomic, strong) YYTextView *textView;
+
+@property (nonatomic, assign) BOOL isValidKey;
 
 @end
 
@@ -22,6 +25,7 @@
     [self setupNavgationBarTitle:QSLocalizedString(@"qs_import_address_nav_title")];
     [self setupImportAddressView];
     [self setupBottomButton];
+    self.isValidKey = YES;
 }
 
 - (void)setupImportAddressView {
@@ -57,7 +61,9 @@
     textView.placeholderFont = [UIFont qs_fontOfSize14];
     textView.placeholderText = QSLocalizedString(@"qs_import_address_paste_address_title");
     textView.contentInset = UIEdgeInsetsMake(kRealValue(15), kRealValue(15), 0, -kRealValue(15));
+    textView.delegate = self;
     [importAddressView addSubview:textView];
+    _textView = textView;
 }
 
 - (void)setupBottomButton {
@@ -67,9 +73,47 @@
     [self.view addSubview:bottomButton];
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.textView resignFirstResponder];
+}
+
+- (NSString *)removeSpaceAndNewline:(NSString *)str {
+    NSString *temp = [str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];NSString *text = [temp stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    return text;
+}
+
 #pragma mark - **************** Event Response
 - (void)saveButtonClicked {
     DLog(@"保存");
+    NSArray *addressAllArray = [self.textView.text componentsSeparatedByString:@"\n"];
+    NSMutableArray *addressModelArray = [NSMutableArray array];
+    BOOL isVaild = YES;
+    for (NSString *address in addressAllArray) {
+        if (address.length) {
+            NSString *resultAddress = [self removeSpaceAndNewline:address];
+            NSArray *addressArray = [resultAddress componentsSeparatedByString:@","];
+            if (addressArray.count == 6) {
+                QSAddress *address = [[QSAddress alloc] init];
+                address.type = addressArray[0];
+                address.publicKey = addressArray[1];
+                address.groupName = addressArray[2];
+                address.name = addressArray[3];
+                address.phone = addressArray[4];
+                address.note = addressArray[5];
+                [addressModelArray addObject:address];
+            } else {
+                isVaild = NO;
+                [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_import_address_error_title")];
+            }
+        }
+    }
+    
+    if (isVaild) {
+        for (QSAddress *address in addressModelArray) {
+            [[QSAddressHelper sharedHelper] addAddress:address];
+        }
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 @end

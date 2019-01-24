@@ -52,13 +52,30 @@
     _backupButton.backgroundColor = [UIColor qs_colorBlack313745];
     _backupButton.layer.cornerRadius = 2;
     [self.view addSubview:_backupButton];
+    
+    //skip
+    UIButton *skipButton = [UIButton buttonWithTitle:QSLocalizedString(@"qs_export_mnemonic_code_btn_skip_backup_title") titleColor:[UIColor qs_colorYellowE4B84F] font:[UIFont qs_fontOfSize14] taget:self action:@selector(skipButtonButtonClicked)];
+    skipButton.frame = CGRectMake(kScreenWidth/2 - kBottomButtonWidth/2, _backupButton.maxY + kRealValue(15), kBottomButtonWidth, kBottomButtonHeight);
+    skipButton.backgroundColor = [UIColor qs_colorBlack313745];
+    skipButton.layer.cornerRadius = 2;
+    [self.view addSubview:skipButton];
 }
 
 #pragma mark - **************** Event Response
 - (void)backupButtonClicked {
-    QSExportMnemonicStep2ViewController *step2 = [[QSExportMnemonicStep2ViewController alloc] init];
-    step2.isFirstCreate = self.isFirstCreate;
-    [self.navigationController pushViewController:step2 animated:YES];
+    [QSPasswordHelper verificationPasswordByPrivateKey:QSPrivateKey andSuccessBlock:^{
+        QSExportMnemonicStep2ViewController *step2 = [[QSExportMnemonicStep2ViewController alloc] init];
+        step2.isFirstCreate = self.isFirstCreate;
+        [self.navigationController pushViewController:step2 animated:YES];
+    }];
+}
+
+- (void)skipButtonButtonClicked {
+    if (self.isFirstCreate) {
+        [[QSWalletHelper sharedHelper] turnToHomeViewController];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 @end

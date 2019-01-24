@@ -54,7 +54,9 @@
 - (void)configureCellWithItem:(QSBaseCellItem *)item {
     self.item = item;
     QSPayAmountItem *payItem = (QSPayAmountItem *)item;
-    self.addressSelectLabel.text = payItem.address;
+    if (payItem.address.length) {
+        self.addressSelectLabel.text = payItem.address;
+    }
 }
 
 #pragma mark - **************** Event Response

@@ -32,8 +32,9 @@
     NSArray *dataArray = [[QSWalletHelper sharedHelper] getAllNodes];
     [self.dataArray addObjectsFromArray:[QSNodeSettingItem mj_objectArrayWithKeyValuesArray:dataArray]];
     
+    NSString *selectedNode = [QSWalletHelper sharedHelper].currentNode;
     for (QSNodeSettingItem *item in self.dataArray) {
-        if ([item.title isEqualToString:[QSWalletHelper sharedHelper].currentNode]) {
+        if ([item.title isEqualToString:selectedNode]) {
             item.isSelected = 1;
         }
     }

@@ -64,14 +64,19 @@
 "qs_pass_createNFTS_batch_centerView_btn"     = "Batch generation";
 "qs_pass_createNFTS_batch_count"              = "Count";
 "qs_pass_createNFTS_batch_no_nft_title_toast" = "Please enter the name of the NFT";
+"qs_pass_createNFTS_batch_success_toast"      = "Issue Success";
+
 
 "qs_pass_domain_help_title"                      = "Domain";
 "qs_pass_domain_help_content"                    = "Domain names consist of up to 21 specified characters [0-9，A-Z，a-z.-]， and Non-Fungible Tokens are organized and managed by setting authoritiy management in domain.";
 
+"qs_pass_mypass_create_success_toast"            = "Create Success";
+
+
 //Manage
-"qs_manage_massTransfer_title"    = "Mass transfer";
-"qs_manage_mineNFTs_title"        = "My NFts";
-"qs_manage_mineGroup_title"       = "My group";
+"qs_manage_massTransfer_title"    = "Bulk Transfer";
+"qs_manage_mineNFTs_title"        = "My NFTs";
+"qs_manage_mineGroup_title"       = "My Group";
 "qs_manage_createGroup_title"     = "Create group";
 "qs_manage_createGroup_managers"  = "Manager";
 "qs_manage_createGroup_manager_State1"  = "I'm in charge";
@@ -105,6 +110,9 @@
 "qs_switch_Switch_purse"                          = "icon_home_tabbar_qihuanqianbao_english";
 
 //SelectFT
+"qs_select_ft_total_ft_titlte"         = "Total";
+"qs_select_ft_remaining_ft_titlte"     = "Remaining";
+
 "qs_select_ft_no_ft_titlte"            = "no FT";
 "qs_select_ft_nav_titlte"              = "Unissued";
 "qs_select_ft_btn_titlte"              = "Create Coin";
@@ -201,14 +209,14 @@
 
 //Pay AmountT
 "qs_pay_amount_nav_title"                = "Transfer";
-"qs_pay_amount_select_payway_tips"       = "Please select currency to make payment";
+"qs_pay_amount_select_payway_tips"       = "Choose currency for payment";
 "qs_pay_amount_item_balance_title"       = "Balance";
 "qs_pay_amount_item_address_title"       = "Address";
-"qs_pay_amount_item_address_placeholder" = "Please select currency to make payment";
 "qs_pay_amount_item_amount_title"        = "Amount";
+"qs_pay_amount_item_address_placeholder" = "Please enter the Recipient Address";
 "qs_pay_amount_item_amount_placeholder"  = "Please enter the payment amount";
 "qs_pay_amount_item_remarks_title"       = "Remarks";
-"qs_pay_amount_item_remarks_placeholder" = "Please enter a note";
+"qs_pay_amount_item_remarks_placeholder" = "Please enter a notes";
 "qs_pay_amount_bottom_btn_title"         = "Next";
 
 //Pay Info
@@ -227,8 +235,8 @@
 "qs_me_item_helpcenter"      = "Help Center";
 "qs_me_item_setting"         = "Settings";
 "qs_me_item_share"           = "Share";
-"qs_me_item_aboutus"         = "Abount";
-"qs_me_btn_logout"           = "Log out";
+"qs_me_item_aboutus"         = "About us";
+"qs_me_btn_logout"           = "Login out";
 
 //Wallet
 "qs_wallet_nav_title"      = "Wallet";
@@ -290,6 +298,7 @@
 "qs_export_mnemonic_code_item_metion_total_title"  = "Mention! Havindg your private key can completely control your wallet. Please make a backup and keep it in a safe place.";
 "qs_export_mnemonic_code_metion_highlight_title"   = "Mention!";
 "qs_export_mnemonic_code_btn_backup_title"         = "Backup Now";
+"qs_export_mnemonic_code_btn_skip_backup_title"    = "Skip Backup";
 
 "qs_export_mnemonic_code_item_tips_title"          = "Please backup your mnemonice Code and keep it in a safe place.";
 "qs_export_mnemonic_code_item_tips_detail_title"   = "The Mnemonic Code can restore your wallet. Be sure to keep it safe. You may lost your assets if you forget your mnemonic Code. This software will not store your Mnemonic Code and cannot retrieve your mnemonic Code.";
@@ -345,6 +354,7 @@
 "qs_manage_address_btn_import_address"  = "Import Address";
 "qs_manage_address_all"                 = "All";
 "qs_manage_address_selectGroup"         = "All Group";
+"qs_manage_address_no_address_exprot"   = "No Address to Export";
 
 //Add Address
 "qs_add_address_nav_title"                = "New Address";
@@ -364,13 +374,15 @@
 
 //Import Address
 "qs_import_address_nav_title"             = "Import Address";
-"qs_import_address_tips_title"            = "Dataformat:type,address,group,name,phonenumber,memo.(Currently,only support EVT,ETH,EOS with one address in one line)";
+"qs_import_address_tips_title"            = "Dataformat:type,address,group,name,phonenumber,memo.(Currently,only support EVT with one address in one line)";
 "qs_import_address_paste_address_title"   = "Paste the address";
 "qs_import_address_save_btn_title"        = "Save";
+"qs_import_address_error_title"           = "The address is illegal";
 
 //Export Address
 "qs_export_address_nav_title"             = "Export Address";
-"qs_export_address_paste_btn_title"       = "Paste";
+"qs_export_address_paste_btn_title"       = "Copy content";
+"qs_export_address_paste_success_title"   = "Copy Success";
 
 //Join Communities
 "qs_join_communities_nav_title"             = "Join Communities";

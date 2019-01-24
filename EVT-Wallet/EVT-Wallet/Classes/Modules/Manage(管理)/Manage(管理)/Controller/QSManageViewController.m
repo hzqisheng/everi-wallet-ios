@@ -18,7 +18,7 @@
 
 #define kTableViewTopEdgeInset  kRealValue(168)
 #define kHeaderViewHeight       kRealValue(195)
-#define kHeaderAvatarViewY      kRealValue(90)
+#define kHeaderAvatarViewY      kRealValue(58)
 
 typedef NS_ENUM(NSUInteger, QSMineCellTag) {
     QSManageCellMassTransfer,
@@ -140,7 +140,6 @@ static NSString *reuseIdentifier = @"QSSettingCell";
         UIImageView *headerImageView = [[UIImageView alloc] init];
         headerImageView.frame = CGRectMake(kRealValue(88), kRealValue(70), kRealValue(198), kRealValue(53));
         headerImageView.image = [UIImage imageNamed:@"icon_guanli_logo"];
-        _headerAvatarView = headerImageView;
         [_headerView addSubview:headerImageView];
     }
     return _headerView;

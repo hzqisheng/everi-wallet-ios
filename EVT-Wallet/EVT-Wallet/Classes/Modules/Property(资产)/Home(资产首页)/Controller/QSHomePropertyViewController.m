@@ -44,6 +44,10 @@ UIScrollViewDelegate>
 @implementation QSHomePropertyViewController
 
 #pragma mark - **************** Life Cycle
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = YES;    
@@ -57,6 +61,9 @@ UIScrollViewDelegate>
 #pragma mark - **************** Initials
 - (void)checkVersion {
     [[QSEveriApiWebViewController sharedWebView] getAPPVersionAndCompeleteBlock:^(NSInteger statusCode, NSString * _Nonnull version, BOOL isForceUpdate) {
+        if (statusCode != kResponseSuccessCode) {
+            return;
+        }
         if ([version isEqualToString:kCurrentVersion]) {
             return;
         }
@@ -142,11 +149,11 @@ UIScrollViewDelegate>
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"contentOffset"]) {
         UITableView *tableView = object;
-        CGFloat contentOffsetY = tableView.contentOffset.y;
+//        CGFloat contentOffsetY = tableView.contentOffset.y;
         
-        CGFloat headerInfoH = kHomeHeaderViewHeight - kHomeSegmentViewH;
-        // 如果滑动没有超过headerInfoH
-        if (contentOffsetY < headerInfoH) {
+//        CGFloat headerInfoH = kHomeHeaderViewHeight - kHomeSegmentViewH;
+//        // 如果滑动没有超过headerInfoH
+//        if (contentOffsetY < headerInfoH) {
             // 让tableView的偏移量相等
             for (QSBaseTableViewController *vc in self.childViewControllers) {
                 if (vc.tableView.contentOffset.y != tableView.contentOffset.y) {
@@ -155,10 +162,10 @@ UIScrollViewDelegate>
             }
             CGFloat headerY = -tableView.contentOffset.y;
             self.headerView.y = headerY;
-        } else if (contentOffsetY >= headerInfoH) {
-            // 一旦大于等于headerInfoH了，让headerView的y值等于headerInfoH，就停留在上边了
-            self.headerView.y = -headerInfoH;
-        }
+//        } else if (contentOffsetY >= headerInfoH) {
+//            // 一旦大于等于headerInfoH了，让headerView的y值等于headerInfoH，就停留在上边了
+//            self.headerView.y = -headerInfoH;
+//        }
     }
 }
 
@@ -257,6 +264,7 @@ UIScrollViewDelegate>
         _swipeView.backgroundColor = [UIColor grayColor];
         _swipeView.isStackCard = YES;
         _swipeView.delegate = self;
+        _swipeView.userInteractionEnabled = NO;
     }
     return _swipeView;
 }

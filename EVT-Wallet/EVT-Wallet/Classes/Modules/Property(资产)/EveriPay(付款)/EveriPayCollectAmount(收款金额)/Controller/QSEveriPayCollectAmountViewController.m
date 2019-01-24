@@ -17,9 +17,8 @@
 
 @interface QSEveriPayCollectAmountViewController ()
 
-@property (nonatomic, copy) NSString *money;
+@property (nonatomic, copy) NSString *jinduMoney;
 @property (nonatomic, copy) NSString *payeeString;
-@property (nonatomic, copy) NSString *payStr;
 @property (nonatomic, strong) QSFungibleSymbol *Model;
 
 @end
@@ -54,20 +53,6 @@
     [[QSEveriApiWebViewController sharedWebView] getFungibleSymbolDetailWithSymId:self.sybId andCompeleteBlock:^(NSInteger statusCode, QSFungibleSymbol * _Nonnull fungibleSymbol) {
         if (statusCode == kResponseSuccessCode) {
             weakSelf.Model = fungibleSymbol;
-            NSArray *NewArray = [fungibleSymbol.sym componentsSeparatedByString:@","];
-            if (NewArray.count < 2) {
-                return ;
-            }
-            NSString *jinduStr = NewArray[0];
-            NSString *symId = NewArray[1];
-            NSString *payeeStr = @".";
-            for (int i = 0; i < [jinduStr integerValue]; i++) {
-                payeeStr = [payeeStr stringByAppendingString:@"0"];
-            }
-            payeeStr = [payeeStr stringByAppendingString:@" "];
-            payeeStr = [payeeStr stringByAppendingString:symId];
-            weakSelf.payeeString = payeeStr;
-            
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
             QSEveriPayCollectCurrencyItem *payItem = (QSEveriPayCollectCurrencyItem *)[weakSelf itemInIndexPath:indexPath];
             payItem.FTModel = fungibleSymbol;
@@ -76,8 +61,16 @@
     }];
 }
 
+- (NSString *)handleMoney:(NSString *)money byPrecision:(NSString *)precision {
+    NSString *floatString = [NSString stringWithFormat:@"%f",money.floatValue];
+    NSRange range = [floatString rangeOfString:@"."];
+    NSInteger subStringIndex = range.length + range.location + precision.integerValue;
+    NSString *result = [floatString substringToIndex:subStringIndex];
+    return result;
+}
+
 - (void)shoukuanStepTwoWithPayeeStr {
-    if (!self.money.length) {
+    if (!self.jinduMoney.length) {
         [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_collect_amount_item_amount_placeholder")];
         return;
     }
@@ -86,10 +79,10 @@
         return;
     }
     WeakSelf(weakSelf);
-    [[QSEveriApiWebViewController sharedWebView] pushTransactionWithActionEveriLink:self.link andAsset:self.payStr andaddress:QSPublicKey andCompeleteBlock:^(NSInteger statusCode) {
+    [[QSEveriApiWebViewController sharedWebView] pushTransactionWithActionEveriLink:self.link andAsset:self.payeeString andaddress:QSPublicKey andCompeleteBlock:^(NSInteger statusCode) {
         if (statusCode == kResponseSuccessCode) {
             QSEveriPayCollectSuccessViewController *success = [[QSEveriPayCollectSuccessViewController alloc] init];
-            success.money = weakSelf.money;
+            success.money = weakSelf.jinduMoney;
             success.Model = weakSelf.Model;
             [weakSelf.navigationController pushViewController:success animated:YES];
         }
@@ -116,8 +109,17 @@
     collectAmountItem.inputPlaceholder = QSLocalizedString(@"qs_collect_amount_item_amount_placeholder");
     collectAmountItem.keyType = UIKeyboardTypeDecimalPad;
     collectAmountItem.payAmountItemTextBlock = ^(NSString * _Nonnull text) {
-        weakSelf.money = text;
-        weakSelf.payStr = [text stringByAppendingString:weakSelf.payeeString];
+        
+        NSArray *NewArray = [self.Model.sym componentsSeparatedByString:@","];
+        if (NewArray.count < 2) {
+            return ;
+        }
+        NSString *jinduStr = NewArray[0];
+        NSString *resultMoneyStr = [self handleMoney:text byPrecision:jinduStr];
+        NSString *symId = NewArray[1];
+        NSString *payeeStr = [NSString stringWithFormat:@" %@",symId];
+        weakSelf.payeeString = [NSString stringWithFormat:@"%@%@",resultMoneyStr,payeeStr];
+        weakSelf.jinduMoney = resultMoneyStr;
     };
     
     return @[@[currencyItem],

@@ -42,7 +42,7 @@
         make.left.equalTo(self.titleLabel);
         make.top.equalTo(self.titleLabel.mas_bottom).offset(kRealValue(10));
         make.right.equalTo(self.cornerView).offset(-kRealValue(20));
-        make.height.equalTo(@kRealValue(13));
+        make.height.equalTo(@kRealValue(15));
     }];
     
     [self.moreButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -158,7 +158,8 @@
     for (int i = 0; i < [jinduStr integerValue]; i++) {
         lastStr = [lastStr stringByAppendingString:@"0"];
     }
-    self.blockchainLabel.text = [NSString stringWithFormat:@"总量:%@,剩余:%@",totlyStr,lastStr];
+    
+    self.blockchainLabel.text = [NSString stringWithFormat:@"%@:%@,%@:%@",QSLocalizedString(@"qs_select_ft_total_ft_titlte"),totlyStr,QSLocalizedString(@"qs_select_ft_remaining_ft_titlte"),lastStr];
 }
 
 @end

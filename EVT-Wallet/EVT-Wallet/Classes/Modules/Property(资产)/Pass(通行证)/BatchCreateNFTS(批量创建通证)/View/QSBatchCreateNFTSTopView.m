@@ -42,7 +42,6 @@
     self.countLabel.text = [NSString stringWithFormat:@"%@:%ld",QSLocalizedString(@"qs_pass_createNFTS_batch_count"),nameArr.count];
 }
 
-
 #pragma mark - **************** Setter Getter
 - (YYTextView *)textView {
     if (!_textView) {

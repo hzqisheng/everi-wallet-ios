@@ -28,21 +28,21 @@
     [transferButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(kRealValue(15));
         make.left.equalTo(self).offset(kRealValue(15));
-        make.width.equalTo(@kRealValue(109));
+        make.right.equalTo(self.mas_centerX).offset(-kRealValue(7));
         make.height.equalTo(@kRealValue(40));
     }];
     
     //transfer
-    UIButton *batchTransferButton = [UIButton buttonWithTitle:QSLocalizedString(@"qs_transaction_record_batch_tansfer_btn_title") titleColor:[UIColor qs_colorYellowE4B84F] font:[UIFont qs_fontOfSize15] taget:self action:@selector(buttonClicked:)];
-    batchTransferButton.layer.cornerRadius = 4;
-    batchTransferButton.backgroundColor = [UIColor qs_colorBlack313745];
-    [self addSubview:batchTransferButton];
-    batchTransferButton.tag = 1;
-    [batchTransferButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(transferButton);
-        make.centerX.equalTo(self);
-        make.width.and.height.equalTo(transferButton);
-    }];
+//    UIButton *batchTransferButton = [UIButton buttonWithTitle:QSLocalizedString(@"qs_transaction_record_batch_tansfer_btn_title") titleColor:[UIColor qs_colorYellowE4B84F] font:[UIFont qs_fontOfSize15] taget:self action:@selector(buttonClicked:)];
+//    batchTransferButton.layer.cornerRadius = 4;
+//    batchTransferButton.backgroundColor = [UIColor qs_colorBlack313745];
+//    [self addSubview:batchTransferButton];
+//    batchTransferButton.tag = 1;
+//    [batchTransferButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(transferButton);
+//        make.centerX.equalTo(self);
+//        make.width.and.height.equalTo(transferButton);
+//    }];
     
     //transfer
     UIButton *collectButton = [UIButton buttonWithTitle:QSLocalizedString(@"qs_transaction_record_collect_btn_title") titleColor:[UIColor whiteColor] font:[UIFont qs_fontOfSize15] taget:self action:@selector(buttonClicked:)];
@@ -51,9 +51,10 @@
     [self addSubview:collectButton];
     collectButton.tag = 2;
     [collectButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(batchTransferButton);
-        make.left.equalTo(batchTransferButton.mas_right).offset(kRealValue(9));
-        make.width.and.height.equalTo(batchTransferButton);
+        make.top.equalTo(transferButton);
+        make.left.equalTo(self.mas_centerX).offset(kRealValue(7));
+        make.height.equalTo(transferButton);
+        make.right.equalTo(self).offset(-kRealValue(15));
     }];
 }
 

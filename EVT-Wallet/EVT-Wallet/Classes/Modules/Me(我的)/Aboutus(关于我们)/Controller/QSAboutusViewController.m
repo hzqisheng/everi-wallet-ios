@@ -67,6 +67,9 @@ typedef NS_ENUM(NSUInteger, QSAboutusItemType) {
     QSBaseCellItem *item = [self itemInIndexPath:indexPath];
     if (item.cellTag == QSAboutusItemTypeCheckVersion) {
         [[QSEveriApiWebViewController sharedWebView] getAPPVersionAndCompeleteBlock:^(NSInteger statusCode, NSString * _Nonnull version, BOOL isForceUpdate) {
+            if (statusCode != kResponseSuccessCode) {
+                return;
+            }
             if ([version isEqualToString:kCurrentVersion]) {
                 [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_lastet_version_toast")];
                 return;

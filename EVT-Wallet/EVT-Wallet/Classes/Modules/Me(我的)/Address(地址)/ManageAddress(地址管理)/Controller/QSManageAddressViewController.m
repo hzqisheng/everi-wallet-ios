@@ -14,8 +14,6 @@
 #import "QSManageAdressSearchView.h"
 #import "QSManageAddressCell.h"
 
-#import "QSAddressHelper.h"
-
 @interface QSManageAddressViewController ()
 
 @property (nonatomic, strong) QSManageAdressSearchView *searchView;
@@ -36,7 +34,6 @@ static NSString *reuseIdentifier = @"QSAdressCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupSubViews];
-    [self startRefreshing];
 }
 
 - (void)setupSubViews {
@@ -83,6 +80,10 @@ static NSString *reuseIdentifier = @"QSAdressCell";
 
 #pragma mark - **************** Event Response
 - (void)rightBarItemClicked {
+    if (!self.dataArray.count) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_manage_address_no_address_exprot")];
+        return;
+    }
     QSExportAddressViewController *export = [[QSExportAddressViewController alloc] init];
     export.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:export animated:YES];
@@ -95,9 +96,10 @@ static NSString *reuseIdentifier = @"QSAdressCell";
 }
 
 - (void)importAddressButtonClicked {
-    [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_content_NO")];
-    return;
+//    [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_content_NO")];
+//    return;
     QSImportAddressViewController *importAddress = [[QSImportAddressViewController alloc] init];
+    importAddress.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:importAddress animated:YES];
 }
 

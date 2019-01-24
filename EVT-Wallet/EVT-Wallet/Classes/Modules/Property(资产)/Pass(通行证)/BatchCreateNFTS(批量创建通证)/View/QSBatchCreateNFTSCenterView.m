@@ -52,7 +52,7 @@
     [self.productButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self).offset(-kRealValue(20));
         make.top.equalTo(self.lineView.mas_bottom).offset(kRealValue(13));
-        make.size.mas_equalTo(CGSizeMake(kRealValue(72), kRealValue(24)));
+        make.size.mas_equalTo(CGSizeMake(kRealValue(140), kRealValue(24)));
     }];
 }
 

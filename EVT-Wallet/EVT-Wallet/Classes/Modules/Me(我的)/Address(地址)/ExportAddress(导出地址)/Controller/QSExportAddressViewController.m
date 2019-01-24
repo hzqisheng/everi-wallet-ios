@@ -26,27 +26,46 @@
     [super viewDidLoad];
     [self setupNavgationBarTitle:QSLocalizedString(@"qs_export_address_nav_title")];
     [self setupAddressView];
-    [self setupBottomButton];
 }
 
 - (void)setupAddressView {
-    UIView *exportAddressView = [[UIView alloc] initWithFrame:CGRectMake(kRealValue(15), kRealValue(15), kScreenWidth - kRealValue(30), kRealValue(500))];
-    exportAddressView.layer.cornerRadius = 8;
-    exportAddressView.backgroundColor = [UIColor whiteColor];
-    exportAddressView.layer.shadowOffset = CGSizeMake(0, 1);
-    exportAddressView.layer.shadowColor = [UIColor qs_colorGray00267B].CGColor;
-    exportAddressView.layer.shadowOpacity = 0.1f;
-    //    self.shadowContainerView.layer.shadowRadius = 6;
-    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:exportAddressView.bounds cornerRadius:6];
-    exportAddressView.layer.shadowPath = path.CGPath;
-    [self.view addSubview:exportAddressView];
-    UILabel *tipsLabel = [UILabel labelWithName:@"" font:[UIFont qs_fontOfSize13] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentLeft];
+    CGFloat bottomButtomY = kDevice_Is_iPhoneX ? kScreenHeight - kNavgationBarHeight - kiPhoneXSafeAreaBottomMagin - kBottomButtonHeight : kScreenHeight - kNavgationBarHeight - kRealValue(15) - kBottomButtonHeight;
+
+    UIView *importAddressView = [[UIView alloc] initWithFrame:CGRectMake(kRealValue(15), kRealValue(15), kScreenWidth - kRealValue(30), bottomButtomY - kRealValue(30))];
+    importAddressView.layer.cornerRadius = 8;
+    importAddressView.backgroundColor = [UIColor whiteColor];
+    importAddressView.layer.shadowOffset = CGSizeMake(0, 1);
+    importAddressView.layer.shadowColor = [UIColor qs_colorGray00267B].CGColor;
+    importAddressView.layer.shadowOpacity = 0.1f;
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:importAddressView.bounds cornerRadius:6];
+    importAddressView.layer.shadowPath = path.CGPath;
+    [self.view addSubview:importAddressView];
+    
+    UIImageView *dottedLineView = [[UIImageView alloc] initWithFrame:CGRectMake(kRealValue(15), kRealValue(15), kRealValue(315), kRealValue(95))];
+    dottedLineView.image = [UIImage imageNamed:@"img_daorudizhi"];
+    [importAddressView addSubview:dottedLineView];
+    
+    UILabel *tipsLabel = [UILabel labelWithName:QSLocalizedString(@"qs_import_address_tips_title") font:[UIFont qs_fontOfSize13] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentLeft];
     [tipsLabel changeLineSpaceWithSpace:kRealValue(10) textAlignment:NSTextAlignmentLeft];
-    tipsLabel.frame = CGRectMake(kRealValue(15), kRealValue(15), exportAddressView.width - kRealValue(30), exportAddressView.height - kRealValue(30));
+    tipsLabel.frame = CGRectMake(kRealValue(15), kRealValue(10), dottedLineView.width - kRealValue(30), dottedLineView.height - kRealValue(20));
     tipsLabel.numberOfLines = 0;
-    tipsLabel.textAlignment = NSTextAlignmentLeft;
-    self.contentLabel = tipsLabel;
-    [exportAddressView addSubview:self.contentLabel];
+    [dottedLineView addSubview:tipsLabel];
+    
+    UIView *sepLine = [[UIView alloc] initWithFrame:CGRectMake(0, dottedLineView.maxY + kRealValue(16), importAddressView.width, BORDER_WIDTH_1PX)];
+    sepLine.backgroundColor = [UIColor qs_colorGrayCCCCCC];
+    [importAddressView addSubview:sepLine];
+    
+    UILabel *contentLabel = [UILabel labelWithName:@"" font:[UIFont qs_fontOfSize13] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentLeft];
+    [contentLabel changeLineSpaceWithSpace:kRealValue(10) textAlignment:NSTextAlignmentLeft];
+    contentLabel.frame = CGRectMake(kRealValue(15), sepLine.maxY + kRealValue(15), importAddressView.width - kRealValue(30), importAddressView.height - sepLine.maxY - kRealValue(30));
+    contentLabel.numberOfLines = 0;
+    contentLabel.textAlignment = NSTextAlignmentLeft;
+    self.contentLabel = contentLabel;
+    [importAddressView addSubview:self.contentLabel];
+    
+    UIButton *bottomButton = [self createBottomButtonWithTitle:QSLocalizedString(@"qs_export_address_paste_btn_title") target:self action:@selector(saveButtonClicked)];
+    bottomButton.frame = CGRectMake(kRealValue(15), bottomButtomY, kBottomButtonWidth, kBottomButtonHeight);
+    [self.view addSubview:bottomButton];
 }
 
 - (void)upload {
@@ -54,17 +73,15 @@
     NSString *allAddressStr = @"";
     for (int i = 0; i < addressArray.count; i++) {
         QSAddress *address = addressArray[i];
-        NSString *addressStr = [NSString stringWithFormat:@"%@、%@、%@、%@、%@、%@\n\n",address.type,address.publicKey,address.groupName,address.name,address.phone,address.note];
-        allAddressStr = [allAddressStr stringByAppendingString:addressStr];
+        NSString *addressString = [NSString stringWithFormat:@"%@,%@,%@,%@,%@,%@",address.type,address.publicKey,address.groupName,address.name,address.phone,address.note];
+        if (i == 0) {
+            allAddressStr = addressString;
+            
+        } else {
+            allAddressStr = [allAddressStr stringByAppendingString:[NSString stringWithFormat:@"\n%@",addressString]];
+        }
     }
     self.contentLabel.text = allAddressStr;
-}
-
-- (void)setupBottomButton {
-    UIButton *bottomButton = [self createBottomButtonWithTitle:QSLocalizedString(@"qs_export_address_paste_btn_title") target:self action:@selector(saveButtonClicked)];
-    CGFloat bottomButtomY = kDevice_Is_iPhoneX ? kScreenHeight - kNavgationBarHeight - kiPhoneXSafeAreaBottomMagin - kBottomButtonHeight : kScreenHeight - kNavgationBarHeight - kRealValue(15) - kBottomButtonHeight;
-    bottomButton.frame = CGRectMake(kRealValue(15), bottomButtomY, kBottomButtonWidth, kBottomButtonHeight);
-    [self.view addSubview:bottomButton];
 }
 
 #pragma mark - **************** Event Response

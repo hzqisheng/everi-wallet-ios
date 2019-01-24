@@ -65,9 +65,13 @@
 "qs_pass_createNFTS_batch_centerView_btn"        = "批量生成";
 "qs_pass_createNFTS_batch_count"                 = "计数";
 "qs_pass_createNFTS_batch_no_nft_title_toast"    = "请输入通证名称";
+"qs_pass_createNFTS_batch_success_toast"         = "发行成功";
 
 "qs_pass_domain_help_title"                      = "域";
 "qs_pass_domain_help_content"                    = "域名称由最大21个指定字符[0-9，A-Z，a-z.-]组成，同时通过设置相应权限来组织和管理通证。";
+
+"qs_pass_mypass_create_success_toast"            = "创建成功";
+
 
 
 //Manage
@@ -107,6 +111,9 @@
 "qs_switch_Switch_purse"                          = "icon_home_tabbar_qihuanqianbao";
 
 //SelectFT
+"qs_select_ft_total_ft_titlte"         = "总量";
+"qs_select_ft_remaining_ft_titlte"     = "剩余";
+
 "qs_select_ft_no_ft_titlte"            = "暂无代币";
 "qs_select_ft_nav_titlte"              = "选择代币";
 "qs_select_ft_btn_titlte"              = "创建代币";
@@ -206,8 +213,8 @@
 "qs_pay_amount_select_payway_tips"       = "请选择币种进行付款";
 "qs_pay_amount_item_balance_title"       = "余额";
 "qs_pay_amount_item_address_title"       = "地址";
-"qs_pay_amount_item_address_placeholder" = "请选择币种进行付款";
 "qs_pay_amount_item_amount_title"        = "金额";
+"qs_pay_amount_item_address_placeholder" = "请输入收款地址";
 "qs_pay_amount_item_amount_placeholder"  = "请输入付款金额";
 "qs_pay_amount_item_remarks_title"       = "备注";
 "qs_pay_amount_item_remarks_placeholder" = "请输入备注";
@@ -294,6 +301,7 @@
 "qs_export_mnemonic_code_item_metion_total_title"      = "重要提示！拥有钱包私钥就能完全控制钱包资产，因此强烈建议你在使用钱包前做好备份，将钱包私钥保存到安全的地方。";
 "qs_export_mnemonic_code_metion_highlight_title"       = "重要提示！";
 "qs_export_mnemonic_code_btn_backup_title"             = "立即备份";
+"qs_export_mnemonic_code_btn_skip_backup_title"        = "跳过备份";
 
 "qs_export_mnemonic_code_item_tips_title"              = "请记下你的钱包助记词并保存到安全的地方。";
 "qs_export_mnemonic_code_item_tips_detail_title"       = "钱包助记词用于恢复钱包资产，拥有助记词即可完全控制钱包资产，请务必妥善保管，丢失助记词即丢失钱包资产。本软件无法提供找回功能。";
@@ -347,6 +355,7 @@
 "qs_manage_address_btn_import_address"  = "导入地址";
 "qs_manage_address_all"                 = "全部";
 "qs_manage_address_selectGroup"         = "选择组";
+"qs_manage_address_no_address_exprot"   = "没有地址可以导出";
 
 //Add Address
 "qs_add_address_nav_title"                = "新增地址";
@@ -366,13 +375,15 @@
 
 //Import Address
 "qs_import_address_nav_title"             = "导入地址";
-"qs_import_address_tips_title"            = "数据格式：类型、地址、组名、名称、电话、备注\n类型展示只支持EVT、ETH、EOS三种\n地址一行";
+"qs_import_address_tips_title"            = "数据格式：类型、地址、组名、名称、电话、备注\n类型展示只支持EVT\n地址一行";
 "qs_import_address_paste_address_title"   = "在这里粘贴地址";
 "qs_import_address_save_btn_title"        = "保存";
+"qs_import_address_error_title"           = "地址不合法";
 
 //Export Address
 "qs_export_address_nav_title"             = "导出";
 "qs_export_address_paste_btn_title"       = "复制内容";
+"qs_export_address_paste_success_title"   = "复制成功";
 
 //Join Communities
 "qs_join_communities_nav_title"   = "加入社群";

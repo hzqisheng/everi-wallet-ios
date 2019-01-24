@@ -85,6 +85,7 @@
 }
 
 - (void)dismissWithAnimation {
+    [self.privateTextField resignFirstResponder];
     [self layoutIfNeeded];
     [UIView animateWithDuration:0.3 animations:^{
         self.whiteView.transform = CGAffineTransformMakeScale(0.2,0.2);

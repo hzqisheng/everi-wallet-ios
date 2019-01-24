@@ -54,6 +54,9 @@ static NSString * const kAddressKey = @"kAddressKey";
         }
         
         _currentNode = [QSUserDefaults objectForKey:kSelectedNodeKey];
+        if (!_currentNode) {
+            _currentNode = @"mainnet14.everitoken.io";
+        }
         DLog(@"_currentNode:%@",_currentNode);
     }
     return self;

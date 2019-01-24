@@ -179,6 +179,7 @@
     WeakSelf(weakSelf);
     [[QSEveriApiWebViewController sharedWebView] pushTransactionNFTWithNFT:NFTModel andCompeleteBlock:^(NSInteger statusCode, QSNFT * _Nonnull ftmodel) {
         if (statusCode == kResponseSuccessCode) {
+            [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_pass_mypass_create_success_toast")];
             [weakSelf.navigationController popViewControllerAnimated:YES];
         }
     }];
