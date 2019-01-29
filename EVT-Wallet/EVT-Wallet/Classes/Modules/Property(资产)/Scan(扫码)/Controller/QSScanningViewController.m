@@ -22,6 +22,10 @@
 
 @implementation QSScanningViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor blackColor]];
@@ -37,7 +41,6 @@
 
 #pragma mark - Private Methods -
 - (void)p_analysisQRAnswer:(NSString *)ansStr {
-    [self.scanVC startCodeReading];
     //首页扫码
     if (self.scanningViewControllerHomeScan) {
         [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
@@ -82,7 +85,7 @@
         }];
     }
     
-    if (self.scanningViewControllerSweepBlock) {
+    else if (self.scanningViewControllerSweepBlock) {
         WeakSelf(weakSelf);
         [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
             if (statusCode == kResponseSuccessCode) {
@@ -97,7 +100,7 @@
             }
         }];
     }
-    if (self.scanningViewControllerPayBySweepBlock) {
+    else if (self.scanningViewControllerPayBySweepBlock) {
         WeakSelf(weakSelf);
         [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
             //Parse it and pass it on
@@ -110,7 +113,7 @@
             }
         }];
     }
-    if (self.scanningViewControllerScanAddressBlock) {
+    else if (self.scanningViewControllerScanAddressBlock) {
         WeakSelf(weakSelf);
         [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
             if (modelList.count > 0) {
@@ -119,7 +122,7 @@
             }
         }];
     }
-    if (self.scanningViewControllerScanFukuanBlock) {
+    else if (self.scanningViewControllerScanFukuanBlock) {
         //Parse it
         WeakSelf(weakSelf);
         [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
@@ -138,6 +141,8 @@
                 [weakSelf pushRemoveSelfToViewController:shoukuanVC animated:YES];
             }
         }];
+    } else {
+        [self.scanVC startCodeReading];
     }
 }
 

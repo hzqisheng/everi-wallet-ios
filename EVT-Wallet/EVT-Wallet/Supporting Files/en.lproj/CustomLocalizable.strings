@@ -74,6 +74,9 @@
 
 
 //Manage
+"qs_manage_created_token_title"  = "The token I created";
+"qs_manage_created_domain_title" = "The domain I created";
+
 "qs_manage_massTransfer_title"    = "Bulk Transfer";
 "qs_manage_mineNFTs_title"        = "My NFTs";
 "qs_manage_mineGroup_title"       = "My Group";
@@ -196,8 +199,8 @@
 //everiPay
 "qs_everipay_bottom_tool_bar_code_title"     = "everiPay";
 "qs_everipay_bottom_tool_bar_scan_title"     = "Scan pay code";
-"qs_everipay_item_selected_wallet_title"     = "Choose this method to make a payment";
-"qs_everipay_item_max_pay_title"             = "Max Pay Amount";
+"qs_everipay_item_selected_wallet_title"     = "Please select the token";
+"qs_everipay_item_max_pay_title"             = "Max Amount";
 "qs_everipay_select_address_popupview_title" = "Please select the token";
 
 //everiPass
@@ -378,6 +381,7 @@
 "qs_import_address_paste_address_title"   = "Paste the address";
 "qs_import_address_save_btn_title"        = "Save";
 "qs_import_address_error_title"           = "The address is illegal";
+"qs_import_address_success_title"         = "Import Success";
 
 //Export Address
 "qs_export_address_nav_title"             = "Export Address";

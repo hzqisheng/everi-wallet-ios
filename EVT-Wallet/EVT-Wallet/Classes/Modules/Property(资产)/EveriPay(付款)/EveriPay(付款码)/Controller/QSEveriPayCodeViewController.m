@@ -216,6 +216,7 @@ typedef NS_ENUM(NSUInteger, QSEveriPayCodeCellType) {
     QSQRCodeScanItem *maxPayItem = [[QSQRCodeScanItem alloc] init];
     maxPayItem.cellIdentifier = NSStringFromClass([QSQRCodeMaxPayAmountCell class]);
     maxPayItem.cellHeight = kRealValue(44);
+    maxPayItem.keyboardType = UIKeyboardTypeNumberPad;
     maxPayItem.codeScanItemTextChangedBlock = ^(NSString * _Nonnull text) {
         weakSelf.maxAmount = text;
         [[QSEveriApiWebViewController sharedWebView] stopEVTLinkQrImageReload];

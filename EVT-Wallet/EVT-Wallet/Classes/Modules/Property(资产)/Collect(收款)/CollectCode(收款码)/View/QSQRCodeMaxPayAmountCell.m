@@ -39,6 +39,8 @@
 
 - (void)configureCellWithItem:(QSBaseCellItem *)item {
     self.item = item;
+    QSQRCodeScanItem *codeItem = (QSQRCodeScanItem *)self.item;
+    self.maxPayAmountTextField.keyboardType = codeItem.keyboardType;
 }
 
 #pragma mark - **************** Private Methods

@@ -29,7 +29,7 @@
 }
 
 - (void)setupImportAddressView {
-    UIView *importAddressView = [[UIView alloc] initWithFrame:CGRectMake(kRealValue(15), kRealValue(15), kScreenWidth - kRealValue(30), kRealValue(235))];
+    UIView *importAddressView = [[UIView alloc] initWithFrame:CGRectMake(kRealValue(15), kRealValue(15), kScreenWidth - kRealValue(30), kRealValue(350))];
     importAddressView.layer.cornerRadius = 8;
     importAddressView.backgroundColor = [UIColor whiteColor];
     importAddressView.layer.shadowOffset = CGSizeMake(0, 1);
@@ -87,6 +87,9 @@
     DLog(@"保存");
     NSArray *addressAllArray = [self.textView.text componentsSeparatedByString:@"\n"];
     NSMutableArray *addressModelArray = [NSMutableArray array];
+    if (!addressAllArray.count) {
+        return;
+    }
     BOOL isVaild = YES;
     for (NSString *address in addressAllArray) {
         if (address.length) {
@@ -112,6 +115,7 @@
         for (QSAddress *address in addressModelArray) {
             [[QSAddressHelper sharedHelper] addAddress:address];
         }
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_import_address_success_title")];
         [self.navigationController popViewControllerAnimated:YES];
     }
 }

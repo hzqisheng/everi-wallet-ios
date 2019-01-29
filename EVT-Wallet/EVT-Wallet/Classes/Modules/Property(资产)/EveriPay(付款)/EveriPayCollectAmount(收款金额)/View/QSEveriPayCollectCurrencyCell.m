@@ -31,7 +31,7 @@
     [self.walletTipsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.mas_centerY).offset(-kRealValue(5));
         make.left.equalTo(self.contentView).offset(kRealValue(20));
-        make.right.equalTo(self.arrowImageView.mas_left).offset(-kRealValue(14));
+        make.right.equalTo(self.contentView).offset(-kRealValue(14));
         make.height.equalTo(@([UIFont qs_fontOfSize15].lineHeight));
     }];
     
@@ -42,17 +42,16 @@
     }];
     
     [self.walletNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.leftImageView);
+        make.centerY.equalTo(self.leftImageView);
         make.right.equalTo(self.walletNameLabel);
         make.left.equalTo(self.leftImageView.mas_right).offset(kRealValue(14));
-        make.height.equalTo(@([UIFont qs_fontOfSize15].lineHeight));
     }];
     
-    [self.arrowImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(self.contentView);
-        make.right.equalTo(self.contentView).offset(-kRealValue(13));
-        make.width.and.height.equalTo(@kRealValue(22));
-    }];
+//    [self.arrowImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerY.equalTo(self.contentView);
+//        make.right.equalTo(self.contentView).offset(-kRealValue(13));
+//        make.width.and.height.equalTo(@kRealValue(22));
+//    }];
 }
 
 - (void)configureCellWithItem:(QSBaseCellItem *)item {

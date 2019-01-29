@@ -59,7 +59,8 @@
 
 #pragma mark - **************** Event Response
 - (void)changeJurisdiction {
-    [self alertWithArr:@[QSLocalizedString(@"qs_select_ft_permissions_content0"),QSLocalizedString(@"qs_select_ft_permissions_content1")]];
+    //,QSLocalizedString(@"qs_select_ft_permissions_content1")
+    [self alertWithArr:@[QSLocalizedString(@"qs_select_ft_permissions_content0")]];
 }
 
 #pragma mark - **************** Private Methods

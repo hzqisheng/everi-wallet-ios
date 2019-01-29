@@ -9,7 +9,7 @@
 #import "QSManageViewController.h"
 #import "QSMyPassViewController.h"
 #import "QSMyGroupViewController.h"
-
+#import "QSSelectFTViewController.h"
 
 #import "QSSettingCell.h"
 #import "QSSettingItem.h"
@@ -66,23 +66,18 @@ static NSString *reuseIdentifier = @"QSSettingCell";
 - (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
     QSSettingItem *itemMassTransfer = [[QSSettingItem alloc] init];
     itemMassTransfer.leftImage = [UIImage imageNamed:@"icon_guanli_zhuanzhang"];
-    itemMassTransfer.leftTitle = QSLocalizedString(@"qs_manage_massTransfer_title");
+    itemMassTransfer.leftTitle = QSLocalizedString(@"qs_manage_created_token_title");
     itemMassTransfer.cellTag = QSManageCellMassTransfer;
     
     QSSettingItem *itemNFTs = [[QSSettingItem alloc] init];
     itemNFTs.leftImage = [UIImage imageNamed:@"icon_guanli_yu"];
-    itemNFTs.leftTitle = QSLocalizedString(@"qs_manage_mineNFTs_title");
+    itemNFTs.leftTitle = QSLocalizedString(@"qs_manage_created_domain_title");
     itemNFTs.cellTag = QSManageCellNFTs;
     itemNFTs.cellType = QSSettingItemTypeImageAndLeftRightTitle;
     
-    QSSettingItem *itemGroup = [[QSSettingItem alloc] init];
-    itemGroup.leftImage = [UIImage imageNamed:@"icon_guanli_zu"];
-    itemGroup.leftTitle = QSLocalizedString(@"qs_manage_mineGroup_title");
-    itemGroup.cellTag = QSManageCellGroup;
-    itemGroup.cellType = QSSettingItemTypeImageAndLeftRightTitle;
     
     return @[@[itemMassTransfer],
-             @[itemNFTs,itemGroup]];
+             @[itemNFTs]];
 }
 
 #pragma mark - **************** Event Response
@@ -102,17 +97,13 @@ static NSString *reuseIdentifier = @"QSSettingCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     QSBaseCellItem *item = [self itemInIndexPath:indexPath];
     if (item.cellTag == QSManageCellMassTransfer) {
-        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_content_NO")];
-        return;
+        QSSelectFTViewController *selectFT = [[QSSelectFTViewController alloc] init];
+        selectFT.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:selectFT animated:YES];
     } else if (item.cellTag == QSManageCellNFTs) {
-        QSMyPassViewController *NFTsVC = [[QSMyPassViewController alloc] init];
-        NFTsVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:NFTsVC animated:YES];
-    } else if (item.cellTag == QSManageCellGroup) {
-        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_content_NO")];
-//        QSMyGroupViewController *groupVC = [[QSMyGroupViewController alloc] init];
-//        groupVC.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:groupVC animated:YES];
+        QSMyPassViewController *myPassVC = [[QSMyPassViewController alloc] init];
+        myPassVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:myPassVC animated:YES];
     }
 }
 

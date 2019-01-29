@@ -75,6 +75,9 @@
 
 
 //Manage
+"qs_manage_created_token_title"  = "我创建的代币";
+"qs_manage_created_domain_title" = "我创建的域";
+
 "qs_manage_massTransfer_title" = "批量转账";
 "qs_manage_mineNFTs_title"     = "我的域";
 "qs_manage_mineGroup_title"    = "我的组";
@@ -379,6 +382,7 @@
 "qs_import_address_paste_address_title"   = "在这里粘贴地址";
 "qs_import_address_save_btn_title"        = "保存";
 "qs_import_address_error_title"           = "地址不合法";
+"qs_import_address_success_title"         = "导入成功";
 
 //Export Address
 "qs_export_address_nav_title"             = "导出";

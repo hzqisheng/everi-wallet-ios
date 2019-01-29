@@ -25,6 +25,7 @@ typedef void(^QSQRCodeScanItemEndEditingBlock)(void);
 
 //maxpay
 @property (nonatomic, copy) NSString *maxPayAmount;
+@property (nonatomic, assign) UIKeyboardType keyboardType;
 
 @property (nonatomic, strong) QSFT *FTModel;
 

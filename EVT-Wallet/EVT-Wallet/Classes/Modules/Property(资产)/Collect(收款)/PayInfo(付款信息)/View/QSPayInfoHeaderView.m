@@ -61,6 +61,8 @@
         _avartarImageView = [[UIImageView alloc] init];
         _avartarImageView.image = [UIImage imageNamed:@"icon_fukuan_evt"];
         _avartarImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _avartarImageView.layer.masksToBounds = YES;
+        _avartarImageView.layer.cornerRadius = kRealValue(57)/2;
     }
     return _avartarImageView;
 }
@@ -89,6 +91,14 @@
 
 - (void)setFTModel:(QSFT *)FTModel {
     _FTModel = FTModel;
+    
+    if (FTModel.metas.count > 0) {
+        QSMetas *metas = FTModel.metas[0];
+        [self.avartarImageView sd_setImageWithURL:[NSURL URLWithString:metas.value]];
+    } else {
+        [self.avartarImageView setImage:[UIImage imageNamed:@"icon_fukuan_evt"]];
+    }
+    
     NSArray *totlyList = [FTModel.total_supply componentsSeparatedByString:@" "];
     if (totlyList.count == 2) {
         NSMutableString *test = [NSMutableString stringWithString:totlyList[1]];
