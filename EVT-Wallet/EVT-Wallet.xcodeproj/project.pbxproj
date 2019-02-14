@@ -40,7 +40,6 @@
 		7B67CB2221F6B016009E6074 /* QSIssueFTNFTHelpPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B67CB2021F6B016009E6074 /* QSIssueFTNFTHelpPopupView.m */; };
 		7B67CB2521F6B031009E6074 /* QSIssueFTNFTHelpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B67CB2421F6B031009E6074 /* QSIssueFTNFTHelpCell.m */; };
 		7B67CB2821F6B4EE009E6074 /* QSIssueFTNFTHelpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B67CB2721F6B4EE009E6074 /* QSIssueFTNFTHelpModel.m */; };
-		7B67CB2C21F6E61C009E6074 /* dist in Resources */ = {isa = PBXBuildFile; fileRef = 7B67CB2B21F6E61B009E6074 /* dist */; };
 		7B6CDC6B21AB7E4A008A6FAF /* QSHomeMyFTsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6CDC6A21AB7E4A008A6FAF /* QSHomeMyFTsViewController.m */; };
 		7B6CDC6E21AB7E65008A6FAF /* QSHomeMyNFTsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6CDC6D21AB7E65008A6FAF /* QSHomeMyNFTsViewController.m */; };
 		7B6CDC7221AB9CF8008A6FAF /* QSHomeMyFTsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6CDC7121AB9CF8008A6FAF /* QSHomeMyFTsCell.m */; };
@@ -58,6 +57,7 @@
 		7B8B316D21B51AAC00028D17 /* QSExportMnemonicStep2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B316C21B51AAC00028D17 /* QSExportMnemonicStep2ViewController.m */; };
 		7B8B317021B51DEA00028D17 /* QSExportMnemonicStep3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B316F21B51DEA00028D17 /* QSExportMnemonicStep3ViewController.m */; };
 		7B96E1FC21EDC53B002EE53D /* QSNodeSettingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96E1FB21EDC53B002EE53D /* QSNodeSettingDetailViewController.m */; };
+		7BABC16122156AEC00D55899 /* dist in Resources */ = {isa = PBXBuildFile; fileRef = 7BABC16022156AEC00D55899 /* dist */; };
 		7BB8DC2E21B757DF00954E86 /* QSImportWalletByPrivateKeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8DC2D21B757DF00954E86 /* QSImportWalletByPrivateKeyViewController.m */; };
 		7BB8DC3121B757EF00954E86 /* QSImportWalletByKeyStoreCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8DC3021B757EF00954E86 /* QSImportWalletByKeyStoreCodeViewController.m */; };
 		7BB8DC3C21B75C6A00954E86 /* YZDisplayTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8DC3321B75C6A00954E86 /* YZDisplayTitleLabel.m */; };
@@ -351,7 +351,6 @@
 		7B67CB2421F6B031009E6074 /* QSIssueFTNFTHelpCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSIssueFTNFTHelpCell.m; sourceTree = "<group>"; };
 		7B67CB2621F6B4EE009E6074 /* QSIssueFTNFTHelpModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSIssueFTNFTHelpModel.h; sourceTree = "<group>"; };
 		7B67CB2721F6B4EE009E6074 /* QSIssueFTNFTHelpModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSIssueFTNFTHelpModel.m; sourceTree = "<group>"; };
-		7B67CB2B21F6E61B009E6074 /* dist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dist; sourceTree = "<group>"; };
 		7B6CDC6921AB7E4A008A6FAF /* QSHomeMyFTsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSHomeMyFTsViewController.h; sourceTree = "<group>"; };
 		7B6CDC6A21AB7E4A008A6FAF /* QSHomeMyFTsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSHomeMyFTsViewController.m; sourceTree = "<group>"; };
 		7B6CDC6C21AB7E65008A6FAF /* QSHomeMyNFTsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSHomeMyNFTsViewController.h; sourceTree = "<group>"; };
@@ -387,6 +386,7 @@
 		7B8B316F21B51DEA00028D17 /* QSExportMnemonicStep3ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSExportMnemonicStep3ViewController.m; sourceTree = "<group>"; };
 		7B96E1FA21EDC53B002EE53D /* QSNodeSettingDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSNodeSettingDetailViewController.h; sourceTree = "<group>"; };
 		7B96E1FB21EDC53B002EE53D /* QSNodeSettingDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSNodeSettingDetailViewController.m; sourceTree = "<group>"; };
+		7BABC16022156AEC00D55899 /* dist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dist; sourceTree = "<group>"; };
 		7BB8DC2C21B757DF00954E86 /* QSImportWalletByPrivateKeyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSImportWalletByPrivateKeyViewController.h; sourceTree = "<group>"; };
 		7BB8DC2D21B757DF00954E86 /* QSImportWalletByPrivateKeyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSImportWalletByPrivateKeyViewController.m; sourceTree = "<group>"; };
 		7BB8DC2F21B757EF00954E86 /* QSImportWalletByKeyStoreCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSImportWalletByKeyStoreCodeViewController.h; sourceTree = "<group>"; };
@@ -921,7 +921,7 @@
 		7B0D183E21BCCB8200550756 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7B67CB2B21F6E61B009E6074 /* dist */,
+				7BABC16022156AEC00D55899 /* dist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -3505,7 +3505,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B67CB2C21F6E61C009E6074 /* dist in Resources */,
+				7BABC16122156AEC00D55899 /* dist in Resources */,
 				7B7A4C8621ACCEF400598E6F /* CustomLocalizable.strings in Resources */,
 				7BF36D5921A7972500B27146 /* Assets.xcassets in Resources */,
 			);

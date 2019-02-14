@@ -63,11 +63,17 @@
 
 #pragma mark - **************** Event Response
 - (void)backupButtonClicked {
-    [QSPasswordHelper verificationPasswordByPrivateKey:QSPrivateKey andSuccessBlock:^{
+    if (self.isFirstCreate) {
         QSExportMnemonicStep2ViewController *step2 = [[QSExportMnemonicStep2ViewController alloc] init];
         step2.isFirstCreate = self.isFirstCreate;
         [self.navigationController pushViewController:step2 animated:YES];
-    }];
+    } else {
+        [QSPasswordHelper verificationPasswordByPrivateKey:QSPrivateKey andSuccessBlock:^{
+            QSExportMnemonicStep2ViewController *step2 = [[QSExportMnemonicStep2ViewController alloc] init];
+            step2.isFirstCreate = self.isFirstCreate;
+            [self.navigationController pushViewController:step2 animated:YES];
+        }];
+    }
 }
 
 - (void)skipButtonButtonClicked {
