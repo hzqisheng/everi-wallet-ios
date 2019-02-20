@@ -50,6 +50,11 @@
 "qs_issue_ft_name_title"                  = "代币名称";
 "qs_issue_password_placeholder"           = "请输入密码";
 
+"qs_issue_ft_rule_alert_title"         = "代币创建规则";
+"qs_issue_ft_rule_alert_confrm_btn"    = "确定";
+"qs_issue_ft_rule_alert_remind_btn"    = "下次不再提醒";
+
+
 //Pass
 "qs_pass_mypass_no_pass_title"                   = "暂无通证";
 "qs_pass_mypass_navi_title"                      = "我的通证";

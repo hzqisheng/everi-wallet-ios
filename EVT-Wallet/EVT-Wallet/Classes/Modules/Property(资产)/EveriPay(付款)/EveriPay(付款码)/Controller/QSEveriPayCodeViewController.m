@@ -76,7 +76,8 @@ typedef NS_ENUM(NSUInteger, QSEveriPayCodeCellType) {
 - (void)getlinkId {
     [[QSEveriApiWebViewController sharedWebView] stopEVTLinkQrImageReload];
     
-    if (!self.selectFTModel.creator.length || !self.maxAmount.length) {
+    //!self.selectFTModel.creator.length ||
+    if (!self.maxAmount.length) {
         UIImage *photo = [UIImage imageWithColor:[UIColor qs_colorGrayDDDDDD]];
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:1];
         QSQRCodeScanItem *codeItem = (QSQRCodeScanItem *)[self itemInIndexPath:indexPath];

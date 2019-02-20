@@ -13,6 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QSIssueFTNFTHelpCell : UITableViewCell
 
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *contentLabel;
+
 @property (nonatomic, strong) QSIssueFTNFTHelpModel *issueFTNFTHelpModel;
 
 @end

@@ -37,6 +37,7 @@
     
     QSCreateFTItem *FTItem = (QSCreateFTItem *)item;
     self.titleLabel.text = FTItem.title;
+    self.contentTextField.text = FTItem.defaultContent;
     self.contentTextField.placeholder = FTItem.placeholde;
     self.contentTextField.keyboardType = FTItem.KeyboardType;
 }

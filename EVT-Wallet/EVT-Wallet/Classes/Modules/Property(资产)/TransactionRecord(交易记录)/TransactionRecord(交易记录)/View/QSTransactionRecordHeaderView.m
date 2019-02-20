@@ -102,9 +102,10 @@
     if (assetList.count == 2) {
         self.amountLabel.text = [NSString stringWithFormat:@"%@ %@",assetList[0],FTModel.sym_name];
     }
-
-    NSArray *totlyList = [FTModel.total_supply componentsSeparatedByString:@" "];
+    
+    NSArray *totlyList = [FTModel.asset componentsSeparatedByString:@" "];
     if (totlyList.count == 2) {
+        self.amountLabel.text = totlyList[0];
         NSMutableString *test = [NSMutableString stringWithString:totlyList[1]];
         if([test hasPrefix:@"S"]){
             [test deleteCharactersInRange: [test rangeOfString:@"S"]];
@@ -113,6 +114,17 @@
     } else {
         self.currencyLabel.text = FTModel.name;
     }
+    
+//    NSArray *totlyList = [FTModel.total_supply componentsSeparatedByString:@" "];
+//    if (totlyList.count == 2) {
+//        NSMutableString *test = [NSMutableString stringWithString:totlyList[1]];
+//        if([test hasPrefix:@"S"]){
+//            [test deleteCharactersInRange: [test rangeOfString:@"S"]];
+//        }
+//        self.currencyLabel.text = [NSString stringWithFormat:@"%@(%@)",FTModel.sym_name,test];
+//    } else {
+//        self.currencyLabel.text = FTModel.name;
+//    }
 }
 
 @end

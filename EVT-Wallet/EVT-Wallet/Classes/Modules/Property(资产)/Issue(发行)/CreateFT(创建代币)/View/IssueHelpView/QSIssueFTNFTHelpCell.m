@@ -11,8 +11,7 @@
 @interface QSIssueFTNFTHelpCell ()
 
 @property (nonatomic, strong) UIView *grayRoundView;
-@property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UILabel *contentLabel;
+
 
 @end
 

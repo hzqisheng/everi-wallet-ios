@@ -266,6 +266,11 @@ typedef void(^QSEveriApiWebViewPrivateKeyBlock)(NSInteger statusCode, NSDictiona
  */
 - (void)getAPPVersionAndCompeleteBlock:(void(^)(NSInteger statusCode, NSString *version, BOOL isForceUpdate))block;
 
+/**
+ * @brief randomValidSymbolId
+ */
+- (void)getRandomValidSymbolIdAndCompeleteBlock:(void(^)(NSInteger statusCode, NSString *symbolID))block;
+
 @end
 
 @interface QSEveriApiWebViewController : QSWebViewViewController<QSEveriApiProtocol>

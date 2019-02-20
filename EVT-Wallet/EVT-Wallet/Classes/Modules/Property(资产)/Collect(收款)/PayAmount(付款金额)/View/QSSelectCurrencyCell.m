@@ -84,7 +84,8 @@
     } else {
         [self.leftImageView setImage:[UIImage imageNamed:@"AppIcon"]];
     }
-    NSArray *totlyList = [FTModel.total_supply componentsSeparatedByString:@" "];
+    
+    NSArray *totlyList = [FTModel.asset componentsSeparatedByString:@" "];
     if (totlyList.count == 2) {
         NSMutableString *test = [NSMutableString stringWithString:totlyList[1]];
         if([test hasPrefix:@"S"]){

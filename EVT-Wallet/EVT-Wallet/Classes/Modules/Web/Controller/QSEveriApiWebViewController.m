@@ -743,6 +743,19 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
                     }];
 }
 
+- (void)getRandomValidSymbolIdAndCompeleteBlock:(void(^)(NSInteger statusCode, NSString *symbolID))block {
+    NSString *jsString = [NSString stringWithFormat:@"randomValidSymbolId()"];
+    [self excuteRequestWithMethodName:@"randomValidSymbolId"
+                             jsString:jsString
+                    completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
+                        NSNumber *symbolID;
+                        if (statusCode == kResponseSuccessCode) {
+                            symbolID = responseDic[@"data"];
+                        }
+                        block(statusCode, symbolID.stringValue);
+                    }];
+}
+
 #pragma mark - **************** Private Methods
 - (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString
 {

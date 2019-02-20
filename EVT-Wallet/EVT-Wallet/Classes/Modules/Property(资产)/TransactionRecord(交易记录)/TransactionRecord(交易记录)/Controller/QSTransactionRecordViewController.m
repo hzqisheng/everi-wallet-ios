@@ -70,7 +70,7 @@
                 [weakSelf.dataArray removeAllObjects];
                 weakSelf.dataArray = [NSMutableArray arrayWithArray:allArr];
                 [weakSelf.tableView reloadData];
-                return ;
+                return;
             }
             for (int i = 0; i < transferList.count; i++) {
                 if (i == 0) {

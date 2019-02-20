@@ -15,6 +15,7 @@
 #import "QSCreateFTAlertItem.h"
 #import "QSAuthorizers.h"
 #import "QSIssueFTNFTHelpPopupView.h"
+#import "QSIssueFTNFTHelpAlertView.h"
 
 @interface QSCreateFTViewController ()
 
@@ -28,6 +29,8 @@
 @property (nonatomic, copy) NSString *money;
 @property (nonatomic, strong) UIImage *IconImage;
 @property (nonatomic, assign) NSInteger permissions;
+
+@property (nonatomic, strong) QSCreateFTItem *assetItem;
 
 @property (nonatomic, weak) QSIssueFTNFTHelpPopupView *popupView;
 
@@ -45,6 +48,18 @@
     
     UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_chuangjianyu_help"] target:self action:@selector(rightBarItemClicked)];
     self.navigationItem.rightBarButtonItem = rightBarItem;
+    
+    if ([QSIssueFTNFTHelpAlertView isNeedRemind]) {
+        [QSIssueFTNFTHelpAlertView showWithDataArray:[self getHelpArray]];
+    }
+    
+    [[QSEveriApiWebViewController sharedWebView] getRandomValidSymbolIdAndCompeleteBlock:^(NSInteger statusCode, NSString * _Nonnull symbolID) {
+        if (statusCode == kResponseSuccessCode) {
+            self.assetNumber = symbolID;
+            self.assetItem.defaultContent = symbolID;
+            [self.tableView reloadData];
+        }
+    }];
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
@@ -86,6 +101,7 @@
         weakSelf.assetNumber = text;
     };
     assetItem.KeyboardType = UIKeyboardTypePhonePad;
+    _assetItem = assetItem;
     
     //发行总量
     QSCreateFTItem *circulationItem = [[QSCreateFTItem alloc] init];
@@ -204,6 +220,15 @@
 }
 
 - (void)rightBarItemClicked {
+    if (self.popupView) {
+        [self.popupView dissmiss];
+    } else {
+        self.popupView = [QSIssueFTNFTHelpPopupView showInView:self.view
+                                                     dataArray:[self getHelpArray]];
+    }
+}
+
+- (NSArray *)getHelpArray {
     NSArray *titleList = @[QSLocalizedString(@"qs_create_ft_issueFTs_help_title"),QSLocalizedString(@"qs_create_ft_symbol_help_title"),QSLocalizedString(@"qs_create_ft_asset_number_help_title"),QSLocalizedString(@"qs_create_ft_total_supply_help_title"),QSLocalizedString(@"qs_create_ft_decimals_help_title"),QSLocalizedString(@"qs_create_ft_icon_help_title")];
     NSArray *contentList = @[QSLocalizedString(@"qs_create_ft_issueFTs_help_content"),QSLocalizedString(@"qs_create_ft_symbol_help_content"),QSLocalizedString(@"qs_create_ft_asset_number_help_content"),QSLocalizedString(@"qs_create_ft_total_supply_help_content"),QSLocalizedString(@"qs_create_ft_decimals_help_content"),QSLocalizedString(@"qs_create_ft_icon_help_content")];
     
@@ -214,13 +239,7 @@
         QSIssueFTNFTHelpModel *model = [[QSIssueFTNFTHelpModel alloc] initWithTitle:title content:content];
         [dataArray addObject:model];
     }
-    
-    if (self.popupView) {
-        [self.popupView dissmiss];
-    } else {
-        self.popupView = [QSIssueFTNFTHelpPopupView showInView:self.view
-                                                     dataArray:[dataArray copy]];
-    }
+    return [dataArray copy];
 }
 
 #pragma mark - **************** UITableViewDelegate

@@ -17,6 +17,9 @@ typedef void(^QSCreateFTItemTextBlock)(NSString *text);
 //placeholde
 @property (nonatomic, copy) NSString *placeholde;
 
+//content
+@property (nonatomic, copy) NSString *defaultContent;
+
 //title
 @property (nonatomic, copy) NSString *title;
 

@@ -46,7 +46,7 @@
     
     //amountLabel
     NSString *nameStr = @"";
-    NSArray *totlyList = [self.FTModel.total_supply componentsSeparatedByString:@" "];
+    NSArray *totlyList = [self.FTModel.asset componentsSeparatedByString:@" "];
     if (totlyList.count == 2) {
         NSMutableString *test = [NSMutableString stringWithString:totlyList[1]];
         if([test hasPrefix:@"S"]){

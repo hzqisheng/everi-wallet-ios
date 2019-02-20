@@ -99,7 +99,7 @@
         [self.avartarImageView setImage:[UIImage imageNamed:@"icon_fukuan_evt"]];
     }
     
-    NSArray *totlyList = [FTModel.total_supply componentsSeparatedByString:@" "];
+    NSArray *totlyList = [FTModel.asset componentsSeparatedByString:@" "];
     if (totlyList.count == 2) {
         NSMutableString *test = [NSMutableString stringWithString:totlyList[1]];
         if([test hasPrefix:@"S"]){

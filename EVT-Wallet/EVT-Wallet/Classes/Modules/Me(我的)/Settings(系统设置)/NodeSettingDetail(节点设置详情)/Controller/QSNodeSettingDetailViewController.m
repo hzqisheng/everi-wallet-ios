@@ -18,7 +18,7 @@
     [super viewDidLoad];
     
     [self setupNavgationBarTitle:QSLocalizedString(@"qs_everitoken_node_setting_title")];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:QSLocalizedString(@"qs_everitoken_node_setting_save") font:[UIFont qs_fontOfSize15] titleColor:[UIColor whiteColor] target:self action:@selector(rightBarButtonItemClicked)];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:QSLocalizedString(@"qs_everitoken_node_setting_save") font:[UIFont qs_fontOfSize15] titleColor:[UIColor whiteColor] target:self action:@selector(rightBarButtonItemClicked)];
     
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
@@ -102,7 +102,7 @@
     }
     QSNodeSettingItem *item = self.dataArray[indexPath.row];
     item.isSelected = 1;
-    [self.tableView reloadData];
+    [self rightBarButtonItemClicked];
 }
 
 @end

@@ -73,7 +73,6 @@ typedef NS_ENUM(NSUInteger, QSSystemSettingsType) {
     payAmountItem.cellType = QSSettingItemTypeLeftRightTitle;
     
     return @[languageItem,
-             unitItem,
              nodeItem];
 }
 
