@@ -32,7 +32,11 @@
     }];
     
     UIImageView *touchIDImageView = [[UIImageView alloc] init];
-    touchIDImageView.image = [UIImage imageNamed:@"icon_zhiwenjiesuo"];
+    if ([QSTouchIDHelper sharedHelper].biometryType == QSLABiometryTypeFaceID) {
+        touchIDImageView.image = [UIImage imageNamed:@"icon_renlianjiesuo"];
+    } else {
+        touchIDImageView.image = [UIImage imageNamed:@"icon_zhiwenjiesuo"];
+    }
     [roundBackroundView addSubview:touchIDImageView];
     [touchIDImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(roundBackroundView).offset(kRealValue(31));

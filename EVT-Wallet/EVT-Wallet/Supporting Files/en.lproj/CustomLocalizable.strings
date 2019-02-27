@@ -326,15 +326,18 @@
 "qs_wallet_detail_item_export_title"         = "Export PrivateKey";
 "qs_wallet_detail_item_sign_title"           = "Setting up Sign";
 "qs_wallet_detail_item_fingerprint_title"    = "Start Touch ID unlock";
-"qs_wallet_detail_stop_fingerprint_title"    = "Stop Touch ID unlock";
+"qs_wallet_detail_item_faceid_title"         = "Start Face ID unlock";
+"qs_wallet_detail_stop_fingerprint_title"    = "Stop Touch ID unlock?";
+"qs_wallet_detail_stop_faceid_title"         = "Stop Face ID unlock?";
 "qs_wallet_detail_stop_fingerprint_confirm"  = "Stop using";
 "qs_wallet_detail_stop_fingerprint_cancel"   = "Cancel";
 
 //TouchID
-"qs_wallet_touchid_nav_title"      = "Start Touch ID unlock";
-"qs_wallet_touchid_tips"           = "Touch ID unlock, with one touch";
+"qs_wallet_touchid_nav_title"      = "Start Touch ID / Face ID unlock";
+"qs_wallet_touchid_tips"           = "Touch ID / Face ID unlock";
 "qs_wallet_touchid_btn_title"      = "Click to start";
 "qs_wallet_touchid_verify_title"   = "Verify existing phone fingerprints with the Home button";
+"qs_wallet_faceid_verify_title"    = "Verify existing phone FaceID";
 
 //Export Private Key
 "qs_export_private_key_nav_title"               = "Export PrivateKey";
@@ -466,6 +469,14 @@
 
 "qs_everitoken_node_setting_title"      = "everiTokenNode settings";
 "qs_everitoken_node_setting_save"       = "Save";
+"qs_everitoken_node_setting_add"        = "Add";
+
+"qs_everitoken_node_setting_add_alert_title"       = "Please Enter a Valid Node Address";
+"qs_everitoken_node_setting_add_alert_content"     = "The Current Node is everiToken";
+"qs_everitoken_node_setting_add_alert_placeholder" = "protocol://host:port";
+"qs_everitoken_node_setting_add_alert_confirm"     = "confirm";
+"qs_everitoken_node_setting_add_alert_cancel"      = "cancel";
+"qs_everitoken_node_setting_add_error_toast"       = "Please Enter a Valid Node Address";
 
 //Aboutus
 "qs_aboutus_nav_title"                  = "About Us";

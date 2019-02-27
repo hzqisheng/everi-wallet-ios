@@ -380,4 +380,15 @@
     return NO;
 }
 
+- (BOOL)isValidUrl
+{
+    NSString *regex = @"^(http://|https://)[a-zA-Z0-9.]+:\\d*$";
+    return [self isValidateWithRegex:regex];
+}
+
+- (BOOL)isValidateWithRegex:(NSString *)regex {
+    NSPredicate *pre = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    return [pre evaluateWithObject:self];
+}
+
 @end

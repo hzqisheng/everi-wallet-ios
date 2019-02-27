@@ -330,15 +330,18 @@
 "qs_wallet_detail_item_export_title"         = "导出私钥";
 "qs_wallet_detail_item_sign_title"           = "设置多签";
 "qs_wallet_detail_item_fingerprint_title"    = "开通钱包指纹解锁";
+"qs_wallet_detail_item_faceid_title"         = "开通钱包面容解锁";
 "qs_wallet_detail_stop_fingerprint_title"    = "确定暂停使用指纹解锁？";
+"qs_wallet_detail_stop_faceid_title"         = "确定暂停使用面容解锁？";
 "qs_wallet_detail_stop_fingerprint_confirm"  = "暂停使用";
 "qs_wallet_detail_stop_fingerprint_cancel"   = "取消";
 
 //TouchID
-"qs_wallet_touchid_nav_title"      = "开通钱包指纹解锁";
-"qs_wallet_touchid_tips"           = "指纹设置一键解锁";
+"qs_wallet_touchid_nav_title"      = "开通钱包指纹/人脸解锁";
+"qs_wallet_touchid_tips"           = "指纹/人脸设置一键解锁";
 "qs_wallet_touchid_btn_title"      = "点击开通";
 "qs_wallet_touchid_verify_title"   = "通过Home键验证已有手机指纹";
+"qs_wallet_faceid_verify_title"    = "注视验证已有手机面容";
 
 //Export Private Key
 "qs_export_private_key_nav_title"              = "导出私钥";
@@ -467,6 +470,14 @@
 
 "qs_everitoken_node_setting_title"      = "everiToken节点设置";
 "qs_everitoken_node_setting_save"       = "保存";
+"qs_everitoken_node_setting_add"        = "添加";
+
+"qs_everitoken_node_setting_add_alert_title"       = "请输入有效的节点地址";
+"qs_everitoken_node_setting_add_alert_content"     = "当前节点为 everiToken";
+"qs_everitoken_node_setting_add_alert_placeholder" = "protocol://host:port";
+"qs_everitoken_node_setting_add_alert_confirm"     = "确定";
+"qs_everitoken_node_setting_add_alert_cancel"      = "取消";
+"qs_everitoken_node_setting_add_error_toast"       = "请输入有效的节点地址";
 
 //Aboutus
 "qs_aboutus_nav_title"                  = "关于我们";

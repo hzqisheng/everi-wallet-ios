@@ -7,6 +7,7 @@
 //
 
 #import "QSNodeSettingDetailViewController.h"
+#import "QSNodeSettingAddAlertView.h"
 
 @interface QSNodeSettingDetailViewController ()
 
@@ -18,7 +19,7 @@
     [super viewDidLoad];
     
     [self setupNavgationBarTitle:QSLocalizedString(@"qs_everitoken_node_setting_title")];
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:QSLocalizedString(@"qs_everitoken_node_setting_save") font:[UIFont qs_fontOfSize15] titleColor:[UIColor whiteColor] target:self action:@selector(rightBarButtonItemClicked)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:QSLocalizedString(@"qs_everitoken_node_setting_add") font:[UIFont qs_fontOfSize15] titleColor:[UIColor whiteColor] target:self action:@selector(rightBarButtonItemClicked)];
     
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
@@ -30,6 +31,7 @@
 
 - (void)createDataSource {
     NSArray *dataArray = [[QSWalletHelper sharedHelper] getAllNodes];
+    [self.dataArray removeAllObjects];
     [self.dataArray addObjectsFromArray:[QSNodeSettingItem mj_objectArrayWithKeyValuesArray:dataArray]];
     
     NSString *selectedNode = [QSWalletHelper sharedHelper].currentNode;
@@ -53,13 +55,41 @@
 }
 
 #pragma mark - **************** Event
-- (void)rightBarButtonItemClicked {
+- (void)tableViewCellClicked {
     QSNodeSettingItem *seletedItem = [self getSelectedItem];
     DLog(@"%@",seletedItem.title);
     if (!seletedItem.title) {
         return;
     }
     [[QSWalletHelper sharedHelper] changeCurrentNode:seletedItem.title];
+}
+
+- (void)rightBarButtonItemClicked {
+    [QSNodeSettingAddAlertView showAlertViewAndConfirmBlock:^(NSString * _Nonnull nodeAddress) {
+        NSLog(@"%@",nodeAddress);
+        if (![nodeAddress isValidUrl]) {
+            [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_everitoken_node_setting_add_error_toast")];
+            return;
+        }
+        // http://www.asf.as:401 这种格式
+        NSArray *absoluteStringArray = [nodeAddress componentsSeparatedByString:@"//"];
+        if (absoluteStringArray.count == 2) {
+            NSString *absoluteString = absoluteStringArray[1];
+            NSArray *titleList = [absoluteString componentsSeparatedByString:@":"];
+            if (titleList.count == 2) {
+                NSString *protocol = [nodeAddress hasPrefix:@"http"] ? @"http" : @"https";
+                NSString *host = titleList[0];
+                NSString *port = titleList[1];
+                NSLog(@"protocol:%@,host:%@,port:%@",protocol,host,port);
+                [[QSEveriApiWebViewController sharedWebView] checkNetworkByProtocol:protocol port:port host:host andCompeleteBlock:^(NSInteger statusCode) {
+                    if (statusCode == kResponseSuccessCode) {
+                        [[QSWalletHelper sharedHelper] cacheCustomNode:host nodeDetail:@"CustemNet"];
+                        [self createDataSource];
+                    }
+                }];
+            }
+        }
+    }];
 }
 
 #pragma mark - **************** UITableViewDataSource
@@ -102,7 +132,7 @@
     }
     QSNodeSettingItem *item = self.dataArray[indexPath.row];
     item.isSelected = 1;
-    [self rightBarButtonItemClicked];
+    [self tableViewCellClicked];
 }
 
 @end

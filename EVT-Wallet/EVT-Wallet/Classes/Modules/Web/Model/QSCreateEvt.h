@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *publicKey;
 @property (nonatomic, copy) NSString *type;
 
+/** 是否开通了指纹/FaceID验证 */
 @property (nonatomic, assign) BOOL isOpenFingerprint;
 
 @end

@@ -23,13 +23,26 @@ typedef NS_ENUM(NSUInteger, QSTouchIDAuthType) {
     QSTouchIDAuthTypeError
 };
 
+
+typedef NS_ENUM(NSUInteger, QSLABiometryType) {
+    /** 不支持生物识别 */
+    QSLABiometryTypeNone,
+    /** 支持指纹识别 */
+    QSLABiometryTypeTouchID,
+    /** 支持面容识别 */
+    QSLABiometryTypeFaceID,
+};
+
 @interface QSTouchIDHelper : NSObject
 
-/** 是否支持TouchID */
-@property (nonatomic, assign, getter=isSupportTouchID, readonly) BOOL supportTouchID;
+/** 是否支持TouchID/FaceID */
+@property (nonatomic, assign, getter=isSupportAuthenticationWithBiometrics, readonly) BOOL supportAuthenticationWithBiometrics;
 
-/** 验证指纹 */
-- (void)verificationTouchIDCompleteBlock:(void(^)(QSTouchIDAuthType result))block;
+/** 支持生物识别的类型 */
+@property (nonatomic, assign, readonly) QSLABiometryType biometryType;
+
+/** 验证指纹/FaceId */
+- (void)verificationBiometricsCompleteBlock:(void(^)(QSTouchIDAuthType result))block;
 
 + (instancetype)sharedHelper;
 

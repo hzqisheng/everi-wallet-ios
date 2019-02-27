@@ -66,8 +66,7 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
     [self.webView reload];
 }
 
-- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
-{
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     [super webView:webView didFinishNavigation:navigation];
 
     @weakify(self);
@@ -671,7 +670,7 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
 
 - (void)getActionsWithFTModel:(QSFT *)FTModel AndCompeleteBlock:(nonnull void (^)(NSInteger, NSArray * _Nonnull))block {
     NSString *numberStr = @"";
-    NSArray *numberArr = [FTModel.sym componentsSeparatedByString:@"#"];
+    NSArray *numberArr = [FTModel.asset componentsSeparatedByString:@"#"];
     if (numberArr.count == 2) {
         numberStr = numberArr[1];
     }
@@ -753,6 +752,21 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
                             symbolID = responseDic[@"data"];
                         }
                         block(statusCode, symbolID.stringValue);
+                    }];
+}
+
+- (void)checkNetworkByProtocol:(NSString *)protocol port:(NSString *)port host:(NSString *)host andCompeleteBlock:(void (^)(NSInteger))block {
+    NSDictionary *bodyDic = @{
+                              @"host": QSNoNilString(host),
+                              @"port": @(port.integerValue),
+                              @"protocol": QSNoNilString(protocol)
+                              };
+    
+    NSString *jsString = [NSString stringWithFormat:@"checkNetwork(%@)",[bodyDic mj_JSONString]];
+    [self excuteRequestWithMethodName:@"checkNetwork"
+                             jsString:jsString
+                    completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
+                        block(statusCode);
                     }];
 }
 

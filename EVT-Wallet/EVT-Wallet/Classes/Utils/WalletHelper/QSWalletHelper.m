@@ -11,18 +11,30 @@
 #import "QSCreateIdentityHomeViewController.h"
 #import "QSCreateEvt.h"
 
+static NSString * const kSelectedNodeKey = @"kSelectedNodeKey";
+static NSString * const kWalletKey = @"kWalletKey";
+static NSString * const kCurrentWalletKey = @"kCurrentWalletKey";
+static NSString * const kCurrentIndexPath = @"kCurrentIndexPath";
+static NSString * const kAddressKey = @"kAddressKey";
+static NSString * const kHomeFTListKey = @"kHomeFTListKey";
+static NSString * const kCustemNodeKey = @"kCustemNodeKey";
+
+@interface QSWalletFTListModel ()
+
+@property (nonatomic, copy) NSString *privateKey;
+@property (nonatomic, strong) NSArray *ftList;
+
+@end
+
+@implementation QSWalletFTListModel
+@end
+
 @interface QSWalletHelper ()
 
 @property (nonatomic,strong) QSCreateEvt *currentEvt;
 @property (nonatomic, copy) NSString *currentNode;
 
 @end
-
-static NSString * const kSelectedNodeKey = @"kSelectedNodeKey";
-static NSString * const kWalletKey = @"kWalletKey";
-static NSString * const kCurrentWalletKey = @"kCurrentWalletKey";
-static NSString * const kCurrentIndexPath = @"kCurrentIndexPath";
-static NSString * const kAddressKey = @"kAddressKey";
 
 @implementation QSWalletHelper 
 
@@ -104,6 +116,8 @@ static NSString * const kAddressKey = @"kAddressKey";
     [QSUserDefaults removeObjectForKey:kCurrentIndexPath];
     [QSUserDefaults removeObjectForKey:kCurrentWalletKey];
     [QSUserDefaults removeObjectForKey:kAddressKey];
+    [QSUserDefaults removeObjectForKey:kHomeFTListKey];
+    [QSUserDefaults removeObjectForKey:kCustemNodeKey];
     [QSUserDefaults synchronize];
 }
 
@@ -197,6 +211,88 @@ static NSString * const kAddressKey = @"kAddressKey";
     return nil;
 }
 
+- (void)cacheHomeFTList:(NSArray *)ftList {
+    [self cacheHomeFTList:ftList
+       byWalletPrivateKey:self.currentEvt.privateKey];
+}
+
+- (NSArray *)getHomeFTListByWallet {
+    return [self getHomeFTListByWalletPrivateKey:self.currentEvt.privateKey];
+}
+
+- (void)cacheHomeFTList:(NSArray<QSFT *> *)ftList
+     byWalletPrivateKey:(NSString *)privateKey {
+    if (!ftList.count
+        || !privateKey.length) {
+        return;
+    }
+    
+    NSMutableArray *allWalletFtList = [[self getAllFTList] mutableCopy];
+    BOOL isAddBefore = NO;
+    for (QSWalletFTListModel *walletFt in allWalletFtList) {
+        if ([walletFt.privateKey isEqualToString:privateKey]) {
+            walletFt.ftList = ftList;
+            isAddBefore = YES;
+            break;
+        }
+    }
+    
+    if (!isAddBefore) {
+        QSWalletFTListModel *walletFtListModel = [[QSWalletFTListModel alloc] init];
+        walletFtListModel.privateKey = privateKey;
+        walletFtListModel.ftList = ftList;
+        [allWalletFtList addObject:walletFtListModel];
+    }
+    
+    NSData *allWalletFtListData = [NSKeyedArchiver archivedDataWithRootObject:allWalletFtList];
+    [QSUserDefaults setObject:allWalletFtListData forKey:kHomeFTListKey];
+}
+
+- (NSArray *)getHomeFTListByWalletPrivateKey:(NSString *)privateKey {
+    NSMutableArray *allWalletFtList = [[self getAllFTList] mutableCopy];
+    
+    for (QSWalletFTListModel *walletFt in allWalletFtList) {
+        if ([walletFt.privateKey isEqualToString:privateKey]) {
+            return walletFt.ftList;
+        }
+    }
+    return nil;
+}
+
+- (NSArray *)getAllFTList {
+    NSData *ftListData = [QSUserDefaults objectForKey:kHomeFTListKey];
+    if (ftListData) {
+        NSArray *ftList = [NSKeyedUnarchiver unarchiveObjectWithData:ftListData];
+        return ftList;
+    }
+    return [NSArray array];
+}
+
+#pragma mark - **************** 节点相关
+- (void)cacheCustomNode:(NSString *)nodeName nodeDetail:(NSString *)nodeDetail {
+    if (nodeName.length
+        && nodeDetail.length) {
+        NSDictionary *newNodeDic = @{
+                                     @"title" :nodeName,
+                                     @"detail":nodeDetail
+                                     };
+        
+        NSArray *nodeList = [QSUserDefaults objectForKey:kCustemNodeKey];
+        NSMutableArray *newNodeList = [NSMutableArray array];
+        if (nodeList) {
+            [newNodeList addObjectsFromArray:nodeList];
+        }
+        [newNodeList addObject:newNodeDic];
+        
+        [QSUserDefaults setObject:[newNodeList copy] forKey:kCustemNodeKey];
+        [QSUserDefaults synchronize];
+    }
+}
+
+- (NSMutableArray *)getCustomNodes {
+    return [QSUserDefaults objectForKey:kCustemNodeKey];
+}
+
 - (void)changeCurrentNode:(NSString *)host {
     if (!host) {
         return;
@@ -211,67 +307,73 @@ static NSString * const kAddressKey = @"kAddressKey";
 }
 
 - (NSArray<NSDictionary *> *)getAllNodes {
-    return @[
-             @{
-                 @"title" :@"mainnet1.everitoken.io",
-                 @"detail":@"MainNet(HONG KONG)(with history plugin)",
-                 },
-             @{
-                 @"title" :@"mainnet2.everitoken.io",
-                 @"detail":@"MainNet(SILICONVALLEY)",
-                 },
-             @{
-                 @"title" :@"mainnet3.everitoken.io",
-                 @"detail":@"MainNet(TOKYO)",
-                 },
-             @{
-                 @"title" :@"mainnet4.everitoken.io",
-                 @"detail":@"MainNet(FRANKFURT)",
-                 },
-             @{
-                 @"title" :@"mainnet5.everitoken.io",
-                 @"detail":@"MainNet(SEOUL)",
-                 },
-             @{
-                 @"title" :@"mainnet6.everitoken.io",
-                 @"detail":@"MainNet(DUBAI)",
-                 },
-             @{
-                 @"title" :@"mainnet7.everitoken.io",
-                 @"detail":@"MainNet(SINGAPORE)(with history plugin)",
-                 },
-             @{
-                 @"title" :@"mainnet8.everitoken.io",
-                 @"detail":@"MainNet(FRANKFURT)",
-                 },
-             @{
-                 @"title" :@"mainnet9.everitoken.io",
-                 @"detail":@"MainNet(KUALA LUMPUR)(with history plugin)",
-                 },
-             @{
-                 @"title" :@"mainnet10.everitoken.io",
-                 @"detail":@"MainNet(TOKYO)",
-                 },
-             @{
-                 @"title" :@"mainnet11.everitoken.io",
-                 @"detail":@"MainNet(SILICONVALLEY)",
-                 },
-             @{
-                 @"title" :@"mainnet12.everitoken.io",
-                 @"detail":@"MainNet(HONG KONG)",
-                 },
-             @{
-                 @"title" :@"mainnet13.everitoken.io",
-                 @"detail":@"MainNet(VIRGINIA)",
-                 },
-             @{
-                 @"title" :@"mainnet14.everitoken.io",
-                 @"detail":@"MainNet(SHANGHAI)(with history plugin)",
-                 },
-             @{
-                 @"title" :@"mainnet15.everitoken.io",
-                 @"detail":@"MainNet(SINGAPORE)(with history plugin)",
-                 }];
+    NSMutableArray *defaultNodes = [@[
+                                     @{
+                                         @"title" :@"mainnet1.everitoken.io",
+                                         @"detail":@"MainNet(HONG KONG)(with history plugin)",
+                                         },
+                                     @{
+                                         @"title" :@"mainnet2.everitoken.io",
+                                         @"detail":@"MainNet(CALIFORNIA)",
+                                         },
+                                     @{
+                                         @"title" :@"mainnet3.everitoken.io",
+                                         @"detail":@"MainNet(TOKYO)",
+                                         },
+                                     @{
+                                         @"title" :@"mainnet4.everitoken.io",
+                                         @"detail":@"MainNet(FRANKFURT)",
+                                         },
+                                     @{
+                                         @"title" :@"mainnet5.everitoken.io",
+                                         @"detail":@"MainNet(SEOUL)",
+                                         },
+                                     @{
+                                         @"title" :@"mainnet6.everitoken.io",
+                                         @"detail":@"MainNet(BRAZIL)",
+                                         },
+                                     @{
+                                         @"title" :@"mainnet7.everitoken.io",
+                                         @"detail":@"MainNet(SINGAPORE)(with history plugin)",
+                                         },
+                                     @{
+                                         @"title" :@"mainnet8.everitoken.io",
+                                         @"detail":@"MainNet(FRANKFURT)",
+                                         },
+                                     @{
+                                         @"title" :@"mainnet9.everitoken.io",
+                                         @"detail":@"MainNet(KUALA LUMPUR)(with history plugin)",
+                                         },
+                                     @{
+                                         @"title" :@"mainnet10.everitoken.io",
+                                         @"detail":@"MainNet(TOKYO)",
+                                         },
+                                     @{
+                                         @"title" :@"mainnet11.everitoken.io",
+                                         @"detail":@"MainNet(CALIFORNIA)",
+                                         },
+                                     @{
+                                         @"title" :@"mainnet12.everitoken.io",
+                                         @"detail":@"MainNet(HONG KONG)",
+                                         },
+                                     @{
+                                         @"title" :@"mainnet13.everitoken.io",
+                                         @"detail":@"MainNet(VIRGINIA)",
+                                         },
+                                     @{
+                                         @"title" :@"mainnet14.everitoken.io",
+                                         @"detail":@"MainNet(SHANGHAI)(with history plugin)",
+                                         },
+                                     @{
+                                         @"title" :@"mainnet15.everitoken.io",
+                                         @"detail":@"MainNet(SINGAPORE)(with history plugin)",
+                                         }] mutableCopy];
+    
+    NSArray *addNodeList = [QSUserDefaults objectForKey:kCustemNodeKey];
+    if (addNodeList.count) {
+        [defaultNodes addObjectsFromArray:addNodeList];
+    }
+    return defaultNodes;
 }
 
 #pragma mark - **************** Setter Getter

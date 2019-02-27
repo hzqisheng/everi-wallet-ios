@@ -33,16 +33,19 @@
     UIAlertAction *photeLibrary = [UIAlertAction actionWithTitle:@"从相册获取" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         TZImagePickerController *imagePicker = [[TZImagePickerController alloc] initWithMaxImagesCount:maxPicCount delegate:nil];
         imagePicker.allowPickingVideo = NO;
+        imagePicker.showSelectBtn = NO;
+        imagePicker.allowCrop = YES;
+        
         imagePicker.naviTitleColor = [UIColor qs_colorWhiteFFFFFF];
         imagePicker.naviTitleFont = [UIFont qs_fontOfSize18];
         imagePicker.barItemTextFont = [UIFont qs_fontOfSize15];
         imagePicker.barItemTextColor = [UIColor qs_colorWhiteFFFFFF];
         imagePicker.statusBarStyle = UIStatusBarStyleDefault;
         imagePicker.iconThemeColor = [UIColor qs_colorBlue3F7DEF];
-        
-        imagePicker.photoSelImage = [UIImage imageNamed:@"photo_sel_photoPickerVc"];
-        imagePicker.photoOriginSelImage = [UIImage imageNamed:@"photo_original_sel"];
-        imagePicker.photoNumberIconImage = [UIImage imageNamed:@"photo_number_icon"];
+//
+//        imagePicker.photoSelImage = [UIImage imageNamed:@"photo_sel_photoPickerVc"];
+//        imagePicker.photoOriginSelImage = [UIImage imageNamed:@"photo_original_sel"];
+//        imagePicker.photoNumberIconImage = [UIImage imageNamed:@"photo_number_icon"];
         
         imagePicker.photoPickerPageUIConfigBlock = ^(UICollectionView *collectionView, UIView *bottomToolBar, UIButton *previewButton, UIButton *originalPhotoButton, UILabel *originalPhotoLabel, UIButton *doneButton, UIImageView *numberImageView, UILabel *numberLabel, UIView *divideLine) {
             //完成按钮颜色设置

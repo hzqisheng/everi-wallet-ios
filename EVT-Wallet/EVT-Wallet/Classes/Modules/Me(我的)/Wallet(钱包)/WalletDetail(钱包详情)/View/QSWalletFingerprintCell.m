@@ -21,7 +21,11 @@
     self.contentView.backgroundColor = [UIColor clearColor];
     self.leftTitleLabel.font = [UIFont qs_fontOfSize16];
     self.leftTitleLabel.textColor = [UIColor qs_colorBlack333333];
-    self.leftTitleLabel.text = QSLocalizedString(@"qs_wallet_detail_item_fingerprint_title");
+    if ([QSTouchIDHelper sharedHelper].biometryType == QSLABiometryTypeTouchID) {
+        self.leftTitleLabel.text = QSLocalizedString(@"qs_wallet_detail_item_fingerprint_title");
+    } else {
+        self.leftTitleLabel.text = QSLocalizedString(@"qs_wallet_detail_item_faceid_title");
+    }
     
     [self.contentView addSubview:self.leftTitleLabel];
     [self.contentView addSubview:self.fingerPrintSwitch];

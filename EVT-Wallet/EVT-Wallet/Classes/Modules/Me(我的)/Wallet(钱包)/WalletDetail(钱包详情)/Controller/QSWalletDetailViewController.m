@@ -74,7 +74,7 @@ typedef NS_ENUM(NSUInteger, QSWalletDetailType) {
     signItem.cellIdentifier = NSStringFromClass([QSSettingCell class]);
     [self.dataArray addObject:@[exportItem,signItem]];
 
-    if ([QSTouchIDHelper sharedHelper].isSupportTouchID) {
+    if ([QSTouchIDHelper sharedHelper].isSupportAuthenticationWithBiometrics) {
         QSWallectFingerprintItem *fingerprintItem = [[QSWallectFingerprintItem alloc] init];
         fingerprintItem.cellTag = QSWalletDetailTypeFingerprint;
         fingerprintItem.cellSeapratorInset = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -83,7 +83,7 @@ typedef NS_ENUM(NSUInteger, QSWalletDetailType) {
         __weak __typeof(&*fingerprintItem) weakFingerprintItem = fingerprintItem;
         fingerprintItem.switchValueChangedBlock = ^(BOOL isOn) {
             if (isOn) {
-                DLog(@"开启指纹");
+                DLog(@"开启指纹/面容");
                 QSOpenFinerprintViewController *openVC = [[QSOpenFinerprintViewController alloc] init];
                 openVC.openFinerprintSuccessBlock = ^{
                     [[QSWalletHelper sharedHelper] updateWalletOpenTouchID:YES byPrivateKey:self.evtModel.privateKey];
@@ -93,7 +93,12 @@ typedef NS_ENUM(NSUInteger, QSWalletDetailType) {
                 };
                 [self.navigationController pushViewController:openVC animated:YES];
             } else {
-                [UIViewController showAlertViewWithTitle:QSLocalizedString(@"qs_wallet_detail_stop_fingerprint_title") message:nil confirmTitle:QSLocalizedString(@"qs_wallet_detail_stop_fingerprint_confirm") cancelTitle:QSLocalizedString(@"qs_wallet_detail_stop_fingerprint_cancel") confirmAction:^{
+                NSString *title = QSLocalizedString(@"qs_wallet_detail_stop_fingerprint_title");
+                if ([QSTouchIDHelper sharedHelper].biometryType == QSLABiometryTypeFaceID) {
+                    title = QSLocalizedString(@"qs_wallet_detail_stop_faceid_title");
+                }
+                
+                [UIViewController showAlertViewWithTitle:title message:nil confirmTitle:QSLocalizedString(@"qs_wallet_detail_stop_fingerprint_confirm") cancelTitle:QSLocalizedString(@"qs_wallet_detail_stop_fingerprint_cancel") confirmAction:^{
                     [[QSWalletHelper sharedHelper] updateWalletOpenTouchID:NO byPrivateKey:self.evtModel.privateKey];
                     weakFingerprintItem.openFingerprint = NO;
                     [self.tableView reloadData];

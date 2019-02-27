@@ -87,4 +87,9 @@
  */
 -(NSString *)digitUppercase;
 
+/**
+ *  是否是正确的网站
+ */
+- (BOOL)isValidUrl;
+
 @end

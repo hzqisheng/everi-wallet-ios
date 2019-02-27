@@ -11,6 +11,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@interface QSWalletFTListModel : QSBaseModel
+@end
+
 @interface QSWalletHelper : NSObject
 
 /** 当前身份下的钱包 */
@@ -28,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 /** 退出登录 */
 - (void)logout;
 
+#pragma mark - **************** 钱包相关
 /** 导入钱包 */
 - (void)addWallet:(QSCreateEvt *)evt;
 
@@ -50,13 +54,28 @@ NS_ASSUME_NONNULL_BEGIN
 /** 修改钱包密码 */
 - (void)changePassword:(NSString *)password;
 
+/** 保存一个钱包的代币列表 */
+- (void)cacheHomeFTList:(NSArray *)ftList;
+
+/** 获取缓存的首页代币列表 */
+- (NSArray *)getHomeFTListByWallet;
+
+#pragma mark - **************** 节点相关
+/**
+  * 添加自定义节点
+  * nodeName节点名称：mainnet1.everitoken.io
+  * nodeDetail ：节点描述
+ */
+- (void)cacheCustomNode:(NSString *)nodeName
+           nodeDetail:(NSString *)nodeDetail;
+
 /** 当前选择的节点 */
 @property (nonatomic, copy, readonly) NSString *currentNode;
 
 /** 修改选择的节点 */
 - (void)changeCurrentNode:(NSString *)host;
 
-/** 获取所有节点 */
+/** 获取所有节点 默认+手动添加的*/
 - (NSArray<NSDictionary *> *)getAllNodes;
 
 /**

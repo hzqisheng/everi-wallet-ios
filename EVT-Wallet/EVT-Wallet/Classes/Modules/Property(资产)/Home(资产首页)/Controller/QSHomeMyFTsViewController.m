@@ -35,16 +35,21 @@ static NSString *reuseIdentifier = @"QSHomeMyFTsCell";
     self.tableView.tableHeaderView = headerView;
     [self.tableView registerClass:[QSHomeMyFTsCell class] forCellReuseIdentifier:reuseIdentifier];
     [self addRefreshHeader];
+    
+    NSArray *cacheFtList = [[QSWalletHelper sharedHelper] getHomeFTListByWallet];
+    [self.dataArray addObjectsFromArray:cacheFtList];
+    [self.tableView reloadData];
 }
 
 - (void)tableViewShouldUpdateDataByPageIndex:(NSInteger)pageIndex {
     [[QSEveriApiWebViewController sharedWebView] getEVTFungibleBalanceListWithPublicKey:QSPublicKey andCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull ftList) {
         if (statusCode == kResponseSuccessCode) {
-            self.tableView.tableFooterView = ftList.count ? nil : self.noDataView;
+            [[QSWalletHelper sharedHelper] cacheHomeFTList:ftList];
             [self.dataArray removeAllObjects];
             [self.dataArray addObjectsFromArray:ftList];
             [self.tableView reloadData];
         }
+        self.tableView.tableFooterView = ftList.count ? nil : self.noDataView;
         [self endRefreshing];
     }];
 }

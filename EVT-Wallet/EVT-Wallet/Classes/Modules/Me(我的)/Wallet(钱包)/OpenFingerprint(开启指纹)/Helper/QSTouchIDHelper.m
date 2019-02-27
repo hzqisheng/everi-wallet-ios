@@ -9,6 +9,13 @@
 #import "QSTouchIDHelper.h"
 #import <LocalAuthentication/LocalAuthentication.h>
 
+@interface QSTouchIDHelper ()
+
+@property (nonatomic, strong) LAContext *context;
+@property (nonatomic, assign) QSLABiometryType biometryType;
+
+@end
+
 @implementation QSTouchIDHelper
 
 + (instancetype)sharedHelper {
@@ -22,24 +29,51 @@
     return sharedInstance;
 }
 
-- (BOOL)isSupportTouchID {
-    LAContext *context = [[LAContext alloc] init];
+- (BOOL)isSupportAuthenticationWithBiometrics {
     NSError *error = nil;
-    return [context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error];
+    BOOL canEvaluatePolicy = [self.context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error];
+    return canEvaluatePolicy;
 }
 
-- (void)verificationTouchIDCompleteBlock:(void (^)(QSTouchIDAuthType))block {
-    LAContext *context = [[LAContext alloc] init];
+- (QSLABiometryType)biometryType {
+    if (@available(iOS 11.0, *)) {
+        if (self.context.biometryType == LABiometryTypeTouchID) {
+            return QSLABiometryTypeTouchID;
+        } else if (self.context.biometryType == LABiometryTypeFaceID){
+            return QSLABiometryTypeFaceID;
+        } else {
+            return QSLABiometryTypeNone;
+        }
+    }
+    
+    if (self.isSupportAuthenticationWithBiometrics) {
+        return QSLABiometryTypeTouchID;
+    }
+    return QSLABiometryTypeNone;
+}
+
+- (void)verificationBiometricsCompleteBlock:(void (^)(QSTouchIDAuthType))block {
     NSError *error = nil;
     NSString *reason = QSLocalizedString(@"qs_wallet_touchid_verify_title");
-    // 判断设置是否支持指纹识别
-    if([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error])
+    
+    self.context = [[LAContext alloc] init];
+
+    // 判断设置是否支持指纹/面容识别
+    if (@available(iOS 11.0, *)) {
+        if (self.context.biometryType == LABiometryTypeTouchID) {
+            
+        } else if (self.context.biometryType == LABiometryTypeFaceID){
+            reason = QSLocalizedString(@"qs_wallet_faceid_verify_title");
+        }
+    }
+    
+    if([self.context canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error])
     {
         // 指纹识别只判断当前用户是否是机主
-        [context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:reason reply:^(BOOL success, NSError * _Nullable error) {
+        [self.context evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:reason reply:^(BOOL success, NSError * _Nullable error) {
             if(success)
             {
-                DLog(@"指纹认证成功");
+                DLog(@"指纹/面容认证成功");
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (block) {
                         block(QSTouchIDAuthTypeSuccess);
@@ -48,7 +82,7 @@
             }
             else
             {
-                DLog(@"指纹认证失败");
+                DLog(@"指纹/面容认证失败");
                 DLog(@"错误码：%zd",error.code);
                 DLog(@"出错信息：%@",error);
                 // 错误码 error.code
@@ -73,7 +107,7 @@
     }
     else
     {
-        DLog(@"TouchID设备不可用");
+        DLog(@"TouchID/FaceID设备不可用");
         DLog(@"错误码：%zd",error.code);
         DLog(@"出错信息：%@",error);
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -82,6 +116,13 @@
             }
         });
     }
+}
+
+- (LAContext *)context {
+    if (!_context) {
+        _context = [[LAContext alloc] init];
+    }
+    return _context;
 }
 
 @end
