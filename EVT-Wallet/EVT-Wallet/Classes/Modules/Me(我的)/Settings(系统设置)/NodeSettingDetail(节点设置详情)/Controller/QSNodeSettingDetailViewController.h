@@ -14,12 +14,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface QSNodeSettingItem : QSBaseModel
-
-@property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *detail;
-@property (nonatomic, assign) NSInteger isSelected;
-
-@end
-
 NS_ASSUME_NONNULL_END

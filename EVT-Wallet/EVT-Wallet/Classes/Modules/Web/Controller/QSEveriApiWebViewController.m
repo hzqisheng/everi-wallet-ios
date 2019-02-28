@@ -689,11 +689,13 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
 }
 
 - (void)changeNetworkByHost:(NSString *)host
+                       port:(NSString *)port
+                   protocol:(NSString *)protocol
           andCompeleteBlock:(void(^)(NSInteger statusCode))block {
     NSDictionary *dataDic = @{
-                              @"host":QSNoNilString(host),
-                              @"port":@(443),
-                              @"protocol":@"https"
+                              @"host"    : QSNoNilString(host),
+                              @"port"    : @(port.integerValue),
+                              @"protocol": protocol
                               };
     
     NSString *jsString = [NSString stringWithFormat:@"changeNetwork(%@)",[dataDic mj_JSONString]];

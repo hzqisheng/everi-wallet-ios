@@ -206,6 +206,7 @@
 		7BF40ED721BA3FC700047C3C /* QSTransactionRecordBottomToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40ED621BA3FC700047C3C /* QSTransactionRecordBottomToolBar.m */; };
 		7BF40EDA21BA44DA00047C3C /* QSBatchTransferViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40ED921BA44DA00047C3C /* QSBatchTransferViewController.m */; };
 		7BF40EDD21BA451700047C3C /* QSSelectAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF40EDC21BA451700047C3C /* QSSelectAddressViewController.m */; };
+		7BFAB9822227821E00E3C327 /* QSNodeSettingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFAB9812227821E00E3C327 /* QSNodeSettingItem.m */; };
 		D20F61A821CB9E0300E32D1E /* QSTransferftModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D20F61A721CB9E0300E32D1E /* QSTransferftModel.m */; };
 		D20F61AB21CB9E7A00E32D1E /* QSTransferftData.m in Sources */ = {isa = PBXBuildFile; fileRef = D20F61AA21CB9E7A00E32D1E /* QSTransferftData.m */; };
 		D24259D121C1F0BA00896BC7 /* QSIssueSettingEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D24259D021C1F0BA00896BC7 /* QSIssueSettingEditViewController.m */; };
@@ -692,6 +693,8 @@
 		7BF40ED921BA44DA00047C3C /* QSBatchTransferViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSBatchTransferViewController.m; sourceTree = "<group>"; };
 		7BF40EDB21BA451700047C3C /* QSSelectAddressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSSelectAddressViewController.h; sourceTree = "<group>"; };
 		7BF40EDC21BA451700047C3C /* QSSelectAddressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSSelectAddressViewController.m; sourceTree = "<group>"; };
+		7BFAB9802227821E00E3C327 /* QSNodeSettingItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSNodeSettingItem.h; sourceTree = "<group>"; };
+		7BFAB9812227821E00E3C327 /* QSNodeSettingItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSNodeSettingItem.m; sourceTree = "<group>"; };
 		AD946B9B6BA34BF4BAB1782C /* Pods-EVT-Wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EVT-Wallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-EVT-Wallet/Pods-EVT-Wallet.release.xcconfig"; sourceTree = "<group>"; };
 		D20F61A621CB9E0300E32D1E /* QSTransferftModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSTransferftModel.h; sourceTree = "<group>"; };
 		D20F61A721CB9E0300E32D1E /* QSTransferftModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSTransferftModel.m; sourceTree = "<group>"; };
@@ -1258,6 +1261,7 @@
 		7B96E1F421EDC4DC002EE53D /* NodeSettingDetail(节点设置详情) */ = {
 			isa = PBXGroup;
 			children = (
+				7BFAB97F2227820C00E3C327 /* Model */,
 				7B96E1F521EDC4DC002EE53D /* Controller */,
 				7BB5A2942224D2E9008BFC01 /* View */,
 			);
@@ -2883,6 +2887,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		7BFAB97F2227820C00E3C327 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7BFAB9802227821E00E3C327 /* QSNodeSettingItem.h */,
+				7BFAB9812227821E00E3C327 /* QSNodeSettingItem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D24259CC21C1F0A100896BC7 /* IssueSettingEdit(权限设置-编辑) */ = {
 			isa = PBXGroup;
 			children = (
@@ -3631,6 +3644,7 @@
 				7BF36DF821A79E7B00B27146 /* UIImage+Color.m in Sources */,
 				7BF36E0221A79E7B00B27146 /* UIView+BlankPage.m in Sources */,
 				7B0D182E21BCC19E00550756 /* QSWebViewViewController.m in Sources */,
+				7BFAB9822227821E00E3C327 /* QSNodeSettingItem.m in Sources */,
 				7BF2F84321AE7233000AAD93 /* QSManageAdressSearchView.m in Sources */,
 				7BF36E1221A79E7B00B27146 /* NSBundle+AppIcon.m in Sources */,
 				7B0D185C21BD284D00550756 /* QSMyNFTsCell.m in Sources */,

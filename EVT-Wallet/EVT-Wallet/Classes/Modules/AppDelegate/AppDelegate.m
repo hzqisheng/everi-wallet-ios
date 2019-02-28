@@ -22,9 +22,7 @@
     QSEveriApiWebViewController *web = [QSEveriApiWebViewController sharedWebView];
 //    __weak __typeof(&*web) weakSelf = web;
     if ([QSWalletHelper sharedHelper].currentNode) {
-        [[QSEveriApiWebViewController sharedWebView] changeNetworkByHost:[QSWalletHelper sharedHelper].currentNode andCompeleteBlock:^(NSInteger statusCode) {}];
-    } else {
-        //default
+        [[QSEveriApiWebViewController sharedWebView] changeNetworkByHost:[QSWalletHelper sharedHelper].currentNode.title port:[QSWalletHelper sharedHelper].currentNode.port protocol:[QSWalletHelper sharedHelper].currentNode.protocol andCompeleteBlock:^(NSInteger statusCode) {}];
     }
     web.initSuccessBlock = ^{
         if ([QSWalletHelper sharedHelper].isLogin) {

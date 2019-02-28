@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "QSCreateEvt.h"
+#import "QSNodeSettingItem.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -62,18 +63,22 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - **************** 节点相关
 /**
-  * 添加自定义节点
-  * nodeName节点名称：mainnet1.everitoken.io
-  * nodeDetail ：节点描述
+ * 添加自定义节点
+ * nodeName节点名称：mainnet1.everitoken.io
+ * nodeDetail ：节点描述
+ * port ：443
+ * protocol ：http
  */
 - (void)cacheCustomNode:(NSString *)nodeName
-           nodeDetail:(NSString *)nodeDetail;
+             nodeDetail:(NSString *)nodeDetail
+                   port:(NSString *)port
+               protocol:(NSString *)protocol;
 
 /** 当前选择的节点 */
-@property (nonatomic, copy, readonly) NSString *currentNode;
+@property (nonatomic, strong, readonly) QSNodeSettingItem *currentNode;
 
 /** 修改选择的节点 */
-- (void)changeCurrentNode:(NSString *)host;
+- (void)changeCurrentNode:(QSNodeSettingItem *)nodeItem;
 
 /** 获取所有节点 默认+手动添加的*/
 - (NSArray<NSDictionary *> *)getAllNodes;

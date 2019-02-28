@@ -42,7 +42,7 @@ typedef NS_ENUM(NSUInteger, QSNodeSettingType) {
     everiTokenItem.cellTag = QSNodeSettingTypeEveriToken;
     everiTokenItem.cellType = QSSettingItemTypeLeftRightTitle;
     everiTokenItem.cellIdentifier = NSStringFromClass([QSSettingCell class]);
-    everiTokenItem.rightTitle = [QSWalletHelper sharedHelper].currentNode;
+    everiTokenItem.rightTitle = [QSWalletHelper sharedHelper].currentNode.title;
     everiTokenItem.rightSubviewMargin = kRealValue(18);
 
     QSSettingItem *ETHItem = [[QSSettingItem alloc] init];

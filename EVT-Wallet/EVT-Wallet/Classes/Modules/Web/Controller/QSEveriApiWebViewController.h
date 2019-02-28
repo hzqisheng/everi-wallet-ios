@@ -253,6 +253,8 @@ typedef void(^QSEveriApiWebViewPrivateKeyBlock)(NSInteger statusCode, NSDictiona
  * @brief changeNetwork
  */
 - (void)changeNetworkByHost:(NSString *)host
+                       port:(NSString *)port
+                   protocol:(NSString *)protocol
           andCompeleteBlock:(void(^)(NSInteger statusCode))block;
 
 /**

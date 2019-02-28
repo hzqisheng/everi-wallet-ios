@@ -10,8 +10,9 @@
 #import "QSMainViewController.h"
 #import "QSCreateIdentityHomeViewController.h"
 #import "QSCreateEvt.h"
+#import "QSNodeSettingDetailViewController.h"
 
-static NSString * const kSelectedNodeKey = @"kSelectedNodeKey";
+static NSString * const kSelectedNodeKey = @"kSelectedNodeItemKey";
 static NSString * const kWalletKey = @"kWalletKey";
 static NSString * const kCurrentWalletKey = @"kCurrentWalletKey";
 static NSString * const kCurrentIndexPath = @"kCurrentIndexPath";
@@ -32,7 +33,7 @@ static NSString * const kCustemNodeKey = @"kCustemNodeKey";
 @interface QSWalletHelper ()
 
 @property (nonatomic,strong) QSCreateEvt *currentEvt;
-@property (nonatomic, copy) NSString *currentNode;
+@property (nonatomic, strong) QSNodeSettingItem *currentNode;
 
 @end
 
@@ -65,9 +66,20 @@ static NSString * const kCustemNodeKey = @"kCustemNodeKey";
             DLog(@"_idevt:%@",_currentIdentityEvt);
         }
         
-        _currentNode = [QSUserDefaults objectForKey:kSelectedNodeKey];
+        _currentNode = [self getCurrentNode];
         if (!_currentNode) {
-            _currentNode = @"mainnet14.everitoken.io";
+            //默认上海
+            /*
+             @"title"   : @"mainnet14.everitoken.io",
+             @"detail"  : @"MainNet(SHANGHAI)(with history plugin)",
+             @"port"    : @"443",
+             @"protocol": @"https"
+             */
+            _currentNode = [[QSNodeSettingItem alloc] init];
+            _currentNode.title = @"mainnet14.everitoken.io";
+            _currentNode.protocol = @"https";
+            _currentNode.port = @"443";
+            _currentNode.detail = @"MainNet(SHANGHAI)(with history plugin)";
         }
         DLog(@"_currentNode:%@",_currentNode);
     }
@@ -269,12 +281,17 @@ static NSString * const kCustemNodeKey = @"kCustemNodeKey";
 }
 
 #pragma mark - **************** 节点相关
-- (void)cacheCustomNode:(NSString *)nodeName nodeDetail:(NSString *)nodeDetail {
+- (void)cacheCustomNode:(NSString *)nodeName
+             nodeDetail:(NSString *)nodeDetail
+                   port:(NSString *)port
+               protocol:(NSString *)protocol {
     if (nodeName.length
         && nodeDetail.length) {
         NSDictionary *newNodeDic = @{
-                                     @"title" :nodeName,
-                                     @"detail":nodeDetail
+                                     @"title"   : nodeName,
+                                     @"detail"  : nodeDetail,
+                                     @"port"    : port,
+                                     @"protocol": protocol
                                      };
         
         NSArray *nodeList = [QSUserDefaults objectForKey:kCustemNodeKey];
@@ -293,14 +310,34 @@ static NSString * const kCustemNodeKey = @"kCustemNodeKey";
     return [QSUserDefaults objectForKey:kCustemNodeKey];
 }
 
-- (void)changeCurrentNode:(NSString *)host {
-    if (!host) {
+- (QSNodeSettingItem *)getCurrentNode {
+    NSData *currentNodeData = [QSUserDefaults objectForKey:kSelectedNodeKey];
+    if (currentNodeData) {
+        return [NSKeyedUnarchiver unarchiveObjectWithData:currentNodeData];
+    }
+    return nil;
+}
+
+- (void)cacheCurrentNode:(QSNodeSettingItem *)nodeItem {
+    self.currentNode = nodeItem;
+    if (nodeItem.title.length
+        &&nodeItem.protocol.length
+        &&nodeItem.port.length) {
+        NSData *nodeItemData = [NSKeyedArchiver archivedDataWithRootObject:nodeItem];
+        [[NSUserDefaults standardUserDefaults] setObject:nodeItemData forKey:kSelectedNodeKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+}
+
+- (void)changeCurrentNode:(QSNodeSettingItem *)nodeItem {
+    if (!nodeItem.title.length
+        || !nodeItem.port.length
+        || !nodeItem.protocol.length) {
         return;
     }
     
-    [[QSEveriApiWebViewController sharedWebView] changeNetworkByHost:host andCompeleteBlock:^(NSInteger statusCode) {}];
-    self.currentNode = host;
-    [[NSUserDefaults standardUserDefaults] setObject:host forKey:kSelectedNodeKey];
+    [[QSEveriApiWebViewController sharedWebView] changeNetworkByHost:nodeItem.title port:nodeItem.port protocol:nodeItem.protocol andCompeleteBlock:^(NSInteger statusCode) {}];
+    [self cacheCurrentNode:nodeItem];
     [[QSEveriApiWebViewController sharedWebView] evtInitAndCompeleteyBlock:^{
         [self turnToHomeViewController];
     }];
@@ -309,64 +346,100 @@ static NSString * const kCustemNodeKey = @"kCustemNodeKey";
 - (NSArray<NSDictionary *> *)getAllNodes {
     NSMutableArray *defaultNodes = [@[
                                      @{
-                                         @"title" :@"mainnet1.everitoken.io",
-                                         @"detail":@"MainNet(HONG KONG)(with history plugin)",
+                                         @"title"   : @"mainnet1.everitoken.io",
+                                         @"detail"  : @"MainNet(HONG KONG)(with history plugin)",
+                                         @"port"    : @"443",
+                                         @"protocol": @"https"
                                          },
                                      @{
-                                         @"title" :@"mainnet2.everitoken.io",
-                                         @"detail":@"MainNet(CALIFORNIA)",
+                                         @"title"   : @"mainnet2.everitoken.io",
+                                         @"detail"  : @"MainNet(CALIFORNIA)",
+                                         @"port"    : @"443",
+                                         @"protocol": @"https"
                                          },
                                      @{
-                                         @"title" :@"mainnet3.everitoken.io",
-                                         @"detail":@"MainNet(TOKYO)",
+                                         @"title"   : @"mainnet3.everitoken.io",
+                                         @"detail"  : @"MainNet(TOKYO)",
+                                         @"port"    : @"443",
+                                         @"protocol": @"https"
                                          },
                                      @{
-                                         @"title" :@"mainnet4.everitoken.io",
-                                         @"detail":@"MainNet(FRANKFURT)",
+                                         @"title"   : @"mainnet4.everitoken.io",
+                                         @"detail"  : @"MainNet(FRANKFURT)",
+                                         @"port"    : @"443",
+                                         @"protocol": @"https"
                                          },
                                      @{
-                                         @"title" :@"mainnet5.everitoken.io",
-                                         @"detail":@"MainNet(SEOUL)",
+                                         @"title"   : @"mainnet5.everitoken.io",
+                                         @"detail"  : @"MainNet(SEOUL)",
+                                         @"port"    : @"443",
+                                         @"protocol": @"https"
                                          },
                                      @{
-                                         @"title" :@"mainnet6.everitoken.io",
-                                         @"detail":@"MainNet(BRAZIL)",
+                                         @"title"   : @"mainnet6.everitoken.io",
+                                         @"detail"  : @"MainNet(BRAZIL)",
+                                         @"port"    : @"443",
+                                         @"protocol": @"https"
                                          },
                                      @{
-                                         @"title" :@"mainnet7.everitoken.io",
-                                         @"detail":@"MainNet(SINGAPORE)(with history plugin)",
+                                         @"title"   : @"mainnet7.everitoken.io",
+                                         @"detail"  : @"MainNet(SINGAPORE)(with history plugin)",
+                                         @"port"    : @"443",
+                                         @"protocol": @"https"
                                          },
                                      @{
-                                         @"title" :@"mainnet8.everitoken.io",
-                                         @"detail":@"MainNet(FRANKFURT)",
+                                         @"title"   : @"mainnet8.everitoken.io",
+                                         @"detail"  : @"MainNet(FRANKFURT)",
+                                         @"port"    : @"443",
+                                         @"protocol": @"https"
                                          },
                                      @{
-                                         @"title" :@"mainnet9.everitoken.io",
-                                         @"detail":@"MainNet(KUALA LUMPUR)(with history plugin)",
+                                         @"title"   : @"mainnet9.everitoken.io",
+                                         @"detail"  : @"MainNet(KUALA LUMPUR)(with history plugin)",
+                                         @"port"    : @"443",
+                                         @"protocol": @"https"
                                          },
                                      @{
-                                         @"title" :@"mainnet10.everitoken.io",
-                                         @"detail":@"MainNet(TOKYO)",
+                                         @"title"   : @"mainnet10.everitoken.io",
+                                         @"detail"  : @"MainNet(TOKYO)",
+                                         @"port"    : @"443",
+                                         @"protocol": @"https"
                                          },
                                      @{
-                                         @"title" :@"mainnet11.everitoken.io",
-                                         @"detail":@"MainNet(CALIFORNIA)",
+                                         @"title"   : @"mainnet11.everitoken.io",
+                                         @"detail"  : @"MainNet(CALIFORNIA)",
+                                         @"port"    : @"443",
+                                         @"protocol": @"https"
                                          },
                                      @{
-                                         @"title" :@"mainnet12.everitoken.io",
-                                         @"detail":@"MainNet(HONG KONG)",
+                                         @"title"   : @"mainnet12.everitoken.io",
+                                         @"detail"  : @"MainNet(HONG KONG)",
+                                         @"port"    : @"443",
+                                         @"protocol": @"https"
                                          },
                                      @{
-                                         @"title" :@"mainnet13.everitoken.io",
-                                         @"detail":@"MainNet(VIRGINIA)",
+                                         @"title"   : @"mainnet13.everitoken.io",
+                                         @"detail"  : @"MainNet(VIRGINIA)",
+                                         @"port"    : @"443",
+                                         @"protocol": @"https"
                                          },
                                      @{
-                                         @"title" :@"mainnet14.everitoken.io",
-                                         @"detail":@"MainNet(SHANGHAI)(with history plugin)",
+                                         @"title"   : @"mainnet14.everitoken.io",
+                                         @"detail"  : @"MainNet(SHANGHAI)(with history plugin)",
+                                         @"port"    : @"443",
+                                         @"protocol": @"https"
                                          },
                                      @{
-                                         @"title" :@"mainnet15.everitoken.io",
-                                         @"detail":@"MainNet(SINGAPORE)(with history plugin)",
+                                         @"title"   : @"mainnet15.everitoken.io",
+                                         @"detail"  : @"MainNet(SINGAPORE)(with history plugin)",
+                                         @"port"    : @"443",
+                                         @"protocol": @"https"
+                                         },
+                                     @{
+                                         @"title"   : @"testnet1.everitoken.io",
+                                         @"detail"  : @"TestNet",
+                                         @"port"    : @"8888",
+                                         @"protocol": @"http"
                                          }] mutableCopy];
     
     NSArray *addNodeList = [QSUserDefaults objectForKey:kCustemNodeKey];

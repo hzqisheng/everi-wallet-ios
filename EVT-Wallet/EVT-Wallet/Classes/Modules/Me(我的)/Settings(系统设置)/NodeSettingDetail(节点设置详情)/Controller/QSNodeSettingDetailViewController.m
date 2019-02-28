@@ -8,6 +8,7 @@
 
 #import "QSNodeSettingDetailViewController.h"
 #import "QSNodeSettingAddAlertView.h"
+#import "QSNodeSettingItem.h"
 
 @interface QSNodeSettingDetailViewController ()
 
@@ -34,13 +35,12 @@
     [self.dataArray removeAllObjects];
     [self.dataArray addObjectsFromArray:[QSNodeSettingItem mj_objectArrayWithKeyValuesArray:dataArray]];
     
-    NSString *selectedNode = [QSWalletHelper sharedHelper].currentNode;
+    QSNodeSettingItem *selectedNode = [QSWalletHelper sharedHelper].currentNode;
     for (QSNodeSettingItem *item in self.dataArray) {
-        if ([item.title isEqualToString:selectedNode]) {
+        if ([item.title isEqualToString:selectedNode.title]) {
             item.isSelected = 1;
         }
     }
-    
     [self.tableView reloadData];
 }
 
@@ -61,7 +61,7 @@
     if (!seletedItem.title) {
         return;
     }
-    [[QSWalletHelper sharedHelper] changeCurrentNode:seletedItem.title];
+    [[QSWalletHelper sharedHelper] changeCurrentNode:seletedItem];
 }
 
 - (void)rightBarButtonItemClicked {
@@ -83,7 +83,7 @@
                 NSLog(@"protocol:%@,host:%@,port:%@",protocol,host,port);
                 [[QSEveriApiWebViewController sharedWebView] checkNetworkByProtocol:protocol port:port host:host andCompeleteBlock:^(NSInteger statusCode) {
                     if (statusCode == kResponseSuccessCode) {
-                        [[QSWalletHelper sharedHelper] cacheCustomNode:host nodeDetail:@"CustemNet"];
+                        [[QSWalletHelper sharedHelper] cacheCustomNode:host nodeDetail:@"CustemNet" port:port protocol:protocol];
                         [self createDataSource];
                     }
                 }];
@@ -134,9 +134,5 @@
     item.isSelected = 1;
     [self tableViewCellClicked];
 }
-
-@end
-
-@implementation QSNodeSettingItem
 
 @end
