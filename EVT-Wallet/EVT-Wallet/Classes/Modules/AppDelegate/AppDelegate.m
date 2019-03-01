@@ -19,7 +19,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:kScreenBounds];
+    QSLunchImageViewController *imageVC = [[QSLunchImageViewController alloc] init];
+    self.window.rootViewController = [[RTRootNavigationController alloc] initWithRootViewController:imageVC];
+    
     QSEveriApiWebViewController *web = [QSEveriApiWebViewController sharedWebView];
+    [QSAppKeyWindow insertSubview:web.view atIndex:0];
 //    __weak __typeof(&*web) weakSelf = web;
     if ([QSWalletHelper sharedHelper].currentNode) {
         [[QSEveriApiWebViewController sharedWebView] changeNetworkByHost:[QSWalletHelper sharedHelper].currentNode.title port:[QSWalletHelper sharedHelper].currentNode.port protocol:[QSWalletHelper sharedHelper].currentNode.protocol andCompeleteBlock:^(NSInteger statusCode) {}];
@@ -31,8 +35,6 @@
             [[QSWalletHelper sharedHelper] turnToLoginViewController];
         }
     };
-    QSLunchImageViewController *imageVC = [[QSLunchImageViewController alloc] init];
-    self.window.rootViewController = [[RTRootNavigationController alloc] initWithRootViewController:imageVC];
     [self.window makeKeyAndVisible];
     return YES;
 }

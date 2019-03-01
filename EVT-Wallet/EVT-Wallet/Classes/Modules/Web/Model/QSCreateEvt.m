@@ -10,4 +10,11 @@
 
 @implementation QSCreateEvt
 
+- (NSString *)evtShowName {
+    if (self.evtName.length) {
+        return self.evtName;
+    }
+    return @"everiToken-wallet";
+}
+
 @end

@@ -32,7 +32,7 @@
 #pragma mark - **************** Setter Getter
 - (UILabel *)contentLabel {
     if (!_contentLabel) {
-        _contentLabel = [UILabel labelWithName:@"EOS5fKvaUBt7gBagCUBt7gBagCUBt7gBagCUBt7gBagCUBt7gBagC" font:[UIFont qs_fontOfSize13] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentLeft];
+        _contentLabel = [UILabel labelWithName:@"" font:[UIFont qs_fontOfSize13] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentLeft];
         _contentLabel.numberOfLines = 2;
     }
     return _contentLabel;

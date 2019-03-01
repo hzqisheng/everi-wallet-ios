@@ -17,7 +17,7 @@
 
 #import "QSWalletContentItem.h"
 #import "QSWallectFingerprintItem.h"
-#import "QSLogoutAlertView.h"
+#import "QSInputAlertView.h"
 
 typedef NS_ENUM(NSUInteger, QSWalletDetailType) {
     QSWalletDetailTypeContent,
@@ -42,12 +42,22 @@ typedef NS_ENUM(NSUInteger, QSWalletDetailType) {
     if (!self.evtModel.publicKey.length) {
         self.evtModel = [QSWalletHelper sharedHelper].currentEvt;
     }
-    [self createDataSource];
 }
 
-- (void)createDataSource {
+#pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
+- (NSArray<Class> *)getRigisterMultiCellClasses {
+    return @[[QSSettingCell class],
+             [QSWalletDetailCell class],
+             [QSWalletFingerprintCell class]];
+}
+
+- (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
+    if (self.dataArray.count) {
+        [self.dataArray removeAllObjects];
+    }
+    
     QSWalletContentItem *contentItem = [[QSWalletContentItem alloc] init];
-    contentItem.leftTitle = @"everiToken-wallet";
+    contentItem.leftTitle = self.evtModel.evtShowName;
     contentItem.leftTitleFont = [UIFont qs_fontOfSize15];
     contentItem.content = self.evtModel.publicKey;
     contentItem.cellTag = QSWalletDetailTypeContent;
@@ -72,7 +82,7 @@ typedef NS_ENUM(NSUInteger, QSWalletDetailType) {
     signItem.cellType = QSSettingItemTypeAccessnory;
     signItem.cellSeapratorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     signItem.cellIdentifier = NSStringFromClass([QSSettingCell class]);
-    [self.dataArray addObject:@[exportItem,signItem]];
+    [self.dataArray addObject:@[exportItem]];
 
     if ([QSTouchIDHelper sharedHelper].isSupportAuthenticationWithBiometrics) {
         QSWallectFingerprintItem *fingerprintItem = [[QSWallectFingerprintItem alloc] init];
@@ -109,16 +119,7 @@ typedef NS_ENUM(NSUInteger, QSWalletDetailType) {
         };
         [self.dataArray addObject:@[fingerprintItem]];
     }
-}
-
-#pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (NSArray<Class> *)getRigisterMultiCellClasses {
-    return @[[QSSettingCell class],
-             [QSWalletDetailCell class],
-             [QSWalletFingerprintCell class]];
-}
-
-- (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
+    
     return self.dataArray;
 }
 
@@ -137,6 +138,11 @@ typedef NS_ENUM(NSUInteger, QSWalletDetailType) {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     QSBaseCellItem *item = [self itemInIndexPath:indexPath];
     if (item.cellTag == QSWalletDetailTypeContent) {
+        [QSInputAlertView showInputAlertViewWithTitle:QSLocalizedString(@"qs_wallet_detail_change_name_alert_title") placeholder:QSLocalizedString(@"qs_wallet_detail_change_name_alert_placehoder") confirmBlock:^(NSString * _Nonnull text) {
+            self.evtModel.evtName = text;
+            [[QSWalletHelper sharedHelper] updateWallet:self.evtModel];
+            [self reloadTableViewData];
+        } cancelBlock:nil];
         
     } else if (item.cellTag == QSWalletDetailTypeExport) {
         WeakSelf(weakSelf);

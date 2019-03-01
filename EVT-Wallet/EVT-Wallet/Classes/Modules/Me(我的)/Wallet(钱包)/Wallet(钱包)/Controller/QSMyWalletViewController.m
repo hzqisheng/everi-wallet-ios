@@ -97,6 +97,7 @@ static NSString *sectionReuseIdentifier = @"QSMyWalletSection";
     cell.moreButtonClickedBlock = ^(QSMyWalletCell * _Nonnull cell) {
         [weakSelf walletCellDidClickedMoreButton:cell andSection:indexPath.section];
     };
+    
     if (indexPath.section == 0) {
         cell.wallet = self.dataArray[0];
     } else {

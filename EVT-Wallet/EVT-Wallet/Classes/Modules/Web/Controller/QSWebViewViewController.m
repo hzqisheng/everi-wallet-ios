@@ -25,7 +25,7 @@
 {
     if (self = [super init]) {
         self.useMPageTitleAsNavTitle = YES;
-        self.showLoadingProgress = YES;
+//        self.showLoadingProgress = YES;
         self.showPageInfo = YES;
     }
     return self;
@@ -33,7 +33,7 @@
 
 - (id)initWithUrl:(NSString *)urlString
 {
-    if (self = [self init]) {
+    if (self = [super init]) {
         [self setUrl:urlString];
     }
     return self;
@@ -57,7 +57,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setAutomaticallyAdjustsScrollViewInsets:NO];
+    
     [self.view setBackgroundColor:[UIColor whiteColor]];
     [self.webView.scrollView setBackgroundColor:[UIColor clearColor]];
     for (id vc in self.webView.scrollView.subviews) {
@@ -94,7 +94,7 @@
         return;
     }
     _url = url;
-    [self.progressView setProgress:0.0f];
+//    [self.progressView setProgress:0.0f];
     [self.webView loadRequest:[NSURLRequest requestWithURL:TLURL(self.url)]];
 }
 
@@ -250,7 +250,7 @@
 {
     if (_webView == nil) {
         WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
-        _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) configuration:config];
+        _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavgationBarHeight) configuration:config];
         [_webView setAllowsBackForwardNavigationGestures:YES];
         [_webView setNavigationDelegate:self];
         [_webView setUIDelegate:self];

@@ -46,6 +46,7 @@ UIScrollViewDelegate>
 #pragma mark - **************** Life Cycle
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self.swipeView reloadData];
 }
 
 - (void)viewDidLoad {

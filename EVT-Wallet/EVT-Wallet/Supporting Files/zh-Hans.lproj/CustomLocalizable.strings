@@ -327,14 +327,16 @@
 "qs_add_wallet_btn_confirm_title"            = "立即创建";
 
 //Wallet Detail
-"qs_wallet_detail_item_export_title"         = "导出私钥";
-"qs_wallet_detail_item_sign_title"           = "设置多签";
-"qs_wallet_detail_item_fingerprint_title"    = "开通钱包指纹解锁";
-"qs_wallet_detail_item_faceid_title"         = "开通钱包面容解锁";
-"qs_wallet_detail_stop_fingerprint_title"    = "确定暂停使用指纹解锁？";
-"qs_wallet_detail_stop_faceid_title"         = "确定暂停使用面容解锁？";
-"qs_wallet_detail_stop_fingerprint_confirm"  = "暂停使用";
-"qs_wallet_detail_stop_fingerprint_cancel"   = "取消";
+"qs_wallet_detail_item_export_title"            = "导出私钥";
+"qs_wallet_detail_item_sign_title"              = "设置多签";
+"qs_wallet_detail_item_fingerprint_title"       = "开通钱包指纹解锁";
+"qs_wallet_detail_item_faceid_title"            = "开通钱包面容解锁";
+"qs_wallet_detail_stop_fingerprint_title"       = "确定暂停使用指纹解锁？";
+"qs_wallet_detail_stop_faceid_title"            = "确定暂停使用面容解锁？";
+"qs_wallet_detail_stop_fingerprint_confirm"     = "暂停使用";
+"qs_wallet_detail_stop_fingerprint_cancel"      = "取消";
+"qs_wallet_detail_change_name_alert_title"      = "钱包名称";
+"qs_wallet_detail_change_name_alert_placehoder" = "请输入钱包名称";
 
 //TouchID
 "qs_wallet_touchid_nav_title"      = "开通钱包指纹/人脸解锁";
@@ -478,6 +480,7 @@
 "qs_everitoken_node_setting_add_alert_confirm"     = "确定";
 "qs_everitoken_node_setting_add_alert_cancel"      = "取消";
 "qs_everitoken_node_setting_add_error_toast"       = "请输入有效的节点地址";
+"qs_everitoken_node_setting_add_same_toast"        = "已经添加过该节点";
 
 //Aboutus
 "qs_aboutus_nav_title"                  = "关于我们";

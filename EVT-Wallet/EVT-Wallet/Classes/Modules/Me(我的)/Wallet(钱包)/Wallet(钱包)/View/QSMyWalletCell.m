@@ -150,7 +150,7 @@
 - (void)setWallet:(QSCreateEvt *)wallet {
     _wallet = wallet;
     if ([wallet.type isEqualToString:@"EVT"]) {
-        self.walletNameLabel.text = @"everiToken-wallet";
+        self.walletNameLabel.text = wallet.evtShowName;
         self.walletTypeLabel.text = @"evt";
     } else if ([wallet.type isEqualToString:@"ETH"]) {
         self.walletTypeLabel.text = @"eth";

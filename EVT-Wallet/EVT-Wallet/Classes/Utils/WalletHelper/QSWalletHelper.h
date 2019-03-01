@@ -17,9 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QSWalletHelper : NSObject
 
-/** 当前身份下的钱包 */
-@property (nonatomic, readonly, strong) QSCreateEvt *currentIdentityEvt;
-
 /** 当前选中的钱包 */
 @property (nonatomic, readonly, strong) QSCreateEvt *currentEvt;
 
@@ -42,6 +39,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** 获取某一个钱包 */
 - (QSCreateEvt *)getWalletByPrivateKey:(NSString *)privateKey;
+
+/** 更新某一个钱包的数据 */
+- (void)updateWallet:(QSCreateEvt *)wallet;
 
 /** 获取钱包列表 */
 - (NSMutableArray *)getWalletArray;

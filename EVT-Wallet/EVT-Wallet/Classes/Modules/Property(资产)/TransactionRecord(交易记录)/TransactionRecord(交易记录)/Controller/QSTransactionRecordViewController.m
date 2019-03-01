@@ -134,7 +134,14 @@
 
 #pragma mark - **************** UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (indexPath.row == 0) {
+        return;
+    }
+    QSTransactionRecordItem *recordItem = [self itemInIndexPath:indexPath];
+    NSString *urlString = [NSString stringWithFormat:@"https://evtscan.io/trx/%@?theme=light",recordItem.transferModel.trx_id];
+    QSWebViewViewController *web = [[QSWebViewViewController alloc] init];
+    web.url = urlString;
+    [self.navigationController pushViewController:web animated:YES];
 }
 
 #pragma mark - **************** UIScrollViewDelegate

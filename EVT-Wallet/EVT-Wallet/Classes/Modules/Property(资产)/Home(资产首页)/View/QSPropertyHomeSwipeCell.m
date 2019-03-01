@@ -42,7 +42,7 @@
         make.centerY.equalTo(self.leftImageView);
         make.left.equalTo(self.leftImageView.mas_right).offset(kRealValue(10));
         make.right.equalTo(self.cardImageView).offset(-kRealValue(20));
-        make.height.equalTo(@kRealValue(15));
+        make.height.equalTo(@kRealValue(17));
     }];
     
     [self.blockchainLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -88,7 +88,7 @@
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
-        _titleLabel.text = @"everiToken-wallet";
+        _titleLabel.text = [QSWalletHelper sharedHelper].currentEvt.evtShowName;
         _titleLabel.textColor = [UIColor qs_colorBlack333333];
         _titleLabel.font = [UIFont qs_fontOfSize15];
         [self.cardImageView addSubview:_titleLabel];

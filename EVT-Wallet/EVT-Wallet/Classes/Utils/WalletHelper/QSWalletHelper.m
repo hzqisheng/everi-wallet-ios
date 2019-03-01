@@ -52,90 +52,48 @@ static NSString * const kCustemNodeKey = @"kCustemNodeKey";
 
 - (instancetype)init {
     if (self = [super init]) {
-        NSData *walletData = [QSUserDefaults objectForKey:kCurrentWalletKey];
-        if (walletData) {
-            QSCreateEvt *wallet = [NSKeyedUnarchiver unarchiveObjectWithData:walletData];
-            _currentEvt = wallet;
-            DLog(@"_evt:%@",_currentEvt);
-        }
-        
-        NSData *walletListData = [QSUserDefaults objectForKey:kWalletKey];
-        if (walletListData) {
-            NSMutableArray *walletArray = [NSKeyedUnarchiver unarchiveObjectWithData:walletListData];
-            _currentIdentityEvt = walletArray.firstObject;
-            DLog(@"_idevt:%@",_currentIdentityEvt);
-        }
-        
-        _currentNode = [self getCurrentNode];
-        if (!_currentNode) {
-            //默认上海
-            /*
-             @"title"   : @"mainnet14.everitoken.io",
-             @"detail"  : @"MainNet(SHANGHAI)(with history plugin)",
-             @"port"    : @"443",
-             @"protocol": @"https"
-             */
-            _currentNode = [[QSNodeSettingItem alloc] init];
-            _currentNode.title = @"mainnet14.everitoken.io";
-            _currentNode.protocol = @"https";
-            _currentNode.port = @"443";
-            _currentNode.detail = @"MainNet(SHANGHAI)(with history plugin)";
-        }
-        DLog(@"_currentNode:%@",_currentNode);
+        [self getCurrentData];
     }
     return self;
 }
 
+- (void)getCurrentData {
+    _currentEvt = [self getCurrentWallet];
+    DLog(@"currentEvt:%@",_currentEvt);
+    
+    _currentNode = [self getCurrentNode];
+    if (!_currentNode) {
+        //默认上海
+        /*
+         @"title"   : @"mainnet14.everitoken.io",
+         @"detail"  : @"MainNet(SHANGHAI)(with history plugin)",
+         @"port"    : @"443",
+         @"protocol": @"https"
+         */
+        _currentNode = [[QSNodeSettingItem alloc] init];
+        _currentNode.title = @"mainnet14.everitoken.io";
+        _currentNode.protocol = @"https";
+        _currentNode.port = @"443";
+        _currentNode.detail = @"MainNet(SHANGHAI)(with history plugin)";
+    }
+    DLog(@"currentNode:%@",_currentNode);
+}
+
 - (void)loginWithEvt:(QSCreateEvt *)evt {
     _currentEvt = evt;
-    _currentIdentityEvt = evt;
     
-    NSData *currentData = [NSKeyedArchiver archivedDataWithRootObject:evt];
-    [QSUserDefaults setObject:currentData forKey:kCurrentWalletKey];
+    [self updateCurrentWallet:evt];
     
     NSIndexPath *currentIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    NSData *indexPathData = [NSKeyedArchiver archivedDataWithRootObject:currentIndexPath];
-    [QSUserDefaults setObject:indexPathData forKey:kCurrentIndexPath];
+    [self updateCurrentIndexPath:currentIndexPath];
     
     NSMutableArray *walletArray = [NSMutableArray array];
     [walletArray addObject:evt];
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:walletArray];
-    [QSUserDefaults setObject:data forKey:kWalletKey];
-    [QSUserDefaults synchronize];
-}
-
-- (void)turnToHomeViewController {
-    [UIApplication sharedApplication].keyWindow.rootViewController = [[QSMainViewController alloc] init];
-    [QSAppWindow insertSubview:[QSEveriApiWebViewController sharedWebView].view atIndex:0];
-}
-
-- (void)turnToLoginViewController {
-    if ([[UIViewController currentViewController] isKindOfClass:NSClassFromString(@"QSLoginViewController")]) {
-        return;
-    }
-    [UIApplication sharedApplication].keyWindow.rootViewController = [[RTRootNavigationController alloc] initWithRootViewController:[[QSCreateIdentityHomeViewController alloc] init]];
-    [QSAppWindow insertSubview:[QSEveriApiWebViewController sharedWebView].view atIndex:0];
-    CATransition * transition = [[CATransition alloc] init];
-    transition.type = @"fade";
-    transition.duration = 0.2;
-    [[UIApplication sharedApplication].keyWindow.layer addAnimation:transition forKey:nil];
-    
-}
-
-- (void)logout {
-    _currentEvt = nil;
-    [QSUserDefaults removeObjectForKey:kWalletKey];
-    [QSUserDefaults removeObjectForKey:kCurrentIndexPath];
-    [QSUserDefaults removeObjectForKey:kCurrentWalletKey];
-    [QSUserDefaults removeObjectForKey:kAddressKey];
-    [QSUserDefaults removeObjectForKey:kHomeFTListKey];
-    [QSUserDefaults removeObjectForKey:kCustemNodeKey];
-    [QSUserDefaults synchronize];
+    [self updateLocalWalletList:walletArray];
 }
 
 - (void)addWallet:(QSCreateEvt *)evt {
-    NSData *walletData = [QSUserDefaults objectForKey:kWalletKey];
-    NSMutableArray *walletArray = [NSKeyedUnarchiver unarchiveObjectWithData:walletData];
+    NSMutableArray *walletArray = [self getWalletArray];
     for (QSCreateEvt *newEVT in walletArray) {
         if ([newEVT.privateKey isEqualToString:evt.privateKey]) {
             [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_wallet_imported_already")];
@@ -143,16 +101,19 @@ static NSString * const kCustemNodeKey = @"kCustemNodeKey";
         }
     }
     [walletArray addObject:evt];
-    walletData = [NSKeyedArchiver archivedDataWithRootObject:walletArray];
-    [QSUserDefaults setObject:walletData forKey:kWalletKey];
-    [QSUserDefaults synchronize];
+    [self updateLocalWalletList:walletArray];
     [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_content_isRecover_success")];
 }
 
 - (void)switchWallet:(QSCreateEvt *)evt andIndexPath:(NSIndexPath *)indexPath {
-    _currentEvt = evt;
-    NSData *currentEvtData = [NSKeyedArchiver archivedDataWithRootObject:evt];
-    [QSUserDefaults setObject:currentEvtData forKey:kCurrentWalletKey];
+    [self updateCurrentWallet:evt];
+    [self updateCurrentIndexPath:indexPath];
+}
+
+- (void)updateCurrentIndexPath:(NSIndexPath *)indexPath {
+    if (!indexPath) {
+        return;
+    }
     NSData *indexPathData = [NSKeyedArchiver archivedDataWithRootObject:indexPath];
     [QSUserDefaults setObject:indexPathData forKey:kCurrentIndexPath];
     [QSUserDefaults synchronize];
@@ -166,16 +127,57 @@ static NSString * const kCustemNodeKey = @"kCustemNodeKey";
 
 - (NSMutableArray *)getWalletArray {
     NSData *walletData = [QSUserDefaults objectForKey:kWalletKey];
-    NSMutableArray *walletArray = [NSKeyedUnarchiver unarchiveObjectWithData:walletData];
-    return walletArray;
+    NSArray *walletArray = [NSKeyedUnarchiver unarchiveObjectWithData:walletData];
+    return [walletArray mutableCopy];
+}
+
+- (void)updateWallet:(QSCreateEvt *)wallet {
+    NSMutableArray *walletArray = [self getWalletArray];
+    for (QSCreateEvt *createEVT in walletArray) {
+        if ([createEVT.privateKey isEqualToString:wallet.privateKey]) {
+            createEVT.evtName = wallet.evtName;
+            createEVT.type = wallet.type;
+            createEVT.password = wallet.password;
+        }
+    }
+    [self updateLocalWalletList:walletArray];
+    
+    if ([wallet.privateKey isEqualToString:_currentEvt.privateKey]) {
+        [self updateCurrentWallet:wallet];
+    }
+}
+
+- (void)updateCurrentWallet:(QSCreateEvt *)wallet {
+    NSData *currentData = [NSKeyedArchiver archivedDataWithRootObject:wallet];
+    [QSUserDefaults setObject:currentData forKey:kCurrentWalletKey];
+    [QSUserDefaults synchronize];
+    _currentEvt = wallet;
+}
+
+- (QSCreateEvt *)getCurrentWallet {
+    NSData *walletData = [QSUserDefaults objectForKey:kCurrentWalletKey];
+    if (walletData) {
+        QSCreateEvt *currentEvt = [NSKeyedUnarchiver unarchiveObjectWithData:walletData];
+        return currentEvt;
+    }
+    return nil;
+}
+
+/** 更新本地钱包列表数据 */
+- (void)updateLocalWalletList:(NSArray<QSCreateEvt *> *)walletList {
+    if (!walletList.count) {
+        return;
+    }
+    NSData *walletData = [NSKeyedArchiver archivedDataWithRootObject:walletList];
+    [QSUserDefaults setObject:walletData forKey:kWalletKey];
+    [QSUserDefaults synchronize];
 }
 
 - (void)changePassword:(NSString *)password {
-    NSData *currentData = [QSUserDefaults objectForKey:kCurrentWalletKey];
-    QSCreateEvt *currentWallet = [NSKeyedUnarchiver unarchiveObjectWithData:currentData];
+    QSCreateEvt *currentWallet = [self getCurrentWallet];
     currentWallet.password = password;
-    NSData *arrayData = [QSUserDefaults objectForKey:kWalletKey];
-    NSMutableArray *walletArray = [NSKeyedUnarchiver unarchiveObjectWithData:arrayData];
+
+    NSMutableArray *walletArray = [self getWalletArray];
     NSMutableArray *newArray = [NSMutableArray arrayWithArray:walletArray];
     for (QSCreateEvt *newWallet in walletArray) {
         if ([newWallet.privateKey isEqualToString:currentWallet.privateKey]) {
@@ -183,34 +185,26 @@ static NSString * const kCustemNodeKey = @"kCustemNodeKey";
             [newArray addObject:currentWallet];
         }
     }
-    currentData = [NSKeyedArchiver archivedDataWithRootObject:currentWallet];
-    arrayData = [NSKeyedArchiver archivedDataWithRootObject:newArray];
-    [QSUserDefaults setObject:currentData forKey:kCurrentWalletKey];
-    [QSUserDefaults setObject:arrayData forKey:kWalletKey];
-    [QSUserDefaults synchronize];
+    
+    [self updateCurrentWallet:currentWallet];
+    [self updateLocalWalletList:newArray];
 }
 
 - (void)updateWalletOpenTouchID:(BOOL)isOpen
                    byPrivateKey:(NSString *)privateKey {
-    NSData *currentData = [QSUserDefaults objectForKey:kCurrentWalletKey];
-    QSCreateEvt *currentWallet = [NSKeyedUnarchiver unarchiveObjectWithData:currentData];
+    QSCreateEvt *currentWallet = [self getCurrentWallet];
     if ([currentWallet.privateKey isEqualToString:privateKey]) {
         currentWallet.isOpenFingerprint = isOpen;
+        [self updateCurrentWallet:currentWallet];
     }
     
-    NSData *arrayData = [QSUserDefaults objectForKey:kWalletKey];
-    NSMutableArray *walletArray = [NSKeyedUnarchiver unarchiveObjectWithData:arrayData];
+    NSMutableArray *walletArray = [self getWalletArray];
     for (QSCreateEvt *newWallet in walletArray) {
         if ([newWallet.privateKey isEqualToString:currentWallet.privateKey]) {
             newWallet.isOpenFingerprint = isOpen;
         }
     }
-
-    currentData = [NSKeyedArchiver archivedDataWithRootObject:currentWallet];
-    arrayData = [NSKeyedArchiver archivedDataWithRootObject:walletArray];
-    [QSUserDefaults setObject:currentData forKey:kCurrentWalletKey];
-    [QSUserDefaults setObject:arrayData forKey:kWalletKey];
-    [QSUserDefaults synchronize];
+    [self updateLocalWalletList:walletArray];
 }
 
 - (QSCreateEvt *)getWalletByPrivateKey:(NSString *)privateKey {
@@ -299,6 +293,17 @@ static NSString * const kCustemNodeKey = @"kCustemNodeKey";
         if (nodeList) {
             [newNodeList addObjectsFromArray:nodeList];
         }
+        
+        //判断是否添加过该节点
+        for (NSDictionary *nodedic in newNodeList) {
+            if ([nodedic[@"title"] isEqualToString:newNodeDic[@"title"]]
+                && [nodedic[@"port"] isEqualToString:newNodeDic[@"port"]]
+                && [nodedic[@"protocol"] isEqualToString:newNodeDic[@"protocol"]]) {
+                [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_everitoken_node_setting_add_same_toast")];
+                return;
+            }
+        }
+        
         [newNodeList addObject:newNodeDic];
         
         [QSUserDefaults setObject:[newNodeList copy] forKey:kCustemNodeKey];
@@ -448,6 +453,36 @@ static NSString * const kCustemNodeKey = @"kCustemNodeKey";
     }
     return defaultNodes;
 }
+
+- (void)turnToHomeViewController {
+    [UIApplication sharedApplication].keyWindow.rootViewController = [[QSMainViewController alloc] init];
+    [QSAppWindow insertSubview:[QSEveriApiWebViewController sharedWebView].view atIndex:0];
+}
+
+- (void)turnToLoginViewController {
+    if ([[UIViewController currentViewController] isKindOfClass:NSClassFromString(@"QSLoginViewController")]) {
+        return;
+    }
+    [UIApplication sharedApplication].keyWindow.rootViewController = [[RTRootNavigationController alloc] initWithRootViewController:[[QSCreateIdentityHomeViewController alloc] init]];
+    [QSAppWindow insertSubview:[QSEveriApiWebViewController sharedWebView].view atIndex:0];
+    CATransition * transition = [[CATransition alloc] init];
+    transition.type = @"fade";
+    transition.duration = 0.2;
+    [[UIApplication sharedApplication].keyWindow.layer addAnimation:transition forKey:nil];
+    
+}
+
+- (void)logout {
+    _currentEvt = nil;
+    [QSUserDefaults removeObjectForKey:kWalletKey];
+    [QSUserDefaults removeObjectForKey:kCurrentIndexPath];
+    [QSUserDefaults removeObjectForKey:kCurrentWalletKey];
+    [QSUserDefaults removeObjectForKey:kAddressKey];
+    [QSUserDefaults removeObjectForKey:kHomeFTListKey];
+    [QSUserDefaults removeObjectForKey:kCustemNodeKey];
+    [QSUserDefaults synchronize];
+}
+
 
 #pragma mark - **************** Setter Getter
 - (BOOL)isLogin {

@@ -323,14 +323,16 @@
 "qs_add_wallet_btn_confirm_title"            = "Create Now";
 
 //Wallet Detail
-"qs_wallet_detail_item_export_title"         = "Export PrivateKey";
-"qs_wallet_detail_item_sign_title"           = "Setting up Sign";
-"qs_wallet_detail_item_fingerprint_title"    = "Start Touch ID unlock";
-"qs_wallet_detail_item_faceid_title"         = "Start Face ID unlock";
-"qs_wallet_detail_stop_fingerprint_title"    = "Stop Touch ID unlock?";
-"qs_wallet_detail_stop_faceid_title"         = "Stop Face ID unlock?";
-"qs_wallet_detail_stop_fingerprint_confirm"  = "Stop using";
-"qs_wallet_detail_stop_fingerprint_cancel"   = "Cancel";
+"qs_wallet_detail_item_export_title"            = "Export PrivateKey";
+"qs_wallet_detail_item_sign_title"              = "Setting up Sign";
+"qs_wallet_detail_item_fingerprint_title"       = "Start Touch ID unlock";
+"qs_wallet_detail_item_faceid_title"            = "Start Face ID unlock";
+"qs_wallet_detail_stop_fingerprint_title"       = "Stop Touch ID unlock?";
+"qs_wallet_detail_stop_faceid_title"            = "Stop Face ID unlock?";
+"qs_wallet_detail_stop_fingerprint_confirm"     = "Stop using";
+"qs_wallet_detail_stop_fingerprint_cancel"      = "Cancel";
+"qs_wallet_detail_change_name_alert_title"      = "Wallet Name";
+"qs_wallet_detail_change_name_alert_placehoder" = "Please Input Wallet Name";
 
 //TouchID
 "qs_wallet_touchid_nav_title"      = "Start Touch ID / Face ID unlock";
@@ -477,6 +479,7 @@
 "qs_everitoken_node_setting_add_alert_confirm"     = "confirm";
 "qs_everitoken_node_setting_add_alert_cancel"      = "cancel";
 "qs_everitoken_node_setting_add_error_toast"       = "Please Enter a Valid Node Address";
+"qs_everitoken_node_setting_add_same_toast"        = "This node has been added";
 
 //Aboutus
 "qs_aboutus_nav_title"                  = "About Us";

@@ -17,8 +17,9 @@
     UIAlertAction *camera = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
         imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePicker.allowsEditing = YES;
         [imagePicker.rac_imageSelectedSignal subscribeNext:^(id x) {
-            UIImage *seletedImage = [x objectForKey:UIImagePickerControllerOriginalImage];
+            UIImage *seletedImage = [x objectForKey:UIImagePickerControllerEditedImage];
             if (block
                 &&seletedImage) {
                 block(@[seletedImage], NO);

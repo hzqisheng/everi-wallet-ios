@@ -48,7 +48,7 @@
     mnemonicCodeBackgroundView.layer.shadowColor = [UIColor qs_colorGray00267B].CGColor;
     mnemonicCodeBackgroundView.layer.shadowOpacity = 0.1f;
     
-    UILabel *mnemonicCodeLabel = [UILabel labelWithName:[QSWalletHelper sharedHelper].currentIdentityEvt.mnemoinc font:[UIFont qs_fontOfSize14] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentLeft];
+    UILabel *mnemonicCodeLabel = [UILabel labelWithName:[QSWalletHelper sharedHelper].currentEvt.mnemoinc font:[UIFont qs_fontOfSize14] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentLeft];
     mnemonicCodeLabel.numberOfLines = 0;
     mnemonicCodeLabel.frame = CGRectMake(kRealValue(15), kRealValue(15), mnemonicCodeBackgroundView.width - kRealValue(30), kRealValue(45));
     [mnemonicCodeBackgroundView addSubview:mnemonicCodeLabel];
