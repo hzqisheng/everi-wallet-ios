@@ -32,6 +32,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *amount;
 @property (nonatomic, copy) NSString *assetNumber;
 
+
+@property (nonatomic, copy) NSString *fungibleId;
+
 @end
 
 NS_ASSUME_NONNULL_END

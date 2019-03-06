@@ -772,6 +772,38 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
                     }];
 }
 
+- (void)getEVTLinkQrImageByFungibleId:(NSInteger)fungibleId
+                               amount:(NSString *)amount
+                    andCompeleteBlock:(nonnull void (^)(NSInteger, QSCollectImageModel * _Nonnull))block {
+    /*
+     getEVTLinkQrImage('payeeCode',{address:'EVT5qn48E8eZKJb5yM24bgC1m8MdRFg5eBU76cQfDXBGXr3UYjLvY',fungibleId:2,amount:"1.00000 S#2" },{autoReload:true})
+     */
+    
+    NSDictionary *addressDic = [NSMutableDictionary dictionaryWithCapacity:0];
+    [addressDic setValue:[QSWalletHelper sharedHelper].currentEvt.publicKey forKey:@"address"];
+    if (fungibleId > 0) {
+        [addressDic setValue:@(fungibleId) forKey:@"fungibleId"];
+    }
+    if (amount.length) {
+        [addressDic setValue:amount forKey:@"amount"];
+    }
+    
+    bool bool_true = false;
+    NSDictionary *autoReloadDic = @{@"autoReload": @(bool_true)};
+    
+    NSString *jsString = [NSString stringWithFormat:@"getEVTLinkQrImage('payeeCode',%@,%@)",[addressDic mj_JSONString],[autoReloadDic mj_JSONString]];
+    [self excuteRequestWithMethodName:@"getEVTLinkQrImage"
+                             jsString:jsString
+                    completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
+                        QSCollectImageModel *collectionImage;
+                        if (statusCode == kResponseSuccessCode) {
+                            collectionImage = [QSCollectImageModel mj_objectWithKeyValues:responseDic];
+                        }
+                        block(statusCode, collectionImage);
+                    }];
+}
+
+
 #pragma mark - **************** Private Methods
 - (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString
 {

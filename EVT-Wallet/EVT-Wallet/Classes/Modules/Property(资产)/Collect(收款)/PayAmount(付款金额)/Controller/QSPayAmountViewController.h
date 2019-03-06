@@ -12,9 +12,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QSPayAmountViewController : QSBaseCornerSectionTableViewController
 
+/** 转账的address*/
 @property (nonatomic, copy) NSString *address;
 
-@property (nonatomic, strong) QSFT *FTModel;
+/** 转账的fungibleID */
+@property (nonatomic, copy, nullable) NSString *fungibleID;
+
+/** 转账的数量 */
+@property (nonatomic, copy, nullable) NSString *amount;
 
 @end
 

@@ -14,6 +14,7 @@
 #import "QSNFT.h"
 #import "QSTransferftModel.h"
 #import "QSEvtLinkStatus.h"
+#import "QSCollectImageModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -280,6 +281,13 @@ typedef void(^QSEveriApiWebViewPrivateKeyBlock)(NSInteger statusCode, NSDictiona
                           port:(NSString *)port
                           host:(NSString *)host
              andCompeleteBlock:(void(^)(NSInteger statusCode))block;
+
+/**
+ * getEVTLinkQrImage
+ */
+- (void)getEVTLinkQrImageByFungibleId:(NSInteger)fungibleId
+                               amount:(NSString * _Nullable)amount
+                    andCompeleteBlock:(void(^)(NSInteger statusCode, QSCollectImageModel *collectImage))block;
 
 @end
 

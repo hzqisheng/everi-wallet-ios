@@ -14,10 +14,12 @@
 #define kShareLogo       @"share_logo"
 #define kShareTitle      @"EveriWallet"
 
-#define kFacebookAddress @"https://www.facebook.com/everiToken"
-#define kTwitterAddress  @"https://twitter.com/everiToken"
-#define kTelegramAddress @"https://t.me/everiToken"
-#define kWechatAddress   @"@everiToken"
+#define kFacebookAddress    @"https://www.facebook.com/everiToken"
+#define kTwitterAddress     @"https://twitter.com/everiToken"
+#define kTelegramAddress    @"https://t.me/everiToken"
+#define kTelegramCNAddress  @"https://t.me/everiTokenCNofficial"
+#define kTelegramRUSAddress @"https://t.me/everitokenru"
+#define kWechatAddress      @"@everiToken"
 
 //================ localizedString ===========//
 #define QSLocalizedString(key)   (NSLocalizedStringFromTable(key, @"CustomLocalizable", nil).length ? NSLocalizedStringFromTable(key, @"CustomLocalizable", nil) : @"")

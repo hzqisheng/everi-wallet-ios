@@ -14,7 +14,7 @@
 - (void)showPictureSelectActionSheetWithMaxPicCount:(NSInteger)maxPicCount
                                    completeBlock:(void (^)(NSArray *, BOOL))block {
     UIAlertController *ac = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-    UIAlertAction *camera = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *camera = [UIAlertAction actionWithTitle:QSLocalizedString(@"qs_create_ft_take_icon_title") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
         imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
         imagePicker.allowsEditing = YES;
@@ -31,7 +31,7 @@
         }];
         [self presentViewController:imagePicker animated:YES completion:nil];
     }];
-    UIAlertAction *photeLibrary = [UIAlertAction actionWithTitle:@"从相册获取" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *photeLibrary = [UIAlertAction actionWithTitle:QSLocalizedString(@"qs_create_ft_select_local_icon_title") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         TZImagePickerController *imagePicker = [[TZImagePickerController alloc] initWithMaxImagesCount:maxPicCount delegate:nil];
         imagePicker.allowPickingVideo = NO;
         imagePicker.showSelectBtn = NO;

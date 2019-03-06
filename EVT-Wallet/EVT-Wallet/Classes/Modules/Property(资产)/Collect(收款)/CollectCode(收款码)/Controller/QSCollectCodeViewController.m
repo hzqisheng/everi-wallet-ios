@@ -38,11 +38,20 @@
 
 - (void)getAddress {
     WeakSelf(weakSelf);
-    [[QSEveriApiWebViewController sharedWebView] getEvtLinkForPayeeCodeAndCompeleteBlock:^(NSInteger statusCode, NSString * _Nonnull addressCodeString) {
+//    [[QSEveriApiWebViewController sharedWebView] getEvtLinkForPayeeCodeAndCompeleteBlock:^(NSInteger statusCode, NSString * _Nonnull addressCodeString) {
+//        if (statusCode == kResponseSuccessCode) {
+//            NSIndexPath *index = [NSIndexPath indexPathForRow:1 inSection:1];
+//            QSQRCodeScanItem *codeItem = (QSQRCodeScanItem *)[self itemInIndexPath:index];
+//            codeItem.qrcodeImageString = addressCodeString;
+//            [weakSelf.tableView reloadData];
+//        }
+//    }];
+    
+    [[QSEveriApiWebViewController sharedWebView] getEVTLinkQrImageByFungibleId:self.fungibleId amount:self.amount andCompeleteBlock:^(NSInteger statusCode, QSCollectImageModel * _Nonnull collectImage) {
         if (statusCode == kResponseSuccessCode) {
             NSIndexPath *index = [NSIndexPath indexPathForRow:1 inSection:1];
             QSQRCodeScanItem *codeItem = (QSQRCodeScanItem *)[self itemInIndexPath:index];
-            codeItem.qrcodeImageString = addressCodeString;
+            codeItem.qrcodeImageString = collectImage.dataUrl;
             [weakSelf.tableView reloadData];
         }
     }];
@@ -53,9 +62,7 @@
     DLog(@"%ld",(long)index);
     if (index == 1) {
         QSScanningViewController *scan = [[QSScanningViewController alloc] init];
-        scan.scanningViewControllerScanFukuanBlock = ^{
-            
-        };
+        scan.scanningViewControllerScanFukuanBlock = ^{};
         [self.navigationController pushViewController:scan animated:YES];
     }
 }

@@ -14,6 +14,8 @@ typedef NS_ENUM(NSUInteger, QSJoinCommunitiesCellTag) {
     QSJoinCommunitiesCellTagFacebook,
     QSJoinCommunitiesCellTagTwitter,
     QSJoinCommunitiesCellTagTelegram,
+    QSJoinCommunitiesCellTagTelegramCN,
+    QSJoinCommunitiesCellTagTelegramRUS,
     QSJoinCommunitiesCellTagWeChat,
 };
 
@@ -67,6 +69,24 @@ static NSString *reuseIdentifier = @"QSSettingCell";
     telegramItem.rightTitle = @"@everiToken";
     telegramItem.cellHeight = kRealValue(55);
 
+    QSSettingItem *telegramCNItem = [[QSSettingItem alloc] init];
+    telegramCNItem.cellType = QSSettingItemTypeImageAndLeftRightTitle;
+    telegramCNItem.leftImage = [UIImage imageNamed:@"icon_jiarushequn_telegram"];
+    telegramCNItem.leftTitle = @"Telegram（Chinese）";
+    telegramCNItem.leftImageSize = CGSizeMake(kRealValue(33), kRealValue(33));
+    telegramCNItem.cellTag = QSJoinCommunitiesCellTagTelegramCN;
+    telegramCNItem.rightTitle = @"@everiToken";
+    telegramCNItem.cellHeight = kRealValue(55);
+
+    QSSettingItem *telegramRUSItem = [[QSSettingItem alloc] init];
+    telegramRUSItem.cellType = QSSettingItemTypeImageAndLeftRightTitle;
+    telegramRUSItem.leftImage = [UIImage imageNamed:@"icon_jiarushequn_telegram"];
+    telegramRUSItem.leftTitle = @"Telegram（Russian）";
+    telegramRUSItem.leftImageSize = CGSizeMake(kRealValue(33), kRealValue(33));
+    telegramRUSItem.cellTag = QSJoinCommunitiesCellTagTelegramRUS;
+    telegramRUSItem.rightTitle = @"@everiToken";
+    telegramRUSItem.cellHeight = kRealValue(55);
+    
     QSSettingItem *weChatItem = [[QSSettingItem alloc] init];
     weChatItem.cellType = QSSettingItemTypeImageAndLeftRightTitle;
     weChatItem.leftImage = [UIImage imageNamed:@"icon_jiarushequn_wechat"];
@@ -75,11 +95,13 @@ static NSString *reuseIdentifier = @"QSSettingCell";
     weChatItem.cellTag = QSJoinCommunitiesCellTagWeChat;
     weChatItem.rightTitle = @"@everiToken";
     weChatItem.cellHeight = kRealValue(55);
-
+    
     self.dataArray = [@[facebookItem,
-                       twitterItem,
-                       telegramItem,
-                       weChatItem] mutableCopy];
+                        twitterItem,
+                        telegramItem,
+                        telegramCNItem,
+                        telegramRUSItem,
+                        weChatItem] mutableCopy];
     [self.tableView reloadData];
 }
 
@@ -114,8 +136,12 @@ static NSString *reuseIdentifier = @"QSSettingCell";
         QSOpenURL(kTwitterAddress);
     } else if (item.cellTag == QSJoinCommunitiesCellTagTelegram) {
         QSOpenURL(kTelegramAddress);
+    } else if (item.cellTag == QSJoinCommunitiesCellTagTelegramCN) {
+        QSOpenURL(kTelegramCNAddress);
+    } else if (item.cellTag == QSJoinCommunitiesCellTagTelegramRUS) {
+        QSOpenURL(kTelegramRUSAddress);
     } else if (item.cellTag == QSJoinCommunitiesCellTagWeChat) {
-        UIPasteboard* pasteboard = [UIPasteboard generalPasteboard];
+        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
         [pasteboard setString:kWechatAddress];
         [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_join_communities_paste_success_toast")];
     }

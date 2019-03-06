@@ -24,7 +24,7 @@
 - (id)init
 {
     if (self = [super init]) {
-        self.useMPageTitleAsNavTitle = YES;
+        self.useMPageTitleAsNavTitle = NO;
 //        self.showLoadingProgress = YES;
         self.showPageInfo = YES;
     }

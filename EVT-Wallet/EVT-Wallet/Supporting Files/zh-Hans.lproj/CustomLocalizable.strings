@@ -158,6 +158,8 @@
 "qs_create_ft_decimals_help_content"     = "您可输入0-18的数字，例如输入2,则代表该代币可以精确到0.01";
 "qs_create_ft_icon_help_title"           = "图标(建议180*180px)";
 "qs_create_ft_icon_help_content"         = "Token的图标将存储在everiToken上，这会消耗部分手续费（EVT/PEVT)，推荐使用180x180像素的图片。";
+"qs_create_ft_select_local_icon_title"   = "选图";
+"qs_create_ft_take_icon_title"           = "拍照";
 
 //Scan
 "qs_scan_nav_title"                  = "二维码";
@@ -369,6 +371,8 @@
 "qs_manage_address_all"                 = "全部";
 "qs_manage_address_selectGroup"         = "选择组";
 "qs_manage_address_no_address_exprot"   = "没有地址可以导出";
+"qs_manage_address_cell_delete"         = "删除";
+"qs_manage_address_exist_toast"         = "已经添加过该地址";
 
 //Add Address
 "qs_add_address_nav_title"                = "新增地址";

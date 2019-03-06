@@ -16,4 +16,15 @@
              };
 }
 
+- (NSString *)fungibleId {
+    if (self.asset.length) {
+        //4745.30 S#655320035
+        NSArray *assetList = [self.asset componentsSeparatedByString:@"#"];
+        if (assetList.count == 2) {
+            return assetList[1];
+        }
+    }
+    return nil;
+}
+
 @end

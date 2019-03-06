@@ -96,8 +96,6 @@ static NSString *reuseIdentifier = @"QSAdressCell";
 }
 
 - (void)importAddressButtonClicked {
-//    [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_content_NO")];
-//    return;
     QSImportAddressViewController *importAddress = [[QSImportAddressViewController alloc] init];
     importAddress.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:importAddress animated:YES];
@@ -115,6 +113,19 @@ static NSString *reuseIdentifier = @"QSAdressCell";
     return self.dataArray.count;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        QSAddress *address = self.dataArray[indexPath.row];
+        [self.dataArray removeObjectAtIndex:indexPath.row];
+        [self.tableView reloadData];
+        [[QSAddressHelper sharedHelper] deleteAddress:address.publicKey];
+    }
+}
+
 #pragma mark - **************** UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return kRealValue(105);
@@ -122,6 +133,14 @@ static NSString *reuseIdentifier = @"QSAdressCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return QSLocalizedString(@"qs_manage_address_cell_delete");
 }
 
 #pragma mark - **************** Setter Getter

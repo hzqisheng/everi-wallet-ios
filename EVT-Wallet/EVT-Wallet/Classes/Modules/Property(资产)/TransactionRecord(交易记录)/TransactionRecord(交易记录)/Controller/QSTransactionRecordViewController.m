@@ -107,7 +107,7 @@
 - (void)bottomToolBarClickedAtIndex:(NSInteger)index {
     if (index == 0) {
         QSPayAmountViewController *vc = [[QSPayAmountViewController alloc] init];
-        vc.FTModel = self.FTModel;
+        vc.fungibleID = self.FTModel.fungibleId;
         [self.navigationController pushViewController:vc animated:YES];
     } else if (index == 1) {
 //        QSBatchTransferViewController *batchTransfer = [[QSBatchTransferViewController alloc] init];
@@ -115,6 +115,7 @@
         [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_content_NO")];
     } else if (index == 2) {
         QSCollectCodeViewController *codeVC = [[QSCollectCodeViewController alloc] init];
+        codeVC.fungibleId = self.FTModel.fungibleId.integerValue;
         [self.navigationController pushViewController:codeVC animated:YES];
     }
 }

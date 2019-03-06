@@ -43,19 +43,26 @@
     QSQRCodeScanItem *scanItem = (QSQRCodeScanItem *)item;
     self.pastButton.hidden = !scanItem.isShowCopyButton;
     if (scanItem.qrcodeImageString.length) {
-        //1. 实例化二维码滤镜
-        CIFilter *filter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
-        // 2. 恢复滤镜的默认属性
-        [filter setDefaults];
-        // 3. 将字符串转换成NSData
-        NSString *urlStr = scanItem.qrcodeImageString;
-        NSData *data = [urlStr dataUsingEncoding:NSUTF8StringEncoding];
-        // 4. 通过KVO设置滤镜inputMessage数据
-        [filter setValue:data forKey:@"inputMessage"];
-        // 5. 获得滤镜输出的图像
-        CIImage *outputImage = [filter outputImage];
-        // 6. 将CIImage转换成UIImage，并显示于imageView上 (此时获取到的二维码比较模糊,所以需要用下面的createNonInterpolatedUIImageFormCIImage方法重绘二维码)
-        self.qrCodeImageView.image = [self createNonInterpolatedUIImageFormCIImage:outputImage withSize:kRealValue(225)];//重绘二维码,使其显示清晰
+        NSArray *stringArray = [scanItem.qrcodeImageString componentsSeparatedByString:@"data:image/png;base64,"];
+        if (stringArray.count == 2) {
+            NSData *imageData = [[NSData alloc] initWithBase64EncodedString:stringArray[1] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+            UIImage *photo = [UIImage imageWithData:imageData];
+            self.qrCodeImageView.image = photo;
+        }
+        
+//        //1. 实例化二维码滤镜
+//        CIFilter *filter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
+//        // 2. 恢复滤镜的默认属性
+//        [filter setDefaults];
+//        // 3. 将字符串转换成NSData
+//        NSString *urlStr = scanItem.qrcodeImageString;
+//        NSData *data = [urlStr dataUsingEncoding:NSUTF8StringEncoding];
+//        // 4. 通过KVO设置滤镜inputMessage数据
+//        [filter setValue:data forKey:@"inputMessage"];
+//        // 5. 获得滤镜输出的图像
+//        CIImage *outputImage = [filter outputImage];
+//        // 6. 将CIImage转换成UIImage，并显示于imageView上 (此时获取到的二维码比较模糊,所以需要用下面的createNonInterpolatedUIImageFormCIImage方法重绘二维码)
+//        self.qrCodeImageView.image = [self createNonInterpolatedUIImageFormCIImage:outputImage withSize:kRealValue(225)];//重绘二维码,使其显示清晰
         return;
     }
     if (scanItem.codeImage) {

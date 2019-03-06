@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) UILabel *addressTitleLabel;
 @property (nonatomic, strong) UIButton *addressSelectButton;
-@property (nonatomic, strong) UILabel *addressSelectLabel;
+@property (nonatomic, strong) UITextField *addressSelectLabel;
 @property (nonatomic, strong) UIButton *addressScanButton;
 
 @end
@@ -33,9 +33,10 @@
     }];
     
     [self.addressSelectLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contentView.mas_centerY).offset(kRealValue(5));
+        make.top.equalTo(self.addressTitleLabel.mas_bottom);
         make.left.equalTo(self.contentView).offset(kRealValue(20));
         make.right.equalTo(self.addressScanButton.mas_left).offset(-kRealValue(20));
+        make.bottom.equalTo(self.contentView);
     }];
 
     [self.addressSelectButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -91,9 +92,17 @@
     return _addressSelectButton;
 }
 
-- (UILabel *)addressSelectLabel {
+- (UITextField *)addressSelectLabel {
     if (!_addressSelectLabel) {
-        _addressSelectLabel = [UILabel labelWithName:QSLocalizedString(@"qs_pay_amount_item_address_placeholder") font:[UIFont qs_fontOfSize14] textColor:[UIColor qs_colorGrayBBBBBB] textAlignment:NSTextAlignmentLeft];
+//        _addressSelectLabel = [UILabel labelWithName:QSLocalizedString(@"qs_pay_amount_item_address_placeholder") font:[UIFont qs_fontOfSize14] textColor:[UIColor qs_colorGrayBBBBBB] textAlignment:NSTextAlignmentLeft];
+        _addressSelectLabel = [[UITextField alloc] init];
+        _addressSelectLabel.placeholder = QSLocalizedString(@"qs_pay_amount_item_address_placeholder");
+        _addressSelectLabel.textColor = [UIColor qs_colorBlack333333];
+        _addressSelectLabel.font = [UIFont qs_fontOfSize14];
+        [_addressSelectLabel setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
+        [_addressSelectLabel setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+        _addressSelectLabel.keyboardType = UIKeyboardTypeAlphabet;
+        _addressSelectLabel.clearButtonMode = UITextFieldViewModeWhileEditing;
     }
     return _addressSelectLabel;
 }

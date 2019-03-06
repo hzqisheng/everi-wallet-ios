@@ -26,6 +26,7 @@
 		7B33AF5B21E5DAB90028BBE2 /* QSPasswordHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B33AF5A21E5DAB90028BBE2 /* QSPasswordHelper.m */; };
 		7B33AF7321E717AB0028BBE2 /* QSEvtLinkStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B33AF7221E717AB0028BBE2 /* QSEvtLinkStatus.m */; };
 		7B350937221D446B00C31AB6 /* QSIssueFTNFTHelpAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B350936221D446B00C31AB6 /* QSIssueFTNFTHelpAlertView.m */; };
+		7B463944222F5C77003B9B49 /* QSCollectImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B463943222F5C77003B9B49 /* QSCollectImageModel.m */; };
 		7B4CA15121A7CBA300F14449 /* UIFont+QSEVTFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4CA15021A7CBA300F14449 /* UIFont+QSEVTFont.m */; };
 		7B4CA15421A7CBB400F14449 /* UIColor+QSEVTColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4CA15321A7CBB400F14449 /* UIColor+QSEVTColor.m */; };
 		7B4CA15821A7D27E00F14449 /* QSTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4CA15721A7D27E00F14449 /* QSTabBar.m */; };
@@ -327,6 +328,8 @@
 		7B33AF7221E717AB0028BBE2 /* QSEvtLinkStatus.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSEvtLinkStatus.m; sourceTree = "<group>"; };
 		7B350935221D446B00C31AB6 /* QSIssueFTNFTHelpAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSIssueFTNFTHelpAlertView.h; sourceTree = "<group>"; };
 		7B350936221D446B00C31AB6 /* QSIssueFTNFTHelpAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSIssueFTNFTHelpAlertView.m; sourceTree = "<group>"; };
+		7B463942222F5C77003B9B49 /* QSCollectImageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCollectImageModel.h; sourceTree = "<group>"; };
+		7B463943222F5C77003B9B49 /* QSCollectImageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCollectImageModel.m; sourceTree = "<group>"; };
 		7B4CA14F21A7CBA300F14449 /* UIFont+QSEVTFont.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+QSEVTFont.h"; sourceTree = "<group>"; };
 		7B4CA15021A7CBA300F14449 /* UIFont+QSEVTFont.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+QSEVTFont.m"; sourceTree = "<group>"; };
 		7B4CA15221A7CBB400F14449 /* UIColor+QSEVTColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+QSEVTColor.h"; sourceTree = "<group>"; };
@@ -926,6 +929,8 @@
 				D20F61AA21CB9E7A00E32D1E /* QSTransferftData.m */,
 				7B33AF7121E717AB0028BBE2 /* QSEvtLinkStatus.h */,
 				7B33AF7221E717AB0028BBE2 /* QSEvtLinkStatus.m */,
+				7B463942222F5C77003B9B49 /* QSCollectImageModel.h */,
+				7B463943222F5C77003B9B49 /* QSCollectImageModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3844,6 +3849,7 @@
 				7BF2F86A21AE9A7B000AAD93 /* QSAddAddressItem.m in Sources */,
 				7B4CA16521A7E7BE00F14449 /* QSTopImageBottomLabelButton.m in Sources */,
 				7BF40EAD21BA120400047C3C /* QSEveriPayCollectCurrencyCell.m in Sources */,
+				7B463944222F5C77003B9B49 /* QSCollectImageModel.m in Sources */,
 				7B0D186221BDF85700550756 /* QSIssuePopupView.m in Sources */,
 				D2F5F6AB21C4C70C0079EFD4 /* QSRestoreIdentityViewController.m in Sources */,
 				7BF2F86D21AF8091000AAD93 /* QSAddAddressCell+QSAddAddressInput.m in Sources */,

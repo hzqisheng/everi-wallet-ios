@@ -45,6 +45,7 @@
     if (self.scanningViewControllerHomeScan) {
         [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
             if (flag == 5) {
+                //everiPay
                 [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
                     if (statusCode == kResponseSuccessCode) {
                         if (modelList.count > 0) {
@@ -64,14 +65,32 @@
                     }
                 }];
             } else if (flag == 17) {
+                //payees QR Code
                 WeakSelf(weakSelf);
                 [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
                     if (statusCode == kResponseSuccessCode) {
-                        //Parse it and pass it on
-                        if (modelList.count > 0) {
-                            QSScanAddress *addressModel = modelList[0];
+                        //modelList 没有fungibleID的话1个，有fungibleID没有amount2个，都有3个
+                        if (modelList.count) {
+                            //type key 45:fungibleID
+                            //95:publicKey
+                            NSString *publicKey;
+                            NSString *fungibleID;
+                            NSString *amount;
+
+                            for (QSScanAddress *scanAddress in modelList) {
+                                if (scanAddress.typeKey == 45) {
+                                    fungibleID = scanAddress.value;
+                                } else if (scanAddress.typeKey == 95) {
+                                    publicKey = scanAddress.value;
+                                } else if (scanAddress.typeKey == 95) {
+                                    amount = scanAddress.value;
+                                }
+                            }
+                            
                             QSPayAmountViewController *payAmount = [[QSPayAmountViewController alloc] init];
-                            payAmount.address = addressModel.value;
+                            payAmount.address = publicKey;
+                            payAmount.fungibleID = fungibleID;
+                            payAmount.amount = amount;
                             payAmount.hidesBottomBarWhenPushed = YES;
                             [weakSelf pushRemoveSelfToViewController:payAmount animated:YES];
                         }

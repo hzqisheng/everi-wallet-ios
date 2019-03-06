@@ -32,6 +32,9 @@ typedef NS_ENUM(NSUInteger, QSPayAmountCellType) {
 @property (nonatomic, copy) NSString *money;
 @property (nonatomic, copy) NSString *note;
 
+/** 选中的ft*/
+@property (nonatomic, strong) QSFT *FTModel;
+
 @end
 
 @implementation QSPayAmountViewController
@@ -70,6 +73,8 @@ typedef NS_ENUM(NSUInteger, QSPayAmountCellType) {
                                           payInfo.shoukuanAddress = self.address;
                                           [self.navigationController pushViewController:payInfo animated:YES];
                                       }];
+    
+    [self getFTList];
 }
 
 #pragma mark - **************** Private Methods
@@ -77,12 +82,22 @@ typedef NS_ENUM(NSUInteger, QSPayAmountCellType) {
     WeakSelf(weakSelf);
     [[QSEveriApiWebViewController sharedWebView] getEVTFungibleBalanceListWithPublicKey:QSPublicKey andCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull ftList) {
         if (statusCode == kResponseSuccessCode) {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-            QSPayAmountItem *payItem = (QSPayAmountItem *)[weakSelf itemInIndexPath:indexPath];
             if (ftList.count == 0) {
                 return ;
             }
+            
+            //默认选中第一个
             QSFT *model = ftList[0];
+            //查找默认选中的fungibleID
+            for (QSFT *ftModel in ftList) {
+                if ([ftModel.fungibleId isEqualToString:self.fungibleID]) {
+                    model = ftModel;
+                }
+            }
+            
+            //更新Cell的数据源
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+            QSPayAmountItem *payItem = (QSPayAmountItem *)[weakSelf itemInIndexPath:indexPath];
             payItem.FTModel = model;
             NSIndexPath *balanceIndex = [NSIndexPath indexPathForRow:1 inSection:0];
             QSPayAmountItem *BalanceItem = (QSPayAmountItem *)[weakSelf itemInIndexPath:balanceIndex];
@@ -113,13 +128,13 @@ typedef NS_ENUM(NSUInteger, QSPayAmountCellType) {
                                               NSIndexPath *index = [NSIndexPath indexPathForRow:0 inSection:0];
                                               QSPayAmountItem *selectedItem = (QSPayAmountItem *)[weakSelf itemInIndexPath:index];
                                               selectedItem.FTModel = FTModel;
-                                              weakSelf.FTModel = FTModel;
                                               NSIndexPath *balanceIndex = [NSIndexPath indexPathForRow:1 inSection:0];
                                               QSPayAmountItem *BalanceItem = (QSPayAmountItem *)[weakSelf itemInIndexPath:balanceIndex];
                                               NSArray *assetList = [FTModel.asset componentsSeparatedByString:@" "];
                                               if (assetList.count == 2) {
                                                   BalanceItem.balance = assetList[0];
                                               }
+                                              weakSelf.FTModel = FTModel;
                                               [weakSelf.tableView reloadData];
                                           }];
 }
@@ -177,14 +192,6 @@ typedef NS_ENUM(NSUInteger, QSPayAmountCellType) {
     balanceItem.cellIdentifier = NSStringFromClass([QSPayAmountBalanceCell class]);
     balanceItem.cellHeight = kRealValue(70);
     balanceItem.cellTag = QSPayAmountCellTypeBalance;
-    if (self.FTModel.creator.length) {
-        NSArray *assetList = [self.FTModel.asset componentsSeparatedByString:@" "];
-        if (assetList.count == 2) {
-            balanceItem.balance = assetList[0];
-        }
-    } else {
-        [self getFTList];
-    }
 
     QSPayAmountItem *addressItem = [[QSPayAmountItem alloc] init];
     addressItem.cellIdentifier = NSStringFromClass([QSPayAmountAddressCell class]);
@@ -261,10 +268,6 @@ typedef NS_ENUM(NSUInteger, QSPayAmountCellType) {
     } else if (item.cellTag == QSPayAmountCellTypeRemark) {
 
     }
-}
-
-- (void)setAddress:(NSString *)address {
-    _address = address;
 }
 
 @end

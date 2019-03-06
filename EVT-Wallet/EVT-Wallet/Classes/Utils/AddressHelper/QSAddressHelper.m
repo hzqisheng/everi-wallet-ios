@@ -13,10 +13,36 @@ static NSString * const kAddressKey = @"kAddressKey";
 @implementation QSAddressHelper
 
 - (void)addAddress:(QSAddress *)address {
-    NSData *addressData = [QSUserDefaults objectForKey:kAddressKey];
-    NSMutableArray *addressArray = [NSMutableArray arrayWithArray:[NSKeyedUnarchiver unarchiveObjectWithData:addressData]];
+    if (!address) {
+        return;
+    }
+    NSArray *localAddress = [self getAddress];
+    for (QSAddress *address in localAddress) {
+        if ([address.publicKey isEqualToString:address.publicKey]) {
+            [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_manage_address_exist_toast")];
+            return;
+        }
+    }
+    
+    NSMutableArray *addressArray = [NSMutableArray arrayWithArray:localAddress];
     [addressArray addObject:address];
-    addressData = [NSKeyedArchiver archivedDataWithRootObject:addressArray];
+    [self saveAddressList:[addressArray copy]];
+}
+
+- (void)deleteAddress:(NSString *)publicKey {
+    NSArray *localAddress = [self getAddress];
+    NSMutableArray *muLocalAddress = [NSMutableArray arrayWithArray:localAddress];
+    for (QSAddress *address in localAddress) {
+        if ([address.publicKey isEqualToString:publicKey]) {
+            [muLocalAddress removeObject:address];
+        }
+    }
+    
+    [self saveAddressList:[muLocalAddress copy]];
+}
+
+- (void)saveAddressList:(NSArray *)addressList {
+    NSData *addressData = [NSKeyedArchiver archivedDataWithRootObject:addressList];
     [QSUserDefaults setObject:addressData forKey:kAddressKey];
     [QSUserDefaults synchronize];
 }

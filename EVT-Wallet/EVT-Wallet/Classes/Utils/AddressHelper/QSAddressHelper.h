@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 /** 增加地址 */
 - (void)addAddress:(QSAddress *)address;
 
+/** 增加地址 */
+- (void)deleteAddress:(NSString *)publicKey;
+
 /** 获取地址 */
 - (NSMutableArray *)getAddress;
 
