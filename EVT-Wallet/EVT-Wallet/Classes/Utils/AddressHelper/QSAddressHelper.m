@@ -16,15 +16,15 @@ static NSString * const kAddressKey = @"kAddressKey";
     if (!address) {
         return;
     }
-    NSArray *localAddress = [self getAddress];
-    for (QSAddress *address in localAddress) {
-        if ([address.publicKey isEqualToString:address.publicKey]) {
+    NSArray *localAddressList = [self getAddress];
+    for (QSAddress *localAddress in localAddressList) {
+        if ([localAddress.publicKey isEqualToString:address.publicKey]) {
             [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_manage_address_exist_toast")];
             return;
         }
     }
     
-    NSMutableArray *addressArray = [NSMutableArray arrayWithArray:localAddress];
+    NSMutableArray *addressArray = [NSMutableArray arrayWithArray:localAddressList];
     [addressArray addObject:address];
     [self saveAddressList:[addressArray copy]];
 }

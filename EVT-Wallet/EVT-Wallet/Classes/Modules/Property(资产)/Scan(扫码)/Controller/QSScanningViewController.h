@@ -8,21 +8,26 @@
 
 #import "QSBaseViewController.h"
 
-typedef void(^ScanningViewControllerSweepBlock)(NSString *publicKey);
-typedef void(^ScanningViewControllerPayBySweepBlock)(NSString *address);
-typedef void(^ScanningViewControllerScanAddressBlock)(NSString *address);
-typedef void(^ScanningViewControllerScanFukuanBlock)(void);
-typedef void(^ScanningViewControllerHomeScan)(void);
+typedef NS_ENUM(NSUInteger, QSScanningType) {
+    //普通扫码
+    QSScanningTypeNomal,
+    //扫码收款
+    QSScanningTypeCollect,
+    //扫码付款
+    QSScanningTypePay,
+};
+
+typedef void(^ParseEvtLinkPublicKeyAndPopBlock)(NSString *publicKey);
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface QSScanningViewController : QSBaseViewController
 
-@property (nonatomic, copy) ScanningViewControllerSweepBlock scanningViewControllerSweepBlock;
-@property (nonatomic, copy) ScanningViewControllerPayBySweepBlock scanningViewControllerPayBySweepBlock;
-@property (nonatomic, copy) ScanningViewControllerScanAddressBlock scanningViewControllerScanAddressBlock;
-@property (nonatomic, copy) ScanningViewControllerScanFukuanBlock scanningViewControllerScanFukuanBlock;
-@property (nonatomic, copy) ScanningViewControllerHomeScan scanningViewControllerHomeScan;
+/** 返回publickey pop扫码页面 */
+@property (nonatomic, copy) ParseEvtLinkPublicKeyAndPopBlock parseEvtLinkAndPopBlock;
+
+/** 扫码类型 默认是普通扫码*/
+@property (nonatomic, assign) QSScanningType scanningType;
 
 @end
 

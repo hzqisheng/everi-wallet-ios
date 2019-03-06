@@ -62,7 +62,7 @@
     DLog(@"%ld",(long)index);
     if (index == 1) {
         QSScanningViewController *scan = [[QSScanningViewController alloc] init];
-        scan.scanningViewControllerScanFukuanBlock = ^{};
+        scan.scanningType = QSScanningTypeCollect;
         [self.navigationController pushViewController:scan animated:YES];
     }
 }

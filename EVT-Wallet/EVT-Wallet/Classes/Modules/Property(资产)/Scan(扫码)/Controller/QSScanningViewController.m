@@ -41,133 +41,97 @@
 
 #pragma mark - Private Methods -
 - (void)p_analysisQRAnswer:(NSString *)ansStr {
-    //首页扫码
-    if (self.scanningViewControllerHomeScan) {
+    NSLog(@"address:%@",ansStr);
+    WeakSelf(weakSelf);
+    if (self.parseEvtLinkAndPopBlock) {
+        //需要读取publickey的扫码
         [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
-            if (flag == 5) {
-                //everiPay
-                [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
-                    if (statusCode == kResponseSuccessCode) {
-                        if (modelList.count > 0) {
-                            QSEveriPayCollectAmountViewController *shoukuanVC = [[QSEveriPayCollectAmountViewController alloc] init];
-                            shoukuanVC.link = ansStr;
-                            for (QSScanAddress *scanModel in modelList) {
-                                if (scanModel.typeKey == 43) {
-                                    shoukuanVC.maxMoney = scanModel.value;
-                                }
-                                if (scanModel.typeKey == 44) {
-                                    shoukuanVC.sybId = scanModel.value;
-                                }
-                            }
-                            shoukuanVC.hidesBottomBarWhenPushed = YES;
-                            [self pushRemoveSelfToViewController:shoukuanVC animated:YES];
-                        }
+            for (QSScanAddress *scanModel in modelList) {
+                if (scanModel.typeKey == 95) {
+                    if (weakSelf.parseEvtLinkAndPopBlock) {
+                        weakSelf.parseEvtLinkAndPopBlock(scanModel.value);
                     }
-                }];
-            } else if (flag == 17) {
-                //payees QR Code
-                WeakSelf(weakSelf);
-                [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
-                    if (statusCode == kResponseSuccessCode) {
-                        //modelList 没有fungibleID的话1个，有fungibleID没有amount2个，都有3个
-                        if (modelList.count) {
-                            //type key 45:fungibleID
-                            //95:publicKey
-                            NSString *publicKey;
-                            NSString *fungibleID;
-                            NSString *amount;
-
-                            for (QSScanAddress *scanAddress in modelList) {
-                                if (scanAddress.typeKey == 45) {
-                                    fungibleID = scanAddress.value;
-                                } else if (scanAddress.typeKey == 95) {
-                                    publicKey = scanAddress.value;
-                                } else if (scanAddress.typeKey == 95) {
-                                    amount = scanAddress.value;
-                                }
-                            }
-                            
-                            QSPayAmountViewController *payAmount = [[QSPayAmountViewController alloc] init];
-                            payAmount.address = publicKey;
-                            payAmount.fungibleID = fungibleID;
-                            payAmount.amount = amount;
-                            payAmount.hidesBottomBarWhenPushed = YES;
-                            [weakSelf pushRemoveSelfToViewController:payAmount animated:YES];
-                        }
-                    }
-                }];
-            } else if (flag == 3) {
-                //everiPay
-                [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_everipass_scan_success")];
-                [self.navigationController popViewControllerAnimated:YES];
-            }
-        }];
-    }
-    
-    else if (self.scanningViewControllerSweepBlock) {
-        WeakSelf(weakSelf);
-        [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
-            if (statusCode == kResponseSuccessCode) {
-                //Parse it and pass it on
-                if (modelList.count > 0) {
-                    QSScanAddress *addressModel = modelList[0];
-                    weakSelf.scanningViewControllerSweepBlock(addressModel.value);
-                    [weakSelf.navigationController popViewControllerAnimated:YES];
-                } else {
-                    [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_scanAddress_failure")];
+                    break;
                 }
-            }
-        }];
-    }
-    else if (self.scanningViewControllerPayBySweepBlock) {
-        WeakSelf(weakSelf);
-        [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
-            //Parse it and pass it on
-            if (modelList.count > 0) {
-                QSPayAmountViewController *payAmount = [[QSPayAmountViewController alloc] init];
-                QSScanAddress *addressModel = modelList[0];
-                payAmount.address = addressModel.value;
-                payAmount.hidesBottomBarWhenPushed = YES;
-                [weakSelf pushRemoveSelfToViewController:payAmount animated:YES];
-            }
-        }];
-    }
-    else if (self.scanningViewControllerScanAddressBlock) {
-        WeakSelf(weakSelf);
-        [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
-            if (modelList.count > 0) {
-                QSScanAddress *addressModel = modelList[0];
-                [weakSelf popToEveriPayVCWithAddress:addressModel.value];
-            }
-        }];
-    }
-    else if (self.scanningViewControllerScanFukuanBlock) {
-        //Parse it
-        WeakSelf(weakSelf);
-        [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
-            if (modelList.count > 0) {
-                QSEveriPayCollectAmountViewController *shoukuanVC = [[QSEveriPayCollectAmountViewController alloc] init];
-                shoukuanVC.link = ansStr;
-                for (QSScanAddress *scanModel in modelList) {
-                    if (scanModel.typeKey == 43) {
-                        shoukuanVC.maxMoney = scanModel.value;
-                    }
-                    if (scanModel.typeKey == 44) {
-                        shoukuanVC.sybId = scanModel.value;
-                    }
-                }
-                shoukuanVC.hidesBottomBarWhenPushed = YES;
-                [weakSelf pushRemoveSelfToViewController:shoukuanVC animated:YES];
             }
         }];
     } else {
-        [self.scanVC startCodeReading];
+        //正常扫码操作
+        [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
+            
+            if (statusCode != kResponseSuccessCode) {
+                [weakSelf.scanVC startCodeReading];
+                return;
+            }
+            
+            //扫码收款需要扫描付款码
+            if (weakSelf.scanningType == QSScanningTypeCollect
+                && flag != 5) {
+                [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_scan_scan_collect_failed_title")];
+                [weakSelf.scanVC startCodeReading];
+                return;
+            }
+            
+            //扫码付款需要扫描收款码
+            if (weakSelf.scanningType == QSScanningTypePay
+                && flag != 17) {
+                [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_scan_scan_everiPay_failed_title")];
+                [weakSelf.scanVC startCodeReading];
+                return;
+            }
+            
+            if (flag == 5) {
+                //everiPay的二维码
+                if (modelList.count > 0) {
+                    QSEveriPayCollectAmountViewController *shoukuanVC = [[QSEveriPayCollectAmountViewController alloc] init];
+                    shoukuanVC.link = ansStr;
+                    for (QSScanAddress *scanModel in modelList) {
+                        if (scanModel.typeKey == 43) {
+                            shoukuanVC.maxMoney = scanModel.value;
+                        }
+                        if (scanModel.typeKey == 44) {
+                            shoukuanVC.sybId = scanModel.value;
+                        }
+                    }
+                    shoukuanVC.hidesBottomBarWhenPushed = YES;
+                    [weakSelf pushRemoveSelfToViewController:shoukuanVC animated:YES];
+                }
+            } else if (flag == 17) {
+                //payees QR Code
+                //modelList 没有fungibleID的话1个，有fungibleID没有amount2个，都有3个
+                if (modelList.count) {
+                    //type key 45:fungibleID
+                    //95:publicKey
+                    NSString *publicKey;
+                    NSString *fungibleID;
+                    NSString *amount;
+                    
+                    for (QSScanAddress *scanAddress in modelList) {
+                        if (scanAddress.typeKey == 45) {
+                            fungibleID = scanAddress.value;
+                        } else if (scanAddress.typeKey == 95) {
+                            publicKey = scanAddress.value;
+                        } else if (scanAddress.typeKey == 96) {
+                            amount = scanAddress.value;
+                        }
+                    }
+                    
+                    QSPayAmountViewController *payAmount = [[QSPayAmountViewController alloc] init];
+                    payAmount.address = publicKey;
+                    payAmount.fungibleID = fungibleID;
+                    payAmount.amount = amount;
+                    payAmount.hidesBottomBarWhenPushed = YES;
+                    [weakSelf pushRemoveSelfToViewController:payAmount animated:YES];
+                }
+            } else if (flag == 3) {
+                //everiPass
+                [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_everipass_scan_success")];
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+            } else {
+                [weakSelf.scanVC startCodeReading];
+            }
+        }];
     }
-}
-
-- (void)popToEveriPayVCWithAddress:(NSString *)address {
-    self.scanningViewControllerScanAddressBlock(address);
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)p_analysisImage:(UIImage *)image {

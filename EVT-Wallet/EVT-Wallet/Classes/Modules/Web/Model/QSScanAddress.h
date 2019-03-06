@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QSScanAddress : QSBaseModel
 
+/** 44 publicKey 45fungibleID */
 @property (nonatomic, assign) NSInteger typeKey;
 @property (nonatomic, copy) NSString *value;
 

@@ -142,11 +142,11 @@ typedef NS_ENUM(NSUInteger, QSPayAmountCellType) {
 - (void)turnToScanVC {
     WeakSelf(weakSelf);
     QSScanningViewController *scanVC = [[QSScanningViewController alloc] init];
-    scanVC.scanningViewControllerScanAddressBlock = ^(NSString *address) {
+    scanVC.parseEvtLinkAndPopBlock = ^(NSString *publicKey) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
         QSPayAmountItem *addressItem = (QSPayAmountItem *)[weakSelf itemInIndexPath:indexPath];
-        addressItem.address = address;
-        weakSelf.address = address;
+        addressItem.address = publicKey;
+        weakSelf.address = publicKey;
         [weakSelf.tableView reloadData];
     };
     [self.navigationController pushViewController:scanVC animated:YES];

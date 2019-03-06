@@ -86,7 +86,7 @@
 - (void)goToScanningVC {
     QSScanningViewController *vc = [[QSScanningViewController alloc] init];
     WeakSelf(weakSelf);
-    vc.scanningViewControllerSweepBlock = ^(NSString *publicKey) {
+    vc.parseEvtLinkAndPopBlock = ^(NSString *publicKey) {
         weakSelf.whiteView.addressTextField.text = publicKey;
     };
     [self.navigationController pushViewController:vc animated:YES];

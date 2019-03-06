@@ -172,6 +172,10 @@
 "qs_scan_scan_link"                  = "everiTokenLink expired";
 "qs_everipass_scan_success"          = "Operation Success";
 
+"qs_scan_scan_collect_failed_title"  = "Please scan everiPay QRCode";
+"qs_scan_scan_everiPay_failed_title" = "Please scan Collect QRCode";
+
+
 //Transaction Record
 "qs_transaction_record_item_record_title"        = "Transaction Record";
 "qs_transaction_record_number_title"             = "Quantity";

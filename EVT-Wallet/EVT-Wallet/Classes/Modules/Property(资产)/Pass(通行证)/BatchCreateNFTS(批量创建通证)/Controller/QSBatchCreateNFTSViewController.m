@@ -101,8 +101,8 @@
 - (void)scanBtnClick {
     WeakSelf(weakSelf);
     QSScanningViewController *scanVC = [[QSScanningViewController alloc] init];
-    scanVC.scanningViewControllerScanAddressBlock = ^(NSString *address) {
-        weakSelf.bottomView.addressLabel.text = address;
+    scanVC.parseEvtLinkAndPopBlock = ^(NSString *publicKey) {
+        weakSelf.bottomView.addressLabel.text = publicKey;
     };
     [self.navigationController pushViewController:scanVC animated:YES];
 }

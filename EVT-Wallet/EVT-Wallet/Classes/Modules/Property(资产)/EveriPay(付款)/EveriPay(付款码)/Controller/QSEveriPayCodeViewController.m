@@ -173,9 +173,7 @@ typedef NS_ENUM(NSUInteger, QSEveriPayCodeCellType) {
     DLog(@"%ld",(long)index);
     if (index == 1) {
         QSScanningViewController *scan = [[QSScanningViewController alloc] init];
-        scan.scanningViewControllerPayBySweepBlock = ^(NSString *address) {
-            
-        };
+        scan.scanningType = QSScanningTypePay;
         [self.navigationController pushViewController:scan animated:YES];
     }
 }

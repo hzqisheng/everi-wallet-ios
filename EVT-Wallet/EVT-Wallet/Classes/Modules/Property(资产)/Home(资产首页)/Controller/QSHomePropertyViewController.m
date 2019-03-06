@@ -204,8 +204,6 @@ UIScrollViewDelegate>
     } else if (type == QSShortcutTypeScan) {
         QSScanningViewController *scan = [[QSScanningViewController alloc] init];
         scan.hidesBottomBarWhenPushed = YES;
-        scan.scanningViewControllerHomeScan = ^{
-        };
         [self.navigationController pushViewController:scan animated:YES];
     } else if (type == QSShortcutTypeIssue) {
         [QSIssuePopupView showIssuePopupViewAndIssueClickedBlock:^(QSIssueType type) {

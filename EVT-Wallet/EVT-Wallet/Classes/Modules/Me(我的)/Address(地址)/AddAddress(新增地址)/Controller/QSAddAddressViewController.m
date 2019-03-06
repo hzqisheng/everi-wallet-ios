@@ -142,7 +142,7 @@ static NSString *reuseIdentifier = @"QSAddAddressCell";
 - (void)goToScanningVC {
     QSScanningViewController *vc = [[QSScanningViewController alloc] init];
     WeakSelf(weakSelf);
-    vc.scanningViewControllerSweepBlock = ^(NSString *publicKey) {
+    vc.parseEvtLinkAndPopBlock = ^(NSString *publicKey) {
         QSAddAddressItem *addressItem = self.dataArray[1];
         addressItem.textFieldText = publicKey;
         weakSelf.dataArray[1] = addressItem;
