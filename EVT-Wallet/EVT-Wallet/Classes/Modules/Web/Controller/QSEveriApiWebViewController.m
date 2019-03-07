@@ -596,19 +596,21 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
                     }];
 }
 
-- (void)parseEvtLinkWithAddress:(NSString *)address AndCompeleteBlock:(nonnull void (^)(NSInteger, NSArray * _Nonnull, NSInteger))block {
+- (void)parseEvtLinkWithAddress:(NSString *)address AndCompeleteBlock:(nonnull void (^)(NSInteger, NSArray * _Nonnull, NSInteger, NSArray * _Nonnull))block {
     NSString *jsString = [NSString stringWithFormat:@"parseEvtLink('%@')",address];
     [self excuteRequestWithMethodName:@"parseEvtLink"
                              jsString:jsString
                     completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
                         NSArray *modelList;
                         NSInteger flag = 0;
+                        NSArray *publicKeys;
                         if (statusCode == kResponseSuccessCode) {
                             QSScanGetAddress *getAddress = [QSScanGetAddress mj_objectWithKeyValues:responseDic];
                             modelList = [NSArray arrayWithArray:getAddress.segments];
                             flag = [responseDic[@"flag"] integerValue];
+                            publicKeys = responseDic[@"publicKeys"];
                         }
-                        block(statusCode , modelList, flag);
+                        block(statusCode , modelList, flag, publicKeys);
                     }];
 }
 

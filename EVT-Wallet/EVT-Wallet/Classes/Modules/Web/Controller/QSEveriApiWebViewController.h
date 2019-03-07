@@ -217,7 +217,7 @@ typedef void(^QSEveriApiWebViewPrivateKeyBlock)(NSInteger statusCode, NSDictiona
 /**
  * @brief parseEvtLink
  */
-- (void)parseEvtLinkWithAddress:(NSString *)address AndCompeleteBlock:(void(^)(NSInteger statusCode, NSArray *modelList, NSInteger flag))block;
+- (void)parseEvtLinkWithAddress:(NSString *)address AndCompeleteBlock:(void(^)(NSInteger statusCode, NSArray *modelList, NSInteger flag, NSArray *publicKeys))block;
 
 /**
  * @brief getEstimatedChargeForTransaction

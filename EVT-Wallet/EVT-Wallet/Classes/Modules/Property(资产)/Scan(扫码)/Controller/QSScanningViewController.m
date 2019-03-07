@@ -45,19 +45,30 @@
     WeakSelf(weakSelf);
     if (self.parseEvtLinkAndPopBlock) {
         //需要读取publickey的扫码
-        [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
-            for (QSScanAddress *scanModel in modelList) {
-                if (scanModel.typeKey == 95) {
-                    if (weakSelf.parseEvtLinkAndPopBlock) {
-                        weakSelf.parseEvtLinkAndPopBlock(scanModel.value);
-                    }
-                    break;
+        [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag, NSArray * _Nonnull publicKeys) {
+            
+            if (publicKeys.count) {
+                if (weakSelf.parseEvtLinkAndPopBlock) {
+                    weakSelf.parseEvtLinkAndPopBlock(publicKeys[0]);
                 }
+                [self.navigationController popViewControllerAnimated:YES];
+            } else if (modelList.count && flag != 3) {
+                for (QSScanAddress *scanModel in modelList) {
+                    if (scanModel.typeKey == 95) {
+                        if (weakSelf.parseEvtLinkAndPopBlock) {
+                            weakSelf.parseEvtLinkAndPopBlock(scanModel.value);
+                        }
+                        [self.navigationController popViewControllerAnimated:YES];
+                        break;
+                    }
+                }
+            } else {
+                [weakSelf.scanVC startCodeReading];
             }
         }];
     } else {
         //正常扫码操作
-        [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag) {
+        [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag, NSArray * _Nonnull publicKeys) {
             
             if (statusCode != kResponseSuccessCode) {
                 [weakSelf.scanVC startCodeReading];
