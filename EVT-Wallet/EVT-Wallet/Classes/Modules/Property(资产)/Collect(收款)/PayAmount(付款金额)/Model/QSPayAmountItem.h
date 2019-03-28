@@ -12,6 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef void(^PayAmountItemSelectAddressBlock)(void);
+typedef void(^PayAmountItemSelectAddressTextBlock)(NSString *text);
 typedef void(^PayAmountItemSweepBlock)(void);
 typedef void(^PayAmountItemTextBlock)(NSString *text);
 
@@ -32,6 +33,7 @@ typedef void(^PayAmountItemTextBlock)(NSString *text);
 @property (nonatomic, assign) UIKeyboardType keyType;
 
 @property (nonatomic, copy) PayAmountItemSelectAddressBlock payAmountItemSelectAddressBlock;
+@property (nonatomic, copy) PayAmountItemSelectAddressTextBlock addressTextChangeBlock;
 @property (nonatomic, copy) PayAmountItemSweepBlock payAmountItemSweepBlock;
 @property (nonatomic, copy) PayAmountItemTextBlock payAmountItemTextBlock;
 

@@ -376,7 +376,7 @@
 "qs_manage_address_selectGroup"         = "All Group";
 "qs_manage_address_no_address_exprot"   = "No Address to Export";
 "qs_manage_address_cell_delete"         = "Delete";
-"qs_manage_address_cell_delete"         = "Address Alreay Exist";
+"qs_manage_address_exist_toast"         = "Address Alreay Exist";
 
 //Add Address
 "qs_add_address_nav_title"                = "New Address";

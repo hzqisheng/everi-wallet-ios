@@ -205,6 +205,9 @@ typedef NS_ENUM(NSUInteger, QSPayAmountCellType) {
     addressItem.payAmountItemSweepBlock = ^{
         [weakSelf turnToScanVC];
     };
+    addressItem.addressTextChangeBlock = ^(NSString * _Nonnull text) {
+        weakSelf.address = text;
+    };
 
     QSPayAmountItem *amountItem = [[QSPayAmountItem alloc] init];
     amountItem.cellIdentifier = NSStringFromClass([QSPayAmountInputCell class]);

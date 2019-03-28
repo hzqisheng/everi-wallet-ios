@@ -47,7 +47,7 @@
 }
 
 #pragma mark - **************** Block
--(void)textFieldDidChange :(UITextField *)theTextField{
+- (void)textFieldDidChange :(UITextField *)theTextField {
     QSPayAmountItem *FTItem = (QSPayAmountItem *)self.item;
     if (FTItem.payAmountItemTextBlock) {
         FTItem.payAmountItemTextBlock(self.textField.text);

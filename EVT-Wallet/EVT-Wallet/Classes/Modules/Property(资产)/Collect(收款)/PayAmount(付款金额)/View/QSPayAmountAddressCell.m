@@ -75,6 +75,13 @@
     }
 }
 
+-(void)textFieldDidChange:(UITextField *)theTextField{
+    QSPayAmountItem *FTItem = (QSPayAmountItem *)self.item;
+    if (FTItem.addressTextChangeBlock) {
+        FTItem.addressTextChangeBlock(self.addressSelectLabel.text);
+    }
+}
+
 #pragma mark - **************** Setter Getter
 - (UILabel *)addressTitleLabel {
     if (!_addressTitleLabel) {
@@ -103,6 +110,7 @@
         [_addressSelectLabel setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
         _addressSelectLabel.keyboardType = UIKeyboardTypeAlphabet;
         _addressSelectLabel.clearButtonMode = UITextFieldViewModeWhileEditing;
+        [_addressSelectLabel addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     }
     return _addressSelectLabel;
 }
