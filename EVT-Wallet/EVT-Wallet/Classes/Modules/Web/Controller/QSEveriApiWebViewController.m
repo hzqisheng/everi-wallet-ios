@@ -392,9 +392,10 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
                                      @"total_supply": ft.total_supply
                                      };
     
+    
     NSString *creator = [NSString stringWithFormat:@"[A] %@",QSPublicKey];
     NSString *valueString = config.length ? [NSString stringWithFormat:@"data:image/jpeg;base64,%@",config] : @"";
-    NSDictionary *addMetaDic = @{@"key":@"icon",
+    NSDictionary *addMetaDic = @{@"key":@"symbol-icon",
                                  @"value":valueString,
                                  @"creator":creator};
     

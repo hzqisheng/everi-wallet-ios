@@ -36,7 +36,8 @@
 - (NSString *)assetIcon {
     if (!_assetIcon) {
         for (QSMetas *metas in self.metas) {
-            if ([metas.key isEqualToString:@"symbol-icon"]) {
+            if ([metas.key isEqualToString:@"symbol-icon"]
+                || [metas.key isEqualToString:@"icon"]) {
                 _assetIcon = metas.value;
             }
         }
