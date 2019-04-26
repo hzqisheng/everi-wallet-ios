@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *current_supply;
 @property (nonatomic, strong) NSArray *metas;
 
+@property (nonatomic, strong) UIImage *assetImage;
+
 /*
  {
  "sym": "5, S#1",

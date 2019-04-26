@@ -116,27 +116,13 @@
 
 - (void)setFtModel:(QSFT *)ftModel {
     _ftModel = ftModel;
-    if ([ftModel.sym containsString:@"994433"]) {
-
+    
+    if (ftModel.assetImage) {
+        self.leftImageView.image = ftModel.assetImage;
+    } else {
+        [self.leftImageView setImage:[UIImage imageNamed:@"icon_fukuan_evt"]];
     }
     
-    if (ftModel.metas.count > 0) {
-        QSMetas *metas = ftModel.metas[0];
-        NSArray *base64List = [metas.value componentsSeparatedByString:@"data:image/jpeg;base64,"];
-        if (base64List.count < 2) {
-            base64List = [metas.value componentsSeparatedByString:@"data:image/png;base64,"];
-        }
-        if (base64List.count == 2) {
-            NSData *decodeData = [[NSData alloc]initWithBase64EncodedString:base64List[1] options:(NSDataBase64DecodingIgnoreUnknownCharacters)];
-            // 将NSData转为UIImage
-            UIImage *decodedImage = [UIImage imageWithData: decodeData];
-            self.leftImageView.image = decodedImage;
-        } else {
-            [self.leftImageView setImage:[UIImage imageNamed:@"AppIcon"]];
-        }
-    } else {
-        [self.leftImageView setImage:[UIImage imageNamed:@"AppIcon"]];
-    }
     NSArray *totlyList = [ftModel.total_supply componentsSeparatedByString:@" "];
     if (totlyList.count == 2) {
         NSMutableString *test = [NSMutableString stringWithString:totlyList[1]];

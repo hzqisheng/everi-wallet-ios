@@ -91,13 +91,14 @@
 
 - (void)setFTModel:(QSFT *)FTModel {
     _FTModel = FTModel;
-    if (FTModel.metas.count > 0) {
-        QSMetas *metas = FTModel.metas[0];
-//        NSString *urlStr = metas[@"value"];
-        [self.avartarImageView sd_setImageWithURL:[NSURL URLWithString:metas.value]];
+    
+    if (FTModel.assetImage) {
+        self.avartarImageView.image = FTModel.assetImage;
     } else {
         [self.avartarImageView setImage:[UIImage imageNamed:@"icon_fukuan_evt"]];
     }
+    
+    
     NSArray *assetList = [FTModel.asset componentsSeparatedByString:@" "];
     if (assetList.count == 2) {
         self.amountLabel.text = [NSString stringWithFormat:@"%@ %@",assetList[0],FTModel.sym_name];
@@ -114,17 +115,6 @@
     } else {
         self.currencyLabel.text = FTModel.name;
     }
-    
-//    NSArray *totlyList = [FTModel.total_supply componentsSeparatedByString:@" "];
-//    if (totlyList.count == 2) {
-//        NSMutableString *test = [NSMutableString stringWithString:totlyList[1]];
-//        if([test hasPrefix:@"S"]){
-//            [test deleteCharactersInRange: [test rangeOfString:@"S"]];
-//        }
-//        self.currencyLabel.text = [NSString stringWithFormat:@"%@(%@)",FTModel.sym_name,test];
-//    } else {
-//        self.currencyLabel.text = FTModel.name;
-//    }
 }
 
 @end

@@ -59,11 +59,11 @@
     QSEveriPayCollectCurrencyItem *currentItem = (QSEveriPayCollectCurrencyItem *)item;
     QSFungibleSymbol *FTModel = currentItem.FTModel;
     self.walletNameLabel.text = [NSString stringWithFormat:@"%@(#%@)",FTModel.sym_name,currentItem.currceny];
-    if (FTModel.metas.count > 0) {
-        QSMetas *metas = FTModel.metas[0];
-        [self.leftImageView sd_setImageWithURL:[NSURL URLWithString:metas.value]];
+    
+    if (FTModel.assetImage) {
+        self.leftImageView.image = FTModel.assetImage;
     } else {
-        [self.leftImageView setImage:[UIImage imageNamed:@"AppIcon"]];
+        [self.leftImageView setImage:[UIImage imageNamed:@"icon_fukuan_evt"]];
     }
 }
 

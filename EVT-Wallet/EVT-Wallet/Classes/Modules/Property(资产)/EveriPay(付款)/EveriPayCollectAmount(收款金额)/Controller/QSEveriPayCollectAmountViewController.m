@@ -109,7 +109,6 @@
     collectAmountItem.inputPlaceholder = QSLocalizedString(@"qs_collect_amount_item_amount_placeholder");
     collectAmountItem.keyType = UIKeyboardTypeDecimalPad;
     collectAmountItem.payAmountItemTextBlock = ^(NSString * _Nonnull text) {
-        
         NSArray *NewArray = [self.Model.sym componentsSeparatedByString:@","];
         if (NewArray.count < 2) {
             return ;

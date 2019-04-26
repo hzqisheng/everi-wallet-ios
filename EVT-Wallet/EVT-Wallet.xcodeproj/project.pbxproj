@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33953E1022729708005D6E2E /* dist in Resources */ = {isa = PBXBuildFile; fileRef = 33953E0F22729708005D6E2E /* dist */; };
 		7B0D182E21BCC19E00550756 /* QSWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D182D21BCC19E00550756 /* QSWebViewViewController.m */; };
 		7B0D183321BCC36300550756 /* QSEveriApiWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D183221BCC36300550756 /* QSEveriApiWebViewController.m */; };
 		7B0D183C21BCCB0D00550756 /* QSCreateEvt.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D183B21BCCB0D00550756 /* QSCreateEvt.m */; };
@@ -60,7 +61,6 @@
 		7B8B317021B51DEA00028D17 /* QSExportMnemonicStep3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8B316F21B51DEA00028D17 /* QSExportMnemonicStep3ViewController.m */; };
 		7B96E1FC21EDC53B002EE53D /* QSNodeSettingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96E1FB21EDC53B002EE53D /* QSNodeSettingDetailViewController.m */; };
 		7BB5A2972224D306008BFC01 /* QSNodeSettingAddAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB5A2962224D306008BFC01 /* QSNodeSettingAddAlertView.m */; };
-		7BB5A299222660E5008BFC01 /* dist in Resources */ = {isa = PBXBuildFile; fileRef = 7BB5A298222660E5008BFC01 /* dist */; };
 		7BB8DC2E21B757DF00954E86 /* QSImportWalletByPrivateKeyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8DC2D21B757DF00954E86 /* QSImportWalletByPrivateKeyViewController.m */; };
 		7BB8DC3121B757EF00954E86 /* QSImportWalletByKeyStoreCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8DC3021B757EF00954E86 /* QSImportWalletByKeyStoreCodeViewController.m */; };
 		7BB8DC3C21B75C6A00954E86 /* YZDisplayTitleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB8DC3321B75C6A00954E86 /* YZDisplayTitleLabel.m */; };
@@ -290,6 +290,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		33953E0F22729708005D6E2E /* dist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dist; sourceTree = "<group>"; };
 		7B0D182C21BCC19E00550756 /* QSWebViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSWebViewViewController.h; sourceTree = "<group>"; };
 		7B0D182D21BCC19E00550756 /* QSWebViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSWebViewViewController.m; sourceTree = "<group>"; };
 		7B0D183121BCC36300550756 /* QSEveriApiWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSEveriApiWebViewController.h; sourceTree = "<group>"; };
@@ -397,7 +398,6 @@
 		7B96E1FB21EDC53B002EE53D /* QSNodeSettingDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSNodeSettingDetailViewController.m; sourceTree = "<group>"; };
 		7BB5A2952224D306008BFC01 /* QSNodeSettingAddAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSNodeSettingAddAlertView.h; sourceTree = "<group>"; };
 		7BB5A2962224D306008BFC01 /* QSNodeSettingAddAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSNodeSettingAddAlertView.m; sourceTree = "<group>"; };
-		7BB5A298222660E5008BFC01 /* dist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dist; sourceTree = "<group>"; };
 		7BB8DC2C21B757DF00954E86 /* QSImportWalletByPrivateKeyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSImportWalletByPrivateKeyViewController.h; sourceTree = "<group>"; };
 		7BB8DC2D21B757DF00954E86 /* QSImportWalletByPrivateKeyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSImportWalletByPrivateKeyViewController.m; sourceTree = "<group>"; };
 		7BB8DC2F21B757EF00954E86 /* QSImportWalletByKeyStoreCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSImportWalletByKeyStoreCodeViewController.h; sourceTree = "<group>"; };
@@ -938,7 +938,7 @@
 		7B0D183E21BCCB8200550756 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7BB5A298222660E5008BFC01 /* dist */,
+				33953E0F22729708005D6E2E /* dist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -3554,7 +3554,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BB5A299222660E5008BFC01 /* dist in Resources */,
+				33953E1022729708005D6E2E /* dist in Resources */,
 				7B7A4C8621ACCEF400598E6F /* CustomLocalizable.strings in Resources */,
 				7BF36D5921A7972500B27146 /* Assets.xcassets in Resources */,
 			);
@@ -3601,7 +3601,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-EVT-Wallet/Pods-EVT-Wallet-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-EVT-Wallet/Pods-EVT-Wallet-resources.sh",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
@@ -3614,7 +3614,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EVT-Wallet/Pods-EVT-Wallet-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EVT-Wallet/Pods-EVT-Wallet-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

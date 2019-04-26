@@ -28,12 +28,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *sym;
 @property (nonatomic, copy) NSString *sym_name;
 @property (nonatomic, copy) NSString *total_supply;
-
 @property (nonatomic, copy) NSString *amount;
 @property (nonatomic, copy) NSString *assetNumber;
 
-
 @property (nonatomic, copy) NSString *fungibleId;
+@property (nonatomic, strong) UIImage *assetImage;
 
 @end
 

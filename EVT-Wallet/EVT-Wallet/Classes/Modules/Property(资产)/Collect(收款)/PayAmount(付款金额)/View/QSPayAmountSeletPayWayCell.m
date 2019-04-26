@@ -57,12 +57,13 @@
     self.item = item;
     QSPayAmountItem *payItem = (QSPayAmountItem *)item;
     QSFT *FTModel = payItem.FTModel;
-    if (FTModel.metas.count > 0) {
-        QSMetas *metas = FTModel.metas[0];
-        [self.leftImageView sd_setImageWithURL:[NSURL URLWithString:metas.value]];
+    
+    if (FTModel.assetImage) {
+        self.leftImageView.image = FTModel.assetImage;
     } else {
-        [self.leftImageView setImage:[UIImage imageNamed:@"AppIcon"]];
+        [self.leftImageView setImage:[UIImage imageNamed:@"icon_fukuan_evt"]];
     }
+    
     NSArray *totlyList = [FTModel.asset componentsSeparatedByString:@" "];
     if (totlyList.count == 2) {
         NSMutableString *test = [NSMutableString stringWithString:totlyList[1]];

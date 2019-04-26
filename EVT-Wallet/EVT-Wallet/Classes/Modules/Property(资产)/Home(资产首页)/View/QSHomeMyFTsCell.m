@@ -101,12 +101,13 @@
 
 - (void)setFTModel:(QSFT *)FTModel {
     _FTModel = FTModel;
-    if (FTModel.metas.count > 0) {
-        QSMetas *metas = FTModel.metas[0];
-        [self.ftImageView sd_setImageWithURL:[NSURL URLWithString:metas.value]];
+    
+    if (FTModel.assetImage) {
+        self.ftImageView.image = FTModel.assetImage;
     } else {
         [self.ftImageView setImage:[UIImage imageNamed:@"icon_fukuan_evt"]];
     }
+    
     NSArray *assetList = [FTModel.asset componentsSeparatedByString:@" "];
     if (assetList.count == 2) {
         self.amountLabel.text = assetList[0];
