@@ -48,10 +48,6 @@ typedef NS_ENUM(NSUInteger, QSEditWalletsType) {
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (Class)getRigisterCellClass {
-    return [QSSettingCell class];
-}
-
 - (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
     NSMutableArray *section0Array = [NSMutableArray array];
     

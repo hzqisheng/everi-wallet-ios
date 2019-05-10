@@ -30,10 +30,6 @@ typedef NS_ENUM(NSUInteger, QSNodeSettingType) {
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (Class)getRigisterCellClass {
-    return [QSSettingCell class];
-}
-
 - (NSArray<QSSettingItem *> *)createSingleSectionDataSource {
     QSSettingItem *everiTokenItem = [[QSSettingItem alloc] init];
     everiTokenItem.leftTitle = QSLocalizedString(@"qs_node_setting_item_everitoken_title");

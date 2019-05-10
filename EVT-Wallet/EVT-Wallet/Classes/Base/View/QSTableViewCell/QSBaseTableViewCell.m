@@ -24,7 +24,7 @@
     //override
 }
 
-- (void)configureCellWithItem:(QSBaseCellItem *)item {
+- (void)configureCellWithItem:(id<QSBaseCellItemDataProtocol>)item {
     //override
 }
 

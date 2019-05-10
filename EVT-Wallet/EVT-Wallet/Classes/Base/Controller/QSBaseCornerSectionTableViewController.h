@@ -21,12 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (NSArray<QSBaseCellItem *> *)createSingleSectionDataSource;
 - (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource;
-/**
- tableViewCell
- One of the following methods must be implemented
- */
-- (Class)getRigisterCellClass;
-- (NSArray<Class> *)getRigisterMultiCellClasses;
 
 @optional
 /* default is YES */

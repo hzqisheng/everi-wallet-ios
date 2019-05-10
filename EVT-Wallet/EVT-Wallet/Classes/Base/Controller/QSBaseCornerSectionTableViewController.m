@@ -11,6 +11,7 @@
 @interface QSBaseCornerSectionTableViewController ()
 
 @property (nonatomic, assign) BOOL isMultiSection;
+@property (nonatomic, strong) NSMutableSet *mutableSet;
 
 @end
 
@@ -18,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _mutableSet = [NSMutableSet set];
     [self p_setupTableView];
     [self getDataSource];
 }
@@ -27,14 +29,6 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.frame = CGRectMake(kRealValue(15), 0, kScreenWidth - kRealValue(30), kScreenHeight - kNavgationBarHeight);
     self.tableView.contentInset = UIEdgeInsetsMake(kRealValue(15), 0, 0, 0);
-    if ([self getRigisterMultiCellClasses].count) {
-        NSArray *classArray = [self getRigisterMultiCellClasses];
-        for (Class cellClass in classArray) {
-            [self.tableView registerClass:cellClass forCellReuseIdentifier:NSStringFromClass(cellClass)];
-        }
-    } else {
-        [self.tableView registerClass:[self getRigisterCellClass] forCellReuseIdentifier:NSStringFromClass([self getRigisterCellClass])];
-    }
 }
 
 #pragma mark - **************** Public Methods
@@ -54,13 +48,18 @@
 - (void)getDataSource {
     NSArray *singleDataSource = [self createSingleSectionDataSource];
     NSArray *multiDataSource = [self createMultiSectionDataSource];
+    
+    BOOL condition = !(singleDataSource.count && multiDataSource.count);
+    NSAssert((condition), @"one of createSingleSectionDataSource,createMultiSectionDataSource must be implemented");
+    
     if (singleDataSource.count) {
         _isMultiSection = NO;
         [self.dataArray addObjectsFromArray:singleDataSource];
-    } else {
+    } else if (multiDataSource.count) {
         _isMultiSection = YES;
         self.dataArray = [multiDataSource mutableCopy];
     }
+    
     [self.tableView reloadData];
 }
 
@@ -74,14 +73,6 @@
     return nil;
 }
 
-- (Class)getRigisterCellClass {
-    return nil;
-}
-
-- (NSArray<Class> *)getRigisterMultiCellClasses {
-    return nil;
-}
-
 - (BOOL)isShowCornerSection {
     return YES;
 }
@@ -89,15 +80,29 @@
 #pragma mark - **************** UITableViewDataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     QSBaseCellItem *item = [self itemInIndexPath:indexPath];
+    
+    Class registerClass = NSClassFromString(item.cellIdentifier);
+    NSAssert(registerClass, @"the class get from 'baseCellItem.cellIdentifier' is invalid");
+
+    if (![self.mutableSet containsObject:registerClass]) {
+        [tableView registerClass:registerClass forCellReuseIdentifier:item.cellIdentifier];
+        [self.mutableSet addObject:registerClass];
+    }
+    
     QSBaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:item.cellIdentifier forIndexPath:indexPath];
+    NSAssert(cell, @"your custom cell must be subclass of 'QSBaseTableViewCell'");
+    
     [cell configureCellWithItem:item];
+    
     if ([self isShowCornerSection]) {
         [cell addSectionCornerWithTableView:tableView
                                   indexPath:indexPath
                             cornerViewframe:CGRectMake(0, 0, item.cellWidth, item.cellHeight)
                                cornerRadius:8];
     }
+    
     cell.separatorInset = item.cellSeapratorInset;
+    
     return cell;
 }
 

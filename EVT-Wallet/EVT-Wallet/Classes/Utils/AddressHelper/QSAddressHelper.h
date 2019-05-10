@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)deleteAddress:(NSString *)publicKey;
 
 /** 获取地址 */
-- (NSMutableArray *)getAddress;
+- (NSArray *)getAddress;
 
 + (instancetype)sharedHelper;
 

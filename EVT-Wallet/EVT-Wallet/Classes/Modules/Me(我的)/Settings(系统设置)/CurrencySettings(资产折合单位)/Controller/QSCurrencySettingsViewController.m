@@ -30,10 +30,6 @@ typedef NS_ENUM(NSUInteger, QSCurrencySettingsType) {
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (Class)getRigisterCellClass {
-    return [QSLanguageSettingCell class];
-}
-
 - (NSArray<QSSettingItem *> *)createSingleSectionDataSource {
     NSString *selectedCurrency = [QSUserDefaults objectForKey:kSelectCurrency];
     

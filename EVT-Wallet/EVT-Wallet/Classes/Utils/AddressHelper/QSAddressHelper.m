@@ -47,10 +47,13 @@ static NSString * const kAddressKey = @"kAddressKey";
     [QSUserDefaults synchronize];
 }
 
-- (NSMutableArray *)getAddress {
+- (NSArray *)getAddress {
     NSData *addressData = [QSUserDefaults objectForKey:kAddressKey];
-    NSMutableArray *addressArray = [NSKeyedUnarchiver unarchiveObjectWithData:addressData];
-    return addressArray;
+    if (addressData) {
+        NSMutableArray *addressArray = [NSKeyedUnarchiver unarchiveObjectWithData:addressData];
+        return addressArray;
+    }
+    return @[];
 }
 
 + (instancetype)sharedHelper {

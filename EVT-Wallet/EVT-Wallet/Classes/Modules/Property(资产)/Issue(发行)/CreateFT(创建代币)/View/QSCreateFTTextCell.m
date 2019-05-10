@@ -37,13 +37,13 @@
     
     QSCreateFTItem *FTItem = (QSCreateFTItem *)item;
     self.titleLabel.text = FTItem.title;
-    self.contentTextField.text = FTItem.defaultContent;
+    self.contentTextField.text = FTItem.content;
     self.contentTextField.placeholder = FTItem.placeholde;
     self.contentTextField.keyboardType = FTItem.KeyboardType;
 }
 
 #pragma mark - **************** Block
-- (void)textFieldDidChange :(UITextField *)theTextField{
+- (void)textFieldDidChange :(UITextField *)theTextField {
     QSCreateFTItem *FTItem = (QSCreateFTItem *)self.item;
     if ([FTItem.title isEqualToString:QSLocalizedString(@"qs_select_ft_token_title")]) {
         //代币简称
@@ -67,6 +67,9 @@
             theTextField.text = [theTextField.text substringToIndex:19];
         }
     }
+    
+    FTItem.content = theTextField.text;
+    
     if (FTItem.createFTItemTextBlock) {
         FTItem.createFTItemTextBlock(theTextField.text);
     }

@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3304D7E722815EC900AE801F /* QSCreateGroupHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3304D7E622815EC900AE801F /* QSCreateGroupHeaderView.m */; };
+		3304D7F42281634E00AE801F /* MYTreeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3304D7E92281634E00AE801F /* MYTreeItem.m */; };
+		3304D7F52281634E00AE801F /* MYTreeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3304D7EA2281634E00AE801F /* MYTreeTableViewController.m */; };
+		3304D7F62281634E00AE801F /* MYTreeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3304D7EE2281634E00AE801F /* MYTreeTableViewCell.m */; };
+		3304D7F72281634E00AE801F /* MYTreeTableManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3304D7F12281634E00AE801F /* MYTreeTableManager.m */; };
+		3304D7F82281634E00AE801F /* MYTreeTableView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3304D7F22281634E00AE801F /* MYTreeTableView.bundle */; };
+		3304D7F92281634E00AE801F /* MYTreeTableViewSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3304D7F32281634E00AE801F /* MYTreeTableViewSearchBar.m */; };
+		3304D8562284216700AE801F /* QSMyGroupDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3304D8552284216700AE801F /* QSMyGroupDetailViewController.m */; };
+		3304D85922850F8C00AE801F /* QSGroupDetailGroupNameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3304D85822850F8C00AE801F /* QSGroupDetailGroupNameView.m */; };
+		3304D85C22850FA600AE801F /* QSGroupDetailMetaDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3304D85B22850FA600AE801F /* QSGroupDetailMetaDataView.m */; };
+		3304D86122855F6100AE801F /* QSAddGroupMetaDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3304D86022855F6100AE801F /* QSAddGroupMetaDataViewController.m */; };
 		33953E1022729708005D6E2E /* dist in Resources */ = {isa = PBXBuildFile; fileRef = 33953E0F22729708005D6E2E /* dist */; };
 		7B0D182E21BCC19E00550756 /* QSWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D182D21BCC19E00550756 /* QSWebViewViewController.m */; };
 		7B0D183321BCC36300550756 /* QSEveriApiWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D183221BCC36300550756 /* QSEveriApiWebViewController.m */; };
@@ -290,6 +301,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3304D7DB22811E5F00AE801F /* QSBaseCellItemDataProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSBaseCellItemDataProtocol.h; sourceTree = "<group>"; };
+		3304D7E522815EC900AE801F /* QSCreateGroupHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateGroupHeaderView.h; sourceTree = "<group>"; };
+		3304D7E622815EC900AE801F /* QSCreateGroupHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateGroupHeaderView.m; sourceTree = "<group>"; };
+		3304D7E92281634E00AE801F /* MYTreeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYTreeItem.m; sourceTree = "<group>"; };
+		3304D7EA2281634E00AE801F /* MYTreeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYTreeTableViewController.m; sourceTree = "<group>"; };
+		3304D7EB2281634E00AE801F /* MYTreeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYTreeTableViewCell.h; sourceTree = "<group>"; };
+		3304D7EC2281634E00AE801F /* MYTreeTableManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYTreeTableManager.h; sourceTree = "<group>"; };
+		3304D7ED2281634E00AE801F /* MYTreeTableViewSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYTreeTableViewSearchBar.h; sourceTree = "<group>"; };
+		3304D7EE2281634E00AE801F /* MYTreeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYTreeTableViewCell.m; sourceTree = "<group>"; };
+		3304D7EF2281634E00AE801F /* MYTreeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYTreeTableViewController.h; sourceTree = "<group>"; };
+		3304D7F02281634E00AE801F /* MYTreeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYTreeItem.h; sourceTree = "<group>"; };
+		3304D7F12281634E00AE801F /* MYTreeTableManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYTreeTableManager.m; sourceTree = "<group>"; };
+		3304D7F22281634E00AE801F /* MYTreeTableView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MYTreeTableView.bundle; sourceTree = "<group>"; };
+		3304D7F32281634E00AE801F /* MYTreeTableViewSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYTreeTableViewSearchBar.m; sourceTree = "<group>"; };
+		3304D8542284216700AE801F /* QSMyGroupDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSMyGroupDetailViewController.h; sourceTree = "<group>"; };
+		3304D8552284216700AE801F /* QSMyGroupDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSMyGroupDetailViewController.m; sourceTree = "<group>"; };
+		3304D85722850F8C00AE801F /* QSGroupDetailGroupNameView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSGroupDetailGroupNameView.h; sourceTree = "<group>"; };
+		3304D85822850F8C00AE801F /* QSGroupDetailGroupNameView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSGroupDetailGroupNameView.m; sourceTree = "<group>"; };
+		3304D85A22850FA600AE801F /* QSGroupDetailMetaDataView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSGroupDetailMetaDataView.h; sourceTree = "<group>"; };
+		3304D85B22850FA600AE801F /* QSGroupDetailMetaDataView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSGroupDetailMetaDataView.m; sourceTree = "<group>"; };
+		3304D85F22855F6100AE801F /* QSAddGroupMetaDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSAddGroupMetaDataViewController.h; sourceTree = "<group>"; };
+		3304D86022855F6100AE801F /* QSAddGroupMetaDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSAddGroupMetaDataViewController.m; sourceTree = "<group>"; };
 		33953E0F22729708005D6E2E /* dist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dist; sourceTree = "<group>"; };
 		7B0D182C21BCC19E00550756 /* QSWebViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSWebViewViewController.h; sourceTree = "<group>"; };
 		7B0D182D21BCC19E00550756 /* QSWebViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSWebViewViewController.m; sourceTree = "<group>"; };
@@ -859,6 +892,78 @@
 				AD946B9B6BA34BF4BAB1782C /* Pods-EVT-Wallet.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		3304D7E82281634E00AE801F /* MYTreeTableView */ = {
+			isa = PBXGroup;
+			children = (
+				3304D7F02281634E00AE801F /* MYTreeItem.h */,
+				3304D7E92281634E00AE801F /* MYTreeItem.m */,
+				3304D7EC2281634E00AE801F /* MYTreeTableManager.h */,
+				3304D7F12281634E00AE801F /* MYTreeTableManager.m */,
+				3304D7F22281634E00AE801F /* MYTreeTableView.bundle */,
+				3304D7EB2281634E00AE801F /* MYTreeTableViewCell.h */,
+				3304D7EE2281634E00AE801F /* MYTreeTableViewCell.m */,
+				3304D7EF2281634E00AE801F /* MYTreeTableViewController.h */,
+				3304D7EA2281634E00AE801F /* MYTreeTableViewController.m */,
+				3304D7ED2281634E00AE801F /* MYTreeTableViewSearchBar.h */,
+				3304D7F32281634E00AE801F /* MYTreeTableViewSearchBar.m */,
+			);
+			path = MYTreeTableView;
+			sourceTree = "<group>";
+		};
+		3304D850228420F400AE801F /* MyGroupDetail(我的组详情) */ = {
+			isa = PBXGroup;
+			children = (
+				3304D851228420F400AE801F /* Controller */,
+				3304D852228420F400AE801F /* Model */,
+				3304D853228420F400AE801F /* View */,
+			);
+			path = "MyGroupDetail(我的组详情)";
+			sourceTree = "<group>";
+		};
+		3304D851228420F400AE801F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3304D8542284216700AE801F /* QSMyGroupDetailViewController.h */,
+				3304D8552284216700AE801F /* QSMyGroupDetailViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3304D852228420F400AE801F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3304D853228420F400AE801F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3304D85722850F8C00AE801F /* QSGroupDetailGroupNameView.h */,
+				3304D85822850F8C00AE801F /* QSGroupDetailGroupNameView.m */,
+				3304D85A22850FA600AE801F /* QSGroupDetailMetaDataView.h */,
+				3304D85B22850FA600AE801F /* QSGroupDetailMetaDataView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3304D85D22855F3500AE801F /* AddGroupMetaData(添加组元数据) */ = {
+			isa = PBXGroup;
+			children = (
+				3304D85E22855F3500AE801F /* Controller */,
+			);
+			path = "AddGroupMetaData(添加组元数据)";
+			sourceTree = "<group>";
+		};
+		3304D85E22855F3500AE801F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3304D85F22855F6100AE801F /* QSAddGroupMetaDataViewController.h */,
+				3304D86022855F6100AE801F /* QSAddGroupMetaDataViewController.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		39F9642EF5C80E5600702AF4 /* Frameworks */ = {
@@ -2083,13 +2188,15 @@
 		7BF36D3621A7972500B27146 /* Manage(管理) */ = {
 			isa = PBXGroup;
 			children = (
+				3304D85D22855F3500AE801F /* AddGroupMetaData(添加组元数据) */,
+				D2F5F67521C2580A0079EFD4 /* CreateGroup(创建组) */,
 				D2F5F69521C3968E0079EFD4 /* EnterJson(输入Json) */,
 				D2F5F69021C38CBE0079EFD4 /* EnterPublicKey(输入公钥) */,
-				D2F5F68321C34E8C0079EFD4 /* SelectAddressManage(地址管理) */,
-				D2F5F67E21C34B1E0079EFD4 /* NewNode(新建节点) */,
-				D2F5F67521C2580A0079EFD4 /* CreateGroup(创建组) */,
-				D24259E121C24E9C00896BC7 /* MyGroup(我的组) */,
 				7BF36D3721A7972500B27146 /* Manage(管理) */,
+				D24259E121C24E9C00896BC7 /* MyGroup(我的组) */,
+				3304D850228420F400AE801F /* MyGroupDetail(我的组详情) */,
+				D2F5F67E21C34B1E0079EFD4 /* NewNode(新建节点) */,
+				D2F5F68321C34E8C0079EFD4 /* SelectAddressManage(地址管理) */,
 			);
 			path = "Manage(管理)";
 			sourceTree = "<group>";
@@ -2246,6 +2353,7 @@
 				7BF36D4E21A7972500B27146 /* QSBaseModel.m */,
 				7BF2F8D021B133CF000AAD93 /* QSBaseCellItem.h */,
 				7BF2F8D121B133CF000AAD93 /* QSBaseCellItem.m */,
+				3304D7DB22811E5F00AE801F /* QSBaseCellItemDataProtocol.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2973,8 +3081,8 @@
 		D24259E121C24E9C00896BC7 /* MyGroup(我的组) */ = {
 			isa = PBXGroup;
 			children = (
-				D24259EA21C2543B00896BC7 /* Model */,
 				D24259E221C24E9C00896BC7 /* Controller */,
+				D24259EA21C2543B00896BC7 /* Model */,
 				D24259E321C24E9C00896BC7 /* View */,
 			);
 			path = "MyGroup(我的组)";
@@ -3289,12 +3397,15 @@
 		D2F5F67721C2580A0079EFD4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3304D7E82281634E00AE801F /* MYTreeTableView */,
 				D2F5F67B21C2872D0079EFD4 /* QSManagerSettingView.h */,
 				D2F5F67C21C2872D0079EFD4 /* QSManagerSettingView.m */,
 				D2B2EF5A21C6555000ABBB90 /* QSPrivatekeyAlertView.h */,
 				D2B2EF5B21C6555000ABBB90 /* QSPrivatekeyAlertView.m */,
 				D296C1AA21CCD3F4005D1EF8 /* QSLogoutAlertView.h */,
 				D296C1AB21CCD3F4005D1EF8 /* QSLogoutAlertView.m */,
+				3304D7E522815EC900AE801F /* QSCreateGroupHeaderView.h */,
+				3304D7E622815EC900AE801F /* QSCreateGroupHeaderView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3557,6 +3668,7 @@
 				33953E1022729708005D6E2E /* dist in Resources */,
 				7B7A4C8621ACCEF400598E6F /* CustomLocalizable.strings in Resources */,
 				7BF36D5921A7972500B27146 /* Assets.xcassets in Resources */,
+				3304D7F82281634E00AE801F /* MYTreeTableView.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3710,11 +3822,13 @@
 				7BF36E1D21A79E7B00B27146 /* NSString+PinYin.m in Sources */,
 				7BF36E1121A79E7B00B27146 /* NSDictionary+Merge.m in Sources */,
 				7BF2F87821AFCF06000AAD93 /* QSExportAddressViewController.m in Sources */,
+				3304D7F92281634E00AE801F /* MYTreeTableViewSearchBar.m in Sources */,
 				D2F5F6A621C4BC000079EFD4 /* QSCreateIdentityHomeViewController.m in Sources */,
 				7BF36DFF21A79E7B00B27146 /* UIView+Extensions.m in Sources */,
 				7BF36E0321A79E7B00B27146 /* UIView+Loading.m in Sources */,
 				7BF2F85D21AE96BA000AAD93 /* QSAddAddressViewController.m in Sources */,
 				D24259D721C1F8BC00896BC7 /* QSBatchCreateNFTSViewController.m in Sources */,
+				3304D86122855F6100AE801F /* QSAddGroupMetaDataViewController.m in Sources */,
 				7BB8DC7A21B774DA00954E86 /* QSQRImageCodeCell.m in Sources */,
 				7BF36E1321A79E7B00B27146 /* NSFileManager+Paths.m in Sources */,
 				7B96E1FC21EDC53B002EE53D /* QSNodeSettingDetailViewController.m in Sources */,
@@ -3767,6 +3881,7 @@
 				7BF2F85721AE80A3000AAD93 /* QSManageAddressCell.m in Sources */,
 				7B0D184C21BCFB1D00550756 /* QSAuthorizers.m in Sources */,
 				7BF36E0421A79E7B00B27146 /* UIView+HUD.m in Sources */,
+				3304D85C22850FA600AE801F /* QSGroupDetailMetaDataView.m in Sources */,
 				D2F5F69421C38CF70079EFD4 /* QSEnterPublicKeyViewController.m in Sources */,
 				D2EE883921C0EDBA000B15E3 /* QSIssueMoreSettingBottomView.m in Sources */,
 				D2F5F67D21C2872D0079EFD4 /* QSManagerSettingView.m in Sources */,
@@ -3786,8 +3901,10 @@
 				D2B2EF5021C62CA000ABBB90 /* QSFTManage.m in Sources */,
 				7BD9C48321B6A50000A16A99 /* QSWalletContentItem.m in Sources */,
 				7B0D184321BCF77E00550756 /* QSOwnedToken.m in Sources */,
+				3304D8562284216700AE801F /* QSMyGroupDetailViewController.m in Sources */,
 				7BF40E7421B95D3B00047C3C /* QSSelectCurrencyCell.m in Sources */,
 				7BF36E1921A79E7B00B27146 /* NSURL+Params.m in Sources */,
+				3304D7F42281634E00AE801F /* MYTreeItem.m in Sources */,
 				7B5CC06121E825E300FB7F57 /* QSPaySuccessViewController.m in Sources */,
 				7BF2F89B21B0D7EE000AAD93 /* QSLanguageSettingViewController.m in Sources */,
 				7B8B316A21B5164800028D17 /* QSExportMnemonicViewController.m in Sources */,
@@ -3798,6 +3915,7 @@
 				7B7A4C9321AD18B400598E6F /* UITableViewCell+QSSectionCorner.m in Sources */,
 				7BF36E0F21A79E7B00B27146 /* UINavigationController+Extensions.m in Sources */,
 				7BF40E8A21B9FCB600047C3C /* QSScannerViewController.m in Sources */,
+				3304D7F52281634E00AE801F /* MYTreeTableViewController.m in Sources */,
 				D29A8CFF21C699A700D6B8DA /* QSNFT.m in Sources */,
 				D2EE882D21C0BD47000B15E3 /* QSIssueWhiteView.m in Sources */,
 				7B0D184F21BCFBA100550756 /* QSFungibleManage.m in Sources */,
@@ -3811,6 +3929,7 @@
 				7BF36E0121A79E7B00B27146 /* UIView+Frame.m in Sources */,
 				7B4CA16821A7EDC500F14449 /* QSPropertyHomeSwipeCell.m in Sources */,
 				7BB8DC2E21B757DF00954E86 /* QSImportWalletByPrivateKeyViewController.m in Sources */,
+				3304D7E722815EC900AE801F /* QSCreateGroupHeaderView.m in Sources */,
 				7BF36D6121A7972500B27146 /* QSRefreshFooter.m in Sources */,
 				7BF40E8D21B9FD3100047C3C /* QSScannerView.m in Sources */,
 				7BF36D6221A7972500B27146 /* main.m in Sources */,
@@ -3854,6 +3973,7 @@
 				D2F5F6AB21C4C70C0079EFD4 /* QSRestoreIdentityViewController.m in Sources */,
 				7BF2F86D21AF8091000AAD93 /* QSAddAddressCell+QSAddAddressInput.m in Sources */,
 				D2EE883F21C0F2B5000B15E3 /* QSIssuePermissionsViewController.m in Sources */,
+				3304D7F62281634E00AE801F /* MYTreeTableViewCell.m in Sources */,
 				D24259E921C2533000896BC7 /* QSManageMyGroupCell.m in Sources */,
 				7BF36DFD21A79E7B00B27146 /* UIColor+Gradient.m in Sources */,
 				7B33AF4D21E59EEB0028BBE2 /* QSWalletFingerprintCell.m in Sources */,
@@ -3864,8 +3984,10 @@
 				7BB8DC8021B7794D00954E86 /* QSQRCodeMaxPayAmountCell.m in Sources */,
 				D2E1289521BFEA6500EF8E7E /* QSCreateFTIconItem.m in Sources */,
 				7BF2F8B921B11494000AAD93 /* QSMaxPaymentViewController.m in Sources */,
+				3304D7F72281634E00AE801F /* MYTreeTableManager.m in Sources */,
 				7BB8DC7721B7721000954E86 /* QSQRCodeAddressCell.m in Sources */,
 				7B6CDC6E21AB7E65008A6FAF /* QSHomeMyNFTsViewController.m in Sources */,
+				3304D85922850F8C00AE801F /* QSGroupDetailGroupNameView.m in Sources */,
 				7BF36D7321A79A3300B27146 /* QSMineViewController.m in Sources */,
 				7BF36D6D21A79A1700B27146 /* QSSwitchWalletViewController.m in Sources */,
 				7BF40ED121BA1D4000047C3C /* QSTransactionRecordCell.m in Sources */,

@@ -65,10 +65,6 @@ typedef NS_ENUM(NSUInteger, QSExportPrivateKeyType) {
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (Class)getRigisterCellClass {
-    return [QSSettingCell class];
-}
-
 - (NSArray<QSBaseCellItem *> *)createSingleSectionDataSource {
     QSSettingItem *addressItem = [[QSSettingItem alloc] init];
     addressItem.leftTitle = QSLocalizedString(@"qs_export_private_key_address_title");

@@ -22,7 +22,6 @@
 - (instancetype)init {
     if (self = [super init]) {
         _pageIndex = 1;
-        _dataArray = [NSMutableArray array];
         _style = UITableViewStylePlain;
     }
     return self;
@@ -126,6 +125,13 @@
         [self.view addSubview:_tableView];
     }
     return _tableView;
+}
+
+- (NSMutableArray *)dataArray {
+    if (!_dataArray) {
+        _dataArray = [NSMutableArray array];
+    }
+    return _dataArray;
 }
 
 @end

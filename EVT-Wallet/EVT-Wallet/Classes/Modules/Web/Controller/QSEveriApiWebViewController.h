@@ -58,6 +58,12 @@ typedef void(^QSEveriApiWebViewPrivateKeyBlock)(NSInteger statusCode, NSDictiona
             andCompeleteBlock:(void(^)(NSInteger statusCode, BOOL isValid))block;
 
 /**
+ * @brief checkValidPublicKey
+ */
+- (void)checkValidPublicKey:(NSString *)privateKey
+          andCompeleteBlock:(void(^)(NSInteger statusCode, BOOL isValid))block;
+
+/**
  * @brief privateToPublic
  * @param privateKey privateKey
  */
@@ -288,6 +294,53 @@ typedef void(^QSEveriApiWebViewPrivateKeyBlock)(NSInteger statusCode, NSDictiona
 - (void)getEVTLinkQrImageByFungibleId:(NSInteger)fungibleId
                                amount:(NSString * _Nullable)amount
                     andCompeleteBlock:(void(^)(NSInteger statusCode, QSCollectImageModel *collectImage))block;
+
+/**
+ * Create Group
+ * @param actionName newgroup/updategroup
+ */
+- (void)pushGroupByActionName:(NSString *)actionName
+                groupsStructure:(NSDictionary *)groups
+             andCompeleteBlock:(void(^)(NSInteger statusCode))block;
+
+/**
+ * getManagedGroups
+ */
+- (void)getManagedGroupsAndCompeleteBlock:(void(^)(NSInteger statusCode, NSArray * _Nullable data))block;
+
+/**
+ * getGroupDetail
+ */
+- (void)getGroupDetailByGroupName:(NSString *)groupName
+                andCompeleteBlock:(void(^)(NSInteger statusCode, NSDictionary * _Nullable data))block;
+
+/**
+ * pushTransaction通用方法
+ */
+- (void)pushTransactionByActionName:(NSString *)actionName
+                            actions:(NSDictionary *)actions
+                             config:(NSDictionary * _Nullable)config
+                             domain:(NSString * _Nullable)domain
+                                key:(NSString * _Nullable)key
+                  completionHandler:(void (^)(NSInteger statusCode, NSDictionary *responseDic))completionHandler;
+
+/**
+ * @brief addMeta
+ *
+ * @param actionKey     actionKey
+ * @param actionValue   actionValue
+ * @param actionCreator actionCreator
+ * @param domain        域，如:.group
+ * @param key           domain对应的值
+ @
+ */
+
+- (void)addMetaByActionKey:(NSString *)actionKey
+               actionValue:(NSString *)actionValue
+             actionCreator:(NSString *)actionCreator
+                    domain:(NSString *)domain
+                       key:(NSString *)key
+         andCompeleteBlock:(void(^)(NSInteger statusCode))block;
 
 @end
 

@@ -69,10 +69,6 @@ static NSString *reuseIdentifier = @"QSSettingCell";
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (Class)getRigisterCellClass {
-    return [QSSettingCell class];
-}
-
 - (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
     QSSettingItem *itemWallet = [[QSSettingItem alloc] init];
     itemWallet.leftImage = [UIImage imageNamed:@"icon_wode_guanliqianbao"];

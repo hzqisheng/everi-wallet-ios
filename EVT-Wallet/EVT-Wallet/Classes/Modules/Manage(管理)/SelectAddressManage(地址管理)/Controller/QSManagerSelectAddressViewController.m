@@ -78,10 +78,6 @@
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (Class)getRigisterCellClass {
-    return [QSManageSelectAddressCell class];
-}
-
 - (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
     QSManageSelectAddressItem *item1 = [[QSManageSelectAddressItem alloc] init];
     item1.title = @"EVT8LJq6...caQkAySesdfsdfsf";

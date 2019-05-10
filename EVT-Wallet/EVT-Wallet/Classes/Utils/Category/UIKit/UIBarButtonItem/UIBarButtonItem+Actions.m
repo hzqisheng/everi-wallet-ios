@@ -60,7 +60,13 @@ char * const UIBarButtonItemActionBlock = "UIBarButtonItemActionBlock";
     [view setTitle:title forState:UIControlStateNormal];
     [view setTitleColor:titleColor forState:UIControlStateNormal];
     view.titleLabel.font = font;
-    view.frame =  CGRectMake(0, 0, 44, 44);
+    [view sizeToFit];
+    CGRect viewFrame = view.frame;
+    viewFrame.size.height = 44;
+    if (viewFrame.size.width < 44) {
+        viewFrame.size.width = 44;
+    }
+    view.frame =  viewFrame;
     return [self initWithCustomView:view];
 }
 

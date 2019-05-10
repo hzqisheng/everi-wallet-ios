@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QSBaseCellItemDataProtocol.h"
 @class QSBaseCellItem;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -15,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @required
 - (void)configureSubViews;
-- (void)configureCellWithItem:(QSBaseCellItem *)item;
+- (void)configureCellWithItem:(id<QSBaseCellItemDataProtocol>)item;
 
 @end
 

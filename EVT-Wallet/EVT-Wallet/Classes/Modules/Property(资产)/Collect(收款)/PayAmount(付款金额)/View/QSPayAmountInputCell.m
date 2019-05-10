@@ -71,10 +71,6 @@
         _textField.textColor = [UIColor qs_colorBlack313745];
         _textField.font = [UIFont qs_fontOfSize14];
         [_textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
-        @weakify(self);
-        [_textField.rac_textSignal subscribeNext:^(id x) {
-            @strongify(self);
-        }];
     }
     return _textField;
 }

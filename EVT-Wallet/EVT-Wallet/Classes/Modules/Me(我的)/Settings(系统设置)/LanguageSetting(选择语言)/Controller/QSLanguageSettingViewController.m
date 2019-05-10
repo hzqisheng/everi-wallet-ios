@@ -25,10 +25,6 @@ typedef NS_ENUM(NSUInteger, QSLanguageSettingType) {
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (Class)getRigisterCellClass {
-    return [QSLanguageSettingCell class];
-}
-
 - (NSArray<QSSettingItem *> *)createSingleSectionDataSource {
     QSSettingLanguageItem *englishItem = [[QSSettingLanguageItem alloc] init];
     englishItem.leftTitle = QSLocalizedString(@"qs_language_setting_item_english_title");

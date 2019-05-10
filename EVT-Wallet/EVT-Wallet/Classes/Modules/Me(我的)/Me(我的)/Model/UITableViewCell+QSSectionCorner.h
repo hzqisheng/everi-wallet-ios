@@ -17,9 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
                      cornerViewframe:(CGRect)frame
                         cornerRadius:(CGFloat)cornerRadius;
 
-@property(nonatomic, strong) UIView *cornerV;
-@property(nonatomic, strong) CAShapeLayer *topLay;
-@property(nonatomic, strong) CAShapeLayer *bottomLay;
+@property (nonatomic, strong) UIView *cornerV;
+@property (nonatomic, strong) CAShapeLayer *cornerLay;
+@property (nonatomic, strong) CAShapeLayer *topLay;
+@property (nonatomic, strong) CAShapeLayer *bottomLay;
 
 @end
 

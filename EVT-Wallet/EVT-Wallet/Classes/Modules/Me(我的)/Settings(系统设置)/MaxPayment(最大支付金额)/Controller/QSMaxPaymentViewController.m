@@ -28,10 +28,6 @@ typedef NS_ENUM(NSUInteger, QSMaxPaymentType) {
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (Class)getRigisterCellClass {
-    return [QSSettingCell class];
-}
-
 - (NSArray<QSBaseCellItem *> *)createSingleSectionDataSource {
     QSSettingItem *EVTItem = [[QSSettingItem alloc] init];
     EVTItem.leftTitle = @"EVT";

@@ -22,29 +22,29 @@
         self.cornerV = backV;
         self.backgroundColor = [UIColor clearColor];
     }
-    
+
     if (indexPath.row == [tableView numberOfRowsInSection:indexPath.section] - 1
         && indexPath.row == 0) {
-        if (self.topLay == nil) {
-            UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.cornerV.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight | UIRectCornerBottomLeft | UIRectCornerBottomRight  cornerRadii:CGSizeMake(cornerRadius, cornerRadius)];
+        if (self.cornerLay == nil) {
+            UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.cornerV.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight | UIRectCornerBottomLeft | UIRectCornerBottomRight cornerRadii:CGSizeMake(cornerRadius, cornerRadius)];
             CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
             maskLayer.frame = self.cornerV.bounds;
             maskLayer.path = maskPath.CGPath;
-            self.topLay = maskLayer;
+            self.cornerLay = maskLayer;
         }
-        self.cornerV.layer.mask = self.topLay;
+        self.cornerV.layer.mask = self.cornerLay;
     } else if (indexPath.row == 0) {
         if (self.topLay == nil) {
-            UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.cornerV.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight  cornerRadii:CGSizeMake(cornerRadius, cornerRadius)];
+            UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.cornerV.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(cornerRadius, cornerRadius)];
             CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
             maskLayer.frame = self.cornerV.bounds;
             maskLayer.path = maskPath.CGPath;
             self.topLay = maskLayer;
         }
         self.cornerV.layer.mask = self.topLay;
-    } else if (indexPath.row == [tableView numberOfRowsInSection:indexPath.section] - 1){
+    } else if (indexPath.row == [tableView numberOfRowsInSection:indexPath.section] - 1) {
         if (self.bottomLay == nil) {
-            UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.cornerV.bounds byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight  cornerRadii:CGSizeMake(cornerRadius, cornerRadius)];
+            UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.cornerV.bounds byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight cornerRadii:CGSizeMake(cornerRadius, cornerRadius)];
             CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
             maskLayer.frame = self.cornerV.bounds;
             maskLayer.path = maskPath.CGPath;
@@ -64,7 +64,15 @@
     return objc_getAssociatedObject(self, _cmd);
 }
 
--(void)setTopLay:(CAShapeLayer *)topLay {
+- (void)setCornerLay:(CAShapeLayer *)cornerLay {
+    objc_setAssociatedObject(self, @selector(cornerLay), cornerLay, OBJC_ASSOCIATION_RETAIN);
+}
+
+- (CAShapeLayer *)cornerLay {
+    return objc_getAssociatedObject(self, _cmd);
+}
+
+- (void)setTopLay:(CAShapeLayer *)topLay {
     objc_setAssociatedObject(self, @selector(topLay), topLay, OBJC_ASSOCIATION_RETAIN);
 }
 
@@ -72,11 +80,11 @@
     return objc_getAssociatedObject(self, _cmd);
 }
 
--(void)setBottomLay:(CAShapeLayer *)bottomLay {
+- (void)setBottomLay:(CAShapeLayer *)bottomLay {
     objc_setAssociatedObject(self, @selector(bottomLay), bottomLay, OBJC_ASSOCIATION_RETAIN);
 }
 
--(CAShapeLayer *)bottomLay {
+- (CAShapeLayer *)bottomLay {
     return objc_getAssociatedObject(self, _cmd);
 }
 

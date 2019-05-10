@@ -52,19 +52,13 @@
 
 - (void)transferViewEdit {
     QSIssueSettingEditViewController *vc = [[QSIssueSettingEditViewController alloc] init];
-    WeakSelf(weakSelf);
-    vc.issueSettingEditViewControllerSaveBlock = ^(NSString * _Nonnull text) {
-        
-    };
+    vc.issueSettingEditViewControllerSaveBlock = ^(NSString * _Nonnull text) {};
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)issueViewEdit {
     QSIssueSettingEditViewController *vc = [[QSIssueSettingEditViewController alloc] init];
-    WeakSelf(weakSelf);
-    vc.issueSettingEditViewControllerSaveBlock = ^(NSString * _Nonnull text) {
-        
-    };
+    vc.issueSettingEditViewControllerSaveBlock = ^(NSString * _Nonnull text) {};
     [self.navigationController pushViewController:vc animated:YES];
 }
 

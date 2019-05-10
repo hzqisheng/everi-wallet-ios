@@ -6,6 +6,9 @@
   Copyright © 2018 HANGZHOU QISHENG TECHNOLOGY CO.LTD. All rights reserved.
 */
 
+//toast
+"qs_waiting_toast"       = "请稍后...";
+
 //version
 "qs_lastet_version_toast" = "当前版本已经是最新版本";
 
@@ -77,8 +80,6 @@
 
 "qs_pass_mypass_create_success_toast"            = "创建成功";
 
-
-
 //Manage
 "qs_manage_created_token_title"  = "我创建的代币";
 "qs_manage_created_domain_title" = "我创建的域";
@@ -86,8 +87,18 @@
 "qs_manage_massTransfer_title" = "批量转账";
 "qs_manage_mineNFTs_title"     = "我的域";
 "qs_manage_mineGroup_title"    = "我的组";
-"qs_manage_createGroup_title"  = "创建组";
-"qs_manage_createGroup_managers"  = "管理者";
+"qs_manage_mineGroup_no_group_title"    = "暂无组信息";
+
+"qs_manage_group_detail_authority_title" = "权限设置";
+"qs_manage_group_detail_metadata_title"  = "元数据";
+
+"qs_add_group_metadata_nav_title"         = "添加元数据";
+"qs_add_group_metadata_value_title"       = "值";
+"qs_add_group_metadata_input_title"       = "请输入";
+"qs_add_group_metadata_confrm_btn_title"  = "确定";
+
+"qs_manage_createGroup_title"           = "创建组";
+"qs_manage_createGroup_managers"        = "管理者";
 "qs_manage_createGroup_manager_State1"  = "我负责管理";
 "qs_manage_createGroup_manager_State2"  = "从本地选择";
 "qs_manage_createGroup_manager_State3"  = "手动输入公钥";
@@ -105,6 +116,8 @@
 "qs_manage_createGroup_Nonleaf_node"    = "非叶节点";
 "qs_manage_createGroup_key_placeholder" = "请输入Key";
 "qs_manage_createGroup_weight"          = "权重";
+"qs_manage_createGroup_alert_cancel"    = "取消";
+"qs_manage_createGroup_error_key"       = "无效的Key";
 
 //Switch
 "qs_switch_createIdentity_password_placeholder"   = "密码";
@@ -160,6 +173,7 @@
 "qs_create_ft_icon_help_content"         = "Token的图标将存储在everiToken上，这会消耗部分手续费（EVT/PEVT)，推荐使用180x180像素的图片。";
 "qs_create_ft_select_local_icon_title"   = "选图";
 "qs_create_ft_take_icon_title"           = "拍照";
+"qs_create_ft_take_icon_cancel_title"    = "取消";
 
 //Scan
 "qs_scan_nav_title"                  = "二维码";

@@ -68,12 +68,6 @@
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (NSArray<Class> *)getRigisterMultiCellClasses {
-    return @[[QSCollectTipsCell class],
-             [QSQRCodeAddressCell class],
-             [QSQRImageCodeCell class]];
-}
-
 - (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
     QSQRCodeScanItem *tipsItem = [[QSQRCodeScanItem alloc] init];
     tipsItem.cellIdentifier = NSStringFromClass([QSCollectTipsCell class]);

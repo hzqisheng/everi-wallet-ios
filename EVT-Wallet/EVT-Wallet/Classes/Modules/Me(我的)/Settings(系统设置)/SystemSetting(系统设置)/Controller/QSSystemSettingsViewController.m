@@ -35,10 +35,6 @@ typedef NS_ENUM(NSUInteger, QSSystemSettingsType) {
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (Class)getRigisterCellClass {
-    return [QSSettingCell class];
-}
-
 - (NSArray<QSSettingItem *> *)createSingleSectionDataSource {
     QSSettingItem *languageItem = [[QSSettingItem alloc] init];
     languageItem.leftTitle = QSLocalizedString(@"qs_sytem_setting_item_languages_title");

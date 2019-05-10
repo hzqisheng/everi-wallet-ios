@@ -8,9 +8,10 @@
 
 #import "QSBaseViewController.h"
 
-typedef void(^QSCreateNFTSEditViewControllerSaveBlock)(NSString *text);
 
 NS_ASSUME_NONNULL_BEGIN
+
+typedef void(^QSCreateNFTSEditViewControllerSaveBlock)(NSString *text);
 
 @interface QSCreateNFTSEditViewController : QSBaseViewController
 

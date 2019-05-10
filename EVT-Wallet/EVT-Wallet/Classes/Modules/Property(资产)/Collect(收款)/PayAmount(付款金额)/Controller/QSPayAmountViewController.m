@@ -174,13 +174,6 @@ typedef NS_ENUM(NSUInteger, QSPayAmountCellType) {
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (NSArray<Class> *)getRigisterMultiCellClasses {
-    return @[[QSPayAmountSeletPayWayCell class],
-             [QSPayAmountBalanceCell class],
-             [QSPayAmountAddressCell class],
-             [QSPayAmountInputCell class]];
-}
-
 - (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
     QSPayAmountItem *selectItem = [[QSPayAmountItem alloc] init];
     selectItem.cellIdentifier = NSStringFromClass([QSPayAmountSeletPayWayCell class]);

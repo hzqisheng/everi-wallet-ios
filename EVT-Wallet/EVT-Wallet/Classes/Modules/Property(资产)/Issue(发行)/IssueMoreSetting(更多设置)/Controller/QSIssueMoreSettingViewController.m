@@ -24,10 +24,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupNavgationBarTitle:QSLocalizedString(@"qs_btn_home_issue")];
-    UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithTitle:QSLocalizedString(@"qs_issue_issue_moreSetting_rightNavi") font:[UIFont qs_fontOfSize14] titleColor:[UIColor qs_colorYellowE4B84F] target:self action:@selector(rightBarItemClicked)];
+//    UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithTitle:QSLocalizedString(@"qs_issue_issue_moreSetting_rightNavi") font:[UIFont qs_fontOfSize14] titleColor:[UIColor qs_colorYellowE4B84F] target:self action:@selector(rightBarItemClicked)];
 //    self.navigationItem.rightBarButtonItem = rightBarItem;
-    [self.view addSubview:self.topView];
 //    [self.view addSubview:self.bottomView];
+    [self.view addSubview:self.topView];
 }
 
 - (void)rightBarItemClicked {
@@ -50,12 +50,7 @@
         _bottomView = [[QSIssueMoreSettingBottomView alloc] initWithFrame:CGRectMake(kRealValue(15), kRealValue(264), kScreenWidth - kRealValue(30), kRealValue(120))];
         _bottomView.backgroundColor = [UIColor qs_colorWhiteFFFFFF];
         _bottomView.layer.cornerRadius = kRealValue(8);
-        WeakSelf(weakSelf);
-        _bottomView.issueMoreSettingBottomViewAddMetadataBlock = ^{
-            
-            
-            
-        };
+        _bottomView.issueMoreSettingBottomViewAddMetadataBlock = ^{};
     }
     return _bottomView;
 }

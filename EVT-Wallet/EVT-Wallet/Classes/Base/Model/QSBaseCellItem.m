@@ -8,7 +8,25 @@
 
 #import "QSBaseCellItem.h"
 
+/*
+@property (nonatomic, copy) NSString *cellIdentifier;
+
+@property (nonatomic, assign) NSInteger cellTag;
+
+@property (nonatomic, assign) CGFloat cellHeight;
+
+@property (nonatomic, assign) CGFloat cellWidth;
+
+@property (nonatomic, assign) UIEdgeInsets cellSeapratorInset;
+ */
+
 @implementation QSBaseCellItem
+
+@synthesize cellIdentifier     = _cellIdentifier;
+@synthesize cellTag            = _cellTag;
+@synthesize cellHeight         = _cellHeight;
+@synthesize cellWidth          = _cellWidth;
+@synthesize cellSeapratorInset = _cellSeapratorInset;
 
 - (instancetype)init {
     if (self = [super init]) {

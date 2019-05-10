@@ -56,17 +56,13 @@
     [[QSEveriApiWebViewController sharedWebView] getRandomValidSymbolIdAndCompeleteBlock:^(NSInteger statusCode, NSString * _Nonnull symbolID) {
         if (statusCode == kResponseSuccessCode) {
             self.assetNumber = symbolID;
-            self.assetItem.defaultContent = symbolID;
+            self.assetItem.content = symbolID;
             [self.tableView reloadData];
         }
     }];
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (NSArray<Class> *)getRigisterMultiCellClasses {
-    return @[[QSCreateFTTextCell class],[QSCreateFTIconCell class],[QSCreateFTAlertCell class]];
-}
-
 - (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
     //代币全称
     QSCreateFTItem *nameItem = [[QSCreateFTItem alloc] init];

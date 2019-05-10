@@ -12,9 +12,10 @@
 #import "QSScanGetAddress.h"
 #import "QSScanAddress.h"
 
-#define kResponseArrayKey @"data"
+#define kResponseArrayKey  @"data"
 #define kResponseStringKey @"data"
 #define kResponseNumberKey @"data"
+
 typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic);
 
 @interface QSEveriApiWebViewController ()<WKScriptMessageHandler>
@@ -91,7 +92,8 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
     id messageObject = responseDataDic[@"message"];
     NSDictionary *dic = responseDataDic[@"data"];
     NSLog(@"messageName:%@",message.name);
-    DLog(@"\n\n\n%@\n\n\n",message.body);    
+    DLog(@"\n\n\n%@\n\n\n",message.body);
+    
     if (![code.stringValue isEqualToString:@"1"]) {
         if ([messageObject isKindOfClass:[NSDictionary class]]) {
             NSString *chineseMsg = messageObject[@"cn"];
@@ -115,6 +117,10 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
         return;
     }
     
+    /*
+     数据格式化
+     @"data":
+     */
     if ([dic isKindOfClass:[NSArray class]]) {
         dic = @{kResponseArrayKey: dic};
     } else if ([dic isKindOfClass:[NSString class]]) {
@@ -122,12 +128,13 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
     } else if ([dic isKindOfClass:[NSNumber class]]) {
         dic = @{kResponseNumberKey : dic};
     }
-    NSLog(@"收到回调=========\n%@",dic);// 传递的数据
+    DLog(@"收到回调=========\n%@",dic);// 传递的数据
+    
     if ([message.name isEqualToString:@"needPrivateKey"]) {
         //需要私钥 弹出输入框
         WeakSelf(weakSelf);
         [QSPasswordHelper verificationPasswordByPrivateKey:QSPrivateKey andSuccessBlock:^{
-            [weakSelf needPrivateKeyResponseWithMessage:message andDic:dic];
+            [weakSelf requestNeedPrivateKeyResponseAndCompeleteBlock:^(NSInteger statusCode, NSDictionary * _Nullable data) {}];
         }];
     } else {
         //请求回调
@@ -198,6 +205,21 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
                         block (statusCode, resultNumber.boolValue);
                     }];
 }
+
+- (void)checkValidPublicKey:(NSString *)privateKey
+           andCompeleteBlock:(void(^)(NSInteger statusCode, BOOL isValid))block {
+    NSString *jsString = [NSString stringWithFormat:@"isValidPublicKey('%@')",privateKey];
+    [self excuteRequestWithMethodName:@"isValidPublicKey"
+                             jsString:jsString
+                    completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
+                        NSNumber *resultNumber;
+                        if (statusCode == kResponseSuccessCode) {
+                            resultNumber = responseDic[@"data"];
+                        }
+                        block (statusCode, resultNumber.boolValue);
+                    }];
+}
+
 
 - (void)privateToPublicWithPrivateKey:(NSString *)privateKey andCompeleteBlock:(void (^)(NSInteger, NSString * _Nonnull))block {
     NSString *jsString = [NSString stringWithFormat:@"privateToPublic('%@')",privateKey];
@@ -806,6 +828,93 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
                     }];
 }
 
+- (void)pushGroupByActionName:(NSString *)actionName
+              groupsStructure:(NSDictionary *)groups
+            andCompeleteBlock:(void(^)(NSInteger statusCode))block {
+//    NSString *groupsJsonStructure = [groups mj_JSONString];
+//    NSString *jsString = [NSString stringWithFormat:@"pushTransaction('%@','%@')",@"newgroup",groupsJsonStructure];
+//    DLog(@"groupsStructure:%@",jsString);
+//    [self excuteRequestWithMethodName:@"pushTransaction"
+//                             jsString:jsString
+//                    completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
+//                        /*
+//                         "transactionId":"f801bcc0988555deeeeec8f03fbbcce8dc58b73b7b0dcde0de19ec00a9d9a5a3"
+//                         */
+//                        block(statusCode);
+//                    }];
+    [self pushTransactionByActionName:actionName
+                              actions:groups
+                               config:nil
+                               domain:nil
+                                  key:nil
+                    completionHandler:^(NSInteger statusCode, NSDictionary * _Nonnull responseDic) {
+                        block(statusCode);
+                    }];
+}
+
+- (void)getManagedGroupsAndCompeleteBlock:(void(^)(NSInteger statusCode, NSArray *data))block {
+    NSString *jsString = [NSString stringWithFormat:@"getManagedGroups('%@')",QSPublicKey];
+    [self excuteRequestWithMethodName:@"getManagedGroups"
+                             jsString:jsString
+                    completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
+                        block(statusCode, responseDic[@"data"]);
+                    }];
+}
+
+- (void)getGroupDetailByGroupName:(NSString *)groupName
+                andCompeleteBlock:(void(^)(NSInteger statusCode, NSDictionary * _Nullable data))block {
+    NSString *jsString = [NSString stringWithFormat:@"getGroupDetail('%@')",groupName];
+    [self excuteRequestWithMethodName:@"getGroupDetail"
+                             jsString:jsString
+                    completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
+                        block(statusCode, responseDic);
+                    }];
+}
+
+- (void)addMetaByActionKey:(NSString *)actionKey actionValue:(NSString *)actionValue actionCreator:(NSString *)actionCreator domain:(NSString *)domain key:(NSString *)key andCompeleteBlock:(void (^)(NSInteger))block {
+    
+    NSMutableDictionary *actionsDic = [NSMutableDictionary dictionary];
+    [actionsDic setObject:QSNoNilString(actionKey) forKey:@"key"];
+    [actionsDic setObject:QSNoNilString(actionValue) forKey:@"value"];
+    [actionsDic setObject:QSNoNilString(actionCreator) forKey:@"creator"];
+    
+    [self pushTransactionByActionName:@"addmeta"
+                              actions:actionsDic
+                               config:nil
+                               domain:domain
+                                  key:key
+                    completionHandler:^(NSInteger statusCode, NSDictionary * _Nonnull responseDic) {
+                        block(statusCode);
+                    }];
+}
+
+- (void)pushTransactionByActionName:(NSString *)actionName
+                            actions:(NSDictionary *)actions
+                             config:(NSDictionary * _Nullable)config
+                             domain:(NSString * _Nullable)domain
+                                key:(NSString * _Nullable)key
+                  completionHandler:(void (^)(NSInteger statusCode, NSDictionary *responseDic))completionHandler {
+    NSString *jsString = [NSString stringWithFormat:@"'%@',%@",actionName,actions.mj_JSONString];
+    if (config) {
+        jsString = [NSString stringWithFormat:@"%@,%@",jsString, config.mj_JSONString];
+    } else {
+        jsString = [jsString stringByAppendingString:@",{}"];
+    }
+    
+    if (domain && key) {
+        NSString *domainKeyString = [NSString stringWithFormat:@"'%@','%@'",domain,key];
+        jsString = [NSString stringWithFormat:@"%@,%@",jsString,domainKeyString];
+    }
+    
+    jsString = [NSString stringWithFormat:@"pushTransaction(%@)",jsString];
+    
+    [self excuteRequestWithMethodName:@"pushTransaction"
+                             jsString:jsString
+                    completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
+                        completionHandler(statusCode, responseDic);
+                    }];
+}
+
 
 #pragma mark - **************** Private Methods
 - (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString
@@ -833,22 +942,12 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
     return _methodAndCallbackDic;
 }
 
-- (void)needPrivateKeyResponseWithMessage:(WKScriptMessage *)message andDic:(NSDictionary *)responseDic {
-    WeakSelf(weakSelf);
+- (void)requestNeedPrivateKeyResponseAndCompeleteBlock:(void(^)(NSInteger statusCode, NSDictionary * _Nullable data))block {
     NSString *jsString = [NSString stringWithFormat:@"needPrivateKeyResponse('%@')",QSPrivateKey];
     [self excuteRequestWithMethodName:@"needPrivateKeyResponse"
                              jsString:jsString
                     completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
-                        if (statusCode == kResponseSuccessCode) {
-                            //请求回调
-                            for (NSString *key in weakSelf.methodAndCallbackDic.allKeys) {
-                                if ([key isEqualToString:message.name]) {
-                                    DataResponseBlock responseBlock = [weakSelf.methodAndCallbackDic objectForKey:key];
-                                    responseBlock(kResponseSuccessCode,responseDic);
-                                    break;
-                                }
-                            }
-                        }
+                        block(statusCode, responseDic);
                     }];
 }
 

@@ -6,6 +6,9 @@
   Copyright © 2018 HANGZHOU QISHENG TECHNOLOGY CO.LTD. All rights reserved.
 */
 
+//toast
+"qs_waiting_toast"       = "Pease wait...";
+
 //version
 "qs_lastet_version_toast" = "Already The Latest Version";
 
@@ -84,8 +87,18 @@
 "qs_manage_massTransfer_title"    = "Bulk Transfer";
 "qs_manage_mineNFTs_title"        = "My NFTs";
 "qs_manage_mineGroup_title"       = "My Group";
-"qs_manage_createGroup_title"     = "Create group";
-"qs_manage_createGroup_managers"  = "Manager";
+"qs_manage_mineGroup_no_group_title"    = "No Groups Now";
+
+"qs_manage_group_detail_authority_title" = "Authority";
+"qs_manage_group_detail_metadata_title"  = "Metadata";
+
+"qs_add_group_metadata_nav_title"         = "Add Metadata";
+"qs_add_group_metadata_value_title"       = "Value";
+"qs_add_group_metadata_input_title"       = "Please Input";
+"qs_add_group_metadata_confrm_btn_title"  = "Confirm";
+
+"qs_manage_createGroup_title"           = "Create group";
+"qs_manage_createGroup_managers"        = "Manager";
 "qs_manage_createGroup_manager_State1"  = "I'm in charge";
 "qs_manage_createGroup_manager_State2"  = "Select from local";
 "qs_manage_createGroup_manager_State3"  = "Enter the public key manually";
@@ -103,6 +116,8 @@
 "qs_manage_createGroup_Nonleaf_node"    = "Non-Leaf Node";
 "qs_manage_createGroup_key_placeholder" = "Please Enter the key";
 "qs_manage_createGroup_weight"          = "Weight";
+"qs_manage_createGroup_alert_cancel"    = "Cancel";
+"qs_manage_createGroup_error_key"       = "InvalidKey";
 
 //Switch
 "qs_switch_createIdentity_password_placeholder"   = "Password";
@@ -158,8 +173,7 @@
 "qs_create_ft_icon_help_content"         = "For convinient, EveriWallet will store Token's Icon on everiToken.It will cost part of the service fee(EVT/PEVT) and we recommend you use 180x180 pixel pictures.";
 "qs_create_ft_select_local_icon_title"   = "Select a photo";
 "qs_create_ft_take_icon_title"           = "Take a photo";
-
-
+"qs_create_ft_take_icon_cancel_title"    = "Cancel";
 
 //Scan
 "qs_scan_nav_title"                  = "QR code";

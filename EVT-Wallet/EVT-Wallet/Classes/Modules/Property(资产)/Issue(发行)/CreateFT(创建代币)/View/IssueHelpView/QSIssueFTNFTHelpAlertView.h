@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "QSIssueFTNFTHelpModel.h"
 
-extern NSString * const QSIssueFTNFTHelpAlertRemindKey;
-
 NS_ASSUME_NONNULL_BEGIN
+
+extern NSString * const QSIssueFTNFTHelpAlertRemindKey;
 
 @interface QSIssueFTNFTHelpAlertView : UIView
 

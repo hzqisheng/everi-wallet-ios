@@ -100,10 +100,6 @@
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (Class)getRigisterCellClass {
-    return [QSPayInfoCell class];
-}
-
 - (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
     QSPayInfoItem *payItem = [[QSPayInfoItem alloc] init];
     payItem.cellIdentifier = NSStringFromClass([QSPayInfoCell class]);

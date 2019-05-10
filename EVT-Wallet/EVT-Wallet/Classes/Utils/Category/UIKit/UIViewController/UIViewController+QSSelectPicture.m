@@ -73,7 +73,7 @@
         
         [self presentViewController:imagePicker animated:YES completion:nil];
     }];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:QSLocalizedString(@"qs_create_ft_take_icon_cancel_title") style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         if (block) {
             block(@[], YES);
         }

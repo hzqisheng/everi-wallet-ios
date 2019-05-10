@@ -17,9 +17,9 @@ typedef NS_ENUM(NSUInteger, QSScanningType) {
     QSScanningTypePay,
 };
 
-typedef void(^ParseEvtLinkPublicKeyAndPopBlock)(NSString *publicKey);
-
 NS_ASSUME_NONNULL_BEGIN
+
+typedef void(^ParseEvtLinkPublicKeyAndPopBlock)(NSString *publicKey);
 
 @interface QSScanningViewController : QSBaseViewController
 

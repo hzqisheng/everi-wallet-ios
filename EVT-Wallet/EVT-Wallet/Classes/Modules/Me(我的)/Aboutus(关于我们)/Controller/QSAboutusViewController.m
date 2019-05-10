@@ -27,11 +27,6 @@ typedef NS_ENUM(NSUInteger, QSAboutusItemType) {
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (NSArray<Class> *)getRigisterMultiCellClasses {
-    return @[[QSSettingCell class],
-             [QSAboutusIconCell class]];
-}
-
 - (NSArray<QSSettingItem *> *)createSingleSectionDataSource {
     QSSettingItem *aboutusItem = [[QSSettingItem alloc] init];
     aboutusItem.cellTag = QSAboutusItemTypeAppIcon;

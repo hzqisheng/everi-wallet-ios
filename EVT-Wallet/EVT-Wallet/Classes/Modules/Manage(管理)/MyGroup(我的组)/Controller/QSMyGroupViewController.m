@@ -10,6 +10,8 @@
 #import "QSManageMyGroupCell.h"
 #import "QSManageMyGroupItem.h"
 #import "QSCreateGroupViewController.h"
+#import "QSEveriApiWebViewController.h"
+#import "QSMyGroupDetailViewController.h"
 
 @interface QSMyGroupViewController ()
 
@@ -19,11 +21,17 @@
 
 @implementation QSMyGroupViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self startRefreshing];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupNavgationBarTitle:QSLocalizedString(@"qs_manage_mineGroup_title")];
     [self setupBottomButton];
     [self setupTableView];
+    [self addRefreshHeader];
 }
 
 - (void)setupTableView {
@@ -49,39 +57,46 @@
     self.createButton = bottomButton;
 }
 
+- (void)tableViewShouldUpdateDataByPageIndex:(NSInteger)pageIndex {
+    [[QSEveriApiWebViewController sharedWebView] getManagedGroupsAndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nullable data) {
+        if (statusCode == kResponseSuccessCode) {
+            if (self.dataArray.count) {
+                [self.dataArray removeAllObjects];
+            }
+            
+            for (NSDictionary *dic in data) {
+                QSManageMyGroupItem *group = [[QSManageMyGroupItem alloc] init];
+                group.title = dic[@"name"];
+                group.cellHeight = kRealValue(51);
+                group.cellIdentifier = NSStringFromClass([QSManageMyGroupCell class]);
+                [self.dataArray addObject:group];
+            }
+            
+            [self.tableView reloadData];
+        }
+        [self endRefreshing];
+    }];
+}
+
 #pragma mark - **************** Event Response
 - (void)bottomButtonClicked {
     QSCreateGroupViewController *vc = [[QSCreateGroupViewController alloc] init];
+    [vc setupNavgationBarTitle:QSLocalizedString(@"qs_manage_createGroup_title")];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (Class)getRigisterCellClass {
-    return [QSManageMyGroupCell class];
-}
-
-- (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
-    QSManageMyGroupItem *groupOne = [[QSManageMyGroupItem alloc] init];
-    groupOne.title = @"我的一组";
-    groupOne.cellHeight = kRealValue(51);
-    groupOne.cellIdentifier = NSStringFromClass([QSManageMyGroupCell class]);
-    
-    QSManageMyGroupItem *groupTwo = [[QSManageMyGroupItem alloc] init];
-    groupTwo.title = @"我的二组";
-    groupTwo.cellHeight = kRealValue(51);
-    groupTwo.cellIdentifier = NSStringFromClass([QSManageMyGroupCell class]);
-    
-    QSManageMyGroupItem *groupThree = [[QSManageMyGroupItem alloc] init];
-    groupThree.title = @"我的三组";
-    groupThree.cellHeight = kRealValue(51);
-    groupThree.cellIdentifier = NSStringFromClass([QSManageMyGroupCell class]);
-    
-    return @[@[groupOne,groupTwo,groupThree]];
+- (NSArray<QSBaseCellItem *> *)createSingleSectionDataSource {
+    return self.dataArray;
 }
 
 #pragma mark - **************** UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    QSManageMyGroupItem *group = self.dataArray[indexPath.row];
     
+    QSMyGroupDetailViewController *detail = [[QSMyGroupDetailViewController alloc] init];
+    detail.groupName = group.title;
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end

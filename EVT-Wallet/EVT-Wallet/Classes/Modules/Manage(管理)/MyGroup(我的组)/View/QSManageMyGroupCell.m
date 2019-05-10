@@ -21,7 +21,7 @@
         make.left.equalTo(self.contentView).offset(kRealValue(20));
         make.top.equalTo(self.contentView).offset(kRealValue(18));
         make.right.equalTo(self.contentView).offset(-kRealValue(20));
-        make.height.equalTo(@kRealValue(16));
+        make.height.equalTo(@kRealValue(20));
     }];
 }
 
@@ -29,7 +29,6 @@
     self.item = item;
     QSManageMyGroupItem *groupItem = (QSManageMyGroupItem *)item;
     self.titleLabel.text = groupItem.title;
-    
 }
 
 #pragma mark - **************** Setter Getter

@@ -90,11 +90,6 @@
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (NSArray<Class> *)getRigisterMultiCellClasses {
-    return @[[QSEveriPayCollectCurrencyCell class],
-             [QSPayAmountInputCell class]];
-}
-
 - (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
     QSEveriPayCollectCurrencyItem *currencyItem = [[QSEveriPayCollectCurrencyItem alloc] init];
     currencyItem.cellIdentifier = NSStringFromClass([QSEveriPayCollectCurrencyCell class]);

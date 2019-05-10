@@ -59,10 +59,6 @@ static NSString *reuseIdentifier = @"QSSettingCell";
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (Class)getRigisterCellClass {
-    return [QSSettingCell class];
-}
-
 - (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
     QSSettingItem *itemMassTransfer = [[QSSettingItem alloc] init];
     itemMassTransfer.leftImage = [UIImage imageNamed:@"icon_guanli_zhuanzhang"];
@@ -75,9 +71,14 @@ static NSString *reuseIdentifier = @"QSSettingCell";
     itemNFTs.cellTag = QSManageCellNFTs;
     itemNFTs.cellType = QSSettingItemTypeImageAndLeftRightTitle;
     
+    QSSettingItem *itemGroup = [[QSSettingItem alloc] init];
+    itemGroup.leftImage = [UIImage imageNamed:@"icon_guanli_zu"];
+    itemGroup.leftTitle = QSLocalizedString(@"qs_manage_mineGroup_title");
+    itemGroup.cellTag = QSManageCellGroup;
+    itemGroup.cellType = QSSettingItemTypeImageAndLeftRightTitle;
     
     return @[@[itemMassTransfer],
-             @[itemNFTs]];
+             @[itemNFTs,itemGroup]];
 }
 
 #pragma mark - **************** Event Response
@@ -104,6 +105,10 @@ static NSString *reuseIdentifier = @"QSSettingCell";
         QSMyPassViewController *myPassVC = [[QSMyPassViewController alloc] init];
         myPassVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:myPassVC animated:YES];
+    } else if (item.cellTag == QSManageCellGroup) {
+        QSMyGroupViewController *group = [[QSMyGroupViewController alloc] init];
+        group.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:group animated:YES];
     }
 }
 

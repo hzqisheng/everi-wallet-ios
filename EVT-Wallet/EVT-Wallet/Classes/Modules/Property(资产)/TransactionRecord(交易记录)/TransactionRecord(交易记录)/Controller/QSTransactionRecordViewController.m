@@ -121,11 +121,6 @@
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (NSArray<Class> *)getRigisterMultiCellClasses {
-    return @[[QSTransactionRecordCell class],
-             [QSTransactionRecordTitleCell class]];
-}
-
 - (NSArray<QSBaseCellItem *> *)createSingleSectionDataSource {
     QSBaseCellItem *titleItem = [[QSBaseCellItem alloc] init];
     titleItem.cellIdentifier = NSStringFromClass([QSTransactionRecordTitleCell class]);
@@ -138,7 +133,8 @@
     if (indexPath.row == 0) {
         return;
     }
-    QSTransactionRecordItem *recordItem = [self itemInIndexPath:indexPath];
+    
+    QSTransactionRecordItem *recordItem = (QSTransactionRecordItem *)([self itemInIndexPath:indexPath]);
     NSString *urlString = [NSString stringWithFormat:@"https://evtscan.io/trx/%@?theme=light",recordItem.transferModel.trx_id];
     QSWebViewViewController *web = [[QSWebViewViewController alloc] init];
     web.url = urlString;

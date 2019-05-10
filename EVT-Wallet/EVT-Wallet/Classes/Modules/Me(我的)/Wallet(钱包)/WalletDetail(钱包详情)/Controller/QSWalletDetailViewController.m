@@ -45,12 +45,6 @@ typedef NS_ENUM(NSUInteger, QSWalletDetailType) {
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (NSArray<Class> *)getRigisterMultiCellClasses {
-    return @[[QSSettingCell class],
-             [QSWalletDetailCell class],
-             [QSWalletFingerprintCell class]];
-}
-
 - (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
     if (self.dataArray.count) {
         [self.dataArray removeAllObjects];
