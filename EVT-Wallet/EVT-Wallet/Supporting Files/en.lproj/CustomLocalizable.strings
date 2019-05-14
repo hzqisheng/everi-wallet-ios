@@ -57,11 +57,33 @@
 "qs_issue_ft_rule_alert_remind_btn"    = "No longer reminder next time";
 
 //Pass
-"qs_pass_mypass_no_pass_title"         = "no NFT";
-"qs_pass_mypass_navi_title"            = "My NFTs";
-"qs_pass_mypass_btn_title"             = "Create NFTs";
-"qs_pass_createNFTS_yu_title"          = "Domains";
-"qs_pass_createNFTS_yu_placeholder"    = "Please enter the Domains";
+"qs_pass_mypass_no_pass_title"                = "no Domains";
+"qs_pass_mypass_navi_title"                   = "My Domains";
+"qs_pass_mypass_btn_title"                    = "Create Domain";
+"qs_pass_mypass_issue_btn_title"              = "Issue";
+
+"qs_pass_createNFTS_yu_title"                 = "Domains";
+"qs_pass_createNFTS_yu_placeholder"           = "Please enter the Domains";
+"qs_pass_createNFTS_invaild_domain_toast"     = "Invaild Authority Settings";
+"qs_pass_createNFTS_invaild_threshold_toast"  = "Invaild Threshold Setting";
+
+"qs_pass_createNFTS_threshold_title"             = "Threshold";
+"qs_pass_createNFTS_commit_btn_title"            = "Submit";
+"qs_pass_createNFTS_issue_title"                 = "Issue";
+"qs_pass_createNFTS_transfer_title"              = "Transfer";
+"qs_pass_createNFTS_manage_title"                = "Manage";
+"qs_pass_createNFTS_add_permission_title"        = "Add";
+"qs_pass_createNFTS_add_address_alert_title"     = "Add Address";
+"qs_pass_createNFTS_add_group_alert_title"       = "Add Group";
+"qs_pass_createNFTS_add_alert_cancel_title"      = "Cancel";
+"qs_pass_createNFTS_add_public_key_placeholer"   = "PublicKey";
+"qs_pass_createNFTS_invalid_public_key"          = "Pnvalid PublicKey";
+"qs_pass_createNFTS_add_weight_placeholer"       = "Weight";
+"qs_pass_createNFTS_add_group_confirm_btn_title" = "Confirm";
+"qs_pass_createNFTS_add_group_weight_title"      = "Weight";
+"qs_pass_createNFTS_add_group_group_title"       = "Group";
+"qs_pass_createNFTS_add_group_choose_group_title" = "Choose Group";
+
 "qs_pass_createNFTS_transfer_content"  = "Only me and the holder can transfer";
 "qs_pass_createNFTS_manager_content"   = "Only I can manage";
 "qs_pass_createNFTS_batch_topView_placeholder"   = "You can manually enter the name of the license here, with the key enter segmentation; If you need to issue multiple passes in batches quickly, you can use the batch generation function";
@@ -73,6 +95,11 @@
 "qs_pass_createNFTS_batch_no_nft_title_toast" = "Please enter the name of the NFT";
 "qs_pass_createNFTS_batch_success_toast"      = "Issue Success";
 
+"qs_pass_mypass_detail_issue_title"              = "Issue";
+"qs_pass_mypass_detail_transfer_title"           = "Transfer";
+"qs_pass_mypass_detail_manage_title"             = "Manage";
+"qs_pass_mypass_detail_authority_title"          = "Authority";
+"qs_pass_mypass_detail_threshold_title"          = "Threshold";
 
 "qs_pass_domain_help_title"                      = "Domain";
 "qs_pass_domain_help_content"                    = "Domain names consist of up to 21 specified characters [0-9，A-Z，a-z.-]， and Non-Fungible Tokens are organized and managed by setting authoritiy management in domain.";
@@ -85,8 +112,8 @@
 "qs_manage_created_domain_title" = "The domain I created";
 
 "qs_manage_massTransfer_title"    = "Bulk Transfer";
-"qs_manage_mineNFTs_title"        = "My NFTs";
-"qs_manage_mineGroup_title"       = "My Group";
+"qs_manage_mineNFTs_title"        = "My Domains";
+"qs_manage_mineGroup_title"       = "My Groups";
 "qs_manage_mineGroup_no_group_title"    = "No Groups Now";
 
 "qs_manage_group_detail_authority_title" = "Authority";
@@ -97,6 +124,8 @@
 "qs_add_group_metadata_input_title"       = "Please Input";
 "qs_add_group_metadata_confrm_btn_title"  = "Confirm";
 
+"qs_manage_createGroup_help_title"       = "Group";
+"qs_manage_createGroup_help_content"     = "Group names consists of a up of 21 specified characters [0-9, A-Z, a-z.-], and can be assigned to a certain group by realizing the functions similar to the organizational structure in real life, thereby realizing group management of specific assets.";
 "qs_manage_createGroup_title"           = "Create group";
 "qs_manage_createGroup_managers"        = "Manager";
 "qs_manage_createGroup_manager_State1"  = "I'm in charge";
@@ -407,6 +436,7 @@
 "qs_add_address_item_memo_placeholder"    = "Please input the memo";
 "qs_add_address_save_btn_title"           = "Save";
 "qs_add_address_save_address_failure"     = "Address wrong";
+"qs_add_address_node_format_error"        = "Must contain a node";
 
 //Import Address
 "qs_import_address_nav_title"             = "Import Address";

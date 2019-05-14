@@ -24,7 +24,7 @@ typedef NS_ENUM(NSUInteger, MYTreeItemCheckState) {
 @property (nonatomic, readonly, copy) NSString *type;      // 类型
 @property (nonatomic, readonly, assign) BOOL isLeaf;       // 是否叶子节点
 @property (nonatomic, readonly, strong) id data;           // 原始数据
-@property (nonatomic, readonly, assign) BOOL allowEditing; // 是否允许编辑
+@property (nonatomic, assign) BOOL allowEditing;           // 是否允许编辑
 
 // 下列数据为 MYTreeTableManager 中内部设置，不能在外部直接设置
 @property (nonatomic, assign) NSUInteger level;

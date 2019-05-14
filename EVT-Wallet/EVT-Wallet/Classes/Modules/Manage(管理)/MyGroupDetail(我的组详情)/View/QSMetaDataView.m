@@ -6,13 +6,13 @@
 //  Copyright © 2019 HANGZHOU QISHENG TECHNOLOGY CO.LTD. All rights reserved.
 //
 
-#import "QSGroupDetailMetaDataView.h"
+#import "QSMetaDataView.h"
 
-@interface QSGroupDetailMetaDataView ()
+@interface QSMetaDataView ()
 
 @end
 
-@implementation QSGroupDetailMetaDataView
+@implementation QSMetaDataView
 
 - (void)setupSubViewsByMetaDatas:(NSArray *)metaDatas {
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
@@ -28,11 +28,11 @@
     }];
     
     //元数据标题
-    UILabel *metaDataTitleLabel = [UILabel labelWithName:QSLocalizedString(@"qs_manage_group_detail_metadata_title") font:[UIFont qs_fontOfSize14] textColor:[UIColor qs_colorBlack333333] textAlignment:NSTextAlignmentLeft];
+    UILabel *metaDataTitleLabel = [UILabel labelWithName:QSLocalizedString(@"qs_manage_group_detail_metadata_title") font:[UIFont qs_fontOfSize16] textColor:[UIColor qs_colorBlack333333] textAlignment:NSTextAlignmentLeft];
     [contentView addSubview:metaDataTitleLabel];
     [metaDataTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(contentView).offset(kRealValue(20));
-        make.height.equalTo(@kRealValue(16));
+        make.height.equalTo(@kRealValue(18));
         make.left.equalTo(contentView).offset(kRealValue(15));
         make.right.equalTo(contentView).offset(-kRealValue(15));
     }];
@@ -48,19 +48,11 @@
     }];
     
     //元数据
-    /*
-     {
-     creator = "[A] EVT5qn48E8eZKJb5yM24bgC1m8MdRFg5eBU76cQfDXBGXr3UYjLvY";
-     key = wet;
-     value = value;
-     }
-     */
-    
     UIView *lastView = metaDataTitleLabelBottomSepLine;
     for (int i = 0; i < metaDatas.count; i++) {
         QSGroupDetailPerMetaDataView *perDataView = [[QSGroupDetailPerMetaDataView alloc] init];
-        NSDictionary *metaData = metaDatas[i];
-        [perDataView refreshViewByCreator:metaData[@"creator"] key:metaData[@"key"] value:metaData[@"value"]];
+        QSMetas *metaData = metaDatas[i];
+        [perDataView refreshViewByCreator:metaData.creator key:metaData.key value:metaData.value];
         [contentView addSubview:perDataView];
         [perDataView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(lastView.mas_bottom);
@@ -182,14 +174,14 @@
 #pragma mark - ***************** Setter Getter
 - (UILabel *)keyTitleLabel {
     if (!_keyTitleLabel) {
-        _keyTitleLabel = [UILabel labelWithName:@"Key:" font:[UIFont qs_fontOfSize13] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentRight];
+        _keyTitleLabel = [UILabel labelWithName:@"Key:" font:[UIFont qs_fontOfSize15] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentRight];
     }
     return _keyTitleLabel;
 }
 
 - (UILabel *)keyLabel {
     if (!_keyLabel) {
-        _keyLabel = [UILabel labelWithName:@"" font:[UIFont qs_fontOfSize13] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentLeft];
+        _keyLabel = [UILabel labelWithName:@"" font:[UIFont qs_fontOfSize15] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentLeft];
         _keyLabel.numberOfLines = 0;
     }
     return _keyLabel;
@@ -197,14 +189,14 @@
 
 - (UILabel *)valueTitleLabel {
     if (!_valueTitleLabel) {
-        _valueTitleLabel = [UILabel labelWithName:[NSString stringWithFormat:@"%@:",QSLocalizedString(@"qs_add_group_metadata_value_title")] font:[UIFont qs_fontOfSize13] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentRight];
+        _valueTitleLabel = [UILabel labelWithName:[NSString stringWithFormat:@"%@:",QSLocalizedString(@"qs_add_group_metadata_value_title")] font:[UIFont qs_fontOfSize15] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentRight];
     }
     return _valueTitleLabel;
 }
 
 - (UILabel *)valueLabel {
     if (!_valueLabel) {
-        _valueLabel = [UILabel labelWithName:@"" font:[UIFont qs_fontOfSize13] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentLeft];
+        _valueLabel = [UILabel labelWithName:@"" font:[UIFont qs_fontOfSize15] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentLeft];
         _valueLabel.numberOfLines = 0;
     }
     return _valueLabel;
@@ -212,14 +204,14 @@
 
 - (UILabel *)creatorTitleLabel {
     if (!_creatorTitleLabel) {
-        _creatorTitleLabel = [UILabel labelWithName:@"Creator:" font:[UIFont qs_fontOfSize13] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentRight];
+        _creatorTitleLabel = [UILabel labelWithName:@"Creator:" font:[UIFont qs_fontOfSize15] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentRight];
     }
     return _creatorTitleLabel;
 }
 
 - (UILabel *)creatorLabel {
     if (!_creatorLabel) {
-        _creatorLabel = [UILabel labelWithName:@"" font:[UIFont qs_fontOfSize13] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentLeft];
+        _creatorLabel = [UILabel labelWithName:@"" font:[UIFont qs_fontOfSize15] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentLeft];
         _creatorLabel.numberOfLines = 0;
     }
     return _creatorLabel;

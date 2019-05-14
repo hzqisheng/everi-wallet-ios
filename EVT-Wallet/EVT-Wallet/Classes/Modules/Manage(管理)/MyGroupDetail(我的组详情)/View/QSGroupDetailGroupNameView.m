@@ -100,7 +100,7 @@
         _nameTitleLabel = [[UILabel alloc] init];
         _nameTitleLabel.text = QSLocalizedString(@"qs_add_address_item_name_title");
         _nameTitleLabel.textColor = [UIColor qs_colorBlack333333];
-        _nameTitleLabel.font = [UIFont qs_fontOfSize14];
+        _nameTitleLabel.font = [UIFont qs_fontOfSize16];
         [self.whiteView addSubview:_nameTitleLabel];
     }
     return _nameTitleLabel;
@@ -111,7 +111,7 @@
         _nameLabel = [[UILabel alloc] init];
         _nameLabel.textAlignment = NSTextAlignmentRight;
         _nameLabel.textColor = [UIColor qs_colorBlack333333];
-        _nameLabel.font = [UIFont qs_fontOfSize14];
+        _nameLabel.font = [UIFont qs_fontOfSize16];
         [self.whiteView addSubview:_nameLabel];
     }
     return _nameLabel;
@@ -131,7 +131,7 @@
         _thresholdTitleLabel = [[UILabel alloc] init];
         _thresholdTitleLabel.text = QSLocalizedString(@"qs_manage_createGroup_threshold");
         _thresholdTitleLabel.textColor = [UIColor qs_colorBlack333333];
-        _thresholdTitleLabel.font = [UIFont qs_fontOfSize14];
+        _thresholdTitleLabel.font = [UIFont qs_fontOfSize16];
         [self.whiteView addSubview:_thresholdTitleLabel];
     }
     return _thresholdTitleLabel;
@@ -142,7 +142,7 @@
         _thresholdCountLabel = [[UILabel alloc] init];
         _thresholdCountLabel.textAlignment = NSTextAlignmentRight;
         _thresholdCountLabel.textColor = [UIColor qs_colorBlack333333];
-        _thresholdCountLabel.font = [UIFont qs_fontOfSize14];
+        _thresholdCountLabel.font = [UIFont qs_fontOfSize16];
         [self.whiteView addSubview:_thresholdCountLabel];
     }
     return _thresholdCountLabel;

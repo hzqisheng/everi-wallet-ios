@@ -85,7 +85,7 @@
     [self.countTextField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.addButton.mas_left);
         make.centerY.equalTo(self.thresholdLabel);
-        make.size.mas_equalTo(CGSizeMake(kRealValue(28), kRealValue(24)));
+        make.size.mas_equalTo(CGSizeMake(kRealValue(38), kRealValue(24)));
     }];
     
     [self.sholdLine mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -114,7 +114,10 @@
         self.nameTextField.enabled = NO;
     }
     self.nameTextField.text = groupName;
-    self.countTextField.text = threshold;
+    
+    if (threshold.length) {
+        self.countTextField.text = threshold;
+    }
     self.subtractButton.enabled = self.countTextField.text.integerValue > 1;
 }
 
@@ -162,7 +165,7 @@
         _nameLabel = [[UILabel alloc] init];
         _nameLabel.text = QSLocalizedString(@"qs_add_address_item_name_title");
         _nameLabel.textColor = [UIColor qs_colorBlack333333];
-        _nameLabel.font = [UIFont qs_fontOfSize14];
+        _nameLabel.font = [UIFont qs_fontOfSize16];
         [self.whiteView addSubview:_nameLabel];
     }
     return _nameLabel;
@@ -173,9 +176,9 @@
         _nameTextField = [[UITextField alloc] init];
         _nameTextField.placeholder = QSLocalizedString(@"qs_add_address_item_name_placeholder");
         _nameTextField.textColor = [UIColor qs_colorBlack333333];
-        _nameTextField.font = [UIFont qs_fontOfSize14];
+        _nameTextField.font = [UIFont qs_fontOfSize16];
         [_nameTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
-        [_nameTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+        [_nameTextField setValue:[UIFont qs_fontOfSize16] forKeyPath:@"_placeholderLabel.font"];
         _nameTextField.textAlignment = NSTextAlignmentRight;
         _nameTextField.keyboardType = UIKeyboardTypeAlphabet;
         [self.whiteView addSubview:_nameTextField];
@@ -197,7 +200,7 @@
         _thresholdLabel = [[UILabel alloc] init];
         _thresholdLabel.text = QSLocalizedString(@"qs_manage_createGroup_threshold");
         _thresholdLabel.textColor = [UIColor qs_colorBlack333333];
-        _thresholdLabel.font = [UIFont qs_fontOfSize14];
+        _thresholdLabel.font = [UIFont qs_fontOfSize16];
         [self.whiteView addSubview:_thresholdLabel];
     }
     return _thresholdLabel;
@@ -228,7 +231,7 @@
     if (!_countTextField) {
         _countTextField = [[UITextField alloc] init];
         _countTextField.textColor = [UIColor qs_colorGray686868];
-        _countTextField.font = [UIFont qs_fontOfSize14];
+        _countTextField.font = [UIFont qs_fontOfSize16];
         _countTextField.textAlignment = NSTextAlignmentCenter;
         _countTextField.keyboardType = UIKeyboardTypeNumberPad;
         _countTextField.text = @"1";
@@ -252,7 +255,7 @@
         _nodeLabel = [[UILabel alloc] init];
         _nodeLabel.text = QSLocalizedString(@"qs_manage_createGroup_node");
         _nodeLabel.textColor = [UIColor qs_colorBlack333333];
-        _nodeLabel.font = [UIFont qs_fontOfSize14];
+        _nodeLabel.font = [UIFont qs_fontOfSize16];
         [self.whiteView addSubview:_nodeLabel];
     }
     return _nodeLabel;

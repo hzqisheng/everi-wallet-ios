@@ -32,7 +32,7 @@
 }
 
 #pragma mark - **************** Public Methods
-- (QSBaseCellItem *)itemInIndexPath:(NSIndexPath *)indexPath {
+- (id<QSBaseCellItemDataProtocol>)itemInIndexPath:(NSIndexPath *)indexPath {
     if (self.isMultiSection) {
         QSBaseCellItem *item = self.dataArray[indexPath.section][indexPath.row];
         return item;
@@ -54,10 +54,10 @@
     
     if (singleDataSource.count) {
         _isMultiSection = NO;
-        [self.dataArray addObjectsFromArray:singleDataSource];
+        self.dataArray = singleDataSource.mutableCopy;
     } else if (multiDataSource.count) {
         _isMultiSection = YES;
-        self.dataArray = [multiDataSource mutableCopy];
+        self.dataArray = multiDataSource.mutableCopy;
     }
     
     [self.tableView reloadData];
@@ -79,7 +79,7 @@
 
 #pragma mark - **************** UITableViewDataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    QSBaseCellItem *item = [self itemInIndexPath:indexPath];
+    id<QSBaseCellItemDataProtocol> item = [self itemInIndexPath:indexPath];
     
     Class registerClass = NSClassFromString(item.cellIdentifier);
     NSAssert(registerClass, @"the class get from 'baseCellItem.cellIdentifier' is invalid");
@@ -94,7 +94,9 @@
     
     [cell configureCellWithItem:item];
     
-    if ([self isShowCornerSection]) {
+    if ([self isShowCornerSection]
+        && item.cellWidth
+        && item.cellHeight) {
         [cell addSectionCornerWithTableView:tableView
                                   indexPath:indexPath
                             cornerViewframe:CGRectMake(0, 0, item.cellWidth, item.cellHeight)
@@ -122,9 +124,49 @@
 
 #pragma mark - **************** UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    QSBaseCellItem *item = [self itemInIndexPath:indexPath];
-    return item.cellHeight;
+    id<QSBaseCellItemDataProtocol> item = [self itemInIndexPath:indexPath];
+    if (item.cellHeight) {
+        return item.cellHeight;
+    }
+    return UITableViewAutomaticDimension;
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    id<QSBaseCellItemDataProtocol> item = [self itemInIndexPath:indexPath];
+    if (item.cellHeight != 0) {
+        return;
+    }
+    
+    //如果没有设置高度则缓存自动计算的高度
+    NSNumber *height = @(cell.frame.size.height);
+    item.cellHeight = height.floatValue;
+    
+    //重新添加圆角
+    if ([self isShowCornerSection]
+        && item.cellWidth
+        && item.cellHeight) {
+        [cell addSectionCornerWithTableView:tableView
+                                  indexPath:indexPath
+                            cornerViewframe:CGRectMake(0, 0, item.cellWidth, item.cellHeight)
+                               cornerRadius:8];
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (!self.isMultiSection) {
+        return 0.01;
+    }
+    if (section == 0) {
+        return 0.01;
+    }
+    return kRealValue(10);
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (!self.isMultiSection) {
+        return nil;
+    }
+    return [UIView new];
+}
 
 @end

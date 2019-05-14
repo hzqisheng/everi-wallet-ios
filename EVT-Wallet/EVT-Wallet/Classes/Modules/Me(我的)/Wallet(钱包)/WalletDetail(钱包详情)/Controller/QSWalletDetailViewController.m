@@ -45,7 +45,7 @@ typedef NS_ENUM(NSUInteger, QSWalletDetailType) {
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
+- (NSArray<NSArray<id<QSBaseCellItemDataProtocol>> *> *)createMultiSectionDataSource {
     if (self.dataArray.count) {
         [self.dataArray removeAllObjects];
     }
@@ -130,7 +130,7 @@ typedef NS_ENUM(NSUInteger, QSWalletDetailType) {
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    QSBaseCellItem *item = [self itemInIndexPath:indexPath];
+    id<QSBaseCellItemDataProtocol> item = [self itemInIndexPath:indexPath];
     if (item.cellTag == QSWalletDetailTypeContent) {
         [QSInputAlertView showInputAlertViewWithTitle:QSLocalizedString(@"qs_wallet_detail_change_name_alert_title") placeholder:QSLocalizedString(@"qs_wallet_detail_change_name_alert_placehoder") confirmBlock:^(NSString * _Nonnull text) {
             self.evtModel.evtName = text;

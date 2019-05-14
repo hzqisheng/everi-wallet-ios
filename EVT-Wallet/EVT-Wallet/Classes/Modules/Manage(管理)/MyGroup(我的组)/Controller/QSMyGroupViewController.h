@@ -10,7 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^MyGroupClickedGroupBlock)(NSString *groupName);
+
 @interface QSMyGroupViewController : QSBaseCornerSectionTableViewController
+
+@property (nonatomic, copy, nullable) MyGroupClickedGroupBlock myGroupClickedGroupBlock;
 
 @end
 

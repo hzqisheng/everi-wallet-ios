@@ -199,7 +199,7 @@ typedef NS_ENUM(NSUInteger, QSManageNewNodeType) {
     [self.thresholdCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.thresholdAddButton.mas_left);
         make.centerY.equalTo(self.thresholdLabel);
-        make.size.mas_equalTo(CGSizeMake(kRealValue(30), kRealValue(24)));
+        make.size.mas_equalTo(CGSizeMake(kRealValue(38), kRealValue(24)));
     }];
     
     [self.thresholdBottomLineView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -244,7 +244,7 @@ typedef NS_ENUM(NSUInteger, QSManageNewNodeType) {
     [self.weightCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.weightAddButton.mas_left);
         make.centerY.equalTo(self.weightLabel);
-        make.size.mas_equalTo(CGSizeMake(kRealValue(30), kRealValue(24)));
+        make.size.mas_equalTo(CGSizeMake(kRealValue(38), kRealValue(24)));
     }];
 }
 

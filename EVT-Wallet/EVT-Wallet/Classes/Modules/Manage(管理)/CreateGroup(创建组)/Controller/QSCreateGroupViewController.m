@@ -8,13 +8,16 @@
 
 #import "QSCreateGroupViewController.h"
 #import "QSManageNewNodeViewController.h"
-#import "QSCreateGroupHeaderView.h"
 #import "QSEveriApiWebViewController.h"
+
+#import "QSIssueFTNFTHelpPopupView.h"
+#import "QSCreateGroupHeaderView.h"
 
 @interface QSCreateGroupViewController ()<MYTreeTableViewControllerParentClassDelegate>
 
 @property (nonatomic, strong) QSCreateGroupHeaderView *headerView;
 @property (nonatomic, strong) UIView *footerView;
+@property (nonatomic, weak) QSIssueFTNFTHelpPopupView *popupView;
 
 @property (nonatomic, strong) NSSet<MYTreeItem *> * defaultTreeItems;
 @property (nonatomic, copy) NSString *defalutGroupName;
@@ -40,6 +43,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //RightBarItem
+    if (!self.defaultTreeItems.count) {
+        UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_chuangjianyu_help"] target:self action:@selector(rightBarItemClicked)];
+        self.navigationItem.rightBarButtonItem = rightBarItem;
+    }
+    
     //设置header footer
     [self.headerView setupDefalutGroupName:_defalutGroupName
                                  threshold:_defalutThreshold];
@@ -62,6 +71,15 @@
 }
 
 #pragma mark - **************** Event Response
+- (void)rightBarItemClicked {
+    if (self.popupView) {
+        [self.popupView dissmiss];
+    } else {
+        QSIssueFTNFTHelpModel *domain = [[QSIssueFTNFTHelpModel alloc] initWithTitle:QSLocalizedString(@"qs_manage_createGroup_help_title") content:QSLocalizedString(@"qs_manage_createGroup_help_content")];
+        self.popupView = [QSIssueFTNFTHelpPopupView showInView:self.view
+                                                     dataArray:@[domain]];
+    }
+}
 
 - (void)bottomButtonClicked {
     DLog(@"提交");
@@ -76,6 +94,12 @@
     //删除没有叶子节点的node
     [self.manager deleteNoLeafItems];
     [self.tableView reloadData];
+    
+    //判断必须包含一个节点
+    if (!self.manager.allItems.count) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_add_address_node_format_error")];
+        return;
+    }
     
     //获取上传的数据
     NSArray *nodesList = [self.manager getPushGroupStructureNodes];
@@ -222,7 +246,7 @@
     if (!_footerView) {
         _footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - kRealValue(30), kRealValue(90))];
         
-        UIButton  *submitButton = [UIButton buttonWithTitle:QSLocalizedString(@"qs_select_ft_btn_title") titleColor:[UIColor qs_colorYellowE4B84F] font:[UIFont qs_fontOfSize14] taget:self action:@selector(bottomButtonClicked)];
+        UIButton  *submitButton = [UIButton buttonWithTitle:QSLocalizedString(@"qs_select_ft_btn_title") titleColor:[UIColor qs_colorYellowE4B84F] font:[UIFont qs_fontOfSize15] taget:self action:@selector(bottomButtonClicked)];
         submitButton.frame = CGRectMake(0, kRealValue(30), _footerView.width, kRealValue(40));
         submitButton.backgroundColor = [UIColor qs_colorBlack313745];
         submitButton.layer.cornerRadius = 2;

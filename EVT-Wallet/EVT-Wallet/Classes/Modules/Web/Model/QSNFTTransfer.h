@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QSNFTTransfer : QSBaseModel
 
-@property (nonatomic, strong) NSArray *authorizers;
+@property (nonatomic, copy) NSArray *authorizers;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, assign) NSInteger threshold;
 

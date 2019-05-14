@@ -47,20 +47,9 @@
 - (void)configureCellWithItem:(QSBaseCellItem *)item {
     self.item = item;
     QSTransactionRecordItem *recordItem = (QSTransactionRecordItem *)item;
-    NSArray *timeArr = [recordItem.transferModel.timestamp componentsSeparatedByString:@"T"];
-    if (timeArr.count == 2) {
-        //2019-02-26T06:41:19.5+00
-        NSString *dateString = timeArr[0];
-        NSString *timeString = [timeArr[1] substringToIndex:8];
-        //2019-01-18 08:11:50
-        NSString *timeStamp = [NSString stringWithFormat:@"%@ %@",dateString,timeString];
-        NSDate *timeStampDate = [self nsstringConversionNSDate:timeStamp];
-        NSString *timeInterval = [self dateConversionTimeStamp:timeStampDate];
-        NSString *localZoneTime = [self timeStampConversionNSString:timeInterval];
-        
-        NSLog(@"LondonTime:%@,localZoneTime:%@",timeStamp,localZoneTime);
-        self.timeLabel.text = localZoneTime;
-    }
+
+    self.timeLabel.text = [recordItem.transferModel.timestamp transformServerTimeToLocalTime];
+
     NSArray *amountArr = [recordItem.transferModel.data.number componentsSeparatedByString:@" "];
     
     if ([recordItem.transferModel.name isEqualToString:@"issuefungible"]) {

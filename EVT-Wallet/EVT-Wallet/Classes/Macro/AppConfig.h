@@ -21,6 +21,9 @@
 #define kTelegramRUSAddress @"https://t.me/everitokenru"
 #define kWechatAddress      @"@everiToken"
 
+//================ Third ===========//
+static NSString * const kBuglyAppID = @"b20db2c454";
+
 //================ localizedString ===========//
 #define QSLocalizedString(key)   (NSLocalizedStringFromTable(key, @"CustomLocalizable", nil).length ? NSLocalizedStringFromTable(key, @"CustomLocalizable", nil) : @"")
 

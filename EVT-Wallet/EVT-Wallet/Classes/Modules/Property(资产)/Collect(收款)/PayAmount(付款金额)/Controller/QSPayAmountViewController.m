@@ -174,7 +174,7 @@ typedef NS_ENUM(NSUInteger, QSPayAmountCellType) {
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
+- (NSArray<NSArray<id<QSBaseCellItemDataProtocol>> *> *)createMultiSectionDataSource {
     QSPayAmountItem *selectItem = [[QSPayAmountItem alloc] init];
     selectItem.cellIdentifier = NSStringFromClass([QSPayAmountSeletPayWayCell class]);
     selectItem.cellHeight = kRealValue(70);
@@ -246,7 +246,7 @@ typedef NS_ENUM(NSUInteger, QSPayAmountCellType) {
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    QSBaseCellItem *item = [self itemInIndexPath:indexPath];
+    id<QSBaseCellItemDataProtocol> item = [self itemInIndexPath:indexPath];
     
     if (item.cellTag == QSPayAmountCellTypeSelect) {
         WeakSelf(weakSelf);

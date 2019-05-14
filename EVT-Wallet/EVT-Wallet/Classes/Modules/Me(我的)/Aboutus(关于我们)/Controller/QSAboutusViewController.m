@@ -27,7 +27,7 @@ typedef NS_ENUM(NSUInteger, QSAboutusItemType) {
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (NSArray<QSSettingItem *> *)createSingleSectionDataSource {
+- (NSArray<id<QSBaseCellItemDataProtocol>> *)createSingleSectionDataSource {
     QSSettingItem *aboutusItem = [[QSSettingItem alloc] init];
     aboutusItem.cellTag = QSAboutusItemTypeAppIcon;
     aboutusItem.cellIdentifier = NSStringFromClass([QSAboutusIconCell class]);
@@ -59,7 +59,7 @@ typedef NS_ENUM(NSUInteger, QSAboutusItemType) {
 
 #pragma mark - **************** tableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    QSBaseCellItem *item = [self itemInIndexPath:indexPath];
+    id<QSBaseCellItemDataProtocol> item = [self itemInIndexPath:indexPath];
     if (item.cellTag == QSAboutusItemTypeCheckVersion) {
         [[QSEveriApiWebViewController sharedWebView] getAPPVersionAndCompeleteBlock:^(NSInteger statusCode, NSString * _Nonnull version, BOOL isForceUpdate) {
             if (statusCode != kResponseSuccessCode) {

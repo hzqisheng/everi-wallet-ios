@@ -90,7 +90,7 @@
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
+- (NSArray<NSArray<id<QSBaseCellItemDataProtocol>> *> *)createMultiSectionDataSource {
     QSEveriPayCollectCurrencyItem *currencyItem = [[QSEveriPayCollectCurrencyItem alloc] init];
     currencyItem.cellIdentifier = NSStringFromClass([QSEveriPayCollectCurrencyCell class]);
     currencyItem.cellHeight = kRealValue(70);

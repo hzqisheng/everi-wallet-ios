@@ -6,9 +6,9 @@
 //  Copyright © 2019 HANGZHOU QISHENG TECHNOLOGY CO.LTD. All rights reserved.
 //
 
-#import "QSAddGroupMetaDataViewController.h"
+#import "QSAddMetaDataViewController.h"
 
-@interface QSAddGroupMetaDataViewController ()
+@interface QSAddMetaDataViewController ()
 
 @property (nonatomic, strong) UIView *whiteCornerView;
 @property (nonatomic, strong) UILabel *keyLabel;
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation QSAddGroupMetaDataViewController
+@implementation QSAddMetaDataViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -123,6 +123,7 @@
         [_keyTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
         [_keyTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
         _keyTextField.keyboardType = UIKeyboardTypeAlphabet;
+        _keyTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     }
     return _keyTextField;
 }
@@ -154,6 +155,7 @@
         [_valueTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
         [_valueTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
         _valueTextField.keyboardType = UIKeyboardTypeAlphabet;
+        _valueTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     }
     return _valueTextField;
 }

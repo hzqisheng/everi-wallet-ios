@@ -30,7 +30,7 @@ typedef NS_ENUM(NSUInteger, QSNodeSettingType) {
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (NSArray<QSSettingItem *> *)createSingleSectionDataSource {
+- (NSArray<id<QSBaseCellItemDataProtocol>> *)createSingleSectionDataSource {
     QSSettingItem *everiTokenItem = [[QSSettingItem alloc] init];
     everiTokenItem.leftTitle = QSLocalizedString(@"qs_node_setting_item_everitoken_title");
     everiTokenItem.leftTitleFont = [UIFont qs_fontOfSize16];

@@ -19,8 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
  dataSource
  One of the following methods must be implemented
  */
-- (NSArray<QSBaseCellItem *> *)createSingleSectionDataSource;
-- (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource;
+- (NSArray<id<QSBaseCellItemDataProtocol>> *)createSingleSectionDataSource;
+- (NSArray<NSArray<id<QSBaseCellItemDataProtocol>> *> *)createMultiSectionDataSource;
 
 @optional
 /* default is YES */
@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QSBaseCornerSectionTableViewController : QSBaseTableViewController<QSBaseCornerSectionTableViewControllerProtocol>
 
-- (QSBaseCellItem *)itemInIndexPath:(NSIndexPath *)indexPath;
+- (id<QSBaseCellItemDataProtocol>)itemInIndexPath:(NSIndexPath *)indexPath;
 
 - (void)reloadTableViewData;
 

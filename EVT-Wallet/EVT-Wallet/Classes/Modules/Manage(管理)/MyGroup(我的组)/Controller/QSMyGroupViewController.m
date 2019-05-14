@@ -37,11 +37,16 @@
 - (void)setupTableView {
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.height = kScreenHeight - kNavgationBarHeight - kRealValue(60) - self.createButton.height - kiPhoneXSafeAreaBottomMagin;
+    self.createButton.hidden = self.myGroupClickedGroupBlock != nil;
+    if (self.myGroupClickedGroupBlock) {
+        self.tableView.height = kScreenHeight - kNavgationBarHeight - kiPhoneXSafeAreaBottomMagin;
+    } else {
+        self.tableView.height = kScreenHeight - kNavgationBarHeight - kRealValue(60) - self.createButton.height - kiPhoneXSafeAreaBottomMagin;
+    }
 }
 
 - (void)setupBottomButton {
-    UIButton *bottomButton = [UIButton buttonWithTitle:QSLocalizedString(@"qs_manage_createGroup_title") titleColor:[UIColor qs_colorYellowE4B84F] font:[UIFont qs_fontOfSize14] taget:self action:@selector(bottomButtonClicked)];
+    UIButton *bottomButton = [UIButton buttonWithTitle:QSLocalizedString(@"qs_manage_createGroup_title") titleColor:[UIColor qs_colorYellowE4B84F] font:[UIFont qs_fontOfSize15] taget:self action:@selector(bottomButtonClicked)];
     [bottomButton setImage:[UIImage imageNamed:@"icon_xuanzedaibi_plus"] forState:UIControlStateNormal];
     bottomButton.backgroundColor = [UIColor qs_colorBlack313745];
     bottomButton.layer.cornerRadius = 2;
@@ -62,6 +67,14 @@
         if (statusCode == kResponseSuccessCode) {
             if (self.dataArray.count) {
                 [self.dataArray removeAllObjects];
+            }
+            
+            if (self.myGroupClickedGroupBlock) {
+                QSManageMyGroupItem *group = [[QSManageMyGroupItem alloc] init];
+                group.title = @".OWNER";
+                group.cellHeight = kRealValue(51);
+                group.cellIdentifier = NSStringFromClass([QSManageMyGroupCell class]);
+                [self.dataArray addObject:group];
             }
             
             for (NSDictionary *dic in data) {
@@ -86,13 +99,19 @@
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (NSArray<QSBaseCellItem *> *)createSingleSectionDataSource {
+- (NSArray<id<QSBaseCellItemDataProtocol>> *)createSingleSectionDataSource {
     return self.dataArray;
 }
 
 #pragma mark - **************** UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     QSManageMyGroupItem *group = self.dataArray[indexPath.row];
+    
+    if (self.myGroupClickedGroupBlock) {
+        self.myGroupClickedGroupBlock(group.title);
+        [self.navigationController popViewControllerAnimated:YES];
+        return;
+    }
     
     QSMyGroupDetailViewController *detail = [[QSMyGroupDetailViewController alloc] init];
     detail.groupName = group.title;

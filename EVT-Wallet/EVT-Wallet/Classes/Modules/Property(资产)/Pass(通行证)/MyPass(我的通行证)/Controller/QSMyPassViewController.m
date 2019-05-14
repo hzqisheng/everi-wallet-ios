@@ -9,6 +9,8 @@
 #import "QSMyPassViewController.h"
 #import "QSCreateNFTSViewController.h"
 #import "QSBatchCreateNFTSViewController.h"
+#import "QSMyPassDetailViewController.h"
+
 #import "QSMyPassCell.h"
 #import "QSBlankPageView.h"
 
@@ -75,6 +77,7 @@ static NSString * const kMyPassCell = @"myPassCell";
 #pragma mark - **************** Event Response
 - (void)bottomButtonClicked {
     QSCreateNFTSViewController *vc = [[QSCreateNFTSViewController alloc] init];
+    [vc setupNavgationBarTitle:QSLocalizedString(@"qs_pass_mypass_btn_title")];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -87,8 +90,13 @@ static NSString * const kMyPassCell = @"myPassCell";
     QSMyPassCell *cell = [tableView dequeueReusableCellWithIdentifier:kMyPassCell forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.NFTModel = self.dataArray[indexPath.row];
+    @weakify(self);
     cell.myPassCellClickMoreButtonBlock = ^(QSMyPassCell * _Nonnull passCell) {
-        
+        @strongify(self);
+        QSBatchCreateNFTSViewController *vc = [[QSBatchCreateNFTSViewController alloc] init];
+        [vc setupNavgationBarTitle:passCell.NFTModel.name];
+        vc.NFTModel = passCell.NFTModel;
+        [self.navigationController pushViewController:vc animated:YES];
     };
     return cell;
 }
@@ -98,9 +106,11 @@ static NSString * const kMyPassCell = @"myPassCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    QSBatchCreateNFTSViewController *vc = [[QSBatchCreateNFTSViewController alloc] init];
-    vc.NFTModel = self.dataArray[indexPath.row];
-    [self.navigationController pushViewController:vc animated:YES];
+    QSMyPassDetailViewController *detail = [[QSMyPassDetailViewController alloc] init];
+    QSNFT *NFTModel = self.dataArray[indexPath.row];
+    detail.domainName = NFTModel.name;
+    [detail setupNavgationBarTitle:NFTModel.name];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 #pragma mark - **************** Setter Getter

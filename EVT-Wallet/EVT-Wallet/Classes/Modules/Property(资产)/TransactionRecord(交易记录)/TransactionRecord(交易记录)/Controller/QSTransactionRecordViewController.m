@@ -121,7 +121,7 @@
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (NSArray<QSBaseCellItem *> *)createSingleSectionDataSource {
+- (NSArray<id<QSBaseCellItemDataProtocol>> *)createSingleSectionDataSource {
     QSBaseCellItem *titleItem = [[QSBaseCellItem alloc] init];
     titleItem.cellIdentifier = NSStringFromClass([QSTransactionRecordTitleCell class]);
     titleItem.cellHeight = kRealValue(45);

@@ -105,11 +105,6 @@ typedef void(^QSEveriApiWebViewPrivateKeyBlock)(NSInteger statusCode, NSDictiona
                        andCompeleteBlock:(void(^)(NSInteger statusCode, QSFungibleSymbol * fungibleSymbol))block;
 
 /**
- * @brief pushTransaction
- */
-- (void)pushTransactionAndCompeleteBlock:(void(^)(NSInteger statusCode, QSFungibleSymbol * fungibleSymbol))block;
-
-/**
  * @brief isValidAddress
  * @param address address
  */
@@ -137,6 +132,12 @@ typedef void(^QSEveriApiWebViewPrivateKeyBlock)(NSInteger statusCode, NSDictiona
  */
 - (void)getEVTDomainsListWithPublicKey:(NSString *)publicKey
                        andCompeleteBlock:(void(^)(NSInteger statusCode, NSArray *ftList))block;
+
+/**
+ * @brief getDomain Detail
+ * @param name      name
+ */
+- (void)getDomainDetailByName:(NSString *)name andCompeleteBlock:(void (^)(NSInteger statusCode, QSNFT * _Nullable domainDetail))block;
 
 /**
  * @brief pushTransaction
@@ -167,13 +168,6 @@ typedef void(^QSEveriApiWebViewPrivateKeyBlock)(NSInteger statusCode, NSDictiona
                                  andAddress:(NSString *)address
                                     andNote:(NSString *)note
                     andCompeleteBlock:(void(^)(NSInteger statusCode))block;
-
-/**
- * @brief pushTransactionNFT
- * @param nft nft
- */
-- (void)pushTransactionNFTWithNFT:(QSNFT *)nft
-                    andCompeleteBlock:(void(^)(NSInteger statusCode, QSNFT *ftmodel))block;
 
 
 /**
@@ -315,7 +309,7 @@ typedef void(^QSEveriApiWebViewPrivateKeyBlock)(NSInteger statusCode, NSDictiona
                 andCompeleteBlock:(void(^)(NSInteger statusCode, NSDictionary * _Nullable data))block;
 
 /**
- * pushTransaction通用方法
+ * pushTransaction 通用方法
  */
 - (void)pushTransactionByActionName:(NSString *)actionName
                             actions:(NSDictionary *)actions
@@ -325,7 +319,7 @@ typedef void(^QSEveriApiWebViewPrivateKeyBlock)(NSInteger statusCode, NSDictiona
                   completionHandler:(void (^)(NSInteger statusCode, NSDictionary *responseDic))completionHandler;
 
 /**
- * @brief addMeta
+ * @brief addMeta 通用方法
  *
  * @param actionKey     actionKey
  * @param actionValue   actionValue

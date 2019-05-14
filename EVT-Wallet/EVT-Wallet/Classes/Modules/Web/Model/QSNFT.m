@@ -16,4 +16,13 @@
              };
 }
 
+- (instancetype)init {
+    if (self = [super init]) {
+        _issue = [[QSNFTTransfer alloc] init];
+        _manage = [[QSNFTTransfer alloc] init];
+        _transfer = [[QSNFTTransfer alloc] init];
+    }
+    return self;
+}
+
 @end

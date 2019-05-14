@@ -18,7 +18,11 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [Bugly startWithAppId:kBuglyAppID];
+    
     self.window = [[UIWindow alloc] initWithFrame:kScreenBounds];
+    
     QSLunchImageViewController *imageVC = [[QSLunchImageViewController alloc] init];
     self.window.rootViewController = [[RTRootNavigationController alloc] initWithRootViewController:imageVC];
     
@@ -36,15 +40,8 @@
         }
     };
     [self.window makeKeyAndVisible];
+    
     return YES;
-}
-
-- (void)checkLoginSteps {
-    if ([QSWalletHelper sharedHelper].isLogin) {
-        self.window.rootViewController = [[QSMainViewController alloc] init];
-    } else {
-        self.window.rootViewController = [[RTRootNavigationController alloc] initWithRootViewController:[[QSCreateIdentityHomeViewController alloc] init]];
-    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

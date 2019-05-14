@@ -63,7 +63,7 @@
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
+- (NSArray<NSArray<id<QSBaseCellItemDataProtocol>> *> *)createMultiSectionDataSource {
     //代币全称
     QSCreateFTItem *nameItem = [[QSCreateFTItem alloc] init];
     nameItem.cellIdentifier = NSStringFromClass([QSCreateFTTextCell class]);
@@ -209,8 +209,8 @@
     WeakSelf(weakSelf);
     [[QSEveriApiWebViewController sharedWebView] pushTransactionWithActionName:@"newfungible" andFt:ftmodel andConfig:encodedImageStr andCompeleteBlock:^(NSInteger statusCode, QSFT * _Nonnull ftmodel) {
         if (statusCode == kResponseSuccessCode) {
-            [weakSelf.navigationController popViewControllerAnimated:YES];
             [QSAppKeyWindow hideHud];
+            [weakSelf.navigationController popViewControllerAnimated:YES];
         }
     }];
 }

@@ -46,11 +46,10 @@
     }];
     
     [self.moreButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.cornerView).offset(-kRealValue(7));
+        make.right.equalTo(self.cornerView).offset(-kRealValue(15));
         make.centerY.equalTo(self.titleLabel);
-        make.size.mas_equalTo(CGSizeMake(kRealValue(44), kRealValue(44)));
+        make.size.mas_equalTo(CGSizeMake(kRealValue(44), kRealValue(23)));
     }];
-    _moreButton.hidden = YES;
 }
 
 #pragma mark - **************** Event Response
@@ -86,7 +85,6 @@
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
-        _titleLabel.text = @"EOS-wallet";
         _titleLabel.textColor = [UIColor qs_colorBlack333333];
         _titleLabel.font = [UIFont qs_fontOfSize15];
         [self.cornerView addSubview:_titleLabel];
@@ -97,7 +95,6 @@
 - (UILabel *)blockchainLabel {
     if (!_blockchainLabel) {
         _blockchainLabel = [[UILabel alloc] init];
-        _blockchainLabel.text = @"EOS5fKva...UBt7gBagC";
         _blockchainLabel.textColor = [UIColor qs_colorGray686868];
         _blockchainLabel.font = [UIFont qs_fontOfSize13];
         [self.cornerView addSubview:_blockchainLabel];
@@ -108,8 +105,13 @@
 - (UIButton *)moreButton {
     if (!_moreButton) {
         _moreButton = [[UIButton alloc] init];
-        [_moreButton setImage:[UIImage imageNamed:@"icon_xuanzedaibi_more"] forState:UIControlStateNormal];
+        [_moreButton setTitle:QSLocalizedString(@"qs_pass_mypass_issue_btn_title") forState:UIControlStateNormal];
+        [_moreButton setTitleColor:[UIColor qs_colorBlack333333] forState:UIControlStateNormal];
+        _moreButton.titleLabel.font = [UIFont qs_fontOfSize14];
         [_moreButton addTarget:self action:@selector(moreSettingAction) forControlEvents:UIControlEventTouchUpInside];
+        _moreButton.layer.cornerRadius = kRealValue(5);
+        _moreButton.layer.borderColor = [UIColor qs_colorBlack333333].CGColor;
+        _moreButton.layer.borderWidth = BORDER_WIDTH_1PX;
         [self.cornerView addSubview:_moreButton];
     }
     return _moreButton;

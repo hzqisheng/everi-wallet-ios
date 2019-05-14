@@ -92,4 +92,9 @@
  */
 - (BOOL)isValidUrl;
 
+/** 将服务返回的时间转成当前地区的时间
+   2019-02-26T06:41:19.5+00 - > 2019-01-18 08:11:50
+ */
+- (NSString *)transformServerTimeToLocalTime;
+
 @end

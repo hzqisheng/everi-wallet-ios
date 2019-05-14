@@ -133,7 +133,9 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
     if ([message.name isEqualToString:@"needPrivateKey"]) {
         //需要私钥 弹出输入框
         WeakSelf(weakSelf);
+        [QSAppKeyWindow hideHud];
         [QSPasswordHelper verificationPasswordByPrivateKey:QSPrivateKey andSuccessBlock:^{
+            [QSAppKeyWindow showIndeterminateHudWithText:QSLocalizedString(@"qs_waiting_toast")];
             [weakSelf requestNeedPrivateKeyResponseAndCompeleteBlock:^(NSInteger statusCode, NSDictionary * _Nullable data) {}];
         }];
     } else {
@@ -306,20 +308,7 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
                     }];
 }
 
-- (void)pushTransactionAndCompeleteBlock:(void (^)(NSInteger, QSFungibleSymbol * _Nonnull))block {
-    NSString *publicKey = [QSWalletHelper sharedHelper].currentEvt.publicKey;//publickey
-    NSString *content = [NSString stringWithFormat:@"{\"name\":\"ABC.POINTS\",\"sym_name\":555,\"sym\":\"5,S#555\",\"creator\":\"EVT6qVps8htVyXVn4NjXVNJeJukT8GrLyfQVYtgL5gyHpHbSgtTCa\",\"manage\":{\"name\":\"manage\",\"threshold\":1,\"authorizers\":[{\"ref\":\"[A] %@\",\"weight\":1}]},\"issue\":{\"name\":\"issue\",\"threshold\":1,\"authorizers\":[{\"ref\":\"[A] %@\",\"weight\":1}]},\"total_supply\":\"100000.00000 S#555\"}",publicKey,publicKey];
-    NSString *jsString = [NSString stringWithFormat:@"pushTransaction('newfungible','%@')",content];
-    [self excuteRequestWithMethodName:@"pushTransaction"
-                             jsString:jsString
-                    completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
-                        QSFungibleSymbol *fungibleSymbol;
-                        if (statusCode == kResponseSuccessCode) {
-                            fungibleSymbol = [QSFungibleSymbol mj_objectWithKeyValues:responseDic];
-                        }
-                        block(statusCode, fungibleSymbol);
-                    }];
-}
+
 
 - (void)excuteRequestWithMethodName:(NSString *)methodsName
                            jsString:(NSString *)jsString
@@ -367,6 +356,20 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
                         NSArray *ftArray;
                         if (statusCode == kResponseSuccessCode) {
                             ftArray = [QSNFT mj_objectArrayWithKeyValuesArray:responseDic[@"data"]];
+                        }
+                        block(statusCode, ftArray);
+                    }];
+}
+
+- (void)getDomainDetailByName:(NSString *)name andCompeleteBlock:(void (^)(NSInteger, QSNFT * _Nullable))block {
+    NSString *jsString = [NSString stringWithFormat:@"getDomainDetail('%@')",name];
+    
+    [self excuteRequestWithMethodName:@"getDomainDetail"
+                             jsString:jsString
+                    completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
+                        QSNFT *ftArray;
+                        if (statusCode == kResponseSuccessCode) {
+                            ftArray = [QSNFT mj_objectWithKeyValues:responseDic];
                         }
                         block(statusCode, ftArray);
                     }];
@@ -432,80 +435,46 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
                     completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
                         QSFT *ftmodel;
                         if (statusCode == kResponseSuccessCode) {
-                            
+                            [QSAppKeyWindow hideHud];
                         }
                         block(statusCode, ftmodel);
                     }];
 }
 
 - (void)pushTransactionWithActionEveriLink:(NSString *)everiLink andAsset:(NSString *)asset andaddress:(NSString *)address andCompeleteBlock:(void (^)(NSInteger))block {
-    NSString *content = [NSString stringWithFormat:@"{\"link\":\"%@\",\"payee\":\"%@\",\"number\":\"%@\"}",everiLink,address,asset];
-    NSString *jsString = [NSString stringWithFormat:@"pushTransaction('%@','%@')",@"everipay",content];
-    [self excuteRequestWithMethodName:@"pushTransaction"
-                             jsString:jsString
-                    completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
+    
+    NSDictionary *actionDic = @{
+                                @"link"   : QSNoNilString(everiLink),
+                                @"payee"  : QSNoNilString(address),
+                                @"number" : QSNoNilString(asset)
+                                };
+    
+    [self pushTransactionByActionName:@"everipay"
+                              actions:actionDic
+                               config:nil
+                               domain:nil
+                                  key:nil
+                    completionHandler:^(NSInteger statusCode, NSDictionary * _Nonnull responseDic) {
                         block(statusCode);
                     }];
 }
 
 - (void)pushTransactionIssueWithCirculation:(NSString *)circulation andAddress:(NSString *)address andNote:(NSString *)note andCompeleteBlock:(void (^)(NSInteger))block {
-    NSString *content = [NSString stringWithFormat:@"{\"address\":\"%@\",\"memo\":\"%@\",\"number\":\"%@\"}",address,note,circulation];
-    NSString *jsString = [NSString stringWithFormat:@"pushTransaction('%@','%@')",@"issuefungible",content];
-    [self excuteRequestWithMethodName:@"pushTransaction"
-                             jsString:jsString
-                    completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
+    NSDictionary *resultDic = @{
+                                @"address" : QSNoNilString(address),
+                                @"memo"    : QSNoNilString(note),
+                                @"number"  : QSNoNilString(circulation)
+                                };
+    
+    [self pushTransactionByActionName:@"issuefungible"
+                              actions:resultDic
+                               config:nil
+                               domain:nil
+                                  key:nil
+                    completionHandler:^(NSInteger statusCode, NSDictionary * _Nonnull responseDic) {
                         block(statusCode);
                     }];
-}
-
-- (void)pushTransactionNFTWithNFT:(QSNFT *)nft andCompeleteBlock:(void (^)(NSInteger, QSNFT * _Nonnull))block {
-    QSNFTTransfer *issue = [[QSNFTTransfer alloc] init];
-    issue = nft.issue;
-    issue.threshold = 1;
     
-    NSString *issueString = @"";
-    if (issue.threshold == 1) {
-        QSAuthorizers *issueAuth = issue.authorizers[0];
-        issueString = [NSString stringWithFormat:@"[{\"ref\":\"%@\",\"weight\":%ld}]",issueAuth.ref,(long)issueAuth.weight];
-    } else {
-        issueString = [NSString stringWithFormat:@"[]"];
-    }
-    QSNFTTransfer *manage = [[QSNFTTransfer alloc] init];
-    manage = nft.manage;
-    manage.threshold = 1;
-    
-    
-    NSString *manageString = @"";
-    if (manage.threshold == 1) {
-        QSAuthorizers *manageAuth = manage.authorizers[0];
-        manageString = [NSString stringWithFormat:@"[{\"ref\":\"%@\",\"weight\":%ld}]",manageAuth.ref,(long)manageAuth.weight];
-    } else {
-        manageString = [NSString stringWithFormat:@"[]"];
-    }
-    QSNFTTransfer *transfer = [[QSNFTTransfer alloc] init];
-    transfer = nft.manage;
-    transfer.threshold = 1;
-    
-    
-    NSString *transferString = @"";
-    if (transfer.threshold == 1) {
-        QSAuthorizers *transferAuth = transfer.authorizers[0];
-        transferString = [NSString stringWithFormat:@"[{\"ref\":\"%@\",\"weight\":%ld}]",transferAuth.ref,(long)transferAuth.weight];
-    } else {
-        transferString = [NSString stringWithFormat:@"[]"];
-    }
-    
-    NSString *content = [NSString stringWithFormat:@"{\"creator\":\"%@\",\"issue\":{\"authorizers\":%@,\"name\":\"issue\",\"threshold\":%ld},\"manage\":{\"authorizers\":%@,\"name\":\"manage\",\"threshold\":%ld},\"transfer\":{\"authorizers\":%@,\"name\":\"transfer\",\"threshold\":%ld},\"metas\":[{\"key\":\"symbol-icon\",\"value\":\"data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHoSUNDX\"}],\"name\":\"%@\"}",nft.creator,issueString,(long)issue.threshold,manageString,(long)manage.threshold,transferString,(long)transfer.threshold,nft.name];
-    NSString *jsString = [NSString stringWithFormat:@"pushTransaction('%@','%@')",@"newdomain",content];
-    [self excuteRequestWithMethodName:@"pushTransaction"
-                             jsString:jsString
-                    completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
-                        QSNFT *NFTModel;
-                        if (statusCode == kResponseSuccessCode) {
-                            
-                        }
-                        block(statusCode, NFTModel);
-                    }];
 }
 
 - (void)getEvtLinkForPayeeCodeAndCompeleteBlock:(void (^)(NSInteger, NSString * _Nonnull))block {
@@ -655,11 +624,23 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
 }
 
 - (void)pushTransactionFukuanWithAddress:(NSString *)address andBeneficiary:(NSString *)beneficiaryAddress andCount:(NSString *)count andMemo:(NSString *)memo AndCompeleteBlock:(void (^)(NSInteger, NSString * _Nonnull))block {
-    NSString *contentStr = [NSString stringWithFormat:@"{\"from\":\"%@\",\"to\":\"%@\",\"number\":\"%@\",\"memo\":\"%@\"}",QSPublicKey,beneficiaryAddress,count,memo];
-    NSString *jsString = [NSString stringWithFormat:@"pushTransaction('%@','%@')",@"transferft",contentStr];
-    [self excuteRequestWithMethodName:@"pushTransaction"
-                             jsString:jsString
-                    completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
+    
+    NSDictionary *resultActionDic = @{
+                                      @"from"   : QSPublicKey,
+                                      @"to"     : QSNoNilString(beneficiaryAddress),
+                                      @"number" : QSNoNilString(count),
+                                      @"memo"   : QSNoNilString(memo)
+                                      };
+    
+//    NSString *contentStr = [NSString stringWithFormat:@"{\"from\":\"%@\",\"to\":\"%@\",\"number\":\"%@\",\"memo\":\"%@\"}",QSPublicKey,beneficiaryAddress,count,memo];
+//    NSString *jsString = [NSString stringWithFormat:@"pushTransaction('%@','%@')",@"transferft",contentStr];
+    
+    [self pushTransactionByActionName:@"transferft"
+                              actions:resultActionDic
+                               config:nil
+                               domain:nil
+                                  key:nil
+                    completionHandler:^(NSInteger statusCode, NSDictionary * _Nonnull responseDic) {
                         NSString *addressCodeString = @"";
                         if (statusCode == kResponseSuccessCode) {
                             NSNumber *number = responseDic[@"charge"];
@@ -671,26 +652,15 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
 }
 
 - (void)pushTransactionNFTWithDomain:(NSString *)domain andNameArr:(NSArray *)nameArr andOwner:(NSString *)owner AndCompeleteBlock:(void (^)(NSInteger))block {
-    NSString *arrStr = @"";
-    for (int i = 0; i < nameArr.count; i++) {
-        if (i == 0) {
-            NSString *arrstring = nameArr[i];
-            arrStr = [arrStr stringByAppendingString:[NSString stringWithFormat:@"\"%@\"",arrstring]];
-        } else {
-            NSString *arrstring = nameArr[i];
-            arrStr = [arrStr stringByAppendingString:[NSString stringWithFormat:@",\"%@\"",arrstring]];
-        }
-    }
-    NSString *contentStr = [NSString stringWithFormat:@"{\"domain\":\"%@\",\"names\":[%@],\"owner\":[\"%@\"]}",domain,arrStr,owner];
-    NSString *jsString = [NSString stringWithFormat:@"pushTransaction('%@','%@')",@"issuetoken",contentStr];
-    [self excuteRequestWithMethodName:@"pushTransaction"
-                             jsString:jsString
-                    completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
-                        if (statusCode == kResponseSuccessCode) {
-                            
-                        }
-                        block(statusCode);
-                    }];
+    NSDictionary *actionDic = @{
+                                @"domain":domain,
+                                @"names" : nameArr,
+                                @"owner" : @[owner]
+                                };
+    
+    [self pushTransactionByActionName:@"issuetoken" actions:actionDic config:nil domain:nil key:nil completionHandler:^(NSInteger statusCode, NSDictionary * _Nonnull responseDic) {
+        block(statusCode);
+    }];
 }
 
 - (void)getActionsWithFTModel:(QSFT *)FTModel AndCompeleteBlock:(nonnull void (^)(NSInteger, NSArray * _Nonnull))block {
@@ -831,17 +801,6 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
 - (void)pushGroupByActionName:(NSString *)actionName
               groupsStructure:(NSDictionary *)groups
             andCompeleteBlock:(void(^)(NSInteger statusCode))block {
-//    NSString *groupsJsonStructure = [groups mj_JSONString];
-//    NSString *jsString = [NSString stringWithFormat:@"pushTransaction('%@','%@')",@"newgroup",groupsJsonStructure];
-//    DLog(@"groupsStructure:%@",jsString);
-//    [self excuteRequestWithMethodName:@"pushTransaction"
-//                             jsString:jsString
-//                    completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
-//                        /*
-//                         "transactionId":"f801bcc0988555deeeeec8f03fbbcce8dc58b73b7b0dcde0de19ec00a9d9a5a3"
-//                         */
-//                        block(statusCode);
-//                    }];
     [self pushTransactionByActionName:actionName
                               actions:groups
                                config:nil
@@ -907,10 +866,14 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
     }
     
     jsString = [NSString stringWithFormat:@"pushTransaction(%@)",jsString];
+    DLog(@"%@", jsString);
     
     [self excuteRequestWithMethodName:@"pushTransaction"
                              jsString:jsString
                     completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
+                        if (statusCode == kResponseSuccessCode) {
+                            [QSAppKeyWindow hideHud];
+                        }
                         completionHandler(statusCode, responseDic);
                     }];
 }

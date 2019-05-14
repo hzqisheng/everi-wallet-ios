@@ -6,11 +6,17 @@
 //  Copyright © 2018年 HANGZHOU QISHENG TECHNOLOGY CO.LTD. All rights reserved.
 //
 
-#import "QSBaseViewController.h"
+#import "QSBaseCornerSectionTableViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface QSCreateNFTSViewController : QSBaseViewController
+typedef void(^CreateNFTSSuccessBlock)(void);
+
+@interface QSCreateNFTSViewController : QSBaseCornerSectionTableViewController
+
+- (instancetype)initWithDomain:(QSNFT * _Nullable)domain;
+
+@property (nonatomic, copy) CreateNFTSSuccessBlock createNFTSSuccessBlock;
 
 @end
 

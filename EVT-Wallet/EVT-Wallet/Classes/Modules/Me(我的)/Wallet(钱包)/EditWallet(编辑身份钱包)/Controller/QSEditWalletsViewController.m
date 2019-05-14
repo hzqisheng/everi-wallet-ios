@@ -48,7 +48,7 @@ typedef NS_ENUM(NSUInteger, QSEditWalletsType) {
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
+- (NSArray<NSArray<id<QSBaseCellItemDataProtocol>> *> *)createMultiSectionDataSource {
     NSMutableArray *section0Array = [NSMutableArray array];
     
     QSSettingItem *modifyPwdItem = [[QSSettingItem alloc] init];
@@ -94,7 +94,7 @@ typedef NS_ENUM(NSUInteger, QSEditWalletsType) {
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    QSBaseCellItem *item = [self itemInIndexPath:indexPath];
+    QSSettingItem *item = (QSSettingItem *)[self itemInIndexPath:indexPath];
     if (item.cellTag == QSEditWalletsTypeModifyPwd) {
         QSModifyPasswordViewController *modify = [[QSModifyPasswordViewController alloc] init];
         [self.navigationController pushViewController:modify animated:YES];

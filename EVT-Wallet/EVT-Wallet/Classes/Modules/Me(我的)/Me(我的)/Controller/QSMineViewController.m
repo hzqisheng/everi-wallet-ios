@@ -69,7 +69,7 @@ static NSString *reuseIdentifier = @"QSSettingCell";
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
+- (NSArray<NSArray<id<QSBaseCellItemDataProtocol>> *> *)createMultiSectionDataSource {
     QSSettingItem *itemWallet = [[QSSettingItem alloc] init];
     itemWallet.leftImage = [UIImage imageNamed:@"icon_wode_guanliqianbao"];
     itemWallet.leftTitle = QSLocalizedString(@"qs_me_item_managewallet");
@@ -131,7 +131,7 @@ static NSString *reuseIdentifier = @"QSSettingCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    QSBaseCellItem *item = [self itemInIndexPath:indexPath];
+    id<QSBaseCellItemDataProtocol> item = [self itemInIndexPath:indexPath];
     if (item.cellTag == QSMineCellTagWallet) {
         QSMyWalletViewController *wallet = [[QSMyWalletViewController alloc] init];
         wallet.style = UITableViewStyleGrouped;

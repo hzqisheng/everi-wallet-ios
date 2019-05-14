@@ -177,8 +177,9 @@ static NSString * const ID = @"CONTENTCELL";
 
 - (void)awakeFromNib
 {
-    [self initial];
+    [super awakeFromNib];
     
+    [self initial];
 }
 
 - (void)initial

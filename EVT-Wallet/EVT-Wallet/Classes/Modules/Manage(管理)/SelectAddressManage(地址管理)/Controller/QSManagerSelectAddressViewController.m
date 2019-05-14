@@ -78,7 +78,7 @@
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
+- (NSArray<NSArray<id<QSBaseCellItemDataProtocol>> *> *)createMultiSectionDataSource {
     QSManageSelectAddressItem *item1 = [[QSManageSelectAddressItem alloc] init];
     item1.title = @"EVT8LJq6...caQkAySesdfsdfsf";
     item1.content = @"钱钱钱";

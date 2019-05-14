@@ -59,7 +59,7 @@ static NSString *reuseIdentifier = @"QSSettingCell";
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
+- (NSArray<NSArray<id<QSBaseCellItemDataProtocol>> *> *)createMultiSectionDataSource {
     QSSettingItem *itemMassTransfer = [[QSSettingItem alloc] init];
     itemMassTransfer.leftImage = [UIImage imageNamed:@"icon_guanli_zhuanzhang"];
     itemMassTransfer.leftTitle = QSLocalizedString(@"qs_manage_created_token_title");
@@ -67,7 +67,7 @@ static NSString *reuseIdentifier = @"QSSettingCell";
     
     QSSettingItem *itemNFTs = [[QSSettingItem alloc] init];
     itemNFTs.leftImage = [UIImage imageNamed:@"icon_guanli_yu"];
-    itemNFTs.leftTitle = QSLocalizedString(@"qs_manage_created_domain_title");
+    itemNFTs.leftTitle = QSLocalizedString(@"qs_manage_mineNFTs_title");
     itemNFTs.cellTag = QSManageCellNFTs;
     itemNFTs.cellType = QSSettingItemTypeImageAndLeftRightTitle;
     
@@ -96,7 +96,7 @@ static NSString *reuseIdentifier = @"QSSettingCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    QSBaseCellItem *item = [self itemInIndexPath:indexPath];
+    QSSettingItem *item = (QSSettingItem *)[self itemInIndexPath:indexPath];
     if (item.cellTag == QSManageCellMassTransfer) {
         QSSelectFTViewController *selectFT = [[QSSelectFTViewController alloc] init];
         selectFT.hidesBottomBarWhenPushed = YES;

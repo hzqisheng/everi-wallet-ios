@@ -24,9 +24,9 @@
     UIImageView *lunchImageView = [[UIImageView alloc] initWithFrame:kScreenBounds];
     CGSize viewSize = [UIScreen mainScreen].bounds.size;
     NSString *viewOr = @"Portrait";//垂直
-    NSString *launchImage = nil;
-    NSArray *launchImages =  [[[NSBundle mainBundle] infoDictionary] valueForKey:@"UILaunchImages"];
+    NSString *launchImage = @"icon_launch_image_defalut";
     
+    NSArray *launchImages =  [[[NSBundle mainBundle] infoDictionary] valueForKey:@"UILaunchImages"];
     for (NSDictionary *dict in launchImages) {
         CGSize imageSize = CGSizeFromString(dict[@"UILaunchImageSize"]);
         
@@ -34,10 +34,9 @@
             launchImage = dict[@"UILaunchImageName"];
         }
     }
+    
     lunchImageView.image = [UIImage imageNamed:launchImage];
     [self.view addSubview:lunchImageView];
 }
-
-
 
 @end

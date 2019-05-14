@@ -179,7 +179,7 @@ typedef NS_ENUM(NSUInteger, QSEveriPayCodeCellType) {
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
+- (NSArray<NSArray<id<QSBaseCellItemDataProtocol>> *> *)createMultiSectionDataSource {
     WeakSelf(weakSelf);
     QSQRCodeScanItem *tipsItem = [[QSQRCodeScanItem alloc] init];
     tipsItem.cellIdentifier = NSStringFromClass([QSQRCodeScanTipsCell class]);
@@ -238,7 +238,7 @@ typedef NS_ENUM(NSUInteger, QSEveriPayCodeCellType) {
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    QSBaseCellItem *item = [self itemInIndexPath:indexPath];
+    id<QSBaseCellItemDataProtocol> item = [self itemInIndexPath:indexPath];
     if (item.cellTag == QSEveriPayCodeCellTypeSelectAddress) {
         WeakSelf(weakSelf);
         [[QSEveriApiWebViewController sharedWebView] getEVTFungibleBalanceListWithPublicKey:QSPublicKey andCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull ftList) {

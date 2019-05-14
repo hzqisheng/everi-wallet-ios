@@ -16,8 +16,23 @@
 		3304D7F92281634E00AE801F /* MYTreeTableViewSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3304D7F32281634E00AE801F /* MYTreeTableViewSearchBar.m */; };
 		3304D8562284216700AE801F /* QSMyGroupDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3304D8552284216700AE801F /* QSMyGroupDetailViewController.m */; };
 		3304D85922850F8C00AE801F /* QSGroupDetailGroupNameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3304D85822850F8C00AE801F /* QSGroupDetailGroupNameView.m */; };
-		3304D85C22850FA600AE801F /* QSGroupDetailMetaDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3304D85B22850FA600AE801F /* QSGroupDetailMetaDataView.m */; };
-		3304D86122855F6100AE801F /* QSAddGroupMetaDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3304D86022855F6100AE801F /* QSAddGroupMetaDataViewController.m */; };
+		3304D85C22850FA600AE801F /* QSMetaDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3304D85B22850FA600AE801F /* QSMetaDataView.m */; };
+		3304D86122855F6100AE801F /* QSAddMetaDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3304D86022855F6100AE801F /* QSAddMetaDataViewController.m */; };
+		3374688A2289102D003E7249 /* QSMyPassDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 337468892289102D003E7249 /* QSMyPassDetailViewController.m */; };
+		3374688D228910A0003E7249 /* QSMyPassDetailNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3374688C228910A0003E7249 /* QSMyPassDetailNameCell.m */; };
+		33746890228910E2003E7249 /* QSMyPassDetailPermissionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3374688F228910E2003E7249 /* QSMyPassDetailPermissionCell.m */; };
+		3374689422891457003E7249 /* QSMyPassDetailNameItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3374689322891457003E7249 /* QSMyPassDetailNameItem.m */; };
+		3374689722891605003E7249 /* QSMyPassDetailPermissionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3374689622891605003E7249 /* QSMyPassDetailPermissionItem.m */; };
+		3374689A22894AE2003E7249 /* QSCreateNFTDomainNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3374689922894AE2003E7249 /* QSCreateNFTDomainNameCell.m */; };
+		3374689E22894D47003E7249 /* QSCreateNFTDomainNameItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3374689D22894D47003E7249 /* QSCreateNFTDomainNameItem.m */; };
+		337468A422894E51003E7249 /* QSCreateNFTPermissionNameItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 337468A322894E51003E7249 /* QSCreateNFTPermissionNameItem.m */; };
+		337468A722894E80003E7249 /* QSCreateNFTPermissionNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 337468A622894E80003E7249 /* QSCreateNFTPermissionNameCell.m */; };
+		337468AD228951FF003E7249 /* QSCreateNFTThresholdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 337468AC228951FF003E7249 /* QSCreateNFTThresholdCell.m */; };
+		337468B02289530A003E7249 /* QSCreateNFTThresholdItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 337468AF2289530A003E7249 /* QSCreateNFTThresholdItem.m */; };
+		337468B32289555D003E7249 /* QSCreateNFTAuthorizerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 337468B22289555D003E7249 /* QSCreateNFTAuthorizerCell.m */; };
+		337468B6228956C2003E7249 /* QSCreateNFTAuthorizerItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 337468B5228956C2003E7249 /* QSCreateNFTAuthorizerItem.m */; };
+		337468B9228968A5003E7249 /* QSAddAddressPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 337468B8228968A5003E7249 /* QSAddAddressPopupView.m */; };
+		337468BE228973FA003E7249 /* QSCreateNFTAddGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 337468BD228973FA003E7249 /* QSCreateNFTAddGroupViewController.m */; };
 		33953E1022729708005D6E2E /* dist in Resources */ = {isa = PBXBuildFile; fileRef = 33953E0F22729708005D6E2E /* dist */; };
 		7B0D182E21BCC19E00550756 /* QSWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D182D21BCC19E00550756 /* QSWebViewViewController.m */; };
 		7B0D183321BCC36300550756 /* QSEveriApiWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D183221BCC36300550756 /* QSEveriApiWebViewController.m */; };
@@ -248,9 +263,6 @@
 		D2E1289521BFEA6500EF8E7E /* QSCreateFTIconItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E1289421BFEA6500EF8E7E /* QSCreateFTIconItem.m */; };
 		D2E1289821BFF2B000EF8E7E /* UIViewController+QSSelectPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E1289721BFF2B000EF8E7E /* UIViewController+QSSelectPicture.m */; };
 		D2E8763E21C12CFC0038825B /* QSCreateNFTSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E8763D21C12CFC0038825B /* QSCreateNFTSViewController.m */; };
-		D2E8764121C13EE60038825B /* QSCreateNFTSIssueView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E8764021C13EE60038825B /* QSCreateNFTSIssueView.m */; };
-		D2E8764421C141140038825B /* QSCreateNFTSTransferView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E8764321C141140038825B /* QSCreateNFTSTransferView.m */; };
-		D2E8764721C144280038825B /* QSCreateNFTSManagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E8764621C144280038825B /* QSCreateNFTSManagerView.m */; };
 		D2E8764D21C14D350038825B /* QSCreateNFTSEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2E8764C21C14D350038825B /* QSCreateNFTSEditViewController.m */; };
 		D2EE881E21C09A1D000B15E3 /* QSCreateFTAlertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EE881D21C09A1D000B15E3 /* QSCreateFTAlertCell.m */; };
 		D2EE882121C09D45000B15E3 /* QSCreateFTAlertItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EE882021C09D45000B15E3 /* QSCreateFTAlertItem.m */; };
@@ -319,10 +331,40 @@
 		3304D8552284216700AE801F /* QSMyGroupDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSMyGroupDetailViewController.m; sourceTree = "<group>"; };
 		3304D85722850F8C00AE801F /* QSGroupDetailGroupNameView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSGroupDetailGroupNameView.h; sourceTree = "<group>"; };
 		3304D85822850F8C00AE801F /* QSGroupDetailGroupNameView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSGroupDetailGroupNameView.m; sourceTree = "<group>"; };
-		3304D85A22850FA600AE801F /* QSGroupDetailMetaDataView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSGroupDetailMetaDataView.h; sourceTree = "<group>"; };
-		3304D85B22850FA600AE801F /* QSGroupDetailMetaDataView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSGroupDetailMetaDataView.m; sourceTree = "<group>"; };
-		3304D85F22855F6100AE801F /* QSAddGroupMetaDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSAddGroupMetaDataViewController.h; sourceTree = "<group>"; };
-		3304D86022855F6100AE801F /* QSAddGroupMetaDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSAddGroupMetaDataViewController.m; sourceTree = "<group>"; };
+		3304D85A22850FA600AE801F /* QSMetaDataView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSMetaDataView.h; sourceTree = "<group>"; };
+		3304D85B22850FA600AE801F /* QSMetaDataView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSMetaDataView.m; sourceTree = "<group>"; };
+		3304D85F22855F6100AE801F /* QSAddMetaDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSAddMetaDataViewController.h; sourceTree = "<group>"; };
+		3304D86022855F6100AE801F /* QSAddMetaDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSAddMetaDataViewController.m; sourceTree = "<group>"; };
+		337468882289102D003E7249 /* QSMyPassDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSMyPassDetailViewController.h; sourceTree = "<group>"; };
+		337468892289102D003E7249 /* QSMyPassDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSMyPassDetailViewController.m; sourceTree = "<group>"; };
+		3374688B228910A0003E7249 /* QSMyPassDetailNameCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSMyPassDetailNameCell.h; sourceTree = "<group>"; };
+		3374688C228910A0003E7249 /* QSMyPassDetailNameCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSMyPassDetailNameCell.m; sourceTree = "<group>"; };
+		3374688E228910E2003E7249 /* QSMyPassDetailPermissionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSMyPassDetailPermissionCell.h; sourceTree = "<group>"; };
+		3374688F228910E2003E7249 /* QSMyPassDetailPermissionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSMyPassDetailPermissionCell.m; sourceTree = "<group>"; };
+		3374689222891457003E7249 /* QSMyPassDetailNameItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSMyPassDetailNameItem.h; sourceTree = "<group>"; };
+		3374689322891457003E7249 /* QSMyPassDetailNameItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSMyPassDetailNameItem.m; sourceTree = "<group>"; };
+		3374689522891605003E7249 /* QSMyPassDetailPermissionItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSMyPassDetailPermissionItem.h; sourceTree = "<group>"; };
+		3374689622891605003E7249 /* QSMyPassDetailPermissionItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSMyPassDetailPermissionItem.m; sourceTree = "<group>"; };
+		3374689822894AE2003E7249 /* QSCreateNFTDomainNameCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateNFTDomainNameCell.h; sourceTree = "<group>"; };
+		3374689922894AE2003E7249 /* QSCreateNFTDomainNameCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateNFTDomainNameCell.m; sourceTree = "<group>"; };
+		3374689C22894D47003E7249 /* QSCreateNFTDomainNameItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateNFTDomainNameItem.h; sourceTree = "<group>"; };
+		3374689D22894D47003E7249 /* QSCreateNFTDomainNameItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateNFTDomainNameItem.m; sourceTree = "<group>"; };
+		337468A222894E51003E7249 /* QSCreateNFTPermissionNameItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateNFTPermissionNameItem.h; sourceTree = "<group>"; };
+		337468A322894E51003E7249 /* QSCreateNFTPermissionNameItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateNFTPermissionNameItem.m; sourceTree = "<group>"; };
+		337468A522894E80003E7249 /* QSCreateNFTPermissionNameCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateNFTPermissionNameCell.h; sourceTree = "<group>"; };
+		337468A622894E80003E7249 /* QSCreateNFTPermissionNameCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateNFTPermissionNameCell.m; sourceTree = "<group>"; };
+		337468AB228951FF003E7249 /* QSCreateNFTThresholdCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateNFTThresholdCell.h; sourceTree = "<group>"; };
+		337468AC228951FF003E7249 /* QSCreateNFTThresholdCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateNFTThresholdCell.m; sourceTree = "<group>"; };
+		337468AE2289530A003E7249 /* QSCreateNFTThresholdItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateNFTThresholdItem.h; sourceTree = "<group>"; };
+		337468AF2289530A003E7249 /* QSCreateNFTThresholdItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateNFTThresholdItem.m; sourceTree = "<group>"; };
+		337468B12289555D003E7249 /* QSCreateNFTAuthorizerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateNFTAuthorizerCell.h; sourceTree = "<group>"; };
+		337468B22289555D003E7249 /* QSCreateNFTAuthorizerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateNFTAuthorizerCell.m; sourceTree = "<group>"; };
+		337468B4228956C2003E7249 /* QSCreateNFTAuthorizerItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateNFTAuthorizerItem.h; sourceTree = "<group>"; };
+		337468B5228956C2003E7249 /* QSCreateNFTAuthorizerItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateNFTAuthorizerItem.m; sourceTree = "<group>"; };
+		337468B7228968A5003E7249 /* QSAddAddressPopupView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSAddAddressPopupView.h; sourceTree = "<group>"; };
+		337468B8228968A5003E7249 /* QSAddAddressPopupView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSAddAddressPopupView.m; sourceTree = "<group>"; };
+		337468BC228973FA003E7249 /* QSCreateNFTAddGroupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateNFTAddGroupViewController.h; sourceTree = "<group>"; };
+		337468BD228973FA003E7249 /* QSCreateNFTAddGroupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateNFTAddGroupViewController.m; sourceTree = "<group>"; };
 		33953E0F22729708005D6E2E /* dist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dist; sourceTree = "<group>"; };
 		7B0D182C21BCC19E00550756 /* QSWebViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSWebViewViewController.h; sourceTree = "<group>"; };
 		7B0D182D21BCC19E00550756 /* QSWebViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSWebViewViewController.m; sourceTree = "<group>"; };
@@ -791,12 +833,6 @@
 		D2E1289721BFF2B000EF8E7E /* UIViewController+QSSelectPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+QSSelectPicture.m"; sourceTree = "<group>"; };
 		D2E8763C21C12CFC0038825B /* QSCreateNFTSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateNFTSViewController.h; sourceTree = "<group>"; };
 		D2E8763D21C12CFC0038825B /* QSCreateNFTSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateNFTSViewController.m; sourceTree = "<group>"; };
-		D2E8763F21C13EE60038825B /* QSCreateNFTSIssueView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateNFTSIssueView.h; sourceTree = "<group>"; };
-		D2E8764021C13EE60038825B /* QSCreateNFTSIssueView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateNFTSIssueView.m; sourceTree = "<group>"; };
-		D2E8764221C141140038825B /* QSCreateNFTSTransferView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateNFTSTransferView.h; sourceTree = "<group>"; };
-		D2E8764321C141140038825B /* QSCreateNFTSTransferView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateNFTSTransferView.m; sourceTree = "<group>"; };
-		D2E8764521C144280038825B /* QSCreateNFTSManagerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateNFTSManagerView.h; sourceTree = "<group>"; };
-		D2E8764621C144280038825B /* QSCreateNFTSManagerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateNFTSManagerView.m; sourceTree = "<group>"; };
 		D2E8764B21C14D350038825B /* QSCreateNFTSEditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateNFTSEditViewController.h; sourceTree = "<group>"; };
 		D2E8764C21C14D350038825B /* QSCreateNFTSEditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateNFTSEditViewController.m; sourceTree = "<group>"; };
 		D2EE881C21C09A1D000B15E3 /* QSCreateFTAlertCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateFTAlertCell.h; sourceTree = "<group>"; };
@@ -943,8 +979,8 @@
 			children = (
 				3304D85722850F8C00AE801F /* QSGroupDetailGroupNameView.h */,
 				3304D85822850F8C00AE801F /* QSGroupDetailGroupNameView.m */,
-				3304D85A22850FA600AE801F /* QSGroupDetailMetaDataView.h */,
-				3304D85B22850FA600AE801F /* QSGroupDetailMetaDataView.m */,
+				3304D85A22850FA600AE801F /* QSMetaDataView.h */,
+				3304D85B22850FA600AE801F /* QSMetaDataView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -960,8 +996,81 @@
 		3304D85E22855F3500AE801F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3304D85F22855F6100AE801F /* QSAddGroupMetaDataViewController.h */,
-				3304D86022855F6100AE801F /* QSAddGroupMetaDataViewController.m */,
+				3304D85F22855F6100AE801F /* QSAddMetaDataViewController.h */,
+				3304D86022855F6100AE801F /* QSAddMetaDataViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3374688522890FEC003E7249 /* MyPassDetail(我的域详情) */ = {
+			isa = PBXGroup;
+			children = (
+				3374688622890FEC003E7249 /* Controller */,
+				337468912289143D003E7249 /* Model */,
+				3374688722890FEC003E7249 /* View */,
+			);
+			path = "MyPassDetail(我的域详情)";
+			sourceTree = "<group>";
+		};
+		3374688622890FEC003E7249 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				337468882289102D003E7249 /* QSMyPassDetailViewController.h */,
+				337468892289102D003E7249 /* QSMyPassDetailViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3374688722890FEC003E7249 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3374688B228910A0003E7249 /* QSMyPassDetailNameCell.h */,
+				3374688C228910A0003E7249 /* QSMyPassDetailNameCell.m */,
+				3374688E228910E2003E7249 /* QSMyPassDetailPermissionCell.h */,
+				3374688F228910E2003E7249 /* QSMyPassDetailPermissionCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		337468912289143D003E7249 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3374689222891457003E7249 /* QSMyPassDetailNameItem.h */,
+				3374689322891457003E7249 /* QSMyPassDetailNameItem.m */,
+				3374689522891605003E7249 /* QSMyPassDetailPermissionItem.h */,
+				3374689622891605003E7249 /* QSMyPassDetailPermissionItem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3374689B22894D2A003E7249 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3374689C22894D47003E7249 /* QSCreateNFTDomainNameItem.h */,
+				3374689D22894D47003E7249 /* QSCreateNFTDomainNameItem.m */,
+				337468A222894E51003E7249 /* QSCreateNFTPermissionNameItem.h */,
+				337468A322894E51003E7249 /* QSCreateNFTPermissionNameItem.m */,
+				337468AE2289530A003E7249 /* QSCreateNFTThresholdItem.h */,
+				337468AF2289530A003E7249 /* QSCreateNFTThresholdItem.m */,
+				337468B4228956C2003E7249 /* QSCreateNFTAuthorizerItem.h */,
+				337468B5228956C2003E7249 /* QSCreateNFTAuthorizerItem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		337468BA228973B8003E7249 /* CreateNFTAddGroup(添加组) */ = {
+			isa = PBXGroup;
+			children = (
+				337468BB228973B8003E7249 /* Controller */,
+			);
+			path = "CreateNFTAddGroup(添加组)";
+			sourceTree = "<group>";
+		};
+		337468BB228973B8003E7249 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				337468BC228973FA003E7249 /* QSCreateNFTAddGroupViewController.h */,
+				337468BD228973FA003E7249 /* QSCreateNFTAddGroupViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2098,7 +2207,6 @@
 			isa = PBXGroup;
 			children = (
 				7BF36E2821A7A3D800B27146 /* AppDelegate */,
-				7BF36D6421A797BE00B27146 /* Launcher(启动) */,
 				7B0D182A21BCC16200550756 /* Web */,
 				7BF36D3E21A7972500B27146 /* Property(资产) */,
 				7BF36D3221A7972500B27146 /* Market(市场) */,
@@ -2398,13 +2506,6 @@
 				7B7A4C8821ACCEF400598E6F /* CustomLocalizable.strings */,
 			);
 			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		7BF36D6421A797BE00B27146 /* Launcher(启动) */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Launcher(启动)";
 			sourceTree = "<group>";
 		};
 		7BF36D7621A79E7A00B27146 /* Category */ = {
@@ -3175,6 +3276,7 @@
 			children = (
 				D2E8763A21C12BA30038825B /* Controller */,
 				D2E8763B21C12BA30038825B /* View */,
+				3374689B22894D2A003E7249 /* Model */,
 			);
 			path = "CreateNFTS(创建通行证)";
 			sourceTree = "<group>";
@@ -3191,12 +3293,16 @@
 		D2E8763B21C12BA30038825B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D2E8763F21C13EE60038825B /* QSCreateNFTSIssueView.h */,
-				D2E8764021C13EE60038825B /* QSCreateNFTSIssueView.m */,
-				D2E8764221C141140038825B /* QSCreateNFTSTransferView.h */,
-				D2E8764321C141140038825B /* QSCreateNFTSTransferView.m */,
-				D2E8764521C144280038825B /* QSCreateNFTSManagerView.h */,
-				D2E8764621C144280038825B /* QSCreateNFTSManagerView.m */,
+				3374689822894AE2003E7249 /* QSCreateNFTDomainNameCell.h */,
+				3374689922894AE2003E7249 /* QSCreateNFTDomainNameCell.m */,
+				337468A522894E80003E7249 /* QSCreateNFTPermissionNameCell.h */,
+				337468A622894E80003E7249 /* QSCreateNFTPermissionNameCell.m */,
+				337468AB228951FF003E7249 /* QSCreateNFTThresholdCell.h */,
+				337468AC228951FF003E7249 /* QSCreateNFTThresholdCell.m */,
+				337468B12289555D003E7249 /* QSCreateNFTAuthorizerCell.h */,
+				337468B22289555D003E7249 /* QSCreateNFTAuthorizerCell.m */,
+				337468B7228968A5003E7249 /* QSAddAddressPopupView.h */,
+				337468B8228968A5003E7249 /* QSAddAddressPopupView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3339,6 +3445,8 @@
 		D2EE884F21C10A4B000B15E3 /* Pass(通行证) */ = {
 			isa = PBXGroup;
 			children = (
+				337468BA228973B8003E7249 /* CreateNFTAddGroup(添加组) */,
+				3374688522890FEC003E7249 /* MyPassDetail(我的域详情) */,
 				D24259D221C1F74500896BC7 /* BatchCreateNFTS(批量创建通证) */,
 				D2E8764821C14D130038825B /* CreateNfTS-Edit(创建-编辑) */,
 				D2E8763921C12BA30038825B /* CreateNFTS(创建通行证) */,
@@ -3570,6 +3678,7 @@
 				7BF36CEC21A791A200B27146 /* Frameworks */,
 				7BF36CED21A791A200B27146 /* Resources */,
 				BF4A83DA35E93D061BB7A2FF /* [CP] Copy Pods Resources */,
+				337468BF228A9A6E003E7249 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -3689,6 +3798,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		337468BF228A9A6E003E7249 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n#\n# Copyright 2016 Bugly, Tencent. All rights reserved.\n#\n# V1.4.0\n#\n# 2016.08.03\n#\n#\n#\n######################################################\n# 1. 脚本集成到Xcode工程的Target\n######################################################\n#\n# --- Copy the SCRIPT to the Run Script of Build Phases in the Xcode project ---\n#\n# #\nBUGLY_APP_ID=\"b20db2c454\"\n# #\nBUGLY_APP_KEY=\"adb9260e-8266-4e25-848c-b8bbabced24c\"\n# #\nBUNDLE_IDENTIFIER=\"com.qisheng.evtwallet\"\n# #\nUPLOAD_DSYM_ONLY=1\n#\n# # 脚本默认配置的版本格式为CFBundleShortVersionString(CFBundleVersion),  如果你修改默认的版本格式, 请设置此变量, 如果不想修改, 请忽略此设置\n# CUSTOMIZED_APP_VERSION=\"\"\n#\n# # Debug模式编译是否上传，1＝上传 0＝不上传，默认不上传\n# UPLOAD_DEBUG_SYMBOLS=0\n#\n# # 模拟器编译是否上传，1=上传 0=不上传，默认不上传\n# UPLOAD_SIMULATOR_SYMBOLS=0\n#\n# #只有Archive操作时上传, 1=支持Archive上传 0=所有Release模式编译都上传\nUPLOAD_ARCHIVE_ONLY=1\n#\n# #\n# source dSYMUpload.sh\n#\n# --- END OF SCRIPT ---\n#\n#\n#\n#\n#######################################################\n# 2. 脚本根据输入参数处理\n#######################################################\n#\n# #命令行下输入应用基本信息, .dSYM文件的父目录路径, 输出文件目录即可\n#\n# sh dSYMUpload.sh <bugly_app_id> <bugly_app_key> <app_bundle_identifier> <app_version> <dSYM_src_dir> <bSYMBOL_dest_dir>\n#\n# #\n#\n# #注意:\n# # 1. dSYMUpload.sh会调用buglySymboliOS.jar进行.dSYM解析，所以依赖Java运行时环境\n# # 2. dSYMUpload.sh和buglySymboliOS.jar的文件路径需一致\n#\n#\n\n#\n# --- CONTENT OF SCRIPT ---\n#\n\n# Bugly服务域名\nBUGLY_DSYM_UPLOAD_DOMAIN=\"api.bugly.qq.com\"\n\n# 注意jar工具的路径跟dSYMUpload.sh脚本路径一致, 请务必保证jar路径的正确性\nBUGLY_SYMBOL_JAR_PATH=\"dsymtool/buglySymboliOS.jar\"\n# 查找添加到系统目录的jar工具\nif [ ! -f \"${BUGLY_SYMBOL_JAR_PATH}\" ]; then\nBUGLY_SYMBOL_JAR_PATH=\"$HOME/bin/buglySymboliOS.jar\"\nfi\n\n# 打印错误信息\nfunction exitWithMessage(){\necho \"--------------------------------\"\necho \"${1}\"\necho \"--------------------------------\"\nexit ${2}\n}\n\n# 上传bSYMBOL文件\nfunction dSYMUpload() {\nP_APP_ID=\"$1\"\nP_APP_KEY=\"$2\"\nP_APP_BUNDLE_ID=\"$3\"\nP_APP_VERSION=\"$4\"\nP_BSYMBOL_ZIP_FILE=\"$5\"\n\n#\nP_BSYMBOL_ZIP_FILE_NAME=${P_BSYMBOL_ZIP_FILE##*/}\nP_BSYMBOL_ZIP_FILE_NAME=${P_BSYMBOL_ZIP_FILE_NAME//&/_}\nP_BSYMBOL_ZIP_FILE_NAME=\"${P_BSYMBOL_ZIP_FILE_NAME// /_}\"\n\nDSYM_UPLOAD_URL=\"https://${BUGLY_DSYM_UPLOAD_DOMAIN}/openapi/file/upload/symbol?app_id=${P_APP_ID}&app_key=${P_APP_KEY}\"\necho \"dSYM upload url: ${DSYM_UPLOAD_URL}\"\n\necho \"-----------------------------\"\nSTATUS=$(/usr/bin/curl -k \"${DSYM_UPLOAD_URL}\" --form \"api_version=1\" --form \"app_id=${P_APP_ID}\" --form \"app_key=${P_APP_KEY}\" --form \"symbolType=2\"  --form \"bundleId=${BUNDLE_IDENTIFIER}\" --form \"productVersion=${BUGLY_APP_VERSION}\" --form \"fileName=${P_BSYMBOL_ZIP_FILE_NAME}\" --form \"file=@${P_BSYMBOL_ZIP_FILE}\" --verbose)\necho \"-----------------------------\"\n\nUPLOAD_RESULT=\"FAILTURE\"\necho \"Bugly server response: ${STATUS}\"\nif [ ! \"${STATUS}\" ]; then\necho \"Error: Failed to upload the zip archive file.\"\nelif [[ \"${STATUS}\" == *\"{\\\"reponseCode\\\":\\\"0\\\"}\"* ]]; then\necho \"Success to upload the dSYM for the app [${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION}]\"\nUPLOAD_RESULT=\"SUCCESS\"\nelse\necho \"Error: Failed to upload the zip archive file to Bugly.\"\nfi\n\n#Remove temp dSYM archive\n#echo \"Remove temporary zip archive: ${DSYM_ZIP_FPATH}\"\n#/bin/rm -f \"${DSYM_ZIP_FPATH}\"\n\nif [ \"$?\" -ne 0 ]; then\nexitWithMessage \"Error: Failed to remove temporary zip archive.\" 0\nfi\n\necho \"--------------------------------\"\necho \"${UPLOAD_RESULT} - dSYM upload complete.\"\n\nif [[ \"${UPLOAD_RESULT}\" == \"FAILTURE\" ]]; then\necho \"--------------------------------\"\necho \"Failed to upload the dSYM\"\necho \"Please check the script and try it again.\"\nfi\n}\n\n# .dSYM解析为bSYMBOL文件\nfunction dSYMParse() {\nDSYM_FILE=\"$1\"\nDSYM_SYMBOL_FILE=\"$2\"\n\necho \"--------------------------------\"\necho \"Extract symbol info from .dSYM file. to ${DSYM_SYMBOL_FILE}\"\n(/usr/bin/java -Xms512m -Xmx1024m -Dfile.encoding=UTF8 -jar \"${BUGLY_SYMBOL_JAR_PATH}\" -i \"${DSYM_FILE}\" -o \"${DSYM_SYMBOL_FILE}\" ) || exitWithMessage \"Error: Failed to extract symbols.\" 1\necho \"--------------------------------\"\n\n}\n\n# 执行\nfunction run() {\n\nCONFIG_BUGLY_APP_ID=\"$1\"\nCONFIG_BUGLY_APP_KEY=\"$2\"\n\nCONFIG_BUGLY_APP_BUNDLE_IDENTIFIER=\"$3\"\nCONFIG_BUGLY_APP_VERSION=\"$4\"\nCONFIG_DSYM_SOURCE_DIR=\"$5\"\nCONFIG_DSYM_DEST_DIR=\"$6\"\nCONFIG_UPLOAD_DSYM_ONLY=\"$7\"\n\n# 检查必须参数是否设置\nif [ ! \"${CONFIG_BUGLY_APP_ID}\" ]; then\nexitWithMessage \"Error: Bugly App ID not defined. Please set 'BUGLY_APP_ID' \" 0\nfi\n\nif [[ \"${CONFIG_BUGLY_APP_ID}\" == *\"App ID\"* ]]; then\nexitWithMessage \"Error: Bugly App ID not defined.\" 0\nfi\n\nif [ ! \"${CONFIG_BUGLY_APP_KEY}\" ]; then\nexitWithMessage \"Error: Bugly App Key not defined.\" 0\nfi\n\nif [ ! \"${CONFIG_BUGLY_APP_BUNDLE_IDENTIFIER}\" ]; then\nexitWithMessage \"Error: Bundle Identifier not defined.\" 0\nfi\n\nif [ ! \"${CONFIG_BUGLY_APP_VERSION}\" ]; then\nexitWithMessage \"Error: App Version not defined.\" 0\nfi\n\nif [ ! -e \"${CONFIG_DSYM_SOURCE_DIR}\" ]; then\nexitWithMessage \"Error: Invalid dir ${CONFIG_DSYM_SOURCE_DIR}\" 0\nfi\n\nif [ ! \"${CONFIG_DSYM_DEST_DIR}\" ]; then\nexitWithMessage \"Error: Invalid dir ${CONFIG_DSYM_DEST_DIR}\" 0\nfi\n\nif [ ! -e \"${CONFIG_DSYM_DEST_DIR}\" ]; then\nmkdir ${CONFIG_DSYM_DEST_DIR}\nfi\n\nDSYM_FOLDER=\"${CONFIG_DSYM_SOURCE_DIR}\"\nIFS=$'\\n'\n\necho \"Scaning dSYM FOLDER: ${DSYM_FOLDER} ...\"\nRET=\"F\"\n\n#\nfor dsymFile in $(find \"$DSYM_FOLDER\" -name '*.dSYM'); do\nRET=\"T\"\necho \"Found dSYM file: $dsymFile\"\n\nDSYM_FILE_NAME=${dsymFile##*/}\nDSYM_SYMBOL_ZIP_FILE_NAME=\"${DSYM_FILE_NAME}.zip\"\nDSYM_SYMBOL_ZIP_FILE_NAME=\"${DSYM_SYMBOL_ZIP_FILE_NAME// /_}\"\nDSYM_SYMBOL_ZIP_FILE=${CONFIG_DSYM_DEST_DIR}/${DSYM_SYMBOL_ZIP_FILE_NAME}\n\nif [ $CONFIG_UPLOAD_DSYM_ONLY -eq 1 ]; then\nif [ -e $DSYM_SYMBOL_ZIP_FILE ]; then\nrm -f $DSYM_SYMBOL_ZIP_FILE\nfi\n# 如果只上传dSYM，直接压缩dSYM目录\nzip -r -j $DSYM_SYMBOL_ZIP_FILE $dsymFile -x *.plist\nelse\n# 使用符号表工具来生成Symbol文件\ndSYMParse $dsymFile $DSYM_SYMBOL_ZIP_FILE\nfi\n\n# 上传\ndSYMUpload $CONFIG_BUGLY_APP_ID $CONFIG_BUGLY_APP_KEY $CONFIG_BUGLY_APP_BUNDLE_IDENTIFIER $CONFIG_BUGLY_APP_VERSION $DSYM_SYMBOL_ZIP_FILE\ndone\n\nif [ $RET = \"F\" ]; then\nexitWithMessage \"No .dSYM found in ${DSYM_FOLDER}\" 0\nfi\n}\n\n# 在Xcode工程中执行\nfunction runInXcode(){\necho \"Uploading dSYM to Bugly in Xcode ...\"\n\necho \"Info.Plist : ${INFOPLIST_FILE}\"\n\nBUNDLE_VERSION=$(/usr/libexec/PlistBuddy -c 'Print CFBundleVersion' \"${INFOPLIST_FILE}\")\nBUNDLE_SHORT_VERSION=$(/usr/libexec/PlistBuddy -c 'Print CFBundleShortVersionString' \"${INFOPLIST_FILE}\")\n\n# 组装Bugly默认识别的版本信息(格式为CFBundleShortVersionString(CFBundleVersion), 例如: 1.0(1))\nif [ ! \"${CUSTOMIZED_APP_VERSION}\" ]; then\nBUGLY_APP_VERSION=\"${BUNDLE_SHORT_VERSION}(${BUNDLE_VERSION})\"\nelse\nBUGLY_APP_VERSION=\"${CUSTOMIZED_APP_VERSION}\"\nfi\n\necho \"--------------------------------\"\necho \"Prepare application information.\"\necho \"--------------------------------\"\n\necho \"Product Name: ${PRODUCT_NAME}\"\necho \"Bundle Identifier: ${BUNDLE_IDENTIFIER}\"\necho \"Version: ${BUNDLE_SHORT_VERSION}\"\necho \"Build: ${BUNDLE_VERSION}\"\n\necho \"Bugly App ID: ${BUGLY_APP_ID}\"\necho \"Bugly App key: ${BUGLY_APP_KEY}\"\necho \"Bugly App Version: ${BUGLY_APP_VERSION}\"\n\necho \"--------------------------------\"\necho \"Check the arguments ...\"\n\n##检查模拟器编译是否允许上传符号\nif [ \"$EFFECTIVE_PLATFORM_NAME\" == \"-iphonesimulator\" ]; then\nif [ $UPLOAD_SIMULATOR_SYMBOLS -eq 0 ]; then\nexitWithMessage \"Warning: Build for simulator and skipping to upload. \\nYou can modify 'UPLOAD_SIMULATOR_SYMBOLS' to 1 in the script.\" 0\nfi\nfi\n\n##检查是否是Release模式编译\nif [ \"${CONFIGURATION=}\" == \"Debug\" ]; then\nif [ $UPLOAD_DEBUG_SYMBOLS -eq 0 ]; then\nexitWithMessage \"Warning: Build for debug mode and skipping to upload. \\nYou can modify 'UPLOAD_DEBUG_SYMBOLS' to 1 in the script.\" 0\nfi\nfi\n\n##检查是否Archive操作\nif [ $UPLOAD_ARCHIVE_ONLY -eq 1 ]; then\nif [[ \"$TARGET_BUILD_DIR\" == *\"/Archive\"* ]]; then\necho \"Archive the package\"\nelse\nexitWithMessage \"Warning: Build for NOT Archive mode and skipping to upload. \\nYou can modify 'UPLOAD_ARCHIVE_ONLY' to 0 in the script.\" 0\nfi\nfi\n\n#\nrun ${BUGLY_APP_ID} ${BUGLY_APP_KEY} ${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION} ${DWARF_DSYM_FOLDER_PATH} ${BUILD_DIR}/BuglySymbolTemp ${UPLOAD_DSYM_ONLY}\n}\n\n# 根据Xcode的环境变量判断是否处于Xcode环境\nINFO_PLIST_FILE=\"${INFOPLIST_FILE}\"\n\nBuildInXcode=\"F\"\nif [ -f \"${INFO_PLIST_FILE}\" ]; then\nBuildInXcode=\"T\"\nfi\n\nif [ $BuildInXcode = \"T\" ]; then\nrunInXcode\nelse\necho \"\\nUsage: dSYMUpload.sh <bugly_app_id> <bugly_app_key> <app_bundle_identifier> <app_version> <dSYM_src_dir> <bSYMBOL_dest_dir> [upload_dsym_only]\\n\"\n# 你可以在此处直接设置BuglyAppID和BuglyAppKey，排除不常变参数的输入\nBUGLY_APP_ID=\"$1\"\nBUGLY_APP_KEY=\"$2\"\nBUNDLE_IDENTIFIER=\"$3\"\nBUGLY_APP_VERSION=\"$4\"\nDWARF_DSYM_FOLDER_PATH=\"$5\"\nSYMBOL_OUTPUT_PATH=\"$6\"\nUPLOAD_DSYM_ONLY=$7\nrun ${BUGLY_APP_ID} ${BUGLY_APP_KEY} ${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION} ${DWARF_DSYM_FOLDER_PATH} ${SYMBOL_OUTPUT_PATH} ${UPLOAD_DSYM_ONLY}\nfi\n\n";
+		};
 		35A7F90A3D68A029F567FA89 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3768,6 +3894,7 @@
 				7B4CA15121A7CBA300F14449 /* UIFont+QSEVTFont.m in Sources */,
 				7BD9C48021B6A42600A16A99 /* QSWalletDetailCell.m in Sources */,
 				7B33AF5721E5CEDC0028BBE2 /* QSTouchIDHelper.m in Sources */,
+				337468A722894E80003E7249 /* QSCreateNFTPermissionNameCell.m in Sources */,
 				D296C1AC21CCD3F4005D1EF8 /* QSLogoutAlertView.m in Sources */,
 				7BF2F8CF21B129BF000AAD93 /* QSAboutusIconCell.m in Sources */,
 				7BF36E2121A79E7B00B27146 /* NSString+Utils.m in Sources */,
@@ -3828,13 +3955,15 @@
 				7BF36E0321A79E7B00B27146 /* UIView+Loading.m in Sources */,
 				7BF2F85D21AE96BA000AAD93 /* QSAddAddressViewController.m in Sources */,
 				D24259D721C1F8BC00896BC7 /* QSBatchCreateNFTSViewController.m in Sources */,
-				3304D86122855F6100AE801F /* QSAddGroupMetaDataViewController.m in Sources */,
+				3304D86122855F6100AE801F /* QSAddMetaDataViewController.m in Sources */,
 				7BB8DC7A21B774DA00954E86 /* QSQRImageCodeCell.m in Sources */,
 				7BF36E1321A79E7B00B27146 /* NSFileManager+Paths.m in Sources */,
 				7B96E1FC21EDC53B002EE53D /* QSNodeSettingDetailViewController.m in Sources */,
 				7BF36E1021A79E7B00B27146 /* UITextField+RACSignalSupport.m in Sources */,
+				3374689A22894AE2003E7249 /* QSCreateNFTDomainNameCell.m in Sources */,
 				7BF36E1721A79E7B00B27146 /* NSData+Encrypt.m in Sources */,
 				D20F61A821CB9E0300E32D1E /* QSTransferftModel.m in Sources */,
+				3374689E22894D47003E7249 /* QSCreateNFTDomainNameItem.m in Sources */,
 				7B4CA15E21A7E31C00F14449 /* QSPropetyHomeSegmentView.m in Sources */,
 				7B0D185521BD04A000550756 /* QSWalletHelper.m in Sources */,
 				D2F5F6B521C531750079EFD4 /* QSAddressHelper.m in Sources */,
@@ -3853,6 +3982,7 @@
 				7BF40E8121B966B900047C3C /* QSPayInfoItem.m in Sources */,
 				D2F392CB21CC83050039959B /* QSLunchImageViewController.m in Sources */,
 				7BF40E7E21B9665200047C3C /* QSPayInfoCell.m in Sources */,
+				3374689722891605003E7249 /* QSMyPassDetailPermissionItem.m in Sources */,
 				7B5CC06821E82E7500FB7F57 /* QSEveriPassDetailViewController.m in Sources */,
 				7B6CDC7221AB9CF8008A6FAF /* QSHomeMyFTsCell.m in Sources */,
 				7BB8DC3E21B75C6A00954E86 /* UIView+YZFrame.m in Sources */,
@@ -3860,16 +3990,16 @@
 				7BF36E0621A79E7B00B27146 /* UICollectionViewCell+Extensions.m in Sources */,
 				7BF36E1C21A79E7B00B27146 /* NSString+Base64.m in Sources */,
 				7BF36E2621A79E7B00B27146 /* NSDate+Extension.m in Sources */,
+				3374688A2289102D003E7249 /* QSMyPassDetailViewController.m in Sources */,
 				7BF40E7B21B965E200047C3C /* QSPayInfoViewController.m in Sources */,
 				7BF2F8B421B10D52000AAD93 /* QSNodeSettingViewController.m in Sources */,
 				7BF2F88B21AFE3FA000AAD93 /* QSHelpCenterFunctionOverviewCell.m in Sources */,
 				7BF36DF921A79E7B00B27146 /* UIImage+QRCode.m in Sources */,
-				D2E8764721C144280038825B /* QSCreateNFTSManagerView.m in Sources */,
 				D2B2EF5C21C6555000ABBB90 /* QSPrivatekeyAlertView.m in Sources */,
 				7B8B315321B4C2CB00028D17 /* QSEditWalletsViewController.m in Sources */,
 				7BF36E1A21A79E7B00B27146 /* NSString+URL.m in Sources */,
+				337468AD228951FF003E7249 /* QSCreateNFTThresholdCell.m in Sources */,
 				7B8B316D21B51AAC00028D17 /* QSExportMnemonicStep2ViewController.m in Sources */,
-				D2E8764421C141140038825B /* QSCreateNFTSTransferView.m in Sources */,
 				7BF2F85121AE7490000AAD93 /* QSSelectMenuView.m in Sources */,
 				7BF36E0921A79E7B00B27146 /* UIViewController+Alert.m in Sources */,
 				7B4CA15821A7D27E00F14449 /* QSTabBar.m in Sources */,
@@ -3881,7 +4011,7 @@
 				7BF2F85721AE80A3000AAD93 /* QSManageAddressCell.m in Sources */,
 				7B0D184C21BCFB1D00550756 /* QSAuthorizers.m in Sources */,
 				7BF36E0421A79E7B00B27146 /* UIView+HUD.m in Sources */,
-				3304D85C22850FA600AE801F /* QSGroupDetailMetaDataView.m in Sources */,
+				3304D85C22850FA600AE801F /* QSMetaDataView.m in Sources */,
 				D2F5F69421C38CF70079EFD4 /* QSEnterPublicKeyViewController.m in Sources */,
 				D2EE883921C0EDBA000B15E3 /* QSIssueMoreSettingBottomView.m in Sources */,
 				D2F5F67D21C2872D0079EFD4 /* QSManagerSettingView.m in Sources */,
@@ -3892,6 +4022,7 @@
 				7BF36D6721A799ED00B27146 /* QSHomePropertyViewController.m in Sources */,
 				7BF40E5F21B9465D00047C3C /* QSPayAmountBalanceCell.m in Sources */,
 				D2D8D3AD21C7914D000D6644 /* QSScanGetAddress.m in Sources */,
+				337468B6228956C2003E7249 /* QSCreateNFTAuthorizerItem.m in Sources */,
 				D2E1289821BFF2B000EF8E7E /* UIViewController+QSSelectPicture.m in Sources */,
 				D2EE882121C09D45000B15E3 /* QSCreateFTAlertItem.m in Sources */,
 				7BF36E1B21A79E7B00B27146 /* NSString+Hash.m in Sources */,
@@ -3926,7 +4057,9 @@
 				D2EE885521C10A7C000B15E3 /* QSMyPassViewController.m in Sources */,
 				7B5CC06B21E82E8000FB7F57 /* QSEveriPassCodeViewController.m in Sources */,
 				7BF2F85421AE74C3000AAD93 /* QSSelectMenuCell.m in Sources */,
+				3374689422891457003E7249 /* QSMyPassDetailNameItem.m in Sources */,
 				7BF36E0121A79E7B00B27146 /* UIView+Frame.m in Sources */,
+				337468A422894E51003E7249 /* QSCreateNFTPermissionNameItem.m in Sources */,
 				7B4CA16821A7EDC500F14449 /* QSPropertyHomeSwipeCell.m in Sources */,
 				7BB8DC2E21B757DF00954E86 /* QSImportWalletByPrivateKeyViewController.m in Sources */,
 				3304D7E722815EC900AE801F /* QSCreateGroupHeaderView.m in Sources */,
@@ -3934,7 +4067,7 @@
 				7BF40E8D21B9FD3100047C3C /* QSScannerView.m in Sources */,
 				7BF36D6221A7972500B27146 /* main.m in Sources */,
 				7BF2F8A221B0DC68000AAD93 /* QSSettingLanguageItem.m in Sources */,
-				D2E8764121C13EE60038825B /* QSCreateNFTSIssueView.m in Sources */,
+				33746890228910E2003E7249 /* QSMyPassDetailPermissionCell.m in Sources */,
 				7BD9C47D21B6A3BB00A16A99 /* QSWalletDetailViewController.m in Sources */,
 				7BF40ECE21BA1D2C00047C3C /* QSTransactionRecordItem.m in Sources */,
 				7B8B315A21B5028200028D17 /* QSModifyPasswordViewController.m in Sources */,
@@ -3944,10 +4077,14 @@
 				7BF36E2321A79E7B00B27146 /* NSArray+SafeAccess.m in Sources */,
 				7BF36E2B21A7A3D800B27146 /* AppDelegate.m in Sources */,
 				7BF2F8CB21B12732000AAD93 /* QSAboutusViewController.m in Sources */,
+				337468B32289555D003E7249 /* QSCreateNFTAuthorizerCell.m in Sources */,
+				337468BE228973FA003E7249 /* QSCreateNFTAddGroupViewController.m in Sources */,
+				337468B9228968A5003E7249 /* QSAddAddressPopupView.m in Sources */,
 				7BF40E9321B9FF0500047C3C /* QSScanningViewController.m in Sources */,
 				7BF2F89E21B0DA32000AAD93 /* QSLanguageSettingCell.m in Sources */,
 				7BB5A2972224D306008BFC01 /* QSNodeSettingAddAlertView.m in Sources */,
 				7BD9C47621B69DA100A16A99 /* QSAddWalletViewController.m in Sources */,
+				337468B02289530A003E7249 /* QSCreateNFTThresholdItem.m in Sources */,
 				7BF40EAB21BA120400047C3C /* QSEveriPayCollectAmountViewController.m in Sources */,
 				7BF40EDA21BA44DA00047C3C /* QSBatchTransferViewController.m in Sources */,
 				D2EE883621C0E145000B15E3 /* QSIssueMoreSettingTopView.m in Sources */,
@@ -3962,6 +4099,7 @@
 				7BF2F82D21AE37D6000AAD93 /* QSBaseTableViewCell.m in Sources */,
 				7BF40E5B21B9447700047C3C /* QSPayAmountViewController.m in Sources */,
 				7BF2F8D221B133D0000AAD93 /* QSBaseCellItem.m in Sources */,
+				3374688D228910A0003E7249 /* QSMyPassDetailNameCell.m in Sources */,
 				D2F5F69E21C3AFB70079EFD4 /* QSCreateIdentityViewController.m in Sources */,
 				7B33AF4A21E59E980028BBE2 /* QSWallectFingerprintItem.m in Sources */,
 				D2EE884521C0F40E000B15E3 /* QSIssuePermissionsTransferView.m in Sources */,

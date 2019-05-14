@@ -38,7 +38,8 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.textLabel.font              = [UIFont qs_fontOfSize14];
+        self.textLabel.font              = [UIFont qs_fontOfSize16];
+        self.textLabel.textColor         = [UIColor qs_colorBlack333333];
         self.textLabel.lineBreakMode     = NSLineBreakByTruncatingMiddle;
         self.indentationWidth            = kRealValue(15);
         self.selectionStyle              = UITableViewCellSelectionStyleNone;
@@ -90,10 +91,11 @@
     
     self.indentationLevel = treeItem.level;
     self.textLabel.text   = treeItem.name;
-    self.imageView.image  = treeItem.isLeaf ? nil : [UIImage imageNamed:@"MYTreeTableView.bundle/arrow"];
-//    self.accessoryView    = self.checkButton;
+    //MYTreeTableView.bundle/arrow
+    self.imageView.image  = treeItem.isLeaf ? nil : [UIImage imageNamed:@"icon_group_tree_expand_arrow"];
     if (self.treeItem.allowEditing) {
         self.addButton.hidden = self.treeItem.isLeaf;
+        self.deleteButton.hidden = NO;
     } else {
         self.addButton.hidden = YES;
         self.deleteButton.hidden = YES;

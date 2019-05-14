@@ -35,7 +35,7 @@ typedef NS_ENUM(NSUInteger, QSSystemSettingsType) {
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (NSArray<QSSettingItem *> *)createSingleSectionDataSource {
+- (NSArray<id<QSBaseCellItemDataProtocol>> *)createSingleSectionDataSource {
     QSSettingItem *languageItem = [[QSSettingItem alloc] init];
     languageItem.leftTitle = QSLocalizedString(@"qs_sytem_setting_item_languages_title");
     languageItem.leftTitleFont = [UIFont qs_fontOfSize16];
@@ -74,7 +74,7 @@ typedef NS_ENUM(NSUInteger, QSSystemSettingsType) {
 
 #pragma mark - **************** UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    QSBaseCellItem *item = [self itemInIndexPath:indexPath];
+    QSSettingItem *item = (QSSettingItem *)[self itemInIndexPath:indexPath];
     if (item.cellTag == QSSystemSettingsTypeLanguage) {
         QSLanguageSettingViewController *language = [[QSLanguageSettingViewController alloc] init];
         [self.navigationController pushViewController:language animated:YES];

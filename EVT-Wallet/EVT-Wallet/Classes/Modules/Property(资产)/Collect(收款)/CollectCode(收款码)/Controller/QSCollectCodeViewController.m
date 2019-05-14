@@ -68,7 +68,7 @@
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
+- (NSArray<NSArray<id<QSBaseCellItemDataProtocol>> *> *)createMultiSectionDataSource {
     QSQRCodeScanItem *tipsItem = [[QSQRCodeScanItem alloc] init];
     tipsItem.cellIdentifier = NSStringFromClass([QSCollectTipsCell class]);
     tipsItem.cellHeight = kRealValue(55);

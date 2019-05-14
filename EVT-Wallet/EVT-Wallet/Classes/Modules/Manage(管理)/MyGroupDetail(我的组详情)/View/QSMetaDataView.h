@@ -7,14 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QSMetas.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 typedef void(^AddMetaDataClickedBlock)(void);
 
-@interface QSGroupDetailMetaDataView : UIView
+/**
+ * 元数据视图
+ */
+@interface QSMetaDataView : UIView
 
-@property (nonatomic, strong) NSArray *metas;
+@property (nonatomic, strong) NSArray<QSMetas *> *metas;
 
 @property (nonatomic, copy) AddMetaDataClickedBlock addMetaDataBlock;
 

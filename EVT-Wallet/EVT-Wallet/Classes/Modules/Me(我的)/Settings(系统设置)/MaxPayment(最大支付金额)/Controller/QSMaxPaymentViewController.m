@@ -28,7 +28,7 @@ typedef NS_ENUM(NSUInteger, QSMaxPaymentType) {
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (NSArray<QSBaseCellItem *> *)createSingleSectionDataSource {
+- (NSArray<id<QSBaseCellItemDataProtocol>> *)createSingleSectionDataSource {
     QSSettingItem *EVTItem = [[QSSettingItem alloc] init];
     EVTItem.leftTitle = @"EVT";
     EVTItem.leftTitleFont = [UIFont qs_fontOfSize16];
@@ -60,7 +60,7 @@ typedef NS_ENUM(NSUInteger, QSMaxPaymentType) {
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    QSBaseCellItem *item = [self itemInIndexPath:indexPath];
+    id<QSBaseCellItemDataProtocol> item = [self itemInIndexPath:indexPath];
     DLog(@"%ld",(long)item.cellTag);
     if (item.cellTag == QSMaxPaymentTypeEVT) {
         

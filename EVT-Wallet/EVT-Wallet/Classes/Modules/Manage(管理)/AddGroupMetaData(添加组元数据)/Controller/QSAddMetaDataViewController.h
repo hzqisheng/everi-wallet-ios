@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef void(^AddMetaDataComfirmBlock)(NSString *key, NSString *value);
 
-@interface QSAddGroupMetaDataViewController : QSBaseViewController
+@interface QSAddMetaDataViewController : QSBaseViewController
 
 @property (nonatomic, copy) AddMetaDataComfirmBlock addMetaDataBlock;
 

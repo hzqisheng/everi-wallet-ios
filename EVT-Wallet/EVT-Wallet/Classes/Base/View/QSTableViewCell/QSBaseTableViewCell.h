@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QSBaseTableViewCell : UITableViewCell<QSBaseTableViewCellProtocol>
 
-@property (nonatomic, strong) QSBaseCellItem *item;
+@property (nonatomic, strong) id<QSBaseCellItemDataProtocol> item;
 
 @end
 

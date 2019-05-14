@@ -391,4 +391,49 @@
     return [pre evaluateWithObject:self];
 }
 
+- (NSString *)transformServerTimeToLocalTime {
+    NSArray *timeArr = [self componentsSeparatedByString:@"T"];
+    if (timeArr.count != 2) {
+        return self;
+    }
+    //2019-02-26T06:41:19.5+00
+    NSString *dateString = timeArr[0];
+    NSString *timeString = [timeArr[1] substringToIndex:8];
+    //2019-01-18 08:11:50
+    NSString *timeStamp = [NSString stringWithFormat:@"%@ %@",dateString,timeString];
+    NSDate *timeStampDate = [self nsstringConversionNSDate:timeStamp];
+    NSString *timeInterval = [self dateConversionTimeStamp:timeStampDate];
+    NSString *localZoneTime = [self timeStampConversionNSString:timeInterval];
+    return localZoneTime;
+}
+
+//伦敦时间的时间戳
+- (NSDate *)nsstringConversionNSDate:(NSString *)dateStr
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+    NSTimeZone *timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
+    dateFormatter.timeZone = timeZone;
+    NSDate *datestr = [dateFormatter dateFromString:dateStr];
+    return datestr;
+}
+
+- (NSString *)dateConversionTimeStamp:(NSDate *)date
+{
+    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[date timeIntervalSince1970]*1000];
+    return timeSp;
+}
+
+//转化成手机时区的时间
+- (NSString *)timeStampConversionNSString:(NSString *)timeStamp
+{
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[timeStamp longLongValue]/1000];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSTimeZone * timeZone = [NSTimeZone localTimeZone];
+    formatter.timeZone = timeZone;
+    NSString *dateStr = [formatter stringFromDate:date];
+    return dateStr;
+}
+
 @end

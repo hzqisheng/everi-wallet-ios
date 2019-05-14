@@ -59,11 +59,33 @@
 
 
 //Pass
-"qs_pass_mypass_no_pass_title"                   = "暂无通证";
-"qs_pass_mypass_navi_title"                      = "我的通证";
-"qs_pass_mypass_btn_title"                       = "创建通证";
+"qs_pass_mypass_no_pass_title"                   = "暂无域";
+"qs_pass_mypass_navi_title"                      = "我的域";
+"qs_pass_mypass_btn_title"                       = "创建域";
+"qs_pass_mypass_issue_btn_title"                 = "发行";
+
 "qs_pass_createNFTS_yu_title"                    = "域";
 "qs_pass_createNFTS_yu_placeholder"              = "请输入域名";
+"qs_pass_createNFTS_invaild_domain_toast"        = "无效的权限设置";
+"qs_pass_createNFTS_invaild_threshold_toast"     = "无效的阈值设置";
+
+"qs_pass_createNFTS_threshold_title"             = "阈值";
+"qs_pass_createNFTS_commit_btn_title"            = "提交";
+"qs_pass_createNFTS_issue_title"                 = "发行";
+"qs_pass_createNFTS_transfer_title"              = "转移";
+"qs_pass_createNFTS_manage_title"                = "管理";
+"qs_pass_createNFTS_add_permission_title"        = "新增";
+"qs_pass_createNFTS_add_address_alert_title"     = "添加地址";
+"qs_pass_createNFTS_add_group_alert_title"       = "添加组";
+"qs_pass_createNFTS_add_alert_cancel_title"      = "取消";
+"qs_pass_createNFTS_add_public_key_placeholer"   = "公钥";
+"qs_pass_createNFTS_invalid_public_key"          = "无效的公钥";
+"qs_pass_createNFTS_add_weight_placeholer"       = "权重";
+"qs_pass_createNFTS_add_group_confirm_btn_title" = "确定";
+"qs_pass_createNFTS_add_group_weight_title"      = "权重";
+"qs_pass_createNFTS_add_group_group_title"       = "组";
+"qs_pass_createNFTS_add_group_choose_group_title" = "选择组";
+
 "qs_pass_createNFTS_transfer_content"            = "只有我和持有者能转移";
 "qs_pass_createNFTS_manager_content"             = "只有我能管理";
 "qs_pass_createNFTS_batch_topView_placeholder"   = "您可以在此动手输入通证名称，用回车键分割；如果需要快捷地批量发行多个通证，可使用批量生成功能";
@@ -74,6 +96,12 @@
 "qs_pass_createNFTS_batch_count"                 = "计数";
 "qs_pass_createNFTS_batch_no_nft_title_toast"    = "请输入通证名称";
 "qs_pass_createNFTS_batch_success_toast"         = "发行成功";
+
+"qs_pass_mypass_detail_issue_title"              = "发行";
+"qs_pass_mypass_detail_transfer_title"           = "转移";
+"qs_pass_mypass_detail_manage_title"             = "管理";
+"qs_pass_mypass_detail_authority_title"          = "权限设置";
+"qs_pass_mypass_detail_threshold_title"          = "阈值";
 
 "qs_pass_domain_help_title"                      = "域";
 "qs_pass_domain_help_content"                    = "域名称由最大21个指定字符[0-9，A-Z，a-z.-]组成，同时通过设置相应权限来组织和管理通证。";
@@ -97,6 +125,8 @@
 "qs_add_group_metadata_input_title"       = "请输入";
 "qs_add_group_metadata_confrm_btn_title"  = "确定";
 
+"qs_manage_createGroup_help_title"       = "组";
+"qs_manage_createGroup_help_content"     = "组名称由最大21个指定字符[0-9，A-Z，a-z.-]组成，可以通过把权限赋予某个组上，来实现现实中类似于组织架构的功能，从而实现对特定资产的分组管理";
 "qs_manage_createGroup_title"           = "创建组";
 "qs_manage_createGroup_managers"        = "管理者";
 "qs_manage_createGroup_manager_State1"  = "我负责管理";
@@ -406,6 +436,7 @@
 "qs_add_address_item_memo_placeholder"    = "请输入备注";
 "qs_add_address_save_btn_title"           = "保存";
 "qs_add_address_save_address_failure"     = "地址错误";
+"qs_add_address_node_format_error"        = "必须包含一个节点";
 
 //Import Address
 "qs_import_address_nav_title"             = "导入地址";

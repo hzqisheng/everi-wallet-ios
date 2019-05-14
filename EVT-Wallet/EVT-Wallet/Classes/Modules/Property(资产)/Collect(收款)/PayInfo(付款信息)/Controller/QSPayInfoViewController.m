@@ -100,7 +100,7 @@
 }
 
 #pragma mark - **************** QSBaseCornerSectionTableViewControllerProtocol
-- (NSArray<NSArray<QSBaseCellItem *> *> *)createMultiSectionDataSource {
+- (NSArray<NSArray<id<QSBaseCellItemDataProtocol>> *> *)createMultiSectionDataSource {
     QSPayInfoItem *payItem = [[QSPayInfoItem alloc] init];
     payItem.cellIdentifier = NSStringFromClass([QSPayInfoCell class]);
     payItem.title = QSLocalizedString(@"qs_pay_info_item_payer_title");

@@ -39,5 +39,6 @@
 #import <YYText.h>
 #import <ReactiveCocoa.h>
 #import <RTRootNavigationController.h>
+#import <Bugly/Bugly.h>
 
 #endif /* PrefixHeader_pch */

@@ -8,19 +8,19 @@
 
 #import "QSMyGroupDetailViewController.h"
 #import "QSEveriApiWebViewController.h"
-#import "QSAddGroupMetaDataViewController.h"
+#import "QSAddMetaDataViewController.h"
 #import "QSEveriApiWebViewController.h"
 #import "QSCreateGroupViewController.h"
 
 #import "QSGroupDetailGroupNameView.h"
-#import "QSGroupDetailMetaDataView.h"
+#import "QSMetaDataView.h"
 
 @interface QSMyGroupDetailViewController ()
 
 @property (nonatomic, strong) QSGroupDetailGroupNameView *groupNameView;
-@property (nonatomic, strong) QSGroupDetailMetaDataView *metaDataView;
+@property (nonatomic, strong) QSMetaDataView *metaDataView;
 
-@property (nonatomic, strong) NSSet<MYTreeItem *> *treeItems;
+@property (nonatomic, strong) NSSet<MYTreeItem *> *allowEditingTreeItems;
 @property (nonatomic, copy) NSString *threshold;
 
 @end
@@ -53,11 +53,13 @@
             [self.groupNameView configureViewByGroupName:name threshold:threshold.stringValue];
             self.tableView.tableHeaderView = self.groupNameView;
             
-            self.metaDataView.metas = data[@"metas"];
+            NSArray<QSMetas *> *metasModels = [QSMetas mj_objectArrayWithKeyValuesArray:data[@"metas"]];
+            self.metaDataView.metas = metasModels;
             self.tableView.tableFooterView = self.metaDataView;
             
+            self.allowEditingTreeItems = [self handleRequestOriginalData:data isAllowEditing:YES];
+
             NSSet *treeItems = [self handleRequestOriginalData:data isAllowEditing:NO];
-            self.treeItems = treeItems;
             self.manager = [[MYTreeTableManager alloc] initWithItems:treeItems andExpandLevel:0];
             
             self.isShowExpandedAnimation = NO;
@@ -74,7 +76,7 @@
     //Authority
     QSCreateGroupViewController *createGroup = [[QSCreateGroupViewController alloc] initWithGroupName:self.groupName
                                                                                             threshold:self.threshold
-                                                                                            treeItems:self.treeItems];
+                                                                                            treeItems:self.allowEditingTreeItems];
     [createGroup setupNavgationBarTitle:QSLocalizedString(@"qs_manage_group_detail_authority_title")];
     createGroup.groupDidCreateSuccessBlock = ^{
         [QSAppKeyWindow showIndeterminateHudWithText:QSLocalizedString(@"qs_waiting_toast")];
@@ -84,10 +86,11 @@
 }
 
 - (void)addMetaDataClicked {
-    QSAddGroupMetaDataViewController *addMetadata = [[QSAddGroupMetaDataViewController alloc] init];
+    QSAddMetaDataViewController *addMetadata = [[QSAddMetaDataViewController alloc] init];
     @weakify(self);
     addMetadata.addMetaDataBlock = ^(NSString * _Nonnull key, NSString * _Nonnull value) {
         @strongify(self);
+        [QSAppKeyWindow showIndeterminateHudWithText:QSLocalizedString(@"qs_waiting_toast")];
         [[QSEveriApiWebViewController sharedWebView] addMetaByActionKey:key
                                                             actionValue:value
                                                           actionCreator:[NSString stringWithFormat:@"[A] %@",QSPublicKey]
@@ -96,7 +99,6 @@
                                                       andCompeleteBlock:^(NSInteger statusCode)
          {
              if (statusCode == kResponseSuccessCode) {
-                 [QSAppKeyWindow showIndeterminateHudWithText:QSLocalizedString(@"qs_waiting_toast")];
                  [self requestData];
              }
          }];
@@ -112,9 +114,9 @@
     return _groupNameView;
 }
 
-- (QSGroupDetailMetaDataView *)metaDataView {
+- (QSMetaDataView *)metaDataView {
     if (!_metaDataView) {
-        _metaDataView = [[QSGroupDetailMetaDataView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - kRealValue(30), 0)];
+        _metaDataView = [[QSMetaDataView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - kRealValue(30), 0)];
         @weakify(self);
         _metaDataView.addMetaDataBlock = ^{
             @strongify(self);

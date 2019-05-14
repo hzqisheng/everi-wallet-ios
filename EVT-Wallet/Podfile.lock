@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - Bugly (2.5.0)
   - IQKeyboardManager (6.2.0)
   - Masonry (1.1.0)
   - MBProgressHUD (0.9.2)
@@ -39,6 +40,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - Bugly
   - IQKeyboardManager
   - Masonry
   - MBProgressHUD (~> 0.9.2)
@@ -54,6 +56,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - Bugly
     - IQKeyboardManager
     - Masonry
     - MBProgressHUD
@@ -77,6 +80,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
@@ -89,6 +93,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: b33cb21ea66c1ed4c56443a0e8c84494c44be560
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 0f8a3caa0a8369a0e7165c2fdca7a0f2015ee627
+PODFILE CHECKSUM: 89a4ee973f9210277f735f5dc6d1e4b11e6d6d3d
 
 COCOAPODS: 1.6.1
