@@ -10,6 +10,8 @@
 #import "QSScannerViewController.h"
 #import "QSPayAmountViewController.h"
 #import "QSEveriPayCollectAmountViewController.h"
+#import "QSScanUnrecognizedResultViewController.h"
+
 #import "QSScanAddress.h"
 
 @interface QSScanningViewController ()<QSScannerDelegate,UINavigationControllerDelegate>
@@ -47,6 +49,11 @@
         //需要读取publickey的扫码
         [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag, NSArray * _Nonnull publicKeys) {
             
+            if (statusCode != kResponseSuccessCode) {
+                [weakSelf p_handleUnrecognizedResult:ansStr];
+                return;
+            }
+            
             if (publicKeys.count) {
                 if (weakSelf.parseEvtLinkAndPopBlock) {
                     weakSelf.parseEvtLinkAndPopBlock(publicKeys[0]);
@@ -71,7 +78,7 @@
         [[QSEveriApiWebViewController sharedWebView] parseEvtLinkWithAddress:ansStr AndCompeleteBlock:^(NSInteger statusCode, NSArray * _Nonnull modelList, NSInteger flag, NSArray * _Nonnull publicKeys) {
             
             if (statusCode != kResponseSuccessCode) {
-                [weakSelf.scanVC startCodeReading];
+                [weakSelf p_handleUnrecognizedResult:ansStr];
                 return;
             }
             
@@ -143,6 +150,12 @@
             }
         }];
     }
+}
+
+- (void)p_handleUnrecognizedResult:(NSString *)ansStr {
+    QSScanUnrecognizedResultViewController *unrecognizedResult = [[QSScanUnrecognizedResultViewController alloc] init];
+    unrecognizedResult.analysisQRString = ansStr;
+    [self pushRemoveSelfToViewController:unrecognizedResult animated:YES];
 }
 
 - (void)p_analysisImage:(UIImage *)image {

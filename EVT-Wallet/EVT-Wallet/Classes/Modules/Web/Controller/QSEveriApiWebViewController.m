@@ -22,6 +22,8 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
 
 @property (nonatomic, strong) NSMutableDictionary<NSString *,DataResponseBlock> *methodAndCallbackDic;
 
+@property (nonatomic, strong) NSMutableSet<NSString *> *noErrorToastSet;
+
 @end
 
 @implementation QSEveriApiWebViewController
@@ -111,11 +113,18 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     [super webView:webView didFinishNavigation:navigation];
 
+    //1.切换网络
+    if ([QSWalletHelper sharedHelper].currentNode) {
+        [[QSEveriApiWebViewController sharedWebView] changeNetworkByHost:[QSWalletHelper sharedHelper].currentNode.title port:[QSWalletHelper sharedHelper].currentNode.port protocol:[QSWalletHelper sharedHelper].currentNode.protocol andCompeleteBlock:^(NSInteger statusCode) {
+        }];
+    }
+    
+    //2.初始化
     @weakify(self);
     [self evtInitAndCompeleteyBlock:^{
         @strongify(self);
-        if (self.initSuccessBlock) {
-            self.initSuccessBlock();
+        if (self.webAndEvtInitSuccessBlock) {
+            self.webAndEvtInitSuccessBlock();
         }
     }];
 }
@@ -136,25 +145,9 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
     DLog(@"\n\n\n%@\n\n\n",message.body);
     
     if (![code.stringValue isEqualToString:@"1"]) {
-        if ([messageObject isKindOfClass:[NSDictionary class]]) {
-            NSString *chineseMsg = messageObject[@"cn"];
-            NSString *englishMsg = messageObject[@"en"];
-            if ([NSBundle isChineseLanguage]) {
-                [QSAppKeyWindow showAutoHideHudWithText:chineseMsg];
-            } else {
-                [QSAppKeyWindow showAutoHideHudWithText:englishMsg];
-            }
-        } else if ([messageObject isKindOfClass:[NSString class]]) {
-            [QSAppKeyWindow showAutoHideHudWithText:messageObject];
-        }
-        
-        for (NSString *key in self.methodAndCallbackDic.allKeys) {
-            if ([key isEqualToString:message.name]) {
-                    DataResponseBlock responseBlock = [self.methodAndCallbackDic objectForKey:key];
-                    responseBlock(kResponseFailCode,dic);
-                    break;
-            }
-        }
+        [self handleError:messageObject
+          responseDataDic:dic
+              messageName:message.name];
         return;
     }
     
@@ -187,6 +180,33 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
                 responseBlock(kResponseSuccessCode,dic);
                 break;
             }
+        }
+    }
+}
+
+- (void)handleError:(id)messageObject
+    responseDataDic:(id)responseDataDic
+        messageName:(NSString *)messageName {
+    if ([self.noErrorToastSet containsObject:messageName]) {
+        //parseEvtLink不提示错误
+    } else if ([messageObject isKindOfClass:[NSDictionary class]]) {
+        NSString *chineseMsg = messageObject[@"cn"];
+        NSString *englishMsg = messageObject[@"en"];
+        if ([NSBundle isChineseLanguage]) {
+            [QSAppKeyWindow showAutoHideHudWithText:chineseMsg];
+        } else {
+            [QSAppKeyWindow showAutoHideHudWithText:englishMsg];
+        }
+    } else if ([messageObject isKindOfClass:[NSString class]]) {
+        [QSAppKeyWindow showAutoHideHudWithText:messageObject];
+    }
+    
+    //回调
+    for (NSString *key in self.methodAndCallbackDic.allKeys) {
+        if ([key isEqualToString:messageName]) {
+            DataResponseBlock responseBlock = [self.methodAndCallbackDic objectForKey:key];
+            responseBlock(kResponseFailCode,responseDataDic);
+            break;
         }
     }
 }
@@ -631,6 +651,8 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
 
 - (void)parseEvtLinkWithAddress:(NSString *)address AndCompeleteBlock:(nonnull void (^)(NSInteger, NSArray * _Nonnull, NSInteger, NSArray * _Nonnull))block {
     NSString *jsString = [NSString stringWithFormat:@"parseEvtLink('%@')",address];
+    [self.noErrorToastSet addObject:@"parseEvtLinkCallback"];
+    
     [self excuteRequestWithMethodName:@"parseEvtLink"
                              jsString:jsString
                     completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
@@ -944,6 +966,13 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
         _methodAndCallbackDic = [NSMutableDictionary dictionary];
     }
     return _methodAndCallbackDic;
+}
+
+- (NSMutableSet<NSString *> *)noErrorToastSet {
+    if (!_noErrorToastSet) {
+        _noErrorToastSet = [NSMutableSet set];
+    }
+    return _noErrorToastSet;
 }
 
 - (void)requestNeedPrivateKeyResponseAndCompeleteBlock:(void(^)(NSInteger statusCode, NSDictionary * _Nullable data))block {

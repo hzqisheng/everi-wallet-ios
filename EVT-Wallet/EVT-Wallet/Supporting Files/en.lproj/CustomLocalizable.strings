@@ -215,6 +215,11 @@
 "qs_scan_scan_link"                  = "everiTokenLink expired";
 "qs_everipass_scan_success"          = "Operation Success";
 
+"qs_scan_unrecognized_result_nav_title"       = "Scanned Results";
+"qs_scan_unrecognized_result_title"           = "The scanned content of QR code";
+"qs_scan_unrecognized_result_copy_btn_title"  = "Copy the content";
+
+
 "qs_scan_scan_collect_failed_title"  = "Please scan everiPay QRCode";
 "qs_scan_scan_everiPay_failed_title" = "Please scan Collect QRCode";
 

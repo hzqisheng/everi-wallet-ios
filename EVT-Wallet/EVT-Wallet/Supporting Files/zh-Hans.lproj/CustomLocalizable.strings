@@ -216,6 +216,10 @@
 "qs_scan_scan_link"                  = "EVTLink已过期";
 "qs_everipass_scan_success"          = "操作成功";
 
+"qs_scan_unrecognized_nav_title"              = "扫码结果";
+"qs_scan_unrecognized_result_title"           = "已识别到二维码内容";
+"qs_scan_unrecognized_result_copy_btn_title"  = "复制内容";
+
 "qs_scan_scan_collect_failed_title"  = "请扫描everiPay二维码进行收款";
 "qs_scan_scan_everiPay_failed_title" = "请扫描收款二维码进行付款";
 

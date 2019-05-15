@@ -344,7 +344,8 @@ typedef void(^QSEveriApiWebViewPrivateKeyBlock)(NSInteger statusCode, NSDictiona
 
 + (instancetype)sharedWebView;
 
-@property (nonatomic, copy) void(^initSuccessBlock)(void);
+/** web加载 sdk初始成功的回调 */
+@property (nonatomic, copy) void(^webAndEvtInitSuccessBlock)(void);
 
 @end
 

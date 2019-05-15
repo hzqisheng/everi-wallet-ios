@@ -34,6 +34,7 @@
 		337468B9228968A5003E7249 /* QSAddAddressPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 337468B8228968A5003E7249 /* QSAddAddressPopupView.m */; };
 		337468BE228973FA003E7249 /* QSCreateNFTAddGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 337468BD228973FA003E7249 /* QSCreateNFTAddGroupViewController.m */; };
 		337468CD228BA990003E7249 /* dist in Resources */ = {isa = PBXBuildFile; fileRef = 337468CC228BA990003E7249 /* dist */; };
+		337468D0228BE3A9003E7249 /* QSScanUnrecognizedResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 337468CF228BE3A9003E7249 /* QSScanUnrecognizedResultViewController.m */; };
 		7B0D182E21BCC19E00550756 /* QSWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D182D21BCC19E00550756 /* QSWebViewViewController.m */; };
 		7B0D183321BCC36300550756 /* QSEveriApiWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D183221BCC36300550756 /* QSEveriApiWebViewController.m */; };
 		7B0D183C21BCCB0D00550756 /* QSCreateEvt.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D183B21BCCB0D00550756 /* QSCreateEvt.m */; };
@@ -366,6 +367,8 @@
 		337468BC228973FA003E7249 /* QSCreateNFTAddGroupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSCreateNFTAddGroupViewController.h; sourceTree = "<group>"; };
 		337468BD228973FA003E7249 /* QSCreateNFTAddGroupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSCreateNFTAddGroupViewController.m; sourceTree = "<group>"; };
 		337468CC228BA990003E7249 /* dist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dist; sourceTree = "<group>"; };
+		337468CE228BE3A9003E7249 /* QSScanUnrecognizedResultViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSScanUnrecognizedResultViewController.h; sourceTree = "<group>"; };
+		337468CF228BE3A9003E7249 /* QSScanUnrecognizedResultViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSScanUnrecognizedResultViewController.m; sourceTree = "<group>"; };
 		7B0D182C21BCC19E00550756 /* QSWebViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSWebViewViewController.h; sourceTree = "<group>"; };
 		7B0D182D21BCC19E00550756 /* QSWebViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSWebViewViewController.m; sourceTree = "<group>"; };
 		7B0D183121BCC36300550756 /* QSEveriApiWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSEveriApiWebViewController.h; sourceTree = "<group>"; };
@@ -2916,6 +2919,8 @@
 				7BF40E9221B9FF0500047C3C /* QSScanningViewController.m */,
 				7BF40E8821B9FCB600047C3C /* QSScannerViewController.h */,
 				7BF40E8921B9FCB600047C3C /* QSScannerViewController.m */,
+				337468CE228BE3A9003E7249 /* QSScanUnrecognizedResultViewController.h */,
+				337468CF228BE3A9003E7249 /* QSScanUnrecognizedResultViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4085,6 +4090,7 @@
 				7BB5A2972224D306008BFC01 /* QSNodeSettingAddAlertView.m in Sources */,
 				7BD9C47621B69DA100A16A99 /* QSAddWalletViewController.m in Sources */,
 				337468B02289530A003E7249 /* QSCreateNFTThresholdItem.m in Sources */,
+				337468D0228BE3A9003E7249 /* QSScanUnrecognizedResultViewController.m in Sources */,
 				7BF40EAB21BA120400047C3C /* QSEveriPayCollectAmountViewController.m in Sources */,
 				7BF40EDA21BA44DA00047C3C /* QSBatchTransferViewController.m in Sources */,
 				D2EE883621C0E145000B15E3 /* QSIssueMoreSettingTopView.m in Sources */,

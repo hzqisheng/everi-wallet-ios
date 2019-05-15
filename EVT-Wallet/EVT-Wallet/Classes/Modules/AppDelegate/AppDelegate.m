@@ -28,11 +28,8 @@
     
     QSEveriApiWebViewController *web = [QSEveriApiWebViewController sharedWebView];
     [QSAppKeyWindow insertSubview:web.view atIndex:0];
-//    __weak __typeof(&*web) weakSelf = web;
-    if ([QSWalletHelper sharedHelper].currentNode) {
-        [[QSEveriApiWebViewController sharedWebView] changeNetworkByHost:[QSWalletHelper sharedHelper].currentNode.title port:[QSWalletHelper sharedHelper].currentNode.port protocol:[QSWalletHelper sharedHelper].currentNode.protocol andCompeleteBlock:^(NSInteger statusCode) {}];
-    }
-    web.initSuccessBlock = ^{
+    //    __weak __typeof(&*web) weakSelf = web;
+    web.webAndEvtInitSuccessBlock = ^{
         if ([QSWalletHelper sharedHelper].isLogin) {
             [[QSWalletHelper sharedHelper] turnToHomeViewController];
         } else {

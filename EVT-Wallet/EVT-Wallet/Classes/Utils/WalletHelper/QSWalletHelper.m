@@ -341,8 +341,13 @@ static NSString * const kCustemNodeKey = @"kCustemNodeKey";
         return;
     }
     
+    //1.切换节点
     [[QSEveriApiWebViewController sharedWebView] changeNetworkByHost:nodeItem.title port:nodeItem.port protocol:nodeItem.protocol andCompeleteBlock:^(NSInteger statusCode) {}];
+    
+    //2.记录节点
     [self cacheCurrentNode:nodeItem];
+    
+    //3.回到主页
     [[QSEveriApiWebViewController sharedWebView] evtInitAndCompeleteyBlock:^{
         [self turnToHomeViewController];
     }];
