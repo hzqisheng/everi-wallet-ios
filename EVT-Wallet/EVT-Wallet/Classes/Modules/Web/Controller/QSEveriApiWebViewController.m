@@ -43,9 +43,50 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
     WKUserContentController *userCC = [self.webView configuration].userContentController;
     [userCC addScriptMessageHandler:self name:@"log"];
     [self showConsole];
+    
     NSString *path = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html" inDirectory:@"dist"];
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:path]]];
+    NSURL *fileURL = [self getLocalWebFileURLPath:path];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:fileURL]];
 //    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.0.120:8080/h5/"]]];
+}
+
+- (NSURL *)getLocalWebFileURLPath:(NSString *)path {
+    NSURL *fileURL;
+    if(path) {
+        if ([[UIDevice currentDevice].systemVersion floatValue] > 8.0) {
+            // iOS8+. One year later things are OK.
+            fileURL = [NSURL fileURLWithPath:path];
+        } else {
+            // iOS8. Things can be workaround-ed
+            fileURL = [self fileURLForBuggyWKWebView8:[NSURL fileURLWithPath:path]];
+        }
+    }
+    return fileURL;
+}
+
+//iOS8之所以跟iOS9+系统加载方式不同，就差在这个路径。
+- (NSURL *)fileURLForBuggyWKWebView8:(NSURL *)fileURL {
+    
+    NSError *error = nil;
+    if (!fileURL.fileURL || ![fileURL checkResourceIsReachableAndReturnError:&error]) {
+        return nil;
+    }
+    
+    // Create "/temp/www" directory
+    NSFileManager *fileManager= [NSFileManager defaultManager];
+    NSURL *temDirURL = [[NSURL fileURLWithPath:NSTemporaryDirectory()] URLByAppendingPathComponent:@"www"];
+    [fileManager createDirectoryAtURL:temDirURL withIntermediateDirectories:YES attributes:nil error:&error];
+    
+    // 取到本地html后的锚点
+    NSString *lastPathComponent = [[fileURL.absoluteString componentsSeparatedByString:@"/"] lastObject];
+    NSURL *dstURL = [NSURL URLWithString:[temDirURL.absoluteString stringByAppendingString:lastPathComponent]];
+    
+    // Now copy given file to the temp directory
+    [fileManager removeItemAtURL:dstURL error:&error];
+    [fileManager copyItemAtURL:fileURL toURL:dstURL error:&error];
+    
+    // Files in "/temp/www" load flawlesly :)
+    return dstURL;
 }
 
 

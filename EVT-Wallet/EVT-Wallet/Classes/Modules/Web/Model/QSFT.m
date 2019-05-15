@@ -22,15 +22,26 @@
              };
 }
 
+- (NSString *)assetAmount {
+    if (!_assetAmount) {
+        //4745.30 S#655320035
+        NSArray *assetList = [self.asset componentsSeparatedByString:@" "];
+        if (assetList.count == 2) {
+            _assetAmount = assetList[0];
+        }
+    }
+    return _assetAmount;
+}
+
 - (NSString *)fungibleId {
-    if (self.asset.length) {
+    if (!_fungibleId) {
         //4745.30 S#655320035
         NSArray *assetList = [self.asset componentsSeparatedByString:@"#"];
         if (assetList.count == 2) {
-            return assetList[1];
+            _fungibleId = assetList[1];
         }
     }
-    return nil;
+    return _fungibleId;
 }
 
 - (NSString *)assetIcon {

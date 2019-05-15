@@ -108,17 +108,9 @@
         [self.ftImageView setImage:[UIImage imageNamed:@"icon_fukuan_evt"]];
     }
     
-    NSArray *assetList = [FTModel.asset componentsSeparatedByString:@" "];
-    if (assetList.count == 2) {
-        self.amountLabel.text = assetList[0];
-        NSMutableString *test = [NSMutableString stringWithString:assetList[1]];
-        if([test hasPrefix:@"S"]){
-            [test deleteCharactersInRange: [test rangeOfString:@"S"]];
-        }
-        self.nameLabel.text = [NSString stringWithFormat:@"%@(%@)",FTModel.sym_name,test];
-    } else {
-        self.nameLabel.text = FTModel.name;
-    }
+    self.amountLabel.text = FTModel.assetAmount;
+    
+    self.nameLabel.text = [NSString stringWithFormat:@"%@(#%@)",FTModel.sym_name,FTModel.fungibleId];
 }
 
 @end

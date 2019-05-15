@@ -46,6 +46,7 @@ static NSString *reuseIdentifier = @"QSHomeMyFTsCell";
         if (statusCode == kResponseSuccessCode) {
             [[QSWalletHelper sharedHelper] cacheHomeFTList:ftList];
             [self.dataArray removeAllObjects];
+            
             [self.dataArray addObjectsFromArray:ftList];
             [self.tableView reloadData];
         }

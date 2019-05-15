@@ -31,6 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *amount;
 @property (nonatomic, copy) NSString *assetNumber;
 
+#pragma mark - ***************** 数据处理后的字段 不用赋值
+@property (nonatomic, copy) NSString *assetAmount;
 @property (nonatomic, copy) NSString *fungibleId;
 @property (nonatomic, strong) UIImage *assetImage;
 
