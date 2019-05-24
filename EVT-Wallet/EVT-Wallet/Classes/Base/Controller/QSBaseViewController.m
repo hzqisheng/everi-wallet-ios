@@ -36,7 +36,7 @@
 //    bar.barTintColor = [UIColor colorNavigationBar];
     [bar setTitleTextAttributes:@{NSForegroundColorAttributeName :[UIColor whiteColor] ,NSFontAttributeName : [UIFont qs_fontOfSize18]}];
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[UIColor whiteColor]];
-    self.rt_navigationController.rt_disableInteractivePop = NO;
+    self.rt_disableInteractivePop = NO;
     
     DLog(@"%@",[self class]);
 }

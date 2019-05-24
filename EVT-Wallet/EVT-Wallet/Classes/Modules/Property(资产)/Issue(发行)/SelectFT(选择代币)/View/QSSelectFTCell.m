@@ -117,12 +117,8 @@
 - (void)setFtModel:(QSFT *)ftModel {
     _ftModel = ftModel;
     
-    if (ftModel.assetImage) {
-        self.leftImageView.image = ftModel.assetImage;
-    } else {
-        [self.leftImageView setImage:[UIImage imageNamed:@"icon_fukuan_evt"]];
-    }
-    
+    self.leftImageView.image = ftModel.assetImage;
+
     NSArray *totlyList = [ftModel.total_supply componentsSeparatedByString:@" "];
     if (totlyList.count == 2) {
         NSMutableString *test = [NSMutableString stringWithString:totlyList[1]];

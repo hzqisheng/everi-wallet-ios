@@ -58,6 +58,7 @@
         _leftImageView = [[UIImageView alloc] init];
         _leftImageView.layer.cornerRadius = kRealValue(13.5);
         _leftImageView.layer.masksToBounds = YES;
+        _leftImageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _leftImageView;
 }
@@ -79,23 +80,9 @@
 - (void)setFTModel:(QSFT *)FTModel {
     _FTModel = FTModel;
 
-    if (FTModel.assetImage) {
-        self.leftImageView.image = FTModel.assetImage;
-    } else {
-        [self.leftImageView setImage:[UIImage imageNamed:@"icon_fukuan_evt"]];
-    }
+    self.leftImageView.image = FTModel.assetImage;
     
-    
-    NSArray *totlyList = [FTModel.asset componentsSeparatedByString:@" "];
-    if (totlyList.count == 2) {
-        NSMutableString *test = [NSMutableString stringWithString:totlyList[1]];
-        if([test hasPrefix:@"S"]){
-            [test deleteCharactersInRange: [test rangeOfString:@"S"]];
-        }
-        self.leftTitleLabel.text = [NSString stringWithFormat:@"%@(%@)",FTModel.sym_name,test];
-    } else {
-        self.leftTitleLabel.text = FTModel.name;
-    }
+    self.leftTitleLabel.text = [NSString stringWithFormat:@"%@(#%@)",FTModel.sym_name,FTModel.fungibleId];
 }
 
 

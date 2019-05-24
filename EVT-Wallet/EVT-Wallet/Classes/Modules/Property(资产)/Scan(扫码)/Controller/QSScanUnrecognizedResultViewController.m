@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setupNavgationBarTitle:QSLocalizedString(@"qs_scan_unrecognized_nav_title")];
+    [self setupNavgationBarTitle:QSLocalizedString(@"qs_scan_unrecognized_result_nav_title")];
     
     [self p_setupSubViews];
 }

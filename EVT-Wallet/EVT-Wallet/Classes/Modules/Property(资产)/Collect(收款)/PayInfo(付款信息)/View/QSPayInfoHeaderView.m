@@ -59,7 +59,6 @@
 - (UIImageView *)avartarImageView {
     if (!_avartarImageView) {
         _avartarImageView = [[UIImageView alloc] init];
-        _avartarImageView.image = [UIImage imageNamed:@"icon_fukuan_evt"];
         _avartarImageView.contentMode = UIViewContentModeScaleAspectFill;
         _avartarImageView.layer.masksToBounds = YES;
         _avartarImageView.layer.cornerRadius = kRealValue(57)/2;
@@ -92,24 +91,10 @@
 - (void)setFTModel:(QSFT *)FTModel {
     _FTModel = FTModel;
     
-    if (FTModel.assetImage) {
-        self.avartarImageView.image = FTModel.assetImage;
-    } else {
-        [self.avartarImageView setImage:[UIImage imageNamed:@"icon_fukuan_evt"]];
-    }
+    self.avartarImageView.image = FTModel.assetImage;
     
-    
-    NSArray *totlyList = [FTModel.asset componentsSeparatedByString:@" "];
-    if (totlyList.count == 2) {
-        NSMutableString *test = [NSMutableString stringWithString:totlyList[1]];
-        if([test hasPrefix:@"S"]){
-            [test deleteCharactersInRange: [test rangeOfString:@"S"]];
-        }
-        self.currencyLabel.text = [NSString stringWithFormat:@"%@(%@)",FTModel.sym_name,test];
-    } else {
-        self.currencyLabel.text = FTModel.name;
-    }
-    
+    self.currencyLabel.text = [NSString stringWithFormat:@"%@(#%@)",FTModel.sym_name,FTModel.fungibleId];
+
     self.amountLabel.text = [NSString stringWithFormat:@"%@ %@",FTModel.amount,FTModel.sym_name];
 }
 

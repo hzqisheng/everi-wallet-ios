@@ -58,22 +58,9 @@
     QSPayAmountItem *payItem = (QSPayAmountItem *)item;
     QSFT *FTModel = payItem.FTModel;
     
-    if (FTModel.assetImage) {
-        self.leftImageView.image = FTModel.assetImage;
-    } else {
-        [self.leftImageView setImage:[UIImage imageNamed:@"icon_fukuan_evt"]];
-    }
+    self.leftImageView.image = FTModel.assetImage;
     
-    NSArray *totlyList = [FTModel.asset componentsSeparatedByString:@" "];
-    if (totlyList.count == 2) {
-        NSMutableString *test = [NSMutableString stringWithString:totlyList[1]];
-        if([test hasPrefix:@"S"]){
-            [test deleteCharactersInRange: [test rangeOfString:@"S"]];
-        }
-        self.walletNameLabel.text = [NSString stringWithFormat:@"%@(%@)",FTModel.sym_name,test];
-    } else {
-        self.walletNameLabel.text = FTModel.name;
-    }
+    self.walletNameLabel.text = [NSString stringWithFormat:@"%@(#%@)",FTModel.sym_name,FTModel.fungibleId];
 }
 
 #pragma mark - **************** Setter Getter

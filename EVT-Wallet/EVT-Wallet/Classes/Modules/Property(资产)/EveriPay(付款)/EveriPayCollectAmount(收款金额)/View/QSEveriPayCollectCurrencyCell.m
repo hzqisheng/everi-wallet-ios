@@ -54,17 +54,19 @@
 //    }];
 }
 
-- (void)configureCellWithItem:(QSBaseCellItem *)item {
+- (void)configureCellWithItem:(id<QSBaseCellItemDataProtocol>)item {
     self.item = item;
+    
     QSEveriPayCollectCurrencyItem *currentItem = (QSEveriPayCollectCurrencyItem *)item;
     QSFungibleSymbol *FTModel = currentItem.FTModel;
-    self.walletNameLabel.text = [NSString stringWithFormat:@"%@(#%@)",FTModel.sym_name,currentItem.currceny];
     
-    if (FTModel.assetImage) {
-        self.leftImageView.image = FTModel.assetImage;
+    if (FTModel.sym_name) {
+        self.walletNameLabel.text = [NSString stringWithFormat:@"%@(#%@)",FTModel.sym_name,currentItem.currceny];
     } else {
-        [self.leftImageView setImage:[UIImage imageNamed:@"icon_fukuan_evt"]];
+        self.walletNameLabel.text = @"";
     }
+    
+    self.leftImageView.image = FTModel.assetImage;
 }
 
 #pragma mark - **************** Setter Getter

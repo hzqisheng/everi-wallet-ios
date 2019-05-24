@@ -59,7 +59,6 @@
 - (UIImageView *)avartarImageView {
     if (!_avartarImageView) {
         _avartarImageView = [[UIImageView alloc] init];
-        _avartarImageView.image = [UIImage imageNamed:@"icon_fukuan_evt"];
         _avartarImageView.contentMode = UIViewContentModeScaleAspectFill;
         _avartarImageView.layer.cornerRadius = kRealValue(28.5);
         _avartarImageView.layer.masksToBounds = YES;
@@ -92,12 +91,7 @@
 - (void)setFTModel:(QSFT *)FTModel {
     _FTModel = FTModel;
     
-    if (FTModel.assetImage) {
-        self.avartarImageView.image = FTModel.assetImage;
-    } else {
-        [self.avartarImageView setImage:[UIImage imageNamed:@"icon_fukuan_evt"]];
-    }
-    
+    self.avartarImageView.image = FTModel.assetImage;
     
     NSArray *assetList = [FTModel.asset componentsSeparatedByString:@" "];
     if (assetList.count == 2) {

@@ -64,6 +64,7 @@
         _ftImageView = [[UIImageView alloc] init];
         _ftImageView.layer.cornerRadius = kRealValue(16.5);
         _ftImageView.layer.masksToBounds = YES;
+        _ftImageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _ftImageView;
 }
@@ -102,11 +103,7 @@
 - (void)setFTModel:(QSFT *)FTModel {
     _FTModel = FTModel;
     
-    if (FTModel.assetImage) {
-        self.ftImageView.image = FTModel.assetImage;
-    } else {
-        [self.ftImageView setImage:[UIImage imageNamed:@"icon_fukuan_evt"]];
-    }
+    self.ftImageView.image = FTModel.assetImage;
     
     self.amountLabel.text = FTModel.assetAmount;
     

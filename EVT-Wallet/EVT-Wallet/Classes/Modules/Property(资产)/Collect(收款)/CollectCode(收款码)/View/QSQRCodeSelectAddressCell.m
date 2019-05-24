@@ -53,27 +53,19 @@
     }];
 }
 
-- (void)configureCellWithItem:(QSBaseCellItem *)item {
+- (void)configureCellWithItem:(id<QSBaseCellItemDataProtocol>)item {
     self.item = item;
     
     QSQRCodeScanItem *FTItem = (QSQRCodeScanItem *)item;
     QSFT *FTModel = FTItem.FTModel;
-    if (FTModel.assetImage) {
-        self.leftImageView.image = FTModel.assetImage;
-    } else {
-        [self.leftImageView setImage:[UIImage imageNamed:@"icon_fukuan_evt"]];
-    }
     
-    
-    NSArray *totlyList = [FTModel.asset componentsSeparatedByString:@" "];
-    if (totlyList.count == 2) {
-        NSMutableString *test = [NSMutableString stringWithString:totlyList[1]];
-        if([test hasPrefix:@"S"]){
-            [test deleteCharactersInRange: [test rangeOfString:@"S"]];
-        }
-        self.walletNameLabel.text = [NSString stringWithFormat:@"%@(%@)",FTModel.sym_name,test];
+    self.leftImageView.image = FTModel.assetImage;
+
+    if (FTModel.sym_name
+        && FTModel.fungibleId) {
+        self.walletNameLabel.text = [NSString stringWithFormat:@"%@(#%@)",FTModel.sym_name,FTModel.fungibleId];
     } else {
-        self.walletNameLabel.text = FTModel.name;
+        self.walletNameLabel.text = @"";
     }
 }
 
@@ -84,6 +76,7 @@
         _leftImageView.image = [UIImage imageNamed:@"icon_erweima_evt"];
         _leftImageView.layer.cornerRadius = kRealValue(16.5);
         _leftImageView.layer.masksToBounds = YES;
+        _leftImageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _leftImageView;
 }

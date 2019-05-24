@@ -69,6 +69,9 @@
                 UIImage *decodedImage = [UIImage imageWithData: decodeData];
                 _assetImage = decodedImage;
             }
+        } else if ([self.sym_name isEqualToString:@"EVT"]
+                   ||[self.sym_name isEqualToString:@"PEVT"]) {
+            _assetImage = [UIImage imageNamed:@"icon_fukuan_evt"];
         }
     }
     return _assetImage;
