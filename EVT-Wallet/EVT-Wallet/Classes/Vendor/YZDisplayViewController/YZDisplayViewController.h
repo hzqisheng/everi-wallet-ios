@@ -35,6 +35,11 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) BOOL dragingFollow;
 
 /**
+    改变监听
+ */
+@property (nonatomic, copy) void(^contentViewDidScrollBlock)(CGPoint contentOffset);
+
+/**
     如果_isfullScreen = Yes，这个方法就不好使。
  
     设置整体内容的frame,包含（标题滚动视图和内容滚动视图）

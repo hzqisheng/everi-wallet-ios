@@ -55,6 +55,11 @@
     [self setUpContentViewFrame:^(UIView *contentView) {
         contentView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavgationBarHeight);
     }];
+    
+    self.contentViewDidScrollBlock = ^(CGPoint contentOffset) {
+        @strongify(self);
+        [self.view endEditing:YES];
+    };
 }
 
 - (UIBarButtonItem *)rt_customBackItemWithTarget:(id)target action:(SEL)action {

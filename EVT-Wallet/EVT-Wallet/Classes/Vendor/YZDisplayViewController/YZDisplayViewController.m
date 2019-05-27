@@ -1157,6 +1157,10 @@ static NSString * const ID = @"CONTENTCELL";
     
     // 记录上一次的偏移量
     _lastOffsetX = offsetX;
+    
+    if (self.contentViewDidScrollBlock) {
+        self.contentViewDidScrollBlock(scrollView.contentOffset);
+    }
 }
 
 #pragma mark - 颜色操作
