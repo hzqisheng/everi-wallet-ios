@@ -366,6 +366,7 @@
 "qs_export_mnemonic_code_item_tips_title"          = "Please backup your mnemonice Code and keep it in a safe place.";
 "qs_export_mnemonic_code_item_tips_detail_title"   = "The Mnemonic Code can restore your wallet. Be sure to keep it safe. You may lost your assets if you forget your mnemonic Code. This software will not store your Mnemonic Code and cannot retrieve your mnemonic Code.";
 "qs_export_mnemonic_code_btn_next_title"          = "Next";
+"qs_export_mnemonic_code_paste_success"           = "Copy Success";
 
 "qs_export_mnemonic_code_item_check_tips_title"        = "Check your Mnemonic Code";
 "qs_export_mnemonic_code_item_check_tips_detail_title" = "Please lick the words in order for checking your Mnenmonic Code";

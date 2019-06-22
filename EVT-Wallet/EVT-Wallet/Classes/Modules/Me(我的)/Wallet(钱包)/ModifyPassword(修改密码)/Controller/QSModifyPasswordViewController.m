@@ -69,6 +69,7 @@
          [weakSelf importNow];
      }];
     _tipsLabel.attributedText = attr;
+    [_tipsLabel sizeToFit];
     [self.view addSubview:_tipsLabel];
     
     //modify Button

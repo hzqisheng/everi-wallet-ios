@@ -319,7 +319,7 @@
 "qs_modify_pwd_item_current_pwd_placeholder"    = "当前密码";
 "qs_modify_pwd_item_new_pwd_placeholder"        = "新密码";
 "qs_modify_pwd_item_confirm_pwd_placeholder"    = "确认新密码";
-"qs_modify_pwd_item_tips_total_title"           = "忘记密码？导入助记词或私钥进行回复。立即导入";
+"qs_modify_pwd_item_tips_total_title"           = "忘记密码？导入助记词或私钥进行恢复。立即导入";
 "qs_modify_pwd_item_tips_highlight_title"       = "立即导入";
 "qs_modify_pwd_btn_confirm_title"               = "确认修改";
 
@@ -367,6 +367,7 @@
 "qs_export_mnemonic_code_item_tips_title"              = "请记下你的钱包助记词并保存到安全的地方。";
 "qs_export_mnemonic_code_item_tips_detail_title"       = "钱包助记词用于恢复钱包资产，拥有助记词即可完全控制钱包资产，请务必妥善保管，丢失助记词即丢失钱包资产。本软件无法提供找回功能。";
 "qs_export_mnemonic_code_btn_next_title"               = "下一步";
+"qs_export_mnemonic_code_paste_success"                = "已复制";
 
 "qs_export_mnemonic_code_item_check_tips_title"        = "验证你的钱包助记词";
 "qs_export_mnemonic_code_item_check_tips_detail_title" = "请根据你记下的助记词，按顺序点击，验证你备份的助记词正确无误。";

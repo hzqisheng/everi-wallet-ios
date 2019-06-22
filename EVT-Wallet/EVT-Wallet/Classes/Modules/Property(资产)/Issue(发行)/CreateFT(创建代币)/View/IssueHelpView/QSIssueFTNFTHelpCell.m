@@ -29,7 +29,7 @@
             make.width.and.height.equalTo(@kRealValue(8));
         }];
         
-        _titleLabel = [UILabel labelWithName:@"title" font:[UIFont qs_fontOfSize16] textColor:[UIColor qs_colorBlack333333] textAlignment:NSTextAlignmentLeft];
+        _titleLabel = [UILabel labelWithName:@"" font:[UIFont qs_fontOfSize16] textColor:[UIColor qs_colorBlack333333] textAlignment:NSTextAlignmentLeft];
         [self.contentView addSubview:_titleLabel];
         [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.contentView).offset(kRealValue(15));
@@ -37,9 +37,10 @@
             make.right.equalTo(self.contentView).offset(-kRealValue(15));
         }];
         
-        _contentLabel = [UILabel labelWithName:@"content" font:[UIFont qs_fontOfSize16] textColor:[UIColor qs_colorBlack333333] textAlignment:NSTextAlignmentLeft];
+        _contentLabel = [UILabel labelWithName:@"" font:[UIFont qs_fontOfSize16] textColor:[UIColor qs_colorBlack333333] textAlignment:NSTextAlignmentLeft];
         _contentLabel.numberOfLines = 0;
         [self.contentView addSubview:_contentLabel];
+        [_contentLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
         [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.titleLabel.mas_bottom).offset(kRealValue(10));
             make.left.equalTo(self.grayRoundView.mas_right).offset(kRealValue(9));

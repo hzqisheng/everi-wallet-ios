@@ -54,6 +54,8 @@
     [mnemonicCodeBackgroundView addSubview:mnemonicCodeLabel];
     [mnemonicCodeLabel sizeToFit];
     mnemonicCodeBackgroundView.height = mnemonicCodeLabel.height + kRealValue(30);
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mnemonicCodeTapped)];
+    [mnemonicCodeBackgroundView addGestureRecognizer:tap];
     
     UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:mnemonicCodeBackgroundView.bounds cornerRadius:8];
     mnemonicCodeBackgroundView.layer.shadowPath = path.CGPath;
@@ -67,9 +69,21 @@
 }
 
 #pragma mark - **************** Event Response
+- (void)mnemonicCodeTapped {
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    [pasteboard setString:QSNoNilString([QSWalletHelper sharedHelper].currentEvt.mnemoinc)];
+    [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_export_mnemonic_code_paste_success")];
+}
+
 - (void)nextButtonClicked {
+    
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    [pasteboard setString:QSNoNilString([QSWalletHelper sharedHelper].currentEvt.mnemoinc)];
+    [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_export_mnemonic_code_paste_success")];
+    
     if (self.isFirstCreate) {
         [[QSWalletHelper sharedHelper] turnToHomeViewController];
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_export_mnemonic_code_paste_success")];
     } else {
         [self.navigationController popToViewControllerWithLevel:2 animated:YES];
     }
