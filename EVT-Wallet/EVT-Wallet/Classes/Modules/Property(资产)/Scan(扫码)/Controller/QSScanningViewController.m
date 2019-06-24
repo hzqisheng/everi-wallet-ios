@@ -82,6 +82,8 @@
                 return;
             }
             
+            /*
+             v2.1.3 扫码收款和扫码付款不做扫码限制
             //扫码收款需要扫描付款码
             if (weakSelf.scanningType == QSScanningTypeCollect
                 && flag != 5) {
@@ -97,6 +99,7 @@
                 [weakSelf.scanVC startCodeReading];
                 return;
             }
+            */
             
             if (flag == 5) {
                 //everiPay的二维码
@@ -194,8 +197,7 @@
 }
 
 #pragma mark - **************** setter
-- (QSScannerViewController *)scanVC
-{
+- (QSScannerViewController *)scanVC {
     if (_scanVC == nil) {
         _scanVC = [[QSScannerViewController alloc] init];
         [_scanVC setDelegate:self];

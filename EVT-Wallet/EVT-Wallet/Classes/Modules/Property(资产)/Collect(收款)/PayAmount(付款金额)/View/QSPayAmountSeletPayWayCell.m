@@ -60,7 +60,7 @@
     
     self.leftImageView.image = FTModel.assetImage;
     
-    self.walletNameLabel.text = [NSString stringWithFormat:@"%@(#%@)",FTModel.sym_name,FTModel.fungibleId];
+    self.walletNameLabel.text = [NSString stringWithFormat:@"%@(#%@)",QSNoNilString(FTModel.sym_name), QSNoNilString(FTModel.fungibleId)];
 }
 
 #pragma mark - **************** Setter Getter
