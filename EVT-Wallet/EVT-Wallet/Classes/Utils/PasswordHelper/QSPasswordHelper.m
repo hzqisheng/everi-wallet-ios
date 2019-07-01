@@ -22,7 +22,7 @@
                     block();
                 }
             } else if (result == QSTouchIDAuthTypeInputPwd) {
-                [QSPrivatekeyAlertView showPrivatekeyAlertViewAndSubmitBlock:^{
+                [QSPrivatekeyAlertView showAlertViewByPrivateKey:privateKey andSubmitBlock:^{
                     if (block) {
                         block();
                     }
@@ -32,7 +32,7 @@
             }
         }];
     } else {
-        [QSPrivatekeyAlertView showPrivatekeyAlertViewAndSubmitBlock:^{
+        [QSPrivatekeyAlertView showAlertViewByPrivateKey:privateKey andSubmitBlock:^{
             if (block) {
                 block();
             }

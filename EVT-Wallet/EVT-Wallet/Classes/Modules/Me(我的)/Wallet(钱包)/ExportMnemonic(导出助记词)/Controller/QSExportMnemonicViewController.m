@@ -68,7 +68,8 @@
         step2.isFirstCreate = self.isFirstCreate;
         [self.navigationController pushViewController:step2 animated:YES];
     } else {
-        [QSPasswordHelper verificationPasswordByPrivateKey:QSPrivateKey andSuccessBlock:^{
+        QSCreateEvt *currentIdentityWallet = [[QSWalletHelper sharedHelper] getCurrentIdentityWallet];
+        [QSPasswordHelper verificationPasswordByPrivateKey:currentIdentityWallet.privateKey andSuccessBlock:^{
             QSExportMnemonicStep2ViewController *step2 = [[QSExportMnemonicStep2ViewController alloc] init];
             step2.isFirstCreate = self.isFirstCreate;
             [self.navigationController pushViewController:step2 animated:YES];

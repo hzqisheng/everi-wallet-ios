@@ -390,6 +390,7 @@
 "qs_wallet_detail_stop_fingerprint_cancel"      = "Cancel";
 "qs_wallet_detail_change_name_alert_title"      = "Wallet Name";
 "qs_wallet_detail_change_name_alert_placehoder" = "Please Input Wallet Name";
+"qs_wallet_detail_change_pwd_error_toast"       = "The original password and the new password cannot be the same";
 
 //TouchID
 "qs_wallet_touchid_nav_title"      = "Start Touch ID / Face ID unlock";

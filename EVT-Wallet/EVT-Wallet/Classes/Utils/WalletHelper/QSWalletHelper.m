@@ -61,6 +61,8 @@ static NSString * const kCustemNodeKey = @"kCustemNodeKey";
     _currentEvt = [self getCurrentWallet];
     DLog(@"currentEvt:%@",_currentEvt);
     
+    DLog(@"all evt:%@", [self getWalletArray]);
+    
     _currentNode = [self getCurrentNode];
     if (!_currentNode) {
         //默认上海
@@ -79,6 +81,7 @@ static NSString * const kCustemNodeKey = @"kCustemNodeKey";
     DLog(@"currentNode:%@",_currentNode);
 }
 
+/** 导入钱包 */
 - (void)loginWithEvt:(QSCreateEvt *)evt {
     _currentEvt = evt;
     
@@ -92,6 +95,7 @@ static NSString * const kCustemNodeKey = @"kCustemNodeKey";
     [self updateLocalWalletList:walletArray];
 }
 
+/** 新增钱包 */
 - (void)addWallet:(QSCreateEvt *)evt {
     NSMutableArray *walletArray = [self getWalletArray];
     for (QSCreateEvt *newEVT in walletArray) {
@@ -105,11 +109,13 @@ static NSString * const kCustemNodeKey = @"kCustemNodeKey";
     [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_content_isRecover_success")];
 }
 
+/** 切换钱包 */
 - (void)switchWallet:(QSCreateEvt *)evt andIndexPath:(NSIndexPath *)indexPath {
     [self updateCurrentWallet:evt];
     [self updateCurrentIndexPath:indexPath];
 }
 
+/** 更新当前选中的钱包的位置 */
 - (void)updateCurrentIndexPath:(NSIndexPath *)indexPath {
     if (!indexPath) {
         return;
@@ -119,18 +125,21 @@ static NSString * const kCustemNodeKey = @"kCustemNodeKey";
     [QSUserDefaults synchronize];
 }
 
+/** 获取当前选中的钱包的位置 */
 - (NSIndexPath *)getCurrentIndexPath {
     NSData *currentIndexData = [QSUserDefaults objectForKey:kCurrentIndexPath];
     NSIndexPath *currentIndexPath = [NSKeyedUnarchiver unarchiveObjectWithData:currentIndexData];
     return currentIndexPath;
 }
 
+/** 获取所有缓存的钱包 */
 - (NSMutableArray *)getWalletArray {
     NSData *walletData = [QSUserDefaults objectForKey:kWalletKey];
     NSArray *walletArray = [NSKeyedUnarchiver unarchiveObjectWithData:walletData];
     return [walletArray mutableCopy];
 }
 
+/** 更新某一个钱包 */
 - (void)updateWallet:(QSCreateEvt *)wallet {
     NSMutableArray *walletArray = [self getWalletArray];
     for (QSCreateEvt *createEVT in walletArray) {
@@ -147,6 +156,7 @@ static NSString * const kCustemNodeKey = @"kCustemNodeKey";
     }
 }
 
+/** 更新当前选中的钱包 */
 - (void)updateCurrentWallet:(QSCreateEvt *)wallet {
     NSData *currentData = [NSKeyedArchiver archivedDataWithRootObject:wallet];
     [QSUserDefaults setObject:currentData forKey:kCurrentWalletKey];
@@ -154,6 +164,7 @@ static NSString * const kCustemNodeKey = @"kCustemNodeKey";
     _currentEvt = wallet;
 }
 
+/** 获取当前选中的钱包 */
 - (QSCreateEvt *)getCurrentWallet {
     NSData *walletData = [QSUserDefaults objectForKey:kCurrentWalletKey];
     if (walletData) {
@@ -173,23 +184,31 @@ static NSString * const kCustemNodeKey = @"kCustemNodeKey";
     [QSUserDefaults synchronize];
 }
 
-- (void)changePassword:(NSString *)password {
-    QSCreateEvt *currentWallet = [self getCurrentWallet];
-    currentWallet.password = password;
-
-    NSMutableArray *walletArray = [self getWalletArray];
-    NSMutableArray *newArray = [NSMutableArray arrayWithArray:walletArray];
+- (BOOL)changePassword:(NSString *)password byPrivateKey:(NSString *)privateKey {
+    
+    NSArray *walletArray = [self getWalletArray];
     for (QSCreateEvt *newWallet in walletArray) {
-        if ([newWallet.privateKey isEqualToString:currentWallet.privateKey]) {
-            [newArray removeObject:newWallet];
-            [newArray addObject:currentWallet];
+        if ([newWallet.privateKey isEqualToString:privateKey]) {
+            if ([newWallet.password isEqualToString:password]) {
+                [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_wallet_detail_change_pwd_error_toast")];
+                return NO;
+            } else {
+                newWallet.password = password;
+            }
         }
     }
     
-    [self updateCurrentWallet:currentWallet];
-    [self updateLocalWalletList:newArray];
+    if ([privateKey isEqualToString:_currentEvt.privateKey]) {
+        QSCreateEvt *currentWallet = [self getCurrentWallet];
+        currentWallet.password = password;
+        [self updateCurrentWallet:currentWallet];
+    }
+    [self updateLocalWalletList:walletArray];
+    
+    return YES;
 }
 
+/** 更新某一个钱包的开启指纹的数据 */
 - (void)updateWalletOpenTouchID:(BOOL)isOpen
                    byPrivateKey:(NSString *)privateKey {
     QSCreateEvt *currentWallet = [self getCurrentWallet];
@@ -200,13 +219,29 @@ static NSString * const kCustemNodeKey = @"kCustemNodeKey";
     
     NSMutableArray *walletArray = [self getWalletArray];
     for (QSCreateEvt *newWallet in walletArray) {
-        if ([newWallet.privateKey isEqualToString:currentWallet.privateKey]) {
+        if ([newWallet.privateKey isEqualToString:privateKey]) {
             newWallet.isOpenFingerprint = isOpen;
         }
     }
+    
     [self updateLocalWalletList:walletArray];
 }
 
+/** 获取当前身份下的钱包 */
+- (QSCreateEvt *)getCurrentIdentityWallet {
+    NSArray *walletArray = [self getWalletArray];
+    
+    if (walletArray.count) {
+        QSCreateEvt *currentIdentityWallet = walletArray.firstObject;
+        if (currentIdentityWallet.mnemoinc) {
+            return currentIdentityWallet;
+        }
+    }
+    
+    return nil;
+}
+
+/** 获取某一个钱包 */
 - (QSCreateEvt *)getWalletByPrivateKey:(NSString *)privateKey {
     NSMutableArray *walletArray = [self getWalletArray];
     for (QSCreateEvt *evt in walletArray) {
@@ -217,11 +252,14 @@ static NSString * const kCustemNodeKey = @"kCustemNodeKey";
     return nil;
 }
 
+#pragma mark - **************** 首页钱包缓存
+/** 保存一个钱包的代币列表 */
 - (void)cacheHomeFTList:(NSArray *)ftList {
     [self cacheHomeFTList:ftList
        byWalletPrivateKey:self.currentEvt.privateKey];
 }
 
+/** 获取缓存的首页代币列表 */
 - (NSArray *)getHomeFTListByWallet {
     return [self getHomeFTListByWalletPrivateKey:self.currentEvt.privateKey];
 }

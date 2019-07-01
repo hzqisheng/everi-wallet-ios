@@ -16,6 +16,8 @@ typedef void(^OpenFinerprintSuccessBlock)(void);
 
 @property (nonatomic, copy) OpenFinerprintSuccessBlock openFinerprintSuccessBlock;
 
+@property (nonatomic, copy) NSString *walletPrivateKey;
+
 @end
 
 NS_ASSUME_NONNULL_END

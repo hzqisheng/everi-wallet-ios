@@ -9,6 +9,8 @@
 #import "QSWalletDetailViewController.h"
 #import "QSExportPrivateKeyViewController.h"
 #import "QSOpenFinerprintViewController.h"
+#import "QSModifyPasswordViewController.h"
+#import "QSImportWalletIndexViewController.h"
 
 #import "QSSettingCell.h"
 #import "QSSettingItem.h"
@@ -23,7 +25,9 @@ typedef NS_ENUM(NSUInteger, QSWalletDetailType) {
     QSWalletDetailTypeContent,
     QSWalletDetailTypeExport,
     QSWalletDetailTypeSigh,
-    QSWalletDetailTypeFingerprint
+    QSWalletDetailTypeFingerprint,
+    QSWalletDetailTypeChangePwd,
+    QSWalletDetailTypeRetrievePwd
 };
 
 @interface QSWalletDetailViewController ()
@@ -76,8 +80,30 @@ typedef NS_ENUM(NSUInteger, QSWalletDetailType) {
     signItem.cellType = QSSettingItemTypeAccessnory;
     signItem.cellSeapratorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     signItem.cellIdentifier = NSStringFromClass([QSSettingCell class]);
-    [self.dataArray addObject:@[exportItem]];
 
+    //是导入的钱包 拥有修改密码 和找回密码的功能
+    QSSettingItem *changePwdItem = [[QSSettingItem alloc] init];
+    changePwdItem.leftTitle = QSLocalizedString(@"qs_edit_wallet_item_modify_pwd_title");
+    changePwdItem.leftTitleFont = [UIFont qs_fontOfSize16];
+    changePwdItem.cellTag = QSWalletDetailTypeChangePwd;
+    changePwdItem.cellType = QSSettingItemTypeAccessnory;
+    changePwdItem.cellSeapratorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    changePwdItem.cellIdentifier = NSStringFromClass([QSSettingCell class]);
+    
+    QSSettingItem *retrievePwdItem = [[QSSettingItem alloc] init];
+    retrievePwdItem.leftTitle = QSLocalizedString(@"qs_edit_wallet_item_retrieve_pwd_title");
+    retrievePwdItem.leftTitleFont = [UIFont qs_fontOfSize16];
+    retrievePwdItem.cellTag = QSWalletDetailTypeRetrievePwd;
+    retrievePwdItem.cellType = QSSettingItemTypeAccessnory;
+    retrievePwdItem.cellSeapratorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    retrievePwdItem.cellIdentifier = NSStringFromClass([QSSettingCell class]);
+    
+    if (![self.evtModel.privateKey isEqualToString:[[QSWalletHelper sharedHelper] getCurrentIdentityWallet].privateKey]) {
+        [self.dataArray addObject:@[changePwdItem,retrievePwdItem,exportItem]];
+    } else {
+        [self.dataArray addObject:@[exportItem]];
+    }
+    
     if ([QSTouchIDHelper sharedHelper].isSupportAuthenticationWithBiometrics) {
         QSWallectFingerprintItem *fingerprintItem = [[QSWallectFingerprintItem alloc] init];
         fingerprintItem.cellTag = QSWalletDetailTypeFingerprint;
@@ -89,6 +115,7 @@ typedef NS_ENUM(NSUInteger, QSWalletDetailType) {
             if (isOn) {
                 DLog(@"开启指纹/面容");
                 QSOpenFinerprintViewController *openVC = [[QSOpenFinerprintViewController alloc] init];
+                openVC.walletPrivateKey = self.evtModel.privateKey;
                 openVC.openFinerprintSuccessBlock = ^{
                     [[QSWalletHelper sharedHelper] updateWalletOpenTouchID:YES byPrivateKey:self.evtModel.privateKey];
                     
@@ -140,14 +167,23 @@ typedef NS_ENUM(NSUInteger, QSWalletDetailType) {
         
     } else if (item.cellTag == QSWalletDetailTypeExport) {
         WeakSelf(weakSelf);
-        [QSPasswordHelper verificationPasswordByPrivateKey:QSPrivateKey
+        [QSPasswordHelper verificationPasswordByPrivateKey:self.evtModel.privateKey
                                            andSuccessBlock:^{
                                                QSExportPrivateKeyViewController *privateKeyVC = [[QSExportPrivateKeyViewController alloc] init];
                                                privateKeyVC.EVTModel = self.evtModel;
                                                [weakSelf.navigationController pushViewController:privateKeyVC animated:YES];
                                            }];
+        
     } else if (item.cellTag == QSWalletDetailTypeSigh) {
         [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_content_NO")];
+        
+    } else if (item.cellTag == QSWalletDetailTypeChangePwd) {
+        QSModifyPasswordViewController *modifyPwd = [[QSModifyPasswordViewController alloc] initWithWalletPrivateKey:self.evtModel.privateKey];
+        [self.navigationController pushViewController:modifyPwd animated:YES];
+        
+    } else if (item.cellTag == QSWalletDetailTypeRetrievePwd) {
+        QSImportWalletIndexViewController *importWallet = [[QSImportWalletIndexViewController alloc] initWithType:QSImportWalletTypeEVT];
+        [self.navigationController pushViewController:importWallet animated:YES];
     }
 }
 

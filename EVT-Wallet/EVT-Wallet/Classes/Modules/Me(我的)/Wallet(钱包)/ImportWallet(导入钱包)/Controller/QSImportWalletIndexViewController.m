@@ -26,6 +26,10 @@
     return self;
 }
 
+- (instancetype)init {
+    return [self initWithType:QSImportWalletTypeEVT];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

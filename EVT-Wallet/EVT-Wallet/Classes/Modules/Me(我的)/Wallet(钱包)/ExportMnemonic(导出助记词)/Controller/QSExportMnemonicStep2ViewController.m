@@ -47,8 +47,12 @@
     mnemonicCodeBackgroundView.layer.shadowOffset = CGSizeMake(0, 1);
     mnemonicCodeBackgroundView.layer.shadowColor = [UIColor qs_colorGray00267B].CGColor;
     mnemonicCodeBackgroundView.layer.shadowOpacity = 0.1f;
+    if (tipsLabel.height == 0) {
+        mnemonicCodeBackgroundView.height = 0;
+    }
     
-    UILabel *mnemonicCodeLabel = [UILabel labelWithName:[QSWalletHelper sharedHelper].currentEvt.mnemoinc font:[UIFont qs_fontOfSize14] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentLeft];
+    QSCreateEvt *currentIdentityWallet = [[QSWalletHelper sharedHelper] getCurrentIdentityWallet];
+    UILabel *mnemonicCodeLabel = [UILabel labelWithName:currentIdentityWallet.mnemoinc font:[UIFont qs_fontOfSize14] textColor:[UIColor qs_colorGray686868] textAlignment:NSTextAlignmentLeft];
     mnemonicCodeLabel.numberOfLines = 0;
     mnemonicCodeLabel.frame = CGRectMake(kRealValue(15), kRealValue(15), mnemonicCodeBackgroundView.width - kRealValue(30), kRealValue(45));
     [mnemonicCodeBackgroundView addSubview:mnemonicCodeLabel];

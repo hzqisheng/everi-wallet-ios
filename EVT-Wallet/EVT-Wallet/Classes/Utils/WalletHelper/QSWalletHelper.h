@@ -37,13 +37,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)updateWalletOpenTouchID:(BOOL)isOpen
                    byPrivateKey:(NSString *)privateKey;
 
+/** 获取当前身份下的钱包 */
+- (QSCreateEvt * _Nullable)getCurrentIdentityWallet;
+
 /** 获取某一个钱包 */
 - (QSCreateEvt *)getWalletByPrivateKey:(NSString *)privateKey;
 
 /** 更新某一个钱包的数据 */
 - (void)updateWallet:(QSCreateEvt *)wallet;
 
-/** 获取钱包列表 */
+/** 获取所有钱包列表 */
 - (NSMutableArray *)getWalletArray;
 
 /** 切换钱包 */
@@ -52,9 +55,10 @@ NS_ASSUME_NONNULL_BEGIN
 /** 获取当前选择IndexPath */
 - (NSIndexPath *)getCurrentIndexPath;
 
-/** 修改钱包密码 */
-- (void)changePassword:(NSString *)password;
+/** 修改某一个钱包密码 */
+- (BOOL)changePassword:(NSString *)password byPrivateKey:(NSString *)privateKey;
 
+#pragma mark - **************** 首页钱包缓存
 /** 保存一个钱包的代币列表 */
 - (void)cacheHomeFTList:(NSArray *)ftList;
 

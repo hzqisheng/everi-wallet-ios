@@ -96,7 +96,7 @@ typedef NS_ENUM(NSUInteger, QSEditWalletsType) {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     QSSettingItem *item = (QSSettingItem *)[self itemInIndexPath:indexPath];
     if (item.cellTag == QSEditWalletsTypeModifyPwd) {
-        QSModifyPasswordViewController *modify = [[QSModifyPasswordViewController alloc] init];
+        QSModifyPasswordViewController *modify = [[QSModifyPasswordViewController alloc] initWithWalletPrivateKey:[[QSWalletHelper sharedHelper] getCurrentIdentityWallet].privateKey];
         [self.navigationController pushViewController:modify animated:YES];
     } else if (item.cellTag == QSEditWalletsTypeRetrievePwd) {
         QSImportWalletByMnemonicCodeViewController *importWallet = [[QSImportWalletByMnemonicCodeViewController alloc] init];

@@ -63,7 +63,7 @@
 }
 
 - (void)openTouchID {
-    [QSPrivatekeyAlertView showPrivatekeyAlertViewAndSubmitBlock:^{
+    [QSPrivatekeyAlertView showAlertViewByPrivateKey:self.walletPrivateKey andSubmitBlock:^{
         if (self.openFinerprintSuccessBlock) {
             self.openFinerprintSuccessBlock();
         }

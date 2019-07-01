@@ -8,6 +8,7 @@
 
 #import "QSModifyPasswordViewController.h"
 #import "QSImportWalletByMnemonicCodeViewController.h"
+#import "QSImportWalletIndexViewController.h"
 
 @interface QSModifyPasswordViewController ()
 
@@ -18,9 +19,22 @@
 @property (nonatomic, strong) YYLabel *tipsLabel;
 @property (nonatomic, strong) UIButton *confirmButton;
 
+@property (nonatomic, copy) NSString *privateKey;
+
 @end
 
 @implementation QSModifyPasswordViewController
+
+- (instancetype)initWithWalletPrivateKey:(NSString *)privateKey {
+    if (self = [super init]) {
+        _privateKey = privateKey;
+    }
+    return self;
+}
+
+- (instancetype)init {
+    return [self initWithWalletPrivateKey:[[QSWalletHelper sharedHelper] getCurrentIdentityWallet].privateKey];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -82,7 +96,14 @@
 
 #pragma mark - **************** Event Response
 - (void)importNow {
-    QSImportWalletByMnemonicCodeViewController *importWallet = [[QSImportWalletByMnemonicCodeViewController alloc] init];
+    //当前身份下的钱包 立即导入只有私钥,导入的钱包 立即导入有助记词和私钥
+    if ([self.privateKey isEqualToString:[[QSWalletHelper sharedHelper] getCurrentIdentityWallet].privateKey]) {
+        QSImportWalletByMnemonicCodeViewController *importWallet = [[QSImportWalletByMnemonicCodeViewController alloc] init];
+        [self.navigationController pushViewController:importWallet animated:YES];
+        return;
+    }
+    
+    QSImportWalletIndexViewController *importWallet = [[QSImportWalletIndexViewController alloc] init];
     [self.navigationController pushViewController:importWallet animated:YES];
 }
 
@@ -95,11 +116,15 @@
         [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_switch_createIdentity_alert2")];
         return;
     }
-    if (![self.currentPwdTextfield.text isEqualToString:[QSWalletHelper sharedHelper].currentEvt.password]) {
+    
+    if (![self.currentPwdTextfield.text isEqualToString:[[QSWalletHelper sharedHelper] getWalletByPrivateKey:self.privateKey].password]) {
         [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_content_password")];
         return;
     }
-    [[QSWalletHelper sharedHelper] changePassword:self.freshPwdTextfield.text];
+    
+    if (![[QSWalletHelper sharedHelper] changePassword:self.freshPwdTextfield.text byPrivateKey:self.privateKey]) {
+        return;
+    }
     [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_content_password_change")];
     [self.navigationController popToViewControllerWithLevel:2 animated:YES];
 }

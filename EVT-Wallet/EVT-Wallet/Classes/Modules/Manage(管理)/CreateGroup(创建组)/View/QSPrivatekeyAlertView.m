@@ -16,13 +16,21 @@
 @property (nonatomic, strong) UIButton *submitButton;
 @property (nonatomic, strong) UIButton *cancelButton;
 
+@property (nonatomic, copy) NSString *privateKey;
+
 @end
 
 @implementation QSPrivatekeyAlertView
 
 + (void)showPrivatekeyAlertViewAndSubmitBlock:(void (^)(void))block {
+    [self showAlertViewByPrivateKey:[QSWalletHelper sharedHelper].currentEvt.privateKey andSubmitBlock:block];
+}
+
++ (void)showAlertViewByPrivateKey:(NSString *)privateKey
+                   andSubmitBlock:(void(^)(void))block {
     QSPrivatekeyAlertView *view = [[QSPrivatekeyAlertView alloc] initWithFrame:kScreenBounds];
     view.privatekeyAlertViewSubmitBlock = block;
+    view.privateKey = privateKey;
     [view showWithAnimation];
 }
 
@@ -98,10 +106,13 @@
 
 #pragma mark - **************** Private Methods
 - (void)submitButtonClicked {
-    if (![self.privateTextField.text isEqualToString:[QSWalletHelper sharedHelper].currentEvt.password]) {
+    QSCreateEvt *wallet = [[QSWalletHelper sharedHelper] getWalletByPrivateKey:self.privateKey];
+    
+    if (![self.privateTextField.text isEqualToString:wallet.password]) {
         [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_alert_content_password")];
         return;
     }
+    
     if (self.privatekeyAlertViewSubmitBlock) {
         self.privatekeyAlertViewSubmitBlock();
         [self dismissWithAnimation];
@@ -166,6 +177,7 @@
         _privateTextField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 0)];
         _privateTextField.leftViewMode = UITextFieldViewModeAlways;
         _privateTextField.secureTextEntry = YES;
+        _privateTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         [_privateTextField addTarget:self action:@selector(moveToTop) forControlEvents:UIControlEventEditingDidBegin];
         [_privateTextField addTarget:self action:@selector(moveToScreenCenter) forControlEvents:UIControlEventEditingDidEnd];
         [self.whiteView addSubview:_privateTextField];

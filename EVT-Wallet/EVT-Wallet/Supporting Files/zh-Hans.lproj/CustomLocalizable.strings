@@ -391,6 +391,7 @@
 "qs_wallet_detail_stop_fingerprint_cancel"      = "取消";
 "qs_wallet_detail_change_name_alert_title"      = "钱包名称";
 "qs_wallet_detail_change_name_alert_placehoder" = "请输入钱包名称";
+"qs_wallet_detail_change_pwd_error_toast"       = "原密码和新密码不能相同";
 
 //TouchID
 "qs_wallet_touchid_nav_title"      = "开通钱包指纹/人脸解锁";

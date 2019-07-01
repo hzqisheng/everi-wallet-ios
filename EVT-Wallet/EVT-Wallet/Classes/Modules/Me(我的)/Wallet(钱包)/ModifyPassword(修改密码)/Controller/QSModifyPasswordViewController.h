@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QSModifyPasswordViewController : QSBaseViewController
 
+- (instancetype)initWithWalletPrivateKey:(NSString *)privateKey;
+
 @end
 
 NS_ASSUME_NONNULL_END
