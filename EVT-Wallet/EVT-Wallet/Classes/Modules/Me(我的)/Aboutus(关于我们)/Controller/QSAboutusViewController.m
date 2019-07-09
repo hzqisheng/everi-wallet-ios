@@ -61,36 +61,7 @@ typedef NS_ENUM(NSUInteger, QSAboutusItemType) {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     id<QSBaseCellItemDataProtocol> item = [self itemInIndexPath:indexPath];
     if (item.cellTag == QSAboutusItemTypeCheckVersion) {
-        [[QSEveriApiWebViewController sharedWebView] getAPPVersionAndCompeleteBlock:^(NSInteger statusCode, NSString * _Nonnull version, BOOL isForceUpdate) {
-            if (statusCode != kResponseSuccessCode) {
-                return;
-            }
-            if ([version isEqualToString:kCurrentVersion]) {
-                [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_lastet_version_toast")];
-                return;
-            }
-            NSString *title;
-            NSString *confirmTitle;
-            NSString *cancelTitle;
-            if ([NSBundle isChineseLanguage]) {
-                title = [NSString stringWithFormat:@"系统检测到当前的最新版本为%@，是否下载更新",version];
-                confirmTitle = @"前往下载";
-                cancelTitle = @"取消";
-            } else {
-                title = [NSString stringWithFormat:@"The latest version is %@ and whether to download the update or not？",version];
-                confirmTitle = @"update";
-                cancelTitle = @"cancel";
-            }
-            if (isForceUpdate) {
-                [UIViewController showAlertViewWithTitle:title message:nil confirmTitle:confirmTitle confirmAction:^{
-                    QSOpenURL(kShareUrlString);
-                }];
-            } else {
-                [UIViewController showAlertViewWithTitle:title message:nil confirmTitle:confirmTitle cancelTitle:cancelTitle confirmAction:^{
-                    QSOpenURL(kShareUrlString);
-                } cancelAction:nil];
-            }
-        }];
+        [self checkVersionIsShowLatestToast:YES];
     }
 }
 

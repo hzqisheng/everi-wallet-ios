@@ -27,7 +27,7 @@
     }
     NSString *textToShare = kShareTitle;
     UIImage *imageToShare = [UIImage imageNamed:kShareLogo];
-    NSURL *urlToShare = [NSURL URLWithString:kShareUrlString];
+    NSURL *urlToShare = [NSURL URLWithString:urlString];
     NSArray *activityItems = @[urlToShare,textToShare,imageToShare];
     
     UIActivityViewController * activityVC = [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];

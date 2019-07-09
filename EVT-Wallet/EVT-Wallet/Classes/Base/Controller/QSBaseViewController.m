@@ -75,6 +75,52 @@
     return bottomButton;
 }
 
+- (void)checkVersionIsShowLatestToast:(BOOL)isShowToast {
+    [[QSEveriApiWebViewController sharedWebView] getAPPVersionAndCompeleteBlock:^(NSInteger statusCode, QSAppVersion * _Nonnull appVersion) {
+        if (statusCode != kResponseSuccessCode) {
+            return;
+        }
+        
+        if ([appVersion.iOSVersion isEqualToString:kCurrentVersion]) {
+            if (isShowToast) {
+                [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_lastet_version_toast")];
+            }
+            return;
+        }
+        
+        NSString *title;
+        NSString *confirmTitle;
+        NSString *cancelTitle;
+        if ([NSBundle isChineseLanguage]) {
+            title = appVersion.iOSChUploadMessage;
+            confirmTitle = @"前往下载";
+            cancelTitle = @"取消";
+            
+        } else {
+            title = appVersion.iOSEnUploadMessage;
+            confirmTitle = @"update";
+            cancelTitle = @"cancel";
+        }
+        
+        //强制更新
+        if (appVersion.isiOSForceUpdate) {
+            [UIViewController showAlertViewWithTitle:title message:nil confirmTitle:confirmTitle confirmAction:^{
+                if (appVersion.iOSUploadUrl) {
+                    QSOpenURL(appVersion.iOSUploadUrl);
+                }
+            }];
+            return;
+        }
+        
+        //非强制更新
+        [UIViewController showAlertViewWithTitle:title message:nil confirmTitle:confirmTitle cancelTitle:cancelTitle confirmAction:^{
+            if (appVersion.iOSUploadUrl) {
+                QSOpenURL(appVersion.iOSUploadUrl);
+            }
+        } cancelAction:^{}];
+    }];
+}
+
 - (void)dealloc {
     DLog(@"%@ dealloc",[self class]);
 }

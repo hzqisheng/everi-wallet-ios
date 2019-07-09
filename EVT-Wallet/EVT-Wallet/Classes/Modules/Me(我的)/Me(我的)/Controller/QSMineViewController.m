@@ -155,7 +155,13 @@ static NSString *reuseIdentifier = @"QSSettingCell";
         systemSettings.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:systemSettings animated:YES];
     } else if (item.cellTag == QSMineCellTagShare) {
-        [[QSShareHelper sharedHelper] shareURL:kShareUrlString];
+        [[QSEveriApiWebViewController sharedWebView] getAPPVersionAndCompeleteBlock:^(NSInteger statusCode, QSAppVersion * _Nonnull appVersion) {
+            if (statusCode == kResponseSuccessCode) {
+                if (appVersion.iOSUploadUrl) {
+                    [[QSShareHelper sharedHelper] shareURL:appVersion.iOSUploadUrl];
+                }
+            }
+        }];
     } else if (item.cellTag == QSMineCellTagAboutus) {
         QSAboutusViewController *aboutus = [[QSAboutusViewController alloc] init];
         aboutus.hidesBottomBarWhenPushed = YES;

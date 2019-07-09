@@ -15,6 +15,7 @@
 #import "QSTransferftModel.h"
 #import "QSEvtLinkStatus.h"
 #import "QSCollectImageModel.h"
+#import "QSAppVersion.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -267,7 +268,7 @@ typedef void(^QSEveriApiWebViewPrivateKeyBlock)(NSInteger statusCode, NSDictiona
 /**
  * @brief getAPPVersion
  */
-- (void)getAPPVersionAndCompeleteBlock:(void(^)(NSInteger statusCode, NSString *version, BOOL isForceUpdate))block;
+- (void)getAPPVersionAndCompeleteBlock:(void(^)(NSInteger statusCode, QSAppVersion *appVersion))block;
 
 /**
  * @brief randomValidSymbolId

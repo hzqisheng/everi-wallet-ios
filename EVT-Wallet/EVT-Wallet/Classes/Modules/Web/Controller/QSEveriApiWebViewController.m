@@ -787,18 +787,16 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
                     }];
 }
 
-- (void)getAPPVersionAndCompeleteBlock:(void (^)(NSInteger, NSString * _Nonnull, BOOL))block {
+- (void)getAPPVersionAndCompeleteBlock:(void (^)(NSInteger, QSAppVersion * _Nonnull))block {
     NSString *jsString = [NSString stringWithFormat:@"getAPPVersion()"];
     [self excuteRequestWithMethodName:@"getAPPVersion"
                              jsString:jsString
                     completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
-                        NSString *version;
-                        NSNumber *isForceUpdate;
+                        QSAppVersion *appVersion;
                         if (statusCode == kResponseSuccessCode) {
-                            version = responseDic[@"iOSVersion"];
-                            isForceUpdate = responseDic[@"isiOSForceUpdate"];
+                            appVersion = [QSAppVersion mj_objectWithKeyValues:responseDic];
                         }
-                        block(statusCode, version, isForceUpdate.boolValue);
+                        block(statusCode, appVersion);
                     }];
 }
 

@@ -10,7 +10,7 @@
 #define AppConfig_h
 
 //================ social address============//
-#define kShareUrlString  @"https://dibaqu.com/B3ma"
+//#define kShareUrlString  @"https://dibaqu.com/B3ma"
 #define kShareLogo       @"share_logo"
 #define kShareTitle      @"EveriWallet"
 

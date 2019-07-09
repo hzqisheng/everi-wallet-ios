@@ -20,4 +20,7 @@
 /** bottomButton */
 - (UIButton *)createBottomButtonWithTitle:(NSString *)title target:(id)target action:(SEL)action;
 
+/** 检查更新 */
+- (void)checkVersionIsShowLatestToast:(BOOL)isShowToast;
+
 @end
