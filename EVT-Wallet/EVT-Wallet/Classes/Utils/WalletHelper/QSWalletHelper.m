@@ -73,7 +73,7 @@ static NSString * const kCustemNodeKey = @"kCustemNodeKey";
          @"protocol": @"https"
          */
         _currentNode = [[QSNodeSettingItem alloc] init];
-        _currentNode.title = @"mainnet14.everitoken.io";
+        _currentNode.title = @"mainnet14.evtnd.com";
         _currentNode.protocol = @"https";
         _currentNode.port = @"443";
         _currentNode.detail = @"MainNet(SHANGHAI)(with history plugin)";
@@ -472,7 +472,7 @@ static NSString * const kCustemNodeKey = @"kCustemNodeKey";
                                          @"protocol": @"https"
                                          },
                                      @{
-                                         @"title"   : @"mainnet14.everitoken.io",
+                                         @"title"   : @"mainnet14.evtnd.com",
                                          @"detail"  : @"MainNet(SHANGHAI)(with history plugin)",
                                          @"port"    : @"443",
                                          @"protocol": @"https"

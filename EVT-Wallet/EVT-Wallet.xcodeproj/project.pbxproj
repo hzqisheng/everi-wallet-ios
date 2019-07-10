@@ -19,7 +19,7 @@
 		3304D85C22850FA600AE801F /* QSMetaDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3304D85B22850FA600AE801F /* QSMetaDataView.m */; };
 		3304D86122855F6100AE801F /* QSAddMetaDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3304D86022855F6100AE801F /* QSAddMetaDataViewController.m */; };
 		332C9AAB22CEF09D0018DCDA /* QSAppVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 332C9AAA22CEF09D0018DCDA /* QSAppVersion.m */; };
-		332C9AC322D48B1E0018DCDA /* dist in Resources */ = {isa = PBXBuildFile; fileRef = 332C9AC222D48B1E0018DCDA /* dist */; };
+		332C9AC822D5B1150018DCDA /* dist in Resources */ = {isa = PBXBuildFile; fileRef = 332C9AC722D5B1150018DCDA /* dist */; };
 		3374688A2289102D003E7249 /* QSMyPassDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 337468892289102D003E7249 /* QSMyPassDetailViewController.m */; };
 		3374688D228910A0003E7249 /* QSMyPassDetailNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3374688C228910A0003E7249 /* QSMyPassDetailNameCell.m */; };
 		33746890228910E2003E7249 /* QSMyPassDetailPermissionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3374688F228910E2003E7249 /* QSMyPassDetailPermissionCell.m */; };
@@ -339,7 +339,7 @@
 		3304D86022855F6100AE801F /* QSAddMetaDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSAddMetaDataViewController.m; sourceTree = "<group>"; };
 		332C9AA922CEF09D0018DCDA /* QSAppVersion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSAppVersion.h; sourceTree = "<group>"; };
 		332C9AAA22CEF09D0018DCDA /* QSAppVersion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSAppVersion.m; sourceTree = "<group>"; };
-		332C9AC222D48B1E0018DCDA /* dist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dist; sourceTree = "<group>"; };
+		332C9AC722D5B1150018DCDA /* dist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dist; sourceTree = "<group>"; };
 		337468882289102D003E7249 /* QSMyPassDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSMyPassDetailViewController.h; sourceTree = "<group>"; };
 		337468892289102D003E7249 /* QSMyPassDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSMyPassDetailViewController.m; sourceTree = "<group>"; };
 		3374688B228910A0003E7249 /* QSMyPassDetailNameCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSMyPassDetailNameCell.h; sourceTree = "<group>"; };
@@ -1160,7 +1160,7 @@
 		7B0D183E21BCCB8200550756 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				332C9AC222D48B1E0018DCDA /* dist */,
+				332C9AC722D5B1150018DCDA /* dist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -3784,7 +3784,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				332C9AC322D48B1E0018DCDA /* dist in Resources */,
+				332C9AC822D5B1150018DCDA /* dist in Resources */,
 				7B7A4C8621ACCEF400598E6F /* CustomLocalizable.strings in Resources */,
 				7BF36D5921A7972500B27146 /* Assets.xcassets in Resources */,
 				3304D7F82281634E00AE801F /* MYTreeTableView.bundle in Resources */,
