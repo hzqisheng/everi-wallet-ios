@@ -13,10 +13,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef void(^EveriPayClickedBlock)(QSMyNFTsCell *cell);
+typedef void(^MyNFTsCellClickDetailBlock)(QSMyNFTsCell *cell);
 
 @interface QSMyNFTsCell : QSBaseTableViewCell
 
 @property (nonatomic, copy) EveriPayClickedBlock everiPayClickedBlock;
+
+@property (nonatomic, copy) MyNFTsCellClickDetailBlock myNFTsCellClickDetailBlock;
 
 @property (nonatomic, strong) QSOwnedToken *ownedToken;
 

@@ -96,7 +96,7 @@
     assetItem.createFTItemTextBlock = ^(NSString * _Nonnull text) {
         weakSelf.assetNumber = text;
     };
-    assetItem.KeyboardType = UIKeyboardTypePhonePad;
+    assetItem.KeyboardType = UIKeyboardTypeNumberPad;
     _assetItem = assetItem;
     
     //发行总量
@@ -108,7 +108,7 @@
     circulationItem.createFTItemTextBlock = ^(NSString * _Nonnull text) {
         weakSelf.circulation = text;
     };
-    circulationItem.KeyboardType = UIKeyboardTypePhonePad;
+    circulationItem.KeyboardType = UIKeyboardTypeNumberPad;
     
     //精度
     QSCreateFTItem *precisionItem = [[QSCreateFTItem alloc] init];
@@ -119,7 +119,7 @@
     precisionItem.createFTItemTextBlock = ^(NSString * _Nonnull text) {
         weakSelf.precision = text;
     };
-    precisionItem.KeyboardType = UIKeyboardTypePhonePad;
+    precisionItem.KeyboardType = UIKeyboardTypeNumberPad;
     
     //图标
     QSCreateFTIconItem *iconItem = [[QSCreateFTIconItem alloc] init];

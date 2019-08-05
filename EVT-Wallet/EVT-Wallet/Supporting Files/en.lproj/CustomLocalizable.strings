@@ -56,6 +56,21 @@
 "qs_issue_ft_rule_alert_confrm_btn"    = "Confirm";
 "qs_issue_ft_rule_alert_remind_btn"    = "No longer reminder next time";
 
+//transferLog
+"qs_transfer_nft_log_nav_title"          = "Transfer Log";
+"qs_transfer_nft_log_transfer_btn_title" = "Transfer";
+"qs_transfer_nft_log_distory_btn_title"  = "Destroy";
+"qs_transfer_nft_log_no_log_title"       = "No Records Now";
+"qs_transfer_nft_log_transfer_time_title" = "Transfer Time:";
+"qs_transfer_nft_log_transfer_to_title"   = "Transfer To:";
+
+"qs_transfer_nft_nav_title"              = "Transfer";
+"qs_transfer_nft_address_placeholder"    = "Please input the address";
+"qs_transfer_nft_address_error_title"    = "Please input valid address";
+"qs_transfer_nft_address_exist_title"    = "Address already exist";
+"qs_transfer_nft_next_btn_title"         = "Next";
+
+
 //Pass
 "qs_pass_mypass_no_pass_title"                = "no Domains";
 "qs_pass_mypass_navi_title"                   = "My Domains";
@@ -203,6 +218,7 @@
 "qs_create_ft_select_local_icon_title"   = "Select a photo";
 "qs_create_ft_take_icon_title"           = "Take a photo";
 "qs_create_ft_take_icon_cancel_title"    = "Cancel";
+"qs_create_ft_max_number_toast_title"    = "Total Supply has exceeded the ceilin";
 
 //Scan
 "qs_scan_nav_title"                  = "QR code";

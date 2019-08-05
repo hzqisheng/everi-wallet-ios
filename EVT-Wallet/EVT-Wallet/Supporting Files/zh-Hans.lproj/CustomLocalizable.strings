@@ -57,6 +57,20 @@
 "qs_issue_ft_rule_alert_confrm_btn"    = "确定";
 "qs_issue_ft_rule_alert_remind_btn"    = "下次不再提醒";
 
+//transferLog
+"qs_transfer_nft_log_nav_title"           = "转移日志";
+"qs_transfer_nft_log_transfer_btn_title"  = "转移";
+"qs_transfer_nft_log_distory_btn_title"   = "销毁";
+"qs_transfer_nft_log_no_log_title"        = "暂无记录";
+"qs_transfer_nft_log_transfer_time_title" = "转移时间:";
+"qs_transfer_nft_log_transfer_to_title"   = "转移到:";
+
+
+"qs_transfer_nft_nav_title"              = "转移";
+"qs_transfer_nft_address_placeholder"    = "请输入地址";
+"qs_transfer_nft_address_error_title"    = "请输入有效的地址";
+"qs_transfer_nft_address_exist_title"    = "该地址已存在";
+"qs_transfer_nft_next_btn_title"         = "下一步";
 
 //Pass
 "qs_pass_mypass_no_pass_title"                   = "暂无域";
@@ -177,11 +191,11 @@
 "qs_select_ft_assetNumbers_placeholde" = "请输入资产编号";
 "qs_select_ft_circulation_title"       = "发行总量";
 "qs_select_ft_circulation_placeholde"  = "请输入发行总量";
-"qs_select_ft_precision_title"         = "精度";
+"qs_select_ft_precision_title"         = "精度(发行总量.精度位数最大为18位)";
 "qs_select_ft_precision_placeholde"    = "请输入精度";
 "qs_select_ft_money_title"             = "金额";
 "qs_select_ft_money_placeholde"        = "请输入付款金额";
-"qs_select_ft_icon_title"              = "图标(建议180*180)";
+"qs_select_ft_icon_title"              = "图标(建议180*180px)";
 "qs_select_ft_permissions_title"       = "权限";
 "qs_select_ft_permissions_content0"    = "只有我能发行，权限不可更改";
 "qs_select_ft_permissions_content1"    = "只有我能发行，后期我可修改权限";
@@ -204,6 +218,7 @@
 "qs_create_ft_select_local_icon_title"   = "选图";
 "qs_create_ft_take_icon_title"           = "拍照";
 "qs_create_ft_take_icon_cancel_title"    = "取消";
+"qs_create_ft_max_number_toast_title"    = "发行总量已超出上限";
 
 //Scan
 "qs_scan_nav_title"                  = "二维码";

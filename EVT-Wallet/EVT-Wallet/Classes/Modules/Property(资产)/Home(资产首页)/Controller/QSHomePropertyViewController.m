@@ -155,17 +155,25 @@ UIScrollViewDelegate>
         QSCollectCodeViewController *collect = [[QSCollectCodeViewController alloc] init];
         collect.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:collect animated:YES];
+        
     } else if (type == QSShortcutTypeEveriPay) {
+        if (!self.myFTsViewController.dataArray.count) {
+            [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_home_no_ft_titlte")];
+            return;
+        }
+        
         WeakSelf(weakSelf);
         [QSPasswordHelper verificationPasswordByPrivateKey:QSPrivateKey andSuccessBlock:^{
             QSEveriPayCodeViewController *everiPay = [[QSEveriPayCodeViewController alloc] init];
             everiPay.hidesBottomBarWhenPushed = YES;
             [weakSelf.navigationController pushViewController:everiPay animated:YES];
         }];
+        
     } else if (type == QSShortcutTypeScan) {
         QSScanningViewController *scan = [[QSScanningViewController alloc] init];
         scan.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:scan animated:YES];
+        
     } else if (type == QSShortcutTypeIssue) {
         [QSIssuePopupView showIssuePopupViewAndIssueClickedBlock:^(QSIssueType type) {
             if (type == QSIssueTypeFTS) {
@@ -178,6 +186,7 @@ UIScrollViewDelegate>
                 [self.navigationController pushViewController:myPassVC animated:YES];
             }
         }];
+        
     }
 }
 

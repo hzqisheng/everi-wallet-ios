@@ -939,6 +939,31 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
                     }];
 }
 
+- (void)getNFTTrasferLogsByDomain:(NSString *)domain name:(NSString *)name andCompeleteBlock:(nonnull void (^)(NSInteger, NSArray<QSNFTTransferLog *> * _Nonnull))block {
+    
+    NSDictionary *bodyDic = @{
+                              @"domain":QSNoNilString(domain),
+                              @"names" : @[@"transfer"],
+                              @"key"   :QSLocalizedString(name),
+                              @"skip"  : @(0),
+                              @"take"  : @(10),
+                              };
+    
+    NSString *jsString = [NSString stringWithFormat:@"getActions(%@)",bodyDic.mj_JSONString];
+    
+    [self excuteRequestWithMethodName:@"getActions"
+                             jsString:jsString
+                    completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
+                        NSArray *transferLogList;
+                        if (statusCode == kResponseSuccessCode) {
+                            [QSAppKeyWindow hideHud];
+                            transferLogList = [QSNFTTransferLog mj_objectArrayWithKeyValuesArray:responseDic[kResponseArrayKey]];
+                        }
+                        block(statusCode, transferLogList);
+                    }];
+    
+}
+
 
 #pragma mark - **************** Private Methods
 - (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString

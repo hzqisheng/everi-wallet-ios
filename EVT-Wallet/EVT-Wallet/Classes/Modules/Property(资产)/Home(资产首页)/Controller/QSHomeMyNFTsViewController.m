@@ -9,6 +9,7 @@
 #import "QSHomeMyNFTsViewController.h"
 #import "QSEveriPassDetailViewController.h"
 #import "QSEveriPassCodeViewController.h"
+#import "QSEveriPassTransferLogViewController.h"
 
 #import "QSMyNFTsCell.h"
 
@@ -67,6 +68,14 @@ static NSString *reuseIdentifier = @"QSHomeMyFTsCell";
         @strongify(self);
         [self everiPayClicked:cell];
     };
+    cell.myNFTsCellClickDetailBlock = ^(QSMyNFTsCell * _Nonnull cell) {
+        @strongify(self);
+        QSEveriPassDetailViewController *detail = [[QSEveriPassDetailViewController alloc] init];
+        detail.domain = cell.ownedToken.domain;
+        detail.name = cell.ownedToken.name;
+        detail.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:detail animated:YES];
+    };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -83,11 +92,11 @@ static NSString *reuseIdentifier = @"QSHomeMyFTsCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     QSOwnedToken *ownedToken = self.dataArray[indexPath.row];
     
-    QSEveriPassDetailViewController *detail = [[QSEveriPassDetailViewController alloc] init];
-    detail.domain = ownedToken.domain;
-    detail.name = ownedToken.name;
-    detail.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:detail animated:YES];
+    QSEveriPassTransferLogViewController *transferLog = [[QSEveriPassTransferLogViewController alloc] init];
+    transferLog.domain = ownedToken.domain;
+    transferLog.name = ownedToken.name;
+    transferLog.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:transferLog animated:YES];
 }
 
 #pragma mark - **************** Setter Getter

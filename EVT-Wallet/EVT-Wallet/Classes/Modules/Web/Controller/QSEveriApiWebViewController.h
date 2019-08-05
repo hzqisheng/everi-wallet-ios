@@ -16,6 +16,7 @@
 #import "QSEvtLinkStatus.h"
 #import "QSCollectImageModel.h"
 #import "QSAppVersion.h"
+#import "QSNFTTransferLog.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -336,6 +337,14 @@ typedef void(^QSEveriApiWebViewPrivateKeyBlock)(NSInteger statusCode, NSDictiona
                     domain:(NSString *)domain
                        key:(NSString *)key
          andCompeleteBlock:(void(^)(NSInteger statusCode))block;
+
+
+/**
+ * 获取NFT转移记录
+ */
+- (void)getNFTTrasferLogsByDomain:(NSString *)domain
+                             name:(NSString *)name
+                andCompeleteBlock:(void(^)(NSInteger statusCode, NSArray<QSNFTTransferLog *> *transferLogList))block;
 
 @end
 
