@@ -964,6 +964,26 @@ typedef void(^DataResponseBlock)(NSInteger statusCode, NSDictionary *responseDic
     
 }
 
+- (void)getEstimatedChargeForTransaction:(NSDictionary *)actions andCompeleteBlock:(nonnull void (^)(NSInteger, NSString * _Nonnull))block {
+    NSDictionary *availablePublicKeys = @{
+                                          @"availablePublicKeys":@[QSPublicKey]
+                                          };
+    
+    NSString *jsString = [NSString stringWithFormat:@"getEstimatedChargeForTransaction('transfer',%@,%@)",actions.mj_JSONString,availablePublicKeys.mj_JSONString];
+
+    [self excuteRequestWithMethodName:@"getEstimatedChargeForTransaction"
+                             jsString:jsString
+                    completionHandler:^(NSInteger statusCode, NSDictionary *responseDic) {
+                        NSString *chargeString;
+                        if (statusCode == kResponseSuccessCode && responseDic) {
+                            NSNumber *charge = responseDic[@"charge"];
+                            double money = [charge doubleValue];
+                             chargeString = [NSString stringWithFormat:@"%f",money * 0.00001];
+                        }
+                        
+                        block(statusCode, chargeString);
+                    }];
+}
 
 #pragma mark - **************** Private Methods
 - (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString

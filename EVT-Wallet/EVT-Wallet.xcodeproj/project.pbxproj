@@ -44,6 +44,9 @@
 		33D0D60422F8142000FA322F /* QSEveriPassTransferAddressInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D0D60322F8142000FA322F /* QSEveriPassTransferAddressInputCell.m */; };
 		33D0D60722F8144B00FA322F /* QSEveriPassTransferAddressInputItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D0D60622F8144B00FA322F /* QSEveriPassTransferAddressInputItem.m */; };
 		33D0D60A22F8145700FA322F /* QSEveriPassTransferAddressItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D0D60922F8145700FA322F /* QSEveriPassTransferAddressItem.m */; };
+		33D0D60D22F9062100FA322F /* QSEveriPassTransferConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D0D60C22F9062100FA322F /* QSEveriPassTransferConfirmViewController.m */; };
+		33D0D61022F908D400FA322F /* QSEveriPassTransferConfirmCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D0D60F22F908D400FA322F /* QSEveriPassTransferConfirmCell.m */; };
+		33D0D61322F90A7900FA322F /* QSEveriPassTransferConfirmItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 33D0D61222F90A7900FA322F /* QSEveriPassTransferConfirmItem.m */; };
 		7B0D182E21BCC19E00550756 /* QSWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D182D21BCC19E00550756 /* QSWebViewViewController.m */; };
 		7B0D183321BCC36300550756 /* QSEveriApiWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D183221BCC36300550756 /* QSEveriApiWebViewController.m */; };
 		7B0D183C21BCCB0D00550756 /* QSCreateEvt.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D183B21BCCB0D00550756 /* QSCreateEvt.m */; };
@@ -396,6 +399,12 @@
 		33D0D60622F8144B00FA322F /* QSEveriPassTransferAddressInputItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSEveriPassTransferAddressInputItem.m; sourceTree = "<group>"; };
 		33D0D60822F8145700FA322F /* QSEveriPassTransferAddressItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSEveriPassTransferAddressItem.h; sourceTree = "<group>"; };
 		33D0D60922F8145700FA322F /* QSEveriPassTransferAddressItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSEveriPassTransferAddressItem.m; sourceTree = "<group>"; };
+		33D0D60B22F9062100FA322F /* QSEveriPassTransferConfirmViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSEveriPassTransferConfirmViewController.h; sourceTree = "<group>"; };
+		33D0D60C22F9062100FA322F /* QSEveriPassTransferConfirmViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSEveriPassTransferConfirmViewController.m; sourceTree = "<group>"; };
+		33D0D60E22F908D400FA322F /* QSEveriPassTransferConfirmCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSEveriPassTransferConfirmCell.h; sourceTree = "<group>"; };
+		33D0D60F22F908D400FA322F /* QSEveriPassTransferConfirmCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSEveriPassTransferConfirmCell.m; sourceTree = "<group>"; };
+		33D0D61122F90A7900FA322F /* QSEveriPassTransferConfirmItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSEveriPassTransferConfirmItem.h; sourceTree = "<group>"; };
+		33D0D61222F90A7900FA322F /* QSEveriPassTransferConfirmItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSEveriPassTransferConfirmItem.m; sourceTree = "<group>"; };
 		7B0D182C21BCC19E00550756 /* QSWebViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSWebViewViewController.h; sourceTree = "<group>"; };
 		7B0D182D21BCC19E00550756 /* QSWebViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QSWebViewViewController.m; sourceTree = "<group>"; };
 		7B0D183121BCC36300550756 /* QSEveriApiWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QSEveriApiWebViewController.h; sourceTree = "<group>"; };
@@ -1121,6 +1130,8 @@
 				33886AB222F7DA2A0079C285 /* QSEveriPassTransferLogViewController.m */,
 				33886AB422F7DAD30079C285 /* QSEveriPassTransferAddressViewController.h */,
 				33886AB522F7DAD30079C285 /* QSEveriPassTransferAddressViewController.m */,
+				33D0D60B22F9062100FA322F /* QSEveriPassTransferConfirmViewController.h */,
+				33D0D60C22F9062100FA322F /* QSEveriPassTransferConfirmViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1138,6 +1149,10 @@
 				33D0D60622F8144B00FA322F /* QSEveriPassTransferAddressInputItem.m */,
 				33D0D60822F8145700FA322F /* QSEveriPassTransferAddressItem.h */,
 				33D0D60922F8145700FA322F /* QSEveriPassTransferAddressItem.m */,
+				33D0D60E22F908D400FA322F /* QSEveriPassTransferConfirmCell.h */,
+				33D0D60F22F908D400FA322F /* QSEveriPassTransferConfirmCell.m */,
+				33D0D61122F90A7900FA322F /* QSEveriPassTransferConfirmItem.h */,
+				33D0D61222F90A7900FA322F /* QSEveriPassTransferConfirmItem.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4019,6 +4034,7 @@
 				7BF36E1821A79E7B00B27146 /* NSData+Base64.m in Sources */,
 				7BB8DC3D21B75C6A00954E86 /* YZFlowLayout.m in Sources */,
 				D2EE883321C0E121000B15E3 /* QSIssueMoreSettingViewController.m in Sources */,
+				33D0D60D22F9062100FA322F /* QSEveriPassTransferConfirmViewController.m in Sources */,
 				7BB8DC4221B75DEA00954E86 /* QSImportWalletIndexViewController.m in Sources */,
 				7BF2F86021AE9983000AAD93 /* QSAddAddressCell.m in Sources */,
 				7BF36E1D21A79E7B00B27146 /* NSString+PinYin.m in Sources */,
@@ -4176,6 +4192,7 @@
 				7BF2F86321AE9A1D000AAD93 /* QSAddAddressCell+QSAddAddressType.m in Sources */,
 				7BF36E1F21A79E7B00B27146 /* NSString+Contains.m in Sources */,
 				7BB8DC7421B7702600954E86 /* QSQRCodeScanTipsCell.m in Sources */,
+				33D0D61022F908D400FA322F /* QSEveriPassTransferConfirmCell.m in Sources */,
 				7BF40EAC21BA120400047C3C /* QSEveriPayCollectCurrencyItem.m in Sources */,
 				7BF40ED421BA23D900047C3C /* QSTransactionRecordTitleCell.m in Sources */,
 				7BF40E6821B94F8400047C3C /* QSPayAmountItem.m in Sources */,
@@ -4212,6 +4229,7 @@
 				3304D85922850F8C00AE801F /* QSGroupDetailGroupNameView.m in Sources */,
 				7BF36D7321A79A3300B27146 /* QSMineViewController.m in Sources */,
 				7BF36D6D21A79A1700B27146 /* QSSwitchWalletViewController.m in Sources */,
+				33D0D61322F90A7900FA322F /* QSEveriPassTransferConfirmItem.m in Sources */,
 				7BF40ED121BA1D4000047C3C /* QSTransactionRecordCell.m in Sources */,
 				7BFAB9D02228D75200E3C327 /* QSInputAlertView.m in Sources */,
 				7BF2F86621AE9A34000AAD93 /* QSAddAddressCell+QSAddAddressScan.m in Sources */,

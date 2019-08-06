@@ -346,6 +346,13 @@ typedef void(^QSEveriApiWebViewPrivateKeyBlock)(NSInteger statusCode, NSDictiona
                              name:(NSString *)name
                 andCompeleteBlock:(void(^)(NSInteger statusCode, NSArray<QSNFTTransferLog *> *transferLogList))block;
 
+/**
+ * 获取NFT转移手续费
+ */
+- (void)getEstimatedChargeForTransaction:(NSDictionary *)actions
+                       andCompeleteBlock:(void(^)(NSInteger statusCode, NSString *chargeString))block;
+
+
 @end
 
 @interface QSEveriApiWebViewController : QSWebViewViewController<QSEveriApiProtocol>

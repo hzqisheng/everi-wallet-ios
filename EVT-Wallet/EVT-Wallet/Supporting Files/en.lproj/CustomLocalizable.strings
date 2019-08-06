@@ -70,6 +70,11 @@
 "qs_transfer_nft_address_exist_title"    = "Address already exist";
 "qs_transfer_nft_next_btn_title"         = "Next";
 
+"qs_transfer_nft_confirm_transfer_nav_title"   = "Confirm Transfer";
+"qs_transfer_nft_confirm_transfer_payer_title" = "Payer";
+"qs_transfer_nft_confirm_transfer_payee_title" = "Payee";
+"qs_transfer_nft_confirm_transfer_fee_title"   = "Fee";
+"qs_transfer_nft_confirm_transfer_btn_title"   = "Confirm Transfer";
 
 //Pass
 "qs_pass_mypass_no_pass_title"                = "no Domains";

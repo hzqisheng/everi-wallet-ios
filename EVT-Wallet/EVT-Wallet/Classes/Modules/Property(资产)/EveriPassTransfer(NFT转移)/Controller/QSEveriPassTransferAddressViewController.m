@@ -8,6 +8,7 @@
 
 #import "QSEveriPassTransferAddressViewController.h"
 #import "QSScanningViewController.h"
+#import "QSEveriPassTransferConfirmViewController.h"
 
 #import "QSEveriPassTransferAddressInputItem.h"
 #import "QSEveriPassTransferAddressItem.h"
@@ -137,22 +138,18 @@
                                 @"to"     : addressList.copy,
                                 @"memo"   : @""
                                 };
-    [QSAppKeyWindow showIndeterminateHudWithText:QSLocalizedString(@"qs_waiting_toast")];
-    [[QSEveriApiWebViewController sharedWebView] pushTransactionByActionName:@"transfer"
-                                                                     actions:actionDic
-                                                                      config:nil
-                                                                      domain:self.domain
-                                                                         key:self.name
-                                                           completionHandler:^(NSInteger statusCode, NSDictionary * _Nonnull responseDic)
-     {
-         if (statusCode == kResponseSuccessCode) {
-             [QSAppKeyWindow hideHud];
-             if (self.everiPassTransferAddressSuccessBlock) {
-                 self.everiPassTransferAddressSuccessBlock();
-             }
-             [self.navigationController popViewControllerAnimated:YES];
-         }
-     }];
+    
+    QSEveriPassTransferConfirmViewController *confirm = [[QSEveriPassTransferConfirmViewController alloc] init];
+    confirm.actions = actionDic;
+    @weakify(self);
+    confirm.everiPassTransferConfirmSuccessBlock = ^{
+        @strongify(self);
+        if (self.everiPassTransferAddressSuccessBlock) {
+            self.everiPassTransferAddressSuccessBlock();
+        }
+        [self.navigationController popToViewControllerWithClassName:@"QSEveriPassTransferLogViewController" animated:YES];
+    };
+    [self.navigationController pushViewController:confirm animated:YES];
 }
 
 #pragma mark - ***************** Setter Getter

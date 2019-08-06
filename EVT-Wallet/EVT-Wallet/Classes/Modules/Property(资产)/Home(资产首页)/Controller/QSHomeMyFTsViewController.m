@@ -28,7 +28,7 @@ static NSString *reuseIdentifier = @"QSHomeMyFTsCell";
     [self startRefreshing];
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad {  
     [super viewDidLoad];
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kHomeHeaderViewHeight + kRealValue(6))];
     headerView.backgroundColor = [UIColor qs_colorWhiteF5F7FB];

@@ -72,6 +72,13 @@
 "qs_transfer_nft_address_exist_title"    = "该地址已存在";
 "qs_transfer_nft_next_btn_title"         = "下一步";
 
+"qs_transfer_nft_confirm_transfer_nav_title"   = "确认转移";
+"qs_transfer_nft_confirm_transfer_payer_title" = "付款方";
+"qs_transfer_nft_confirm_transfer_payee_title" = "收款方";
+"qs_transfer_nft_confirm_transfer_fee_title"   = "转账手续费";
+"qs_transfer_nft_confirm_transfer_btn_title"   = "确认转移";
+
+
 //Pass
 "qs_pass_mypass_no_pass_title"                   = "暂无域";
 "qs_pass_mypass_navi_title"                      = "我的域";
