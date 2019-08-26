@@ -55,7 +55,7 @@
             [QSAppKeyWindow hideHud];
             QSEveriPassTransferConfirmItem *feeItem = [[QSEveriPassTransferConfirmItem alloc] init];
             feeItem.title = QSLocalizedString(@"qs_transfer_nft_confirm_transfer_fee_title");
-            feeItem.content = [NSString stringWithFormat:@"%@EVT/PEVT", chargeString];
+            feeItem.content = chargeString;
             feeItem.cellIdentifier = NSStringFromClass([QSEveriPassTransferConfirmCell class]);
             feeItem.cellHeight = 0;
             [self.dataArray addObject:feeItem];
