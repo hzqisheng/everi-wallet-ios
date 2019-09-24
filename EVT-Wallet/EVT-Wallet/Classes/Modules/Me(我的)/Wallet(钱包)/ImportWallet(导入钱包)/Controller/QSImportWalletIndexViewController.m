@@ -64,6 +64,7 @@
         @strongify(self);
         [self.view endEditing:YES];
     };
+    
 }
 
 - (UIBarButtonItem *)rt_customBackItemWithTarget:(id)target action:(SEL)action {

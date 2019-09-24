@@ -25,6 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self p_setupSubViews];
+    [self registerForKeyboardNotifications];
+
 }
 
 - (void)p_setupSubViews {
@@ -38,16 +40,27 @@
     _privateKeyTextView = [self createTextView];
     _privateKeyTextView.frame = CGRectMake(kRealValue(15), kRealValue(15), inputCornerView.width - kRealValue(30), kRealValue(54));
     _privateKeyTextView.placeholderText = QSLocalizedString(@"qs_import_wallet_private_key_placeholder");
+    //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
+    NSMutableAttributedString *prevateTFplaceholderString = [[NSMutableAttributedString alloc]  initWithString:QSLocalizedString(@"qs_import_wallet_private_key_placeholder") attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize14]}];
+    _privateKeyTextView.placeholderAttributedText = prevateTFplaceholderString;
     [_inputCornerView addSubview:_privateKeyTextView];
     
     _freshPwdTextfield = [self createInputTextField];
     _freshPwdTextfield.frame = CGRectMake(_privateKeyTextView.x, _privateKeyTextView.maxY + kRealValue(15), _privateKeyTextView.width, kRealValue(33));
     _freshPwdTextfield.placeholder = QSLocalizedString(@"qs_import_wallet_password_placeholder");
+    //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
+       NSMutableAttributedString *freshTFplaceholderString = [[NSMutableAttributedString alloc]  initWithString:QSLocalizedString(@"qs_import_wallet_password_placeholder") attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize14]}];
+       _freshPwdTextfield.attributedPlaceholder = freshTFplaceholderString;
+    
     [_inputCornerView addSubview:_freshPwdTextfield];
     
     _comfirmPwdTextfield = [self createInputTextField];
     _comfirmPwdTextfield.frame = CGRectMake(_privateKeyTextView.x, _freshPwdTextfield.maxY + kRealValue(15), _privateKeyTextView.width, _freshPwdTextfield.height);
     _comfirmPwdTextfield.placeholder = QSLocalizedString(@"qs_import_wallet_confirm_password_placeholder");
+    
+    //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
+    NSMutableAttributedString *comfirmTFplaceholderString = [[NSMutableAttributedString alloc]  initWithString:QSLocalizedString(@"qs_import_wallet_confirm_password_placeholder") attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize14]}];
+    _comfirmPwdTextfield.attributedPlaceholder = comfirmTFplaceholderString;
     [_inputCornerView addSubview:_comfirmPwdTextfield];
     
     //mentionBackgroundImageView
@@ -122,16 +135,56 @@
     [self.comfirmPwdTextfield resignFirstResponder];
 }
 
+#pragma mark - 防止键盘弹出视图大部分偏移
+- (void)registerForKeyboardNotifications{
+    //使用NSNotificationCenter 键盘出现时
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardDidShowNotification object:nil];
+      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+/* 键盘启用 */
+- (void)keyboardWillShow:(NSNotification *)notify
+{
+    //获取键盘弹出前的Rect
+     NSValue*keyBoardBeginBounds=[[notify userInfo]objectForKey:UIKeyboardFrameBeginUserInfoKey];
+    CGRect beginRect=[keyBoardBeginBounds CGRectValue];
+    
+    //获取键盘弹出后的Rect
+    NSValue*keyBoardEndBounds=[[notify userInfo]objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect  endRect=[keyBoardEndBounds CGRectValue];
+    
+    //获取键盘位置变化前后纵坐标Y的变化值
+    CGFloat deltaY=endRect.origin.y-beginRect.origin.y;
+    if (_freshPwdTextfield.isFirstResponder) {
+        [UIView animateWithDuration:0.0001f animations:^{
+            self.view.frame = CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.height);
+        }];
+    }else if (_comfirmPwdTextfield.isFirstResponder) {
+        [UIView animateWithDuration:0.0001f animations:^{
+            self.view.frame = CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height);
+        }];
+    }else{
+    [UIView animateWithDuration:0.0001f animations:^{
+        self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    }];
+    }
+}
+
+/* 键盘消失 */
+- (void)keyboardWillHide:(NSNotification *)notify {    
+    //视图下沉恢复原状
+    [UIView animateWithDuration:0.00000000001 animations:^{
+        self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    }];
+    [_comfirmPwdTextfield resignFirstResponder];
+    [_freshPwdTextfield resignFirstResponder];
+}
+
 #pragma mark - **************** Private Methods
 - (UITextField *)createInputTextField {
     UITextField *textField = [[UITextField alloc] init];
 //    [textField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
 //    [textField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
-    
-    //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
-    NSMutableAttributedString *placeholderString = [[NSMutableAttributedString alloc]  initWithString:@"" attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize14]}];
-    textField.attributedPlaceholder = placeholderString;
-
     textField.textColor = [UIColor qs_colorBlack313745];
     textField.font = [UIFont qs_fontOfSize14];
     textField.layer.borderWidth = BORDER_WIDTH_1PX;
@@ -154,5 +207,9 @@
     textView.contentInset = UIEdgeInsetsMake(5, 10, 5, -10);
     return textView;
 }
+
+//-(void)viewWillDisappear:(BOOL)animated {
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//}
 
 @end

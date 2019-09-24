@@ -43,6 +43,10 @@
         make.top.equalTo(self.tipsLabel.mas_bottom).offset(kRealValue(14));
         make.height.equalTo(@kRealValue(180));
     }];
+    //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
+       NSMutableAttributedString *keyStoreTFplaceholderString = [[NSMutableAttributedString alloc]  initWithString:QSLocalizedString(@"qs_import_wallet_key_store_content_placeholder") attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize14]}];
+       self.keyStoreTextView.placeholderAttributedText = keyStoreTFplaceholderString;
+    
     
     //textfield
     self.passwordTextfield = [self createInputTextField];
@@ -53,6 +57,9 @@
         make.top.equalTo(self.keyStoreTextView.mas_bottom).offset(kRealValue(10));
         make.height.equalTo(@kRealValue(45));
     }];
+    //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
+    NSMutableAttributedString *passwordTFplaceholderString = [[NSMutableAttributedString alloc]  initWithString:QSLocalizedString(@"qs_import_wallet_key_store_pwd_placeholder") attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize14]}];
+    self.passwordTextfield.attributedPlaceholder = passwordTFplaceholderString;
     
     //comfirmButton
     _confirmButton = [UIButton buttonWithTitle:QSLocalizedString(@"qs_import_wallet_btn_confirm_title") titleColor:[UIColor qs_colorYellowE4B84F] font:[UIFont qs_fontOfSize14] taget:self action:@selector(comfirmButtonClicked)];
@@ -64,6 +71,7 @@
         make.top.equalTo(self.passwordTextfield.mas_bottom).offset(kRealValue(30));
         make.height.equalTo(@kRealValue(40));
     }];
+
 }
 
 #pragma mark - **************** Private Methods
@@ -71,9 +79,6 @@
     UITextField *textField = [[UITextField alloc] init];
 //    [textField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
 //    [textField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
-    //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
-    NSMutableAttributedString *placeholderString = [[NSMutableAttributedString alloc]  initWithString:@"" attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize14]}];
-    textField.attributedPlaceholder = placeholderString;
 
     textField.textColor = [UIColor qs_colorBlack313745];
     textField.font = [UIFont qs_fontOfSize14];
