@@ -94,8 +94,13 @@
     if (!_textField) {
         _textField = [[UITextField alloc] init];
         _textField.placeholder = @"Please input";
-        [_textField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
-        [_textField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+//        [_textField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
+//        [_textField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+        
+        //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
+        NSMutableAttributedString *placeholderString = [[NSMutableAttributedString alloc]  initWithString:@"Please input" attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize14]}];
+        _textField.attributedPlaceholder = placeholderString;
+        
         _textField.textColor = [UIColor qs_colorBlack313745];
         _textField.font = [UIFont qs_fontOfSize14];
         @weakify(self);

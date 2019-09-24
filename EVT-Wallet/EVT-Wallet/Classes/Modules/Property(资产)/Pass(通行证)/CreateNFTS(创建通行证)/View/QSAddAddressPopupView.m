@@ -74,9 +74,14 @@
     self.publicKeyTextField = [[UITextField alloc] initWithFrame:CGRectMake(kRealValue(10), 0, self.publicKeyView.width - self.scanButton.width - kRealValue(20), self.publicKeyView.height)];
     self.publicKeyTextField.textColor = [UIColor qs_colorBlack313745];
     self.publicKeyTextField.font = [UIFont qs_fontOfSize14];
-    [self.publicKeyTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
-    [self.publicKeyTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+//    [self.publicKeyTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
+//    [self.publicKeyTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
     self.publicKeyTextField.placeholder = QSLocalizedString(@"qs_pass_createNFTS_add_public_key_placeholer");
+    
+    //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
+    NSMutableAttributedString *placeholderString = [[NSMutableAttributedString alloc]  initWithString:QSLocalizedString(@"qs_pass_createNFTS_add_public_key_placeholer") attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize14]}];
+    self.publicKeyTextField.attributedPlaceholder = placeholderString;
+    
     self.publicKeyTextField.textAlignment = NSTextAlignmentLeft;
     self.publicKeyTextField.keyboardType = UIKeyboardTypeAlphabet;
     [self.publicKeyView addSubview:self.publicKeyTextField];
@@ -90,9 +95,14 @@
     self.weightTextField = [[UITextField alloc] initWithFrame:CGRectMake(kRealValue(10), 0, self.publicKeyView.width - kRealValue(20), self.weightView.height)];
     self.weightTextField.textColor = [UIColor qs_colorBlack313745];
     self.weightTextField.font = [UIFont qs_fontOfSize14];
-    [self.weightTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
-    [self.weightTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+//    [self.weightTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
+//    [self.weightTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
     self.weightTextField.placeholder = QSLocalizedString(@"qs_pass_createNFTS_add_weight_placeholer");
+    
+    //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
+    NSMutableAttributedString *weightPlaceholderString = [[NSMutableAttributedString alloc]  initWithString:QSLocalizedString(@"qs_pass_createNFTS_add_weight_placeholer") attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize14]}];
+    self.weightTextField.attributedPlaceholder = weightPlaceholderString;
+    
     self.weightTextField.textAlignment = NSTextAlignmentLeft;
     self.weightTextField.keyboardType = UIKeyboardTypeNumberPad;
     [self.weightView addSubview:self.weightTextField];

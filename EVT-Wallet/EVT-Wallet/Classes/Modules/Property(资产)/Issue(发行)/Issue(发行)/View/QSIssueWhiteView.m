@@ -114,8 +114,12 @@
         _circulationGrayTextField.placeholder = QSLocalizedString(@"qs_issue_issue_circulation_placeholder");
         _circulationGrayTextField.textColor = [UIColor qs_colorBlack333333];
         _circulationGrayTextField.font = [UIFont qs_fontOfSize15];
-        [_circulationGrayTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
-        [_circulationGrayTextField setValue:[UIFont qs_fontOfSize15] forKeyPath:@"_placeholderLabel.font"];
+//        [_circulationGrayTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
+//        [_circulationGrayTextField setValue:[UIFont qs_fontOfSize15] forKeyPath:@"_placeholderLabel.font"];
+        
+        //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
+        NSMutableAttributedString *placeholderString = [[NSMutableAttributedString alloc]  initWithString:QSLocalizedString(@"qs_issue_issue_circulation_placeholder") attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize15]}];
+        _circulationGrayTextField.attributedPlaceholder = placeholderString;
         [self addSubview:_circulationGrayTextField];
     }
     return _circulationGrayTextField;
@@ -148,8 +152,13 @@
         _addressTextField.placeholder = QSLocalizedString(@"qs_add_address_item_address_placeholder");
         _addressTextField.textColor = [UIColor qs_colorGray686868];
         _addressTextField.font = [UIFont qs_fontOfSize13];
-        [_addressTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
-        [_addressTextField setValue:[UIFont qs_fontOfSize13] forKeyPath:@"_placeholderLabel.font"];
+//        [_addressTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
+//        [_addressTextField setValue:[UIFont qs_fontOfSize13] forKeyPath:@"_placeholderLabel.font"];
+        
+        //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
+        NSMutableAttributedString *placeholderString = [[NSMutableAttributedString alloc]  initWithString:QSLocalizedString(@"qs_add_address_item_address_placeholder") attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize13]}];
+        _addressTextField.attributedPlaceholder = placeholderString;
+        
         [self addSubview:_addressTextField];
     }
     return _addressTextField;
@@ -203,8 +212,12 @@
         _remarkTextField.placeholder = QSLocalizedString(@"qs_issue_issue_remarks_placeholder");
         _remarkTextField.textColor = [UIColor qs_colorBlack333333];
         _remarkTextField.font = [UIFont qs_fontOfSize15];
-        [_remarkTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
-        [_remarkTextField setValue:[UIFont qs_fontOfSize15] forKeyPath:@"_placeholderLabel.font"];
+//        [_remarkTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
+//        [_remarkTextField setValue:[UIFont qs_fontOfSize15] forKeyPath:@"_placeholderLabel.font"];
+        
+        //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
+        NSMutableAttributedString *placeholderString = [[NSMutableAttributedString alloc]  initWithString:QSLocalizedString(@"qs_issue_issue_remarks_placeholder") attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize15]}];
+        _remarkTextField.attributedPlaceholder = placeholderString;
         [self addSubview:_remarkTextField];
     }
     return _remarkTextField;

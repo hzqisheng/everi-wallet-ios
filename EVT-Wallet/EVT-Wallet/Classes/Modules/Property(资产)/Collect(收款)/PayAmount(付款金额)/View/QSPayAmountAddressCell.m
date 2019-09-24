@@ -106,8 +106,13 @@
         _addressSelectLabel.placeholder = QSLocalizedString(@"qs_pay_amount_item_address_placeholder");
         _addressSelectLabel.textColor = [UIColor qs_colorBlack333333];
         _addressSelectLabel.font = [UIFont qs_fontOfSize14];
-        [_addressSelectLabel setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
-        [_addressSelectLabel setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+//        [_addressSelectLabel setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
+//        [_addressSelectLabel setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+        
+        //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
+        NSMutableAttributedString *placeholderString = [[NSMutableAttributedString alloc]  initWithString:QSLocalizedString(@"qs_pay_amount_item_address_placeholder") attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize14]}];
+        _addressSelectLabel.attributedPlaceholder = placeholderString;
+        
         _addressSelectLabel.keyboardType = UIKeyboardTypeAlphabet;
         _addressSelectLabel.clearButtonMode = UITextFieldViewModeWhileEditing;
         [_addressSelectLabel addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];

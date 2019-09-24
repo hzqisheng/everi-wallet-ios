@@ -120,8 +120,13 @@
         _keyTextField.placeholder = QSLocalizedString(@"qs_add_group_metadata_input_title");
         _keyTextField.textColor = [UIColor qs_colorBlack333333];
         _keyTextField.font = [UIFont qs_fontOfSize14];
-        [_keyTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
-        [_keyTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+//        [_keyTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
+//        [_keyTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+        
+        //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
+        NSMutableAttributedString *placeholderString = [[NSMutableAttributedString alloc]  initWithString:QSLocalizedString(@"qs_add_group_metadata_input_title") attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize14]}];
+        _keyTextField.attributedPlaceholder = placeholderString;
+        
         _keyTextField.keyboardType = UIKeyboardTypeAlphabet;
         _keyTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     }
@@ -152,8 +157,11 @@
         _valueTextField.placeholder = QSLocalizedString(@"qs_add_group_metadata_input_title");
         _valueTextField.textColor = [UIColor qs_colorBlack333333];
         _valueTextField.font = [UIFont qs_fontOfSize14];
-        [_valueTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
-        [_valueTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+//        [_valueTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
+//        [_valueTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+        //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
+        NSMutableAttributedString *placeholderString = [[NSMutableAttributedString alloc]  initWithString:QSLocalizedString(@"qs_add_group_metadata_input_title") attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize14]}];
+        _valueTextField.attributedPlaceholder = placeholderString;
         _valueTextField.keyboardType = UIKeyboardTypeAlphabet;
         _valueTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     }

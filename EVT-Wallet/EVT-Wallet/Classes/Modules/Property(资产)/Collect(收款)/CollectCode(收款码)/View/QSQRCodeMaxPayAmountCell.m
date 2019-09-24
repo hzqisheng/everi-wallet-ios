@@ -73,8 +73,13 @@
         _maxPayAmountTextField.placeholder = QSLocalizedString(@"qs_sytem_setting_item_payment_title");
         _maxPayAmountTextField.textColor = [UIColor qs_colorBlue4D7BF3];
         _maxPayAmountTextField.font = [UIFont qs_fontOfSize14];
-        [_maxPayAmountTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
-        [_maxPayAmountTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+//        [_maxPayAmountTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
+//        [_maxPayAmountTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+        
+        //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
+        NSMutableAttributedString *placeholderString = [[NSMutableAttributedString alloc]  initWithString:QSLocalizedString(@"qs_sytem_setting_item_payment_title") attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize14]}];
+        _maxPayAmountTextField.attributedPlaceholder = placeholderString;
+        
         _maxPayAmountTextField.textAlignment = NSTextAlignmentRight;
         [_maxPayAmountTextField addTarget:self action:@selector(textFieldChanged) forControlEvents:UIControlEventEditingChanged];
         [_maxPayAmountTextField addTarget:self action:@selector(textFieldEndEditing) forControlEvents:UIControlEventEditingDidEnd];

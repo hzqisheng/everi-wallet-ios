@@ -188,10 +188,14 @@
         _passwordTextField.placeholder = QSLocalizedString(@"qs_switch_createIdentity_password_placeholder");
         _passwordTextField.textColor = [UIColor qs_colorBlack333333];
         _passwordTextField.font = [UIFont qs_fontOfSize14];
-        [_passwordTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
+//        [_passwordTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
+//        [_passwordTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+        
+        //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
+        NSMutableAttributedString *placeholderString = [[NSMutableAttributedString alloc]  initWithString:QSLocalizedString(@"qs_switch_createIdentity_password_placeholder") attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize14]}];
+        _passwordTextField.attributedPlaceholder = placeholderString;
         _passwordTextField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 0)];
         _passwordTextField.leftViewMode = UITextFieldViewModeAlways;
-        [_passwordTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
         _passwordTextField.secureTextEntry = YES;
         [self.topView addSubview:_passwordTextField];
     }
@@ -207,10 +211,13 @@
         _checkTextField.placeholder = QSLocalizedString(@"qs_import_wallet_confirm_password_placeholder");
         _checkTextField.textColor = [UIColor qs_colorBlack333333];
         _checkTextField.font = [UIFont qs_fontOfSize14];
-        [_checkTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
+//        [_checkTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
         _checkTextField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 0)];
         _checkTextField.leftViewMode = UITextFieldViewModeAlways;
-        [_checkTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+//        [_checkTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+        
+        NSMutableAttributedString *placeholderString = [[NSMutableAttributedString alloc]  initWithString:QSLocalizedString(@"qs_import_wallet_confirm_password_placeholder") attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize14]}];
+        _checkTextField.attributedPlaceholder = placeholderString;
         _checkTextField.secureTextEntry = YES;
         [self.topView addSubview:_checkTextField];
     }

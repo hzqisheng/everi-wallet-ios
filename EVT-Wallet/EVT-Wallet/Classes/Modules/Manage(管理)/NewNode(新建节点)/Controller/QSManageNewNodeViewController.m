@@ -455,8 +455,13 @@ typedef NS_ENUM(NSUInteger, QSManageNewNodeType) {
         _nodeKeyTextField.placeholder = QSLocalizedString(@"qs_manage_createGroup_key_placeholder");
         _nodeKeyTextField.textColor = [UIColor qs_colorBlack333333];
         _nodeKeyTextField.font = [UIFont qs_fontOfSize14];
-        [_nodeKeyTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
-        [_nodeKeyTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+//        [_nodeKeyTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
+//        [_nodeKeyTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+        
+        //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
+        NSMutableAttributedString *placeholderString = [[NSMutableAttributedString alloc]  initWithString:QSLocalizedString(@"qs_manage_createGroup_key_placeholder") attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize14]}];
+        _nodeKeyTextField.attributedPlaceholder = placeholderString;
+        
         _nodeKeyTextField.textAlignment = NSTextAlignmentRight;
         _nodeKeyTextField.keyboardType = UIKeyboardTypeAlphabet;
     }

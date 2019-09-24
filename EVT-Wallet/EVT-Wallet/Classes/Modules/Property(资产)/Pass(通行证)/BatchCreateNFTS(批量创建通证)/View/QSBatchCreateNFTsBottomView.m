@@ -82,8 +82,12 @@
         _nameTextField.placeholder = QSLocalizedString(@"qs_add_address_item_address_placeholder");
         _nameTextField.textColor = [UIColor qs_colorBlack333333];
         _nameTextField.font = [UIFont qs_fontOfSize14];
-        [_nameTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
-        [_nameTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+//        [_nameTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
+//        [_nameTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+        
+        //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
+        NSMutableAttributedString *placeholderString = [[NSMutableAttributedString alloc]  initWithString:QSLocalizedString(@"qs_add_address_item_address_placeholder") attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize14]}];
+        _nameTextField.attributedPlaceholder = placeholderString;
         [self addSubview:_nameTextField];
     }
     return _nameTextField;

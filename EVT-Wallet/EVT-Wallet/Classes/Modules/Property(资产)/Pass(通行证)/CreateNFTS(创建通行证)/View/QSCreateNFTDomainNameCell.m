@@ -67,8 +67,12 @@
         _nameTextField.placeholder = QSLocalizedString(@"qs_pass_createNFTS_yu_placeholder");
         _nameTextField.textColor = [UIColor qs_colorBlack333333];
         _nameTextField.font = [UIFont qs_fontOfSize14];
-        [_nameTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
-        [_nameTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+//        [_nameTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
+//        [_nameTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+        
+        //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
+        NSMutableAttributedString *placeholderString = [[NSMutableAttributedString alloc]  initWithString:QSLocalizedString(@"qs_pass_createNFTS_yu_placeholder") attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize14]}];
+        _nameTextField.attributedPlaceholder = placeholderString;
         _nameTextField.textAlignment = NSTextAlignmentRight;
         _nameTextField.keyboardType = UIKeyboardTypeAlphabet;
         [_nameTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];

@@ -22,8 +22,13 @@
     addressTextField.placeholder = QSLocalizedString(@"qs_transfer_nft_address_placeholder");
     addressTextField.textColor = [UIColor qs_colorBlack333333];
     addressTextField.font = [UIFont qs_fontOfSize14];
-    [addressTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
-    [addressTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+//    [addressTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
+//    [addressTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+    
+    //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
+    NSMutableAttributedString *placeholderString = [[NSMutableAttributedString alloc]  initWithString:QSLocalizedString(@"qs_transfer_nft_address_placeholder") attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize14]}];
+    addressTextField.attributedPlaceholder = placeholderString;
+    
     addressTextField.textAlignment = NSTextAlignmentLeft;
     [addressTextField addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];
     addressTextField.keyboardType = UIKeyboardTypeAlphabet;

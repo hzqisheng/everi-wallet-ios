@@ -126,8 +126,13 @@
 #pragma mark - **************** Private Methods
 - (UITextField *)createInputTextField {
     UITextField *textField = [[UITextField alloc] init];
-    [textField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
-    [textField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+//    [textField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
+//    [textField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+    
+    //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
+    NSMutableAttributedString *placeholderString = [[NSMutableAttributedString alloc]  initWithString:@"" attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize14]}];
+    textField.attributedPlaceholder = placeholderString;
+    
     textField.textColor = [UIColor qs_colorBlack313745];
     textField.font = [UIFont qs_fontOfSize14];
     textField.layer.borderWidth = BORDER_WIDTH_1PX;

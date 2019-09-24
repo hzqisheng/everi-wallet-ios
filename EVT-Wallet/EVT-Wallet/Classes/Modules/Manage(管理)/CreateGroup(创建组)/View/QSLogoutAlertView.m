@@ -156,8 +156,13 @@
         _privateTextField.placeholder = QSLocalizedString(@"qs_issue_password_placeholder");
         _privateTextField.textColor = [UIColor qs_colorBlack333333];
         _privateTextField.font = [UIFont qs_fontOfSize14];
-        [_privateTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
-        [_privateTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+//        [_privateTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
+//        [_privateTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+        
+        //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
+        NSMutableAttributedString *placeholderString = [[NSMutableAttributedString alloc]  initWithString:QSLocalizedString(@"qs_issue_password_placeholder") attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize14]}];
+        _privateTextField.attributedPlaceholder = placeholderString;
+        
         _privateTextField.layer.borderColor = [UIColor qs_colorGray686868].CGColor;
         _privateTextField.layer.borderWidth = BORDER_WIDTH_1PX;
         _privateTextField.layer.cornerRadius = kRealValue(3);

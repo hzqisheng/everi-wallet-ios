@@ -141,8 +141,14 @@
         _thresholdCountTextField = [[UITextField alloc] init];
         _thresholdCountTextField.textColor = [UIColor qs_colorBlack313745];
         _thresholdCountTextField.font = [UIFont qs_fontOfSize14];
-        [_thresholdCountTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
-        [_thresholdCountTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+//        [_thresholdCountTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
+//        [_thresholdCountTextField setValue:[UIFont qs_fontOfSize14] forKeyPath:@"_placeholderLabel.font"];
+//
+        //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
+        NSMutableAttributedString *placeholderString = [[NSMutableAttributedString alloc]  initWithString:@"" attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize14]}];
+        _thresholdCountTextField.attributedPlaceholder = placeholderString;
+        
+        
         _thresholdCountTextField.textAlignment = NSTextAlignmentCenter;
         _thresholdCountTextField.keyboardType = UIKeyboardTypeNumberPad;
         [_thresholdCountTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
