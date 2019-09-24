@@ -38,7 +38,14 @@
     QSCreateFTItem *FTItem = (QSCreateFTItem *)item;
     self.titleLabel.text = FTItem.title;
     self.contentTextField.text = FTItem.content;
-    self.contentTextField.placeholder = FTItem.placeholde;
+    if (FTItem.placeholde) {
+        //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
+        NSMutableAttributedString *placeholderString = [[NSMutableAttributedString alloc]  initWithString:FTItem.placeholde attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize15]}];
+        _contentTextField.attributedPlaceholder = placeholderString;
+    }else{
+        _contentTextField.attributedPlaceholder = nil;
+    }
+    
     self.contentTextField.keyboardType = FTItem.KeyboardType;
 }
 
@@ -93,11 +100,7 @@
         _contentTextField.font = [UIFont qs_fontOfSize15];
 //        [_contentTextField setValue:[UIColor qs_colorGrayBBBBBB] forKeyPath:@"_placeholderLabel.textColor"];
 //        [_contentTextField setValue:[UIFont qs_fontOfSize15] forKeyPath:@"_placeholderLabel.font"];
-        //* iOS 13关闭了权限， 不允许KVC给PlaceholderLabel属性赋值 */
-        QSCreateFTItem *FTItem = (QSCreateFTItem *)self.item;
-        NSMutableAttributedString *placeholderString = [[NSMutableAttributedString alloc]  initWithString:FTItem.placeholde attributes:@{NSForegroundColorAttributeName : [UIColor qs_colorGrayBBBBBB], NSFontAttributeName : [UIFont qs_fontOfSize15]}];
-        _contentTextField.attributedPlaceholder = placeholderString;
-        
+                
         [_contentTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
         [self.contentView addSubview:_contentTextField];
     }
