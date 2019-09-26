@@ -81,7 +81,6 @@
                     [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_transfer_nft_address_exist_title")];
                     return;
                 }
-                
                 QSEveriPassTransferAddressInputItem *inputItem = self.dataArray.firstObject;
                 inputItem.inputText = @"";
                 
@@ -95,11 +94,72 @@
                 [self.dataArray addObject:addressItem];
                 [self.tableView reloadData];
             } else {
-                [QSAppKeyWindow showAutoHideHudWithText:@"qs_transfer_nft_address_error_title"];
+                [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_transfer_nft_address_error_title")];
             }
         }
     }];
 }
+
+- (void)oneceAddressForNextStep:(NSString *)text {
+    if (!text.length) {
+        [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_transfer_nft_address_placeholder")];
+        return;
+    }
+    @weakify(self);
+    [[QSEveriApiWebViewController sharedWebView] checkValidPublicKey:text andCompeleteBlock:^(NSInteger statusCode, BOOL isValid) {
+        @strongify(self);
+        if (statusCode == kResponseSuccessCode) {
+            if (isValid) {
+                if ([self checkAddresExist:text]) {
+                    [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_transfer_nft_address_exist_title")];
+                    return;
+                }
+                QSEveriPassTransferAddressInputItem *inputItem = self.dataArray.firstObject;
+                inputItem.inputText = @"";
+                
+                QSEveriPassTransferAddressItem *addressItem = [[QSEveriPassTransferAddressItem alloc] init];
+                addressItem.cellIdentifier = NSStringFromClass([QSEveriPassTransferAddressCell class]);
+                addressItem.address = text;
+                addressItem.everiPassTransferAddressDeleteBlock = ^(QSEveriPassTransferAddressItem * _Nonnull item) {
+                    [self.dataArray removeObject:item];
+                    [self.tableView reloadData];
+                };
+                [self.dataArray addObject:addressItem];
+                [self.tableView reloadData];
+                
+                NSMutableArray *addressList = [NSMutableArray array];
+                
+                for (QSBaseCellItem *item in self.dataArray) {
+                    if ([item isKindOfClass:[QSEveriPassTransferAddressItem class]]) {
+                        QSEveriPassTransferAddressItem * addressItem = (QSEveriPassTransferAddressItem *)item;
+                        [addressList addObject:addressItem.address];
+                    }
+                }
+                NSDictionary *actionDic = @{
+                                            @"domain" : QSNoNilString(self.domain),
+                                            @"name"   : QSNoNilString(self.name),
+                                            @"to"     : addressList.copy,
+                                            @"memo"   : @""
+                                            };
+                
+                QSEveriPassTransferConfirmViewController *confirm = [[QSEveriPassTransferConfirmViewController alloc] init];
+                confirm.actions = actionDic;
+                @weakify(self);
+                confirm.everiPassTransferConfirmSuccessBlock = ^{
+                    @strongify(self);
+                    if (self.everiPassTransferAddressSuccessBlock) {
+                        self.everiPassTransferAddressSuccessBlock();
+                    }
+                    [self.navigationController popToViewControllerWithClassName:@"QSEveriPassTransferLogViewController" animated:YES];
+                };
+                [self.navigationController pushViewController:confirm animated:YES];
+            } else {
+                [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_transfer_nft_address_error_title")];
+            }
+        }
+    }];
+}
+
 
 - (void)everiPassTransferAddressInputScan:(QSEveriPassTransferAddressInputItem *)inputItem {
     QSScanningViewController *scan = [[QSScanningViewController alloc] init];
@@ -114,6 +174,16 @@
 
 - (void)submitButtonClicked {
     
+    //一个cell输入地址可以直接点击下一步
+    if (self.dataArray.count == 1) {
+        QSBaseCellItem *item = self.dataArray.firstObject;
+        if ([item isKindOfClass:[QSEveriPassTransferAddressInputItem class]]) {
+            QSEveriPassTransferAddressInputItem * addressItem = (QSEveriPassTransferAddressInputItem *)item;
+            [self oneceAddressForNextStep:addressItem.inputText];
+            return;
+        }
+    }
+    
     NSMutableArray *addressList = [NSMutableArray array];
     
     for (QSBaseCellItem *item in self.dataArray) {
@@ -122,6 +192,7 @@
             [addressList addObject:addressItem.address];
         }
     }
+    
     
     if (!addressList.count) {
         [QSAppKeyWindow showAutoHideHudWithText:QSLocalizedString(@"qs_transfer_nft_address_placeholder")];
