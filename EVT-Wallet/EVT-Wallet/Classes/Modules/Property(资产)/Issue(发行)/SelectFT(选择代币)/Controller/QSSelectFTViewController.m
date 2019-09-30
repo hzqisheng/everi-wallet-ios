@@ -77,6 +77,8 @@ static NSString * const kSelectFTCell = @"selectFTCell";
 #pragma mark - **************** Event Response
 - (void)bottomButtonClicked {
     QSCreateFTViewController *vc = [[QSCreateFTViewController alloc] init];
+    
+    self.navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

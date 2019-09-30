@@ -39,6 +39,7 @@
     self.rt_disableInteractivePop = NO;
     
     DLog(@"%@",[self class]);
+    self.navigationController.modalPresentationStyle = UIModalPresentationFullScreen;
 }
 
 - (void)setupNavgationBarTitle:(NSString *)title {

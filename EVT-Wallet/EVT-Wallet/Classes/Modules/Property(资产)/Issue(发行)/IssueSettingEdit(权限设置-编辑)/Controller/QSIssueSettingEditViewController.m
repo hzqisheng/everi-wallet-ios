@@ -21,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     [self setupNavgationBarTitle:QSLocalizedString(@"qs_issue_issue_moreSetting_rightNavi")];
     UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_chuangjianyu_help"] target:self action:@selector(rightBarItemClicked)];
     self.navigationItem.rightBarButtonItem = rightBarItem;

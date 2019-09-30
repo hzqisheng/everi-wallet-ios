@@ -33,9 +33,10 @@
     }];
     UIAlertAction *photeLibrary = [UIAlertAction actionWithTitle:QSLocalizedString(@"qs_create_ft_select_local_icon_title") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         TZImagePickerController *imagePicker = [[TZImagePickerController alloc] initWithMaxImagesCount:maxPicCount delegate:nil];
+        imagePicker.modalPresentationStyle = UIModalPresentationFullScreen;
         imagePicker.allowPickingVideo = NO;
         imagePicker.showSelectBtn = NO;
-        imagePicker.allowCrop = YES;
+//        imagePicker.allowCrop = YES;
         
         imagePicker.naviTitleColor = [UIColor qs_colorWhiteFFFFFF];
         imagePicker.naviTitleFont = [UIFont qs_fontOfSize18];
