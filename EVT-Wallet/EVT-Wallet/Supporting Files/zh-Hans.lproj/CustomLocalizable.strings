@@ -231,12 +231,13 @@
 "qs_scan_nav_title"                  = "二维码";
 "qs_scan_help_btn_title"             = "未扫描到二维码？获取帮助";
 "qs_scan_scaning_title"              = "请稍后...";
-"qs_scan_scan_failed_title"          = "扫描失败";
+"qs_scan_scan_failed_title"          = "未找到二维码";
 "qs_scan_scan_failed_tips_title"     = "请换一张图片重试~";
 "qs_scan_scan_failed_confirm_title"  = "确定";
 "qs_scan_scan_init_failed_title"     = "相机初始化失败，请检查权限~";
 "qs_scan_scan_link"                  = "EVTLink已过期";
 "qs_everipass_scan_success"          = "操作成功";
+"qs_scan_album"                      = "相簿";
 
 "qs_scan_unrecognized_result_nav_title"       = "扫码结果";
 "qs_scan_unrecognized_result_title"           = "已识别到二维码内容";

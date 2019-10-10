@@ -62,6 +62,7 @@
         _avartarImageView.contentMode = UIViewContentModeScaleAspectFill;
         _avartarImageView.layer.cornerRadius = kRealValue(28.5);
         _avartarImageView.layer.masksToBounds = YES;
+        _avartarImageView.backgroundColor = [UIColor clearColor];
     }
     return _avartarImageView;
 }

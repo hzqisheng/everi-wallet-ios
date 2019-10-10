@@ -42,11 +42,16 @@
     [QSAppKeyWindow.rootViewController showPictureSelectActionSheetWithMaxPicCount:1 completeBlock:^(NSArray *selectImageArray, BOOL isCancel) {
         if (selectImageArray.count) {
             UIImage *seletedImage = selectImageArray[0];
+            UIImage *pngIcon = nil;
+            if (seletedImage) {
+                NSData * data = UIImagePNGRepresentation(seletedImage);
+                pngIcon = [UIImage imageWithData:data];
+            }
             QSCreateFTIconItem *FTItem = (QSCreateFTIconItem *)self.item;
             if (FTItem.createFTIconItemSelectedImageBlock) {
-                FTItem.createFTIconItemSelectedImageBlock(seletedImage);
+                FTItem.createFTIconItemSelectedImageBlock(pngIcon);
             }
-            [self.imageButton setImage:seletedImage forState:UIControlStateNormal];
+            [self.imageButton setImage:pngIcon forState:UIControlStateNormal];
         }
     }];
 }

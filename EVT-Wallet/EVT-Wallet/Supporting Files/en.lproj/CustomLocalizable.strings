@@ -235,6 +235,7 @@
 "qs_scan_scan_init_failed_title"     = "Camera initialization failed, please check permissions~";
 "qs_scan_scan_link"                  = "everiTokenLink expired";
 "qs_everipass_scan_success"          = "Operation Success";
+"qs_scan_album"                      = "Album";
 
 "qs_scan_unrecognized_result_nav_title"       = "Scanned Results";
 "qs_scan_unrecognized_result_title"           = "The scanned content of QR code";

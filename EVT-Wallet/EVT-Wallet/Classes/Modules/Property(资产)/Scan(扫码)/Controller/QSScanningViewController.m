@@ -13,8 +13,8 @@
 #import "QSScanUnrecognizedResultViewController.h"
 
 #import "QSScanAddress.h"
-
-@interface QSScanningViewController ()<QSScannerDelegate,UINavigationControllerDelegate>
+#import <TZImagePickerController.h>
+@interface QSScanningViewController ()<QSScannerDelegate,UINavigationControllerDelegate, TZImagePickerControllerDelegate>
 
 @property (nonatomic, strong) QSScannerViewController *scanVC;
 //@property (nonatomic, strong) UIButton *helpButton;
@@ -32,6 +32,8 @@
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor blackColor]];
     [self setupNavgationBarTitle:QSLocalizedString(@"qs_scan_nav_title")];
+    UIBarButtonItem *albumItem = [[UIBarButtonItem alloc]initWithTitle:QSLocalizedString(@"qs_scan_album") style:UIBarButtonItemStyleDone target:self action:@selector(openAlbum:)];
+    self.navigationItem.rightBarButtonItem = albumItem;
     [self.view addSubview:self.scanVC.view];
     [self addChildViewController:self.scanVC];
 }
@@ -39,6 +41,14 @@
 #pragma mark - Event Response -
 - (void)helpButtonClickedDown {
     
+}
+
+#pragma mark - 打开相册
+- (void)openAlbum:(UIBarButtonItem *)sender{
+    TZImagePickerController *imagePicker = [[TZImagePickerController alloc] initWithMaxImagesCount:1 delegate:self];
+    imagePicker.allowPickingVideo = NO;
+    imagePicker.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController:imagePicker animated:YES completion:nil];
 }
 
 #pragma mark - Private Methods -
@@ -195,6 +205,17 @@
 - (void)scannerViewControllerClickedGetHelp:(QSScannerViewController *)scannerVC {
     DLog(@"help");
 }
+
+#pragma mark - TZImagePickerDelegete
+
+-(void)imagePickerController:(TZImagePickerController *)picker
+      didFinishPickingPhotos:(NSArray<UIImage *> *)photos
+                sourceAssets:(NSArray *)assets
+       isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto{
+    UIImage *selectImage = photos.firstObject;
+    [self p_analysisImage:selectImage];
+}
+
 
 #pragma mark - **************** setter
 - (QSScannerViewController *)scanVC {

@@ -36,8 +36,9 @@
         imagePicker.modalPresentationStyle = UIModalPresentationFullScreen;
         imagePicker.allowPickingVideo = NO;
         imagePicker.showSelectBtn = NO;
-//        imagePicker.allowCrop = YES;
         
+//        imagePicker.allowCrop = YES;
+//        imagePicker.circleCropRadius = 200;
         imagePicker.naviTitleColor = [UIColor qs_colorWhiteFFFFFF];
         imagePicker.naviTitleFont = [UIFont qs_fontOfSize18];
         imagePicker.barItemTextFont = [UIFont qs_fontOfSize15];
