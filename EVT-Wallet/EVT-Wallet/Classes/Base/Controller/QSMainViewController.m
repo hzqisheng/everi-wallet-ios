@@ -42,6 +42,13 @@
     //注意：因为是系统的tabBar是readonly的，所以用KVC方法替换
     [self setValue:tabbar forKey:@"tabBar"];
 
+    if (@available(iOS 13.0, *))
+        //强制关掉深色模式
+    { self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+        //解决iOS 13 tabbar颜色自动转换问题
+    [[UITabBar appearance] setUnselectedItemTintColor:[UIColor whiteColor]];
+    }
+    
     [self setupChildViewControllers];
 }
 
