@@ -169,7 +169,12 @@ typedef NS_ENUM(NSUInteger, QSPayAmountCellType) {
     NSString *floatString = [NSString stringWithFormat:@"%f",money.floatValue];
     NSRange range = [floatString rangeOfString:@"."];
     NSInteger subStringIndex = range.length + range.location + precision.integerValue;
-    NSString *result = [floatString substringToIndex:subStringIndex];
+    NSString *result;
+    if (subStringIndex <= floatString.length) {
+        result = [floatString substringToIndex:subStringIndex];
+    }else{
+        result = floatString;
+    }
     return result;
 }
 
